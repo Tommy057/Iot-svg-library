@@ -1,0 +1,170 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      .bg-dark { fill: #0D1C3D; }
+      .module-box { fill: #1A437C; stroke: #2D73B4; stroke-width: 2; }
+      .header-fill { fill: #2D73B4; }
+      .text-light { fill: #E0FFFF; font-family: 'Arial', sans-serif; font-size: 18px; }
+      .data-value { fill: #4AC4FF; font-family: 'Arial', sans-serif; font-weight: bold; font-size: 20px; }
+      .pipe-flow { stroke: #4AC4FF; stroke-width: 3; fill: none; }
+      .icon-fill { fill: #3D69A3; stroke: #E0FFFF; stroke-width: 1.5; }
+      .alarm-critical { fill: #FF4A4A; }
+      .alarm-warning { fill: #FFC44A; }
+      .flow-arrow { stroke: #4AC4FF; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .main-title { font-size: 32px; font-weight: bold; fill: #4AC4FF; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4AC4FF" />
+    </marker>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg-dark"/>
+
+  <text x="960" y="80" text-anchor="middle" class="main-title" filter="url(#glow)">医院智慧环境集成平台 (AIoT/IBMS)</text>
+
+  <g id="hospital-hub" transform="translate(860, 480)">
+    <rect x="0" y="0" width="200" height="200" rx="20" ry="20" fill="#0A305A" stroke="#4AC4FF" stroke-width="3" filter="url(#glow)"/>
+    <text x="100" y="80" text-anchor="middle" font-size="24" fill="#E0FFFF">AIoT/IBMS</text>
+    <text x="100" y="120" text-anchor="middle" font-size="16" fill="#4AC4FF">数据汇聚与联动控制</text>
+  </g>
+
+  <g transform="translate(50, 150)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">医用气体系统 (Medical Gas)</text>
+    
+    <polyline points="50,150 150,150 150,250 50,250" class="pipe-flow"/>
+    <rect x="50" y="100" width="25" height="50" class="icon-fill"/> <rect x="100" y="100" width="25" height="50" class="icon-fill"/> <rect x="250" y="100" width="25" height="50" class="icon-fill"/> <circle cx="150" cy="200" r="15" class="icon-fill"/> <g transform="translate(300, 70)">
+      <text x="0" y="0" class="text-light" font-size="16">氧气主路压力 (MPa):</text>
+      <text x="0" y="25" class="data-value">0.45</text>
+      <text x="0" y="55" class="text-light" font-size="16">液位存量 (%):</text>
+      <text x="0" y="80" class="data-value">68%</text>
+      <text x="0" y="110" class="text-light" font-size="16">总用量 (L/min):</text>
+      <text x="0" y="135" class="data-value">12.5</text>
+    </g>
+
+    <circle cx="200" cy="300" r="10" class="alarm-critical"/>
+    <text x="215" y="305" class="text-light" font-size="14">低压报警</text>
+    <circle cx="350" cy="300" r="10" class="alarm-warning"/>
+    <text x="365" y="305" class="text-light" font-size="14">汇流排切换</text>
+  </g>
+
+  <g transform="translate(720, 150)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">负压吸引系统 (Vacuum Suction)</text>
+
+    <circle cx="100" cy="150" r="20" class="icon-fill"/> <circle cx="150" cy="150" r="20" class="icon-fill"/> <rect x="250" y="120" width="50" height="80" class="icon-fill"/> <polyline points="100,180 125,230 275,230 300,200" class="pipe-flow"/>
+    
+    <g transform="translate(350, 70)">
+      <text x="0" y="0" class="text-light" font-size="16">真空度 (kPa):</text>
+      <text x="0" y="25" class="data-value">-55.2</text>
+      <text x="0" y="55" class="text-light" font-size="16">泵运行状态:</text>
+      <text x="0" y="80" class="data-value">PUMP-A RUN</text>
+      <text x="0" y="110" class="text-light" font-size="16">液位高度 (%):</text>
+      <text x="0" y="135" class="data-value">15%</text>
+    </g>
+
+    <circle cx="300" cy="280" r="10" class="alarm-critical"/>
+    <text x="315" y="285" class="text-light" font-size="14">负压不足</text>
+    <circle cx="150" cy="280" r="10" class="alarm-critical"/>
+    <text x="165" y="285" class="text-light" font-size="14">泵故障</text>
+  </g>
+
+  <g transform="translate(1390, 150)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">医气正压系统 (Compressed Air)</text>
+    
+    <rect x="50" y="120" width="40" height="60" class="icon-fill"/> <circle cx="130" cy="150" r="20" class="icon-fill"/> <rect x="200" y="130" width="20" height="40" class="icon-fill"/> <polyline points="150,150 200,150 300,150" class="pipe-flow"/>
+
+    <g transform="translate(350, 70)">
+      <text x="0" y="0" class="text-light" font-size="16">管路压力 (MPa):</text>
+      <text x="0" y="25" class="data-value">0.78</text>
+      <text x="0" y="55" class="text-light" font-size="16">露点 (Dew Point °C):</text>
+      <text x="0" y="80" class="data-value">-45.2</text>
+      <text x="0" y="110" class="text-light" font-size="16">CO 浓度 (ppm):</text>
+      <text x="0" y="135" class="data-value">0</text>
+    </g>
+
+    <circle cx="150" cy="280" r="10" class="alarm-critical"/>
+    <text x="165" y="285" class="text-light" font-size="14">露点超标</text>
+    <circle cx="350" cy="280" r="10" class="alarm-warning"/>
+    <text x="365" y="285" class="text-light" font-size="14">干燥机预警</text>
+  </g>
+
+  <g transform="translate(50, 600)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">净化空调系统 (Clean HVAC)</text>
+    
+    <rect x="50" y="100" width="150" height="150" class="icon-fill"/> <text x="125" y="175" text-anchor="middle" font-size="20" fill="#E0FFFF">AHU</text>
+    <polyline points="200,175 300,175" class="pipe-flow"/> <g transform="translate(300, 70)">
+      <text x="0" y="0" class="text-light" font-size="16">压差 (Pa):</text>
+      <text x="0" y="25" class="data-value">15.2</text>
+      <text x="0" y="55" class="text-light" font-size="16">回风温度 (°C):</text>
+      <text x="0" y="80" class="data-value">23.5</text>
+      <text x="0" y="110" class="text-light" font-size="16">高效过滤压差 (Pa):</text>
+      <text x="0" y="135" class="data-value">180</text>
+    </g>
+
+    <circle cx="100" cy="300" r="10" class="alarm-critical"/>
+    <text x="115" y="305" class="text-light" font-size="14">压差破坏</text>
+    <rect x="300" y="280" width="150" height="30" fill="#4AC4FF"/>
+    <text x="375" y="300" text-anchor="middle" fill="#0D1C3D" font-weight="bold" font-size="16">值班模式联动</text>
+  </g>
+
+  <g transform="translate(720, 600)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">数字手术室环境 (Digital OR)</text>
+    
+    <rect x="50" y="100" width="380" height="150" class="icon-fill"/> <circle cx="100" cy="150" r="15" fill="#E0FFFF"/> <rect x="200" y="140" width="20" height="30" fill="#E0FFFF"/> <rect x="300" y="140" width="80" height="50" fill="#4AC4FF"/> <text x="340" y="170" text-anchor="middle" fill="#0D1C3D" font-weight="bold">手术中</text>
+    
+    <g transform="translate(50, 270)">
+      <text x="0" y="0" class="text-light" font-size="16">手术状态:</text>
+      <text x="100" y="0" class="data-value">进行中</text>
+      <text x="0" y="30" class="text-light" font-size="16">实时温湿度:</text>
+      <text x="120" y="30" class="data-value">22.0°C / 55%</text>
+      <text x="0" y="60" class="text-light" font-size="16">气体终端压力:</text>
+      <text x="150" y="60" class="data-value">OK</text>
+    </g>
+  </g>
+
+  <g transform="translate(1390, 600)">
+    <rect class="module-box" width="480" height="350" rx="10" ry="10"/>
+    <rect class="header-fill" width="480" height="40" rx="10" ry="10"/>
+    <text x="20" y="30" class="text-light" font-weight="bold">医用纯水系统 (RO/EDI)</text>
+    
+    <rect x="50" y="100" width="30" height="100" class="icon-fill"/> <rect x="100" y="100" width="30" height="100" class="icon-fill"/> <rect x="250" y="120" width="50" height="80" class="icon-fill"/> <polyline points="85,150 115,150 175,150 250,150" class="pipe-flow"/>
+    
+    <g transform="translate(300, 70)">
+      <text x="0" y="0" class="text-light" font-size="16">二级电导率 (μS/cm):</text>
+      <text x="0" y="25" class="data-value">0.05</text>
+      <text x="0" y="55" class="text-light" font-size="16">TOC (ppb):</text>
+      <text x="0" y="80" class="data-value">8</text>
+      <text x="0" y="110" class="text-light" font-size="16">水箱液位 (%):</text>
+      <text x="0" y="135" class="data-value">92%</text>
+    </g>
+
+    <circle cx="150" cy="280" r="10" class="alarm-critical"/>
+    <text x="165" y="285" class="text-light" font-size="14">电导率超标</text>
+    <circle cx="350" cy="280" r="10" class="alarm-warning"/>
+    <text x="365" y="285" class="text-light" font-size="14">UV灯寿命预警</text>
+  </g>
+
+  <polyline points="530, 325 860, 520" class="flow-arrow"/>
+  <polyline points="1200, 325 1060, 520" class="flow-arrow"/>
+  <polyline points="1390, 325 1100, 580" class="flow-arrow"/>
+  <polyline points="530, 775 860, 600" class="flow-arrow"/>
+  <polyline points="1200, 775 1060, 600" class="flow-arrow"/>
+  <polyline points="1390, 775 1100, 680" class="flow-arrow"/>
+
+</svg>

@@ -1,0 +1,87 @@
+<svg width="1400" height="800" viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  
+  <defs>
+    <linearGradient id="CardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#25344D"/>
+      <stop offset="100%" style="stop-color:#1A2333"/>
+    </linearGradient>
+
+    <pattern id="GridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2D3B5A" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    
+    <g id="Icon-Total">
+        <path d="M 3 25 L 7 25 L 9 20 L 22 20 L 24 25 L 28 25 M 7 25 A 3 3 0 0 0 7 28 L 24 28 A 3 3 0 0 0 24 25" fill="#00B8FF"/>
+        <circle cx="10" cy="30" r="2" fill="#E0FFFF"/>
+        <circle cx="21" cy="30" r="2" fill="#E0FFFF"/>
+    </g>
+    <g id="Icon-Free">
+        <path d="M 5 20 L 10 25 L 25 10" stroke="#4CAF50" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="15" cy="18" r="14" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    </g>
+    <g id="Icon-Occupied">
+        <path d="M 15 5 L 5 25 L 25 25 Z" fill="#E53935"/>
+        <rect x="14" y="10" width="2" height="8" fill="#E0FFFF"/>
+        <circle cx="15" cy="22" r="1.5" fill="#E0FFFF"/>
+    </g>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="800" fill="#161B29"/>
+  <rect x="0" y="0" width="1400" height="800" fill="url(#GridPattern)"/>
+
+  <text x="700" y="30" text-anchor="middle" font-size="28" fill="#E0FFFF" font-weight="bold" font-family="Arial, sans-serif">智慧停车场综合监控平台</text>
+
+
+  <g transform="translate(100, 70)">
+    <rect x="0" y="0" width="350" height="150" rx="10" fill="rgba(0,184,255,0.2)"/>
+    <rect x="2" y="2" width="346" height="146" rx="8" fill="url(#CardGradient)" stroke="#00B8FF" stroke-width="2"/>
+    
+    <rect x="2" y="2" width="10" height="146" rx="0" fill="#00B8FF"/>
+    
+    <g transform="translate(45, 60) scale(1.5)">
+        <use xlink:href="#Icon-Total"/>
+    </g>
+    
+    <text x="180" y="55" text-anchor="start" font-size="18" font-weight="bold" fill="#B0DFFF">总车位容量 (TOTAL)</text>
+    
+    <text x="180" y="115" text-anchor="start" font-size="60" font-weight="bold" fill="#FFFFFF">999</text>
+  </g>
+
+  <g transform="translate(525, 70)">
+    <rect x="0" y="0" width="350" height="150" rx="10" fill="rgba(76,175,80,0.2)"/>
+    <rect x="2" y="2" width="346" height="146" rx="8" fill="url(#CardGradient)" stroke="#4CAF50" stroke-width="2"/>
+    
+    <rect x="2" y="2" width="10" height="146" rx="0" fill="#4CAF50"/>
+    
+    <g transform="translate(45, 60) scale(1.5)">
+        <use xlink:href="#Icon-Free"/>
+    </g>
+    
+    <text x="180" y="55" text-anchor="start" font-size="18" font-weight="bold" fill="#B0DFFF">当前空余 (AVAILABLE)</text>
+    
+    <text x="180" y="115" text-anchor="start" font-size="60" font-weight="bold" fill="#4CAF50">500</text>
+  </g>
+
+  <g transform="translate(950, 70)">
+    <rect x="0" y="0" width="350" height="150" rx="10" fill="rgba(229,57,53,0.2)"/>
+    <rect x="2" y="2" width="346" height="146" rx="8" fill="url(#CardGradient)" stroke="#E53935" stroke-width="2"/>
+    
+    <rect x="2" y="2" width="10" height="146" rx="0" fill="#E53935"/>
+    
+    <g transform="translate(45, 60) scale(1.5)">
+        <use xlink:href="#Icon-Occupied"/>
+    </g>
+    
+    <text x="180" y="55" text-anchor="start" font-size="18" font-weight="bold" fill="#B0DFFF">当前占用 (OCCUPIED)</text>
+    
+    <text x="180" y="115" text-anchor="start" font-size="60" font-weight="bold" fill="#E53935">499</text>
+  </g>
+
+  <g id="MainLayout" transform="translate(100, 250)">
+    <rect x="0" y="0" width="850" height="500" rx="10" fill="url(#CardGradient)" stroke="rgba(0,184,255,0.4)" stroke-width="1"/>
+    <text x="425" y="250" text-anchor="middle" font-size="36" fill="rgba(0,184,255,0.2)">停车场平面图 / MAP VIEW</text>
+    
+    <rect x="870" y="0" width="430" height="500" rx="10" fill="url(#CardGradient)" stroke="rgba(0,184,255,0.4)" stroke-width="1"/>
+    <text x="1085" y="250" text-anchor="middle" font-size="30" fill="rgba(0,184,255,0.2)">实时数据列表 / DATA TABLE</text>
+  </g>
+</svg>

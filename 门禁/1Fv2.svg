@@ -1,0 +1,183 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 1920 960" preserveAspectRatio="xMidYMid meet" 
+     style="background-color: #f9f9f9; font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;">
+
+  <!-- ====================================================================================== -->
+  <!-- 1. 样式与滤镜定义 (Defs) -->
+  <!-- ====================================================================================== -->
+  <defs>
+    <!-- 强阴影滤镜：让标签在白色底图上“浮”起来 -->
+    <filter id="hud-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.4"/>
+      <feComposite in2="offsetBlur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 告警呼吸灯动画所需渐变 -->
+    <radialGradient id="alarm-pulse-grad">
+      <stop offset="0%" stop-color="#ff4d4f" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff4d4f" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 状态颜色定义 -->
+    <!-- 正常 (深蓝/科技蓝) -->
+    <linearGradient id="grad-normal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1890ff"/>
+      <stop offset="100%" stop-color="#096dd9"/>
+    </linearGradient>
+    <!-- 开门 (鲜绿) -->
+    <linearGradient id="grad-open" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#52c41a"/>
+      <stop offset="100%" stop-color="#389e0d"/>
+    </linearGradient>
+    <!-- 告警 (高亮红) -->
+    <linearGradient id="grad-alarm" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d4f"/>
+      <stop offset="100%" stop-color="#cf1322"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ====================================================================================== -->
+  <!-- 3. 定义图标组件 (Symbols) -->
+  <!-- ====================================================================================== -->
+  
+  <!-- 图标底座：模拟地面定位点 -->
+  <symbol id="icon-anchor" viewBox="0 0 20 10">
+    <ellipse cx="10" cy="5" rx="8" ry="3" fill="#000" opacity="0.2"/>
+  </symbol>
+
+  <!-- 正常状态图标 (锁) -->
+  <symbol id="icon-status-normal" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="url(#grad-normal)" stroke="#fff" stroke-width="2"/>
+    <!-- 锁形状 -->
+    <path d="M14 18 V15 A6 6 0 0 1 26 15 V18 H27 V30 H13 V18 Z M16 18 H24 V15 A4 4 0 0 0 16 15 Z" fill="#fff"/>
+  </symbol>
+
+  <!-- 开门状态图标 (勾/人行) -->
+  <symbol id="icon-status-open" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="url(#grad-open)" stroke="#fff" stroke-width="2"/>
+    <!-- 勾形状 -->
+    <path d="M12 20 L17 25 L28 14" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- 告警状态图标 (感叹号) -->
+  <symbol id="icon-status-alarm" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="url(#grad-alarm)" stroke="#fff" stroke-width="2"/>
+    <path d="M18 10 H22 V22 H18 Z M18 25 H22 V29 H18 Z" fill="#fff"/>
+  </symbol>
+
+  <!-- ====================================================================================== -->
+  <!-- 4. 门禁设备层 -->
+  <!-- ====================================================================================== -->
+  <g id="Access-Control-Points">
+
+    <!-- === 设备 1: 底部主入口 (正常) === -->
+    <g transform="translate(800, 880)" style="cursor: pointer;">
+      <!-- 地面锚点 -->
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      <!-- 悬浮组 -->
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <!-- 标签背景 (深色胶囊形，高对比度) -->
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#2d3436"/>
+        <!-- 文字 -->
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold" letter-spacing="1">1F-主入口-01</text>
+        <!-- 图标 (稍微突出标签左侧) -->
+        <use href="#icon-status-normal" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+
+    <!-- === 设备 2: 核心筒左楼梯 (告警!!!) === -->
+    <g transform="translate(420, 350)" style="cursor: pointer;">
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      
+      <!-- 告警波纹动画 -->
+      <circle cx="0" cy="-35" r="20" fill="url(#alarm-pulse-grad)">
+        <animate attributeName="r" values="20;50" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#c0392b"/> <!-- 红色背景 -->
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold">1F-西消防梯</text>
+        <use href="#icon-status-alarm" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+
+    <!-- === 设备 3: 核心筒右楼梯 (正常) === -->
+    <g transform="translate(850, 320)" style="cursor: pointer;">
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#2d3436"/>
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold">1F-东消防梯</text>
+        <use href="#icon-status-normal" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+
+    <!-- === 设备 4: 货运通道 (常开/通行中) === -->
+    <g transform="translate(1600, 820)" style="cursor: pointer;">
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#2d3436"/>
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold">1F-货运缓冲区</text>
+        <use href="#icon-status-open" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+
+    <!-- === 设备 5: 电梯厅 (正常) === -->
+    <g transform="translate(630, 480)" style="cursor: pointer;">
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#2d3436"/>
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold">1F-电梯前室</text>
+        <use href="#icon-status-normal" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+
+    <!-- === 设备 6: VIP室 (正常) === -->
+    <g transform="translate(1450, 160)" style="cursor: pointer;">
+      <use href="#icon-anchor" x="-10" y="0" width="20" height="10"/>
+      <g transform="translate(0, -45)" filter="url(#hud-shadow)">
+        <rect x="-15" y="-10" width="130" height="30" rx="15" fill="#2d3436"/>
+        <text x="35" y="10" fill="#fff" font-size="12" font-weight="bold">1F-VIP接待</text>
+        <use href="#icon-status-normal" x="-25" y="-15" width="50" height="50"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ====================================================================================== -->
+  <!-- 5. 状态图例面板 (Legend) -->
+  <!-- ====================================================================================== -->
+  <!-- 固定在左下角，使用半透明毛玻璃风格 -->
+  <g transform="translate(30, 780)">
+    <!-- 面板背景 -->
+    <rect x="0" y="0" width="240" height="150" rx="8" fill="#ffffff" fill-opacity="0.95" stroke="#d9d9d9" stroke-width="1" filter="url(#hud-shadow)"/>
+    
+    <!-- 标题 -->
+    <text x="20" y="35" font-size="16" font-weight="bold" fill="#333">门禁状态图例</text>
+    <line x1="20" y1="45" x2="220" y2="45" stroke="#eee" stroke-width="2"/>
+
+    <!-- 图例项 1: 正常 -->
+    <g transform="translate(20, 65)">
+      <use href="#icon-status-normal" x="0" y="0" width="24" height="24"/>
+      <text x="35" y="17" font-size="14" fill="#666">设备在线 / 门常闭</text>
+    </g>
+
+    <!-- 图例项 2: 开门 -->
+    <g transform="translate(20, 95)">
+      <use href="#icon-status-open" x="0" y="0" width="24" height="24"/>
+      <text x="35" y="17" font-size="14" fill="#666">人员通行 / 门常开</text>
+    </g>
+
+    <!-- 图例项 3: 告警 -->
+    <g transform="translate(20, 125)">
+      <use href="#icon-status-alarm" x="0" y="0" width="24" height="24"/>
+      <text x="35" y="17" font-size="14" fill="#ff4d4f" font-weight="bold">入侵 / 强行闯入</text>
+    </g>
+  </g>
+
+</svg>

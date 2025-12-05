@@ -1,0 +1,126 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  
+  <rect x="0" y="0" width="1920" height="1080" fill="#0D1C3D"/>
+  
+  <text x="960" y="60" text-anchor="middle" fill="#E0FFFF" font-family="Arial, sans-serif" font-size="32px" font-weight="bold">智慧楼宇 B 区 3F 门禁系统实时监控</text>
+
+  <g id="FloorPlan" stroke="#2D73B4" stroke-width="6" fill="none" stroke-linecap="round">
+    <rect x="150" y="150" width="1620" height="800" fill="#1A437C" stroke="#2D73B4" stroke-width="8"/>
+    
+    <rect x="800" y="150" width="320" height="800" fill="#0D1C3D" stroke="none"/>
+    <text x="960" y="540" text-anchor="middle" font-size="40" fill="#2D73B4">CORRIDOR / 走廊</text>
+
+    <line x1="150" y1="450" x2="800" y2="450"/>
+    <line x1="150" y1="750" x2="800" y2="750"/>
+    <line x1="1120" y1="450" x2="1770" y2="450"/>
+    <line x1="1120" y1="750" x2="1770" y2="750"/>
+
+    <line x1="750" y1="250" x2="750" y2="280" stroke-width="6"/><line x1="750" y1="320" x2="750" y2="450" stroke-width="6"/>
+    <line x1="750" y1="550" x2="750" y2="580" stroke-width="6"/><line x1="750" y1="620" x2="750" y2="750" stroke-width="6"/>
+    <line x1="750" y1="800" x2="750" y2="830" stroke-width="6"/><line x1="750" y1="870" x2="750" y2="950" stroke-width="6"/>
+    
+    <line x1="1170" y1="250" x2="1170" y2="280" stroke-width="6"/><line x1="1170" y1="320" x2="1170" y2="450" stroke-width="6"/>
+    <line x1="1170" y1="550" x2="1170" y2="580" stroke-width="6"/><line x1="1170" y1="620" x2="1170" y2="750" stroke-width="6"/>
+    <line x1="1170" y1="800" x2="1170" y2="830" stroke-width="6"/><line x1="1170" y1="870" x2="1170" y2="950" stroke-width="6"/>
+
+    <text x="475" y="290" text-anchor="middle" font-size="24" fill="#E0FFFF">R-101 (服务器机房)</text>
+    <text x="475" y="590" text-anchor="middle" font-size="24" fill="#E0FFFF">R-102 (安全办公室)</text>
+    <text x="475" y="890" text-anchor="middle" font-size="24" fill="#E0FFFF">R-103 (档案室)</text>
+    <text x="1445" y="290" text-anchor="middle" font-size="24" fill="#E0FFFF">R-104 (行政区)</text>
+    <text x="1445" y="590" text-anchor="middle" font-size="24" fill="#E0FFFF">R-105 (研发中心)</text>
+    <text x="1445" y="890" text-anchor="middle" font-size="24" fill="#E0FFFF">R-106 (测试实验室)</text>
+  </g>
+
+  <g id="AC-01" transform="translate(710, 250)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+
+    <rect x="25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="28" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="28" y="45" width="14" height="6" fill="#424242"/>
+    <text x="35" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="65" cy="20" r="10" fill="#4CAF50"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-01</text>
+    <text x="65" y="50" text-anchor="middle" font-size="16" fill="#4CAF50">正常 Normal</text>
+  </g>
+
+  <g id="AC-02" transform="translate(710, 550)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+    <rect x="25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="28" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="28" y="45" width="14" height="6" fill="#424242"/>
+    <text x="35" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="65" cy="20" r="10" fill="#E53935"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-02</text>
+    <text x="65" y="50" text-anchor="middle" font-size="16" fill="#E53935">告警 Alarm</text>
+  </g>
+
+  <g id="AC-03" transform="translate(710, 810)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+    <rect x="25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="28" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="28" y="45" width="14" height="6" fill="#424242"/>
+    <text x="35" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="65" cy="20" r="10" fill="#9E9E9E"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-03</text>
+    <text x="65" y="50" text-anchor="middle" font-size="16" fill="#9E9E9E">离线 Offline</text>
+  </g>
+
+  <g id="AC-04" transform="translate(1150, 250)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+
+    <rect x="-25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="-22" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="-22" y="45" width="14" height="6" fill="#424242"/>
+    <text x="-15" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="-45" cy="20" r="10" fill="#4CAF50"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-04</text>
+    <text x="-45" y="50" text-anchor="middle" font-size="16" fill="#4CAF50">正常 Normal</text>
+  </g>
+
+  <g id="AC-05" transform="translate(1150, 550)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+    <rect x="-25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="-22" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="-22" y="45" width="14" height="6" fill="#424242"/>
+    <text x="-15" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="-45" cy="20" r="10" fill="#E53935"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-05</text>
+    <text x="-45" y="50" text-anchor="middle" font-size="16" fill="#E53935">告警 Alarm</text>
+  </g>
+
+  <g id="AC-06" transform="translate(1150, 810)">
+    <rect x="0" y="0" width="20" height="70" fill="#424242"/>
+    <path d="M20 0 L25 5 L25 70 L20 65 Z" fill="#616161"/>
+    <circle cx="10" cy="35" r="3" fill="#E0FFFF"/>
+    <rect x="-25" y="10" width="20" height="50" rx="3" fill="#607D8B" stroke="#E0FFFF" stroke-width="1"/>
+    <rect x="-22" y="15" width="14" height="6" fill="#424242"/>
+    <rect x="-22" y="45" width="14" height="6" fill="#424242"/>
+    <text x="-15" y="35" font-size="10" text-anchor="middle" fill="#E0FFFF">AC</text>
+
+    <circle cx="-45" cy="20" r="10" fill="#9E9E9E"/>
+    
+    <text x="10" y="-10" text-anchor="middle" font-size="18" fill="#E0FFFF" font-weight="bold">AC-06</text>
+    <text x="-45" y="50" text-anchor="middle" font-size="16" fill="#9E9E9E">离线 Offline</text>
+  </g>
+
+</svg>

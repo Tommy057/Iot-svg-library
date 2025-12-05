@@ -1,0 +1,148 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 1920 960" preserveAspectRatio="xMidYMid meet" 
+     style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; overflow: visible;">
+
+  <!-- ====================================================================================== -->
+  <!-- 1. 样式定义 (CSS) -->
+  <!-- ====================================================================================== -->
+  <style>
+    /* 鼠标移上去变成手指形状，暗示可点击 */
+    .door-control-unit {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    /* 简单的悬停反馈：整体微微上浮，增加活跃感 */
+    .door-control-unit:hover {
+      transform: translateY(-4px);
+    }
+    
+    /* 按钮部分的悬停高亮 */
+    .door-control-unit:hover .action-btn-bg {
+      filter: brightness(1.1);
+    }
+    
+    /* 所有的文字不能选中，避免影响点击体验 */
+    text { user-select: none; pointer-events: none; }
+  </style>
+
+  <!-- ====================================================================================== -->
+  <!-- 2. 滤镜与渐变 (Defs) -->
+  <!-- ====================================================================================== -->
+  <defs>
+    <!-- 悬浮阴影：让卡片在白底上脱颖而出 -->
+    <filter id="float-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- 按钮渐变：蓝色 (正常操作) -->
+    <linearGradient id="btn-blue-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+
+    <!-- 按钮渐变：红色 (紧急/告警操作) -->
+    <linearGradient id="btn-red-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+
+    <!-- 钥匙图标 -->
+    <symbol id="icon-key-simple" viewBox="0 0 24 24">
+      <path fill="#ffffff" d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+    </symbol>
+  </defs>
+
+  <!-- ====================================================================================== -->
+  <!-- 3. 底图层 (您后续替换) -->
+  <!-- ====================================================================================== -->
+  <g id="Background-Layer">
+    <!-- 替换您的 Base64 图片 -->
+    <image href="YOUR_BASE64_IMAGE_HERE" x="0" y="0" width="1920" height="960" opacity="1.0" />
+    
+    <!-- 这是一个临时的网格，正式使用请删除 -->
+    <rect width="1920" height="960" fill="none" stroke="#eee"/> 
+  </g>
+
+  <!-- ====================================================================================== -->
+  <!-- 4. 门禁控制组件层 -->
+  <!-- ====================================================================================== -->
+  <g id="Door-Controls">
+
+    <!-- === 组件 1: 正常状态 (蓝色开门按钮) === -->
+    <!-- translate(x, y): 设置在地图上的位置 -->
+    <g class="door-control-unit" transform="translate(800, 850)">
+      
+      <!-- 1. 定位杆 (连接卡片与地面，增强2.5D感) -->
+      <line x1="0" y1="0" x2="0" y2="-30" stroke="#333" stroke-width="2" />
+      <circle cx="0" cy="0" r="4" fill="#333" opacity="0.5"/> <!-- 地面点 -->
+
+      <!-- 2. 卡片主体容器 -->
+      <g transform="translate(-70, -75)" filter="url(#float-shadow)">
+        
+        <!-- 背景框：深色半透明 + 白色描边 -->
+        <rect x="0" y="0" width="140" height="46" rx="23" fill="#1f2937" stroke="#ffffff" stroke-width="2"/>
+        
+        <!-- 左侧：信息区 -->
+        <g transform="translate(20, 23)">
+          <text x="0" y="-4" fill="#ffffff" font-size="12" font-weight="bold">主入口大门</text>
+          <circle cx="4" cy="8" r="3" fill="#4ade80"/> <!-- 绿色点：在线 -->
+          <text x="12" y="11" fill="#9ca3af" font-size="10">设备在线</text>
+        </g>
+
+        <!-- 右侧：交互按钮区 (视觉重心) -->
+        <g transform="translate(112, 23)">
+           <!-- 按钮背景圆 -->
+           <circle class="action-btn-bg" cx="0" cy="0" r="18" fill="url(#btn-blue-grad)"/>
+           <!-- 钥匙图标 -->
+           <use href="#icon-key-simple" x="-9" y="-9" width="18" height="18"/>
+        </g>
+      </g>
+    </g>
+
+
+    <!-- === 组件 2: 告警状态 (红色) === -->
+    <g class="door-control-unit" transform="translate(450, 400)">
+      <line x1="0" y1="0" x2="0" y2="-30" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
+      <circle cx="0" cy="0" r="4" fill="#ef4444" opacity="0.5"/>
+
+      <g transform="translate(-70, -75)" filter="url(#float-shadow)">
+        <!-- 红色描边强调告警 -->
+        <rect x="0" y="0" width="140" height="46" rx="23" fill="#1f2937" stroke="#ef4444" stroke-width="2"/>
+        
+        <g transform="translate(20, 23)">
+          <text x="0" y="-4" fill="#ffffff" font-size="12" font-weight="bold">西消防通道</text>
+          <circle cx="4" cy="8" r="3" fill="#ef4444"/> <!-- 红色点：异常 -->
+          <text x="12" y="11" fill="#ef4444" font-size="10">门未关好</text>
+        </g>
+
+        <!-- 即使是告警，按钮也是“开门/处理”的功能，可以使用红色强调紧急操作 -->
+        <g transform="translate(112, 23)">
+           <circle class="action-btn-bg" cx="0" cy="0" r="18" fill="url(#btn-red-grad)"/>
+           <use href="#icon-key-simple" x="-9" y="-9" width="18" height="18"/>
+        </g>
+      </g>
+    </g>
+
+
+    <!-- === 组件 3: 侧门 (位置演示) === -->
+    <g class="door-control-unit" transform="translate(1450, 200)">
+      <line x1="0" y1="0" x2="0" y2="-30" stroke="#333" stroke-width="2" />
+      <circle cx="0" cy="0" r="4" fill="#333" opacity="0.5"/>
+
+      <g transform="translate(-70, -75)" filter="url(#float-shadow)">
+        <rect x="0" y="0" width="140" height="46" rx="23" fill="#1f2937" stroke="#ffffff" stroke-width="2"/>
+        <g transform="translate(20, 23)">
+          <text x="0" y="-4" fill="#ffffff" font-size="12" font-weight="bold">VIP 接待室</text>
+          <circle cx="4" cy="8" r="3" fill="#4ade80"/>
+          <text x="12" y="11" fill="#9ca3af" font-size="10">门已闭锁</text>
+        </g>
+        <g transform="translate(112, 23)">
+           <circle class="action-btn-bg" cx="0" cy="0" r="18" fill="url(#btn-blue-grad)"/>
+           <use href="#icon-key-simple" x="-9" y="-9" width="18" height="18"/>
+        </g>
+      </g>
+    </g>
+
+  </g>
+</svg>

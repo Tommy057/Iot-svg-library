@@ -1,0 +1,102 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#161834"/>
+
+    <text x="30" y="50" font-family="sans-serif" font-size="28" font-weight="bold" fill="#00ffff">
+        SystemIntegrationGem - 多系统集成管理平台
+    </text>
+    <line x1="30" y1="65" x2="1170" y2="65" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+
+    <text x="30" y="110" font-family="sans-serif" font-size="18" fill="#ffffff" font-weight="600">
+        子系统状态概览 (Subsystems Health)
+    </text>
+
+    <defs>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.5"/>
+        </filter>
+        <style>
+            .module-title { font-size: 16px; fill: #ffffff; font-weight: 500; }
+            .status-ok { fill: #00FF7F; }
+            .status-warning { fill: #FFD700; }
+            .module-bg { fill: rgba(37, 70, 112, 0.2); stroke: #00ffff; stroke-width: 1; stroke-opacity: 0.5; filter: url(#shadow); }
+        </style>
+    </defs>
+
+    <rect x="30" y="130" width="250" height="150" rx="8" class="module-bg"/>
+    <text x="50" y="160" class="module-title">门禁系统 (Access Control)</text>
+    <rect x="50" y="180" width="10" height="10" rx="2" class="status-ok"/>
+    <text x="70" y="190" font-size="14" fill="#ffffff">运行状态: 正常</text>
+    <text x="50" y="220" font-size="14" fill="#8899aa">设备数: 89 / 在线: 89</text>
+    <text x="50" y="240" font-size="14" fill="#8899aa">今日事件: 1200</text>
+    
+    <rect x="30" y="300" width="250" height="150" rx="8" class="module-bg"/>
+    <text x="50" y="330" class="module-title">HVAC 系统 (空调)</text>
+    <rect x="50" y="350" width="10" height="10" rx="2" class="status-warning"/>
+    <text x="70" y="360" font-size="14" fill="#ffffff">运行状态: 警告</text>
+    <text x="50" y="390" font-size="14" fill="#8899aa">设备数: 45 / 在线: 44</text>
+    <text x="50" y="410" font-size="14" fill="#ffD700">警告项: 1 (过滤网寿命)</text>
+
+    <rect x="30" y="470" width="250" height="150" rx="8" class="module-bg"/>
+    <text x="50" y="500" class="module-title">安防监控 (Security)</text>
+    <rect x="50" y="520" width="10" height="10" rx="2" class="status-ok"/>
+    <text x="70" y="530" font-size="14" fill="#ffffff">运行状态: 正常</text>
+    <text x="50" y="560" font-size="14" fill="#8899aa">摄像头数: 150 / 在线: 150</text>
+    <text x="50" y="580" font-size="14" fill="#8899aa">AI 事件: 3</text>
+
+    <rect x="30" y="640" width="250" height="150" rx="8" class="module-bg"/>
+    <text x="50" y="670" class="module-title">供电系统 (Power/SCADA)</text>
+    <rect x="50" y="690" width="10" height="10" rx="2" class="status-ok"/>
+    <text x="70" y="700" font-size="14" fill="#ffffff">运行状态: 正常</text>
+    <text x="50" y="730" font-size="14" fill="#8899aa">变压器: 1号正常 (参考文件)</text>
+    <text x="50" y="750" font-size="14" fill="#8899aa">实时功率: 85.2 kW</text>
+
+    <text x="320" y="110" font-family="sans-serif" font-size="18" fill="#ffffff" font-weight="600">
+        集成平台核心指标
+    </text>
+
+    <rect x="320" y="130" width="400" height="300" rx="8" class="module-bg"/>
+    <text x="400" y="170" font-size="16" fill="#00ffff">整体健康度</text>
+    <text x="420" y="270" font-size="64" font-weight="bold" fill="#00FF7F">98%</text>
+    <text x="420" y="300" font-size="14" fill="#8899aa">所有系统均正常</text>
+
+    <text x="320" y="470" font-family="sans-serif" font-size="18" fill="#ffffff" font-weight="600">
+        集成与配置功能
+    </text>
+
+    <rect x="320" y="490" width="190" height="90" rx="8" fill="#025CB0" opacity="0.8" filter="url(#shadow)"/>
+    <text x="345" y="530" font-size="20" font-weight="bold" fill="#ffffff">动态配置与监控</text>
+    <text x="345" y="555" font-size="12" fill="#eeeeee">实时参数调整 / 拓扑配置</text>
+
+    <rect x="530" y="490" width="190" height="90" rx="8" fill="#025CB0" opacity="0.8" filter="url(#shadow)"/>
+    <text x="555" y="530" font-size="20" font-weight="bold" fill="#ffffff">集成系统配置</text>
+    <text x="555" y="555" font-size="12" fill="#eeeeee">工程设计简化 / 标准化模板</text>
+
+    <text x="760" y="110" font-family="sans-serif" font-size="18" fill="#ffffff" font-weight="600">
+        实时告警与事件日志
+    </text>
+
+    <rect x="760" y="130" width="410" height="660" rx="8" class="module-bg"/>
+
+    <text x="780" y="170" font-size="16" fill="#ffffff">时间</text>
+    <text x="900" y="170" font-size="16" fill="#ffffff">系统/设备</text>
+    <text x="1050" y="170" font-size="16" fill="#ffffff">级别</text>
+
+    <line x1="780" y1="180" x2="1150" y2="180" stroke="#00ffff" stroke-width="0.5" opacity="0.7"/>
+
+    <text x="780" y="210" font-size="14" fill="#8899aa">22:35:12</text>
+    <text x="900" y="210" font-size="14" fill="#ffffff">HVAC / 3F-AHU-01</text>
+    <text x="1050" y="210" font-size="14" fill="#FFD700">警告</text>
+    <text x="780" y="230" font-size="12" fill="#8899aa" opacity="0.7">过滤器寿命低于10%</text>
+
+    <text x="780" y="280" font-size="14" fill="#8899aa">22:45:01</text>
+    <text x="900" y="280" font-size="14" fill="#ffffff">供电系统 / T1变压器</text>
+    <text x="1050" y="280" font-size="14" fill="#00FF7F">信息</text>
+    <text x="780" y="300" font-size="12" fill="#8899aa" opacity="0.7">数据同步完成 (DLJK_B01AA07)</text>
+
+    <text x="780" y="350" font-size="14" fill="#8899aa">22:50:30</text>
+    <text x="900" y="350" font-size="14" fill="#ffffff">门禁系统 / 主入口</text>
+    <text x="1050" y="350" font-size="14" fill="#FF4500" font-weight="bold">严重</text>
+    <text x="780" y="370" font-size="12" fill="#8899aa" opacity="0.7">连接中断，自动切换备份线路</text>
+
+    <text x="950" y="770" font-size="14" fill="#00ffff">查看全部日志 >></text>
+</svg>
