@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" font-family="Arial, Helvetica, sans-serif"> <defs> <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="strokeWidth" markerWidth="10" markerHeight="8" orient="auto"> <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f77b4"/> </marker> <style> .box { fill:#ffffff; stroke:#1f77b4; stroke-width:1.5; rx:8; ry:8; } .title { font-size:14px; font-weight:700; fill:#03396c; } .label { font-size:12px; fill:#03396c; } .point { fill:#ffffff; stroke:#1f77b4; stroke-width:1.2; r:5; } .small { font-size:11px; fill:#024b7a; } .grayText { fill: #5b6b73; font-size:11px; } .platform { fill:#f0f8ff; stroke:#024b7a; stroke-width:2; rx:10; ry:10; } .note { font-size:11px; fill:#024b7a; } </style> </defs> <!-- Background grid faint --> <rect x="0" y="0" width="1200" height="760" fill="#f7fbff"/> <!-- Left column: Medical Gas, Vacuum, Positive Pressure --> <!-- Medical Gas --> <g transform="translate(40,40)"> <rect class="box" x="0" y="0" width="300" height="170"/> <text class="title" x="16" y="26">医用气体系统（API / OPC）</text>
+<!-- icons / tanks -->
+<g transform="translate(16,40)">
+  <rect x="0" y="0" width="56" height="80" rx="6" ry="6" fill="#eaf6ff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="4" y="46">储罐</text>
+
+  <rect x="70" y="0" width="56" height="80" rx="6" ry="6" fill="#eaf6ff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="74" y="46">空压机</text>
+
+  <rect x="140" y="0" width="56" height="80" rx="6" ry="6" fill="#eaf6ff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="146" y="46">汇流排</text>
+</g>
+
+<!-- pipeline -->
+<line x1="24" y1="130" x2="276" y2="130" stroke="#8fbbe6" stroke-width="3" stroke-linecap="round"/>
+<text class="label" x="16" y="155">监测点：液位、压力、管路压力、末端压力、总用氧量</text>
+
+<!-- points -->
+<g transform="translate(40,100)">
+  <circle class="point" cx="0" cy="20" r="6"/>
+  <text class="small" x="12" y="24">液位</text>
+
+  <circle class="point" cx="80" cy="20" r="6"/>
+  <text class="small" x="92" y="24">压力</text>
+
+  <circle class="point" cx="160" cy="20" r="6"/>
+  <text class="small" x="172" y="24">管路压</text>
+
+  <circle class="point" cx="240" cy="20" r="6"/>
+  <text class="small" x="252" y="24">总用氧量</text>
+</g>
+
+</g> <!-- Vacuum / Negative Pressure --> <g transform="translate(40,230)"> <rect class="box" x="0" y="0" width="300" height="150"/> <text class="title" x="16" y="24">负压吸引系统（API / OPC）</text>
+<g transform="translate(16,40)">
+  <rect x="0" y="0" width="72" height="48" rx="6" ry="6" fill="#fffaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="8" y="30">真空泵</text>
+
+  <rect x="96" y="0" width="72" height="48" rx="6" ry="6" fill="#fffaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="108" y="30">真空罐</text>
+
+  <rect x="192" y="0" width="72" height="48" rx="6" ry="6" fill="#fffaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="204" y="30">分气缸</text>
+</g>
+
+<text class="label" x="16" y="110">监测点：泵运行/停止、故障；罐压力；分气缸管路压力；用能监测（来自电力）</text>
+
+</g> <!-- Positive Pressure system --> <g transform="translate(40,410)"> <rect class="box" x="0" y="0" width="300" height="150"/> <text class="title" x="16" y="24">医气正压系统（API / OPC）</text>
+<g transform="translate(16,40)">
+  <rect x="0" y="0" width="72" height="48" rx="6" ry="6" fill="#eefaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="8" y="30">空压机</text>
+
+  <rect x="96" y="0" width="72" height="48" rx="6" ry="6" fill="#eefaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="106" y="30">储气罐</text>
+
+  <rect x="192" y="0" width="72" height="48" rx="6" ry="6" fill="#eefaf0" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="202" y="30">分气缸</text>
+</g>
+
+<text class="label" x="16" y="110">监测点：空压机运行/故障；罐压力；分气缸管路压力；用能监测</text>
+
+</g> <!-- Right column: Purification AC and Digital OR --> <!-- Purification AC --> <g transform="translate(860,40)"> <rect class="box" x="0" y="0" width="300" height="230"/> <text class="title" x="16" y="26">净化空调系统（Bacnet / API / OPC）</text>
+<!-- machine icon -->
+<g transform="translate(20,50)">
+  <rect x="0" y="0" width="80" height="90" rx="6" ry="6" fill="#f0fbf9" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="10" y="50">净化机组</text>
+
+  <rect x="100" y="0" width="80" height="30" rx="4" ry="4" fill="#fff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="110" y="20">高效过滤器</text>
+
+  <rect x="100" y="40" width="80" height="30" rx="4" ry="4" fill="#fff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="110" y="60">中效过滤器</text>
+
+  <rect x="100" y="80" width="80" height="30" rx="4" ry="4" fill="#fff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="110" y="100">温湿度</text>
+</g>
+
+<text class="label" x="16" y="180">监测点：运行状态、送风/氟冷/过滤器故障、灭菌、回风温湿度、阀开度、过滤器压差</text>
+
+</g> <!-- Digital OR --> <g transform="translate(860,300)"> <rect class="box" x="0" y="0" width="300" height="200"/> <text class="title" x="16" y="24">数字手术室（图形化参数显示）</text>
+<!-- OR layout -->
+<g transform="translate(36,48)">
+  <rect x="0" y="0" width="230" height="110" rx="6" ry="6" fill="#ffffff" stroke="#1f77b4" stroke-width="1.2"/>
+  <text class="small" x="8" y="22">手术灯</text>
+  <text class="small" x="120" y="22">医用气体终端</text>
+  <text class="small" x="8" y="48">温湿度</text>
+  <text class="small" x="120" y="48">压差</text>
+  <rect x="14" y="66" width="60" height="30" rx="4" ry="4" fill="#f7fbff" stroke="#1f77b4" stroke-width="1"/>
+  <text class="small" x="20" y="86">状态屏</text>
+</g>
+
+<text class="label" x="16" y="170">监测点：手术室灯/气体/温湿/压差/运行状态展示</text>
+
+</g> <!-- Central platform --> <g transform="translate(360,240)"> <rect class="platform" x="0" y="0" width="480" height="200"/> <text class="title" x="20" y="28">智能化集成平台（AIoT / IBMS）</text> <text class="small" x="20" y="52">数据汇聚 · 状态监测 · 报警显示 · 可视化 / BIM</text>
+<!-- platform features boxes -->
+<g transform="translate(20,70)">
+  <rect x="0" y="0" width="140" height="36" rx="6" ry="6" fill="#fff" stroke="#024b7a" stroke-width="1"/>
+  <text class="small" x="10" y="22">实时数据汇聚</text>
+
+  <rect x="170" y="0" width="140" height="36" rx="6" ry="6" fill="#fff" stroke="#024b7a" stroke-width="1"/>
+  <text class="small" x="180" y="22">告警与联动</text>
+
+  <rect x="340" y="0" width="120" height="36" rx="6" ry="6" fill="#fff" stroke="#024b7a" stroke-width="1"/>
+  <text class="small" x="350" y="22">BIM/可视化</text>
+</g>
+
+</g> <!-- Arrows from left systems to platform --> <!-- From Medical Gas --> <path d="M 340 150 L 360 150 L 360 270" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arrow)"/> <path d="M 280 210 L 360 210" stroke="#1f77b4" stroke-width="2" fill="none" marker-end="url(#arrow)"/> <!-- From Vacuum --> <path d="M 340 320 L 360 320" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arrow)"/> <!-- From Positive Pressure --> <path d="M 340 470 L 360 470" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arrow)"/> <!-- From Purification AC (right) --> <path d="M 860 200 L 700 200 L 700 300" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arrow)"/> <!-- From Digital OR --> <path d="M 860 380 L 700 380 L 700 340" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arrow)"/> <!-- Small legend --> <g transform="translate(36,590)"> <rect x="0" y="0" width="1128" height="120" rx="8" ry="8" fill="#ffffff" stroke="#d6e8fb" stroke-width="1"/> <text class="title" x="12" y="24">图例与说明</text> <text class="grayText" x="12" y="46">● 实线箭头：数据/接口上报（API / OPC / Bacnet 等）</text> <text class="grayText" x="12" y="64">● 小圆点：关键采集点（液位、压力、温湿、压差、电量等）</text> <text class="grayText" x="12" y="84">● 中央平台：数据汇聚、告警管理、BIM/可视化展示</text> <text class="note" x="520" y="84">注：为保持矢量简洁，图中监测点以示意节点表示，实施时按厂家接口点位表对接。</text> </g> </svg>

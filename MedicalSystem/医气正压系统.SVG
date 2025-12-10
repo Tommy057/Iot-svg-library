@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" font-family="Arial, Helvetica, sans-serif">
+  <style>
+    .box { fill:#ffffff; stroke:#1f77b4; stroke-width:1.8; rx:8; ry:8; }
+    .title { font-size:16px; font-weight:700; fill:#063a5a; }
+    .label { font-size:12px; fill:#063a5a; font-weight:600; }
+    .value { font-size:12px; fill:#063a5a; }
+    .panel { fill:#f5fbff; stroke:#1f77b4; stroke-width:1.2; rx:6; }
+    .pipe { stroke:#76a9e0; stroke-width:8; stroke-linecap:round; }
+    .arrow { fill:#76a9e0; }
+    .status-normal { fill:#2ecc71; stroke:#1f77b4; stroke-width:1; }
+    .status-warn { fill:#f1c40f; stroke:#1f77b4; stroke-width:1; }
+    .status-error { fill:#e74c3c; stroke:#1f77b4; stroke-width:1; }
+  </style>
+
+  <text class="title" x="20" y="26">医气正压系统 - 状态监测</text>
+
+  <!-- Compressor -->
+  <g transform="translate(20,50)">
+    <rect class="box" x="0" y="0" width="220" height="130"/>
+    <text class="label" x="14" y="26">主空压机</text>
+    <circle class="status-normal" cx="190" cy="26" r="10"/>
+    <rect class="panel" x="14" y="44" width="96" height="36"/>
+    <text class="label" x="20" y="66">状态</text>
+    <text class="value" x="100" y="66">运行</text>
+
+    <rect class="panel" x="14" y="84" width="186" height="30"/>
+    <text class="label" x="20" y="103">电流/电压： 12.5A / 380V</text>
+  </g>
+
+  <!-- Storage tank -->
+  <g transform="translate(260,50)">
+    <rect class="box" x="0" y="0" width="200" height="130" rx="60" ry="60"/>
+    <text class="label" x="18" y="26">储气罐</text>
+    <circle class="status-normal" cx="170" cy="26" r="10"/>
+    <rect class="panel" x="14" y="44" width="86" height="36"/>
+    <text class="label" x="20" y="66">压力</text>
+    <text class="value" x="100" y="66">0.85 MPa</text>
+  </g>
+
+  <!-- distribution -->
+  <g transform="translate(490,50)">
+    <rect class="box" x="0" y="0" width="420" height="130"/>
+    <text class="label" x="14" y="26">正压分气缸 / 管路</text>
+    <circle class="status-normal" cx="390" cy="26" r="10"/>
+
+    <g transform="translate(16,44)">
+      <rect class="panel" x="0" y="0" width="120" height="36"/>
+      <text class="label" x="8" y="22">主管压力</text>
+      <text class="value" x="8" y="36">0.82 MPa</text>
+
+      <rect class="panel" x="140" y="0" width="120" height="36"/>
+      <text class="label" x="148" y="22">病房A压力</text>
+      <text class="value" x="148" y="36">0.80 MPa</text>
+
+      <rect class="panel" x="280" y="0" width="120" height="36"/>
+      <text class="label" x="288" y="22">病房B压力</text>
+      <text class="value" x="288" y="36">0.78 MPa</text>
+    </g>
+
+    <text class="label" x="18" y="100">采集：空压机运行/故障；罐压力；分气缸管路压力；用能（由电力）</text>
+  </g>
+
+  <line x1="240" y1="110" x2="260" y2="110" class="pipe"/>
+  <polygon points="256,104 266,110 256,116" class="arrow"/>
+
+  <line x1="460" y1="110" x2="490" y2="110" class="pipe"/>
+  <polygon points="486,104 496,110 486,116" class="arrow"/>
+</svg>

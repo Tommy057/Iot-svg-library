@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" font-family="Arial, Helvetica, sans-serif">
+  <style>
+    .box { fill:#ffffff; stroke:#1f77b4; stroke-width:1.6; rx:8; ry:8; }
+    .title { font-size:16px; font-weight:700; fill:#063a5a; }
+    .label { font-size:12px; fill:#063a5a; font-weight:600; }
+    .value { font-size:12px; fill:#063a5a; }
+    .panel { fill:#f5fbff; stroke:#1f77b4; stroke-width:1.2; rx:6; }
+    .pipe { stroke:#76a9e0; stroke-width:8; stroke-linecap:round; }
+    .arrow { fill:#76a9e0; }
+    .filter { fill:#eef6ff; stroke:#0b66a3; stroke-width:1.2; }
+    .status-normal { fill:#2ecc71; stroke:#1f77b4; stroke-width:1; }
+    .status-warn { fill:#f1c40f; stroke:#1f77b4; stroke-width:1; }
+    .status-error { fill:#e74c3c; stroke:#1f77b4; stroke-width:1; }
+  </style>
+
+  <text class="title" x="20" y="26">净化空调系统 - 状态监测（洁净机组）</text>
+
+  <!-- AHU -->
+  <g transform="translate(20,50)">
+    <rect class="box" x="0" y="0" width="240" height="220"/>
+    <text class="label" x="14" y="26">医用净化空气处理机组（AHU）</text>
+    <circle class="status-normal" cx="210" cy="26" r="10"/>
+
+    <!-- filters -->
+    <g transform="translate(14,48)">
+      <rect class="filter" x="0" y="0" width="200" height="28"/>
+      <text class="label" x="8" y="18">初效过滤器</text>
+
+      <rect class="filter" x="0" y="40" width="200" height="28"/>
+      <text class="label" x="8" y="58">中效过滤器</text>
+
+      <rect class="filter" x="0" y="80" width="200" height="28"/>
+      <text class="label" x="8" y="98">高效 HEPA</text>
+
+      <rect class="panel" x="0" y="120" width="200" height="36"/>
+      <text class="label" x="8" y="142">运行状态： 正常</text>
+
+      <rect class="panel" x="0" y="160" width="200" height="36"/>
+      <text class="label" x="8" y="182">灭菌状态： 已启用</text>
+    </g>
+  </g>
+
+  <!-- Duct and sensors -->
+  <line x1="280" y1="160" x2="560" y2="160" class="pipe"/>
+  <polygon points="560,160 540,150 540,170" class="arrow"/>
+  <text class="label" x="320" y="144">送风管道 →</text>
+
+  <g transform="translate(580,90)">
+    <rect class="panel" x="0" y="0" width="180" height="50"/>
+    <text class="label" x="8" y="20">回风温度</text>
+    <text class="value" x="8" y="38">24.4 °C</text>
+
+    <rect class="panel" x="200" y="0" width="180" height="50"/>
+    <text class="label" x="208" y="20">回风湿度</text>
+    <text class="value" x="208" y="38">45%</text>
+
+    <rect class="panel" x="0" y="64" width="180" height="50"/>
+    <text class="label" x="8" y="86">过滤器压差</text>
+    <text class="value" x="8" y="104">120 Pa</text>
+
+    <rect class="panel" x="200" y="64" width="180" height="50"/>
+    <text class="label" x="208" y="86">冷冻/送风故障</text>
+    <text class="value" x="208" y="104">—</text>
+  </g>
+
+  <!-- valve control -->
+  <g transform="translate(780,90)">
+    <rect class="box" x="0" y="0" width="360" height="180"/>
+    <text class="label" x="12" y="24">阀门 / 风机 / 监控面板</text>
+    <g transform="translate(14,36)">
+      <rect class="panel" x="0" y="0" width="160" height="36"/>
+      <text class="label" x="8" y="24">冷水阀开度</text>
+      <text class="value" x="110" y="24">45%</text>
+
+      <rect class="panel" x="0" y="52" width="160" height="36"/>
+      <text class="label" x="8" y="76">热水阀开度</text>
+      <text class="value" x="110" y="76">0%</text>
+
+      <rect class="panel" x="200" y="0" width="140" height="36"/>
+      <text class="label" x="208" y="24">送风故障</text>
+      <circle class="status-normal" cx="320" cy="18" r="8"/>
+
+      <rect class="panel" x="200" y="52" width="140" height="36"/>
+      <text class="label" x="208" y="76">HEPA 状态</text>
+      <circle class="status-normal" cx="320" cy="70" r="8"/>
+    </g>
+  </g>
+
+  <text class="label" x="20" y="340">采集协议：BACnet / API / OPC。关键监测点：运行状态、送风/氟冷/过滤器故障、灭菌、回风温湿、阀门开度、过滤器压差。</text>
+</svg>

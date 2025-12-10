@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" font-family="Arial, Helvetica, sans-serif">
+  <style>
+    .box { fill:#ffffff; stroke:#1f77b4; stroke-width:1.8; rx:10; ry:10; }
+    .title { font-size:20px; font-weight:700; fill:#063a5a; }
+    .label { font-size:12px; fill:#063a5a; font-weight:600; }
+    .value { font-size:12px; fill:#063a5a; }
+    .panel { fill:#f5fbff; stroke:#1f77b4; stroke-width:1.2; rx:6; }
+    .pipe { stroke:#76a9e0; stroke-width:8; stroke-linecap:round; }
+    .arrow { fill:#76a9e0; }
+    .status-normal { fill:#2ecc71; stroke:#1f77b4; stroke-width:1; }
+    .status-warn { fill:#f1c40f; stroke:#1f77b4; stroke-width:1; }
+    .status-error { fill:#e74c3c; stroke:#1f77b4; stroke-width:1; }
+    .platform { fill:#f0fbff; stroke:#024b7a; stroke-width:2; rx:12; ry:12; }
+  </style>
+
+  <text class="title" x="24" y="36">智慧医院 — 六大系统平台监控合成视图（示意）</text>
+
+  <!-- Left column: Gas (top), Vacuum (mid), Positive (bottom) -->
+  <!-- Gas -->
+  <g transform="translate(24,72)">
+    <rect class="box" x="0" y="0" width="360" height="240"/>
+    <text class="label" x="14" y="26">医用气体系统（O2 / AIR / N2O）</text>
+    <circle class="status-normal" cx="330" cy="26" r="10"/>
+
+    <g transform="translate(12,44)">
+      <rect class="panel" x="0" y="0" width="110" height="44"/><text class="label" x="8" y="28">液氧 压力</text><text class="value" x="8" y="44">6.2 MPa</text>
+      <rect class="panel" x="128" y="0" width="110" height="44"/><text class="label" x="136" y="28">液氧 液位</text><text class="value" x="136" y="44">72%</text>
+      <rect class="panel" x="246" y="0" width="110" height="44"/><text class="label" x="254" y="28">总用氧量</text><text class="value" x="254" y="44">3840 m³</text>
+    </g>
+
+    <g transform="translate(12,100)">
+      <rect class="panel" x="0" y="0" width="110" height="44"/><text class="label" x="8" y="28">管路压</text><text class="value" x="8" y="44">0.42 MPa</text>
+      <rect class="panel" x="128" y="0" width="110" height="44"/><text class="label" x="136" y="28">末端压</text><text class="value" x="136" y="44">0.40 MPa</text>
+      <rect class="panel" x="246" y="0" width="110" height="44"/><text class="label" x="254" y="28">报警</text><text class="value" x="254" y="44">—</text>
+    </g>
+  </g>
+
+  <!-- Vacuum -->
+  <g transform="translate(24,330)">
+    <rect class="box" x="0" y="0" width="360" height="180"/>
+    <text class="label" x="14" y="26">负压吸引系统</text>
+    <circle class="status-normal" cx="330" cy="26" r="10"/>
+    <g transform="translate(12,44)">
+      <rect class="panel" x="0" y="0" width="160" height="36"/><text class="label" x="8" y="22">泵 状态</text><text class="value" x="88" y="22">运行</text>
+      <rect class="panel" x="0" y="52" width="160" height="36"/><text class="label" x="8" y="74">罐 压力</text><text class="value" x="88" y="74">-0.50 bar</text>
+      <rect class="panel" x="180" y="0" width="160" height="36"/><text class="label" x="188" y="22">分支 A</text><text class="value" x="248" y="22">-0.48 bar</text>
+      <rect class="panel" x="180" y="52" width="160" height="36"/><text class="label" x="188" y="74">分支 B</text><text class="value" x="248" y="74">-0.52 bar</text>
+    </g>
+  </g>
+
+  <!-- Positive -->
+  <g transform="translate(24,530)">
+    <rect class="box" x="0" y="0" width="360" height="180"/>
+    <text class="label" x="14" y="26">医气正压系统</text>
+    <circle class="status-normal" cx="330" cy="26" r="10"/>
+    <g transform="translate(12,44)">
+      <rect class="panel" x="0" y="0" width="160" height="36"/><text class="label" x="8" y="22">空压机</text><text class="value" x="88" y="22">运行</text>
+      <rect class="panel" x="0" y="52" width="160" height="36"/><text class="label" x="8" y="74">罐 压力</text><text class="value" x="88" y="74">0.85 MPa</text>
+      <rect class="panel" x="180" y="0" width="160" height="36"/><text class="label" x="188" y="22">主管</text><text class="value" x="248" y="22">0.82 MPa</text>
+      <rect class="panel" x="180" y="52" width="160" height="36"/><text class="label" x="188" y="74">病房A</text><text class="value" x="248" y="74">0.80 MPa</text>
+    </g>
+  </g>
+
+  <!-- Center: Platform -->
+  <g transform="translate(420,72)">
+    <rect class="platform" x="0" y="0" width="760" height="320"/>
+    <text class="label" x="16" y="30">智能化集成平台（数据汇聚 · 告警 · 可视化）</text>
+
+    <g transform="translate(16,48)">
+      <rect class="panel" x="0" y="0" width="220" height="60"/><text class="label" x="12" y="24">实时数据汇聚</text>
+      <rect class="panel" x="240" y="0" width="220" height="60"/><text class="label" x="252" y="24">告警与联动</text>
+      <rect class="panel" x="480" y="0" width="220" height="60"/><text class="label" x="492" y="24">BIM / 3D 可视化</text>
+
+      <g transform="translate(0,80)">
+        <rect class="panel" x="0" y="0" width="200" height="40"/><text class="label" x="12" y="26">历史曲线</text>
+        <rect class="panel" x="220" y="0" width="200" height="40"/><text class="label" x="232" y="26">报表导出</text>
+        <rect class="panel" x="440" y="0" width="200" height="40"/><text class="label" x="452" y="26">权限 / 日志</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right column: AHU (top), OR (mid), Pure water (bottom) -->
+  <!-- AHU -->
+  <g transform="translate(420,410)">
+    <rect class="box" x="0" y="0" width="760" height="200"/>
+    <text class="label" x="16" y="26">净化空调系统（AHU）</text>
+    <circle class="status-normal" cx="730" cy="26" r="10"/>
+
+    <g transform="translate(16,44)">
+      <rect class="panel" x="0" y="0" width="220" height="36"/><text class="label" x="8" y="22">回风温度</text><text class="value" x="140" y="22">24.4 °C</text>
+      <rect class="panel" x="240" y="0" width="220" height="36"/><text class="label" x="248" y="22">回风湿度</text><text class="value" x="380" y="22">45%</text>
+      <rect class="panel" x="480" y="0" width="220" height="36"/><text class="label" x="488" y="22">过滤器压差</text><text class="value" x="640" y="22">120 Pa</text>
+      <rect class="panel" x="0" y="56" width="220" height="36"/><text class="label" x="8" y="76">冷水阀开度</text><text class="value" x="140" y="76">45%</text>
+      <rect class="panel" x="240" y="56" width="220" height="36"/><text class="label" x="248" y="76">HEPA 状态</text><circle class="status-normal" cx="460" cy="72" r="8"/>
+    </g>
+  </g>
+
+  <!-- OR -->
+  <g transform="translate(420,630)">
+    <rect class="box" x="0" y="0" width="360" height="220"/>
+    <text class="label" x="16" y="26">数字手术室 A</text>
+    <circle class="status-normal" cx="330" cy="26" r="10"/>
+
+    <g transform="translate(16,44)">
+      <rect class="panel" x="0" y="0" width="160" height="36"/><text class="label" x="8" y="22">温度</text><text class="value" x="110" y="22">23.8 °C</text>
+      <rect class="panel" x="0" y="48" width="160" height="36"/><text class="label" x="8" y="74">湿度</text><text class="value" x="110" y="74">46%</text>
+      <rect class="panel" x="0" y="96" width="320" height="36"/><text class="label" x="8" y="116">压差</text><text class="value" x="110" y="116">+12 Pa</text>
+    </g>
+  </g>
+
+  <!-- Pure water -->
+  <g transform="translate(800,630)">
+    <rect class="box" x="0" y="0" width="380" height="220"/>
+    <text class="label" x="16" y="26">医用纯水系统（RO）</text>
+    <circle class="status-normal" cx="350" cy="26" r="10"/>
+
+    <g transform="translate(16,44)">
+      <rect class="panel" x="0" y="0" width="160" height="36"/><text class="label" x="8" y="22">出水电导率</text><text class="value" x="110" y="22">1.3 µS/cm</text>
+      <rect class="panel" x="0" y="48" width="160" height="36"/><text class="label" x="8" y="74">箱体液位</text><text class="value" x="110" y="74">65%</text>
+      <rect class="panel" x="0" y="96" width="160" height="36"/><text class="label" x="8" y="116">循环泵</text><text class="value" x="110" y="116">运行</text>
+    </g>
+  </g>
+
+  <!-- Connecting arrows to platform -->
+  <path d="M 384 190 L 420 190" stroke="#1f77b4" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+  <path d="M 384 410 L 420 410" stroke="#1f77b4" stroke-width="3" fill="none"/>
+  <path d="M 384 610 L 420 610" stroke="#1f77b4" stroke-width="3" fill="none"/>
+
+  <!-- arrow marker definition -->
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f77b4"/>
+    </marker>
+  </defs>
+
+  <text class="label" x="24" y="1020">注：此合成图为示意视图，平台中点位与报警以厂商接口清单与具体 OID/API 为准；状态灯为实时状态示意（绿=正常，黄=告警，红=故障）。</text>
+</svg>

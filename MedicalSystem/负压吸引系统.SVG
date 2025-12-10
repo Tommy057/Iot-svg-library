@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" font-family="Arial, Helvetica">
+
+  <style>
+    /* 科技蓝主题（配色 B） */
+    .title { font-size:20px; font-weight:700; fill:#0A2A43; }
+    .label { font-size:12px; fill:#0A2A43; font-weight:600; }
+    .value { font-size:12px; fill:#0A2A43; }
+    .panel { fill:#E8F1FF; stroke:#1A73E8; stroke-width:1.5; rx:8; ry:8; }
+    .card { fill:#FFFFFF; stroke:#4A90E2; stroke-width:1.8; rx:12; ry:12; }
+    .pipe { stroke:#1A73E8; stroke-width:8; stroke-linecap:round; }
+    .arrow { fill:#1A73E8; }
+    .status-normal { fill:#2ECC71; }
+    .status-warn { fill:#F1C40F; }
+    .status-error { fill:#E74C3C; }
+    .small { font-size:11px; fill:#0A2A43; }
+  </style>
+
+  <!-- 标题 -->
+  <text class="title" x="40" y="50">负压吸引系统（完整监控界面 · 科技蓝风格）</text>
+
+  <!-- 左上：真空泵组卡片 -->
+  <g transform="translate(40,80)">
+    <rect class="card" x="0" y="0" width="360" height="220"/>
+    <text class="label" x="18" y="32">真空泵组（多个并联）</text>
+    <!-- 状态灯 -->
+    <g transform="translate(280,12)">
+      <circle class="status-normal" cx="0" cy="0" r="12"/>
+      <text class="small" x="18" y="4">运行</text>
+    </g>
+
+    <!-- Pump items (三个泵示例) -->
+    <g transform="translate(18,50)">
+      <g transform="translate(0,0)">
+        <rect class="panel" x="0" y="0" width="100" height="62"/>
+        <text class="label" x="8" y="22">泵 1</text>
+        <text class="value" x="8" y="44">状态：运行</text>
+        <circle class="status-normal" cx="80" cy="16" r="8"/>
+      </g>
+
+      <g transform="translate(120,0)">
+        <rect class="panel" x="0" y="0" width="100" height="62"/>
+        <text class="label" x="8" y="22">泵 2</text>
+        <text class="value" x="8" y="44">状态：停机</text>
+        <circle class="status-warn" cx="80" cy="16" r="8"/>
+      </g>
+
+      <g transform="translate(240,0)">
+        <rect class="panel" x="0" y="0" width="100" height="62"/>
+        <text class="label" x="8" y="22">泵 3</text>
+        <text class="value" x="8" y="44">状态：故障</text>
+        <circle class="status-error" cx="80" cy="16" r="8"/>
+      </g>
+    </g>
+
+    <!-- 电力/能耗 -->
+    <g transform="translate(18,130)">
+      <rect class="panel" x="0" y="0" width="320" height="68"/>
+      <text class="label" x="8" y="24">用能监测（来自电力系统）</text>
+      <text class="value" x="8" y="46">电流: 152 A  电压: 380 V  功率: 48.8 kW</text>
+    </g>
+  </g>
+
+  <!-- 左中：真空罐（吸引罐） -->
+  <g transform="translate(440,80)">
+    <rect class="card" x="0" y="0" width="320" height="220" rx="60" ry="60"/>
+    <text class="label" x="18" y="32">真空罐（储能/缓冲）</text>
+    <circle class="status-warn" cx="290" cy="30" r="10"/>
+    <!-- 数据 -->
+    <g transform="translate(18,56)">
+      <rect class="panel" x="0" y="0" width="140" height="56"/>
+      <text class="label" x="8" y="20">罐 内 压</text>
+      <text class="value" x="8" y="40">-0.55 bar</text>
+
+      <rect class="panel" x="170" y="0" width="120" height="56"/>
+      <text class="label" x="178" y="20">真空罐液位</text>
+      <text class="value" x="178" y="40">N/A</text>
+    </g>
+
+    <g transform="translate(18,128)">
+      <rect class="panel" x="0" y="0" width="272" height="68"/>
+      <text class="label" x="8" y="22">溢流 / 阻塞提醒</text>
+      <text class="value" x="8" y="44">最近清扫: 2 days ago</text>
+    </g>
+  </g>
+
+  <!-- 左下：分气缸 / 管路分配 -->
+  <g transform="translate(780,80)">
+    <rect class="card" x="0" y="0" width="520" height="360"/>
+    <text class="label" x="18" y="32">负压分配 / 管网监测</text>
+    <circle class="status-normal" cx="490" cy="30" r="10"/>
+
+    <!-- 主干与分支 -->
+    <g transform="translate(24,60)">
+      <!-- 主干 -->
+      <line x1="0" y1="40" x2="480" y2="40" class="pipe"/>
+      <polygon points="480,40 460,30 460,50" class="arrow"/>
+
+      <!-- 主干压力 -->
+      <g transform="translate(0,0)">
+        <rect class="panel" x="0" y="0" width="160" height="56"/>
+        <text class="label" x="8" y="20">主干管压</text>
+        <text class="value" x="8" y="42">-0.50 bar</text>
+      </g>
+
+      <!-- 三个分支 -->
+      <g transform="translate(40,80)">
+        <rect class="panel" x="0" y="0" width="140" height="48"/>
+        <text class="small" x="8" y="20">分支 A 管压</text>
+        <text class="value" x="8" y="38">-0.48 bar</text>
+      </g>
+
+      <g transform="translate(210,80)">
+        <rect class="panel" x="0" y="0" width="140" height="48"/>
+        <text class="small" x="8" y="20">分支 B 管压</text>
+        <text class="value" x="8" y="38">-0.52 bar</text>
+      </g>
+
+      <g transform="translate(380,80)">
+        <rect class="panel" x="0" y="0" width="140" height="48"/>
+        <text class="small" x="8" y="20">分支 C 管压</text>
+        <text class="value" x="8" y="38">-0.47 bar</text>
+      </g>
+
+      <!-- 末端点 -->
+      <g transform="translate(40,150)">
+        <rect class="panel" x="0" y="0" width="200" height="64"/>
+        <text class="label" x="8" y="26">末端吸引点（病房 101）</text>
+        <text class="value" x="8" y="46">压力: -0.46 bar  状态: 正常</text>
+      </g>
+
+      <g transform="translate(260,150)">
+        <rect class="panel" x="0" y="0" width="200" height="64"/>
+        <text class="label" x="8" y="26">末端吸引点（病房 102）</text>
+        <text class="value" x="8" y="46">压力: -0.50 bar  状态: 正常</text>
+      </g>
+    </g>
+
+    <!-- 说明/告警区 -->
+    <g transform="translate(24,240)">
+      <rect class="panel" x="0" y="0" width="480" height="96"/>
+      <text class="label" x="8" y="24">告警记录（最近 24h）</text>
+      <text class="small" x="8" y="46">• 03:14 泵 3 故障（已派工）</text>
+      <text class="small" x="8" y="66">• 09:08 分支 B 压力偏低（手动检查）</text>
+    </g>
+  </g>
+
+  <!-- 中央：平台汇聚区（小型面板） -->
+  <g transform="translate(40,320)">
+    <rect class="panel" x="0" y="0" width="360" height="120"/>
+    <text class="label" x="12" y="26">平台汇聚 / 状态速览</text>
+    <text class="value" x="12" y="50">实时点位: 48 / 告警: 2 / 故障: 1</text>
+
+    <g transform="translate(12,70)">
+      <rect class="card" x="0" y="0" width="160" height="36"/>
+      <text class="small" x="8" y="22">曲线查看</text>
+
+      <rect class="card" x="176" y="0" width="160" height="36"/>
+      <text class="small" x="184" y="22">报表导出</text>
+    </g>
+  </g>
+
+  <!-- 右侧：维护 / KPIs 区 -->
+  <g transform="translate(1320,80)">
+    <!-- 只作对齐占位（空白列，保持界面平衡） -->
+    <rect x="-40" y="-12" width="120" height="820" fill="none" stroke="none"/>
+  </g>
+
+  <!-- 底部：时间轴与注释 -->
+  <g transform="translate(40,760)">
+    <rect class="panel" x="0" y="0" width="1240" height="120"/>
+    <text class="label" x="12" y="24">注：所有数据为示意值；平台实际对接通过吸引监测系统提供的 API/OPC 或由医用气体系统中继推送。</text>
+    <text class="small" x="12" y="48">关键点位：泵运行/停止、泵故障码、罐压力、分支管压、末端压力、用能数据（来自电力监控）。</text>
+    <text class="small" x="12" y="72">状态灯说明：绿=正常，黄=告警（需关注），红=故障（需处理）。</text>
+  </g>
+
+</svg>

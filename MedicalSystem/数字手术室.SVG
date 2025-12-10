@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="380" viewBox="0 0 980 380" font-family="Arial, Helvetica, sans-serif">
+  <style>
+    .box { fill:#ffffff; stroke:#1f77b4; stroke-width:1.6; rx:8; ry:8; }
+    .title { font-size:16px; font-weight:700; fill:#063a5a; }
+    .label { font-size:12px; fill:#063a5a; font-weight:600; }
+    .value { font-size:12px; fill:#063a5a; }
+    .panel { fill:#f5fbff; stroke:#1f77b4; stroke-width:1.2; rx:6; }
+    .status-normal { fill:#2ecc71; stroke:#1f77b4; stroke-width:1; }
+    .status-warn { fill:#f1c40f; stroke:#1f77b4; stroke-width:1; }
+    .status-error { fill:#e74c3c; stroke:#1f77b4; stroke-width:1; }
+  </style>
+
+  <text class="title" x="20" y="26">数字手术室 - 环境与设备状态监测</text>
+
+  <!-- OR room -->
+  <g transform="translate(20,50)">
+    <rect class="box" x="0" y="0" width="540" height="260"/>
+    <text class="label" x="18" y="28">手术室 A</text>
+
+    <!-- Handpiece: Lamp -->
+    <g transform="translate(28,56)">
+      <circle cx="40" cy="20" r="16" fill="#fff" stroke="#1f77b4" stroke-width="1.4"/>
+      <text class="label" x="80" y="24">手术灯</text>
+      <rect class="panel" x="80" y="34" width="120" height="30"/>
+      <text class="value" x="88" y="54">状态：运行</text>
+      <circle class="status-normal" cx="220" cy="49" r="8"/>
+    </g>
+
+    <!-- Gas terminal -->
+    <g transform="translate(28,120)">
+      <rect class="panel" x="0" y="0" width="120" height="36"/>
+      <text class="label" x="8" y="22">医用气体终端</text>
+      <text class="value" x="140" y="22">O2 0.42 MPa</text>
+      <circle class="status-normal" cx="200" cy="20" r="8"/>
+    </g>
+
+    <!-- Temp & humidity -->
+    <g transform="translate(280,120)">
+      <rect class="panel" x="0" y="0" width="120" height="36"/>
+      <text class="label" x="8" y="22">温度</text>
+      <text class="value" x="70" y="22">23.8°C</text>
+
+      <rect class="panel" x="0" y="48" width="120" height="36"/>
+      <text class="label" x="8" y="70">湿度</text>
+      <text class="value" x="70" y="70">46%</text>
+
+      <rect class="panel" x="140" y="0" width="120" height="36"/>
+      <text class="label" x="148" y="22">压差</text>
+      <text class="value" x="210" y="22">+12 Pa</text>
+      <circle class="status-normal" cx="260" cy="22" r="8"/>
+    </g>
+
+    <!-- Status screen -->
+    <rect class="panel" x="620" y="56" width="160" height="150"/>
+    <text class="label" x="636" y="78">状态屏</text>
+    <text class="value" x="636" y="100">手术中</text>
+    <text class="value" x="636" y="120">报警：—</text>
+  </g>
+
+  <text class="label" x="20" y="336">采集：手术灯、气体终端、温湿度、压差、状态显示。平台显示应支持图形化报警与历史曲线。</text>
+</svg>

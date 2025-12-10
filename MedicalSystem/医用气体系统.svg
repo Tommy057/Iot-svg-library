@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" font-family="Arial, Helvetica">
+
+  <style>
+    .title { font-size:20px; font-weight:700; fill:#0A2A43; }
+    .label { font-size:12px; fill:#0A2A43; font-weight:600; }
+    .value { font-size:12px; fill:#0A2A43; }
+    .panel { fill:#E8F1FF; stroke:#1A73E8; stroke-width:1.5; rx:8; ry:8; }
+    .tank { fill:white; stroke:#4A90E2; stroke-width:2; rx:12; ry:12; }
+    .pipe { stroke:#1A73E8; stroke-width:7; stroke-linecap:round; }
+    .arrow { fill:#1A73E8; }
+    .status-normal { fill:#2ECC71; }
+    .status-warn { fill:#F1C40F; }
+    .status-error { fill:#E74C3C; }
+  </style>
+
+  <!-- Title -->
+  <text class="title" x="40" y="50">医用气体系统（智能监测平台 · 科技蓝 UI 风格）</text>
+
+  <!-- ===== 左侧三个储罐区 ===== -->
+
+  <!-- LOX Tank -->
+  <g transform="translate(40,100)">
+    <rect class="tank" width="260" height="180"/>
+    <text class="label" x="20" y="30">液氧储罐（LOX）</text>
+    <circle class="status-normal" cx="230" cy="30" r="10"/>
+
+    <!-- Data Panels -->
+    <g transform="translate(20,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">压力</text>
+      <text class="value" x="8" y="44">6.2 MPa</text>
+    </g>
+
+    <g transform="translate(140,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">液位</text>
+      <text class="value" x="8" y="44">72%</text>
+    </g>
+
+    <g transform="translate(20,120)">
+      <rect class="panel" width="220" height="50"/>
+      <text class="label" x="8" y="22">蒸发流量</text>
+      <text class="value" x="8" y="42">180 m³/h</text>
+    </g>
+  </g>
+
+  <!-- N2 Tank -->
+  <g transform="translate(40,330)">
+    <rect class="tank" width="260" height="180"/>
+    <text class="label" x="20" y="30">氮气储罐（N₂）</text>
+    <circle class="status-warn" cx="230" cy="30" r="10"/>
+
+    <g transform="translate(20,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">压力</text>
+      <text class="value" x="8" y="44">5.1 MPa</text>
+    </g>
+
+    <g transform="translate(140,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">液位</text>
+      <text class="value" x="8" y="44">45%</text>
+    </g>
+
+    <g transform="translate(20,120)">
+      <rect class="panel" width="220" height="50"/>
+      <text class="label" x="8" y="22">供气流量</text>
+      <text class="value" x="8" y="42">96 m³/h</text>
+    </g>
+  </g>
+
+  <!-- Air Tank -->
+  <g transform="translate(40,560)">
+    <rect class="tank" width="260" height="180"/>
+    <text class="label" x="20" y="30">医用空气储罐（AIR）</text>
+    <circle class="status-error" cx="230" cy="30" r="10"/>
+
+    <g transform="translate(20,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">压力</text>
+      <text class="value" x="8" y="44">1.9 MPa</text>
+    </g>
+
+    <g transform="translate(140,50)">
+      <rect class="panel" width="100" height="60"/>
+      <text class="label" x="8" y="22">液位</text>
+      <text class="value" x="8" y="44">19%</text>
+    </g>
+
+    <g transform="translate(20,120)">
+      <rect class="panel" width="220" height="50"/>
+      <text class="label" x="8" y="22">含水率</text>
+      <text class="value" x="8" y="42">0.023%</text>
+    </g>
+  </g>
+
+  <!-- ===== Pipes to main distributor ===== -->
+
+  <line x1="320" y1="190" x2="760" y2="190" class="pipe"/>
+  <polygon points="760,190 740,180 740,200" class="arrow"/>
+
+  <line x1="320" y1="420" x2="760" y2="420" class="pipe"/>
+  <polygon points="760,420 740,410 740,430" class="arrow"/>
+
+  <line x1="320" y1="650" x2="760" y2="650" class="pipe"/>
+  <polygon points="760,650 740,640 740,660" class="arrow"/>
+
+  <!-- ===== Main Distribution Panel ===== -->
+
+  <g transform="translate(780,150)">
+    <rect class="panel" width="560" height="450"/>
+    <text class="label" x="24" y="30">汇流排 / 分气缸（Distributor）</text>
+    <circle class="status-normal" cx="520" cy="30" r="10"/>
+
+    <!-- Branch pressures -->
+    <g transform="translate(20,60)">
+      <rect class="panel" width="150" height="60"/>
+      <text class="label" x="8" y="22">氧气管压</text>
+      <text class="value" x="8" y="44">0.42 MPa</text>
+    </g>
+
+    <g transform="translate(200,60)">
+      <rect class="panel" width="150" height="60"/>
+      <text class="label" x="8" y="22">空气管压</text>
+      <text class="value" x="8" y="44">0.35 MPa</text>
+    </g>
+
+    <g transform="translate(380,60)">
+      <rect class="panel" width="150" height="60"/>
+      <text class="label" x="8" y="22">笑气管压</text>
+      <text class="value" x="8" y="44">0.48 MPa</text>
+    </g>
+
+    <!-- Total oxygen -->
+    <g transform="translate(20,150)">
+      <rect class="panel" width="510" height="80"/>
+      <text class="label" x="10" y="30">总用氧量（累计）</text>
+      <text class="value" x="10" y="55">3,840 m³</text>
+    </g>
+
+    <!-- Terminal node -->
+    <g transform="translate(20,260)">
+      <rect class="panel" width="240" height="80"/>
+      <text class="label" x="10" y="30">末端压力（区域 A）</text>
+      <text class="value" x="10" y="55">0.36 MPa</text>
+    </g>
+
+    <g transform="translate(290,260)">
+      <rect class="panel" width="240" height="80"/>
+      <text class="label" x="10" y="30">末端压力（区域 B）</text>
+      <text class="value" x="10" y="55">0.37 MPa</text>
+    </g>
+
+  </g>
+
+</svg>
