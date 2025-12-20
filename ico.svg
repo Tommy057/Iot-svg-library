@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" preserveAspectRatio="xMidYMid meet">
+  <g fill="none" stroke-width="0">
+    <rect x="16" y="12" width="32" height="10" fill="#38BDF8"/>
+    <rect x="16" y="27" width="32" height="10" fill="#38BDF8"/>
+    <rect x="16" y="42" width="32" height="10" fill="#38BDF8"/>
+
+    <line x1="8" y1="32" x2="56" y2="32" stroke="#22D3EE" stroke-width="3" stroke-linecap="square"/>
+    <line x1="32" y1="5" x2="32" y2="59" stroke="#22D3EE" stroke-width="3" stroke-linecap="square"/>
+    
+    <rect x="6" y="30" width="4" height="4" fill="#22D3EE"/>
+    <rect x="54" y="30" width="4" height="4" fill="#22D3EE"/>
+    <rect x="30" y="3" width="4" height="4" fill="#22D3EE"/>
+    <rect x="30" y="57" width="4" height="4" fill="#22D3EE"/>
+    <rect x="30" y="15" width="4" height="4" fill="#22D3EE"/>
+    <rect x="30" y="45" width="4" height="4" fill="#22D3EE"/>
+  </g>
+</svg>

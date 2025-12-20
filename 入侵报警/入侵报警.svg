@@ -1,0 +1,98 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <rect x="50" y="50" width="700" height="400" fill="#f0f3f6" stroke="#90a4ae" stroke-width="2"/>
+
+    <line x1="300" y1="50" x2="300" y2="450" stroke="#4a6c9c" stroke-width="2"/> <line x1="50" y1="250" x2="300" y2="250" stroke="#4a6c9c" stroke-width="2"/> <line x1="300" y1="200" x2="750" y2="200" stroke="#4a6c9c" stroke-width="2"/> <line x1="300" y1="350" x2="750" y2="350" stroke="#4a6c9c" stroke-width="2"/> <text x="175" y="150" font-size="16" fill="#4a6c9c" text-anchor="middle">房间 A</text>
+    <text x="175" y="350" font-size="16" fill="#4a6c9c" text-anchor="middle">房间 B</text>
+    <text x="525" y="125" font-size="16" fill="#4a6c9c" text-anchor="middle">房间 C</text>
+    <text x="525" y="275" font-size="16" fill="#4a6c9c" text-anchor="middle">走廊</text>
+    <text x="525" y="400" font-size="16" fill="#4a6c9c" text-anchor="middle">房间 D</text>
+
+
+    <circle cx="350" cy="100" r="10" fill="#2c5d9a"/>
+    <text x="350" y="80" font-size="12" fill="#2c5d9a" text-anchor="middle">主控制面板</text>
+    
+    <line x1="350" y1="100" x2="100" y2="80" stroke="#4a6c9c" stroke-width="1" stroke-dasharray="4,2"/>
+    <line x1="350" y1="100" x2="100" y2="300" stroke="#4a6c9c" stroke-width="1" stroke-dasharray="4,2"/>
+    <line x1="350" y1="100" x2="525" y2="250" stroke="#4a6c9c" stroke-width="1" stroke-dasharray="4,2"/>
+    <line x1="350" y1="100" x2="650" y2="390" stroke="#4a6c9c" stroke-width="1" stroke-dasharray="4,2"/>
+
+
+    <defs>
+        <g id="door_sensor">
+            <rect x="-7" y="-5" width="14" height="10" rx="2" fill="#5c82a5"/>
+        </g>
+        <g id="ir_detector">
+            <circle r="7" fill="#5c82a5"/>
+            <circle r="3" fill="#ffffff" opacity="0.8"/>
+        </g>
+        <g id="alarm_bell">
+            <path d="M-6 5 L6 5 L6 0 A6 6 0 0 0 -6 0 L-6 5 Z M0 -10 A3 3 0 0 1 0 -10 V-5 M-3 -10 L3 -10" fill="none" stroke="#5c82a5" stroke-width="2"/>
+            <circle cx="0" cy="5" r="2" fill="#5c82a5"/>
+        </g>
+    </defs>
+
+    <g id="devices">
+        <g transform="translate(100, 80)">
+            <use href="#door_sensor"/>
+            <circle cx="0" cy="15" r="4" fill="#4CAF50"/> <text x="0" y="-10" font-size="10" fill="#4a6c9c" text-anchor="middle">门窗传感器-A1</text>
+        </g>
+
+        <g transform="translate(200, 150)">
+            <use href="#ir_detector"/>
+            <circle cx="0" cy="15" r="4" fill="#F44336"/> <text x="0" y="-15" font-size="10" fill="#cc0000" text-anchor="middle">红外探测器-A2</text>
+        </g>
+
+        <g transform="translate(100, 300)">
+            <use href="#door_sensor"/>
+            <circle cx="0" cy="15" r="4" fill="#4CAF50"/> <text x="0" y="-10" font-size="10" fill="#4a6c9c" text-anchor="middle">门窗传感器-B1</text>
+        </g>
+        
+        <g transform="translate(250, 400)">
+            <use href="#alarm_bell"/>
+            <circle cx="0" cy="15" r="4" fill="#FFC107"/> <text x="0" y="-15" font-size="10" fill="#9c7b20" text-anchor="middle">报警器-B2</text>
+        </g>
+
+        <g transform="translate(450, 100)">
+            <use href="#ir_detector"/>
+            <circle cx="0" cy="15" r="4" fill="#4CAF50"/> <text x="0" y="-15" font-size="10" fill="#4a6c9c" text-anchor="middle">红外探测器-C1</text>
+        </g>
+        
+        <g transform="translate(525, 250)">
+            <use href="#alarm_bell"/>
+            <circle cx="0" cy="15" r="4" fill="#F44336"/> <text x="0" y="-15" font-size="10" fill="#cc0000" text-anchor="middle">报警器-D1</text>
+        </g>
+
+        <g transform="translate(650, 390)">
+            <use href="#door_sensor"/>
+            <circle cx="0" cy="15" r="4" fill="#FFC107"/> <text x="0" y="-10" font-size="10" fill="#9c7b20" text-anchor="middle">门窗传感器-D2</text>
+        </g>
+        
+    </g>
+
+    <g transform="translate(50, 470)">
+        <text x="0" y="0" font-size="14" font-weight="bold" fill="#2c5d9a">📌 设备状态图例:</text>
+        
+        <circle cx="120" cy="-5" r="4" fill="#4CAF50"/>
+        <text x="130" y="0" font-size="12" fill="#4a6c9c">正常</text>
+        
+        <circle cx="190" cy="-5" r="4" fill="#F44336"/>
+        <text x="200" y="0" font-size="12" fill="#4a6c9c">报警触发</text>
+        
+        <circle cx="280" cy="-5" r="4" fill="#FFC107"/>
+        <text x="290" y="0" font-size="12" fill="#4a6c9c">故障状态</text>
+        
+        <g transform="translate(380, 0)">
+            <use href="#door_sensor"/>
+            <text x="10" y="0" font-size="12" fill="#4a6c9c">门窗传感器</text>
+        </g>
+        <g transform="translate(500, 0)">
+            <use href="#ir_detector"/>
+            <text x="10" y="0" font-size="12" fill="#4a6c9c">红外探测器</text>
+        </g>
+        <g transform="translate(610, 0)">
+            <use href="#alarm_bell"/>
+            <text x="10" y="0" font-size="12" fill="#4a6c9c">报警器</text>
+        </g>
+    </g>
+
+</svg>
