@@ -1,0 +1,95 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">
+        .background { fill: #1A1C20; }
+        .stroke-line { stroke: #3D5A80; stroke-width: 1.5; }
+        .ap-body { fill: #6C7A89; stroke: #8D99AE; stroke-width: 2; }
+        .ap-signal { stroke: #00BFFF; stroke-width: 2; fill: none; }
+        .node-base { fill: #1A1C20; stroke: #3D5A80; stroke-width: 1.5; }
+        .status-ok { fill: #00FF7F; }    /* Green */
+        .status-warning { fill: #FFD700; } /* Yellow */
+        .status-alarm { fill: #FF4500; }  /* Red */
+        .indicator-off { fill: #4A4E69; } /* Gray */
+    </style>
+
+    <rect width="800" height="600" class="background"/>
+
+    <g id="Central_AP" transform="translate(400, 300)">
+        <rect x="-40" y="-30" width="80" height="60" rx="6" class="ap-body"/>
+
+        <line x1="0" y1="-30" x2="0" y2="-60" stroke="#8D99AE" stroke-width="2"/>
+        <circle cx="0" cy="-60" r="4" fill="#8D99AE"/>
+
+        <rect x="-30" y="-15" width="60" height="30" rx="3" fill="#1A1C20" stroke="#3D5A80" stroke-width="1"/>
+        
+        <circle cx="-15" cy="0" r="3" class="status-ok"/>
+        <circle cx="0" cy="0" r="3" fill="#00BFFF"/>
+        <circle cx="15" cy="0" r="3" class="status-alarm"/>
+    </g>
+
+    <circle cx="400" cy="300" r="80" class="ap-signal" opacity="0.4"/>
+    <circle cx="400" cy="300" r="110" class="ap-signal" opacity="0.2"/>
+    <circle cx="400" cy="300" r="140" class="ap-signal" opacity="0.1"/>
+
+    <g id="Node_1_OK">
+        <line x1="400" y1="300" x2="150" y2="150" class="stroke-line"/>
+        <rect x="145" y="145" width="10" height="10" class="status-ok"/>
+        <g transform="translate(50, 50)">
+            <rect width="150" height="70" rx="5" class="node-base" stroke="#00FF7F"/>
+            <circle cx="15" cy="15" r="4" class="status-ok"/>
+            <circle cx="30" cy="15" r="4" class="status-ok"/>
+            <circle cx="45" cy="15" r="4" class="indicator-off"/>
+            <rect x="10" y="35" width="130" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="10" y="50" width="100" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="120" y="45" width="5" height="15" rx="1" class="status-ok"/>
+            <rect x="128" y="40" width="5" height="20" rx="1" class="status-ok"/>
+            <rect x="136" y="35" width="5" height="25" rx="1" class="status-ok"/>
+        </g>
+    </g>
+
+    <g id="Node_2_Alarm">
+        <line x1="400" y1="300" x2="650" y2="150" class="stroke-line"/>
+        <rect x="645" y="145" width="10" height="10" class="status-alarm"/>
+        <g transform="translate(600, 50)">
+            <rect width="150" height="70" rx="5" class="node-base" stroke="#FF4500"/>
+            <circle cx="15" cy="15" r="4" class="status-ok"/>
+            <circle cx="30" cy="15" r="4" class="indicator-off"/>
+            <circle cx="45" cy="15" r="4" class="status-alarm"/>
+            <rect x="10" y="35" width="130" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="10" y="50" width="100" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="120" y="55" width="5" height="5" rx="1" class="status-warning"/>
+            <rect x="128" y="50" width="5" height="10" rx="1" class="status-warning"/>
+            <rect x="136" y="50" width="5" height="10" rx="1" fill="#4A4E69"/> </g>
+    </g>
+
+    <g id="Node_3_Offline">
+        <line x1="400" y1="300" x2="150" y2="450" class="stroke-line"/>
+        <rect x="145" y="445" width="10" height="10" fill="#4A4E69" stroke="#FF4500" stroke-width="2"/>
+        <g transform="translate(50, 480)">
+            <rect width="150" height="70" rx="5" class="node-base" stroke="#4A4E69"/>
+            <circle cx="15" cy="15" r="4" class="indicator-off"/>
+            <circle cx="30" cy="15" r="4" class="indicator-off"/>
+            <circle cx="45" cy="15" r="4" class="indicator-off"/>
+            <rect x="10" y="35" width="130" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="10" y="50" width="100" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="120" y="55" width="5" height="5" rx="1" fill="#4A4E69"/>
+            <rect x="128" y="50" width="5" height="10" rx="1" fill="#4A4E69"/>
+            <rect x="136" y="45" width="5" height="15" rx="1" fill="#4A4E69"/>
+        </g>
+    </g>
+
+    <g id="Node_4_Normal">
+        <line x1="400" y1="300" x2="650" y2="450" class="stroke-line"/>
+        <rect x="645" y="445" width="10" height="10" class="status-ok"/>
+        <g transform="translate(600, 480)">
+            <rect width="150" height="70" rx="5" class="node-base" stroke="#00BFFF"/>
+            <circle cx="15" cy="15" r="4" class="status-ok"/>
+            <circle cx="30" cy="15" r="4" fill="#00BFFF"/>
+            <circle cx="45" cy="15" r="4" class="indicator-off"/>
+            <rect x="10" y="35" width="130" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="10" y="50" width="100" height="8" rx="2" fill="#8D99AE"/>
+            <rect x="120" y="50" width="5" height="10" rx="1" class="status-ok"/>
+            <rect x="128" y="45" width="5" height="15" rx="1" class="status-ok"/>
+            <rect x="136" y="40" width="5" height="20" rx="1" fill="#4A4E69"/> </g>
+    </g>
+
+</svg>

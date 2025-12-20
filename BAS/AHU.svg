@@ -1,0 +1,148 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 基础颜色和样式 */
+    .dark-bg { fill: #082A4C; } /* 深蓝色背景 */
+    .duct { fill: #505F70; stroke: #8C99A8; stroke-width: 3; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5)); } /* 金属灰管道 with soft 3D shading */
+    .component-body { fill: #364453; stroke: #8C99A8; stroke-width: 3; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5)); }
+    .highlight-glow { filter: url(#blue-glow); } /* 蓝色高光效果 */
+    .sensor-icon { fill: #00BFFF; stroke: #FFFFFF; stroke-width: 2; } /* 传感器图标 */
+    .damper-blade { fill: #4E677F; }
+    .actuator-body { fill: #00BFFF; stroke: #0077FF; stroke-width: 2; }
+    .filter-texture { fill: #9932CC; } /* 紫色滤网 */
+    .coil-fin { fill: #00BFFF; opacity: 0.7; } /* 蓝色线圈网格 */
+    .fan-blade { fill: #00BFFF; } /* 蓝色风机 */
+
+    /* 管道连接细节 */
+    .joint-line { stroke: #8C99A8; stroke-width: 1; stroke-dasharray: 4 2; }
+    
+    /* 文本 - 尽管要求没有文本，但用于 ARIA 标签和隐藏的调试信息 */
+    .label { font-family: sans-serif; font-size: 16px; fill: #FFFFFF; }
+  </style>
+
+  <defs>
+    <filter id="blue-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.2
+                                                     0 0 0 0 0.6
+                                                     0 0 0 0 1.0
+                                                     0 0 0 1 0" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="700" class="dark-bg"/>
+  
+  <g transform="translate(50, 250)">
+    <rect x="0" y="0" width="40" height="200" class="duct" />
+    <path d="M 0 0 L 40 0 L 40 200 L 0 200 Z" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/> <g transform="translate(40, 0)">
+      <rect x="0" y="0" width="100" height="200" class="component-body" />
+      <path d="M 5 50 L 95 50 M 5 100 L 95 100 M 5 150 L 95 150" class="damper-blade" stroke="#E0E0E0" stroke-width="5" />
+      <circle cx="100" cy="220" r="20" class="actuator-body highlight-glow" />
+      <line x1="95" y1="200" x2="105" y2="200" stroke="#00BFFF" stroke-width="4" />
+      <rect x="40" y="200" width="40" height="20" fill="#364453" stroke="#8C99A8" stroke-width="1"/>
+    </g>
+
+    <g transform="translate(140, 0)">
+      <rect x="0" y="0" width="100" height="200" class="component-body highlight-glow" /> <path d="M 100 100 L 200 100 A 50 50 0 0 1 250 50 L 250 -50 L 40 -50 L 40 0" class="duct" transform="translate(0, 50)" />
+      <g transform="translate(140, 0)">
+        <rect x="0" y="0" width="50" height="100" class="component-body" transform="translate(200, 50) rotate(90)"/>
+        <path d="M 215 75 L 235 75 M 215 100 L 235 100 M 215 125 L 235 125" class="damper-blade" stroke="#E0E0E0" stroke-width="5" transform="translate(0, 50) rotate(90)"/>
+        <circle cx="210" cy="-60" r="15" class="actuator-body highlight-glow" />
+        <line x1="210" y1="-50" x2="210" y2="-30" stroke="#00BFFF" stroke-width="4" />
+      </g>
+    </g>
+    
+    <g transform="translate(240, 0)">
+      <rect x="0" y="0" width="100" height="200" class="component-body" />
+      <rect x="10" y="10" width="80" height="180" class="filter-texture" />
+      <path d="M 10 10 L 90 190 M 90 10 L 10 190" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+      <rect x="0" y="0" width="100" height="200" class="highlight-glow" fill="none" stroke="#00BFFF" stroke-width="2" rx="5" ry="5"/>
+    </g>
+
+    <g transform="translate(340, 0)">
+      <rect x="0" y="0" width="100" height="200" class="component-body" />
+      <rect x="10" y="10" width="80" height="180" fill="#003366" opacity="0.9" />
+      <g transform="translate(10, 10)">
+        <line x1="20" y1="0" x2="20" y2="180" class="coil-fin" stroke-width="2" />
+        <line x1="40" y1="0" x2="40" y2="180" class="coil-fin" stroke-width="2" />
+        <line x1="60" y1="0" x2="60" y2="180" class="coil-fin" stroke-width="2" />
+        <line x1="0" y1="45" x2="80" y2="45" class="coil-fin" stroke-width="2" />
+        <line x1="0" y1="90" x2="80" y2="90" class="coil-fin" stroke-width="2" />
+        <line x1="0" y1="135" x2="80" y2="135" class="coil-fin" stroke-width="2" />
+      </g>
+      <rect x="0" y="0" width="100" height="200" class="highlight-glow" fill="none" stroke="#00BFFF" stroke-width="2" rx="5" ry="5"/>
+    </g>
+
+    <g transform="translate(440, 100)">
+      <path d="M 0 0 L 50 0 L 50 -80 M 50 0 L 50 80" stroke="#8C99A8" stroke-width="10" fill="none" filter="drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5))" />
+      <circle cx="50" cy="-80" r="15" fill="#364453" stroke="#8C99A8" stroke-width="3" />
+      <rect x="35" y="-105" width="30" height="25" fill="#364453" stroke="#8C99A8" stroke-width="3" />
+      <rect x="30" y="-140" width="40" height="35" class="actuator-body highlight-glow" />
+      <line x1="50" y1="-105" x2="50" y2="-140" stroke="#00BFFF" stroke-width="4" />
+    </g>
+
+    <g transform="translate(460, 0)">
+      <rect x="0" y="0" width="150" height="200" class="component-body highlight-glow" />
+      <circle cx="75" cy="100" r="50" fill="#203040" stroke="#00BFFF" stroke-width="3" />
+      <g transform="translate(75, 100)">
+        <path d="M 0 0 L 45 -10 A 50 50 0 0 0 45 10 Z" class="fan-blade" />
+        <path d="M 0 0 L -45 -10 A 50 50 0 0 0 -45 10 Z" transform="rotate(120)" class="fan-blade" />
+        <path d="M 0 0 L -45 -10 A 50 50 0 0 0 -45 10 Z" transform="rotate(240)" class="fan-blade" />
+      </g>
+      <circle cx="75" cy="100" r="5" fill="#FFFFFF" />
+    </g>
+
+    <g transform="translate(610, 0)">
+      <rect x="0" y="0" width="40" height="200" class="duct" />
+      <path d="M 0 0 L 40 0 L 40 200 L 0 200 Z" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/> </g>
+
+    <g class="sensor-icon" transform="translate(20, 230)">
+      <circle r="8" />
+      <line x1="-5" y1="-5" x2="5" y2="5" stroke-width="2" />
+      <line x1="-5" y1="5" x2="5" y2="-5" stroke-width="2" />
+    </g>
+
+    <g class="sensor-icon" transform="translate(200, 230)">
+      <circle r="8" />
+      <rect x="-6" y="-6" width="12" height="12" fill="#FFFFFF" stroke="none" opacity="0.8"/>
+      <path d="M -5 -5 L 5 5 M 5 -5 L -5 5" stroke="#00BFFF" stroke-width="2" />
+    </g>
+    
+    <g class="sensor-icon" transform="translate(330, 100)">
+      <rect x="-8" y="-8" width="16" height="16" fill="#FFC300" stroke="none" opacity="0.8"/>
+      <path d="M -5 0 L 5 0 M 0 -5 L 0 5" stroke="#082A4C" stroke-width="2" />
+      <line x1="-8" y1="0" x2="0" y2="0" stroke="#FFC300" stroke-width="3" />
+    </g>
+    <g class="sensor-icon" transform="translate(450, 100)">
+      <rect x="-8" y="-8" width="16" height="16" fill="#FFC300" stroke="none" opacity="0.8"/>
+      <path d="M -5 0 L 5 0 M 0 -5 L 0 5" stroke="#082A4C" stroke-width="2" />
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#FFC300" stroke-width="3" />
+    </g>
+
+    <g class="sensor-icon" transform="translate(440, 230)">
+      <circle r="8" />
+      <path d="M -5 0 L 5 0 M 0 -5 L 0 5" stroke="#FFFFFF" stroke-width="2" />
+    </g>
+
+    <g class="sensor-icon" transform="translate(230, 100)">
+      <rect x="-8" y="-8" width="16" height="16" fill="#FFC300" stroke="none" opacity="0.8"/>
+      <path d="M -5 0 L 5 0 M 0 -5 L 0 5" stroke="#082A4C" stroke-width="2" />
+      <line x1="-8" y1="0" x2="0" y2="0" stroke="#FFC300" stroke-width="3" />
+    </g>
+    <g class="sensor-icon" transform="translate(350, 100)">
+      <rect x="-8" y="-8" width="16" height="16" fill="#FFC300" stroke="none" opacity="0.8"/>
+      <path d="M -5 0 L 5 0 L 5 5 L -5 5 Z" fill="#00BFFF" opacity="0.5"/>
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#FFC300" stroke-width="3" />
+    </g>
+
+    <g class="sensor-icon" transform="translate(630, 230)">
+      <circle r="8" />
+      <rect x="-4" y="-4" width="8" height="8" fill="#FFC300" stroke="none" opacity="0.8"/>
+    </g>
+    
+  </g>
+
+</svg>

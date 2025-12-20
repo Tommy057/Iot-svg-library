@@ -1,0 +1,151 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="600" fill="#1A1C20"/>
+
+    <defs>
+        <style type="text/css">
+            .bas-blue { fill: #00BFFF; }
+            .bas-cyan { stroke: #00FFFF; }
+            .bas-navy { stroke: #3D5A80; }
+            .bas-gray { fill: #4A4E69; stroke: #8D99AE; }
+            .status-ok { fill: #00FF7F; stroke: #00FF7F; } /* Green */
+            .status-warning { fill: #FFD700; stroke: #FFD700; } /* Yellow */
+            .status-alarm { fill: #FF4500; stroke: #FF4500; } /* Red */
+            .text-light { fill: #F5F5F5; font-family: sans-serif; font-size: 14px; }
+            .text-dark { fill: #8D99AE; font-family: sans-serif; font-size: 12px; }
+        </style>
+    </defs>
+
+    <g id="AP_Device" transform="translate(400, 300)">
+        <rect x="-75" y="-60" width="150" height="120" rx="10" fill="#2E343A"/>
+        <rect x="-75" y="-65" width="150" height="120" rx="10" fill="#4A4E69"/>
+        <rect x="-65" y="-55" width="130" height="100" rx="6" fill="#1A1C20" opacity="0.3"/>
+        <rect x="-65" y="-55" width="130" height="100" rx="6" fill="url(#metallicGradient)"/>
+
+        <defs>
+            <linearGradient id="metallicGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#6C7A89; stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#8D99AE; stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#6C7A89; stop-opacity:1" />
+            </linearGradient>
+        </defs>
+
+        <rect x="-50" y="-40" width="100" height="40" rx="4" fill="#1A1C20"/>
+        <text class="text-dark" x="0" y="-15" text-anchor="middle" font-size="10px">SYSTEM STATUS DISPLAY</text>
+        
+        <g transform="translate(-40, 20)">
+            <circle cx="10" cy="0" r="4" class="status-ok"/>
+            <text class="text-dark" x="10" y="15" text-anchor="middle" font-size="10px">PWR</text>
+            
+            <circle cx="40" cy="0" r="4" fill="#00BFFF"/>
+            <text class="text-dark" x="40" y="15" text-anchor="middle" font-size="10px">LINK</text>
+            
+            <circle cx="70" cy="0" r="4" fill="#00FFFF"/>
+            <text class="text-dark" x="70" y="15" text-anchor="middle" font-size="10px">SIG</text>
+            
+            <circle cx="100" cy="0" r="4" class="status-warning"/>
+            <text class="text-dark" x="100" y="15" text-anchor="middle" font-size="10px">ALM</text>
+        </g>
+    </g>
+
+    <circle cx="400" cy="300" r="90" stroke="#00BFFF" stroke-width="2" fill="none" opacity="0.4"/>
+    <circle cx="400" cy="300" r="110" stroke="#00BFFF" stroke-width="2" fill="none" opacity="0.2"/>
+    <circle cx="400" cy="300" r="130" stroke="#00BFFF" stroke-width="2" fill="none" opacity="0.1"/>
+
+    <script type="text/ecmascript">
+    <![CDATA[
+        function drawLocation(id, x, y, statusColor, deviceName, statusText, connectionX, connectionY) {
+            var svg = document.getElementById('main_svg');
+            
+            // Connection Line
+            var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', 400); line.setAttribute('y1', 300);
+            line.setAttribute('x2', connectionX); line.setAttribute('y2', connectionY);
+            line.setAttribute('stroke', '#3D5A80'); line.setAttribute('stroke-width', '1');
+            svg.appendChild(line);
+
+            // Location Anchor Dot
+            var anchor = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            anchor.setAttribute('cx', connectionX); anchor.setAttribute('cy', connectionY);
+            anchor.setAttribute('r', '6'); anchor.setAttribute('fill', statusColor);
+            anchor.setAttribute('stroke', '#1A1C20'); anchor.setAttribute('stroke-width', '2');
+            svg.appendChild(anchor);
+            
+            // Info Box Group
+            var group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('transform', 'translate(' + x + ',' + y + ')');
+
+            // Box Background
+            var box = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            box.setAttribute('width', '180'); box.setAttribute('height', '80');
+            box.setAttribute('rx', '8'); box.setAttribute('fill', '#1A1C20');
+            box.setAttribute('stroke', statusColor); box.setAttribute('stroke-width', '1');
+            box.setAttribute('opacity', '0.95');
+            group.appendChild(box);
+
+            // Device Name
+            var nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            nameText.setAttribute('x', '10'); nameText.setAttribute('y', '20');
+            nameText.setAttribute('class', 'text-light');
+            nameText.textContent = deviceName;
+            group.appendChild(nameText);
+            
+            // Status Text
+            var statusTextEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            statusTextEl.setAttribute('x', '10'); statusTextEl.setAttribute('y', '40');
+            statusTextEl.setAttribute('fill', statusColor); statusTextEl.setAttribute('font-family', 'sans-serif');
+            statusTextEl.setAttribute('font-size', '14px');
+            statusTextEl.textContent = statusText;
+            group.appendChild(statusTextEl);
+            
+            // IP Address Placeholder
+            var ipText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            ipText.setAttribute('x', '10'); ipText.setAttribute('y', '60');
+            ipText.setAttribute('class', 'text-dark'); ipText.setAttribute('font-size', '12px');
+            ipText.textContent = 'IP: XXX.XXX.XXX.XXX';
+            group.appendChild(ipText);
+
+            // Signal Strength Icon (Simple Arc/Wave)
+            var signal = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            signal.setAttribute('transform', 'translate(145, 30)');
+            signal.setAttribute('stroke', statusColor); signal.setAttribute('stroke-width', '2');
+            signal.setAttribute('fill', 'none');
+            
+            // Smallest arc
+            var arc1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            arc1.setAttribute('d', 'M 0 10 C 5 5, 15 5, 20 10');
+            signal.appendChild(arc1);
+
+            // Medium arc
+            var arc2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            arc2.setAttribute('d', 'M -5 15 C 5 0, 15 0, 25 15');
+            signal.appendChild(arc2);
+
+            // Largest arc (faded for lower signal/off)
+            if (statusText === 'ONLINE') {
+                var arc3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                arc3.setAttribute('d', 'M -10 20 C 5 -5, 15 -5, 30 20');
+                signal.appendChild(arc3);
+            } else if (statusText === 'WARNING') {
+                 var arc3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                arc3.setAttribute('d', 'M -10 20 C 5 -5, 15 -5, 30 20');
+                arc3.setAttribute('stroke-opacity', '0.3');
+                signal.appendChild(arc3);
+            }
+            
+            group.appendChild(signal);
+            svg.appendChild(group);
+        }
+    ]]>
+    </script>
+    
+    <script>drawLocation('loc1', 100, 100, '#00FF7F', 'AP-ROOM-01', 'ONLINE', 300, 200);</script>
+    
+    <script>drawLocation('loc2', 520, 100, '#00FF7F', 'AP-HALL-02', 'ONLINE', 500, 200);</script>
+    
+    <script>drawLocation('loc3', 100, 420, '#FF4500', 'AP-LAB-03', 'OFFLINE', 300, 400);</script>
+    
+    <script>drawLocation('loc4', 520, 420, '#FFD700', 'AP-OFFICE-04', 'WARNING', 500, 400);</script>
+
+    <text class="text-light" x="400" y="240" text-anchor="middle" font-size="16px">Central WiFi AP - Core Unit</text>
+
+</svg>

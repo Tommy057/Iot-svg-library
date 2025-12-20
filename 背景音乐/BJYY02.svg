@@ -1,0 +1,99 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
+  <defs>
+    <style>
+      .bg-color { fill: #001f4c; } /* 深蓝背景 */
+      .primary-blue { fill: #007bff; } /* 终端在线/主连接线 */
+      .secondary-blue { stroke: #4da6ff; } /* 辅助线/平面图 */
+      .light-text { fill: #ffffff; } /* 白色文字 */
+      .offline-gray { fill: #999999; } /* 终端离线 */
+      .offline-line { stroke: #999999; } /* 离线连接线 */
+      .online-stroke { stroke: #007bff; } /* 在线描边 */
+      .offline-stroke { stroke: #999999; } /* 离线描边 */
+      .dashed-line { stroke-dasharray: 4 2; } /* 虚线 */
+      .terminal-box { stroke-width: 2; }
+      .text-label { font-size: 14px; }
+      .legend-text { font-size: 16px; }
+      .main-title { font-size: 24px; font-weight: bold; }
+    </style>
+
+    <symbol id="icon-speaker" viewBox="0 0 50 50">
+      <rect x="15" y="5" width="20" height="40" rx="3" ry="3" />
+      <path d="M 15 15 L 5 15 L 5 35 L 15 35 Z" /> <path d="M 35 15 L 45 15 L 45 35 L 35 35 Z" /> </symbol>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" class="bg-color" />
+
+  <text x="600" y="40" text-anchor="middle" class="light-text main-title">物联网集成平台 - 背景音乐系统 (BGM) 电子地图</text>
+
+  <g id="floor-plan-area">
+    <rect x="50" y="70" width="1100" height="550" fill="#003366" stroke="#4da6ff" stroke-width="3" rx="10" ry="10" />
+    <text x="100" y="100" class="light-text" font-size="18">区域 A / 楼层平面图抽象表示</text>
+  </g>
+
+  <g id="terminal-amp" transform="translate(600, 350)">
+    <rect x="-75" y="-35" width="150" height="70" rx="10" ry="10" class="primary-blue terminal-box" stroke="#ffffff" />
+    
+    <rect x="-40" y="-15" width="80" height="30" fill="#ffffff" rx="5" ry="5" />
+    <text x="0" y="7" text-anchor="middle" fill="#007bff" font-weight="bold" font-size="16">AMP</text>
+    
+    <text x="0" y="55" text-anchor="middle" class="light-text text-label">背景音乐终端 / 功放</text>
+    
+    <circle cx="65" cy="-25" r="5" class="primary-blue" stroke="#ffffff" stroke-width="1.5" />
+    <text x="-50" y="-25" class-="light-text" font-size="12">状态: 在线</text>
+  </g>
+
+  <g id="speaker-nodes">
+    <circle id="amp-center" cx="600" cy="350" r="1" fill="none" />
+    
+    <g id="speaker-1" transform="translate(250, 150)">
+      <line x1="0" y1="0" x2="350" y2="200" class="online-stroke dashed-line" stroke-width="1.5" />
+      <use href="#icon-speaker" width="30" height="30" x="-15" y="-15" class="primary-blue online-stroke" stroke="#ffffff" stroke-width="1" />
+    </g>
+    
+    <g id="speaker-2" transform="translate(950, 180)">
+      <line x1="0" y1="0" x2="-350" y2="170" class="online-stroke dashed-line" stroke-width="1.5" />
+      <use href="#icon-speaker" width="30" height="30" x="-15" y="-15" class="primary-blue online-stroke" stroke="#ffffff" stroke-width="1" />
+    </g>
+
+    <g id="speaker-3" transform="translate(150, 550)">
+      <line x1="0" y1="0" x2="450" y2="-200" class="online-stroke dashed-line" stroke-width="1.5" />
+      <use href="#icon-speaker" width="30" height="30" x="-15" y="-15" class="primary-blue online-stroke" stroke="#ffffff" stroke-width="1" />
+    </g>
+    
+    <g id="terminal-amp-offline" transform="translate(900, 500)">
+        <rect x="-75" y="-35" width="150" height="70" rx="10" ry="10" class="offline-gray terminal-box" stroke="#ffffff" />
+        <rect x="-40" y="-15" width="80" height="30" fill="#ffffff" rx="5" ry="5" />
+        <text x="0" y="7" text-anchor="middle" fill="#999999" font-weight="bold" font-size="16">AMP</text>
+        <text x="0" y="55" text-anchor="middle" class="light-text text-label">终端 / 功放 (异常)</text>
+        <circle cx="65" cy="-25" r="5" class="offline-gray" stroke="#ffffff" stroke-width="1.5" />
+        <text x="-50" y="-25" class-="light-text" font-size="12">状态: 离线</text>
+
+        <g id="speaker-5" transform="translate(-250, -100)">
+            <line x1="0" y1="0" x2="250" y2="100" class="offline-line dashed-line" stroke-width="1.5" />
+            <use href="#icon-speaker" width="30" height="30" x="-15" y="-15" class="offline-gray offline-stroke" stroke="#ffffff" stroke-width="1" />
+        </g>
+    </g>
+
+    <line x1="600" y1="350" x2="250" y2="150" class="online-stroke dashed-line" stroke-width="1.5" />
+    <line x1="600" y1="350" x2="950" y2="180" class="online-stroke dashed-line" stroke-width="1.5" />
+    <line x1="600" y1="350" x2="150" y2="550" class="online-stroke dashed-line" stroke-width="1.5" />
+    <line x1="900" y1="500" x2="650" y2="400" class="offline-line dashed-line" stroke-width="1.5" />
+    
+  </g>
+  
+  <g id="legend" transform="translate(100, 640)">
+    <rect x="-10" y="-10" width="320" height="100" fill="#003366" stroke="#4da6ff" stroke-width="1" rx="5" ry="5" />
+    <text x="10" y="15" class="light-text main-title" font-size="18">图例 (Legend)</text>
+    
+    <rect x="10" y="40" width="20" height="20" rx="3" ry="3" class="primary-blue" stroke="#ffffff" stroke-width="1.5" />
+    <text x="40" y="55" class="light-text legend-text">终端在线 / 关联点位正常</text>
+
+    <rect x="10" y="70" width="20" height="20" rx="3" ry="3" class="offline-gray" stroke="#ffffff" stroke-width="1.5" />
+    <text x="40" y="85" class="light-text legend-text">终端离线 / 关联点位异常</text>
+
+    <use href="#icon-speaker" width="20" height="20" x="190" y="40" class="primary-blue online-stroke" stroke="#ffffff" stroke-width="1" />
+    <text x="220" y="55" class="light-text legend-text">逻辑展示点位</text>
+  </g>
+
+</svg>

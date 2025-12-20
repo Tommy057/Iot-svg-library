@@ -1,0 +1,91 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f7fa"/>
+      <stop offset="100%" stop-color="#e9eef3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title{font:600 20px 'Segoe UI',Arial; fill:#1f2d3d}
+      .label{font:500 14px 'Segoe UI',Arial; fill:#2c3e50}
+      .small{font:12px 'Segoe UI',Arial; fill:#6b7c93}
+      .card{fill:#ffffff; stroke:#dcdfe6; stroke-width:1; filter:url(#shadow)}
+      .device{fill:#ffffff; stroke:#dcdfe6; stroke-width:1; rx:10; ry:10}
+      .online{fill:#67c23a}
+      .offline{fill:#f56c6c}
+      .stat{font:600 18px 'Segoe UI',Arial}
+    </style>
+  </defs>
+
+  <!-- Page Border -->
+  <rect x="10" y="10" width="1180" height="680" rx="18" ry="18" fill="none" stroke="#dcdfe6" stroke-width="2"/>
+
+  <!-- Header -->
+  <text x="30" y="42" class="title">背景音乐系统 · 功放设备总览</text>
+  <text x="30" y="66" class="small">设备状态监控与音量管理（白亮风格）</text>
+
+  <!-- Statistics -->
+  
+  <text x="60" y="135" class="label">设备总数</text>
+  <text x="140" y="135" class="stat" fill="#409eff">32</text>
+
+  <text x="260" y="135" class="label">在线</text>
+  <text x="310" y="135" class="stat" fill="#67c23a">27</text>
+
+  <text x="400" y="135" class="label">停止</text>
+  <text x="450" y="135" class="stat" fill="#f56c6c">5</text>
+
+  <!-- Legend -->
+  <rect x="520" y="110" width="240" height="30" class="device"/>
+  <circle cx="540" cy="125" r="6" class="online"/><text x="555" y="129" class="small">在线</text>
+  <circle cx="620" cy="125" r="6" class="offline"/><text x="635" y="129" class="small">停止</text>
+
+  <!-- Device Grid -->
+  <!-- Volume Control Styles -->
+  <style>
+    .vol-track{fill:#ebeef5}
+    .vol-fill{fill:#409eff}
+    .vol-btn{fill:#ffffff; stroke:#c0c4cc; stroke-width:1}
+  </style>
+
+  <!-- Device Grid -->
+  <g transform="translate(30,180)">
+    <g transform="translate(0,0)">
+      <rect width="260" height="90" class="device"/>
+      <text x="16" y="28" class="label">厂房-公共广播-01</text>
+      <text x="16" y="52" class="small">IP：192.168.100.1</text>
+      <rect x="180" y="26" width="60" height="22" rx="4" class="online"/>
+      <text x="210" y="42" text-anchor="middle" class="small" fill="#fff">在线</text>
+      <!-- Volume -->
+      <rect x="16" y="64" width="160" height="6" rx="3" class="vol-track"/>
+      <rect x="16" y="64" width="110" height="6" rx="3" class="vol-fill"/>
+      <circle cx="126" cy="67" r="6" class="vol-btn"/>
+    </g>
+
+    <g transform="translate(290,0)">
+      <rect width="260" height="90" class="device"/>
+      <text x="16" y="28" class="label">厂房-公共广播-02</text>
+      <text x="16" y="52" class="small">IP：192.168.100.2</text>
+      <rect x="180" y="30" width="60" height="22" rx="4" class="offline"/>
+      <text x="210" y="46" text-anchor="middle" class="small" fill="#fff">停止</text>
+    </g>
+
+    <g transform="translate(580,0)">
+      <rect width="260" height="90" class="device"/>
+      <text x="16" y="28" class="label">研发楼-背景音乐-01</text>
+      <text x="16" y="52" class="small">IP：192.168.100.3</text>
+      <rect x="180" y="30" width="60" height="22" rx="4" class="online"/>
+      <text x="210" y="46" text-anchor="middle" class="small" fill="#fff">在线</text>
+    </g>
+
+    <g transform="translate(870,0)">
+      <rect width="260" height="90" class="device"/>
+      <text x="16" y="28" class="label">宿舍楼-背景音乐-01</text>
+      <text x="16" y="52" class="small">IP：192.168.100.4</text>
+      <rect x="180" y="30" width="60" height="22" rx="4" class="online"/>
+      <text x="210" y="46" text-anchor="middle" class="small" fill="#fff">在线</text>
+    </g>
+  </g>
+</svg>

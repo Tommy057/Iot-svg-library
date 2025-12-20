@@ -1,0 +1,78 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 定义颜色调色板 */
+    .duct-fill { fill: #2b2f45; }
+    .highlight-color { fill: #5fa8ff; stroke: #5fa8ff; }
+    .filter-color { fill: #8d4fae; }
+    .coil-color { fill: #4ba7f0; }
+    .fan-color { fill: #2677b8; }
+    .stroke-style { stroke: #1a1e30; stroke-width: 5; }
+    .sensor-style { fill: #ffffff; stroke: #5fa8ff; stroke-width: 2; }
+    .actuator-style { fill: #5fa8ff; }
+    .water-line { stroke: #4ba7f0; stroke-width: 8; fill: none; }
+    .actuator-arm { fill: #1a1e30; }
+  </style>
+
+  <rect width="1200" height="400" fill="#000000" opacity="0.05"/> <rect x="50" y="150" width="80" height="100" class="duct-fill stroke-style"/>
+  
+  <rect x="130" y="100" width="150" height="200" class="duct-fill stroke-style"/>
+
+  <rect x="180" y="50" width="400" height="50" class="duct-fill stroke-style"/>
+  <g transform="translate(450, 50)">
+    <rect x="0" y="0" width="50" height="50" fill="#2b2f45" stroke="#5fa8ff" stroke-width="3"/>
+    <path d="M 5 5 L 45 45 M 5 45 L 45 5" stroke="#FFFFFF" stroke-width="3"/>
+  </g>
+  <g transform="translate(100, 150)">
+    <rect x="0" y="0" width="30" height="100" fill="#2b2f45" stroke="#5fa8ff" stroke-width="3"/>
+    <path d="M 5 20 L 25 20 M 5 50 L 25 50 M 5 80 L 25 80" stroke="#FFFFFF" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(280, 100)">
+    <rect x="0" y="0" width="80" height="200" class="duct-fill stroke-style"/>
+    <rect x="10" y="10" width="60" height="180" class="filter-color"/>
+    <path d="M 10 10 L 70 190 M 70 10 L 10 190" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="0" y="0" width="80" height="200" fill="none" class="highlight-color" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(360, 100)">
+    <rect x="0" y="0" width="100" height="200" class="duct-fill stroke-style"/>
+    <rect x="10" y="10" width="80" height="180" fill="#1a1e30"/>
+    <g stroke-width="2" class="coil-color">
+      <line x1="20" y1="10" x2="20" y2="190"/>
+      <line x1="40" y1="10" x2="40" y2="190"/>
+      <line x1="60" y1="10" x2="60" y2="190"/>
+      <line x1="80" y1="10" x2="80" y2="190"/>
+      <line x1="10" y1="50" x2="90" y2="50"/>
+      <line x1="10" y1="150" x2="90" y2="150"/>
+    </g>
+  </g>
+
+  <g transform="translate(460, 200)">
+    <line x1="0" y1="0" x2="100" y2="0" class="water-line"/>
+    <path d="M 30 -15 L 70 -15 L 60 15 L 40 15 Z" fill="#2b2f45" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="35" y="-35" width="30" height="20" class="actuator-style"/>
+    <rect x="45" y="-15" width="10" height="5" class="actuator-arm"/>
+  </g>
+  
+  <g transform="translate(560, 100)">
+    <rect x="0" y="0" width="200" height="200" class="duct-fill stroke-style"/>
+    <circle cx="100" cy="100" r="60" class="fan-color" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="100" y1="100" x2="150" y2="100" stroke="#FFFFFF" stroke-width="8"/>
+    <line x1="100" y1="100" x2="115" y2="145" stroke="#FFFFFF" stroke-width="8"/>
+    <line x1="100" y1="100" x2="85" y2="145" stroke="#FFFFFF" stroke-width="8"/>
+  </g>
+  
+  <rect x="760" y="150" width="80" height="100" class="duct-fill stroke-style"/>
+  <rect x="840" y="150" width="10" height="100" fill="#5fa8ff"/> <circle cx="90" cy="140" r="5" class="sensor-style" />
+
+  <path d="M 230 310 L 240 330 L 220 330 Z" class="sensor-style" />
+
+  <rect x="350" y="290" width="10" height="10" class="sensor-style" />
+  
+  <path d="M 470 310 L 480 320 L 470 330 L 460 320 Z" class="sensor-style" />
+  
+  <circle cx="790" cy="140" r="5" class="highlight-color" stroke="#FFFFFF" stroke-width="2"/>
+
+  <rect x="800" y="290" width="10" height="10" class="highlight-color" stroke="#FFFFFF" stroke-width="2"/>
+
+</svg>
