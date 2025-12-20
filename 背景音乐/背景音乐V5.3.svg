@@ -1,0 +1,55 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 整体背景：浅灰色 -->
+  <rect width="800" height="600" fill="#f0f0f0" />
+
+  <!-- 阴影滤镜 -->
+  <filter id="shadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
+    <feOffset in="blur" dx="0" dy="2" result="offsetBlur" />
+    <feMerge>
+      <feMergeNode in="offsetBlur" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+
+  <!-- 标题：背景音乐系统总览 -->
+  <text x="400" y="50" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">背景音乐系统总览</text>
+
+  <!-- 统计信息：横向布局，带阴影 -->
+  <rect x="100" y="80" width="600" height="40" rx="8" ry="8" fill="white" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)" />
+  <text x="200" y="105" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#333">总设备: 3</text>
+  <text x="400" y="105" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#333">在线: 2</text>
+  <text x="600" y="105" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#333">离线: 1</text>
+
+  <!-- 设备卡片1：在线，带阴影，优化间距 -->
+  <rect x="80" y="140" width="220" height="160" rx="12" ry="12" fill="white" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)" />
+  <text x="100" y="170" font-family="sans-serif" font-size="16" fill="#333">功放1</text>
+  <text x="100" y="190" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.101</text>
+  <circle cx="100" cy="215" r="8" fill="#67c23a" />
+  <text x="120" y="220" font-family="sans-serif" font-size="14" fill="#333">在线</text>
+  <text x="100" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 50</text>
+  <rect x="100" y="260" width="180" height="30" rx="8" ry="8" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="190" y="280" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+  <!-- 设备卡片2：离线，带阴影，优化间距 -->
+  <rect x="300" y="140" width="220" height="160" rx="12" ry="12" fill="white" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)" />
+  <text x="320" y="170" font-family="sans-serif" font-size="16" fill="#333">功放2</text>
+  <text x="320" y="190" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.102</text>
+  <circle cx="320" cy="215" r="8" fill="#f56c6c" />
+  <text x="340" y="220" font-family="sans-serif" font-size="14" fill="#333">离线</text>
+  <text x="320" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 30</text>
+  <rect x="320" y="260" width="180" height="30" rx="8" ry="8" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="410" y="280" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+  <!-- 设备卡片3：在线，带阴影，优化间距 -->
+  <rect x="520" y="140" width="220" height="160" rx="12" ry="12" fill="white" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)" />
+  <text x="540" y="170" font-family="sans-serif" font-size="16" fill="#333">功放3</text>
+  <text x="540" y="190" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.103</text>
+  <circle cx="540" cy="215" r="8" fill="#67c23a" />
+  <text x="560" y="220" font-family="sans-serif" font-size="14" fill="#333">在线</text>
+  <text x="540" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 70</text>
+  <rect x="540" y="260" width="180" height="30" rx="8" ry="8" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="630" y="280" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+</svg>

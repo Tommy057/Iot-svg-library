@@ -1,0 +1,39 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 背景：浅灰色 -->
+  <rect width="400" height="300" fill="#f0f0f0" />
+
+  <!-- 阴影滤镜 -->
+  <filter id="shadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
+    <feOffset in="blur" dx="0" dy="2" result="offsetBlur" />
+    <feMerge>
+      <feMergeNode in="offsetBlur" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+
+  <!-- 弹出容器：白色背景，浅灰色边框，圆角20px，带阴影 -->
+  <rect x="50" y="50" width="300" height="200" rx="20" ry="20" fill="white" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 标题：粗体，居中，"Please Enter Value"，sans-serif，20px -->
+  <text x="200" y="80" font-family="sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">Please Enter Value</text>
+
+  <!-- 输入框：矩形，居中，圆角8px，浅灰色背景 -->
+  <rect x="75" y="100" width="250" height="40" rx="8" ry="8" fill="#e0e0e0" stroke="#c0c0c0" stroke-width="1" />
+
+  <!-- 占位符文本：中等灰色 -->
+  <text x="90" y="125" font-family="sans-serif" font-size="14" fill="#808080">Enter value...</text>
+
+  <!-- 值范围提示：较小文本，居中，柔和灰色 -->
+  <text x="200" y="155" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#a0a0a0">Value Range: 0-100</text>
+
+  <!-- 提交按钮：绿色，稍暗边框，白色文本，圆角，90x40px -->
+  <rect x="80" y="180" width="90" height="40" rx="8" ry="8" fill="#4caf50" stroke="#388e3c" stroke-width="1" />
+  <text x="125" y="205" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">Submit</text>
+
+  <!-- 取消按钮：红色，稍暗边框，白色文本，圆角，90x40px -->
+  <rect x="230" y="180" width="90" height="40" rx="8" ry="8" fill="#f44336" stroke="#d32f2f" stroke-width="1" />
+  <text x="275" y="205" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">Cancel</text>
+
+</svg>

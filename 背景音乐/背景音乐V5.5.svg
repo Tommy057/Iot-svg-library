@@ -1,0 +1,81 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 整体背景：极浅蓝灰 #F8FAFC -->
+  <rect width="800" height="500" fill="#F8FAFC" />
+
+  <!-- 软阴影滤镜：8px模糊，极低不透明度8% -->
+  <defs>
+    <filter id="softShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur" />
+      <feFlood flood-color="black" flood-opacity="0.08" result="color" />
+      <feComposite in="color" in2="offsetBlur" operator="in" result="shadow" />
+      <feMerge>
+        <feMergeNode in="shadow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 标题：背景音乐系统总览 -->
+  <text x="400" y="40" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333">背景音乐系统总览</text>
+
+  <!-- 统计信息容器：纯白背景，软阴影 -->
+  <rect x="100" y="60" width="600" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#e0e0e0" stroke-width="1" filter="url(#softShadow)" />
+
+  <!-- 统计数字：大字体36px，粗体，对比色 -->
+  <!-- 总设备 -->
+  <text x="200" y="90" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#333">总设备</text>
+  <text x="200" y="120" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#409eff">3</text>
+  <!-- 进度条：微型，蓝色 -->
+  <rect x="170" y="130" width="60" height="4" rx="2" fill="#e6f7ff" />
+  <rect x="170" y="130" width="60" height="4" rx="2" fill="#409eff" />
+
+  <!-- 在线 -->
+  <text x="400" y="90" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#333">在线</text>
+  <text x="400" y="120" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#67c23a">2</text>
+  <!-- 进度条：微型，绿色，2/3满 -->
+  <rect x="370" y="130" width="60" height="4" rx="2" fill="#f6ffed" />
+  <rect x="370" y="130" width="40" height="4" rx="2" fill="#67c23a" />
+
+  <!-- 离线 -->
+  <text x="600" y="90" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#333">离线</text>
+  <text x="600" y="120" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#f56c6c">1</text>
+  <!-- 进度条：微型，红色，1/3满 -->
+  <rect x="570" y="130" width="60" height="4" rx="2" fill="#fff2f0" />
+  <rect x="570" y="130" width="20" height="4" rx="2" fill="#f56c6c" />
+
+  <!-- 设备卡片1：在线，纯白背景，软阴影 -->
+  <rect x="80" y="150" width="220" height="160" rx="15" ry="15" fill="#FFFFFF" stroke="#e0e0e0" stroke-width="1" filter="url(#softShadow)" />
+  <text x="100" y="175" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">功放1</text>
+  <text x="100" y="195" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.101</text>
+  <!-- 胶囊标签：在线，浅绿背景，深绿文字，●符号 -->
+  <rect x="100" y="205" width="80" height="25" rx="12.5" fill="#f6ffed" />
+  <text x="110" y="222" font-family="sans-serif" font-size="14" font-weight="bold" fill="#529b2e">● 在线</text>
+  <text x="100" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 50</text>
+  <rect x="100" y="255" width="180" height="35" rx="10" ry="10" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="190" y="277" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+  <!-- 设备卡片2：离线，纯白背景，软阴影 -->
+  <rect x="300" y="150" width="220" height="160" rx="15" ry="15" fill="#FFFFFF" stroke="#e0e0e0" stroke-width="1" filter="url(#softShadow)" />
+  <text x="320" y="175" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">功放2</text>
+  <text x="320" y="195" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.102</text>
+  <!-- 胶囊标签：离线，浅红背景，深红文字，●符号 -->
+  <rect x="320" y="205" width="80" height="25" rx="12.5" fill="#fff2f0" />
+  <text x="330" y="222" font-family="sans-serif" font-size="14" font-weight="bold" fill="#c45656">● 离线</text>
+  <text x="320" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 30</text>
+  <rect x="320" y="255" width="180" height="35" rx="10" ry="10" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="410" y="277" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+  <!-- 设备卡片3：在线，纯白背景，软阴影 -->
+  <rect x="520" y="150" width="220" height="160" rx="15" ry="15" fill="#FFFFFF" stroke="#e0e0e0" stroke-width="1" filter="url(#softShadow)" />
+  <text x="540" y="175" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">功放3</text>
+  <text x="540" y="195" font-family="sans-serif" font-size="14" fill="#666">IP: 192.168.1.103</text>
+  <!-- 胶囊标签：在线，浅绿背景，深绿文字，●符号 -->
+  <rect x="540" y="205" width="80" height="25" rx="12.5" fill="#f6ffed" />
+  <text x="550" y="222" font-family="sans-serif" font-size="14" font-weight="bold" fill="#529b2e">● 在线</text>
+  <text x="540" y="245" font-family="sans-serif" font-size="14" fill="#666">当前音量: 70</text>
+  <rect x="540" y="255" width="180" height="35" rx="10" ry="10" fill="#409eff" stroke="#1890ff" stroke-width="1" />
+  <text x="630" y="277" font-family="sans-serif" font-size="14" text-anchor="middle" fill="white">音量设置</text>
+
+</svg>

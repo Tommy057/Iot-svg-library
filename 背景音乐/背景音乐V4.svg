@@ -1,0 +1,120 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f7ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgGradient)" />
+
+  <g id="stats-container" transform="translate(40, 40)">
+    <g transform="translate(0, 0)">
+      <rect width="280" height="100" rx="8" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="25" y="40" font-family="sans-serif" font-size="14" fill="#909399">总设备数</text>
+      <text x="25" y="75" font-family="Arial" font-size="32" font-weight="bold" fill="#303133">24</text>
+      <circle cx="250" cy="50" r="15" fill="#409eff" fill-opacity="0.1" />
+      <text x="244" y="56" font-family="Arial" font-size="18" fill="#409eff" font-weight="bold">∑</text>
+    </g>
+
+    <g transform="translate(310, 0)">
+      <rect width="280" height="100" rx="8" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="25" y="40" font-family="sans-serif" font-size="14" fill="#909399">运行中 (Online)</text>
+      <text x="25" y="75" font-family="Arial" font-size="32" font-weight="bold" fill="#67c23a">22</text>
+      <circle cx="250" cy="50" r="15" fill="#67c23a" fill-opacity="0.1" />
+      <circle cx="250" cy="50" r="5" fill="#67c23a" />
+    </g>
+
+    <g transform="translate(620, 0)">
+      <rect width="280" height="100" rx="8" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="25" y="40" font-family="sans-serif" font-size="14" fill="#909399">已离线 (Offline)</text>
+      <text x="25" y="75" font-family="Arial" font-size="32" font-weight="bold" fill="#f56c6c">2</text>
+      <circle cx="250" cy="50" r="15" fill="#f56c6c" fill-opacity="0.1" />
+      <rect x="245" y="45" width="10" height="10" rx="2" fill="#f56c6c" />
+    </g>
+  </g>
+
+  <g id="device-list" transform="translate(40, 180)">
+    <text x="0" y="-15" font-family="sans-serif" font-size="18" font-weight="bold" fill="#303133">设备实时看板</text>
+    
+    <g id="card-1" transform="translate(0, 0)">
+      <rect width="265" height="200" rx="12" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="20" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#303133">1F 候梯厅分区</text>
+      <text x="20" y="65" font-family="monospace" font-size="13" fill="#909399">IP: 192.168.10.11</text>
+      
+      <circle cx="25" cy="95" r="5" fill="#67c23a" />
+      <text x="38" y="100" font-family="sans-serif" font-size="13" fill="#67c23a">运行中</text>
+      
+      <g transform="translate(20, 125)">
+        <rect width="60" height="45" rx="6" fill="#f5f7fa" stroke="#e4e7ed" />
+        <text x="30" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#303133">72</text>
+        <rect x="75" y="0" width="150" height="45" rx="6" fill="#ecf5ff" stroke="#409eff" />
+        <text x="150" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#409eff">音量设置</text>
+      </g>
+    </g>
+
+    <g id="card-2" transform="translate(290, 0)">
+      <rect width="265" height="200" rx="12" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="20" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#303133">2F 办公A区</text>
+      <text x="20" y="65" font-family="monospace" font-size="13" fill="#909399">IP: 192.168.10.12</text>
+      
+      <circle cx="25" cy="95" r="5" fill="#67c23a" />
+      <text x="38" y="100" font-family="sans-serif" font-size="13" fill="#67c23a">运行中</text>
+      
+      <g transform="translate(20, 125)">
+        <rect width="60" height="45" rx="6" fill="#f5f7fa" stroke="#e4e7ed" />
+        <text x="30" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#303133">45</text>
+        <rect x="75" y="0" width="150" height="45" rx="6" fill="#ecf5ff" stroke="#409eff" />
+        <text x="150" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#409eff">音量设置</text>
+      </g>
+    </g>
+
+    <g id="card-3" transform="translate(580, 0)">
+      <rect width="265" height="200" rx="12" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="20" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#303133">B1 停车场北</text>
+      <text x="20" y="65" font-family="monospace" font-size="13" fill="#909399">IP: 192.168.10.25</text>
+      
+      <circle cx="25" cy="95" r="5" fill="#f56c6c" />
+      <text x="38" y="100" font-family="sans-serif" font-size="13" fill="#f56c6c">离线</text>
+      
+      <g transform="translate(20, 125)">
+        <rect width="60" height="45" rx="6" fill="#f5f7fa" stroke="#e4e7ed" />
+        <text x="30" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#c0c4cc">--</text>
+        <rect x="75" y="0" width="150" height="45" rx="6" fill="#f4f4f5" stroke="#d3d4d6" />
+        <text x="150" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#909399">不可用</text>
+      </g>
+    </g>
+
+    <g id="card-4" transform="translate(870, 0)">
+      <rect width="265" height="200" rx="12" fill="#ffffff" stroke="#dcdfe6" filter="url(#cardShadow)" />
+      <text x="20" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#303133">3F 多功能厅</text>
+      <text x="20" y="65" font-family="monospace" font-size="13" fill="#909399">IP: 192.168.10.13</text>
+      
+      <circle cx="25" cy="95" r="5" fill="#67c23a" />
+      <text x="38" y="100" font-family="sans-serif" font-size="13" fill="#67c23a">运行中</text>
+      
+      <g transform="translate(20, 125)">
+        <rect width="60" height="45" rx="6" fill="#f5f7fa" stroke="#e4e7ed" />
+        <text x="30" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#303133">85</text>
+        <rect x="75" y="0" width="150" height="45" rx="6" fill="#ecf5ff" stroke="#409eff" />
+        <text x="150" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#409eff">音量设置</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(40, 750)">
+    <text font-family="sans-serif" font-size="12" fill="#909399">SystemIntegrationGem - 背景音乐集成平台管理看板 | 最后更新时间: 2025-12-20 18:00</text>
+  </g>
+</svg>
