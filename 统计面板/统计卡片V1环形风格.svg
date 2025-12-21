@@ -1,0 +1,60 @@
+<svg width="500" height="320" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="premium-shadow-stat" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dy="8" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.08"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <linearGradient id="grad-primary-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#premium-shadow-stat)">
+    <rect x="25" y="25" width="450" height="270" rx="24" fill="#FFFFFF"/>
+    <rect x="25" y="25" width="450" height="270" rx="24" stroke="#E2E4E8" stroke-width="1.2"/>
+  </g>
+
+  <text x="50" y="65" font-family="PingFang SC, Inter, sans-serif" font-size="18" font-weight="700" fill="#1F2937">设备运行统计</text>
+  <rect x="360" y="48" width="90" height="26" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="405" y="66" font-family="Arial" font-size="12" fill="#6B7280" text-anchor="middle">实时数据</text>
+  <line x1="50" y1="85" x2="450" y2="85" stroke="#F3F4F6" stroke-width="1"/>
+
+  <g transform="translate(130, 185)">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#F3F4F6" stroke-width="14"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="url(#grad-primary-2)" stroke-width="14" stroke-linecap="round" stroke-dasharray="330 440" transform="rotate(-90)"/>
+    <text x="0" y="5" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#111827" text-anchor="middle">1,284</text>
+    <text x="0" y="28" font-family="PingFang SC, sans-serif" font-size="12" fill="#9CA3AF" text-anchor="middle">设备总数</text>
+  </g>
+
+  <g transform="translate(260, 130)">
+    <g>
+      <circle cx="0" cy="0" r="4" fill="#3B82F6"/>
+      <text x="15" y="5" font-family="PingFang SC" font-size="14" fill="#4B5563">在线设备</text>
+      <text x="160" y="5" font-family="Inter" font-size="16" font-weight="600" fill="#111827" text-anchor="end">982</text>
+      <rect x="125" y="-8" width="40" height="18" rx="4" fill="#ECFDF5"/>
+      <text x="145" y="5" font-family="Inter" font-size="10" fill="#059669" text-anchor="middle">76%</text>
+    </g>
+    <g transform="translate(0, 45)">
+      <circle cx="0" cy="0" r="4" fill="#E5E7EB"/>
+      <text x="15" y="5" font-family="PingFang SC" font-size="14" fill="#4B5563">离线设备</text>
+      <text x="160" y="5" font-family="Inter" font-size="16" font-weight="600" fill="#111827" text-anchor="end">280</text>
+    </g>
+    <g transform="translate(0, 90)">
+      <circle cx="0" cy="0" r="4" fill="#F59E0B"/>
+      <circle cx="0" cy="0" r="8" fill="#F59E0B" opacity="0.2">
+         <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+         <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="15" y="5" font-family="PingFang SC" font-size="14" fill="#4B5563">故障告警</text>
+      <text x="160" y="5" font-family="Inter" font-size="16" font-weight="600" fill="#D97706" text-anchor="end">22</text>
+    </g>
+  </g>
+</svg>

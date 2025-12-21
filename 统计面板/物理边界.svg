@@ -1,0 +1,109 @@
+<svg width="840" height="300" viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 
+      核心滤镜：双层冷调阴影 
+      适应全白背景，不会显得脏，增加立体悬浮感
+    -->
+    <filter id="clean-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- 小阴影：清晰边缘 -->
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.1"/>
+      <!-- 大阴影：柔和氛围 -->
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#64748B" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- 蓝色渐变填充 -->
+    <linearGradient id="chart-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ==================================================
+       组件 1: 趋势指标卡 (Trend Card)
+       ================================================== -->
+  <g transform="translate(20, 20)">
+    <!-- 卡片背景：白底 + 浅灰描边 + 阴影 -->
+    <rect width="250" height="260" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#clean-shadow)"/>
+    
+    <!-- 标题栏 -->
+    <circle cx="36" cy="36" r="16" fill="#EFF6FF"/> <!-- 图标底色 -->
+    <g stroke="#3B82F6" stroke-width="2" stroke-linecap="round">
+       <path d="M36 28 V32 M36 40 V42" />
+       <circle cx="36" cy="40" r="2" fill="none"/>
+    </g>
+    <text x="64" y="40" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#475569">机房温度</text>
+    <circle cx="220" cy="36" r="4" fill="#22C55E"/> <!-- 状态点 -->
+
+    <!-- 数据展示 -->
+    <text x="24" y="90" font-family="sans-serif" font-size="42" font-weight="700" fill="#1E293B">24.8<tspan font-size="20" fill="#94A3B8" dy="-16">°C</tspan></text>
+
+    <!-- 曲线图 -->
+    <g transform="translate(0, 130)">
+       <path d="M24 60 Q 60 40, 100 50 T 180 20 T 226 40 V 90 H 24 Z" fill="url(#chart-fill)"/>
+       <path d="M24 60 Q 60 40, 100 50 T 180 20 T 226 40" fill="none" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    
+    <!-- 底部辅助信息 -->
+    <text x="24" y="240" font-family="sans-serif" font-size="12" fill="#64748B">实时波动: <tspan fill="#3B82F6" font-weight="600">正常</tspan></text>
+  </g>
+
+
+  <!-- ==================================================
+       组件 2: 统计概览卡 (Stats Card)
+       ================================================== -->
+  <g transform="translate(290, 20)">
+    <rect width="250" height="260" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#clean-shadow)"/>
+
+    <circle cx="36" cy="36" r="16" fill="#F0FDF4"/>
+    <path d="M28 36 H44 M36 28 V44" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/>
+    <text x="64" y="40" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#475569">设备总览</text>
+
+    <!-- 环形图 -->
+    <circle cx="125" cy="110" r="50" fill="none" stroke="#F1F5F9" stroke-width="10"/>
+    <circle cx="125" cy="110" r="50" fill="none" stroke="#3B82F6" stroke-width="10" stroke-dasharray="240 314" stroke-linecap="round" transform="rotate(-90 125 110)"/>
+    <text x="125" y="115" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#1E293B">76%</text>
+
+    <!-- 底部数据块 -->
+    <g transform="translate(24, 180)">
+        <!-- 正常块 -->
+        <rect x="0" y="0" width="95" height="60" rx="8" fill="#F8FAFC" stroke="#F1F5F9"/>
+        <text x="12" y="24" font-size="12" fill="#64748B">在线设备</text>
+        <text x="12" y="46" font-size="18" font-weight="bold" fill="#1E293B">142</text>
+        <rect x="80" y="12" width="6" height="6" rx="3" fill="#22C55E"/>
+
+        <!-- 异常块 -->
+        <rect x="105" y="0" width="95" height="60" rx="8" fill="#FEF2F2" stroke="#FECACA"/>
+        <text x="117" y="24" font-size="12" fill="#B91C1C">离线告警</text>
+        <text x="117" y="46" font-size="18" font-weight="bold" fill="#B91C1C">3</text>
+        <rect x="185" y="12" width="6" height="6" rx="3" fill="#EF4444"/>
+    </g>
+  </g>
+
+
+  <!-- ==================================================
+       组件 3: 控制卡 (Action Card)
+       ================================================== -->
+  <g transform="translate(560, 20)">
+    <rect width="250" height="260" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#clean-shadow)"/>
+
+    <circle cx="36" cy="36" r="16" fill="#FFF7ED"/>
+    <circle cx="36" cy="36" r="6" stroke="#EA580C" stroke-width="2" fill="none"/>
+    <text x="64" y="40" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#475569">总控开关</text>
+    
+    <!-- 中间大图标 -->
+    <g transform="translate(95, 80)">
+       <circle cx="30" cy="30" r="40" fill="#3B82F6" opacity="0.1"/>
+       <circle cx="30" cy="30" r="30" fill="#3B82F6"/>
+       <path d="M30 20 V30" stroke="#FFF" stroke-width="3" stroke-linecap="round"/>
+       <circle cx="30" cy="32" r="12" stroke="#FFF" stroke-width="3" fill="none"/>
+    </g>
+    
+    <text x="125" y="170" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1E293B">已启动</text>
+    <text x="125" y="190" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94A3B8">运行时间: 42h 15m</text>
+
+    <!-- 底部按钮 -->
+    <rect x="24" y="205" width="202" height="36" rx="18" fill="#F1F5F9" style="cursor: pointer"/>
+    <text x="125" y="228" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#64748B">点击停止运行</text>
+  </g>
+
+</svg>
