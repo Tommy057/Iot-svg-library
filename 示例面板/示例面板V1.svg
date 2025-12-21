@@ -1,0 +1,33 @@
+<svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="480" height="380" rx="15" ry="15" fill="#ffffff" stroke="#e0e0e0" stroke-width="2" />
+
+  <text x="250" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0056b3" text-anchor="middle">设备点位示例</text>
+
+  <circle cx="150" y="90" r="6" fill="#ff4d4f" />
+  <text x="165" y="95" font-family="Arial, sans-serif" font-size="14" fill="#666">设备离线</text>
+  
+  <circle cx="280" y="90" r="6" fill="#52c41a" />
+  <text x="295" y="95" font-family="Arial, sans-serif" font-size="14" fill="#666">设备在线</text>
+
+  <line x1="120" y1="180" x2="380" y2="180" stroke="#cccccc" stroke-width="2" stroke-dasharray="5,5" />
+  <line x1="120" y1="280" x2="380" y2="280" stroke="#cccccc" stroke-width="2" stroke-dasharray="5,5" />
+  <line x1="120" y1="180" x2="120" y2="280" stroke="#cccccc" stroke-width="2" stroke-dasharray="5,5" />
+  <line x1="380" y1="180" x2="380" y2="280" stroke="#cccccc" stroke-width="2" stroke-dasharray="5,5" />
+
+  <circle cx="120" y="180" r="12" fill="#ff4d4f" />
+  <text x="120" y="210" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">设备 A</text>
+
+  <circle cx="380" y="180" r="12" fill="#52c41a" />
+  <text x="380" y="210" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">设备 B</text>
+
+  <circle cx="120" y="280" r="12" fill="#52c41a" />
+  <text x="120" y="310" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">设备 C</text>
+
+  <circle cx="380" y="280" r="12" fill="#ff4d4f" />
+  <text x="380" y="310" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">设备 D</text>
+
+  <line x1="30" y1="340" x2="470" y2="340" stroke="#f0f0f0" stroke-width="1" />
+  <text x="250" y="370" font-family="Arial, sans-serif" font-size="12" fill="#999" text-anchor="middle">
+    注：<tspan fill="#ff4d4f">红色</tspan>代表离线，<tspan fill="#52c41a">绿色</tspan>代表在线。系统状态每 30s 自动刷新。
+  </text>
+</svg>

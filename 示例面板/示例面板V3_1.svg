@@ -1,0 +1,85 @@
+<svg width="400" height="260" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 高级弥散阴影：范围大，颜色淡，营造悬浮感 -->
+    <filter id="float-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur"/>
+      <feOffset dx="0" dy="8" result="offsetBlur"/>
+      <feFlood flood-color="#1A202C" flood-opacity="0.08" result="colorBlur"/>
+      <feComposite in="colorBlur" in2="offsetBlur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 绿色渐变：从明亮到深沉，增加质感 -->
+    <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/> <!-- Emerald 400 -->
+      <stop offset="100%" stop-color="#059669"/> <!-- Emerald 600 -->
+    </linearGradient>
+
+    <!-- 红色渐变：从明亮到深沉 -->
+    <linearGradient id="grad-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/> <!-- Red 400 -->
+      <stop offset="100%" stop-color="#DC2626"/> <!-- Red 600 -->
+    </linearGradient>
+  </defs>
+
+  <!-- 主卡片背景 -->
+  <!-- 纯白底色 + 极细浅灰描边 + 弥散阴影 -->
+  <rect x="20" y="20" width="360" height="220" rx="16" fill="#FFFFFF" stroke="#EAECF0" stroke-width="1" filter="url(#float-shadow)"/>
+
+  <!-- 顶部标题区域 -->
+  <g transform="translate(44, 50)">
+    <!-- 蓝色装饰条 (Pill Shape) -->
+    <rect x="-12" y="4" width="4" height="16" rx="2" fill="#3B82F6"/>
+    <!-- 标题文字 -->
+    <text x="0" y="18" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#1F2937">设备实时监测点位</text>
+  </g>
+
+  <!-- 状态展示区域 -->
+  
+  <!-- 左侧：在线状态 (绿色) -->
+  <g transform="translate(44, 90)">
+    <!-- 色块背景 (渐变) -->
+    <rect x="0" y="0" width="145" height="110" rx="12" fill="url(#grad-green)"/>
+    <!-- 右上角装饰圆环 -->
+    <circle cx="120" cy="25" r="40" fill="#FFFFFF" fill-opacity="0.1"/>
+    
+    <!-- 图标组件 -->
+    <g transform="translate(35, 35)">
+        <!-- 外层光晕 -->
+        <circle cx="0" cy="0" r="14" fill="#FFFFFF" fill-opacity="0.2"/>
+        <!-- 白色底圆 -->
+        <circle cx="0" cy="0" r="9" fill="#FFFFFF"/>
+        <!-- 绿色对勾 -->
+        <path d="M-4 0 L-1 3 L4 -3" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+
+    <!-- 状态文字 -->
+    <text x="20" y="80" font-family="'PingFang SC', sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">在线运行</text>
+    <text x="20" y="96" font-family="sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" fill-opacity="0.8">ONLINE</text>
+  </g>
+
+  <!-- 右侧：离线状态 (红色) -->
+  <g transform="translate(211, 90)">
+    <!-- 色块背景 (渐变) -->
+    <rect x="0" y="0" width="145" height="110" rx="12" fill="url(#grad-red)"/>
+    <!-- 右上角装饰圆环 -->
+    <circle cx="120" cy="25" r="40" fill="#FFFFFF" fill-opacity="0.1"/>
+
+    <!-- 图标组件 -->
+    <g transform="translate(35, 35)">
+        <!-- 外层光晕 -->
+        <circle cx="0" cy="0" r="14" fill="#FFFFFF" fill-opacity="0.2"/>
+        <!-- 白色底圆 -->
+        <circle cx="0" cy="0" r="9" fill="#FFFFFF"/>
+        <!-- 红色感叹号 -->
+        <path d="M0 -5 L0 1 M0 5 L0 5.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- 状态文字 -->
+    <text x="20" y="80" font-family="'PingFang SC', sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">设备离线</text>
+    <text x="20" y="96" font-family="sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" fill-opacity="0.8">OFFLINE</text>
+  </g>
+</svg>

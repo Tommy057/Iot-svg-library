@@ -1,0 +1,52 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" style="background-color: #f4f7fb; font-family: Arial, sans-serif;">
+
+  <!-- 顶部信息区 -->
+  <rect x="20" y="20" width="1160" height="100" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="40" y="60" font-size="24" fill="#2f3e4e">设备总数：500</text>
+  <text x="40" y="95" font-size="18" fill="#6c7a8b">在线设备数量：450</text>
+  <text x="400" y="60" font-size="24" fill="#2f3e4e">在线率：90%</text>
+
+  <!-- 区域卡片区 -->
+  <!-- 监控区域卡片 -->
+  <rect x="20" y="140" width="360" height="150" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="40" y="180" font-size="18" fill="#2f3e4e">监控区域</text>
+  <text x="40" y="215" font-size="16" fill="#6c7a8b">设备数：100</text>
+  <text x="40" y="245" font-size="16" fill="#6c7a8b">在线：90</text>
+  <text x="40" y="275" font-size="16" fill="#6c7a8b">离线：10</text>
+
+  <!-- B2F区域卡片 -->
+  <rect x="400" y="140" width="360" height="150" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="420" y="180" font-size="18" fill="#2f3e4e">B2F区域</text>
+  <text x="420" y="215" font-size="16" fill="#6c7a8b">设备数：150</text>
+  <text x="420" y="245" font-size="16" fill="#6c7a8b">在线：140</text>
+  <text x="420" y="275" font-size="16" fill="#6c7a8b">离线：10</text>
+
+  <!-- BMF区域卡片 -->
+  <rect x="780" y="140" width="360" height="150" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="800" y="180" font-size="18" fill="#2f3e4e">BMF区域</text>
+  <text x="800" y="215" font-size="16" fill="#6c7a8b">设备数：250</text>
+  <text x="800" y="245" font-size="16" fill="#6c7a8b">在线：220</text>
+  <text x="800" y="275" font-size="16" fill="#6c7a8b">离线：30</text>
+
+  <!-- 设备列表区 -->
+  <rect x="20" y="310" width="560" height="500" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="40" y="350" font-size="18" fill="#2f3e4e">设备列表</text>
+  <!-- 示例设备 -->
+  <text x="40" y="390" font-size="16" fill="#2f3e4e">设备001：在线</text>
+  <text x="40" y="420" font-size="16" fill="#2f3e4e">设备002：离线</text>
+  <text x="40" y="450" font-size="16" fill="#2f3e4e">设备003：在线</text>
+  <text x="40" y="480" font-size="16" fill="#2f3e4e">设备004：在线</text>
+  <text x="40" y="510" font-size="16" fill="#2f3e4e">设备005：离线</text>
+  <text x="40" y="540" font-size="16" fill="#2f3e4e">设备006：在线</text>
+  <!-- 可以添加更多 -->
+
+  <!-- 报警信息区 -->
+  <rect x="600" y="310" width="560" height="500" rx="8" fill="#f0f4f9" stroke="#e0e6ed" stroke-width="1"/>
+  <text x="620" y="350" font-size="18" fill="#2f3e4e">报警信息</text>
+  <!-- 示例报警 -->
+  <text x="620" y="390" font-size="16" fill="#2f3e4e">2025-12-21 10:00 - 设备002：连接丢失</text>
+  <text x="620" y="420" font-size="16" fill="#2f3e4e">2025-12-21 11:15 - 设备005：电源故障</text>
+  <text x="620" y="450" font-size="16" fill="#2f3e4e">2025-12-21 12:30 - 设备010：信号干扰</text>
+  <!-- 可以添加更多 -->
+
+</svg>

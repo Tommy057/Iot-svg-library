@@ -1,0 +1,48 @@
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Card background: white fill, lightgray stroke, rounded corners -->
+  <rect x="10" y="10" width="480" height="380" rx="10" ry="10" fill="white" stroke="#D3D3D3" stroke-width="1"/>
+
+  <!-- Title: "设备监控仪表盘", blue, top -->
+  <text x="250" y="40" font-size="20" fill="blue" text-anchor="middle">设备监控仪表盘</text>
+
+  <!-- Explanation area below title -->
+  <text x="20" y="70" font-size="12" fill="black">- 红色圆点：设备离线</text>
+  <text x="20" y="90" font-size="12" fill="black">- 绿色圆点：设备在线</text>
+  <text x="20" y="110" font-size="12" fill="black">- 在线率：50% (示例数据)</text>
+
+  <!-- Devices section -->
+  <!-- Device A: red, offline at (100,150) -->
+  <circle cx="100" cy="150" r="12" fill="red"/>
+  <text x="130" y="155" font-size="12" fill="black">设备A (离线)</text>
+
+  <!-- Device B: green, online at (300,150) -->
+  <circle cx="300" cy="150" r="12" fill="green"/>
+  <text x="330" y="155" font-size="12" fill="black">设备B (在线)</text>
+
+  <!-- Device C: green, online at (100,250) -->
+  <circle cx="100" cy="250" r="12" fill="green"/>
+  <text x="130" y="255" font-size="12" fill="black">设备C (在线)</text>
+
+  <!-- Device D: red, offline at (300,250) -->
+  <circle cx="300" cy="250" r="12" fill="red"/>
+  <text x="330" y="255" font-size="12" fill="black">设备D (离线)</text>
+
+  <!-- Dashed lines connecting devices (network associations) -->
+  <line x1="100" y1="150" x2="300" y2="150" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="150" x2="100" y2="250" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="150" x2="300" y2="250" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="250" x2="300" y2="250" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Dashboard metrics: Online rate progress bar -->
+  <text x="20" y="310" font-size="14" fill="black">整体在线率：</text>
+  <!-- Background bar -->
+  <rect x="120" y="300" width="300" height="20" fill="#D3D3D3" rx="5" ry="5"/>
+  <!-- Filled bar (50% example) -->
+  <rect x="120" y="300" width="150" height="20" fill="green" rx="5" ry="5"/>
+  <text x="440" y="315" font-size="12" fill="black">50%</text>
+
+  <!-- Bottom explanation -->
+  <text x="20" y="370" font-size="12" fill="black">红色：离线，绿色：在线。数据为示例，可根据实际调整。</text>
+
+</svg>

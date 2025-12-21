@@ -1,0 +1,50 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Card background: white fill, lightgray stroke, rounded corners -->
+  <rect x="10" y="10" width="580" height="380" rx="10" ry="10" fill="white" stroke="#D3D3D3" stroke-width="1"/>
+
+  <!-- Title: "网络拓扑图", blue, top -->
+  <text x="300" y="40" font-size="20" fill="blue" text-anchor="middle">网络拓扑图</text>
+
+  <!-- Explanation area below title -->
+  <text x="20" y="70" font-size="12" fill="black">- 圆形节点：设备（红色：离线，绿色：在线）</text>
+  <text x="20" y="90" font-size="12" fill="black">- 矩形节点：路由器/交换机</text>
+  <text x="20" y="110" font-size="12" fill="black">- 实线：直接连接，虚线：备用连接</text>
+
+  <!-- Central Router: rectangle at center -->
+  <rect x="260" y="170" width="80" height="40" rx="5" ry="5" fill="#ADD8E6" stroke="black" stroke-width="1"/>
+  <text x="300" y="195" font-size="12" fill="black" text-anchor="middle">路由器</text>
+
+  <!-- Devices -->
+  <!-- Device A: red, offline at top-left -->
+  <circle cx="100" cy="100" r="15" fill="red"/>
+  <text x="100" y="130" font-size="12" fill="black" text-anchor="middle">设备A (离线)</text>
+
+  <!-- Device B: green, online at top-right -->
+  <circle cx="500" cy="100" r="15" fill="green"/>
+  <text x="500" y="130" font-size="12" fill="black" text-anchor="middle">设备B (在线)</text>
+
+  <!-- Device C: green, online at bottom-left -->
+  <circle cx="100" cy="300" r="15" fill="green"/>
+  <text x="100" y="330" font-size="12" fill="black" text-anchor="middle">设备C (在线)</text>
+
+  <!-- Device D: red, offline at bottom-right -->
+  <circle cx="500" cy="300" r="15" fill="red"/>
+  <text x="500" y="330" font-size="12" fill="black" text-anchor="middle">设备D (离线)</text>
+
+  <!-- Connections: solid lines to router -->
+  <line x1="100" y1="100" x2="300" y2="190" stroke="black" stroke-width="2"/>
+  <line x1="500" y1="100" x2="300" y2="190" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="300" x2="300" y2="190" stroke="black" stroke-width="2"/>
+  <line x1="500" y1="300" x2="300" y2="190" stroke="black" stroke-width="2"/>
+
+  <!-- Dashed lines for backup connections between devices -->
+  <line x1="100" y1="100" x2="500" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="300" x2="500" y2="300" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="100" x2="100" y2="300" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="500" y1="100" x2="500" y2="300" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Bottom explanation -->
+  <text x="20" y="370" font-size="12" fill="black">示例星型拓扑结构，中心路由器连接设备。数据为示例，可根据实际调整。</text>
+
+</svg>

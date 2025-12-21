@@ -1,0 +1,78 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#f4f7f9" rx="10" />
+  <text x="20" y="30" font-family="Arial" font-size="18" font-weight="bold" fill="#333">系统集成平台 - 风机监控单元 (ID: FAN-001)</text>
+
+  <g id="Piping">
+    <path d="M 50 200 L 150 200" stroke="#3498db" stroke-width="20" fill="none" />
+    <polygon points="100,190 120,200 100,210" fill="#ffffff">
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+    </polygon>
+    <text x="55" y="185" font-family="Arial" font-size="12" fill="#3498db">进气口 (新鲜空气)</text>
+    
+    <path d="M 350 200 L 450 200" stroke="#e67e22" stroke-width="20" fill="none" />
+    <polygon points="380,190 400,200 380,210" fill="#ffffff">
+      <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" />
+    </polygon>
+    <text x="365" y="185" font-family="Arial" font-size="12" fill="#e67e22">排气口 (废气)</text>
+    
+    <circle cx="150" cy="200" r="5" fill="#555" />
+    <circle cx="350" cy="200" r="5" fill="#555" />
+  </g>
+
+  <g id="Fan_Assembly">
+    <rect x="150" y="130" width="200" height="140" rx="5" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="2" />
+    <text x="225" y="120" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">风机主体</text>
+    
+    <circle cx="250" cy="200" r="55" fill="#ecf0f1" stroke="#95a5a6" stroke-width="3" />
+    
+    <g id="Fan_Blades">
+      <circle cx="250" cy="200" r="8" fill="#2c3e50" />
+      <path d="M 250 200 L 250 155 A 10 10 0 0 1 265 165 Z" fill="#34495e" />
+      <path d="M 250 200 L 295 200 A 10 10 0 0 1 285 215 Z" fill="#34495e" />
+      <path d="M 250 200 L 250 245 A 10 10 0 0 1 235 235 Z" fill="#34495e" />
+      <path d="M 250 200 L 205 200 A 10 10 0 0 1 215 185 Z" fill="#34495e" />
+      
+      <animateTransform attributeName="transform" type="rotate" from="0 250 200" to="360 250 200" dur="2s" repeatCount="indefinite" />
+    </g>
+
+    <g id="Status_Normal">
+      <circle cx="330" cy="150" r="10" fill="#2ecc71" />
+      <path d="M 326 150 L 329 153 L 334 147" stroke="white" stroke-width="2" fill="none" />
+    </g>
+  </g>
+
+  <g id="Data_Panel">
+    <rect x="480" y="50" width="280" height="220" rx="8" fill="#ffffff" stroke="#dcdde1" stroke-width="1" shadow="5" />
+    <rect x="480" y="50" width="280" height="40" rx="8" fill="#2f3640" />
+    <text x="495" y="75" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">风机状态与环境参数</text>
+    
+    <text x="500" y="110" font-family="Arial" font-size="14" fill="#2f3542">运行状态：<tspan fill="#2ecc71" font-weight="bold">正常</tspan></text>
+    <text x="500" y="140" font-family="Arial" font-size="14" fill="#2f3542">温度：25.4 °C</text>
+    <text x="500" y="170" font-family="Arial" font-size="14" fill="#2f3542">湿度：60 %</text>
+    <text x="500" y="200" font-family="Arial" font-size="14" fill="#2f3542">风速：3.5 m/s</text>
+    <text x="500" y="230" font-family="Arial" font-size="14" fill="#2f3542">CO2 浓度：412 ppm</text>
+    <text x="500" y="260" font-family="Arial" font-size="14" fill="#2f3542">连接状态：<tspan fill="#3498db">连接正常</tspan></text>
+  </g>
+
+  <g id="Control_Panel">
+    <rect x="50" y="320" width="710" height="150" rx="10" fill="#ffffff" stroke="#dcdde1" />
+    <text x="70" y="345" font-family="Arial" font-size="14" font-weight="bold" fill="#2f3640">操作控制面板</text>
+    
+    <rect x="70" y="370" width="100" height="40" rx="5" fill="#2ecc71" cursor="pointer" />
+    <text x="120" y="395" font-family="Arial" font-size="14" fill="white" text-anchor="middle">启动</text>
+    
+    <rect x="180" y="370" width="100" height="40" rx="5" fill="#e74c3c" cursor="pointer" />
+    <text x="230" y="395" font-family="Arial" font-size="14" fill="white" text-anchor="middle">停止</text>
+    
+    <rect x="310" y="370" width="120" height="40" rx="5" fill="#f1c40f" cursor="pointer" />
+    <text x="370" y="395" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">手动模式</text>
+    
+    <rect x="440" y="370" width="120" height="40" rx="5" fill="#3498db" cursor="pointer" />
+    <text x="500" y="395" font-family="Arial" font-size="14" fill="white" text-anchor="middle">自动模式</text>
+    
+    <g transform="translate(600, 370)">
+       <path d="M 20 0 L 40 35 L 0 35 Z" fill="#e74c3c" opacity="0.3" />
+       <text x="10" y="55" font-family="Arial" font-size="12" fill="#7f8c8d">故障告警 (静默)</text>
+    </g>
+  </g>
+</svg>

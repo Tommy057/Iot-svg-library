@@ -1,0 +1,65 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F4F7FB"/>
+  
+  <rect x="20" y="20" width="760" height="80" rx="12" fill="#FFFFFF" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));"/>
+  <text x="40" y="50" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">总设备数</text>
+  <text x="40" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2F3E4E">1,284</text>
+  
+  <text x="180" y="50" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">在线设备</text>
+  <text x="180" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4A90E2">1,256</text>
+  
+  <text x="320" y="50" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">在线率</text>
+  <text x="320" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#50B081">97.8%</text>
+
+  <rect x="20" y="120" width="240" height="120" rx="10" fill="#F0F4F9"/>
+  <text x="35" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2F3E4E">监控区域 (CCTV)</text>
+  <text x="35" y="180" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">设备总数: 48</text>
+  <text x="35" y="205" font-family="Arial, sans-serif" font-size="13" fill="#50B081">● 在线: 46</text>
+  <text x="130" y="205" font-family="Arial, sans-serif" font-size="13" fill="#E57373">● 离线: 2</text>
+
+  <rect x="280" y="120" width="240" height="120" rx="10" fill="#F0F4F9"/>
+  <text x="295" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2F3E4E">B2F 供电/空调</text>
+  <text x="295" y="180" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">设备总数: 156</text>
+  <text x="295" y="205" font-family="Arial, sans-serif" font-size="13" fill="#50B081">● 在线: 154</text>
+  <text x="390" y="205" font-family="Arial, sans-serif" font-size="13" fill="#E57373">● 离线: 2</text>
+
+  <rect x="540" y="120" width="240" height="120" rx="10" fill="#F0F4F9"/>
+  <text x="555" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2F3E4E">BMF 门禁系统</text>
+  <text x="555" y="180" font-family="Arial, sans-serif" font-size="14" fill="#6C7A8B">设备总数: 92</text>
+  <text x="555" y="205" font-family="Arial, sans-serif" font-size="13" fill="#50B081">● 在线: 92</text>
+  <text x="650" y="205" font-family="Arial, sans-serif" font-size="13" fill="#6C7A8B">● 离线: 0</text>
+
+  <rect x="20" y="260" width="370" height="320" rx="12" fill="#FFFFFF"/>
+  <text x="40" y="295" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2F3E4E">设备实时状态清单</text>
+  
+  <g transform="translate(40, 315)">
+    <rect width="330" height="35" rx="4" fill="#F8FAFC"/>
+    <text x="10" y="22" font-family="Arial, sans-serif" font-size="13" fill="#2F3E4E">DEV-CCTV-1042</text>
+    <rect x="270" y="8" width="50" height="20" rx="10" fill="#E8F5E9"/>
+    <text x="281" y="22" font-family="Arial, sans-serif" font-size="11" fill="#2E7D32">在线</text>
+    
+    <rect y="45" width="330" height="35" rx="4" fill="#F8FAFC"/>
+    <text x="10" y="67" font-family="Arial, sans-serif" font-size="13" fill="#2F3E4E">DEV-HVAC-B2-04</text>
+    <rect x="270" y="53" width="50" height="20" rx="10" fill="#FFEBEE"/>
+    <text x="281" y="67" font-family="Arial, sans-serif" font-size="11" fill="#C62828">离线</text>
+
+    <rect y="90" width="330" height="35" rx="4" fill="#F8FAFC"/>
+    <text x="10" y="112" font-family="Arial, sans-serif" font-size="13" fill="#2F3E4E">DEV-DOOR-BMF-12</text>
+    <rect x="270" y="98" width="50" height="20" rx="10" fill="#E8F5E9"/>
+    <text x="281" y="112" font-family="Arial, sans-serif" font-size="11" fill="#2E7D32">在线</text>
+  </g>
+
+  <rect x="410" y="260" width="370" height="320" rx="12" fill="#FFFFFF"/>
+  <text x="430" y="295" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2F3E4E">报警事件监控</text>
+  
+  <g transform="translate(430, 315)">
+    <circle cx="5" cy="18" r="4" fill="#E57373"/>
+    <text x="20" y="22" font-family="Arial, sans-serif" font-size="13" fill="#2F3E4E">10:24:15 - HVAC 压力异常 (B2F-A区)</text>
+    
+    <circle cx="5" cy="58" r="4" fill="#FFB74D"/>
+    <text x="20" y="62" font-family="Arial, sans-serif" font-size="13" fill="#2F3E4E">10:21:03 - 门禁通讯超时 (BMF-西门)</text>
+    
+    <line x1="0" y1="40" x2="330" y2="40" stroke="#F0F4F9" stroke-width="1"/>
+    <line x1="0" y1="80" x2="330" y2="80" stroke="#F0F4F9" stroke-width="1"/>
+  </g>
+</svg>

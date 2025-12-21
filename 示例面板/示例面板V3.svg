@@ -1,0 +1,58 @@
+<svg width="320" height="240" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 定义卡片阴影 -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+    <!-- 定义在线状态的呼吸动画 -->
+    <style>
+      .pulse { animation: pulse-animation 2s infinite; }
+      @keyframes pulse-animation {
+        0% { opacity: 0.4; r: 6; }
+        50% { opacity: 0.1; r: 10; }
+        100% { opacity: 0.4; r: 6; }
+      }
+    </style>
+  </defs>
+
+  <!-- 卡片背景 -->
+  <rect x="10" y="10" width="300" height="220" rx="12" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8E8E8" stroke-width="1"/>
+
+  <!-- 标题区域 -->
+  <text x="35" y="50" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#333333">设备状态图例</text>
+  <line x1="10" y1="70" x2="310" y2="70" stroke="#F0F0F0" stroke-width="1"/>
+
+  <!-- 1. 在线状态 (绿色) -->
+  <g transform="translate(35, 100)">
+    <!-- 外圈光晕 (动画) -->
+    <circle cx="0" cy="0" r="6" fill="#52C41A" class="pulse"/>
+    <!-- 实心点 -->
+    <circle cx="0" cy="0" r="5" fill="#52C41A"/>
+    <text x="25" y="5" font-family="sans-serif" font-size="14" fill="#333333">在线运行 (Online)</text>
+    <text x="25" y="22" font-family="sans-serif" font-size="10" fill="#999999">设备正常连接且数据传输中</text>
+  </g>
+
+  <!-- 2. 离线状态 (红色) -->
+  <g transform="translate(35, 145)">
+    <circle cx="0" cy="0" r="5" fill="#FF4D4F"/>
+    <text x="25" y="5" font-family="sans-serif" font-size="14" fill="#333333">设备离线 (Offline)</text>
+    <text x="25" y="22" font-family="sans-serif" font-size="10" fill="#999999">网络断开或电源关闭</text>
+  </g>
+
+  <!-- 3. 告警状态 (橙色) -->
+  <g transform="translate(170, 100)">
+    <circle cx="0" cy="0" r="5" fill="#FAAD14"/>
+    <text x="15" y="5" font-family="sans-serif" font-size="14" fill="#333333">异常告警 (Warning)</text>
+    <text x="15" y="22" font-family="sans-serif" font-size="10" fill="#999999">参数超限或轻微故障</text>
+  </g>
+
+  <!-- 4. 维护/未知 (灰色) -->
+  <g transform="translate(170, 145)">
+    <circle cx="0" cy="0" r="5" fill="#BFBFBF"/>
+    <text x="15" y="5" font-family="sans-serif" font-size="14" fill="#333333">维护/未知 (Unknown)</text>
+    <text x="15" y="22" font-family="sans-serif" font-size="10" fill="#999999">未配置或正在维护中</text>
+  </g>
+  
+  <!-- 底部装饰 -->
+  <rect x="35" y="190" width="40" height="4" rx="2" fill="#E8E8E8"/>
+</svg>

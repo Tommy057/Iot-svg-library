@@ -1,0 +1,39 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Card background: white fill, lightgray stroke, rounded corners -->
+  <rect x="10" y="10" width="380" height="280" rx="10" ry="10" fill="white" stroke="#D3D3D3" stroke-width="1"/>
+
+  <!-- Title: "设备点位示例", blue, top -->
+  <text x="200" y="40" font-size="20" fill="blue" text-anchor="middle">设备点位示例</text>
+
+  <!-- Explanation area below title -->
+  <text x="20" y="70" font-size="12" fill="black">- 红色圆点表示设备离线。</text>
+  <text x="20" y="90" font-size="12" fill="black">- 绿色圆点表示设备在线。</text>
+
+  <!-- Devices -->
+  <!-- Device A: red, offline at (100,130) -->
+  <circle cx="100" cy="130" r="10" fill="red"/>
+  <text x="120" y="135" font-size="12" fill="black">设备A</text>
+
+  <!-- Device B: green, online at (300,130) -->
+  <circle cx="300" cy="130" r="10" fill="green"/>
+  <text x="320" y="135" font-size="12" fill="black">设备B</text>
+
+  <!-- Device C: green, online at (100,220) -->
+  <circle cx="100" cy="220" r="10" fill="green"/>
+  <text x="120" y="225" font-size="12" fill="black">设备C</text>
+
+  <!-- Device D: red, offline at (300,220) -->
+  <circle cx="300" cy="220" r="10" fill="red"/>
+  <text x="320" y="225" font-size="12" fill="black">设备D</text>
+
+  <!-- Dashed lines connecting devices -->
+  <line x1="100" y1="130" x2="300" y2="130" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="130" x2="100" y2="220" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="130" x2="300" y2="220" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="220" x2="300" y2="220" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Bottom explanation -->
+  <text x="20" y="270" font-size="12" fill="black">红色：离线，绿色：在线</text>
+
+</svg>

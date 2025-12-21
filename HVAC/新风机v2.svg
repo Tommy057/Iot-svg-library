@@ -1,0 +1,86 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f0f0f0" />
+
+  <!-- Fan Section -->
+  <g transform="translate(100, 100)">
+    <!-- Fan Housing -->
+    <rect x="0" y="0" width="200" height="150" fill="#cccccc" stroke="#000000" stroke-width="2" />
+    
+    <!-- Fan Blades (simulating rotation with animation) -->
+    <circle cx="100" cy="75" r="60" fill="none" stroke="#888888" stroke-width="2" />
+    <g id="blades" transform="translate(100,75)">
+      <line x1="0" y1="-60" x2="0" y2="60" stroke="#666666" stroke-width="4" />
+      <line x1="-60" y1="0" x2="60" y2="0" stroke="#666666" stroke-width="4" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2s" repeatCount="indefinite" />
+    </g>
+    
+    <!-- Inlet (Left) -->
+    <rect x="-50" y="50" width="50" height="50" fill="#ffffff" stroke="#000000" stroke-width="2" />
+    <path d="M-40 75 L-20 65 M-20 65 L-20 85 M-20 85 L-40 75" fill="none" stroke="blue" stroke-width="3" /> <!-- Blue arrow -->
+    
+    <!-- Outlet (Right) -->
+    <rect x="200" y="50" width="50" height="50" fill="#ffffff" stroke="#000000" stroke-width="2" />
+    <path d="M210 75 L230 65 M230 65 L230 85 M230 85 L210 75" fill="none" stroke="orange" stroke-width="3" transform="scale(-1,1) translate(-440,0)" /> <!-- Orange arrow, flipped -->
+    
+    <!-- Status Indicator -->
+    <g transform="translate(80, 120)">
+      <circle cx="0" cy="0" r="15" fill="green" />
+      <path d="M-5 -5 L0 5 L10 -10" fill="none" stroke="white" stroke-width="3" /> <!-- Check mark -->
+    </g>
+    <!-- Alternative Fault: <polygon points="-10,-10 10,-10 0,10" fill="red" /> -->
+  </g>
+
+  <!-- Pipes -->
+  <!-- Inlet Pipe -->
+  <g transform="translate(50, 150)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="blue" stroke-width="10" />
+    <circle cx="50" cy="0" r="5" fill="blue" /> <!-- Connection -->
+    <path d="M10 0 L30 -10 M30 -10 L30 10 M30 10 L10 0" fill="none" stroke="blue" stroke-width="3" transform="scale(-1,1) translate(-40,0)" /> <!-- Arrow pointing right, flipped to left -->
+  </g>
+  
+  <!-- Outlet Pipe -->
+  <g transform="translate(300, 150)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="orange" stroke-width="10" />
+    <circle cx="0" cy="0" r="5" fill="orange" /> <!-- Connection -->
+    <path d="M10 0 L30 -10 M30 -10 L30 10 M30 10 L10 0" fill="none" stroke="orange" stroke-width="3" /> <!-- Arrow pointing right -->
+  </g>
+
+  <!-- Parameter Display Panel -->
+  <g transform="translate(400, 100)">
+    <rect x="0" y="0" width="300" height="200" fill="#e0e0e0" stroke="#000000" stroke-width="2" />
+    <text x="10" y="30" font-size="16" font-weight="bold">风机状态: 正常</text>
+    <text x="10" y="60" font-size="14">温度: 25°C</text>
+    <text x="10" y="90" font-size="14">湿度: 60%</text>
+    <text x="10" y="120" font-size="14">风速: 3.5 m/s</text>
+    <text x="10" y="150" font-size="14">CO2浓度: 400 ppm</text>
+    <text x="10" y="180" font-size="14">设备连接: 连接正常</text>
+  </g>
+
+  <!-- Control Buttons -->
+  <g transform="translate(400, 320)">
+    <rect x="0" y="0" width="70" height="40" fill="green" stroke="#000000" stroke-width="2" />
+    <text x="10" y="25" fill="white" font-size="14">启动</text>
+    
+    <rect x="80" y="0" width="70" height="40" fill="red" stroke="#000000" stroke-width="2" />
+    <text x="90" y="25" fill="white" font-size="14">停止</text>
+    
+    <rect x="160" y="0" width="100" height="40" fill="yellow" stroke="#000000" stroke-width="2" />
+    <text x="170" y="25" fill="black" font-size="14">手动控制</text>
+    
+    <rect x="270" y="0" width="100" height="40" fill="blue" stroke="#000000" stroke-width="2" />
+    <text x="280" y="25" fill="white" font-size="14">自动控制</text>
+  </g>
+
+  <!-- Labels -->
+  <text x="100" y="80" font-size="16" font-weight="bold">风机</text>
+  <text x="50" y="130" font-size="14">进气管道</text>
+  <text x="300" y="130" font-size="14">排气管道</text>
+  <text x="400" y="80" font-size="16" font-weight="bold">参数显示面板</text>
+  <text x="400" y="300" font-size="16" font-weight="bold">控制面板</text>
+
+  <!-- Dividers -->
+  <line x1="350" y1="50" x2="350" y2="400" stroke="#aaaaaa" stroke-width="2" stroke-dasharray="5,5" />
+
+</svg>

@@ -1,0 +1,46 @@
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="card-shadow" x="0" y="0" width="500" height="300" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="#000" flood-opacity="0.05"/>
+    </filter>
+    
+    <filter id="glow-online" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <filter id="glow-offline" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EE7B7"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="grad-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="50" y="40" width="400" height="220" rx="30" fill="#FFFFFF" filter="url(#card-shadow)"/>
+
+  <g transform="translate(100, 90)">
+    <rect width="130" height="120" rx="20" fill="#F9FAFB"/>
+    <rect x="35" y="25" width="60" height="40" rx="12" fill="url(#grad-green)" filter="url(#glow-online)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="65" y="95" font-family="PingFang SC, Inter, sans-serif" font-size="18" font-weight="600" fill="#065F46" text-anchor="middle">在线</text>
+  </g>
+
+  <g transform="translate(270, 90)">
+    <rect width="130" height="120" rx="20" fill="#F9FAFB"/>
+    <rect x="35" y="25" width="60" height="40" rx="12" fill="url(#grad-red)" filter="url(#glow-offline)">
+      <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="65" y="95" font-family="PingFang SC, Inter, sans-serif" font-size="18" font-weight="600" fill="#991B1B" text-anchor="middle">离线</text>
+  </g>
+
+  <rect x="235" y="240" width="30" height="4" rx="2" fill="#E5E7EB"/>
+</svg>
