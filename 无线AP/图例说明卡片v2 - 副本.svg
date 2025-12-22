@@ -1,0 +1,78 @@
+<svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 宝石渐变定义 -->
+    <linearGradient id="gem-green" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/> <!-- Bright Green -->
+      <stop offset="100%" stop-color="#16A34A"/> <!-- Deep Green -->
+    </linearGradient>
+    <linearGradient id="gem-red" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/> <!-- Bright Red -->
+      <stop offset="100%" stop-color="#DC2626"/> <!-- Deep Red -->
+    </linearGradient>
+
+    <!-- 柔和的悬浮阴影 -->
+    <filter id="panel-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#64748B" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- 面板主背景 -->
+  <rect width="280" height="200" rx="16" fill="#FFFFFF" stroke="#F8FAFC" stroke-width="1" filter="url(#panel-shadow)"/>
+
+  <!-- 标题区域：居中对齐 -->
+  <g transform="translate(140, 30)">
+     <!-- 装饰线条 -->
+     <line x1="-40" y1="5" x2="40" y2="5" stroke="#E2E8F0" stroke-width="1"/>
+     <!-- 标题背景遮罩 (防止线条穿过文字) -->
+     <rect x="-45" y="-10" width="90" height="20" fill="#FFFFFF"/>
+     <text x="0" y="5" text-anchor="middle" font-family="'PingFang SC', sans-serif" font-size="14" font-weight="700" fill="#64748B">状态图例说明</text>
+  </g>
+
+  <!-- Row 1: 在线状态 (绿色氛围卡片) -->
+  <g transform="translate(16, 60)">
+     <!-- 背景色块: 撑满宽度，解决"不饱满" -->
+     <rect width="248" height="56" rx="10" fill="#F0FDF4" stroke="#DCFCE7" stroke-width="1"/>
+     
+     <!-- 图标 (左) -->
+     <g transform="translate(28, 28)">
+        <circle cx="0" cy="0" r="14" fill="#4ADE80" opacity="0.2"/>
+        <circle cx="0" cy="0" r="8" fill="url(#gem-green)"/>
+        <!-- 宝石高光 -->
+        <circle cx="0" cy="-3" r="2.5" fill="#FFFFFF" opacity="0.4"/>
+     </g>
+
+     <!-- 文字 (中) -->
+     <text x="56" y="24" font-family="sans-serif" font-size="15" font-weight="700" fill="#14532D">正常在线</text>
+     <text x="56" y="40" font-family="sans-serif" font-size="11" font-weight="500" fill="#16A34A" opacity="0.8">Device Online</text>
+
+     <!-- 装饰 (右): 信号条，解决"太偏左" -->
+     <g transform="translate(210, 28)">
+        <rect x="-12" y="2" width="3" height="6" rx="1" fill="#86EFAC"/>
+        <rect x="-6" y="-2" width="3" height="10" rx="1" fill="#4ADE80"/>
+        <rect x="0" y="-6" width="3" height="14" rx="1" fill="#16A34A"/>
+     </g>
+  </g>
+
+  <!-- Row 2: 离线状态 (红色氛围卡片) -->
+  <g transform="translate(16, 128)">
+     <!-- 背景色块 -->
+     <rect width="248" height="56" rx="10" fill="#FEF2F2" stroke="#FEE2E2" stroke-width="1"/>
+     
+     <!-- 图标 (左) -->
+     <g transform="translate(28, 28)">
+        <circle cx="0" cy="0" r="14" fill="#F87171" opacity="0.15"/>
+        <circle cx="0" cy="0" r="8" fill="url(#gem-red)"/>
+        <circle cx="0" cy="-3" r="2.5" fill="#FFFFFF" opacity="0.4"/>
+     </g>
+
+     <!-- 文字 (中) -->
+     <text x="56" y="24" font-family="sans-serif" font-size="15" font-weight="700" fill="#7F1D1D">连接中断</text>
+     <text x="56" y="40" font-family="sans-serif" font-size="11" font-weight="500" fill="#DC2626" opacity="0.8">Connection Lost</text>
+
+     <!-- 装饰 (右): 断链图标，解决"太偏左" -->
+     <g transform="translate(210, 28)">
+        <path d="M-8 0 L8 0" stroke="#F87171" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+        <path d="M-2 -5 L2 5 M2 -5 L-2 5" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+     </g>
+  </g>
+</svg>

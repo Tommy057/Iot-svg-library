@@ -1,0 +1,324 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 卡片投影 (柔和悬浮感) -->
+    <filter id="card-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#334155" flood-opacity="0.08"/>
+    </filter>
+    
+    <!-- 2. 装饰渐变 (仅用于图标背景/形状，兼容性好) -->
+    <linearGradient id="bg-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="bg-orange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </linearGradient>
+    <linearGradient id="bg-purple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3E8FF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
+    </linearGradient>
+    <linearGradient id="bg-slate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 整体画布背景 -->
+  <rect width="1200" height="640" fill="#F8FAFC"/>
+
+  <!-- ========================================================
+       SECTION 1: 顶部核心 KPI 总览 (Header)
+       ======================================================== -->
+  <g transform="translate(20, 20)">
+    <!-- Header 背景 -->
+    <rect width="1160" height="100" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#card-shadow)"/>
+    
+    <!-- 左侧标题 -->
+    <g transform="translate(30, 35)">
+       <rect x="0" y="0" width="6" height="30" rx="3" fill="#2563EB"/>
+       <text x="20" y="22" font-family="'PingFang SC', sans-serif" font-size="20" font-weight="800" fill="#1E293B">项目无线总览</text>
+    </g>
+
+    <!-- 右侧指标组 -->
+    <g transform="translate(320, 20)">
+       <!-- KPI 1: AP总数 -->
+       <g transform="translate(0, 0)">
+         <text x="0" y="15" font-size="12" fill="#64748B">全网设备 (AP)</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#2563EB">1,680</text>
+         <text x="110" y="46" font-size="14" fill="#94A3B8">台</text>
+       </g>
+       <!-- 分割线 -->
+       <line x1="180" y1="10" x2="180" y2="60" stroke="#F1F5F9" stroke-width="2"/>
+
+       <!-- KPI 2: 在线率 -->
+       <g transform="translate(220, 0)">
+         <text x="0" y="15" font-size="12" fill="#64748B">整体在线率</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#15803D">98.2%</text>
+         <!-- 趋势箭头 -->
+         <path d="M140 45 L145 40 L150 45" stroke="#16A34A" stroke-width="2" fill="none"/>
+         <text x="155" y="45" font-size="12" font-weight="700" fill="#16A34A">稳定</text>
+       </g>
+       <!-- 分割线 -->
+       <line x1="420" y1="10" x2="420" y2="60" stroke="#F1F5F9" stroke-width="2"/>
+
+       <!-- KPI 3: 告警 -->
+       <g transform="translate(460, 0)">
+         <text x="0" y="15" font-size="12" fill="#64748B">当前告警 (Active)</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#DC2626">5</text>
+         <!-- 状态胶囊 -->
+         <rect x="60" y="30" width="70" height="22" rx="11" fill="#FEE2E2"/>
+         <text x="95" y="45" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">需处理</text>
+       </g>
+    </g>
+  </g>
+
+
+  <!-- ========================================================
+       SECTION 2: 中部地面建筑层 (Ground Level)
+       Layout: 4 Columns
+       ======================================================== -->
+  <g transform="translate(20, 140)">
+    <!-- 区域层级标题 -->
+    <text x="10" y="0" font-family="sans-serif" font-size="14" font-weight="700" fill="#475569">地面建筑区域 (Ground Level)</text>
+    
+    <!-- 1. 研发楼 (蓝色主题) -->
+    <g transform="translate(0, 20)">
+       <rect width="280" height="200" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#card-shadow)"/>
+       <rect width="280" height="4" rx="2" fill="#3B82F6"/>
+       
+       <g transform="translate(20, 30)">
+          <!-- Icon -->
+          <circle cx="20" cy="20" r="20" fill="#EFF6FF"/>
+          <path d="M12 20 H28 M20 12 V28" stroke="#3B82F6" stroke-width="2"/>
+          <text x="50" y="25" font-family="sans-serif" font-size="16" font-weight="700" fill="#1E293B">研发楼</text>
+          
+          <!-- Data -->
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">AP 总数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#1E293B">450</text>
+             <text x="120" y="0" font-size="12" fill="#64748B">当前用户</text>
+             <text x="120" y="24" font-size="24" font-weight="800" fill="#3B82F6">1,204</text>
+          </g>
+          <!-- Status -->
+          <g transform="translate(0, 110)">
+             <text x="0" y="0" font-size="12" fill="#64748B">在线率 99.5%</text>
+             <rect x="0" y="10" width="240" height="6" rx="3" fill="#F1F5F9"/>
+             <rect x="0" y="10" width="238" height="6" rx="3" fill="#22C55E"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 2. 宿舍楼 (橙色主题) -->
+    <g transform="translate(293, 20)">
+       <rect width="280" height="200" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#card-shadow)"/>
+       <rect width="280" height="4" rx="2" fill="#F97316"/>
+       
+       <g transform="translate(20, 30)">
+          <circle cx="20" cy="20" r="20" fill="#FFF7ED"/>
+          <path d="M14 20 L20 14 L26 20" stroke="#F97316" stroke-width="2" fill="none"/>
+          <text x="50" y="25" font-family="sans-serif" font-size="16" font-weight="700" fill="#1E293B">宿舍楼</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">AP 总数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#1E293B">320</text>
+             <text x="120" y="0" font-size="12" fill="#64748B">当前用户</text>
+             <text x="120" y="24" font-size="24" font-weight="800" fill="#F97316">890</text>
+          </g>
+          <g transform="translate(0, 110)">
+             <text x="0" y="0" font-size="12" fill="#64748B">在线率 98%</text>
+             <rect x="0" y="10" width="240" height="6" rx="3" fill="#F1F5F9"/>
+             <rect x="0" y="10" width="235" height="6" rx="3" fill="#22C55E"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 3. 综合楼 (紫色主题) -->
+    <g transform="translate(586, 20)">
+       <rect width="280" height="200" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#card-shadow)"/>
+       <rect width="280" height="4" rx="2" fill="#A855F7"/>
+       
+       <g transform="translate(20, 30)">
+          <circle cx="20" cy="20" r="20" fill="#F3E8FF"/>
+          <rect x="14" y="14" width="12" height="12" stroke="#A855F7" stroke-width="2"/>
+          <text x="50" y="25" font-family="sans-serif" font-size="16" font-weight="700" fill="#1E293B">综合楼</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">AP 总数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#1E293B">180</text>
+             <text x="120" y="0" font-size="12" fill="#64748B">当前用户</text>
+             <text x="120" y="24" font-size="24" font-weight="800" fill="#A855F7">420</text>
+          </g>
+          <g transform="translate(0, 110)">
+             <text x="0" y="0" font-size="12" fill="#64748B">在线率 100%</text>
+             <rect x="0" y="10" width="240" height="6" rx="3" fill="#F1F5F9"/>
+             <rect x="0" y="10" width="240" height="6" rx="3" fill="#22C55E"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 4. 厂房 (工业灰/黄) -->
+    <g transform="translate(880, 20)">
+       <rect width="280" height="200" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#card-shadow)"/>
+       <rect width="280" height="4" rx="2" fill="#64748B"/>
+       
+       <g transform="translate(20, 30)">
+          <circle cx="20" cy="20" r="20" fill="#F1F5F9"/>
+          <path d="M12 28 L12 12 L20 12 L20 20 L28 20 L28 28" stroke="#64748B" stroke-width="2" fill="none"/>
+          <text x="50" y="25" font-family="sans-serif" font-size="16" font-weight="700" fill="#1E293B">生产厂房</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">AP 总数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#1E293B">350</text>
+             <text x="120" y="0" font-size="12" fill="#64748B">当前用户</text>
+             <text x="120" y="24" font-size="24" font-weight="800" fill="#64748B">150</text>
+          </g>
+          <g transform="translate(0, 110)">
+             <text x="0" y="0" font-size="12" fill="#64748B">在线率 92% (3 告警)</text>
+             <rect x="0" y="10" width="240" height="6" rx="3" fill="#F1F5F9"/>
+             <rect x="0" y="10" width="220" height="6" rx="3" fill="#F59E0B"/> <!-- 警告黄 -->
+          </g>
+       </g>
+    </g>
+  </g>
+
+
+  <!-- ========================================================
+       SECTION 3: 底部地下空间层 (Underground Level)
+       Layout: 3 Columns (Wider)
+       ======================================================== -->
+  <g transform="translate(20, 380)">
+    <text x="10" y="0" font-family="sans-serif" font-size="14" font-weight="700" fill="#475569">地下网络覆盖 (Underground Level)</text>
+    
+    <!-- 1. BMF 夹层 (青色主题) -->
+    <g transform="translate(0, 20)">
+       <!-- 宽卡片 -->
+       <rect width="380" height="220" rx="8" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1" filter="url(#card-shadow)"/>
+       
+       <g transform="translate(25, 25)">
+          <g>
+            <rect x="0" y="0" width="48" height="48" rx="8" fill="#FFFFFF"/>
+            <text x="24" y="30" text-anchor="middle" font-weight="800" fill="#0D9488" font-size="16">BMF</text>
+          </g>
+          <text x="60" y="20" font-family="sans-serif" font-size="18" font-weight="700" fill="#134E4A">地下夹层 (Mezzanine)</text>
+          <text x="60" y="40" font-size="12" fill="#5EEAD4">●</text>
+          <text x="75" y="40" font-size="12" fill="#64748B">信号覆盖: 良好</text>
+
+          <!-- 分割线 -->
+          <line x1="0" y1="65" x2="330" y2="65" stroke="#CCFBF1" stroke-width="2"/>
+          
+          <!-- 详细数据列 -->
+          <g transform="translate(0, 90)">
+             <!-- AP数 -->
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">AP设备</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#0F766E">80</text>
+             </g>
+             <!-- 终端数 -->
+             <g transform="translate(100, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">接入终端</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#0D9488">210</text>
+             </g>
+             <!-- 信号柱图 (Signal Bars) -->
+             <g transform="translate(220, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">信号强度</text>
+                <rect x="0" y="10" width="6" height="16" rx="2" fill="#2DD4BF"/>
+                <rect x="10" y="6" width="6" height="20" rx="2" fill="#14B8A6"/>
+                <rect x="20" y="10" width="6" height="16" rx="2" fill="#CCFBF1"/>
+                <rect x="30" y="10" width="6" height="16" rx="2" fill="#CCFBF1"/>
+                <text x="45" y="20" font-size="14" font-weight="700" fill="#14B8A6">-65dBm</text>
+             </g>
+          </g>
+
+          <!-- 底部状态标签 -->
+          <g transform="translate(0, 150)">
+             <rect x="0" y="0" width="60" height="20" rx="4" fill="#DCFCE7"/>
+             <text x="30" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">设备正常</text>
+          </g>
+       </g>
+    </g>
+
+    <!-- 2. B1F 地下一层 (蓝色主题) -->
+    <g transform="translate(393, 20)">
+       <rect width="380" height="220" rx="8" fill="#ECFEFF" stroke="#CFFAFE" stroke-width="1" filter="url(#card-shadow)"/>
+       
+       <g transform="translate(25, 25)">
+          <g>
+            <rect x="0" y="0" width="48" height="48" rx="8" fill="#FFFFFF"/>
+            <text x="24" y="30" text-anchor="middle" font-weight="800" fill="#0891B2" font-size="16">B1F</text>
+          </g>
+          <text x="60" y="20" font-family="sans-serif" font-size="18" font-weight="700" fill="#164E63">地下一层 (Parking)</text>
+          <text x="60" y="40" font-size="12" fill="#22D3EE">●</text>
+          <text x="75" y="40" font-size="12" fill="#64748B">信号覆盖: 一般</text>
+
+          <line x1="0" y1="65" x2="330" y2="65" stroke="#CFFAFE" stroke-width="2"/>
+          
+          <g transform="translate(0, 90)">
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">AP设备</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#0E7490">180</text>
+             </g>
+             <g transform="translate(100, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">接入终端</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#0891B2">56</text>
+             </g>
+             <g transform="translate(220, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">信号强度</text>
+                <rect x="0" y="10" width="6" height="16" rx="2" fill="#22D3EE"/>
+                <rect x="10" y="6" width="6" height="20" rx="2" fill="#CFFAFE"/>
+                <rect x="20" y="10" width="6" height="16" rx="2" fill="#CFFAFE"/>
+                <rect x="30" y="10" width="6" height="16" rx="2" fill="#CFFAFE"/>
+                <text x="45" y="20" font-size="14" font-weight="700" fill="#0891B2">-72dBm</text>
+             </g>
+          </g>
+
+          <g transform="translate(0, 150)">
+             <rect x="0" y="0" width="60" height="20" rx="4" fill="#FEF3C7"/>
+             <text x="30" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">偶尔丢包</text>
+          </g>
+       </g>
+    </g>
+
+    <!-- 3. B2F 地下二层 (深靛色主题) -->
+    <g transform="translate(786, 20)">
+       <rect width="380" height="220" rx="8" fill="#EEF2FF" stroke="#E0E7FF" stroke-width="1" filter="url(#card-shadow)"/>
+       
+       <g transform="translate(25, 25)">
+          <g>
+            <rect x="0" y="0" width="48" height="48" rx="8" fill="#FFFFFF"/>
+            <text x="24" y="30" text-anchor="middle" font-weight="800" fill="#4F46E5" font-size="16">B2F</text>
+          </g>
+          <text x="60" y="20" font-family="sans-serif" font-size="18" font-weight="700" fill="#312E81">地下二层 (Deep)</text>
+          <text x="60" y="40" font-size="12" fill="#818CF8">●</text>
+          <text x="75" y="40" font-size="12" fill="#64748B">信号覆盖: 弱</text>
+
+          <line x1="0" y1="65" x2="330" y2="65" stroke="#E0E7FF" stroke-width="2"/>
+          
+          <g transform="translate(0, 90)">
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">AP设备</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#4338CA">120</text>
+             </g>
+             <g transform="translate(100, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">接入终端</text>
+                <text x="0" y="26" font-size="24" font-weight="800" fill="#4F46E5">12</text>
+             </g>
+             <g transform="translate(220, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">信号强度</text>
+                <rect x="0" y="10" width="6" height="16" rx="2" fill="#FCA5A5"/> <!-- Red warning -->
+                <rect x="10" y="6" width="6" height="20" rx="2" fill="#E0E7FF"/>
+                <rect x="20" y="10" width="6" height="16" rx="2" fill="#E0E7FF"/>
+                <rect x="30" y="10" width="6" height="16" rx="2" fill="#E0E7FF"/>
+                <text x="45" y="20" font-size="14" font-weight="700" fill="#EF4444">-85dBm</text>
+             </g>
+          </g>
+
+          <g transform="translate(0, 150)">
+             <rect x="0" y="0" width="60" height="20" rx="4" fill="#FEE2E2"/>
+             <text x="30" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">2 离线</text>
+          </g>
+       </g>
+    </g>
+
+  </g>
+</svg>
