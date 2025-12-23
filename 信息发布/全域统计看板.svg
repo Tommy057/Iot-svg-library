@@ -1,0 +1,249 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 面板阴影 -->
+    <filter id="panel-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3730A3" flood-opacity="0.08"/>
+    </filter>
+    
+    <!-- 区域背景色渐变 -->
+    <linearGradient id="bg-blue-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="bg-orange-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF1F2"/> <!-- 改为暖色微调 -->
+      <stop offset="100%" stop-color="#FFE4E6"/>
+    </linearGradient>
+    <linearGradient id="bg-purple-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3E8FF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
+    </linearGradient>
+    <linearGradient id="bg-dark-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="bg-teal-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F0FDFA"/>
+      <stop offset="100%" stop-color="#CCFBF1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="600" fill="#F8FAFC"/>
+
+  <!-- =============================================
+       Header: 顶部 KPI (简化版)
+       ============================================= -->
+  <g transform="translate(20, 20)">
+    <rect width="1160" height="90" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+    
+    <!-- 标题 -->
+    <g transform="translate(30, 30)">
+       <rect x="0" y="0" width="6" height="30" rx="3" fill="#4F46E5"/>
+       <text x="20" y="22" font-family="'PingFang SC', sans-serif" font-size="20" font-weight="800" fill="#1E293B">信息发布总览</text>
+    </g>
+
+    <!-- Metrics -->
+    <g transform="translate(300, 20)">
+       <!-- KPI 1 -->
+       <g>
+          <text x="0" y="10" font-size="12" fill="#64748B">发布点位总数</text>
+          <text x="0" y="40" font-size="32" font-weight="800" fill="#4338CA">86</text>
+          <text x="60" y="36" font-size="14" fill="#94A3B8">台</text>
+       </g>
+       <line x1="160" y1="0" x2="160" y2="50" stroke="#F1F5F9" stroke-width="2"/>
+       
+       <!-- KPI 2 -->
+       <g transform="translate(200, 0)">
+          <text x="0" y="10" font-size="12" fill="#64748B">存储占用 (10TB)</text>
+          <text x="0" y="40" font-size="32" font-weight="800" fill="#0891B2">42%</text>
+          <rect x="100" y="25" width="80" height="8" rx="4" fill="#ECFEFF"/>
+          <rect x="100" y="25" width="34" height="8" rx="4" fill="#06B6D4"/>
+       </g>
+       <line x1="420" y1="0" x2="420" y2="50" stroke="#F1F5F9" stroke-width="2"/>
+       
+       <!-- KPI 3 -->
+       <g transform="translate(460, 0)">
+          <text x="0" y="10" font-size="12" fill="#64748B">当前播放任务</text>
+          <text x="0" y="40" font-size="32" font-weight="800" fill="#15803D">12</text>
+          <text x="50" y="36" font-size="14" fill="#94A3B8">个节目轮播中</text>
+       </g>
+    </g>
+  </g>
+
+  <!-- =============================================
+       Content: 区域统计矩阵 (Grid)
+       ============================================= -->
+  <g transform="translate(20, 130)">
+    
+    <!-- 1. 研发楼 (Blue) -->
+    <g transform="translate(0, 0)">
+       <rect width="275" height="220" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       <path d="M0 8 A 8 8 0 0 1 8 0 H 267 A 8 8 0 0 1 275 8 V 60 H 0 Z" fill="url(#bg-blue-light)"/>
+       
+       <g transform="translate(20, 25)">
+          <text x="0" y="0" font-size="16" font-weight="700" fill="#1E3A8A">研发楼区域</text>
+          <text x="0" y="20" font-size="12" fill="#3B82F6">1F 大堂 / 办公区</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#1E40AF">24</text>
+             
+             <text x="100" y="0" font-size="12" fill="#64748B">状态</text>
+             <text x="100" y="24" font-size="18" font-weight="700" fill="#15803D">全在线</text>
+          </g>
+          
+          <g transform="translate(0, 120)">
+             <rect x="0" y="0" width="235" height="36" rx="6" fill="#F1F5F9"/>
+             <text x="10" y="16" font-size="10" fill="#64748B">正在播放:</text>
+             <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">研发成果展示_V3...</text>
+             <!-- 播放ICON -->
+             <circle cx="215" cy="18" r="10" fill="#3B82F6"/>
+             <path d="M212 14 L220 18 L212 22 Z" fill="#FFFFFF"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 2. 宿舍楼 (Orange/Rose) -->
+    <g transform="translate(295, 0)">
+       <rect width="275" height="220" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       <path d="M0 8 A 8 8 0 0 1 8 0 H 267 A 8 8 0 0 1 275 8 V 60 H 0 Z" fill="url(#bg-orange-light)"/>
+       
+       <g transform="translate(20, 25)">
+          <text x="0" y="0" font-size="16" font-weight="700" fill="#9F1239">宿舍生活区</text>
+          <text x="0" y="20" font-size="12" fill="#E11D48">餐厅 / 活动中心</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#9F1239">18</text>
+             
+             <text x="100" y="0" font-size="12" fill="#64748B">状态</text>
+             <text x="100" y="24" font-size="18" font-weight="700" fill="#15803D">正常</text>
+          </g>
+          
+          <g transform="translate(0, 120)">
+             <rect x="0" y="0" width="235" height="36" rx="6" fill="#F1F5F9"/>
+             <text x="10" y="16" font-size="10" fill="#64748B">正在播放:</text>
+             <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">本周菜单 / 节日通知</text>
+             <circle cx="215" cy="18" r="10" fill="#E11D48"/>
+             <path d="M212 14 L220 18 L212 22 Z" fill="#FFFFFF"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 3. 综合楼 (Purple) -->
+    <g transform="translate(590, 0)">
+       <rect width="275" height="220" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       <path d="M0 8 A 8 8 0 0 1 8 0 H 267 A 8 8 0 0 1 275 8 V 60 H 0 Z" fill="url(#bg-purple-light)"/>
+       
+       <g transform="translate(20, 25)">
+          <text x="0" y="0" font-size="16" font-weight="700" fill="#6B21A8">综合行政楼</text>
+          <text x="0" y="20" font-size="12" fill="#A855F7">会议室 / 接待厅</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#6B21A8">12</text>
+             
+             <text x="100" y="0" font-size="12" fill="#64748B">状态</text>
+             <text x="100" y="24" font-size="18" font-weight="700" fill="#DC2626">1 离线</text>
+          </g>
+          
+          <g transform="translate(0, 120)">
+             <rect x="0" y="0" width="235" height="36" rx="6" fill="#F1F5F9"/>
+             <text x="10" y="16" font-size="10" fill="#64748B">正在播放:</text>
+             <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">欢迎词 / 会议安排</text>
+             <circle cx="215" cy="18" r="10" fill="#A855F7"/>
+             <path d="M212 14 L220 18 L212 22 Z" fill="#FFFFFF"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 4. 厂房 (Grey) -->
+    <g transform="translate(885, 0)">
+       <rect width="275" height="220" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       <path d="M0 8 A 8 8 0 0 1 8 0 H 267 A 8 8 0 0 1 275 8 V 60 H 0 Z" fill="url(#bg-dark-light)"/>
+       
+       <g transform="translate(20, 25)">
+          <text x="0" y="0" font-size="16" font-weight="700" fill="#334155">生产厂房</text>
+          <text x="0" y="20" font-size="12" fill="#64748B">车间看板 / 走廊</text>
+          
+          <g transform="translate(0, 60)">
+             <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+             <text x="0" y="24" font-size="24" font-weight="800" fill="#334155">20</text>
+             
+             <text x="100" y="0" font-size="12" fill="#64748B">状态</text>
+             <text x="100" y="24" font-size="18" font-weight="700" fill="#15803D">正常</text>
+          </g>
+          
+          <g transform="translate(0, 120)">
+             <rect x="0" y="0" width="235" height="36" rx="6" fill="#F1F5F9"/>
+             <text x="10" y="16" font-size="10" fill="#64748B">正在播放:</text>
+             <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">安全生产规范.pdf</text>
+             <circle cx="215" cy="18" r="10" fill="#64748B"/>
+             <path d="M212 14 L220 18 L212 22 Z" fill="#FFFFFF"/>
+          </g>
+       </g>
+    </g>
+
+    <!-- 5. 地下室 (Wide Panel) -->
+    <g transform="translate(0, 240)">
+       <rect width="570" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       <!-- 顶部背景条 -->
+       <path d="M0 8 A 8 8 0 0 1 8 0 H 562 A 8 8 0 0 1 570 8 V 150 H 0 Z" fill="url(#bg-teal-light)" opacity="0.3"/>
+       
+       <g transform="translate(25, 25)">
+          <text x="0" y="10" font-size="16" font-weight="700" fill="#0F766E">地下空间 (BMF/B1/B2)</text>
+          <text x="0" y="30" font-size="12" fill="#14B8A6">停车场引导屏 / 电梯厅</text>
+          
+          <!-- 横向数据排列 -->
+          <g transform="translate(0, 60)">
+             <g>
+               <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+               <text x="0" y="24" font-size="24" font-weight="800" fill="#0D9488">12</text>
+             </g>
+             <g transform="translate(100, 0)">
+               <text x="0" y="0" font-size="12" fill="#64748B">在线</text>
+               <text x="0" y="24" font-size="24" font-weight="800" fill="#15803D">10</text>
+             </g>
+             <g transform="translate(200, 0)">
+               <text x="0" y="0" font-size="12" fill="#64748B">离线</text>
+               <text x="0" y="24" font-size="24" font-weight="800" fill="#DC2626">2</text>
+             </g>
+             
+             <!-- 正在播放 -->
+             <g transform="translate(300, -5)">
+               <rect x="0" y="0" width="220" height="40" rx="6" fill="#FFFFFF"/>
+               <text x="10" y="14" font-size="10" fill="#64748B">主要内容:</text>
+               <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">车位余量显示 / 寻车指引</text>
+               <circle cx="200" cy="20" r="10" fill="#0D9488"/>
+               <path d="M197 16 L205 20 L197 24 Z" fill="#FFFFFF"/>
+             </g>
+          </g>
+       </g>
+    </g>
+
+    <!-- 6. 其它/户外 (Wide Panel) -->
+    <g transform="translate(590, 240)">
+       <rect width="570" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#panel-shadow)"/>
+       
+       <g transform="translate(25, 25)">
+          <text x="0" y="10" font-size="16" font-weight="700" fill="#475569">户外大屏 / 其它</text>
+          
+          <g transform="translate(0, 60)">
+             <g>
+               <text x="0" y="0" font-size="12" fill="#64748B">设备数</text>
+               <text x="0" y="24" font-size="24" font-weight="800" fill="#334155">4</text>
+             </g>
+             <!-- 播放内容条 -->
+             <g transform="translate(100, -5)">
+               <rect x="0" y="0" width="420" height="40" rx="6" fill="#F1F5F9"/>
+               <text x="10" y="14" font-size="10" fill="#64748B">当前内容:</text>
+               <text x="10" y="28" font-size="11" font-weight="600" fill="#334155">园区全景导览.mp4 (静音播放)</text>
+               <circle cx="400" cy="20" r="10" fill="#475569"/>
+               <path d="M397 16 L405 20 L397 24 Z" fill="#FFFFFF"/>
+             </g>
+          </g>
+       </g>
+    </g>
+  </g>
+</svg>

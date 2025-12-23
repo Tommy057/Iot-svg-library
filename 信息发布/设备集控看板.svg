@@ -1,0 +1,363 @@
+<svg width="1240" height="760" viewBox="0 0 1240 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 卡片悬浮阴影 -->
+    <filter id="matrix-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1E293B" flood-opacity="0.1"/>
+    </filter>
+    
+    <!-- 屏幕画面渐变：视频流 -->
+    <linearGradient id="screen-video" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    
+    <!-- 屏幕画面渐变：图片轮播 -->
+    <linearGradient id="screen-image" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+
+    <!-- 状态指示点 -->
+    <circle id="dot-online" r="4" fill="#22C55E"/>
+    <circle id="dot-offline" r="4" fill="#EF4444"/>
+    <circle id="dot-sleep" r="4" fill="#F59E0B"/>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1240" height="760" fill="#F8FAFC"/>
+
+  <!-- ==================================================================================
+       SECTION 1: 顶部全局控制栏 (Header)
+       ================================================================================== -->
+  <g transform="translate(20, 20)">
+    <rect width="1200" height="70" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+    
+    <!-- 标题与统计 -->
+    <g transform="translate(20, 20)">
+      <rect x="0" y="0" width="4" height="30" rx="2" fill="#2563EB"/>
+      <text x="15" y="21" font-family="'PingFang SC', sans-serif" font-size="18" font-weight="800" fill="#1E293B">设备矩阵监控 (Device Matrix)</text>
+      
+      <!-- 统计数据 -->
+      <g transform="translate(260, 0)">
+          <text x="0" y="21" font-size="14" fill="#64748B">总数: <tspan font-weight="700" fill="#1E293B">16</tspan></text>
+          <text x="80" y="21" font-size="14" fill="#64748B">在线: <tspan font-weight="700" fill="#15803D">14</tspan></text>
+          <text x="160" y="21" font-size="14" fill="#64748B">离线: <tspan font-weight="700" fill="#DC2626">1</tspan></text>
+          <text x="240" y="21" font-size="14" fill="#64748B">待机: <tspan font-weight="700" fill="#D97706">1</tspan></text>
+      </g>
+    </g>
+
+    <!-- 批量操作按钮 -->
+    <g transform="translate(950, 18)">
+       <!-- 开启按钮 -->
+       <g cursor="pointer">
+         <rect x="0" y="0" width="100" height="34" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+         <text x="50" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="#2563EB">一键开机</text>
+       </g>
+       <!-- 关闭按钮 -->
+       <g transform="translate(120, 0)" cursor="pointer">
+         <rect x="0" y="0" width="100" height="34" rx="6" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+         <text x="50" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="#E11D48">一键息屏</text>
+       </g>
+    </g>
+  </g>
+
+  <!-- ==================================================================================
+       SECTION 2: 4x4 设备网格
+       Row Height: 140px + 20px Gap
+       Col Width: 285px + 20px Gap
+       ================================================================================== -->
+  <g transform="translate(20, 110)">
+
+    <!-- ======================= ROW 1: 大堂区域 ======================= -->
+    <g transform="translate(0, 0)">
+       <!-- Device #01 -->
+       <g>
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">大堂-东屏 #01</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-video)"/>
+            <path d="M55 54 L65 60 L55 66 Z" fill="#FFFFFF" opacity="0.8"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.1.101</text>
+               <text x="0" y="30" font-size="11" fill="#334155">VOL: 60%</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 宣传片A</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><path d="M10 6 V10 M10 11 A 1 1 0 0 0 10 14" stroke="#64748B" stroke-width="1.5"/>
+                  <circle cx="40" cy="10" r="10" fill="#EFF6FF"/><path d="M40 5 V15" stroke="#2563EB" stroke-width="1.5"/>
+               </g>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #02 -->
+       <g transform="translate(305, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">大堂-西屏 #02</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-video)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.1.102</text>
+               <text x="0" y="30" font-size="11" fill="#334155">VOL: 60%</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 宣传片A</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #03 -->
+       <g transform="translate(610, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">电梯厅-A #03</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.1.103</text>
+               <text x="0" y="30" font-size="11" fill="#334155">VOL: 静音</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 海报轮播</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #04 -->
+       <g transform="translate(915, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">电梯厅-B #04</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.1.104</text>
+               <text x="0" y="30" font-size="11" fill="#334155">VOL: 静音</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 海报轮播</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+    </g>
+
+    <!-- ======================= ROW 2: 餐厅/休息区 ======================= -->
+    <g transform="translate(0, 160)">
+       <!-- Device #05 -->
+       <g>
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">餐厅-主屏 #05</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-video)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.2.101</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 今日菜单</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       <!-- Device #06 -->
+       <g transform="translate(305, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">餐厅-侧屏 #06</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-video)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.2.102</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 今日菜单</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       <!-- Device #07 -->
+       <g transform="translate(610, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">休息区-A #07</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.2.103</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 风景欣赏</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       <!-- Device #08 -->
+       <g transform="translate(915, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">休息区-B #08</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.2.104</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 风景欣赏</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+    </g>
+
+    <!-- ======================= ROW 3: 会议室 (含待机) ======================= -->
+    <g transform="translate(0, 320)">
+       <!-- Device #09 -->
+       <g>
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">会议室-201 #09</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="#E2E8F0"/>
+            <text x="25" y="65" font-size="10" fill="#64748B">会议进行中</text>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.3.101</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 请勿打扰</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       <!-- Device #10 -->
+       <g transform="translate(305, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">会议室-202 #10</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.3.102</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 欢迎词</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       
+       <!-- Device #11: 待机状态 -->
+       <g transform="translate(610, 0)">
+         <rect width="285" height="140" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#64748B">会议室-203 #11</text>
+            <use href="#dot-sleep" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#D97706">待机</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="#0F172A"/>
+            <text x="40" y="65" font-size="10" fill="#475569">息屏</text>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#94A3B8">192.168.3.103</text>
+               <text x="0" y="48" font-size="11" fill="#94A3B8">状态: 节能模式</text>
+               <g transform="translate(0, 70)">
+                  <rect x="0" y="0" width="60" height="20" rx="10" fill="#EFF6FF"/>
+                  <text x="30" y="14" text-anchor="middle" font-size="10" fill="#2563EB">唤醒</text>
+               </g>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #12 -->
+       <g transform="translate(915, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">会议室-204 #12</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-image)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.3.104</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 欢迎词</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+    </g>
+
+    <!-- ======================= ROW 4: 户外/故障 ======================= -->
+    <g transform="translate(0, 480)">
+       <!-- Device #13: 故障高亮 -->
+       <g>
+         <rect width="285" height="140" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#991B1B">户外大屏-北 #13</text>
+            <use href="#dot-offline" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#DC2626">离线</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="#E2E8F0"/>
+            <path d="M50 50 L70 70 M70 50 L50 70" stroke="#94A3B8" stroke-width="2"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#94A3B8">192.168.4.101</text>
+               <text x="0" y="30" font-size="11" fill="#DC2626">连接超时</text>
+               <rect x="0" y="70" width="80" height="20" rx="4" fill="#FEE2E2"/>
+               <text x="40" y="84" text-anchor="middle" font-size="10" fill="#DC2626">重连</text>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #14 -->
+       <g transform="translate(305, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">户外大屏-南 #14</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="url(#screen-video)"/>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.4.102</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 园区导览</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+       
+       <!-- Device #15: 车库 -->
+       <g transform="translate(610, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">地下车库-A #15</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="#06B6D4"/>
+            <text x="20" y="65" font-size="10" fill="#ECFEFF">剩余车位: 120</text>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.5.101</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 车位数据</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+
+       <!-- Device #16: 车库 -->
+       <g transform="translate(915, 0)">
+         <rect width="285" height="140" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#matrix-shadow)"/>
+         <g transform="translate(15, 15)">
+            <text x="0" y="12" font-size="14" font-weight="700" fill="#1E293B">地下车库-B #16</text>
+            <use href="#dot-online" x="240" y="8"/> <text x="250" y="12" font-size="11" fill="#15803D">播放</text>
+            <rect x="0" y="25" width="120" height="68" rx="4" fill="#06B6D4"/>
+            <text x="20" y="65" font-size="10" fill="#ECFEFF">剩余车位: 45</text>
+            <g transform="translate(130, 25)">
+               <text x="0" y="10" font-family="monospace" font-size="11" fill="#64748B">192.168.5.102</text>
+               <text x="0" y="48" font-size="11" fill="#334155">节目: 车位数据</text>
+               <g transform="translate(0, 70)">
+                  <circle cx="10" cy="10" r="10" fill="#F1F5F9"/><circle cx="40" cy="10" r="10" fill="#EFF6FF"/>
+               </g>
+            </g>
+         </g>
+       </g>
+    </g>
+
+  </g>
+</svg>

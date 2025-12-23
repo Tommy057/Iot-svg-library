@@ -1,0 +1,27 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(50, 50)">
+    <!-- 声波 -->
+    <g transform="translate(18, -18)">
+        <path d="M4 4 Q 10 10, 4 16" stroke="#A855F7" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M8 0 Q 18 10, 8 20" stroke="#A855F7" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+    </g>
+
+    <!-- 音箱主体 -->
+    <g filter="url(#shadow)">
+       <rect x="-14" y="-14" width="28" height="28" rx="6" fill="#7E22CE" stroke="#FFFFFF" stroke-width="1.5"/>
+       <circle cx="0" cy="0" r="8" fill="#581C87"/>
+       <circle cx="0" cy="0" r="3" fill="#A855F7"/>
+    </g>
+
+    <g transform="translate(0, 25)">
+       <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+       <text x="0" y="4" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#6B21A8">BGM-02</text>
+    </g>
+  </g>
+</svg>

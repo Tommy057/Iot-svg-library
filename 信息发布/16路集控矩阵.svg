@@ -1,0 +1,257 @@
+<svg width="800" height="580" viewBox="0 0 800 580" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 卡片阴影 -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 状态渐变定义 -->
+    <!-- 播放中 (Indigo) -->
+    <linearGradient id="screenPlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#4338CA"/>
+    </linearGradient>
+    
+    <!-- 待机 (Dark) -->
+    <linearGradient id="screenStandby" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    
+    <!-- 离线 (Grey) -->
+    <linearGradient id="screenOffline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+
+    <!-- 下载中 (Cyan) -->
+    <linearGradient id="screenDownload" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <!-- 3. 投射光锥 (仅播放状态使用) -->
+    <linearGradient id="lightCone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 单元格模板 (Symbol) - 基础结构 -->
+    <!-- 注意：为了方便编辑不同状态，这里我们不使用 symbol 引用，而是直接在下方通过 Group 组合 -->
+  </defs>
+
+  <!-- 背景容器 -->
+  <rect x="0" y="0" width="800" height="580" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+
+  <!-- ================================================================================== -->
+  <!-- 矩阵生成 (4x4 Matrix) -->
+  <!-- 布局逻辑: 
+       X轴间隔: 190px (起始 20)
+       Y轴间隔: 135px (起始 20)
+  -->
+  
+  <!-- ================= ROW 1 (全部正常) ================= -->
+  
+  <!-- Cell 1-1: Play -->
+  <g transform="translate(20, 20)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <!-- 光锥 -->
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <!-- 屏幕 -->
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <!-- 信息 -->
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">A-01</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 1-2: Play -->
+  <g transform="translate(210, 20)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">A-02</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 1-3: Play -->
+  <g transform="translate(400, 20)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">A-03</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 1-4: Play -->
+  <g transform="translate(590, 20)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">A-04</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- ================= ROW 2 (包含1个待机) ================= -->
+
+  <!-- Cell 2-1: Play -->
+  <g transform="translate(20, 155)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">B-01</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 2-2: Standby (待机) -->
+  <g transform="translate(210, 155)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <!-- 无光锥 -->
+    <!-- 屏幕深色 -->
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenStandby)" stroke="#CBD5E1" stroke-width="0.5"/>
+    <circle cx="85" cy="50" r="2" fill="#F59E0B"/> <!-- 屏幕上的待机指示灯 -->
+    <!-- 信息 -->
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#64748B">B-02</text>
+    <circle cx="110" cy="55" r="3" fill="#F59E0B"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#F59E0B">待机</text>
+  </g>
+
+  <!-- Cell 2-3: Play -->
+  <g transform="translate(400, 155)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">B-03</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 2-4: Play -->
+  <g transform="translate(590, 155)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">B-04</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- ================= ROW 3 (包含1个离线) ================= -->
+
+  <!-- Cell 3-1: Play -->
+  <g transform="translate(20, 290)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">C-01</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 3-2: Offline (离线/故障) -->
+  <g transform="translate(210, 290)">
+    <rect width="180" height="125" rx="8" fill="#FFF1F2" stroke="#FECACA" stroke-width="1"/>
+    <!-- 无光锥 -->
+    <!-- 屏幕灰色带红框 -->
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenOffline)" stroke="#EF4444" stroke-width="1"/>
+    <line x1="15" y1="15" x2="95" y2="60" stroke="#94A3B8" stroke-width="1" opacity="0.5"/>
+    <line x1="95" y1="15" x2="15" y2="60" stroke="#94A3B8" stroke-width="1" opacity="0.5"/>
+    <!-- 信息 -->
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#991B1B">C-02</text>
+    <circle cx="110" cy="55" r="3" fill="#EF4444"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#EF4444" font-weight="bold">离线</text>
+  </g>
+
+  <!-- Cell 3-3: Play -->
+  <g transform="translate(400, 290)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">C-03</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 3-4: Play -->
+  <g transform="translate(590, 290)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">C-04</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- ================= ROW 4 (包含1个下载中, 1个待机) ================= -->
+
+  <!-- Cell 4-1: Play -->
+  <g transform="translate(20, 425)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">D-01</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+  <!-- Cell 4-2: Downloading (下载中) -->
+  <g transform="translate(210, 425)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)" opacity="0.5"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenDownload)"/>
+    <!-- 下载图标 -->
+    <path d="M55 30 L55 40 L48 40 L55 48 L62 40 L55 40 L55 30 Z" fill="#FFF"/>
+    <!-- 进度条 -->
+    <rect x="25" y="50" width="60" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <rect x="25" y="50" width="40" height="4" rx="2" fill="#FFF"/>
+    
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">D-02</text>
+    <circle cx="110" cy="55" r="3" fill="#0284C7"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#0284C7">下载中</text>
+  </g>
+
+  <!-- Cell 4-3: Standby (待机) -->
+  <g transform="translate(400, 425)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenStandby)" stroke="#CBD5E1" stroke-width="0.5"/>
+    <circle cx="85" cy="50" r="2" fill="#F59E0B"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#64748B">D-03</text>
+    <circle cx="110" cy="55" r="3" fill="#F59E0B"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#F59E0B">待机</text>
+  </g>
+
+  <!-- Cell 4-4: Play -->
+  <g transform="translate(590, 425)">
+    <rect width="180" height="125" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <path d="M25 60 L15 100 L95 100 L85 60 Z" fill="url(#lightCone)"/>
+    <rect x="15" y="15" width="80" height="45" rx="4" fill="url(#screenPlay)"/>
+    <path d="M52 30 L62 37 L52 44 Z" fill="#FFF" opacity="0.8"/>
+    <text x="105" y="35" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#1E293B">D-04</text>
+    <circle cx="110" cy="55" r="3" fill="#22C55E"/>
+    <text x="120" y="59" font-family="sans-serif" font-size="12" fill="#64748B">播放中</text>
+  </g>
+
+</svg>

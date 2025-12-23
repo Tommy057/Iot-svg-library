@@ -1,0 +1,17 @@
+<svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- 左侧：图标容器 (浅色背景圆) -->
+  <circle cx="30" cy="40" r="24" fill="#EFF6FF"/>
+  
+  <!-- 图标：简单的盾牌或闪电 (此处以安防盾牌为例) -->
+  <path d="M 30 24 L 42 29 V 40 C 42 48 37 53 30 56 C 23 53 18 48 18 40 V 29 Z" fill="#3B82F6"/>
+
+  <!-- 右侧：文字信息 -->
+  <g transform="translate(70, 30)">
+    <!-- 标题 -->
+    <text x="0" y="0" font-family="Arial" font-size="14" fill="#6B7280">安防综合评分</text>
+    <!-- 核心数字 (大字号 Hex纯色) -->
+    <text x="0" y="32" font-family="Arial" font-size="32" font-weight="bold" fill="#1E3A8A">98.5</text>
+    <!-- 同比趋势 (小字) -->
+    <text x="80" y="32" font-family="Arial" font-size="12" fill="#059669">↑ 2.1%</text>
+  </g>
+</svg>

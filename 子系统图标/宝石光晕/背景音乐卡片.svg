@@ -1,0 +1,52 @@
+<svg width="300" height="160" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" /> <!-- Purple 400 -->
+      <stop offset="100%" stop-color="#7C3AED" /> <!-- Purple 600 -->
+    </linearGradient>
+    <filter id="shadowPurple">
+       <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+       <feOffset dx="0" dy="2"/>
+       <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 卡片底座 -->
+  <g filter="url(#shadowPurple)">
+    <rect x="2" y="2" width="296" height="156" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M 3 10 L 297 10" stroke="#8B5CF6" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 左侧：拟态音箱/旋钮 -->
+  <g transform="translate(50, 80)">
+    <!-- 外框方块 -->
+    <rect x="-20" y="-20" width="40" height="40" rx="8" fill="#F3F4F6" stroke="#DDD6FE" stroke-width="2"/>
+    <!-- 核心圆点 (播放中) -->
+    <circle cx="0" cy="0" r="10" fill="url(#bgmGradient)"/>
+    <!-- 声波光晕 -->
+    <circle cx="0" cy="0" r="24" fill="none" stroke="#8B5CF6" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="4 2"/>
+  </g>
+
+  <!-- 中部：播放信息 -->
+  <g transform="translate(90, 55)">
+    <text x="0" y="0" font-family="Arial" font-size="14" font-weight="bold" fill="#1F2937">BGM-Zone-A</text>
+    <text x="0" y="25" font-family="Arial" font-size="12" fill="#6B7280">当前播放</text>
+    <!-- 紫色高亮歌名 -->
+    <text x="0" y="45" font-family="Arial" font-size="14" font-weight="bold" fill="#7C3AED">Morning Jazz.mp3</text>
+    <text x="0" y="70" font-family="Arial" font-size="12" fill="#6B7280">音量</text>
+    <text x="0" y="90" font-family="Arial" font-size="14" font-weight="bold" fill="#4B5563">45%</text>
+  </g>
+
+  <!-- 右侧：频谱跳动 (韵律紫) -->
+  <g transform="translate(210, 90) scale(1, -1)">
+    <!-- 静态模拟频谱，高度不同 -->
+    <rect x="0" y="0" width="8" height="20" rx="2" fill="#C4B5FD"/>
+    <rect x="12" y="0" width="8" height="45" rx="2" fill="#A78BFA"/>
+    <rect x="24" y="0" width="8" height="30" rx="2" fill="#8B5CF6"/>
+    <rect x="36" y="0" width="8" height="55" rx="2" fill="#7C3AED"/>
+    <rect x="48" y="0" width="8" height="15" rx="2" fill="#C4B5FD"/>
+    <!-- 底部基线 -->
+    <line x1="-5" y1="-2" x2="60" y2="-2" stroke="#E5E7EB" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 柔和光斑 -->
+    <radialGradient id="light-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#FBBF24" stop-opacity="0.0"/>
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(60, 50)">
+    <!-- 地面光照效果 -->
+    <circle cx="0" cy="10" r="35" fill="url(#light-glow)"/>
+    
+    <!-- 灯具实体 -->
+    <g filter="url(#shadow)">
+       <path d="M-6 -6 L6 -6 L4 0 H-4 Z" fill="#78350F"/> <!-- 灯座 -->
+       <circle cx="0" cy="5" r="8" fill="#FFFFFF"/> <!-- 灯泡 -->
+       <circle cx="0" cy="5" r="5" fill="#FBBF24"/> <!-- 亮芯 -->
+    </g>
+
+    <g transform="translate(0, 30)">
+       <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+       <text x="0" y="4" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#B45309">Light-05</text>
+    </g>
+  </g>
+</svg>

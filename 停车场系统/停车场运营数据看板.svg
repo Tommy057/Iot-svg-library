@@ -1,0 +1,136 @@
+<svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净阴影 -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 占用渐变 (Occupied - Ocean Blue) -->
+    <linearGradient id="gradOccupied" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/> <!-- Blue 500 -->
+      <stop offset="100%" stop-color="#0EA5E9"/> <!-- Sky 500 -->
+    </linearGradient>
+
+    <!-- 3. 空闲渐变 (Free - Mint Green) -->
+    <linearGradient id="gradFree" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+
+    <!-- 4. 环形图光晕 (Ring Glow) -->
+    <filter id="ringGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 容器层 -->
+  <!-- ========================================== -->
+  <rect x="10" y="10" width="580" height="260" rx="16" fill="#FFFFFF" stroke="#F0F9FF" stroke-width="1.5" filter="url(#cleanShadow)"/>
+
+  <!-- 标题栏 -->
+  <g transform="translate(30, 40)">
+    <rect x="0" y="0" width="4" height="18" rx="2" fill="#0EA5E9"/>
+    <text x="12" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#0F172A">
+      停车位数据概览
+    </text>
+    <text x="450" y="14" text-anchor="end" font-family="monospace" font-size="12" fill="#94A3B8">更新时间: 14:02:35</text>
+  </g>
+
+  <!-- 分割线 -->
+  <line x1="30" y1="70" x2="550" y2="70" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="200" y1="90" x2="200" y2="240" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="400" y1="90" x2="400" y2="240" stroke="#F1F5F9" stroke-width="1"/>
+
+  <!-- ========================================== -->
+  <!-- 左侧：核心指标 (Key Metrics) -->
+  <!-- ========================================== -->
+  <g transform="translate(30, 90)">
+    
+    <!-- 总车位 -->
+    <g transform="translate(0, 10)">
+      <text x="0" y="15" font-family="sans-serif" font-size="12" fill="#64748B">总车位数 (Total)</text>
+      <text x="0" y="45" font-family="sans-serif" font-size="28" font-weight="bold" fill="#1E293B">1,200</text>
+      <rect x="0" y="55" width="40" height="4" rx="2" fill="#E2E8F0"/>
+    </g>
+
+    <!-- 剩余车位 -->
+    <g transform="translate(0, 90)">
+      <text x="0" y="15" font-family="sans-serif" font-size="12" fill="#64748B">剩余空闲 (Free)</text>
+      <text x="0" y="45" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10B981">458</text>
+      <rect x="0" y="55" width="40" height="4" rx="2" fill="#D1FAE5"/>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 中间：占用率环形图 (Gem Ring Chart) -->
+  <!-- ========================================== -->
+  <g transform="translate(300, 165)">
+    <!-- 外圈轨道 -->
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#F1F5F9" stroke-width="12"/>
+    
+    <!-- 进度条 (62% Occupied) -->
+    <!-- Circumference = 2 * pi * 60 ≈ 377. 
+         Dasharray: 234 (62%), 143 (gap) -->
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#gradOccupied)" stroke-width="12" stroke-linecap="round"
+            stroke-dasharray="234 377" transform="rotate(-90)" filter="url(#ringGlow)">
+       <animate attributeName="stroke-dasharray" from="0 377" to="234 377" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </circle>
+
+    <!-- 进度条端点的宝石 (Decor) -->
+    <!-- 计算位置: 62% angle is approx 223 degrees. -90 start -> 133 deg -->
+    <g transform="rotate(133) translate(60, 0)">
+       <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="2"/>
+    </g>
+
+    <!-- 中心文字 -->
+    <text x="0" y="-5" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94A3B8">占用率</text>
+    <text x="0" y="20" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#0EA5E9">62%</text>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 右侧：楼层分布进度条 (Floor Progress) -->
+  <!-- ========================================== -->
+  <g transform="translate(430, 90)">
+    
+    <!-- B1 Floor -->
+    <g transform="translate(0, 10)">
+      <text x="0" y="10" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155">B1 临时停车</text>
+      <text x="140" y="10" text-anchor="end" font-family="sans-serif" font-size="12" fill="#0EA5E9">85%</text>
+      <!-- 轨道 -->
+      <rect x="0" y="20" width="140" height="8" rx="4" fill="#F1F5F9"/>
+      <!-- 进度 -->
+      <rect x="0" y="20" width="119" height="8" rx="4" fill="url(#gradOccupied)"/>
+    </g>
+
+    <!-- B2 Floor -->
+    <g transform="translate(0, 60)">
+      <text x="0" y="10" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155">B2 月租/固定</text>
+      <text x="140" y="10" text-anchor="end" font-family="sans-serif" font-size="12" fill="#0EA5E9">45%</text>
+      <rect x="0" y="20" width="140" height="8" rx="4" fill="#F1F5F9"/>
+      <rect x="0" y="20" width="63" height="8" rx="4" fill="url(#gradOccupied)" opacity="0.8"/>
+    </g>
+
+    <!-- B3 Floor -->
+    <g transform="translate(0, 110)">
+      <text x="0" y="10" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155">B3 内部预留</text>
+      <text x="140" y="10" text-anchor="end" font-family="sans-serif" font-size="12" fill="#10B981">20%</text>
+      <rect x="0" y="20" width="140" height="8" rx="4" fill="#F1F5F9"/>
+      <!-- Low usage uses Green gradient -->
+      <rect x="0" y="20" width="28" height="8" rx="4" fill="url(#gradFree)"/>
+    </g>
+
+  </g>
+</svg>

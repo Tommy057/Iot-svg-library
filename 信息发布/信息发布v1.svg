@@ -1,0 +1,172 @@
+<svg width="1200" height="500" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="dash-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3730A3" flood-opacity="0.1"/>
+    </filter>
+    
+    <!-- 屏幕画面渐变 (模拟播放内容) -->
+    <linearGradient id="screen-content-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="screen-content-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="screen-glow-thumb" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F8FAFC"/>
+
+  <!-- Header -->
+  <g transform="translate(20, 20)">
+    <rect width="1160" height="100" rx="12" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="1" filter="url(#dash-shadow)"/>
+    
+    <g transform="translate(30, 35)">
+       <rect x="0" y="0" width="6" height="30" rx="3" fill="#4F46E5"/>
+       <text x="20" y="22" font-family="'PingFang SC', sans-serif" font-size="20" font-weight="800" fill="#1E293B">信息发布总览</text>
+    </g>
+
+    <!-- Metrics -->
+    <g transform="translate(320, 20)">
+       <g>
+         <text x="0" y="15" font-size="12" fill="#64748B">发布终端 (Player)</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#4338CA">86</text>
+         <text x="60" y="46" font-size="14" fill="#94A3B8">个</text>
+       </g>
+       <line x1="160" y1="10" x2="160" y2="60" stroke="#EEF2FF" stroke-width="2"/>
+
+       <g transform="translate(200, 0)">
+         <text x="0" y="15" font-size="12" fill="#64748B">正在播放 (Playing)</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#15803D">82</text>
+       </g>
+       <line x1="380" y1="10" x2="380" y2="60" stroke="#EEF2FF" stroke-width="2"/>
+
+       <g transform="translate(420, 0)">
+         <text x="0" y="15" font-size="12" fill="#64748B">云端素材存储</text>
+         <text x="0" y="50" font-family="sans-serif" font-size="36" font-weight="800" fill="#0891B2">4.2</text>
+         <text x="60" y="46" font-size="14" fill="#94A3B8">TB</text>
+         <!-- 进度条 -->
+         <rect x="150" y="38" width="80" height="8" rx="4" fill="#ECFEFF"/>
+         <rect x="150" y="38" width="35" height="8" rx="4" fill="#06B6D4"/>
+       </g>
+    </g>
+  </g>
+
+  <!-- Body -->
+  <g transform="translate(20, 140)">
+    
+    <!-- 1. 公共大屏 -->
+    <g transform="translate(0, 0)">
+       <rect width="370" height="340" rx="12" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="1" filter="url(#dash-shadow)"/>
+       <rect width="370" height="6" rx="3" fill="#4F46E5"/>
+       
+       <g transform="translate(30, 30)">
+         <!-- Icon -->
+         <rect x="0" y="0" width="48" height="32" rx="4" fill="#312E81"/>
+         <rect x="2" y="2" width="44" height="28" rx="2" fill="url(#screen-glow-thumb)"/>
+         <text x="60" y="22" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">公共大屏区</text>
+         
+         <!-- Preview -->
+         <g transform="translate(0, 60)">
+            <text x="0" y="0" font-size="12" fill="#64748B">当前节目画面</text>
+            <rect x="0" y="10" width="310" height="130" rx="6" fill="#F1F5F9"/>
+            <rect x="5" y="15" width="300" height="120" rx="4" fill="url(#screen-content-1)"/>
+            <text x="0" y="160" font-size="14" font-weight="700" fill="#3730A3">节目: 企业宣传片_2025.mp4</text>
+         </g>
+
+         <!-- Info -->
+         <line x1="0" y1="240" x2="310" y2="240" stroke="#F1F5F9" stroke-width="2"/>
+         <g transform="translate(0, 260)">
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">分辨率</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#1E293B">4K UHD</text>
+             </g>
+             <g transform="translate(110, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">音量</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#1E293B">60%</text>
+             </g>
+             <g transform="translate(210, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">剩余空间</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#059669">128 GB</text>
+             </g>
+         </g>
+       </g>
+    </g>
+
+    <!-- 2. 电梯广告 (Rose) -->
+    <g transform="translate(395, 0)">
+       <rect width="370" height="340" rx="12" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="1" filter="url(#dash-shadow)"/>
+       <rect width="370" height="6" rx="3" fill="#E11D48"/>
+       
+       <g transform="translate(30, 30)">
+         <rect x="0" y="0" width="32" height="48" rx="4" fill="#881337"/>
+         <rect x="2" y="2" width="28" height="44" rx="2" fill="#F43F5E"/>
+         <text x="60" y="22" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">电梯广告机</text>
+
+         <g transform="translate(0, 60)">
+            <text x="0" y="0" font-size="12" fill="#64748B">当前节目画面</text>
+            <rect x="0" y="10" width="310" height="130" rx="6" fill="#F1F5F9"/>
+            <!-- 竖屏预览 -->
+            <rect x="40" y="15" width="60" height="120" rx="2" fill="url(#screen-content-2)"/>
+            <rect x="120" y="15" width="60" height="120" rx="2" fill="url(#screen-content-2)"/>
+            <rect x="200" y="15" width="60" height="120" rx="2" fill="url(#screen-content-2)"/>
+            <text x="0" y="160" font-size="14" font-weight="700" fill="#9F1239">节目: 节日促销海报轮播</text>
+         </g>
+
+         <line x1="0" y1="240" x2="310" y2="240" stroke="#F1F5F9" stroke-width="2"/>
+         <g transform="translate(0, 260)">
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">分辨率</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#1E293B">1080P</text>
+             </g>
+             <g transform="translate(110, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">模式</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#1E293B">静音</text>
+             </g>
+             <g transform="translate(210, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">下发状态</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#E11D48">80%</text>
+             </g>
+         </g>
+       </g>
+    </g>
+
+    <!-- 3. 会议室 (Cyan/Offline) -->
+    <g transform="translate(790, 0)">
+       <rect width="370" height="340" rx="12" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="1" filter="url(#dash-shadow)"/>
+       <rect width="370" height="6" rx="3" fill="#0891B2"/>
+       
+       <g transform="translate(30, 30)">
+         <rect x="0" y="0" width="48" height="32" rx="4" fill="#164E63"/>
+         <rect x="2" y="2" width="44" height="28" rx="2" fill="#22D3EE"/>
+         <text x="60" y="22" font-family="sans-serif" font-size="18" font-weight="700" fill="#1E293B">会议室门牌</text>
+
+         <g transform="translate(0, 60)">
+            <text x="0" y="0" font-size="12" fill="#64748B">当前节目画面</text>
+            <rect x="0" y="10" width="310" height="130" rx="6" fill="#F1F5F9"/>
+            <rect x="5" y="15" width="300" height="120" rx="4" fill="#E2E8F0"/>
+            <text x="155" y="80" text-anchor="middle" font-size="12" fill="#94A3B8">无信号</text>
+            <text x="0" y="160" font-size="14" font-weight="700" fill="#64748B">节目: 会议排期表.json</text>
+         </g>
+
+         <line x1="0" y1="240" x2="310" y2="240" stroke="#F1F5F9" stroke-width="2"/>
+         <g transform="translate(0, 260)">
+             <g>
+                <text x="0" y="0" font-size="12" fill="#64748B">最后心跳</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#DC2626">10:42 AM</text>
+             </g>
+             <g transform="translate(110, 0)">
+                <text x="0" y="0" font-size="12" fill="#64748B">IP 地址</text>
+                <text x="0" y="22" font-size="16" font-weight="700" fill="#1E293B">192.168.3.15</text>
+             </g>
+         </g>
+       </g>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg width="300" height="160" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 灯泡核心 -->
+    <radialGradient id="bulbGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </radialGradient>
+    <!-- 强弥散光晕滤镜 -->
+    <filter id="glowBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
+    </filter>
+  </defs>
+
+  <!-- 卡片底座 (背景微调为淡灰，区分基础设施) -->
+  <g>
+    <rect x="2" y="2" width="296" height="156" rx="8" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M 3 10 L 297 10" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 左侧：弥散光斑拟态 -->
+  <g transform="translate(50, 80)">
+    <!-- 背景光斑 (模糊) -->
+    <circle cx="0" cy="0" r="20" fill="#FCD34D" fill-opacity="0.6" filter="url(#glowBlur)"/>
+    <!-- 灯体轮廓 -->
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <!-- 灯芯 -->
+    <circle cx="0" cy="0" r="8" fill="url(#bulbGradient)"/>
+  </g>
+
+  <!-- 中部：能耗数据 -->
+  <g transform="translate(100, 55)">
+    <text x="0" y="0" font-family="Arial" font-size="14" font-weight="bold" fill="#1F2937">Light-Hall-L1</text>
+    <text x="0" y="25" font-family="Arial" font-size="12" fill="#6B7280">亮度等级</text>
+    <text x="0" y="45" font-family="Arial" font-size="18" font-weight="bold" fill="#D97706">80%</text>
+    
+    <text x="0" y="75" font-family="Arial" font-size="12" fill="#6B7280">实时功率</text>
+    <text x="0" y="90" font-family="Arial" font-size="14" font-weight="bold" fill="#1F2937">45.2 W</text>
+  </g>
+
+  <!-- 右侧：亮度滑块模拟 -->
+  <g transform="translate(230, 40)">
+    <!-- 轨道 -->
+    <rect x="0" y="0" width="8" height="80" rx="4" fill="#F3F4F6"/>
+    <!-- 激活条 -->
+    <rect x="0" y="16" width="8" height="64" rx="4" fill="#FCD34D"/>
+    <!-- 滑块头 -->
+    <circle cx="4" cy="16" r="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,82 @@
+<svg width="300" height="160" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 宝石核心渐变 (仅用于图形，禁止用于文字) -->
+    <linearGradient id="gemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" /> <!-- Emerald 400 -->
+      <stop offset="100%" stop-color="#059669" /> <!-- Emerald 600 -->
+    </linearGradient>
+    
+    <!-- 顶部装饰条渐变 -->
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+
+    <!-- 弥散阴影滤镜 -->
+    <filter id="diffuseShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/> <!-- 降低阴影浓度 -->
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. 卡片底座 -->
+  <g filter="url(#diffuseShadow)">
+    <!-- 纯白背景 -->
+    <rect x="2" y="2" width="296" height="156" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <!-- 顶部色彩条装饰 -->
+    <path d="M 3 10 L 297 10" stroke="url(#barGradient)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 2. 左侧：功能拟态图标 (AP 波纹光晕) -->
+  <g transform="translate(40, 80)">
+    <!-- 呼吸光晕 (最外层) -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#34D399" stroke-opacity="0.2" stroke-width="1"/>
+    <!-- 次级光晕 -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#34D399" stroke-opacity="0.4" stroke-width="1.5"/>
+    <!-- 宝石核心 -->
+    <circle cx="0" cy="0" r="12" fill="url(#gemGradient)">
+      <!-- 核心高光点，增加宝石质感 -->
+      <circle cx="-3" cy="-3" r="3" fill="#FFFFFF" fill-opacity="0.3"/>
+    </circle>
+  </g>
+
+  <!-- 3. 中部：核心数据 (严格使用 Hex 纯色) -->
+  <g transform="translate(85, 55)">
+    <!-- 标题 -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1F2937">AP-Lobby-01</text>
+    
+    <!-- 在线人数 -->
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">在线终端</text>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#059669">52</text> <!-- 绿色强调 -->
+    
+    <!-- 信号强度 -->
+    <text x="0" y="70" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">信号质量</text>
+    <text x="0" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563EB">-42 dBm</text> <!-- 蓝色强调 -->
+  </g>
+
+  <!-- 4. 右侧：趋势图与信号条 (拒绝留白) -->
+  <g transform="translate(200, 60)">
+    <!-- 背景网格线 -->
+    <line x1="0" y1="0" x2="80" y2="0" stroke="#F3F4F6" stroke-width="1"/>
+    <line x1="0" y1="40" x2="80" y2="40" stroke="#F3F4F6" stroke-width="1"/>
+    <line x1="0" y1="80" x2="80" y2="80" stroke="#F3F4F6" stroke-width="1"/>
+
+    <!-- 流量折线图 -->
+    <polyline points="0,60 20,40 40,55 60,20 80,30" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    <!-- 折线图下方的微弱填充 (可选，这里用纯色低透明度) -->
+    <polygon points="0,60 20,40 40,55 60,20 80,30 80,80 0,80" fill="#3B82F6" fill-opacity="0.1"/>
+    
+    <!-- 右上角：信号柱状图 -->
+    <rect x="55" y="-15" width="4" height="6" rx="1" fill="#D1FAE5"/>
+    <rect x="62" y="-15" width="4" height="10" rx="1" fill="#D1FAE5"/>
+    <rect x="69" y="-15" width="4" height="14" rx="1" fill="#34D399"/>
+    <rect x="76" y="-15" width="4" height="18" rx="1" fill="#059669"/>
+  </g>
+</svg>

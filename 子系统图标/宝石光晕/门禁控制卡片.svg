@@ -1,0 +1,52 @@
+<svg width="300" height="160" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accessGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" /> <!-- Teal 400 -->
+      <stop offset="100%" stop-color="#0F766E" /> <!-- Teal 700 -->
+    </linearGradient>
+    <filter id="shadowTeal">
+       <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+       <feOffset dx="0" dy="2"/>
+       <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowTeal)">
+    <rect x="2" y="2" width="296" height="156" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M 3 10 L 297 10" stroke="#14B8A6" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 左侧：拟态门禁面板 -->
+  <g transform="translate(50, 80)">
+    <!-- 面板主体 -->
+    <rect x="-15" y="-30" width="30" height="60" rx="4" fill="#F0FDFA" stroke="#14B8A6" stroke-width="1.5"/>
+    <!-- 刷卡感应区 -->
+    <rect x="-10" y="5" width="20" height="20" rx="2" fill="#E2E8F0"/>
+    <!-- 状态指示灯 (核心宝石) -->
+    <circle cx="0" cy="-15" r="5" fill="url(#accessGradient)"/>
+    <!-- 指示灯光晕 -->
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#14B8A6" stroke-opacity="0.5" stroke-width="1"/>
+  </g>
+
+  <!-- 中部：数据 -->
+  <g transform="translate(90, 55)">
+    <text x="0" y="0" font-family="Arial" font-size="14" font-weight="bold" fill="#1F2937">Door-Main-01</text>
+    <text x="0" y="25" font-family="Arial" font-size="12" fill="#6B7280">当前状态</text>
+    <text x="0" y="45" font-family="Arial" font-size="16" font-weight="bold" fill="#0D9488">已布防 (Locked)</text> <!-- 青色强调 -->
+    
+    <!-- 进出记录 -->
+    <text x="0" y="75" font-family="Arial" font-size="11" fill="#9CA3AF">最后通行: 10:42 AM</text>
+    <text x="0" y="90" font-family="Arial" font-size="11" fill="#9CA3AF">人员: Admin_Zhang</text>
+  </g>
+
+  <!-- 右侧：通行趋势简图 -->
+  <g transform="translate(220, 90)">
+    <!-- 柱状图 -->
+    <rect x="0" y="-10" width="6" height="10" fill="#CCFBF1"/>
+    <rect x="10" y="-25" width="6" height="25" fill="#99F6E4"/>
+    <rect x="20" y="-15" width="6" height="15" fill="#5EEAD4"/>
+    <rect x="30" y="-40" width="6" height="40" fill="#2DD4BF"/>
+    <text x="18" y="15" text-anchor="middle" font-family="Arial" font-size="10" fill="#6B7280">流量</text>
+  </g>
+</svg>
