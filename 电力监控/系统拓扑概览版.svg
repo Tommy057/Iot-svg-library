@@ -1,0 +1,189 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 电力系统一次接线拓扑图 (System Topology Overview)
+    风格: 宝石光晕 & 纯净白 (无动画/静态/专业版)
+  -->
+
+  <defs>
+    <!-- 简单的节点阴影，增加层次感 -->
+    <filter id="nodeShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="0" dy="1" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 变压器/宝石的静态微渐变 -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景：纯白 -->
+  <rect width="800" height="500" fill="#FFFFFF"/>
+  
+  <!-- ========================================================================
+       1. 高压进线区域 (High Voltage Incomer) 
+       ======================================================================== -->
+  <g transform="translate(400, 40)">
+    <!-- 进线文字 -->
+    <text x="0" y="-15" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#F59E0B">
+      10kV #1 进线
+    </text>
+    
+    <!-- 垂直进线 (Gold) -->
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#F59E0B" stroke-width="3"/>
+    
+    <!-- 断路器 (高压) -->
+    <g transform="translate(0, 60)" filter="url(#nodeShadow)">
+      <rect x="-10" y="-10" width="20" height="20" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+      <!-- 合闸状态点 -->
+      <circle cx="0" cy="0" r="4" fill="#10B981"/> 
+    </g>
+
+    <line x1="0" y1="70" x2="0" y2="110" stroke="#F59E0B" stroke-width="3"/>
+
+    <!-- 变压器 (Transformer) - 视觉中心 -->
+    <g transform="translate(0, 130)" filter="url(#nodeShadow)">
+      <!-- 上圆 -->
+      <circle cx="0" cy="-12" r="16" fill="#FFFFFF" stroke="url(#goldGradient)" stroke-width="2.5"/>
+      <!-- 下圆 -->
+      <circle cx="0" cy="8" r="16" fill="#FFFFFF" stroke="url(#goldGradient)" stroke-width="2.5"/>
+      <!-- 标注 -->
+      <text x="25" y="5" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#9CA3AF">
+        1# 变压器
+      </text>
+    </g>
+
+    <line x1="0" y1="154" x2="0" y2="190" stroke="#F59E0B" stroke-width="3"/>
+  </g>
+
+  <!-- ========================================================================
+       2. 低压主母线 (Low Voltage Busbar)
+       ======================================================================== -->
+  <g transform="translate(0, 230)">
+    <!-- 母线主体 -->
+    <line x1="100" y1="0" x2="700" y2="0" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- 母线名称 -->
+    <text x="80" y="-10" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#374151">
+      380V I段母线
+    </text>
+  </g>
+
+  <!-- ========================================================================
+       3. 馈线支路区域 (Feeder Branches)
+       ======================================================================== -->
+  
+  <!-- 支路 1: 空调机组 (Air Conditioning) -->
+  <g transform="translate(200, 230)">
+    <!-- 节点圆点 -->
+    <circle cx="0" cy="0" r="4" fill="#374151"/>
+    <!-- 引下线 -->
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#4B5563" stroke-width="1.5"/>
+    
+    <!-- 隔离开关/断路器 -->
+    <g transform="translate(0, 50)">
+      <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#FFFFFF" stroke="#4B5563" stroke-width="1.5"/>
+      <!-- 绿色合闸 -->
+      <rect x="-4" y="-4" width="8" height="8" rx="1" fill="#10B981"/>
+    </g>
+
+    <line x1="0" y1="58" x2="0" y2="120" stroke="#4B5563" stroke-width="1.5"/>
+
+    <!-- 互感器 CT -->
+    <g transform="translate(0, 90)">
+      <circle cx="0" cy="0" r="5" fill="none" stroke="#9CA3AF" stroke-width="1"/>
+      <path d="M0 5 L10 5" stroke="#9CA3AF" stroke-width="1"/>
+    </g>
+
+    <!-- 负载箭头 -->
+    <path d="M-5 120 L0 128 L5 120" fill="none" stroke="#4B5563" stroke-width="1.5"/>
+    
+    <!-- 数据标签块 (Data Tag) -->
+    <g transform="translate(15, 60)">
+      <rect x="0" y="-10" width="100" height="60" rx="4" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="5" y="5" font-family="'Microsoft YaHei', sans-serif" font-size="10" font-weight="bold" fill="#374151">1# 空调主机</text>
+      
+      <!-- 参数 -->
+      <text x="5" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">Ia: <tspan fill="#374151">12.5 A</tspan></text>
+      <text x="5" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">Ib: <tspan fill="#374151">12.6 A</tspan></text>
+      <text x="5" y="46" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">P:  <tspan fill="#F59E0B">8.2 kW</tspan></text>
+    </g>
+  </g>
+
+  <!-- 支路 2: 照明回路 (Lighting) -->
+  <g transform="translate(400, 230)">
+    <circle cx="0" cy="0" r="4" fill="#374151"/>
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#4B5563" stroke-width="1.5"/>
+    
+    <!-- 断路器 -->
+    <g transform="translate(0, 50)">
+      <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#FFFFFF" stroke="#4B5563" stroke-width="1.5"/>
+      <rect x="-4" y="-4" width="8" height="8" rx="1" fill="#10B981"/>
+    </g>
+
+    <line x1="0" y1="58" x2="0" y2="120" stroke="#4B5563" stroke-width="1.5"/>
+    
+    <g transform="translate(0, 90)">
+      <circle cx="0" cy="0" r="5" fill="none" stroke="#9CA3AF" stroke-width="1"/>
+      <path d="M0 5 L10 5" stroke="#9CA3AF" stroke-width="1"/>
+    </g>
+
+    <path d="M-5 120 L0 128 L5 120" fill="none" stroke="#4B5563" stroke-width="1.5"/>
+
+    <!-- 数据标签块 -->
+    <g transform="translate(15, 60)">
+      <rect x="0" y="-10" width="100" height="60" rx="4" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="5" y="5" font-family="'Microsoft YaHei', sans-serif" font-size="10" font-weight="bold" fill="#374151">公共照明</text>
+      
+      <text x="5" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">Ia: <tspan fill="#374151">4.2 A</tspan></text>
+      <text x="5" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">Ib: <tspan fill="#374151">4.1 A</tspan></text>
+      <text x="5" y="46" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#6B7280">P:  <tspan fill="#F59E0B">2.5 kW</tspan></text>
+    </g>
+  </g>
+
+  <!-- 支路 3: 备用回路 (Spare) - 红色分闸状态 -->
+  <g transform="translate(600, 230)">
+    <circle cx="0" cy="0" r="4" fill="#374151"/>
+    <line x1="0" y1="0" x2="0" y2="50" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4 2"/> <!-- 虚线表示未通电 -->
+    
+    <!-- 断路器 -->
+    <g transform="translate(0, 50)">
+      <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+      <!-- 红色分闸/故障 -->
+      <circle cx="0" cy="0" r="3" fill="#EF4444"/>
+    </g>
+
+    <line x1="0" y1="58" x2="0" y2="120" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4 2"/>
+    
+    <path d="M-5 120 L0 128 L5 120" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+
+    <!-- 数据标签块 - 灰色状态 -->
+    <g transform="translate(15, 60)">
+      <rect x="0" y="-10" width="100" height="60" rx="4" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="5" y="5" font-family="'Microsoft YaHei', sans-serif" font-size="10" font-weight="bold" fill="#9CA3AF">备用馈线</text>
+      
+      <text x="5" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#D1D5DB">Ia: 0.0 A</text>
+      <text x="5" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#D1D5DB">Ib: 0.0 A</text>
+      <text x="5" y="46" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#D1D5DB">P:  0.0 kW</text>
+    </g>
+  </g>
+
+  <!-- 全局概览信息 (右下角图例) -->
+  <g transform="translate(680, 420)">
+     <rect x="0" y="0" width="110" height="70" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+     <text x="10" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#9CA3AF">系统状态概览</text>
+     <circle cx="15" cy="40" r="3" fill="#10B981"/>
+     <text x="25" y="44" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#374151">正常供电: 2</text>
+     <circle cx="15" cy="58" r="3" fill="#EF4444"/>
+     <text x="25" y="62" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#374151">断开/报警: 1</text>
+  </g>
+
+</svg>

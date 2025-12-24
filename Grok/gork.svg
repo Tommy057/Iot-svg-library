@@ -1,0 +1,211 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 柔和弥散阴影滤镜 -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feFlood flood-color="rgba(0,0,0,0.09)" result="offsetColor"/>
+      <feComposite in2="offsetBlur" operator="in" in="offsetColor" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- 宝石光晕渐变 -->
+    <radialGradient id="gem-gradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#6366F1" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"/>
+    </radialGradient>
+    <!-- 播放中渐变 -->
+    <linearGradient id="playing-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="50%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <!-- 息屏渐变 -->
+    <linearGradient id="standby-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <!-- 离线渐变 (灰色雪花感) -->
+    <linearGradient id="offline-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B7280"/>
+      <stop offset="100%" stop-color="#4B5563"/>
+    </linearGradient>
+    <!-- 下载中进度条渐变 -->
+    <linearGradient id="download-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景卡片 -->
+  <rect x="20" y="20" width="760" height="560" rx="16" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+  <text x="40" y="60" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#1E293B">信息发布系统 - 16路集控矩阵</text>
+  
+  <!-- 4x4 网格布局 -->
+  <g transform="translate(40, 100)">
+    <!-- 行1 -->
+    <!-- 设备1-4: 正常播放 -->
+    <g>
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #001</text>
+    </g>
+    <g transform="translate(180,0)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #002</text>
+    </g>
+    <g transform="translate(360,0)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #003</text>
+    </g>
+    <g transform="translate(540,0)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #004</text>
+    </g>
+    
+    <!-- 行2 -->
+    <g transform="translate(0,160)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #005</text>
+    </g>
+    <g transform="translate(180,160)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #006</text>
+    </g>
+    <g transform="translate(360,160)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #007</text>
+    </g>
+    <g transform="translate(540,160)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #008</text>
+    </g>
+    
+    <!-- 行3 -->
+    <g transform="translate(0,320)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #009</text>
+    </g>
+    <g transform="translate(180,320)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #010</text>
+    </g>
+    <g transform="translate(360,320)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #011</text>
+    </g>
+    <g transform="translate(540,320)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#playing-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.3"/>
+      <path d="M64 30 L64 60 L88 45 Z" fill="#FFFFFF"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#22C55E"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #012</text>
+    </g>
+    
+    <!-- 行4: 特殊状态 -->
+    <!-- 设备13: 息屏待机 -->
+    <g transform="translate(0,480)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#standby-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.1"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#EAB308"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #013 (待机)</text>
+    </g>
+    <!-- 设备14: 息屏待机 -->
+    <g transform="translate(180,480)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#standby-gradient)"/>
+      <path d="M0 90 L80 150 L160 90" fill="#A78BFA" opacity="0.1"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#EAB308"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #014 (待机)</text>
+    </g>
+    <!-- 设备15: 离线报警 -->
+    <g transform="translate(360,480)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#offline-gradient)"/>
+      <!-- 雪花噪点模拟 -->
+      <circle cx="40" cy="30" r="3" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="80" cy="50" r="4" fill="#FFFFFF" opacity="0.2"/>
+      <circle cx="120" cy="20" r="2" fill="#FFFFFF" opacity="0.4"/>
+      <circle cx="60" cy="70" r="3" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="100" cy="60" r="4" fill="#FFFFFF" opacity="0.2"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="150" cy="15" r="8" fill="#EF4444"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #015 (离线)</text>
+    </g>
+    <!-- 设备16: 下载中 -->
+    <g transform="translate(540,480)">
+      <rect x="0" y="0" width="160" height="90" rx="8" fill="url(#standby-gradient)"/>
+      <circle cx="80" cy="45" r="10" fill="url(#gem-gradient)"/>
+      <circle cx="80" cy="45" r="6" fill="#FFFFFF" opacity="0.3"/>
+      <!-- 下载进度条 -->
+      <rect x="30" y="70" width="100" height="8" rx="4" fill="#E5E7EB"/>
+      <rect x="30" y="70" width="70" height="8" rx="4" fill="url(#download-gradient)">
+        <animate attributeName="width" from="0" to="70" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="150" cy="15" r="8" fill="#3B82F6"/>
+      <text x="80" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">设备 #016 (下载中)</text>
+    </g>
+  </g>
+</svg>

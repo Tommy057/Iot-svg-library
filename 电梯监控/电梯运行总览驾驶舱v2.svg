@@ -1,0 +1,307 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净卡片阴影 -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 状态颜色渐变 -->
+    <!-- 运行 (Sapphire Blue) -->
+    <linearGradient id="gradRun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <!-- 停止 (Slate Grey) -->
+    <linearGradient id="gradStop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <!-- 故障 (Ruby Red) -->
+    <linearGradient id="gradFault" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+    <!-- 检修 (Amber) -->
+    <linearGradient id="gradMaint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <!-- 3. 能耗图表渐变 -->
+    <linearGradient id="energyChart" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景：浅灰白 -->
+  <rect width="1200" height="675" fill="#F8FAFC"/>
+
+  <!-- ================================================================================== -->
+  <!-- 1. 顶部 KPI 数据栏 (Top Stats) -->
+  <!-- ================================================================================== -->
+  <g transform="translate(20, 20)">
+    <!-- 1. 设备数量 -->
+    <g transform="translate(0, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#3B82F6"/> <!-- 左侧色条 -->
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">设备数量</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#1E293B">20</text>
+      <!-- 图标示意 -->
+      <rect x="130" y="20" width="30" height="30" rx="4" fill="#EFF6FF"/>
+      <path d="M140 25 V45 M150 25 V45 M135 25 H155 M135 45 H155" stroke="#3B82F6" stroke-width="2"/>
+    </g>
+
+    <!-- 2. 运行数量 -->
+    <g transform="translate(195, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#06B6D4"/>
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">运行数量</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#06B6D4">1</text>
+    </g>
+
+    <!-- 3. 停止数量 -->
+    <g transform="translate(390, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#64748B"/>
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">停止数量</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#64748B">19</text>
+    </g>
+
+    <!-- 4. 通讯故障 -->
+    <g transform="translate(585, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#F97316"/>
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">通讯故障</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#F97316">0</text>
+    </g>
+
+    <!-- 5. 综合故障 -->
+    <g transform="translate(780, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#EF4444"/>
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">综合故障</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#EF4444">1</text>
+      <!-- 警示图标 -->
+      <circle cx="150" cy="35" r="10" fill="#FEE2E2"/>
+      <text x="150" y="39" text-anchor="middle" font-weight="bold" font-size="12" fill="#EF4444">!</text>
+    </g>
+
+    <!-- 6. 检修数量 -->
+    <g transform="translate(975, 0)">
+      <rect width="180" height="70" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <rect x="0" y="0" width="6" height="70" rx="3" fill="#EAB308"/>
+      <text x="20" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">检修数量</text>
+      <text x="20" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#EAB308">1</text>
+    </g>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 2. 中间区域：电梯分区列表 (Zones) -->
+  <!-- ================================================================================== -->
+  
+  <g transform="translate(20, 110)">
+    
+    <!-- Zone 1: 低区 (Low Zone) -->
+    <g transform="translate(0, 0)">
+      <text x="5" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">低区 (Low Zone)</text>
+      <!-- Container -->
+      <rect x="0" y="15" width="850" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <!-- Elevator Grid Row 1 -->
+      <!-- A梯: 1/14 停止 -->
+      <g transform="translate(20, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <!-- Header -->
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">A</text>
+        <text x="90" y="20" font-family="sans-serif" font-size="10" fill="#FFFFFF">客梯</text>
+        <!-- Body -->
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">1<tspan font-size="12" fill="#94A3B8">/14</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/> <!-- Status Dot: Stop -->
+        <!-- Visual Bar (Bottom) -->
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="90" width="4" height="10" rx="2" fill="#94A3B8"/> <!-- Position -->
+      </g>
+
+      <!-- B梯: 1/14 停止 -->
+      <g transform="translate(160, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">B</text>
+        <text x="90" y="20" font-family="sans-serif" font-size="10" fill="#FFFFFF">客梯</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">1<tspan font-size="12" fill="#94A3B8">/14</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="90" width="4" height="10" rx="2" fill="#94A3B8"/>
+      </g>
+
+      <!-- C梯: 12/14 停止 -->
+      <g transform="translate(300, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">C</text>
+        <text x="90" y="20" font-family="sans-serif" font-size="10" fill="#FFFFFF">客梯</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">12<tspan font-size="12" fill="#94A3B8">/14</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="45" width="4" height="10" rx="2" fill="#94A3B8"/> <!-- High Position -->
+      </g>
+
+      <!-- D梯: 7/14 停止 -->
+      <g transform="translate(440, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">D</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">7<tspan font-size="12" fill="#94A3B8">/14</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="65" width="4" height="10" rx="2" fill="#94A3B8"/> <!-- Mid Position -->
+      </g>
+      
+       <!-- E梯 -->
+      <g transform="translate(580, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">E</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">1<tspan font-size="12" fill="#94A3B8">/14</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="90" width="4" height="10" rx="2" fill="#94A3B8"/>
+      </g>
+
+      <!-- 接驳梯 -->
+      <g transform="translate(720, 35)">
+        <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">-</text>
+        <text x="80" y="20" font-family="sans-serif" font-size="10" fill="#FFFFFF">接驳</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">1<tspan font-size="12" fill="#94A3B8">/1</tspan></text>
+        <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+      </g>
+    </g>
+
+    <!-- Zone 2: 中区 (Mid Zone) -->
+    <g transform="translate(0, 190)">
+      <text x="5" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">中区 (Mid Zone)</text>
+      <rect x="0" y="15" width="850" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <!-- A梯: 18/29 (假设运行) -->
+      <g transform="translate(20, 35)">
+        <rect width="120" height="110" rx="6" fill="#EFF6FF" stroke="#BFDBFE"/> <!-- Light Blue bg for active -->
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="url(#gradRun)"/> <!-- Blue Header -->
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">A</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#2563EB">18<tspan font-size="12" fill="#94A3B8">/29</tspan></text>
+        <!-- Running Icon -->
+        <circle cx="60" cy="90" r="4" fill="#2563EB">
+           <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="60" width="4" height="10" rx="2" fill="#2563EB"/>
+      </g>
+      
+      <!-- F梯: 25/29 停止 -->
+      <g transform="translate(160, 35)">
+         <!-- Placeholder style for stopped elevator -->
+         <rect width="120" height="110" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+         <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="#94A3B8"/>
+         <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">F</text>
+         <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#64748B">25<tspan font-size="12" fill="#94A3B8">/29</tspan></text>
+         <circle cx="60" cy="90" r="4" fill="#94A3B8"/>
+      </g>
+      
+      <!-- ... Rest of mid zone implied ... -->
+      <g transform="translate(300, 35)">
+         <text x="0" y="50" font-family="sans-serif" font-size="14" fill="#CBD5E1">...</text>
+      </g>
+    </g>
+
+    <!-- Zone 3: 高区 (High Zone) -->
+    <g transform="translate(0, 380)">
+      <text x="5" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">高区 (High Zone)</text>
+      <rect x="0" y="15" width="850" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <!-- B梯: 18/42 (UP Arrow from screenshot) -->
+      <g transform="translate(160, 35)">
+        <rect width="120" height="110" rx="6" fill="#EFF6FF" stroke="#BFDBFE"/>
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="url(#gradRun)"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">B</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#2563EB">18<tspan font-size="12" fill="#94A3B8">/42</tspan></text>
+        <!-- Up Arrow Icon -->
+        <path d="M56 94 L60 88 L64 94 M60 88 V98" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="70" width="4" height="10" rx="2" fill="#2563EB"/>
+      </g>
+
+      <!-- D梯: 6/42 (Maintenance Icon from screenshot) -->
+      <g transform="translate(440, 35)">
+        <rect width="120" height="110" rx="6" fill="#FFFBEB" stroke="#FDE68A"/> <!-- Amber bg -->
+        <path d="M0 6 A6 6 0 0 1 6 0 H114 A6 6 0 0 1 120 6 V30 H0 Z" fill="url(#gradMaint)"/>
+        <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">D</text>
+        <text x="60" y="65" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#D97706">6<tspan font-size="12" fill="#94A3B8">/42</tspan></text>
+        <!-- Wrench Icon -->
+        <path d="M55 95 L65 85 M58 88 L62 92" stroke="#D97706" stroke-width="2"/>
+        <circle cx="60" cy="90" r="8" fill="none" stroke="#D97706" stroke-width="1.5"/>
+        <rect x="110" y="40" width="4" height="60" rx="2" fill="#E2E8F0"/>
+        <rect x="110" y="80" width="4" height="10" rx="2" fill="#D97706"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 3. 右侧面板 (Right Sidebar) -->
+  <!-- ================================================================================== -->
+  <g transform="translate(890, 110)">
+    
+    <!-- 1. 视频监控 (Video) -->
+    <g transform="translate(0, 0)">
+        <rect width="290" height="180" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+        <text x="10" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">电梯视频监控</text>
+        <!-- Screen -->
+        <rect x="10" y="35" width="270" height="135" rx="4" fill="#0F172A"/>
+        <text x="145" y="110" text-anchor="middle" font-size="12" fill="#475569">无信号 / No Signal</text>
+        <!-- Lens Glare -->
+        <path d="M10 35 L50 170 L280 35" fill="url(#energyChart)" opacity="0.2"/>
+    </g>
+
+    <!-- 2. 能耗趋势 (Energy Chart) -->
+    <g transform="translate(0, 200)">
+        <rect width="290" height="160" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+        <text x="10" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">近7日电梯能耗趋势(kWh)</text>
+        <!-- Chart Area -->
+        <g transform="translate(20, 50)">
+            <line x1="0" y1="90" x2="250" y2="90" stroke="#F1F5F9" stroke-width="1"/>
+            <text x="-5" y="90" text-anchor="end" font-size="10" fill="#94A3B8">0</text>
+            <text x="-5" y="0" text-anchor="end" font-size="10" fill="#94A3B8">150</text>
+            <!-- Area Path (Replica of screenshot shape) -->
+            <path d="M0 90 L10 20 L20 80 L30 30 L40 85 L60 60 L80 70 L100 50 L120 80 L140 20 L160 80 L180 10 L200 80 L220 20 L240 80 L250 90 Z" fill="url(#energyChart)" stroke="none"/>
+            <path d="M0 90 L10 20 L20 80 L30 30 L40 85 L60 60 L80 70 L100 50 L120 80 L140 20 L160 80 L180 10 L200 80 L220 20 L240 80 L250 90" fill="none" stroke="#38BDF8" stroke-width="1.5"/>
+        </g>
+    </g>
+
+    <!-- 3. 实时告警 (Alerts) -->
+    <g transform="translate(0, 380)">
+        <rect width="290" height="165" rx="8" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+        <text x="10" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">电梯实时告警</text>
+        
+        <!-- Header -->
+        <rect x="10" y="35" width="270" height="25" fill="#F1F5F9" rx="2"/>
+        <text x="20" y="52" font-size="12" fill="#64748B">告警时间</text>
+        <text x="150" y="52" font-size="12" fill="#64748B">告警内容</text>
+
+        <!-- Empty State (Matches screenshot mostly being empty or dark) -->
+        <rect x="10" y="65" width="270" height="90" fill="#F8FAFC" stroke="#F1F5F9" stroke-dasharray="4 2"/>
+        <text x="145" y="115" text-anchor="middle" font-size="12" fill="#94A3B8">暂无实时告警</text>
+    </g>
+
+  </g>
+
+</svg>

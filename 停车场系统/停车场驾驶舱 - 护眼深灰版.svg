@@ -1,0 +1,278 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 柔和辉光 (Soft Glow Shadow) - 代替实体阴影 -->
+    <filter id="darkGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.5" result="shadowColor"/>
+      <feComposite in="shadowColor" in2="offsetBlur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 卡片背景：深邃玻璃感 -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" /> <!-- Slate 800 -->
+      <stop offset="100%" stop-color="#0F172A" /> <!-- Slate 900 -->
+    </linearGradient>
+
+    <!-- 3. 宝石渐变 (高亮模式) -->
+    <linearGradient id="neonBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="neonRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+
+    <!-- 4. 图表专用渐变 (夜视版) -->
+    <linearGradient id="barNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="areaNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 全局背景：护眼深岩灰 -->
+  <!-- ========================================== -->
+  <rect width="1200" height="675" fill="#0F172A"/>
+
+  <!-- ================================================================================== -->
+  <!-- 左侧区域：KPI & 图表 -->
+  <!-- ================================================================================== -->
+
+  <!-- 1. KPI 卡片组 -->
+  <g transform="translate(20, 20)">
+    
+    <!-- 卡片 1: 总车位 (深蓝调) -->
+    <g transform="translate(0, 0)">
+      <rect width="250" height="110" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1" filter="url(#darkGlow)"/>
+      <!-- P 图标：深色底+亮色字 -->
+      <circle cx="50" cy="55" r="24" fill="#172554" stroke="#1E40AF" stroke-width="1"/>
+      <text x="50" y="63" font-family="'Microsoft YaHei', sans-serif" text-anchor="middle" font-size="28" font-weight="bold" fill="#60A5FA">P</text>
+      <!-- 数据 -->
+      <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">总车位</text>
+      <text x="90" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="bold" fill="#E2E8F0">1,089</text>
+    </g>
+
+    <!-- 卡片 2: 总空余 (荧光绿 - 视觉焦点) -->
+    <g transform="translate(270, 0)">
+      <rect width="250" height="110" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1" filter="url(#darkGlow)"/>
+      <g transform="translate(26, 35)">
+        <!-- 拟态小车：夜光版 -->
+        <path d="M4 20 L10 4 L38 4 L44 20 H48 V32 H0 V20 H4 Z" fill="url(#neonGreen)" fill-opacity="0.8"/>
+        <circle cx="10" cy="32" r="5" fill="#064E3B"/>
+        <circle cx="38" cy="32" r="5" fill="#064E3B"/>
+        <path d="M12 6 L36 6 L40 18 H8 Z" fill="#ECFDF5" fill-opacity="0.3"/>
+      </g>
+      <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">总空余车位</text>
+      <!-- 绿色高亮数据 -->
+      <text x="90" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="bold" fill="#34D399">785</text>
+    </g>
+
+    <!-- 卡片 3: 总占用 (柔和红) -->
+    <g transform="translate(540, 0)">
+      <rect width="250" height="110" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1" filter="url(#darkGlow)"/>
+      <circle cx="50" cy="55" r="24" fill="#450A0A" stroke="#7F1D1D" stroke-width="1"/>
+      <path d="M35 55 L40 45 L60 45 L65 55 H35 Z" fill="#F87171"/>
+      <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">总占用车位</text>
+      <text x="90" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="bold" fill="#F87171">304</text>
+    </g>
+  </g>
+
+  <!-- 2. 进场车辆图表 (夜间模式) -->
+  <g transform="translate(20, 150)">
+    <rect width="790" height="240" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1"/>
+    
+    <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">近一月逐日进场车辆统计</text>
+    
+    <!-- 坐标轴线颜色变暗 -->
+    <line x1="40" y1="200" x2="750" y2="200" stroke="#334155" stroke-width="1"/>
+    
+    <!-- 刻度文字变灰 -->
+    <text x="30" y="200" font-family="sans-serif" text-anchor="end" font-size="10" fill="#64748B">0</text>
+    <text x="30" y="160" font-family="sans-serif" text-anchor="end" font-size="10" fill="#64748B">100</text>
+    <text x="30" y="120" font-family="sans-serif" text-anchor="end" font-size="10" fill="#64748B">200</text>
+    <text x="30" y="80" font-family="sans-serif" text-anchor="end" font-size="10" fill="#64748B">300</text>
+    
+    <!-- 荧光柱状图 -->
+    <rect x="80" y="140" width="40" height="60" rx="6" fill="url(#barNight)"/>
+    <text x="100" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#94A3B8">12/01</text>
+    
+    <rect x="180" y="100" width="40" height="100" rx="6" fill="url(#barNight)"/>
+    <text x="200" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#94A3B8">12/05</text>
+
+    <!-- 高亮柱 (带有顶部光辉) -->
+    <rect x="280" y="60" width="40" height="140" rx="6" fill="url(#barNight)"/>
+    <rect x="280" y="60" width="40" height="2" fill="#7DD3FC" filter="url(#darkGlow)"/> <!-- 顶部霓虹条 -->
+    <text x="300" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#E2E8F0">12/10</text>
+
+    <rect x="380" y="80" width="40" height="120" rx="6" fill="url(#barNight)"/>
+    <text x="400" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#94A3B8">12/15</text>
+    
+    <rect x="480" y="110" width="40" height="90" rx="6" fill="url(#barNight)"/>
+    <text x="500" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#94A3B8">12/20</text>
+    
+    <rect x="580" y="90" width="40" height="110" rx="6" fill="url(#barNight)"/>
+    <text x="600" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#94A3B8">12/24</text>
+  </g>
+
+  <!-- 3. 收益图表 (极光波浪) -->
+  <g transform="translate(20, 410)">
+    <rect width="790" height="240" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1"/>
+    
+    <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">近一月逐日收益统计 (Revenue)</text>
+    <line x1="40" y1="200" x2="750" y2="200" stroke="#334155" stroke-width="1"/>
+    
+    <!-- 极光填充 -->
+    <path d="M40 180 Q 200 100 380 150 T 750 60 V 200 H 40 Z" fill="url(#areaNight)" stroke="none"/>
+    <!-- 亮线 -->
+    <path d="M40 180 Q 200 100 380 150 T 750 60" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 发光节点 -->
+    <circle cx="380" cy="150" r="4" fill="#0F172A" stroke="#A5B4FC" stroke-width="2"/>
+    <circle cx="750" cy="60" r="4" fill="#0F172A" stroke="#A5B4FC" stroke-width="2"/>
+
+    <text x="30" y="220" font-family="sans-serif" font-size="10" fill="#64748B">Week 1</text>
+    <text x="380" y="220" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#64748B">Week 2</text>
+    <text x="750" y="220" font-family="sans-serif" text-anchor="end" font-size="10" fill="#64748B">Week 4</text>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 右侧区域：监控 & 列表 -->
+  <!-- ================================================================================== -->
+
+  <!-- 4. 视频监控 (暗房效果) -->
+  <g transform="translate(830, 20)">
+    <rect width="350" height="220" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">实时监控 (Live)</text>
+    
+    <!-- 监控画面容器 - 纯黑底色 -->
+    <g transform="translate(20, 50)">
+        <rect width="145" height="100" fill="#020617" rx="4" stroke="#1E293B" stroke-width="1"/>
+        <!-- 模拟红外夜视画面 -->
+        <path d="M40 100 L72 30 L104 100" fill="none" stroke="#1E293B" stroke-width="2"/>
+        <line x1="72" y1="30" x2="72" y2="100" stroke="#334155" stroke-width="1" stroke-dasharray="4 2"/>
+        
+        <!-- 取景框：暗青色，不刺眼 -->
+        <path d="M10 20 V10 H20 M135 10 H125 V20 M125 90 V80 H135 M20 90 H10 V80" stroke="#0F766E" stroke-width="2" fill="none"/>
+        <text x="5" y="115" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">B1 入口</text>
+        <circle cx="130" cy="15" r="3" fill="#EF4444" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(185, 50)">
+        <rect width="145" height="100" fill="#020617" rx="4" stroke="#1E293B" stroke-width="1"/>
+        <path d="M40 100 L72 30 L104 100" fill="none" stroke="#1E293B" stroke-width="2"/>
+        <line x1="72" y1="30" x2="72" y2="100" stroke="#334155" stroke-width="1" stroke-dasharray="4 2"/>
+        <path d="M10 20 V10 H20 M135 10 H125 V20 M125 90 V80 H135 M20 90 H10 V80" stroke="#0F766E" stroke-width="2" fill="none"/>
+        <text x="5" y="115" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">B1 出口</text>
+        <circle cx="130" cy="15" r="3" fill="#EF4444" opacity="0.8"/>
+    </g>
+
+    <!-- 密度条 -->
+    <g transform="translate(20, 160)">
+        <text x="0" y="10" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">当前车流密度</text>
+        <rect x="0" y="20" width="310" height="6" rx="3" fill="#334155"/>
+        <rect x="0" y="20" width="120" height="6" rx="3" fill="#38BDF8"/>
+    </g>
+  </g>
+
+  <!-- 5. 进出场列表 (深色斑马纹) -->
+  <g transform="translate(830, 260)">
+    <rect width="350" height="390" rx="12" fill="url(#cardBg)" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">当日进出场记录</text>
+    
+    <!-- 表头 -->
+    <g transform="translate(20, 60)">
+        <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">时间</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">车牌</text>
+        <text x="210" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">类型</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">通道</text>
+        <line x1="0" y1="10" x2="310" y2="10" stroke="#334155" stroke-width="1"/>
+    </g>
+
+    <!-- 列表数据 -->
+    <!-- Row 1 -->
+    <g transform="translate(20, 90)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">00:09:19</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">贵DUJ918</text>
+        <!-- 标签：深色背景，亮色文字 -->
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#064E3B" stroke="#065F46" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#34D399">进</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">1号岗</text>
+    </g>
+    <line x1="20" y1="105" x2="330" y2="105" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+
+    <!-- Row 2 -->
+    <g transform="translate(20, 125)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">00:07:08</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤S44C42</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#064E3B" stroke="#065F46" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#34D399">进</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">1号岗</text>
+    </g>
+    <line x1="20" y1="140" x2="330" y2="140" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+
+    <!-- Row 3 -->
+    <g transform="translate(20, 160)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">00:06:07</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤BEA6005</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#172554" stroke="#1E3A8A" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#60A5FA">出</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">2号岗</text>
+    </g>
+    <line x1="20" y1="175" x2="330" y2="175" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+
+    <!-- Row 4 -->
+    <g transform="translate(20, 195)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">00:03:17</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤T250SZ</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#064E3B" stroke="#065F46" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#34D399">进</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">2号岗</text>
+    </g>
+    <line x1="20" y1="210" x2="330" y2="210" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+
+    <!-- Row 5 -->
+    <g transform="translate(20, 230)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">00:02:07</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤T250SZ</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#172554" stroke="#1E3A8A" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#60A5FA">出</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">2号岗</text>
+    </g>
+    <line x1="20" y1="245" x2="330" y2="245" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+
+    <!-- Row 6 -->
+    <g transform="translate(20, 265)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">23:58:27</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤TD66873</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#064E3B" stroke="#065F46" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#34D399">进</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">2号岗</text>
+    </g>
+    <line x1="20" y1="280" x2="330" y2="280" stroke="#334155" stroke-width="1" stroke-dasharray="2 2"/>
+    
+    <!-- Row 7 -->
+    <g transform="translate(20, 300)">
+        <text x="0" y="0" font-family="monospace" font-size="12" fill="#94A3B8">23:57:56</text>
+        <text x="120" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">粤TQM835</text>
+        <rect x="205" y="-10" width="24" height="16" rx="4" fill="#064E3B" stroke="#065F46" stroke-width="1"/>
+        <text x="217" y="2" font-family="sans-serif" text-anchor="middle" font-size="10" fill="#34D399">进</text>
+        <text x="260" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">1号岗</text>
+    </g>
+
+  </g>
+
+</svg>

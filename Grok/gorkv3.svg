@@ -1,0 +1,77 @@
+<svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 柔和弥散阴影滤镜 -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feFlood flood-color="rgba(0,0,0,0.08)" result="offsetColor"/>
+      <feComposite in2="offsetBlur" operator="in" in="offsetColor" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- 宝石光晕渐变 (中心宝石圆点) -->
+    <radialGradient id="gem-gradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.8"/> <!-- 主题色: 科技蓝 for HVAC, 代表空气流动 -->
+      <stop offset="100%" stop-color="#1E40AF" stop-opacity="0.4"/>
+    </radialGradient>
+    <!-- 状态渐变 (正常运行: 蓝渐变) -->
+    <linearGradient id="status-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+    <!-- 进度条渐变 -->
+    <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <!-- 悬浮卡片背景: 纯净白 + 极细浅灰描边 + 阴影 -->
+  <rect x="0" y="0" width="400" height="180" rx="12" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+  <!-- 左侧: 设备缩略图 (功能拟态: 风扇叶片 + 温度波纹 + 中心宝石) -->
+  <g transform="translate(20, 30)">
+    <!-- 风扇外形拟态 (扇叶形状) -->
+    <path d="M10 10 Q50 0 90 10 Q50 50 90 90 Q50 100 10 90 Q50 50 10 10" fill="url(#status-gradient)" opacity="0.2"/>
+    <path d="M10 90 Q50 100 90 90 Q50 50 90 10 Q50 0 10 10 Q50 50 10 90" fill="url(#status-gradient)" opacity="0.2" transform="rotate(45 50 50)"/>
+    <!-- 温度波纹 (拟态空调气流) -->
+    <path d="M20 50 Q40 30 60 50 Q80 70 100 50" stroke="#3B82F6" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M20 60 Q40 40 60 60 Q80 80 100 60" stroke="#60A5FA" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <!-- 中心宝石圆点 -->
+    <circle cx="50" cy="50" r="12" fill="url(#gem-gradient)"/>
+    <circle cx="50" cy="50" r="8" fill="#FFFFFF" opacity="0.3"/> <!-- 高光 -->
+    <!-- 状态标签 (在线/正常: 绿色点) -->
+    <circle cx="100" cy="20" r="6" fill="#22C55E"/>
+    <text x="20" y="120" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">空调单元 #001</text> <!-- 纯色填充 -->
+    <text x="20" y="140" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">在线 · 制冷模式</text> <!-- 纯色填充 -->
+  </g>
+  <!-- 右侧: 属性与控制 (分栏布局) -->
+  <g transform="translate(160, 30)">
+    <!-- 核心属性: 温度 (进度条拟态) -->
+    <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">当前温度</text>
+    <rect x="0" y="10" width="200" height="8" rx="4" fill="#E5E7EB"/>
+    <rect x="0" y="10" width="120" height="8" rx="4" fill="url(#progress-gradient)"/> <!-- 渐变允许 -->
+    <text x="210" y="18" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">24°C / 30°C</text>
+    <!-- 风速 (进度条) -->
+    <text x="0" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">风速</text>
+    <rect x="0" y="50" width="200" height="8" rx="4" fill="#E5E7EB"/>
+    <rect x="0" y="50" width="150" height="8" rx="4" fill="url(#progress-gradient)"/>
+    <text x="210" y="58" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">中速 (60%)</text>
+    <!-- 控制按钮: 圆形拟态 (电源、模式切换、重启) -->
+    <g transform="translate(0, 80)">
+      <!-- 电源开关 -->
+      <circle cx="30" cy="30" r="25" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M25 20 L35 30 L25 40" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/> <!-- 拟态图标 -->
+      <text x="70" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">电源</text>
+      <!-- 模式切换 -->
+      <circle cx="30" cy="80" r="25" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M20 70 Q30 80 40 70 Q30 60 20 70" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/> <!-- 波纹拟态 -->
+      <text x="70" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">模式</text>
+      <!-- 重启 -->
+      <circle cx="150" cy="30" r="25" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M140 20 A20 20 0 1 1 140 40 L150 30" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/> <!-- 循环箭头 -->
+      <text x="190" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">重启</text>
+    </g>
+  </g>
+</svg>

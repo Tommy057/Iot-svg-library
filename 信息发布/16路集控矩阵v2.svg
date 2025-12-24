@@ -1,0 +1,100 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="0" dy="2" result="offsetblur"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        
+        <linearGradient id="bgPlaying" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#818CF8" />
+            <stop offset="100%" stop-color="#4F46E5" />
+        </linearGradient>
+        <pattern id="staticNoise" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="2" height="2" fill="#94A3B8" opacity="0.5" />
+            <rect x="2" y="2" width="2" height="2" fill="#64748B" opacity="0.5" />
+        </pattern>
+    </defs>
+
+    <rect x="10" y="10" width="780" height="580" rx="16" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#boxShadow)"/>
+    
+    <text x="30" y="45" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="18" fill="#1E293B">全域媒体集控矩阵 (16路)</text>
+    <text x="700" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">实时更新: 1s</text>
+
+    <g transform="translate(30, 70)">
+        
+        <script>/* 此处为逻辑说明，SVG内部直接编写实例 */</script>
+        
+        <g transform="translate(0, 0)">
+            <rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" />
+            <circle cx="20" cy="20" r="3" fill="#10B981" /> <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-RD-01 (大厅)</text>
+            <path d="M78 40 L88 47 L78 54 Z" fill="#FFFFFF" opacity="0.8" />
+        </g>
+        
+        <g transform="translate(185, 0)">
+            <rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" />
+            <circle cx="20" cy="20" r="3" fill="#10B981" />
+            <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-RD-02 (会议)</text>
+            <path d="M78 40 L88 47 L78 54 Z" fill="#FFFFFF" opacity="0.8" />
+        </g>
+
+        <g transform="translate(370, 0)">
+            <rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="#1E293B" />
+            <circle cx="20" cy="20" r="3" fill="#F59E0B" />
+            <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-DORM-01 (宿舍)</text>
+            <path d="M75 40 A10 10 0 1 0 85 55 A12 12 0 1 1 75 40" fill="#F59E0B" opacity="0.5" /> </g>
+
+        <g transform="translate(555, 0)">
+            <rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" />
+            <circle cx="20" cy="20" r="3" fill="#10B981" />
+            <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-FACT-01 (车间)</text>
+        </g>
+
+        <g transform="translate(0, 125)">
+            <rect width="170" height="110" rx="8" fill="#FFF1F2" stroke="#FDA4AF" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="url(#staticNoise)" />
+            <circle cx="20" cy="20" r="3" fill="#EF4444">
+                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+            </circle>
+            <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#EF4444">DS-B2F-01 (报警)</text>
+            <text x="55" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#FFFFFF" font-weight="bold">OFFLINE</text>
+        </g>
+
+        <g transform="translate(185, 125)">
+            <rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="10" y="10" width="150" height="84" rx="2" fill="#334155" />
+            <circle cx="20" cy="20" r="3" fill="#3B82F6" />
+            <rect x="35" y="45" width="100" height="4" rx="2" fill="#475569" />
+            <rect x="35" y="45" width="60" height="4" rx="2" fill="#3B82F6">
+                <animate attributeName="width" values="10;100;10" dur="3s" repeatCount="indefinite" />
+            </rect>
+            <text x="65" y="65" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#3B82F6">正在同步 60%</text>
+            <text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-RD-03 (展厅)</text>
+        </g>
+
+        <g transform="translate(370, 125)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-04</text></g>
+        <g transform="translate(555, 125)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-05</text></g>
+        
+        <g transform="translate(0, 250)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-06</text></g>
+        <g transform="translate(185, 250)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-07</text></g>
+        <g transform="translate(370, 250)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-08</text></g>
+        <g transform="translate(555, 250)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-09</text></g>
+        
+        <g transform="translate(0, 375)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-10</text></g>
+        <g transform="translate(185, 375)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-11</text></g>
+        <g transform="translate(370, 375)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="#1E293B" /><circle cx="20" cy="20" r="3" fill="#F59E0B" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-DORM-02 (待机)</text></g>
+        <g transform="translate(555, 375)"><rect width="170" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" /><rect x="10" y="10" width="150" height="84" rx="2" fill="url(#bgPlaying)" /><text x="10" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">DS-OFF-12</text></g>
+    </g>
+
+    <g transform="translate(30, 560)">
+        <circle cx="0" cy="0" r="4" fill="#10B981"/><text x="10" y="4" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">正在播放</text>
+        <circle cx="80" cy="0" r="4" fill="#F59E0B"/><text x="90" y="4" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">息屏待机</text>
+        <circle cx="160" cy="0" r="4" fill="#EF4444"/><text x="170" y="4" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">故障/离线</text>
+        <circle cx="250" cy="0" r="4" fill="#3B82F6"/><text x="260" y="4" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">内容同步中</text>
+    </g>
+</svg>

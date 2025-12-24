@@ -1,0 +1,121 @@
+<svg width="340" height="200" viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件名称: 电力监控智能卡片
+    风格: 宝石光晕 & 纯净白 (Gem Halo & Clean White)
+    适配: HT for Web (无Text渐变，无外部CSS)
+  -->
+
+  <defs>
+    <!-- 柔和弥散阴影 -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/> <!-- 极淡的阴影透明度 -->
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 宝石核心渐变 (电光黄) -->
+    <radialGradient id="gemGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FEF3C7" /> <!-- 高光 -->
+      <stop offset="40%" stop-color="#F59E0B" /> <!-- 宝石本体 -->
+      <stop offset="100%" stop-color="#B45309" /> <!-- 边缘深色 -->
+    </radialGradient>
+
+    <!-- 装饰光晕渐变 -->
+    <linearGradient id="haloGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 卡片主体 -->
+  <g filter="url(#softShadow)">
+    <!-- 背景板：纯白 + 极细灰描边 -->
+    <rect x="5" y="5" width="330" height="190" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  </g>
+
+  <!-- 2. 标题栏 -->
+  <g transform="translate(25, 25)">
+    <!-- 状态指示点 (在线-绿色) -->
+    <circle cx="0" cy="-5" r="3" fill="#10B981">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- 标题文字 -->
+    <text x="12" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#374151">
+      低压配电柜 #101
+    </text>
+    <!-- 辅助信息 -->
+    <text x="12" y="18" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#9CA3AF">
+      Power Distribution Unit
+    </text>
+    
+    <!-- 右上角装饰：电能符号 -->
+    <path d="M280 -5 L285 0 L295 -10" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  </g>
+
+  <!-- 3. 左侧：宝石光晕图标 (功能拟态：电流线圈) -->
+  <g transform="translate(70, 110)">
+    <!-- 外圈：模拟线圈磁场 (旋转动画) -->
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 4">
+       <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 内圈：能量流动 (呼吸动画) -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="url(#haloGradient)" stroke-width="2">
+      <animate attributeName="r" values="28;30;28" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- 核心：宝石质感圆点 -->
+    <circle cx="0" cy="0" r="14" fill="url(#gemGradient)">
+      <!-- 微弱的高光闪烁 -->
+      <animate attributeName="opacity" values="1;0.9;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- 图标符号：闪电 -->
+    <path d="M-4 -6 L2 0 L-2 4 L6 8" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 4. 右侧：数据面板 -->
+  <g transform="translate(135, 75)">
+    
+    <!-- 数据行 1: 电压 (Voltage) -->
+    <g transform="translate(0, 0)">
+      <text x="0" y="10" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6B7280">电压 (U)</text>
+      <text x="180" y="10" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#F59E0B">220.5 <tspan font-size="10" fill="#9CA3AF">V</tspan></text>
+      <!-- 进度条背景 -->
+      <rect x="0" y="20" width="180" height="4" rx="2" fill="#F3F4F6"/>
+      <!-- 进度条填充 (动态) -->
+      <rect x="0" y="20" width="160" height="4" rx="2" fill="#F59E0B">
+         <animate attributeName="width" values="160;155;162;160" dur="4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- 数据行 2: 电流 (Current) -->
+    <g transform="translate(0, 45)">
+      <text x="0" y="10" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6B7280">电流 (I)</text>
+      <text x="180" y="10" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#3B82F6">12.8 <tspan font-size="10" fill="#9CA3AF">A</tspan></text>
+      <rect x="0" y="20" width="180" height="4" rx="2" fill="#F3F4F6"/>
+      <rect x="0" y="20" width="80" height="4" rx="2" fill="#3B82F6">
+        <animate attributeName="width" values="80;85;78;80" dur="2.5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- 数据行 3: 有功功率 (Power) -->
+    <g transform="translate(0, 90)">
+      <text x="0" y="10" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6B7280">功率 (P)</text>
+      <text x="180" y="10" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#10B981">2.84 <tspan font-size="10" fill="#9CA3AF">kW</tspan></text>
+      <rect x="0" y="20" width="180" height="4" rx="2" fill="#F3F4F6"/>
+      <rect x="0" y="20" width="100" height="4" rx="2" fill="#10B981"/>
+    </g>
+  </g>
+  
+  <!-- 分割线 -->
+  <line x1="125" y1="70" x2="125" y2="180" stroke="#F3F4F6" stroke-width="1" stroke-dasharray="2 2"/>
+
+</svg>

@@ -1,0 +1,115 @@
+<svg width="800" height="460" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="dashShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+            <feOffset dx="0" dy="3" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.08"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        
+        <linearGradient id="gradIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#818CF8"/>
+            <stop offset="100%" stop-color="#6366F1"/>
+        </linearGradient>
+        <linearGradient id="gradSuccess" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#34D399"/>
+            <stop offset="100%" stop-color="#10B981"/>
+        </linearGradient>
+        <linearGradient id="gradWarn" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FBBF24"/>
+            <stop offset="100%" stop-color="#F59E0B"/>
+        </linearGradient>
+    </defs>
+
+    <rect x="0" y="0" width="800" height="460" rx="16" fill="#F8FAFC" />
+
+    <g transform="translate(20, 20)">
+        <rect x="0" y="0" width="240" height="100" rx="12" fill="#FFFFFF" filter="url(#dashShadow)"/>
+        <circle cx="50" cy="50" r="24" fill="url(#gradIndigo)" opacity="0.15"/>
+        <rect x="36" y="42" width="28" height="16" rx="2" stroke="#6366F1" stroke-width="2" fill="none"/>
+        <line x1="45" y1="62" x2="55" y2="62" stroke="#6366F1" stroke-width="2"/>
+        <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">设备总数 (台)</text>
+        <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="28" fill="#1E293B">142</text>
+    </g>
+
+    <g transform="translate(280, 20)">
+        <rect x="0" y="0" width="240" height="100" rx="12" fill="#FFFFFF" filter="url(#dashShadow)"/>
+        <circle cx="50" cy="50" r="24" fill="url(#gradSuccess)" opacity="0.15"/>
+        <circle cx="50" cy="50" r="4" fill="#10B981">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M46 42 L58 50 L46 58 Z" fill="#10B981"/>
+        <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">正在播放</text>
+        <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="28" fill="#1E293B">128</text>
+        <text x="145" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#10B981">90%</text>
+    </g>
+
+    <g transform="translate(540, 20)">
+        <rect x="0" y="0" width="240" height="100" rx="12" fill="#FFFFFF" filter="url(#dashShadow)"/>
+        <circle cx="50" cy="50" r="24" fill="#F1F5F9"/>
+        <path d="M38 45 C38 40 62 40 62 45 M38 55 C38 60 62 60 62 55 M38 45 L38 55 M62 45 L62 55" stroke="#64748B" stroke-width="2" fill="none"/>
+        <ellipse cx="50" cy="45" rx="12" ry="3" fill="#94A3B8"/>
+        <text x="90" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">存储占用 (TB)</text>
+        <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="28" fill="#1E293B">8.2</text>
+        <rect x="90" y="85" width="100" height="4" rx="2" fill="#F1F5F9"/>
+        <rect x="90" y="85" width="65" height="4" rx="2" fill="#6366F1"/>
+    </g>
+
+    <g transform="translate(20, 140)">
+        <rect x="0" y="0" width="760" height="300" rx="12" fill="#FFFFFF" filter="url(#dashShadow)"/>
+        
+        <line x1="20" y1="50" x2="740" y2="50" stroke="#F1F5F9" stroke-width="1"/>
+        <text x="40" y="35" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#94A3B8">区域名称</text>
+        <text x="200" y="35" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#94A3B8">状态</text>
+        <text x="320" y="35" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#94A3B8">当前播放节目</text>
+        <text x="620" y="35" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#94A3B8">操作</text>
+
+        <g transform="translate(0, 60)">
+            <rect x="20" y="0" width="720" height="50" rx="4" fill="#F8FAFC" opacity="0"/> <text x="40" y="30" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#1E293B">研发楼大厅 (Main)</text>
+            <rect x="200" y="18" width="50" height="20" rx="10" fill="#ECFDF5"/>
+            <circle cx="215" cy="28" r="3" fill="#10B981"/>
+            <text x="225" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#10B981">在线</text>
+            <text x="320" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6366F1">2024_Q3_企业宣传片_V2.mp4</text>
+            <rect x="620" y="15" width="60" height="24" rx="4" stroke="#E2E8F0" fill="#FFFFFF"/>
+            <text x="636" y="31" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">详情</text>
+        </g>
+        <line x1="40" y1="110" x2="720" y2="110" stroke="#F1F5F9" stroke-width="1"/>
+
+        <g transform="translate(0, 110)">
+            <text x="40" y="30" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#1E293B">员工宿舍 A栋</text>
+            <rect x="200" y="18" width="50" height="20" rx="10" fill="#ECFDF5"/>
+            <circle cx="215" cy="28" r="3" fill="#10B981"/>
+            <text x="225" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#10B981">在线</text>
+            <text x="320" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6366F1">冬季防火安全须知.jpg</text>
+            <rect x="620" y="15" width="60" height="24" rx="4" stroke="#E2E8F0" fill="#FFFFFF"/>
+            <text x="636" y="31" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">详情</text>
+        </g>
+        <line x1="40" y1="160" x2="720" y2="160" stroke="#F1F5F9" stroke-width="1"/>
+
+        <g transform="translate(0, 160)">
+            <text x="40" y="30" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#1E293B">二号厂房 西门</text>
+            <rect x="200" y="18" width="50" height="20" rx="10" fill="#FFFBEB"/>
+            <circle cx="215" cy="28" r="3" fill="#F59E0B"/>
+            <text x="225" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#F59E0B">待机</text>
+            <text x="320" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">(无播放任务)</text>
+            <rect x="620" y="15" width="60" height="24" rx="4" stroke="#E2E8F0" fill="#FFFFFF"/>
+            <text x="636" y="31" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">详情</text>
+        </g>
+        <line x1="40" y1="210" x2="720" y2="210" stroke="#F1F5F9" stroke-width="1"/>
+
+        <g transform="translate(0, 210)">
+            <text x="40" y="30" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#1E293B">地下室 B2F 电梯厅</text>
+            <rect x="200" y="18" width="50" height="20" rx="10" fill="#FEF2F2"/>
+            <circle cx="215" cy="28" r="3" fill="#EF4444"/>
+            <text x="225" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#EF4444">离线</text>
+            <text x="320" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#EF4444">连接超时</text>
+            <rect x="620" y="15" width="60" height="24" rx="4" stroke="#E2E8F0" fill="#FFFFFF"/>
+            <text x="636" y="31" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">详情</text>
+        </g>
+    </g>
+</svg>

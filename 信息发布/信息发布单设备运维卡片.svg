@@ -1,0 +1,57 @@
+<svg width="420" height="180" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+            <feOffset dx="0" dy="4" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.1"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#818CF8" />
+            <stop offset="100%" stop-color="#4F46E5" />
+        </linearGradient>
+    </defs>
+
+    <rect x="10" y="10" width="400" height="160" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#softShadow)"/>
+
+    <g transform="translate(30, 40)">
+        <path d="M0 80 L-10 100 L110 100 L100 80 Z" fill="#6366F1" opacity="0.1" />
+        <rect x="0" y="0" width="120" height="68" rx="4" fill="#1E293B" />
+        <rect x="4" y="4" width="112" height="60" rx="2" fill="url(#screenGrad)" />
+        <circle cx="10" cy="10" r="4" fill="#FFFFFF" opacity="0.8" />
+        <circle cx="10" cy="10" r="2" fill="#10B981" />
+        <path d="M55 25 L70 34 L55 43 Z" fill="#FFFFFF" opacity="0.9" />
+        <text x="0" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">研发楼-L1-大厅</text>
+    </g>
+
+    <g transform="translate(170, 35)">
+        <text x="0" y="5" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" font-size="14" fill="#1E293B">DS-PRO-001</text>
+        <rect x="150" y="-10" width="40" height="18" rx="9" fill="#ECFDF5" />
+        <text x="156" y="3" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#10B981">播放中</text>
+
+        <text x="0" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">节目：</text>
+        <text x="40" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6366F1">2024夏季宣传片.mp4</text>
+        
+        <text x="0" y="50" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">IP：</text>
+        <text x="40" y="50" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">192.168.1.105</text>
+
+        <text x="0" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="11" fill="#94A3B8">音量</text>
+        <rect x="40" y="68" width="120" height="6" rx="3" fill="#F1F5F9" />
+        <rect x="40" y="68" width="85" height="6" rx="3" fill="#6366F1" />
+        <circle cx="125" cy="71" r="5" fill="#FFFFFF" stroke="#6366F1" stroke-width="2" />
+
+        <g transform="translate(0, 95)">
+            <circle cx="15" cy="15" r="15" fill="#F8FAFC" stroke="#E2E8F0" />
+            <path d="M12 10 L18 10 M15 10 L15 20" stroke="#EF4444" stroke-width="2" stroke-linecap="round" fill="none" />
+            <circle cx="55" cy="15" r="15" fill="#F8FAFC" stroke="#E2E8F0" />
+            <rect x="48" y="10" width="14" height="10" rx="1" stroke="#6366F1" stroke-width="1.5" fill="none" />
+            <circle cx="95" cy="15" r="15" fill="#F8FAFC" stroke="#E2E8F0" />
+            <circle cx="95" cy="15" r="4" stroke="#6366F1" stroke-width="1.5" fill="none" />
+        </g>
+    </g>
+</svg>

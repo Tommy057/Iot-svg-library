@@ -1,0 +1,100 @@
+<svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 柔和弥散阴影滤镜 -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feFlood flood-color="rgba(0,0,0,0.08)" result="offsetColor"/>
+      <feComposite in="offsetBlur" operator="in" in="offsetColor" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- 宝石光晕渐变 (消防主题: 红宝石红) -->
+    <radialGradient id="gem-gradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#EF4444" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#991B1B" stop-opacity="0.4"/>
+    </radialGradient>
+    <!-- 火焰渐变 -->
+    <linearGradient id="flame-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#FCA5A5"/>
+    </linearGradient>
+    <!-- 警报闪烁渐变 -->
+    <linearGradient id="alert-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+    <!-- 进度条渐变 -->
+    <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+  </defs>
+  <!-- 悬浮卡片背景 -->
+  <rect x="0" y="0" width="400" height="180" rx="12" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+  
+  <!-- 左侧: 功能拟态图标 (喷淋头 + 水雾喷射 + 火焰警报 + 中心宝石) -->
+  <g transform="translate(20, 30)">
+    <!-- 喷淋头拟态 (倒置喇叭形 + 水雾喷射) -->
+    <path d="M50 20 L30 40 L70 40 Z" fill="#DC2626" opacity="0.3"/>
+    <path d="M50 40 Q40 60 30 80 Q50 90 70 80 Q60 60 50 40" fill="url(#flame-gradient)" opacity="0.2"/>
+    <!-- 水雾喷射粒子动画 -->
+    <circle cx="40" cy="50" r="4" fill="#93C5FD" opacity="0.7">
+      <animate attributeName="cy" values="50;100;50" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="40;35;40" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="50" r="4" fill="#93C5FD" opacity="0.7">
+      <animate attributeName="cy" values="50;100;50" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="60" cy="50" r="4" fill="#93C5FD" opacity="0.7">
+      <animate attributeName="cy" values="50;100;50" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="60;65;60" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <!-- 警报灯闪烁 -->
+    <circle cx="50" cy="25" r="12" fill="url(#alert-gradient)">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <!-- 中心宝石圆点 -->
+    <circle cx="50" cy="50" r="14" fill="url(#gem-gradient)"/>
+    <circle cx="50" cy="50" r="9" fill="#FFFFFF" opacity="0.3"/> <!-- 高光 -->
+    <!-- 状态点 (正常待机: 绿色) -->
+    <circle cx="110" cy="20" r="7" fill="#22C55E"/>
+    <text x="10" y="110" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">消防泵组 FP-01</text>
+    <text x="10" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">在线 · 正常待机</text>
+  </g>
+  
+  <!-- 右侧: 属性与控制 -->
+  <g transform="translate(160, 30)">
+    <!-- 系统压力 -->
+    <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">管网压力</text>
+    <text x="0" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="24" fill="#EF4444">0.85 MPa</text>
+    <rect x="0" y="50" width="200" height="10" rx="5" fill="#E5E7EB"/>
+    <rect x="0" y="50" width="170" height="10" rx="5" fill="url(#progress-gradient)"/>
+    <text x="210" y="58" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">正常范围</text>
+    
+    <!-- 水箱液位 -->
+    <text x="0" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">消防水箱液位</text>
+    <text x="0" y="100" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#EF4444">92%</text>
+    
+    <!-- 控制按钮 -->
+    <g transform="translate(0, 120)">
+      <!-- 手动启动 -->
+      <circle cx="30" cy="10" r="22" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M22 2 L22 18 L38 10 Z" fill="#EF4444"/>
+      <text x="60" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">手动启动</text>
+      <!-- 测试模式 -->
+      <circle cx="120" cy="10" r="22" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M110 5 L130 5 L120 20 Z" fill="#F97316" transform="rotate(-90 120 10)"/>
+      <text x="150" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">测试</text>
+      <!-- 消音/复位 -->
+      <circle cx="210" cy="10" r="22" fill="white" stroke="#E5E7EB" stroke-width="0.5" filter="url(#soft-shadow)"/>
+      <path d="M200 0 Q210 10 220 0 Q210 -10 200 0" fill="none" stroke="#EF4444" stroke-width="3"/>
+      <rect x="205" y="5" width="10" height="20" fill="#EF4444"/>
+      <text x="240" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#1E293B">复位</text>
+    </g>
+  </g>
+</svg>

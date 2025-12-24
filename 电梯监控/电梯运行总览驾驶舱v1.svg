@@ -1,0 +1,282 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净阴影 -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.06"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 蓝宝石渐变 (Sapphire) -->
+    <linearGradient id="gemBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" /> <!-- Blue 500 -->
+      <stop offset="100%" stop-color="#1D4ED8" /> <!-- Blue 700 -->
+    </linearGradient>
+
+    <!-- 3. 运行光晕 (Motion Blur Idea) -->
+    <linearGradient id="motionTrail" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- 4. 负载渐变 (Load Level) -->
+    <linearGradient id="loadLow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34D399"/> <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="loadHigh" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F87171"/> <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+
+    <!-- 5. 轿厢金属质感 -->
+    <linearGradient id="elevatorMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1200" height="675" fill="#F8FAFC"/>
+
+  <!-- ================================================================================== -->
+  <!-- 顶部 KPI 卡片 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(20, 20)">
+    <!-- Card 1: 电梯总数 -->
+    <g transform="translate(0, 0)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <circle cx="50" cy="50" r="24" fill="#EFF6FF"/>
+      <!-- 图标：电梯上下箭头 -->
+      <path d="M42 50 L50 40 L58 50 M42 54 L50 64 L58 54" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">群控组电梯总数</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#1E293B">8 <tspan font-size="14" fill="#94A3B8" font-weight="normal">台</tspan></text>
+    </g>
+
+    <!-- Card 2: 运行状态 -->
+    <g transform="translate(300, 0)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <circle cx="50" cy="50" r="24" fill="#ECFDF5"/>
+      <path d="M50 38 V62 M38 50 H62" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round"/> <!-- 模拟运行 -->
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">正常运行</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#059669">7 <tspan font-size="14" fill="#94A3B8" font-weight="normal">台</tspan></text>
+    </g>
+
+    <!-- Card 3: 运载负荷 -->
+    <g transform="translate(600, 0)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <circle cx="50" cy="50" r="24" fill="#FFF7ED"/>
+      <path d="M40 60 Q 50 35 60 60" fill="none" stroke="#F97316" stroke-width="2"/>
+      <circle cx="50" cy="45" r="4" fill="#F97316"/>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">今日运载人次</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#F59E0B">4,285</text>
+    </g>
+    
+    <!-- Card 4: 平均等待 -->
+    <g transform="translate(900, 0)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+      <circle cx="50" cy="50" r="24" fill="#F1F5F9"/>
+      <circle cx="50" cy="50" r="10" fill="none" stroke="#64748B" stroke-width="2"/>
+      <path d="M50 50 L50 44" stroke="#64748B" stroke-width="2"/>
+      <path d="M50 50 L54 50" stroke="#64748B" stroke-width="2"/>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">平均等待时间</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#334155">24 <tspan font-size="14" fill="#94A3B8" font-weight="normal">秒</tspan></text>
+    </g>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 左侧：电梯井道可视化 (Elevator Shafts View) -->
+  <!-- ================================================================================== -->
+  <g transform="translate(20, 140)">
+    <rect width="800" height="515" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+    
+    <!-- 标题栏 -->
+    <g transform="translate(20, 30)">
+        <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">A座 - 低区梯控 (Low Zone)</text>
+        <!-- 楼层标尺背景 -->
+        <rect x="740" y="20" width="30" height="450" rx="4" fill="#F8FAFC"/>
+        <line x1="755" y1="30" x2="755" y2="460" stroke="#E2E8F0" stroke-width="1"/>
+        <!-- 简单的楼层刻度 -->
+        <text x="755" y="460" text-anchor="middle" font-size="10" fill="#94A3B8">1F</text>
+        <text x="755" y="350" text-anchor="middle" font-size="10" fill="#94A3B8">5F</text>
+        <text x="755" y="240" text-anchor="middle" font-size="10" fill="#94A3B8">10F</text>
+        <text x="755" y="130" text-anchor="middle" font-size="10" fill="#94A3B8">15F</text>
+        <text x="755" y="40" text-anchor="middle" font-size="10" fill="#94A3B8">20F</text>
+    </g>
+
+    <!-- 井道区域 -->
+    <g transform="translate(40, 60)">
+        
+        <!-- ================= Elevator 1: 上行 (Moving Up) ================= -->
+        <g transform="translate(0, 0)">
+            <!-- 导轨 -->
+            <line x1="40" y1="0" x2="40" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            <line x1="120" y1="0" x2="120" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            
+            <!-- 轿厢体 (位置在 10F) -->
+            <g transform="translate(30, 200)">
+                <!-- 拖尾效果 -->
+                <rect x="10" y="120" width="80" height="60" fill="url(#motionTrail)"/>
+                
+                <!-- 轿厢实体 -->
+                <rect x="0" y="0" width="100" height="140" rx="6" fill="url(#elevatorMetal)" stroke="#CBD5E1" stroke-width="1"/>
+                <!-- 门缝 -->
+                <line x1="50" y1="10" x2="50" y2="130" stroke="#CBD5E1" stroke-width="1"/>
+                
+                <!-- 状态面板 (宝石核心) -->
+                <rect x="25" y="15" width="50" height="25" rx="12.5" fill="#1E293B"/>
+                <circle cx="38" cy="27.5" r="3" fill="#3B82F6"/> <!-- 上行指示灯 -->
+                <text x="55" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">12</text>
+                
+                <!-- 负载条 -->
+                <rect x="20" y="125" width="60" height="4" rx="2" fill="#E2E8F0"/>
+                <rect x="20" y="125" width="20" height="4" rx="2" fill="url(#loadLow)"/> <!-- 低负载 -->
+            </g>
+            <text x="80" y="450" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">#01</text>
+        </g>
+
+        <!-- ================= Elevator 2: 停靠 (Stopped) ================= -->
+        <g transform="translate(180, 0)">
+            <line x1="40" y1="0" x2="40" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            <line x1="120" y1="0" x2="120" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            
+            <!-- 轿厢体 (位置在 1F) -->
+            <g transform="translate(30, 380)">
+                <rect x="0" y="0" width="100" height="60" rx="6" fill="url(#elevatorMetal)" stroke="#CBD5E1" stroke-width="1"/> <!-- 只画个顶示意在底层 -->
+                <!-- 简化展示 -->
+                <rect x="0" y="-80" width="100" height="140" rx="6" fill="url(#elevatorMetal)" stroke="#CBD5E1" stroke-width="1"/>
+                <line x1="50" y1="-70" x2="50" y2="50" stroke="#CBD5E1" stroke-width="1"/>
+                
+                <!-- 状态面板 -->
+                <rect x="25" y="-65" width="50" height="25" rx="12.5" fill="#F1F5F9" stroke="#E2E8F0"/>
+                <text x="50" y="-48" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#64748B">1</text>
+            </g>
+            <text x="80" y="450" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">#02</text>
+        </g>
+
+        <!-- ================= Elevator 3: 开门 (Doors Open) ================= -->
+        <g transform="translate(360, 0)">
+            <line x1="40" y1="0" x2="40" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            <line x1="120" y1="0" x2="120" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            
+            <!-- 轿厢体 (位置在 8F) -->
+            <g transform="translate(30, 260)">
+                <rect x="0" y="0" width="100" height="140" rx="6" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/> <!-- 橙色边框表示注意 -->
+                
+                <!-- 开门状态可视化 -->
+                <rect x="10" y="10" width="30" height="120" fill="#E2E8F0" opacity="0.5"/> <!-- 左门 -->
+                <rect x="60" y="10" width="30" height="120" fill="#E2E8F0" opacity="0.5"/> <!-- 右门 -->
+                <path d="M35 70 L25 70 M65 70 L75 70" stroke="#F97316" stroke-width="2" marker-end="url(#arrow)"/> <!-- 开门箭头示意 -->
+
+                <!-- 内部光照 -->
+                <rect x="40" y="10" width="20" height="120" fill="#FFF7ED"/> 
+                
+                <!-- 状态面板 -->
+                <rect x="25" y="15" width="50" height="25" rx="12.5" fill="#1E293B"/>
+                <text x="50" y="32" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#F97316">8</text>
+            </g>
+            <text x="80" y="450" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">#03</text>
+        </g>
+
+        <!-- ================= Elevator 4: 检修/故障 (Maintenance) ================= -->
+        <g transform="translate(540, 0)">
+            <line x1="40" y1="0" x2="40" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            <line x1="120" y1="0" x2="120" y2="440" stroke="#F1F5F9" stroke-width="2"/>
+            
+            <!-- 轿厢体 (位置在 顶层) -->
+            <g transform="translate(30, 40)">
+                <rect x="0" y="0" width="100" height="140" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1"/>
+                <!-- 警示斜纹 -->
+                <path d="M0 140 L100 0" stroke="#FECACA" stroke-width="2"/>
+                <path d="M0 100 L100 -40" stroke="#FECACA" stroke-width="2"/> <!-- 示意 -->
+                
+                <!-- 维修图标 -->
+                <circle cx="50" cy="70" r="20" fill="#EF4444"/>
+                <path d="M45 65 L55 75 M55 65 L45 75" stroke="#FFFFFF" stroke-width="2"/> <!-- 叉号或扳手 -->
+                
+                <!-- 状态面板 -->
+                <rect x="25" y="15" width="50" height="25" rx="12.5" fill="#1E293B"/>
+                <text x="50" y="32" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#EF4444">检修</text>
+            </g>
+            <text x="80" y="450" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">#04</text>
+        </g>
+
+    </g>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 右侧：详情与分析 -->
+  <!-- ================================================================================== -->
+  
+  <!-- 1. 单梯实时详情 (Single Lift Detail) -->
+  <g transform="translate(840, 140)">
+    <rect width="340" height="280" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+    
+    <g transform="translate(20, 30)">
+        <rect x="0" y="0" width="4" height="18" rx="2" fill="#2563EB"/>
+        <text x="12" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">#01 梯实时参数</text>
+        
+        <!-- 仪表盘区域 -->
+        <g transform="translate(20, 60)">
+            <!-- 速度仪表 -->
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#F1F5F9" stroke-width="6"/>
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#3B82F6" stroke-width="6" stroke-dasharray="160 220" transform="rotate(135 40 40)"/>
+            <text x="40" y="45" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1E293B">2.5</text>
+            <text x="40" y="60" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94A3B8">m/s</text>
+            <text x="40" y="90" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">运行速度</text>
+            
+            <!-- 载重仪表 -->
+            <g transform="translate(130, 0)">
+                <circle cx="40" cy="40" r="35" fill="none" stroke="#F1F5F9" stroke-width="6"/>
+                <circle cx="40" cy="40" r="35" fill="none" stroke="#10B981" stroke-width="6" stroke-dasharray="80 220" transform="rotate(135 40 40)"/>
+                <text x="40" y="45" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1E293B">35%</text>
+                <text x="40" y="90" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">实时载重</text>
+            </g>
+        </g>
+        
+        <!-- 列表参数 -->
+        <g transform="translate(10, 170)">
+             <text x="0" y="0" font-family="sans-serif" font-size="12" fill="#94A3B8">电机温度</text>
+             <text x="240" y="0" text-anchor="end" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155">42°C</text>
+             <line x1="0" y1="10" x2="240" y2="10" stroke="#F1F5F9" stroke-width="1"/>
+             
+             <text x="0" y="30" font-family="sans-serif" font-size="12" fill="#94A3B8">累计运行</text>
+             <text x="240" y="30" text-anchor="end" font-family="sans-serif" font-size="12" font-weight="bold" fill="#334155">12,450 km</text>
+             <line x1="0" y1="40" x2="240" y2="40" stroke="#F1F5F9" stroke-width="1"/>
+        </g>
+    </g>
+  </g>
+
+  <!-- 2. 高峰运力分析 (Traffic Analysis) -->
+  <g transform="translate(840, 440)">
+    <rect width="340" height="215" rx="12" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+    
+    <g transform="translate(20, 30)">
+        <rect x="0" y="0" width="4" height="18" rx="2" fill="#F59E0B"/>
+        <text x="12" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">高峰等待时长趋势</text>
+        
+        <!-- 简易折线图 -->
+        <g transform="translate(0, 50)">
+            <line x1="0" y1="100" x2="300" y2="100" stroke="#F1F5F9" stroke-width="1"/> <!-- X轴 -->
+            <line x1="0" y1="0" x2="0" y2="100" stroke="#F1F5F9" stroke-width="1"/> <!-- Y轴 -->
+            
+            <!-- 曲线 -->
+            <path d="M0 80 Q 50 80 80 40 T 150 20 T 220 50 T 300 70" fill="none" stroke="#F59E0B" stroke-width="2"/>
+            
+            <!-- 峰值点 -->
+            <circle cx="150" cy="20" r="4" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+            <rect x="130" y="-15" width="40" height="16" rx="4" fill="#F59E0B"/>
+            <text x="150" y="-4" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#FFFFFF">45s</text>
+
+            <text x="0" y="115" font-family="sans-serif" font-size="10" fill="#94A3B8">08:00</text>
+            <text x="150" y="115" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94A3B8">12:00</text>
+            <text x="300" y="115" text-anchor="end" font-family="sans-serif" font-size="10" fill="#94A3B8">18:00</text>
+        </g>
+    </g>
+  </g>
+
+</svg>
