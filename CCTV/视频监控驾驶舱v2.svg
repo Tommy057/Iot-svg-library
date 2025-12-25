@@ -1,0 +1,228 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 视频监控设备驾驶舱 (CCTV Cockpit)
+    风格: 宝石光晕 & 纯净白 (Gem Halo & Clean White)
+    布局: 顶部KPI + 视频矩阵框架 + 右侧统计
+  -->
+
+  <defs>
+    <!-- 悬浮阴影 -->
+    <filter id="cctvShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 摄像头镜头宝石渐变 -->
+    <radialGradient id="lensGem" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA" /> <!-- 浅蓝反光 -->
+      <stop offset="40%" stop-color="#2563EB" /> <!-- 镜片本体 -->
+      <stop offset="100%" stop-color="#1E3A8A" /> <!-- 深邃瞳孔 -->
+    </radialGradient>
+
+    <!-- 录像状态红点 -->
+    <radialGradient id="recRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FECACA" />
+      <stop offset="100%" stop-color="#DC2626" />
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1000" height="600" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 顶部 KPI 指标卡 (Top Stats)
+       ======================================================================== -->
+  <g transform="translate(20, 20)">
+    
+    <!-- 卡片 1: 摄像头总数 -->
+    <g filter="url(#cctvShadow)">
+      <rect width="230" height="100" rx="12" fill="#FFFFFF"/>
+      <!-- 图标: 拟态摄像头 -->
+      <g transform="translate(30, 30)">
+        <path d="M0 10 L10 10 L15 0 L35 0 L40 10 L50 10 L50 30 L0 30 Z" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/>
+        <circle cx="25" cy="20" r="8" fill="url(#lensGem)"/>
+      </g>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">摄像头总数</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#3B82F6">1,245</text>
+    </g>
+
+    <!-- 卡片 2: NVR存储状态 -->
+    <g transform="translate(245, 0)" filter="url(#cctvShadow)">
+      <rect width="230" height="100" rx="12" fill="#FFFFFF"/>
+      <!-- 图标: 磁盘阵列 -->
+      <g transform="translate(30, 35)">
+        <rect x="0" y="0" width="40" height="10" rx="2" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+        <rect x="0" y="14" width="40" height="10" rx="2" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+        <rect x="0" y="28" width="40" height="10" rx="2" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+        <!-- 读写灯 -->
+        <circle cx="35" cy="5" r="2" fill="#10B981"><animate attributeName="opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite"/></circle>
+      </g>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">存储正常 (天)</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#6366F1">90+</text>
+    </g>
+
+    <!-- 卡片 3: 在线率 -->
+    <g transform="translate(490, 0)" filter="url(#cctvShadow)">
+      <rect width="230" height="100" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(30, 30)">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#E5E7EB" stroke-width="4"/>
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#10B981" stroke-width="4" stroke-dasharray="100 113" transform="rotate(-90 20 20)"/>
+        <text x="20" y="24" text-anchor="middle" font-size="10" font-weight="bold" fill="#374151">98%</text>
+      </g>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">设备在线率</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#10B981">97.7%</text>
+    </g>
+
+    <!-- 卡片 4: 视频丢失/故障 -->
+    <g transform="translate(735, 0)" filter="url(#cctvShadow)">
+      <rect width="225" height="100" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(40, 30)">
+        <path d="M20 0 L40 34 H0 Z" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="20" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#EF4444">!</text>
+      </g>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">信号丢失</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#EF4444">3</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 视频画面矩阵框架 (Video Matrix Frame) - 左侧大块
+       ======================================================================== -->
+  <g transform="translate(20, 140)" filter="url(#cctvShadow)">
+    <rect width="650" height="440" rx="12" fill="#FFFFFF"/>
+    
+    <!-- 标题 -->
+    <rect x="20" y="20" width="4" height="16" rx="2" fill="#3B82F6"/>
+    <text x="35" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">重点区域监控画面 (4路)</text>
+    
+    <!-- 模拟4分屏画面 -->
+    <g transform="translate(20, 55)">
+      <!-- 画面 1 -->
+      <g>
+        <rect width="300" height="180" rx="4" fill="#1F2937"/> <!-- 模拟黑色视频底 -->
+        <text x="150" y="100" text-anchor="middle" fill="#4B5563" font-size="14">北门入口摄像头 (无信号)</text>
+        <path d="M130 90 L170 110 M130 110 L170 90" stroke="#4B5563" stroke-width="2"/> <!-- 叉号 -->
+        
+        <!-- OSD 信息 -->
+        <text x="10" y="20" fill="#FFFFFF" font-family="monospace" font-size="12">CAM_01_NORTH</text>
+        <circle cx="280" cy="20" r="4" fill="url(#recRed)">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        <text x="250" y="24" fill="#EF4444" font-size="10" font-weight="bold">REC</text>
+      </g>
+
+      <!-- 画面 2 -->
+      <g transform="translate(310, 0)">
+        <rect width="300" height="180" rx="4" fill="#F0F9FF"/> <!-- 亮色底模拟白天 -->
+        <text x="150" y="100" text-anchor="middle" fill="#BFDBFE" font-size="20">LIVE VIDEO FEED</text>
+        
+        <text x="10" y="20" fill="#3B82F6" font-family="monospace" font-size="12">CAM_02_LOBBY</text>
+        <circle cx="280" cy="20" r="4" fill="url(#recRed)">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- 画面 3 -->
+      <g transform="translate(0, 190)">
+        <rect width="300" height="180" rx="4" fill="#F0F9FF"/>
+        <text x="150" y="100" text-anchor="middle" fill="#BFDBFE" font-size="20">LIVE VIDEO FEED</text>
+        <text x="10" y="20" fill="#3B82F6" font-family="monospace" font-size="12">CAM_03_PARKING</text>
+        <circle cx="280" cy="20" r="4" fill="url(#recRed)">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- 画面 4 -->
+      <g transform="translate(310, 190)">
+        <rect width="300" height="180" rx="4" fill="#F0F9FF"/>
+        <text x="150" y="100" text-anchor="middle" fill="#BFDBFE" font-size="20">LIVE VIDEO FEED</text>
+        <text x="10" y="20" fill="#3B82F6" font-family="monospace" font-size="12">CAM_04_ELEVATOR</text>
+        <circle cx="280" cy="20" r="4" fill="url(#recRed)">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       3. 右侧信息栏 (Right Panel)
+       ======================================================================== -->
+  
+  <!-- 区域在线率统计 -->
+  <g transform="translate(690, 140)" filter="url(#cctvShadow)">
+    <rect width="290" height="200" rx="12" fill="#FFFFFF"/>
+    <rect x="20" y="20" width="4" height="16" rx="2" fill="#10B981"/>
+    <text x="35" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">区域监控状态</text>
+    
+    <!-- 列表式进度条 -->
+    <g transform="translate(20, 60)">
+      <!-- 办公区 -->
+      <g>
+        <text x="0" y="0" font-size="12" fill="#6B7280">办公区 (100%)</text>
+        <rect x="0" y="10" width="250" height="6" rx="3" fill="#F3F4F6"/>
+        <rect x="0" y="10" width="250" height="6" rx="3" fill="#10B981"/> <!-- 满 -->
+      </g>
+      <!-- 厂房区 -->
+      <g transform="translate(0, 40)">
+        <text x="0" y="0" font-size="12" fill="#6B7280">厂房生产线 (94%)</text>
+        <rect x="0" y="10" width="250" height="6" rx="3" fill="#F3F4F6"/>
+        <rect x="0" y="10" width="235" height="6" rx="3" fill="#3B82F6"/> 
+      </g>
+      <!-- 停车场 -->
+      <g transform="translate(0, 80)">
+        <text x="0" y="0" font-size="12" fill="#6B7280">地下停车场 (85%)</text>
+        <rect x="0" y="10" width="250" height="6" rx="3" fill="#F3F4F6"/>
+        <rect x="0" y="10" width="212" height="6" rx="3" fill="#F59E0B"/> <!-- 警告色 -->
+      </g>
+    </g>
+  </g>
+
+  <!-- 实时视频告警 -->
+  <g transform="translate(690, 360)" filter="url(#cctvShadow)">
+    <rect width="290" height="220" rx="12" fill="#FFFFFF"/>
+    <rect x="20" y="20" width="4" height="16" rx="2" fill="#EF4444"/>
+    <text x="35" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">智能告警事件</text>
+
+    <g transform="translate(20, 60)">
+      <!-- 告警 1 -->
+      <g>
+         <rect x="0" y="0" width="40" height="20" rx="4" fill="#FEE2E2"/>
+         <text x="20" y="14" text-anchor="middle" font-size="10" fill="#EF4444" font-weight="bold">遮挡</text>
+         <text x="50" y="14" font-size="12" fill="#374151">CAM_01 画面异常遮挡</text>
+         <text x="250" y="14" text-anchor="end" font-size="10" fill="#9CA3AF">10:23</text>
+      </g>
+      
+      <!-- 告警 2 -->
+      <g transform="translate(0, 35)">
+         <rect x="0" y="0" width="40" height="20" rx="4" fill="#FEF3C7"/>
+         <text x="20" y="14" text-anchor="middle" font-size="10" fill="#D97706" font-weight="bold">移动</text>
+         <text x="50" y="14" font-size="12" fill="#374151">CAM_05 禁区移动侦测</text>
+         <text x="250" y="14" text-anchor="end" font-size="10" fill="#9CA3AF">10:15</text>
+      </g>
+
+      <!-- 告警 3 -->
+      <g transform="translate(0, 70)">
+         <rect x="0" y="0" width="40" height="20" rx="4" fill="#FEE2E2"/>
+         <text x="20" y="14" text-anchor="middle" font-size="10" fill="#EF4444" font-weight="bold">离线</text>
+         <text x="50" y="14" font-size="12" fill="#374151">CAM_09 信号丢失</text>
+         <text x="250" y="14" text-anchor="end" font-size="10" fill="#9CA3AF">09:40</text>
+      </g>
+      
+      <!-- 告警 4 -->
+      <g transform="translate(0, 105)">
+         <rect x="0" y="0" width="40" height="20" rx="4" fill="#DBEAFE"/>
+         <text x="20" y="14" text-anchor="middle" font-size="10" fill="#2563EB" font-weight="bold">越界</text>
+         <text x="50" y="14" font-size="12" fill="#374151">CAM_03 车辆违停越界</text>
+         <text x="250" y="14" text-anchor="end" font-size="10" fill="#9CA3AF">09:12</text>
+      </g>
+    </g>
+  </g>
+
+</svg>

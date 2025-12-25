@@ -1,0 +1,125 @@
+<svg width="360" height="180" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 重点区域监控卡片 (Area Monitor Card)
+    风格: 宝石光晕 - 深空版 (Gem Halo - Deep Space)
+    参考: 用户上传的“研发楼/宿舍楼”监控卡片布局
+  -->
+
+  <defs>
+    <!-- 卡片背景：深蓝渐变，模拟玻璃质感 -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.9"/> <!-- Slate 900 -->
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.9"/> <!-- Slate 800 -->
+    </linearGradient>
+
+    <!-- 边框光晕：顶部亮，底部暗 -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- 圆环进度条渐变 -->
+    <linearGradient id="progressGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/> <!-- Emerald -->
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+
+    <!-- 宝石装饰点 -->
+    <radialGradient id="gemBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 卡片主体 -->
+  <!-- 边框 (带呼吸效果) -->
+  <path d="M10 0 H350 L360 10 V170 L350 180 H10 L0 170 V10 Z" fill="none" stroke="url(#borderGrad)" stroke-width="1.5">
+     <animate attributeName="stroke-opacity" values="1;0.5;1" dur="4s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- 背景填充 -->
+  <path d="M10 0 H350 L360 10 V170 L350 180 H10 L0 170 V10 Z" fill="url(#cardBg)"/>
+
+  <!-- 装饰线条 (顶部科技感刻度) -->
+  <g transform="translate(240, 6)">
+    <rect x="0" y="0" width="4" height="2" fill="#3B82F6" opacity="0.6"/>
+    <rect x="6" y="0" width="4" height="2" fill="#3B82F6" opacity="0.6"/>
+    <rect x="12" y="0" width="4" height="2" fill="#3B82F6" opacity="0.6"/>
+    <rect x="18" y="0" width="20" height="2" fill="#3B82F6"/>
+  </g>
+
+  <!-- 2. 标题区 -->
+  <g transform="translate(20, 25)">
+    <!-- 标题前的宝石点缀 -->
+    <rect x="0" y="4" width="4" height="12" rx="2" fill="#3B82F6"/>
+    <text x="12" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#F8FAFC">
+      研发楼 1F
+    </text>
+    <!-- 虚线分割 -->
+    <line x1="0" y1="30" x2="160" y2="30" stroke="#334155" stroke-width="1" stroke-dasharray="4 2"/>
+  </g>
+
+  <!-- 3. 左侧数据列表 (模仿参考图) -->
+  <g transform="translate(20, 70)">
+    
+    <!-- Row 1: 设备总数 -->
+    <g transform="translate(0, 0)">
+      <circle cx="4" cy="-4" r="2" fill="#94A3B8"/>
+      <text x="12" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">设备总数:</text>
+      <text x="80" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#F8FAFC">26</text>
+    </g>
+
+    <!-- Row 2: 在线数 (高亮) -->
+    <g transform="translate(0, 30)">
+      <circle cx="4" cy="-4" r="2" fill="#10B981"/> <!-- Green dot -->
+      <text x="12" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">在线运行:</text>
+      <text x="80" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#10B981">24</text>
+    </g>
+
+    <!-- Row 3: 离线数 (警示) -->
+    <g transform="translate(0, 60)">
+      <circle cx="4" cy="-4" r="2" fill="#64748B"/>
+      <text x="12" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">设备离线:</text>
+      <text x="80" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#64748B">2</text>
+    </g>
+    
+    <!-- Row 4: 告警数 (红色) -->
+    <g transform="translate(0, 90)">
+      <circle cx="4" cy="-4" r="2" fill="#EF4444"/>
+      <text x="12" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">异常告警:</text>
+      <text x="80" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#EF4444">0</text>
+    </g>
+  </g>
+
+  <!-- 4. 右侧环形图 (Gem Ring) -->
+  <g transform="translate(260, 100)">
+    <!-- 底环 -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#1E293B" stroke-width="10"/>
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#334155" stroke-width="1"/> <!-- 细线装饰 -->
+
+    <!-- 进度环 (92%) 
+         周长 = 2 * PI * 50 ≈ 314
+         92% ≈ 289
+    -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="url(#progressGrad)" stroke-width="10" 
+            stroke-dasharray="289 314" stroke-linecap="round" transform="rotate(-90)">
+      <!-- 进度条加载动画 -->
+      <animate attributeName="stroke-dasharray" values="0 314; 289 314" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </circle>
+    
+    <!-- 中心文字 -->
+    <text x="0" y="5" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#F8FAFC">
+      92<tspan font-size="14" dy="-8">%</tspan>
+    </text>
+    <text x="0" y="25" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#94A3B8">
+      在线率
+    </text>
+
+    <!-- 装饰：环绕的宝石粒子 -->
+    <circle cx="0" cy="-60" r="3" fill="url(#gemBlue)">
+       <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+</svg>

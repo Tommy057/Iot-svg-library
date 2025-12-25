@@ -1,0 +1,243 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 视频监控驾驶舱 (CCTV Dashboard)
+    风格: 宝石光晕 & 纯净白 (Gem Halo & Clean White)
+    布局: 左侧列表 + 中间1+3视频矩阵 + 右侧云台控制
+  -->
+
+  <defs>
+    <!-- 1. 悬浮阴影 -->
+    <filter id="floatShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 屏幕待机光泽 (极淡蓝) -->
+    <linearGradient id="screenGloss" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EFF6FF"/>
+    </linearGradient>
+
+    <!-- 3. 云台宝石 (PTZ Control) -->
+    <radialGradient id="ptzGem" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </radialGradient>
+    
+    <!-- 4. 录制状态红点 -->
+    <radialGradient id="recRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FECACA"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1000" height="600" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       左侧：摄像头列表 (Camera List)
+       ======================================================================== -->
+  <g transform="translate(20, 20)" filter="url(#floatShadow)">
+    <rect width="200" height="560" rx="12" fill="#FFFFFF"/>
+    
+    <!-- 标题 -->
+    <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#374151">设备列表</text>
+    <line x1="20" y1="50" x2="180" y2="50" stroke="#F3F4F6" stroke-width="2"/>
+
+    <!-- 列表项 Group -->
+    <g transform="translate(0, 60)">
+      
+      <!-- Item 1 (Selected) -->
+      <g>
+        <rect x="10" y="0" width="180" height="36" rx="6" fill="#EFF6FF"/> <!-- 选中背景 -->
+        <rect x="10" y="8" width="3" height="20" rx="1.5" fill="#3B82F6"/> <!-- 选中指示条 -->
+        <circle cx="30" cy="18" r="3" fill="#10B981"/> <!-- 在线绿点 -->
+        <text x="45" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#3B82F6">正门入口全景</text>
+        <path d="M170 18 L160 18" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/> <!-- 播放图标简画 -->
+        <path d="M166 14 L170 18 L166 22" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Item 2 -->
+      <g transform="translate(0, 45)">
+        <circle cx="30" cy="18" r="3" fill="#10B981"/>
+        <text x="45" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6B7280">1F 大堂电梯口</text>
+      </g>
+
+      <!-- Item 3 (Recording) -->
+      <g transform="translate(0, 90)">
+        <circle cx="30" cy="18" r="3" fill="#EF4444">
+           <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="45" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#6B7280">2F 财务室通道</text>
+        <circle cx="170" cy="18" r="2" fill="#EF4444"/> <!-- REC indicator -->
+      </g>
+
+      <!-- Item 4 (Offline) -->
+      <g transform="translate(0, 135)">
+        <circle cx="30" cy="18" r="3" fill="#9CA3AF"/>
+        <text x="45" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#9CA3AF">B1 停车场入口</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       中间：视频监控矩阵 (Video Grid)
+       ======================================================================== -->
+  <g transform="translate(240, 20)">
+    
+    <!-- 1. 主画面 (Main View) -->
+    <g filter="url(#floatShadow)">
+      <!-- 屏幕边框 -->
+      <rect width="520" height="360" rx="8" fill="#FFFFFF"/>
+      <!-- 屏幕内容区 -->
+      <rect x="10" y="10" width="500" height="340" rx="4" fill="url(#screenGloss)" stroke="#E5E7EB" stroke-width="1"/>
+      
+      <!-- 模拟画面内容: 扫描线 -->
+      <line x1="10" y1="20" x2="510" y2="20" stroke="#3B82F6" stroke-width="2" opacity="0.1">
+        <animate attributeName="y1" values="20;340;20" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="y2" values="20;340;20" dur="4s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- OSD 信息叠加 -->
+      <text x="30" y="40" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#3B82F6">CAM-01: MAIN_ENTRANCE</text>
+      <text x="420" y="40" font-family="'Courier New', monospace" font-size="14" fill="#374151">REC ●</text>
+      <circle cx="500" cy="35" r="4" fill="#EF4444">
+         <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- 中心Logo/占位符 -->
+      <g transform="translate(260, 180)" opacity="0.2">
+        <path d="M-20 -10 H20 V10 H-20 Z" stroke="#3B82F6" stroke-width="2" fill="none"/>
+        <circle cx="0" cy="0" r="8" fill="#3B82F6"/>
+      </g>
+    </g>
+
+    <!-- 2. 小画面矩阵 (Sub Views) -->
+    <g transform="translate(0, 380)">
+      <!-- Sub 1 -->
+      <g filter="url(#floatShadow)">
+        <rect width="160" height="100" rx="8" fill="#FFFFFF"/>
+        <rect x="5" y="5" width="150" height="90" rx="4" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="15" y="25" font-family="'Courier New', monospace" font-size="10" fill="#6B7280">CAM-02</text>
+      </g>
+      
+      <!-- Sub 2 -->
+      <g transform="translate(180, 0)" filter="url(#floatShadow)">
+        <rect width="160" height="100" rx="8" fill="#FFFFFF"/>
+        <rect x="5" y="5" width="150" height="90" rx="4" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="15" y="25" font-family="'Courier New', monospace" font-size="10" fill="#6B7280">CAM-03</text>
+      </g>
+      
+      <!-- Sub 3 (Fault) -->
+      <g transform="translate(360, 0)" filter="url(#floatShadow)">
+        <rect width="160" height="100" rx="8" fill="#FFFFFF"/>
+        <rect x="5" y="5" width="150" height="90" rx="4" fill="#FEF2F2" stroke="#E5E7EB" stroke-width="1"/> <!-- 淡红背景 -->
+        <text x="15" y="25" font-family="'Courier New', monospace" font-size="10" fill="#EF4444">NO SIGNAL</text>
+        <path d="M70 40 L90 60 M90 40 L70 60" stroke="#EF4444" stroke-width="2" opacity="0.3"/>
+      </g>
+    </g>
+
+    <!-- 3. 时间轴控制条 (Playback Bar) -->
+    <g transform="translate(0, 500)" filter="url(#floatShadow)">
+      <rect width="520" height="60" rx="8" fill="#FFFFFF"/>
+      <!-- 播放按钮 -->
+      <circle cx="30" cy="30" r="16" fill="#F3F4F6"/>
+      <path d="M26 24 L38 30 L26 36 Z" fill="#374151"/>
+      
+      <!-- 时间刻度 -->
+      <g transform="translate(60, 0)">
+        <line x1="0" y1="30" x2="440" y2="30" stroke="#E5E7EB" stroke-width="2"/>
+        <!-- 进度条 -->
+        <line x1="0" y1="30" x2="320" y2="30" stroke="#3B82F6" stroke-width="2"/>
+        <circle cx="320" cy="30" r="4" fill="#3B82F6"/>
+        
+        <!-- 刻度线 -->
+        <line x1="0" y1="25" x2="0" y2="35" stroke="#9CA3AF" stroke-width="1"/>
+        <text x="0" y="50" text-anchor="middle" font-size="10" fill="#9CA3AF">00:00</text>
+        
+        <line x1="220" y1="25" x2="220" y2="35" stroke="#9CA3AF" stroke-width="1"/>
+        <text x="220" y="50" text-anchor="middle" font-size="10" fill="#9CA3AF">12:00</text>
+        
+        <line x1="440" y1="25" x2="440" y2="35" stroke="#9CA3AF" stroke-width="1"/>
+        <text x="440" y="50" text-anchor="middle" font-size="10" fill="#9CA3AF">24:00</text>
+        
+        <!-- 告警时段标记 (红色段) -->
+        <line x1="300" y1="30" x2="310" y2="30" stroke="#EF4444" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       右侧：云台控制 (PTZ Control) & 预置位
+       ======================================================================== -->
+  <g transform="translate(780, 20)">
+    
+    <!-- 1. 云台控制盘 (PTZ Gem) -->
+    <g filter="url(#floatShadow)">
+      <rect width="200" height="240" rx="12" fill="#FFFFFF"/>
+      <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#374151">云台控制 (PTZ)</text>
+      
+      <!-- 控制盘主体 -->
+      <g transform="translate(100, 140)">
+        <!-- 外圈底盘 -->
+        <circle cx="0" cy="0" r="70" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        
+        <!-- 上下左右箭头 (通过 Path 绘制) -->
+        <path d="M0 -50 L-6 -40 H6 Z" fill="#9CA3AF"/> <!-- 上 -->
+        <path d="M0 50 L-6 40 H6 Z" fill="#9CA3AF"/> <!-- 下 -->
+        <path d="M-50 0 L-40 -6 V6 Z" fill="#9CA3AF"/> <!-- 左 -->
+        <path d="M50 0 L40 -6 V6 Z" fill="#9CA3AF"/> <!-- 右 -->
+        
+        <!-- 中间宝石按钮 (OK/Reset) -->
+        <circle cx="0" cy="0" r="24" fill="url(#ptzGem)" stroke="#DBEAFE" stroke-width="2"/>
+        <text x="0" y="4" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#FFFFFF" font-weight="bold">OK</text>
+        
+        <!-- 装饰圈 -->
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.3"/>
+      </g>
+      
+      <!-- 变焦按钮 -->
+      <g transform="translate(30, 200)">
+        <rect x="0" y="0" width="60" height="24" rx="12" fill="#F3F4F6"/>
+        <text x="30" y="16" text-anchor="middle" font-size="12" fill="#6B7280">- 变焦 +</text>
+      </g>
+      <g transform="translate(110, 200)">
+        <rect x="0" y="0" width="60" height="24" rx="12" fill="#F3F4F6"/>
+        <text x="30" y="16" text-anchor="middle" font-size="12" fill="#6B7280">- 光圈 +</text>
+      </g>
+    </g>
+
+    <!-- 2. 预置位列表 (Preset List) -->
+    <g transform="translate(0, 260)" filter="url(#floatShadow)">
+      <rect width="200" height="300" rx="12" fill="#FFFFFF"/>
+      <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#374151">快速预置位</text>
+      <line x1="20" y1="50" x2="180" y2="50" stroke="#F3F4F6" stroke-width="2"/>
+      
+      <g transform="translate(20, 70)">
+        <!-- Preset 1 -->
+        <rect x="0" y="0" width="75" height="40" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="37.5" y="24" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#374151">全景</text>
+        
+        <!-- Preset 2 -->
+        <rect x="85" y="0" width="75" height="40" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="122.5" y="24" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#374151">人脸抓拍</text>
+
+        <!-- Preset 3 -->
+        <rect x="0" y="50" width="75" height="40" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="37.5" y="24" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#374151">左侧通道</text>
+        
+        <!-- Preset 4 -->
+        <rect x="85" y="50" width="75" height="40" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/> <!-- Active -->
+        <text x="122.5" y="24" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#3B82F6">重点区域</text>
+      </g>
+    </g>
+  </g>
+
+</svg>
