@@ -1,0 +1,327 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 客流统计分析驾驶舱 (Passenger Flow Analysis System)
+    数据源: Hikvision
+    风格: 宝石光晕 & 纯净白 (Gem Halo & Clean White)
+  -->
+
+  <defs>
+    <!-- 悬浮阴影 -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.12"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 性别宝石渐变 -->
+    <linearGradient id="maleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="femaleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </linearGradient>
+
+    <!-- 热力图红点 (Heatmap Blob) -->
+    <radialGradient id="heatRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#EF4444" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 热力图橙点 -->
+    <radialGradient id="heatOrange" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 趋势图填充 -->
+    <linearGradient id="trendFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1600" height="900" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 顶部 KPI 核心指标 (Top Stats) - 模拟海康数据维度
+       ======================================================================== -->
+  <g transform="translate(20, 20)">
+    
+    <!-- 卡片 1: 今日累计客流 (Total Visitors) -->
+    <g filter="url(#softShadow)">
+      <rect width="380" height="140" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="60" height="60" rx="30" fill="#EFF6FF"/>
+        <!-- 图标: 足迹 -->
+        <path d="M25 40 Q20 20 30 15 Q40 20 35 40" fill="#3B82F6"/> 
+        <circle cx="24" cy="18" r="3" fill="#3B82F6"/>
+        <circle cx="30" cy="12" r="3" fill="#3B82F6"/>
+        <circle cx="36" cy="18" r="3" fill="#3B82F6"/>
+      </g>
+      <text x="110" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B">今日累计客流 (人次)</text>
+      <text x="110" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="40" font-weight="bold" fill="#1E293B">28,450</text>
+      
+      <!-- 环比数据 -->
+      <g transform="translate(280, 60)">
+        <text x="0" y="0" font-size="12" fill="#94A3B8">较昨日</text>
+        <path d="M45 -5 L50 0 L55 -5" stroke="#10B981" stroke-width="2" fill="none"/>
+        <text x="60" y="0" font-size="14" font-weight="bold" fill="#10B981">+12%</text>
+      </g>
+    </g>
+
+    <!-- 卡片 2: 实时在店人数 (Current Retention) -->
+    <g transform="translate(400, 0)" filter="url(#softShadow)">
+      <rect width="380" height="140" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="60" height="60" rx="30" fill="#ECFDF5"/>
+        <circle cx="30" cy="30" r="10" fill="#10B981"/> <!-- 驻留点 -->
+        <circle cx="30" cy="30" r="20" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="4 4">
+             <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="10s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      <text x="110" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B">当前在店人数 (实时)</text>
+      <text x="110" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="40" font-weight="bold" fill="#10B981">1,208</text>
+      <text x="280" y="60" font-size="12" fill="#94A3B8">舒适度: <tspan fill="#10B981" font-weight="bold">舒适</tspan></text>
+    </g>
+
+    <!-- 卡片 3: 累计进入 (Enter) -->
+    <g transform="translate(800, 0)" filter="url(#softShadow)">
+      <rect width="380" height="140" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="60" height="60" rx="30" fill="#F0F9FF"/>
+        <path d="M20 30 L40 30 M35 25 L40 30 L35 35" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <text x="110" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B">累计进入 (In)</text>
+      <text x="110" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="40" font-weight="bold" fill="#0EA5E9">15,300</text>
+    </g>
+
+    <!-- 卡片 4: 累计离开 (Exit) -->
+    <g transform="translate(1200, 0)" filter="url(#softShadow)">
+      <rect width="380" height="140" rx="12" fill="#FFFFFF"/>
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="60" height="60" rx="30" fill="#FFF7ED"/>
+        <path d="M40 30 L20 30 M25 25 L20 30 L25 35" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <text x="110" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B">累计离开 (Out)</text>
+      <text x="110" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="40" font-weight="bold" fill="#F97316">14,092</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 左侧主视图：楼层热力图 (Heatmap Floor Plan) - 60% Width
+       ======================================================================== -->
+  <g transform="translate(20, 180)">
+    <g filter="url(#softShadow)">
+      <rect width="960" height="700" rx="12" fill="#FFFFFF"/>
+      
+      <!-- 标题 -->
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="6" height="20" rx="3" fill="#3B82F6"/>
+        <text x="20" y="16" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">实时客流热力分布 (1F 全景)</text>
+      </g>
+      
+      <!-- 模拟平面图底图 (Floor Plan) -->
+      <g transform="translate(30, 80)">
+         <!-- 墙体结构 -->
+         <path d="M0 0 H900 V580 H0 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+         <!-- 内部区域划分 -->
+         <rect x="50" y="50" width="200" height="150" fill="#FFFFFF" stroke="#E2E8F0"/> <!-- 专柜A -->
+         <text x="150" y="125" text-anchor="middle" fill="#CBD5E1">化妆品区</text>
+
+         <rect x="50" y="300" width="200" height="200" fill="#FFFFFF" stroke="#E2E8F0"/> <!-- 专柜B -->
+         <text x="150" y="400" text-anchor="middle" fill="#CBD5E1">珠宝区</text>
+
+         <rect x="650" y="50" width="200" height="450" fill="#FFFFFF" stroke="#E2E8F0"/> <!-- 专柜C -->
+         <text x="750" y="275" text-anchor="middle" fill="#CBD5E1">运动品牌区</text>
+         
+         <!-- 走廊/中庭 -->
+         <text x="450" y="290" text-anchor="middle" fill="#94A3B8" font-size="20" font-weight="bold">中庭广场</text>
+
+         <!-- 门禁点图标 -->
+         <g transform="translate(420, 560)">
+            <path d="M0 0 H60 V20 H0 Z" fill="#E2E8F0"/>
+            <text x="30" y="15" text-anchor="middle" font-size="10" fill="#64748B">主出入口</text>
+         </g>
+      </g>
+
+      <!-- 热力渲染层 (Heatmap Overlay) -->
+      <g transform="translate(30, 80)">
+        <!-- 热点1: 主入口 (高热) -->
+        <ellipse cx="450" cy="500" rx="120" ry="60" fill="url(#heatRed)">
+           <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- 热点2: 化妆品区 (中热) -->
+        <ellipse cx="150" cy="125" rx="80" ry="60" fill="url(#heatOrange)"/>
+
+        <!-- 热点3: 运动区 (中热) -->
+        <ellipse cx="750" cy="200" rx="90" ry="120" fill="url(#heatOrange)">
+            <animate attributeName="rx" values="90;100;90" dur="5s" repeatCount="indefinite"/>
+        </ellipse>
+        
+        <!-- 随机散点 (模拟单个顾客) -->
+        <circle cx="450" cy="300" r="4" fill="#3B82F6" opacity="0.6"/>
+        <circle cx="460" cy="310" r="4" fill="#3B82F6" opacity="0.6"/>
+        <circle cx="440" cy="290" r="4" fill="#3B82F6" opacity="0.6"/>
+      </g>
+
+      <!-- 图例 -->
+      <g transform="translate(800, 40)">
+        <rect x="0" y="0" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0"/>
+        <circle cx="20" cy="15" r="6" fill="#EF4444"/>
+        <text x="35" y="20" font-size="12" fill="#64748B">密集</text>
+        <circle cx="70" cy="15" r="6" fill="#F59E0B"/>
+        <text x="85" y="20" font-size="12" fill="#64748B">拥挤</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       3. 右侧分析区 (Analytics Column) - 40% Width
+       ======================================================================== -->
+  <g transform="translate(1000, 180)">
+    
+    <!-- 3.1 客流趋势曲线 (Traffic Trend) -->
+    <g filter="url(#softShadow)">
+      <rect width="580" height="260" rx="12" fill="#FFFFFF"/>
+      
+      <g transform="translate(30, 30)">
+        <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">24小时客流趋势 (Hourly Trend)</text>
+      </g>
+
+      <!-- 图表区 -->
+      <g transform="translate(50, 80)">
+        <!-- 坐标轴 -->
+        <line x1="0" y1="150" x2="500" y2="150" stroke="#F1F5F9" stroke-width="1"/>
+        <line x1="0" y1="100" x2="500" y2="100" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="0" y1="50" x2="500" y2="50" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
+
+        <!-- 曲线路径 (Bezier Curve) -->
+        <path d="M0 150 C 50 140, 80 100, 120 80 S 180 20, 220 30 S 300 100, 350 110 S 450 60, 500 40" 
+              fill="none" stroke="#3B82F6" stroke-width="3"/>
+        
+        <!-- 面积填充 -->
+        <path d="M0 150 C 50 140, 80 100, 120 80 S 180 20, 220 30 S 300 100, 350 110 S 450 60, 500 40 V 150 H 0 Z" 
+              fill="url(#trendFill)"/>
+
+        <!-- 峰值点宝石 -->
+        <g transform="translate(220, 30)">
+           <circle cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+           <rect x="-30" y="-30" width="60" height="24" rx="4" fill="#3B82F6"/>
+           <text x="0" y="-14" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">Peak</text>
+        </g>
+        
+        <!-- X轴刻度 -->
+        <text x="0" y="170" font-size="10" fill="#94A3B8">10:00</text>
+        <text x="120" y="170" font-size="10" fill="#94A3B8">12:00</text>
+        <text x="220" y="170" font-size="10" fill="#94A3B8">14:00</text>
+        <text x="350" y="170" font-size="10" fill="#94A3B8">18:00</text>
+        <text x="500" y="170" font-size="10" fill="#94A3B8">22:00</text>
+      </g>
+    </g>
+
+    <!-- 3.2 顾客画像分析 (Demographics) -->
+    <g transform="translate(0, 280)" filter="url(#softShadow)">
+      <rect width="280" height="240" rx="12" fill="#FFFFFF"/>
+      <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">顾客性别占比</text>
+      
+      <!-- 男性 -->
+      <g transform="translate(40, 70)">
+        <circle cx="30" cy="30" r="30" fill="url(#maleGrad)"/>
+        <!-- 简单的男性符号或头像 -->
+        <text x="30" y="40" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="bold">♂</text>
+        <text x="30" y="80" text-anchor="middle" font-size="14" fill="#64748B">男性</text>
+        <text x="30" y="105" text-anchor="middle" font-size="24" font-weight="bold" fill="#2563EB">42%</text>
+      </g>
+
+      <!-- 女性 -->
+      <g transform="translate(150, 70)">
+        <circle cx="30" cy="30" r="30" fill="url(#femaleGrad)"/>
+        <text x="30" y="40" text-anchor="middle" font-size="24" fill="#FFFFFF" font-weight="bold">♀</text>
+        <text x="30" y="80" text-anchor="middle" font-size="14" fill="#64748B">女性</text>
+        <text x="30" y="105" text-anchor="middle" font-size="24" font-weight="bold" fill="#DB2777">58%</text>
+      </g>
+    </g>
+
+    <!-- 3.3 顾客年龄分布 (Age Distribution) -->
+    <g transform="translate(300, 280)" filter="url(#softShadow)">
+      <rect width="280" height="240" rx="12" fill="#FFFFFF"/>
+      <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">年龄段分布</text>
+      
+      <g transform="translate(30, 60)">
+        <!-- 条目1 -->
+        <g>
+          <text x="0" y="10" font-size="12" fill="#64748B">18-30岁 (主力)</text>
+          <rect x="0" y="18" width="220" height="6" rx="3" fill="#F1F5F9"/>
+          <rect x="0" y="18" width="140" height="6" rx="3" fill="#3B82F6"/>
+          <text x="220" y="10" text-anchor="end" font-size="12" font-weight="bold" fill="#3B82F6">45%</text>
+        </g>
+        <!-- 条目2 -->
+        <g transform="translate(0, 45)">
+          <text x="0" y="10" font-size="12" fill="#64748B">31-45岁</text>
+          <rect x="0" y="18" width="220" height="6" rx="3" fill="#F1F5F9"/>
+          <rect x="0" y="18" width="90" height="6" rx="3" fill="#0EA5E9"/>
+          <text x="220" y="10" text-anchor="end" font-size="12" font-weight="bold" fill="#0EA5E9">30%</text>
+        </g>
+        <!-- 条目3 -->
+        <g transform="translate(0, 90)">
+          <text x="0" y="10" font-size="12" fill="#64748B">45岁以上</text>
+          <rect x="0" y="18" width="220" height="6" rx="3" fill="#F1F5F9"/>
+          <rect x="0" y="18" width="50" height="6" rx="3" fill="#94A3B8"/>
+          <text x="220" y="10" text-anchor="end" font-size="12" font-weight="bold" fill="#94A3B8">15%</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 3.4 区域排名列表 (Zone Ranking) -->
+    <g transform="translate(0, 540)" filter="url(#softShadow)">
+      <rect width="580" height="160" rx="12" fill="#FFFFFF"/>
+      <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">各出入口流量排名 (Gate Ranking)</text>
+      
+      <!-- 列表头 -->
+      <g transform="translate(30, 60)">
+        <text x="0" y="0" font-size="12" fill="#94A3B8">排名</text>
+        <text x="50" y="0" font-size="12" fill="#94A3B8">点位名称</text>
+        <text x="250" y="0" font-size="12" fill="#94A3B8">进客流</text>
+        <text x="350" y="0" font-size="12" fill="#94A3B8">出客流</text>
+        <text x="450" y="0" font-size="12" fill="#94A3B8">拥挤度</text>
+      </g>
+      <line x1="30" y1="70" x2="550" y2="70" stroke="#F1F5F9" stroke-width="1"/>
+
+      <!-- 列表内容 -->
+      <g transform="translate(30, 95)">
+        <g>
+           <circle cx="10" cy="-4" r="10" fill="#F59E0B"/>
+           <text x="10" y="0" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="bold">1</text>
+           <text x="50" y="0" font-size="12" font-weight="bold" fill="#334155">1F 主出入口</text>
+           <text x="250" y="0" font-size="12" fill="#334155">8,540</text>
+           <text x="350" y="0" font-size="12" fill="#334155">8,100</text>
+           <rect x="450" y="-8" width="60" height="16" rx="8" fill="#FEE2E2"/>
+           <text x="480" y="4" text-anchor="middle" font-size="10" fill="#EF4444">High</text>
+        </g>
+        
+        <g transform="translate(0, 35)">
+           <circle cx="10" cy="-4" r="10" fill="#94A3B8"/>
+           <text x="10" y="0" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="bold">2</text>
+           <text x="50" y="0" font-size="12" font-weight="bold" fill="#334155">B1 地铁通道</text>
+           <text x="250" y="0" font-size="12" fill="#334155">4,200</text>
+           <text x="350" y="0" font-size="12" fill="#334155">3,800</text>
+           <rect x="450" y="-8" width="60" height="16" rx="8" fill="#ECFDF5"/>
+           <text x="480" y="4" text-anchor="middle" font-size="10" fill="#10B981">Normal</text>
+        </g>
+      </g>
+    </g>
+
+  </g>
+
+</svg>

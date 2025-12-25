@@ -1,0 +1,20 @@
+<!-- 尺寸建议: 100x100 -->
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 外框/网罩 -->
+  <circle cx="50" cy="50" r="45" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- 旋转扇叶 -->
+  <g id="fan-blade" transform-origin="50 50">
+    <path d="M50 50 L50 15 A35 35 0 0 1 80 35 Z" fill="#94A3B8" opacity="0.8"/>
+    <path d="M50 50 L85 50 A35 35 0 0 1 65 80 Z" fill="#94A3B8" opacity="0.8"/>
+    <path d="M50 50 L50 85 A35 35 0 0 1 20 65 Z" fill="#94A3B8" opacity="0.8"/>
+    <path d="M50 50 L15 50 A35 35 0 0 1 35 20 Z" fill="#94A3B8" opacity="0.8"/>
+    
+    <!-- 旋转动画 -->
+    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- 中心宝石 -->
+  <circle cx="50" cy="50" r="8" fill="url(#gem-run)" stroke="white" stroke-width="2"/>
+</svg>

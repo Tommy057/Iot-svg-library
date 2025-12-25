@@ -1,0 +1,34 @@
+<svg width="0" height="0">
+  <defs>
+    <!-- 1. 弥散阴影 (Card Shadow) -->
+    <filter id="gem-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#94A3B8" flood-opacity="0.15"/>
+    </filter>
+
+    <!-- 2. 宝石光晕 - 运行中 (Running - Green) -->
+    <radialGradient id="gem-run" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#34D399" /> <!-- 高光 -->
+      <stop offset="100%" stop-color="#059669" /> <!-- 本体 -->
+    </radialGradient>
+
+    <!-- 3. 宝石光晕 - 停止 (Stop - Grey) -->
+    <radialGradient id="gem-stop" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#E5E7EB" />
+      <stop offset="100%" stop-color="#4B5563" />
+    </radialGradient>
+
+    <!-- 4. 宝石光晕 - 故障 (Fault - Red) -->
+    <radialGradient id="gem-fault" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </radialGradient>
+
+    <!-- 5. 管道流体 - 冷冻供水 (Chilled Supply) -->
+    <linearGradient id="pipe-chilled-supply" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7DD3FC" />
+      <stop offset="50%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+  </defs>
+</svg>
+</svg>

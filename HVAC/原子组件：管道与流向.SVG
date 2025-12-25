@@ -1,0 +1,14 @@
+<!-- 尺寸建议: 200x20 -->
+<svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+  <!-- 管道底色 -->
+  <rect x="0" y="4" width="200" height="12" rx="6" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <!-- 液体本体 -->
+  <rect x="2" y="6" width="196" height="8" rx="4" fill="#0EA5E9" opacity="0.2"/>
+  
+  <!-- 流动动画层 -->
+  <path d="M5 10 L195 10" stroke="#0EA5E9" stroke-width="4" stroke-linecap="round" stroke-dasharray="10,10">
+    <!-- 流动效果：向右流动 -->
+    <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite"/>
+  </path>
+</svg>

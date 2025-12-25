@@ -1,0 +1,21 @@
+<!-- 尺寸建议: 160x60 -->
+<svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 卡片背景 + 阴影 -->
+  <rect x="5" y="5" width="150" height="50" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#gem-shadow)"/>
+  
+  <!-- 装饰色条 (例如：冷冻供水用蓝色) -->
+  <path d="M12 20L12 40" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- 标签 (Label) -->
+  <text x="25" y="25" font-family="Arial, sans-serif" font-size="10" fill="#64748B" font-weight="bold">
+    供水温度
+  </text>
+  
+  <!-- 数值 (Value) -->
+  <text x="25" y="45" font-family="Arial, sans-serif" font-size="18" fill="#111827" font-weight="bold" letter-spacing="0.5">
+    7.5 <tspan font-size="12" fill="#9CA3AF" font-weight="normal">°C</tspan>
+  </text>
+  
+  <!-- 状态微粒 (可选，右上角的小点) -->
+  <circle cx="145" cy="15" r="3" fill="#10B981"/>
+</svg>

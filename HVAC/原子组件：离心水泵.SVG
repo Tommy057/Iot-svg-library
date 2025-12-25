@@ -1,0 +1,21 @@
+<!-- 尺寸建议: 100x100 -->
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 泵体蜗壳 (静态) -->
+  <path d="M50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15C45.5 15 41.2 15.8 37.3 17.3L37.3 5L20 5L20 28.5C16.8 31.8 15 36.2 15 50C15 69.33 30.67 85 50 85Z" 
+        fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  
+  <!-- 旋转叶轮 (动态组) -->
+  <g id="pump-impeller" transform-origin="50 50">
+    <path d="M50 25L53 40L68 35L58 45L75 50L58 55L68 65L53 60L50 75L47 60L32 65L42 55L25 50L42 45L32 35L47 40L50 25Z" 
+          fill="#E2E8F0"/>
+    <!-- 运行动画：HT中可通过数据绑定控制 duration 或 attributeName -->
+    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- 核心宝石 (状态指示) -->
+  <!-- 默认状态：停止 (使用 gem-stop) -->
+  <circle cx="50" cy="50" r="12" fill="url(#gem-run)" stroke="#FFFFFF" stroke-width="2">
+     <!-- 故障闪烁效果 (可选) -->
+     <!-- <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite" /> -->
+  </circle>
+</svg>

@@ -1,0 +1,137 @@
+<svg width="400" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    设计系统：宝石光晕 & 功能拟态 (Gem Halo & Functional Form)
+    子系统：电子巡更系统 (Electronic Patrol)
+    主色调：科技蓝 (#3B82F6)
+  -->
+
+  <defs>
+    <!-- 1. 弥散阴影 Filter -->
+    <filter id="softShadowBlue" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1E40AF" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- 2. 宝石质感渐变 (科技蓝 - 安防) -->
+    <radialGradient id="gemBlue" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#60A5FA" /> <!-- 亮蓝高光 -->
+      <stop offset="100%" stop-color="#2563EB" /> <!-- 深蓝主色 -->
+    </radialGradient>
+    
+    <!-- 3. 扫描光晕渐变 -->
+    <radialGradient id="haloBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 4. 进度条渐变 -->
+    <linearGradient id="progressBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#3B82F6" />
+        <stop offset="100%" stop-color="#60A5FA" />
+    </linearGradient>
+  </defs>
+
+  <!-- =========================
+       背景卡片 (Clean White)
+       ========================= -->
+  <rect x="2" y="2" width="396" height="216" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#softShadowBlue)" />
+
+  <!-- =========================
+       Header: 宝石图标 & 标题
+       ========================= -->
+  <g transform="translate(24, 24)">
+    <!-- 扩散波纹动画 (雷达扫描感) -->
+    <circle cx="20" cy="20" r="18" fill="url(#haloBlue)">
+      <animate attributeName="r" values="18;24;18" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- 宝石主体 -->
+    <circle cx="20" cy="20" r="12" fill="url(#gemBlue)" stroke="#FFFFFF" stroke-width="2"/>
+    
+    <!-- 盾牌符号 -->
+    <path d="M16 16 C16 16, 16 26, 20 28 C 24 26, 24 16, 24 16 L 20 14 L 16 16 Z" fill="#FFFFFF" transform="translate(0, -2)"/>
+
+    <!-- 标题文字 -->
+    <text x="40" y="25" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#111827">实时巡更任务 #A04</text>
+  </g>
+
+  <!-- =========================
+       右上角状态指示
+       ========================= -->
+  <g transform="translate(310, 24)">
+    <rect x="0" y="0" width="66" height="24" rx="12" fill="#EFF6FF"/> <!-- 浅蓝底 -->
+    <circle cx="12" cy="12" r="3" fill="#3B82F6"/> <!-- 科技蓝点 -->
+    <text x="20" y="16" font-family="Arial" font-size="12" fill="#2563EB">进行中</text>
+  </g>
+
+  <!-- =========================
+       数据矩阵 (Data Matrix)
+       ========================= -->
+  <g transform="translate(24, 80)">
+    
+    <!-- Row 1, Col 1: 执勤人员 -->
+    <g>
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">执勤人员 (Officer)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="18" fill="#111827">张伟 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">ID:8902</tspan></text>
+    </g>
+
+    <!-- Row 1, Col 2: 当前点位 -->
+    <g transform="translate(180, 0)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">当前位置 (Location)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="18" fill="#111827">3号库区-北门</text>
+    </g>
+
+    <!-- Row 2, Col 1: 覆盖率 -->
+    <g transform="translate(0, 60)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">巡检覆盖 (Covered)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111827">75 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">%</tspan></text>
+    </g>
+
+    <!-- Row 2, Col 2: 异常隐患 -->
+    <g transform="translate(180, 60)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">异常记录 (Issues)</text>
+      <!-- 如果是0则灰色，如果有数字则红色 -->
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#EF4444">1 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">件</tspan></text>
+    </g>
+  </g>
+
+  <!-- =========================
+       底部：路线节点轴 (Checkpoint Timeline)
+       ========================= -->
+  <g transform="translate(24, 180)">
+    <!-- 轴线背景 -->
+    <rect x="0" y="8" width="352" height="2" fill="#F3F4F6"/>
+    
+    <!-- 已完成进度轴 -->
+    <rect x="0" y="8" width="260" height="2" fill="#3B82F6"/>
+
+    <!-- 节点1：已完成 -->
+    <circle cx="0" cy="9" r="4" fill="#3B82F6"/>
+    
+    <!-- 节点2：已完成 -->
+    <circle cx="88" cy="9" r="4" fill="#3B82F6"/>
+    
+    <!-- 节点3：已完成 -->
+    <circle cx="176" cy="9" r="4" fill="#3B82F6"/>
+
+    <!-- 节点4：当前点 (呼吸动画) -->
+    <g transform="translate(264, 9)">
+        <!-- 扩散圈 -->
+        <circle cx="0" cy="0" r="8" fill="#3B82F6" opacity="0.2">
+             <animate attributeName="r" values="4;8;4" dur="1.5s" repeatCount="indefinite" />
+             <animate attributeName="opacity" values="0.6;0;0.6" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+        <!-- 实心点 -->
+        <circle cx="0" cy="0" r="4" fill="#3B82F6" stroke="#FFFFFF" stroke-width="1.5"/>
+    </g>
+
+    <!-- 节点5：未完成 -->
+    <circle cx="352" cy="9" r="3" fill="#D1D5DB"/>
+    
+    <!-- 文字标签 -->
+    <text x="0" y="24" font-family="Arial" font-size="10" fill="#9CA3AF" text-anchor="middle">起点</text>
+    <text x="264" y="24" font-family="Arial" font-size="10" fill="#3B82F6" font-weight="bold" text-anchor="middle">当前</text>
+    <text x="352" y="24" font-family="Arial" font-size="10" fill="#9CA3AF" text-anchor="middle">终点</text>
+  </g>
+
+</svg>
