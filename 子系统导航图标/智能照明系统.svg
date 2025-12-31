@@ -1,0 +1,7 @@
+<!-- 智能照明系统 (亮黄色 - 灯泡) -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="50" fill="#FFB84D"/>
+  <path d="M128 45 C95 45 75 75 75 110 C75 140 95 160 105 175 H151 C161 160 181 140 181 110 C181 75 161 45 128 45 Z" fill="white"/>
+  <rect x="105" y="185" width="46" height="20" rx="5" fill="white"/>
+  <circle cx="128" cy="100" r="12" fill="#FFB84D"/> <!-- 镂空细节 -->
+</svg>

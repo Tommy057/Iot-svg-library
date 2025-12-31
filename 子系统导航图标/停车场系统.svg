@@ -1,0 +1,6 @@
+<!-- 停车场系统 (蓝色) -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="32" fill="#42A5F5"/>
+  <path d="M85 65 H145 C170 65 185 85 185 112 C185 140 170 160 145 160 H120 V195 H85 V65 Z" fill="white"/>
+  <rect x="120" y="95" width="30" height="35" rx="6" fill="#42A5F5"/>
+</svg>

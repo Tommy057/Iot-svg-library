@@ -1,0 +1,7 @@
+<!-- 电梯系统 (灰蓝色 - 垂直整齐版) -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="32" fill="#607D8B"/>
+  <rect x="60" y="60" width="136" height="136" rx="12" fill="white"/>
+  <path d="M98 160 V95 L80 113 M98 95 L116 113" stroke="#607D8B" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M158 95 V160 L140 142 M158 160 L176 142" stroke="#607D8B" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<!-- 信息发布系统 (橙色 - 屏幕) -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="50" fill="#FF8C42"/>
+  <rect x="50" y="70" width="156" height="100" rx="10" fill="white"/>
+  <path d="M115 100 L145 120 L115 140 Z" fill="#FF8C42"/> <!-- 镂空播放按钮 -->
+  <rect x="100" y="180" width="56" height="10" rx="5" fill="white"/>
+</svg>
