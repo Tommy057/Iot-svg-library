@@ -1,0 +1,121 @@
+<svg width="400" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    设计系统：宝石光晕 & 功能拟态
+    子系统：智能照明 (Smart Lighting)
+    主色调：电光黄 (#F59E0B)
+  -->
+
+  <defs>
+    <!-- 1. 弥散阴影 -->
+    <filter id="softShadowLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#F59E0B" flood-opacity="0.1"/>
+    </filter>
+
+    <!-- 2. 宝石质感 (发光体) -->
+    <radialGradient id="gemBulb" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FEF3C7" /> <!-- 极亮暖白 -->
+      <stop offset="100%" stop-color="#F59E0B" /> <!-- 琥珀本色 -->
+    </radialGradient>
+    
+    <!-- 3. 辉光动画渐变 -->
+    <radialGradient id="haloGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FBBF24" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 4. 底部调光光谱渐变 (Dark to Light) -->
+    <linearGradient id="dimmingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#D1D5DB" /> <!-- 暗 (关灯) -->
+        <stop offset="50%" stop-color="#FCD34D" />
+        <stop offset="100%" stop-color="#F59E0B" /> <!-- 亮 (全开) -->
+    </linearGradient>
+  </defs>
+
+  <!-- =========================
+       背景卡片
+       ========================= -->
+  <rect x="2" y="2" width="396" height="216" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#softShadowLight)" />
+
+  <!-- =========================
+       Header: 照明宝石图标
+       ========================= -->
+  <g transform="translate(24, 24)">
+    <!-- 呼吸辉光 (模拟灯光闪烁) -->
+    <circle cx="20" cy="20" r="18" fill="url(#haloGlow)">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="r" values="18;21;18" dur="4s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- 宝石主体 -->
+    <circle cx="20" cy="20" r="12" fill="url(#gemBulb)" stroke="#FFFFFF" stroke-width="2"/>
+    
+    <!-- 灯泡符号 -->
+    <path d="M15 14 C15 10 17 8 20 8 C23 8 25 10 25 14 C25 16 24 18 22 19 L22 23 L18 23 L18 19 C16 18 15 16 15 14 Z M18 25 L22 25 L21 27 L19 27 Z" fill="#FFFFFF" transform="translate(0, -2) scale(1)"/>
+
+    <!-- 标题文字 -->
+    <text x="45" y="25" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#111827">车间主照明 #L01</text>
+  </g>
+
+  <!-- =========================
+       右上角状态
+       ========================= -->
+  <g transform="translate(305, 24)">
+    <rect x="0" y="0" width="70" height="24" rx="12" fill="#FFFBEB"/>
+    <circle cx="12" cy="12" r="3" fill="#F59E0B"/>
+    <text x="20" y="16" font-family="Arial" font-size="12" fill="#D97706">自动调光</text>
+  </g>
+
+  <!-- =========================
+       数据矩阵
+       ========================= -->
+  <g transform="translate(24, 80)">
+    
+    <!-- Row 1, Col 1: 当前亮度 -->
+    <g>
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">当前亮度 (Level)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111827">80 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">%</tspan></text>
+    </g>
+
+    <!-- Row 1, Col 2: 实时功率 -->
+    <g transform="translate(180, 0)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">实时功率 (Power)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111827">150 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">W</tspan></text>
+    </g>
+
+    <!-- Row 2, Col 1: 累计能耗 -->
+    <g transform="translate(0, 60)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">今日能耗 (Total)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111827">4.2 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">kWh</tspan></text>
+    </g>
+
+    <!-- Row 2, Col 2: 运行时间 -->
+    <g transform="translate(180, 60)">
+      <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">运行时间 (Runtime)</text>
+      <text x="0" y="36" font-family="Arial" font-weight="bold" font-size="20" fill="#111827">12 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">h</tspan> 30 <tspan font-size="12" font-weight="normal" fill="#9CA3AF">m</tspan></text>
+    </g>
+  </g>
+
+  <!-- =========================
+       底部：亮度光谱滑块 (Visual Feedback)
+       ========================= -->
+  <g transform="translate(24, 180)">
+    
+    <!-- 轨道背景 -->
+    <rect x="0" y="6" width="352" height="4" rx="2" fill="#F3F4F6"/>
+    
+    <!-- 亮度渐变条 (模拟光从暗到亮) -->
+    <!-- 宽度设为 80% 对应上面的数值 -->
+    <rect x="0" y="6" width="281" height="4" rx="2" fill="url(#dimmingGradient)"/>
+
+    <!-- 滑块手柄 (Thumb) -->
+    <circle cx="281" cy="8" r="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#softShadowLight)"/>
+    
+    <!-- 光效刻度 -->
+    <text x="0" y="24" font-family="Arial" font-size="10" fill="#9CA3AF">0%</text>
+    <text x="352" y="24" font-family="Arial" font-size="10" fill="#9CA3AF" text-anchor="end">100%</text>
+    
+    <!-- 当前值跟随手柄 -->
+    <text x="281" y="-5" font-family="Arial" font-size="10" font-weight="bold" fill="#F59E0B" text-anchor="middle">80%</text>
+  </g>
+
+</svg>

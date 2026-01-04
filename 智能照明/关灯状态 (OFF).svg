@@ -1,0 +1,19 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- 筒灯：关闭状态 (Material Look) -->
+  <defs>
+    <!-- 熄灭的玻璃质感：深灰到更深灰 -->
+    <radialGradient id="glassOff" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#6B7280" /> <!-- 浅灰反光 -->
+      <stop offset="100%" stop-color="#1F2937" /> <!-- 深灰底色 -->
+    </radialGradient>
+  </defs>
+
+  <!-- 外壳环 (不变) -->
+  <circle cx="32" cy="32" r="16" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+
+  <!-- 灯芯 (熄灭) -->
+  <circle cx="32" cy="32" r="12" fill="url(#glassOff)" stroke="#4B5563" stroke-width="0.5"/>
+
+  <!-- 玻璃表面硬反光 (增加物理真实感) -->
+  <path d="M26 26 Q32 20 38 26" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.3" fill="none"/>
+</svg>

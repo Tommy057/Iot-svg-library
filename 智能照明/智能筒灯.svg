@@ -1,0 +1,48 @@
+<!-- 保存为: icon_downlight.svg -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 光晕滤镜 (ON状态启用，OFF状态移除) -->
+    <filter id="lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 开启状态渐变 (暖白 -> 琥珀) -->
+    <radialGradient id="gradOn" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </radialGradient>
+
+    <!-- 3. 关闭状态渐变 (金属灰) -->
+    <radialGradient id="gradOff" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9CA3AF" />
+      <stop offset="100%" stop-color="#4B5563" />
+    </radialGradient>
+  </defs>
+
+  <!-- 外围光晕 (仅 ON 状态显示) -->
+  <circle cx="32" cy="32" r="20" fill="#F59E0B" opacity="0.3">
+     <animate attributeName="r" values="20;26;20" dur="3s" repeatCount="indefinite" />
+     <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- 灯体外壳 (装饰环) -->
+  <circle cx="32" cy="32" r="16" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+
+  <!-- 发光核心 (核心绑定区域) -->
+  <!-- HT应用说明: 
+       1. 切换 fill: url(#gradOn) 为 url(#gradOff) 即可切换开关。
+       2. 切换 filter: url(#lightGlow) 为 none 即可关闭辉光。
+  -->
+  <circle cx="32" cy="32" r="12" fill="url(#gradOn)" stroke="none" filter="url(#lightGlow)">
+      <!-- 故障时闪烁动画 (可选) -->
+      <!-- <animate attributeName="opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite" /> -->
+  </circle>
+
+  <!-- 玻璃反光高光 (增加质感) -->
+  <ellipse cx="28" cy="28" rx="4" ry="2" fill="#FFFFFF" opacity="0.6" transform="rotate(-45, 28, 28)"/>
+</svg>

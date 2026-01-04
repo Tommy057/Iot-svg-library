@@ -1,0 +1,6 @@
+<svg width="100" height="20" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+  <!-- 灰色槽体，无光 -->
+  <rect x="0" y="4" width="100" height="12" rx="6" fill="#E5E7EB" stroke="#D1D5DB" stroke-width="1"/>
+  <!-- 内部灯珠痕迹 (深灰) -->
+  <rect x="4" y="8" width="92" height="4" rx="2" fill="#9CA3AF" />
+</svg>
