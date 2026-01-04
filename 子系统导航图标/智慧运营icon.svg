@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144">
+    <rect x="0" y="0" width="144" height="144" rx="24" ry="24" fill="#7E57C2"/>
+    
+    <rect x="36" y="38" width="72" height="40" rx="8" ry="8" fill="#FEFEFD"/>
+    
+    <polyline points="42,70 55,55 68,65 81,48 94,60 106,50" style="fill:none;stroke:#66BB6A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;"/>
+    
+    <path d="M50 94 C46 94 43 97 43 101 V104 H101 V101 C101 97 98 94 94 94 Z" fill="#FEFEFD"/>
+    <rect x="47" y="98" width="50" height="2" fill="#CF9AF5"/>
+    <rect x="47" y="101" width="50" height="2" fill="#CF9AF5"/>
+    <rect x="47" y="104" width="50" height="2" fill="#CF9AF5"/>
+    
+    <path d="M96 52 L91 57 L95 57 L95 62 L97 62 L97 57 L101 57 Z" fill="#29B6F6"/>
+</svg>
