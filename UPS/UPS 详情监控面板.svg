@@ -1,0 +1,166 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    设计系统：宝石光晕 (Gem Halo)
+    场景：UPS 详情页重构 (对标参考图)
+    特点：高密度数据表格优化、去边框化
+  -->
+
+  <defs>
+    <!-- 1. 卡片阴影 -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+
+    <!-- 2. 标题宝石 (琥珀色 - 电力) -->
+    <radialGradient id="gemAmber" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </radialGradient>
+
+    <!-- 3. 状态点颜色 -->
+    <circle id="statusOK" cx="0" cy="0" r="4" fill="#10B981" /> <!-- 绿点 -->
+    <circle id="statusWarn" cx="0" cy="0" r="4" fill="#F59E0B" /> <!-- 橙点 -->
+  </defs>
+
+  <!-- =========================
+       背景底板
+       ========================= -->
+  <rect x="0" y="0" width="800" height="400" rx="8" fill="#F9FAFB" /> <!-- 极淡灰背景，区分画布 -->
+
+  <!-- =========================
+       板块 A: 三相输入 (Input) - 左侧
+       ========================= -->
+  <g transform="translate(10, 10)">
+    <!-- 卡片背景 -->
+    <rect x="0" y="0" width="385" height="380" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#cardShadow)"/>
+    
+    <!-- Header -->
+    <g transform="translate(20, 20)">
+        <circle cx="12" cy="12" r="10" fill="url(#gemAmber)" stroke="#FFFFFF" stroke-width="2"/>
+        <path d="M12 8 L14 8 L11 16 L12 16 L10 16 Z" fill="#FFFFFF" transform="translate(1,1)"/> <!-- 简易闪电 -->
+        <text x="32" y="18" font-family="Arial" font-weight="bold" font-size="16" fill="#111827">市电输入 (Mains Input)</text>
+        <text x="340" y="18" font-family="Arial" font-size="12" fill="#3B82F6" text-anchor="end" cursor="pointer">详情 &gt;</text>
+    </g>
+
+    <!-- 表头 (A/B/C 相) -->
+    <g transform="translate(20, 60)">
+        <text x="120" y="0" font-family="Arial" font-size="12" fill="#9CA3AF" text-anchor="middle">A 相</text>
+        <text x="200" y="0" font-family="Arial" font-size="12" fill="#9CA3AF" text-anchor="middle">B 相</text>
+        <text x="280" y="0" font-family="Arial" font-size="12" fill="#9CA3AF" text-anchor="middle">C 相</text>
+    </g>
+
+    <!-- 数据行 1: 电压 (带斑马纹背景) -->
+    <g transform="translate(5, 75)">
+        <rect x="0" y="0" width="375" height="40" rx="4" fill="#F3F4F6"/>
+        <text x="15" y="25" font-family="Arial" font-weight="bold" font-size="12" fill="#4B5563">电压 (V)</text>
+        <!-- A相 -->
+        <text x="135" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#111827" text-anchor="middle">224.3</text>
+        <!-- B相 -->
+        <text x="215" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#111827" text-anchor="middle">224.0</text>
+        <!-- C相 -->
+        <text x="295" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#111827" text-anchor="middle">225.9</text>
+    </g>
+
+    <!-- 数据行 2: 电流 -->
+    <g transform="translate(5, 125)">
+        <text x="15" y="25" font-family="Arial" font-weight="bold" font-size="12" fill="#4B5563">电流 (A)</text>
+        <text x="135" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">27.1</text>
+        <text x="215" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">25.3</text>
+        <text x="295" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">25.8</text>
+        <line x1="15" y1="45" x2="360" y2="45" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 4"/>
+    </g>
+
+    <!-- 数据行 3: 旁路电压 (带斑马纹) -->
+    <g transform="translate(5, 175)">
+        <rect x="0" y="0" width="375" height="40" rx="4" fill="#F3F4F6"/>
+        <text x="15" y="25" font-family="Arial" font-weight="bold" font-size="12" fill="#4B5563">旁路 V</text>
+        <text x="135" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">225.2</text>
+        <text x="215" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">225.1</text>
+        <text x="295" y="25" font-family="Arial" font-size="16" fill="#111827" text-anchor="middle">226.4</text>
+    </g>
+
+    <!-- 底部总频率 -->
+    <g transform="translate(20, 240)">
+        <text x="0" y="14" font-family="Arial" font-size="12" fill="#6B7280">输入频率</text>
+        <text x="0" y="40" font-family="Arial" font-weight="bold" font-size="24" fill="#111827">50.0 <tspan font-size="14" fill="#9CA3AF">Hz</tspan></text>
+        
+        <!-- 简单的波形装饰 -->
+        <path d="M80 30 Q90 10 100 30 T120 30" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- =========================
+       板块 B: 运行状态 (Status) - 右侧
+       ========================= -->
+  <g transform="translate(405, 10)">
+    <!-- 卡片背景 -->
+    <rect x="0" y="0" width="385" height="380" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#cardShadow)"/>
+
+    <!-- Header -->
+    <g transform="translate(20, 20)">
+        <!-- 蓝色宝石代表系统状态 -->
+        <circle cx="12" cy="12" r="10" fill="#3B82F6" stroke="#FFFFFF" stroke-width="2"/> 
+        <rect x="8" y="8" width="8" height="8" rx="1" fill="#FFFFFF"/>
+        <text x="32" y="18" font-family="Arial" font-weight="bold" font-size="16" fill="#111827">系统状态 (System)</text>
+    </g>
+
+    <!-- 状态矩阵: 2列布局 -->
+    <g transform="translate(20, 60)">
+        
+        <!-- Item 1 -->
+        <g transform="translate(0, 0)">
+            <text x="0" y="12" font-family="Arial" font-size="13" fill="#4B5563">整流器配置</text>
+            <use href="#statusOK" x="140" y="8"/>
+            <text x="150" y="12" font-family="Arial" font-weight="bold" font-size="13" fill="#111827">正常</text>
+            <line x1="0" y1="30" x2="340" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        </g>
+
+        <!-- Item 2 -->
+        <g transform="translate(0, 50)">
+            <text x="0" y="12" font-family="Arial" font-size="13" fill="#4B5563">供电方式</text>
+            <!-- 文本高亮 -->
+            <rect x="135" y="-2" width="70" height="20" rx="4" fill="#ECFDF5"/>
+            <text x="170" y="12" font-family="Arial" font-weight="bold" font-size="12" fill="#059669" text-anchor="middle">市电供电</text>
+            <line x1="0" y1="30" x2="340" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        </g>
+
+        <!-- Item 3 -->
+        <g transform="translate(0, 100)">
+            <text x="0" y="12" font-family="Arial" font-size="13" fill="#4B5563">电池自检</text>
+            <use href="#statusOK" x="140" y="8"/>
+            <text x="150" y="12" font-family="Arial" font-weight="bold" font-size="13" fill="#111827">完成</text>
+            <line x1="0" y1="30" x2="340" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        </g>
+
+        <!-- Item 4 -->
+        <g transform="translate(0, 150)">
+            <text x="0" y="12" font-family="Arial" font-size="13" fill="#4B5563">逆变器状态</text>
+            <use href="#statusOK" x="140" y="8"/>
+            <text x="150" y="12" font-family="Arial" font-weight="bold" font-size="13" fill="#111827">正常</text>
+            <line x1="0" y1="30" x2="340" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        </g>
+
+         <!-- Item 5: 电池浮充 -->
+        <g transform="translate(180, 0)">
+             <!-- 复用布局逻辑，此处简化展示 -->
+        </g>
+
+        <!-- 维修开关状态 -->
+        <g transform="translate(0, 200)">
+             <text x="0" y="12" font-family="Arial" font-size="13" fill="#4B5563">维修旁路空开</text>
+             <use href="#statusWarn" x="140" y="8"/> <!-- 橙色点 -->
+             <text x="150" y="12" font-family="Arial" font-weight="bold" font-size="13" fill="#D97706">断开</text>
+             <line x1="0" y1="30" x2="340" y2="30" stroke="#F3F4F6" stroke-width="1"/>
+        </g>
+
+    </g>
+    
+    <!-- 底部汇总 -->
+    <g transform="translate(20, 320)">
+         <rect x="0" y="0" width="345" height="40" rx="6" fill="#EFF6FF"/>
+         <circle cx="20" cy="20" r="3" fill="#3B82F6"/>
+         <text x="35" y="24" font-family="Arial" font-size="13" fill="#1E40AF">系统自检完成，无活跃告警。</text>
+    </g>
+
+  </g>
+</svg>

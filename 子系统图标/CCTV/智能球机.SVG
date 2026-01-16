@@ -1,0 +1,36 @@
+<!-- 建议保存为: icon_camera_dome.svg -->
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 镜头光泽 -->
+    <radialGradient id="lensShine" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 投影 -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- 1. 底座外壳 (纯白) -->
+  <circle cx="24" cy="24" r="20" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" filter="url(#dropShadow)"/>
+  
+  <!-- 2. 装饰环 (增加层次) -->
+  <circle cx="24" cy="24" r="16" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- 3. 镜头核心 (状态颜色绑定点) -->
+  <!-- HT应用: 修改此处的 fill 即可改变状态 (在线:#10B981, 离线:#9CA3AF, 告警:#EF4444) -->
+  <circle cx="24" cy="24" r="10" fill="#10B981" stroke="#FFFFFF" stroke-width="2">
+      <!-- 在线时的呼吸动画 (可选) -->
+      <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- 4. 玻璃反光 (拟态质感) -->
+  <ellipse cx="21" cy="21" rx="4" ry="2" fill="url(#lensShine)" transform="rotate(-45, 21, 21)"/>
+  
+  <!-- 5. 扫描指示点 (暗示这是可旋转球机) -->
+  <circle cx="24" cy="8" r="2" fill="#94A3B8"/>
+  <circle cx="24" cy="40" r="2" fill="#94A3B8"/>
+  <circle cx="8" cy="24" r="2" fill="#94A3B8"/>
+  <circle cx="40" cy="24" r="2" fill="#94A3B8"/>
+</svg>

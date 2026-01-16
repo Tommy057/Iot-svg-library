@@ -1,0 +1,284 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    完全复刻版 (Pixel-Perfect Replica)
+    风格：Dark Sci-Fi Industrial
+    参考源：CANATAL 配电监控界面
+  -->
+
+  <defs>
+    <!-- 1. 背景网格 (极淡) -->
+    <pattern id="bgGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+
+    <!-- 2. 标题栏渐变 (左亮右透) -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E40AF" stop-opacity="0.6"/> <!-- 亮蓝 -->
+      <stop offset="100%" stop-color="#1E40AF" stop-opacity="0"/> <!-- 透明 -->
+    </linearGradient>
+
+    <!-- 3. 表格行背景 (斑马纹) -->
+    <linearGradient id="rowBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#172033" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#172033" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- 4. L型光标发光滤镜 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- =========================
+       1. 全局背景
+       ========================= -->
+  <!-- 深邃蓝黑底色 -->
+  <rect x="0" y="0" width="1200" height="600" fill="#0B1120"/>
+  <rect x="0" y="0" width="1200" height="600" fill="url(#bgGrid)"/>
+
+  <!-- =========================
+       面板 A: 输入 (左上)
+       ========================= -->
+  <g transform="translate(10, 10)">
+    <!-- 容器框 -->
+    <rect x="0" y="0" width="585" height="285" fill="none" stroke="#2D3748" stroke-width="1"/>
+    
+    <!-- 标题栏 -->
+    <rect x="1" y="1" width="583" height="32" fill="url(#headerGrad)"/>
+    <text x="15" y="22" font-family="Arial" font-weight="bold" font-size="14" fill="#60A5FA">>> 输入</text>
+    <text x="570" y="22" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="end" cursor="pointer">查看 ></text>
+
+    <!-- 表头 -->
+    <g transform="translate(0, 50)">
+      <text x="300" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">A 相</text>
+      <text x="420" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">B 相</text>
+      <text x="540" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">C 相</text>
+      <line x1="10" y1="10" x2="575" y2="10" stroke="#2D3748" stroke-width="1"/>
+    </g>
+
+    <!-- 数据行 -->
+    <g transform="translate(0, 70)">
+      <!-- Row 1: 电压 (深色背景) -->
+      <rect x="10" y="0" width="565" height="40" fill="#111827" opacity="0.6"/>
+      <text x="20" y="25" font-family="Arial" font-size="12" fill="#94A3B8">电压(V)</text>
+      <text x="300" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">224.3</text>
+      <text x="420" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">224.0</text>
+      <text x="540" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">225.9</text>
+
+      <!-- Row 2: 电流 (透明背景) -->
+      <g transform="translate(0, 45)">
+        <text x="20" y="25" font-family="Arial" font-size="12" fill="#94A3B8">电流(A)</text>
+        <text x="300" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">27.1</text>
+        <text x="420" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">25.3</text>
+        <text x="540" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">25.8</text>
+        <line x1="10" y1="40" x2="575" y2="40" stroke="#2D3748" stroke-width="1" stroke-dasharray="2 2" opacity="0.5"/>
+      </g>
+
+      <!-- Row 3: 旁路电压 (深色背景) -->
+      <g transform="translate(0, 90)">
+        <rect x="10" y="0" width="565" height="40" fill="#111827" opacity="0.6"/>
+        <text x="20" y="25" font-family="Arial" font-size="12" fill="#94A3B8">旁路电压(V)</text>
+        <text x="300" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">225.2</text>
+        <text x="420" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">225.1</text>
+        <text x="540" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">226.4</text>
+      </g>
+      
+      <!-- 底部频率 -->
+      <g transform="translate(0, 150)">
+          <text x="292" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">频率</text>
+          <text x="292" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="middle">50</text>
+      </g>
+    </g>
+
+    <!-- L型装饰 (左下/右下) -->
+    <path d="M 0 275 L 0 285 L 10 285" fill="none" stroke="#A3E635" stroke-width="2" filter="url(#glow)" opacity="0.8"/> <!-- 荧光绿/白 -->
+    <path d="M 575 285 L 585 285 L 585 275" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)" opacity="0.8"/>
+  </g>
+
+  <!-- =========================
+       面板 B: 状态 (右上)
+       ========================= -->
+  <g transform="translate(605, 10)">
+    <rect x="0" y="0" width="585" height="285" fill="none" stroke="#2D3748" stroke-width="1"/>
+    
+    <!-- 标题栏 -->
+    <rect x="1" y="1" width="583" height="32" fill="url(#headerGrad)"/>
+    <text x="15" y="22" font-family="Arial" font-weight="bold" font-size="14" fill="#60A5FA">>> 状态</text>
+
+    <!-- 网格布局系统 -->
+    <g transform="translate(0, 32)">
+        <!-- 垂直分割线 -->
+        <line x1="292" y1="0" x2="292" y2="253" stroke="#2D3748" stroke-width="1"/>
+        
+        <!-- 水平分割线 x3 -->
+        <line x1="0" y1="63" x2="585" y2="63" stroke="#2D3748" stroke-width="1"/>
+        <line x1="0" y1="126" x2="585" y2="126" stroke="#2D3748" stroke-width="1"/>
+        <line x1="0" y1="189" x2="585" y2="189" stroke="#2D3748" stroke-width="1"/>
+
+        <!-- Cell 1,1 -->
+        <g transform="translate(20, 35)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">整流配置</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+        <!-- Cell 1,2 -->
+        <g transform="translate(312, 35)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">供电方式</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">市电供电</text>
+        </g>
+
+        <!-- Cell 2,1 -->
+        <g transform="translate(20, 98)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池自检状态</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+        <!-- Cell 2,2 -->
+        <g transform="translate(312, 98)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池状态</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">浮充</text>
+        </g>
+
+        <!-- Cell 3,1 -->
+        <g transform="translate(20, 161)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">逆变器状态</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+        <!-- Cell 3,2 -->
+        <g transform="translate(312, 161)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">通讯状态</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">在线</text>
+        </g>
+        
+        <!-- Cell 4,2 (Output Switch) -->
+        <g transform="translate(312, 224)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">输出空开状态</text>
+            <text x="250" y="0" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+    </g>
+
+    <!-- L型装饰 -->
+    <path d="M 0 275 L 0 285 L 10 285" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+    <path d="M 575 285 L 585 285 L 585 275" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+  </g>
+
+  <!-- =========================
+       面板 C: 输出 (左下)
+       ========================= -->
+  <g transform="translate(10, 305)">
+    <rect x="0" y="0" width="585" height="285" fill="none" stroke="#2D3748" stroke-width="1"/>
+    
+    <rect x="1" y="1" width="583" height="32" fill="url(#headerGrad)"/>
+    <text x="15" y="22" font-family="Arial" font-weight="bold" font-size="14" fill="#60A5FA">>> 输出</text>
+    <text x="570" y="22" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="end" cursor="pointer">查看 ></text>
+
+    <!-- 表头 -->
+    <g transform="translate(0, 50)">
+      <text x="300" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">A 相</text>
+      <text x="420" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">B 相</text>
+      <text x="540" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">C 相</text>
+      <line x1="10" y1="10" x2="575" y2="10" stroke="#2D3748" stroke-width="1"/>
+    </g>
+
+    <!-- 数据行 -->
+    <g transform="translate(0, 70)">
+      <!-- Row 1: 电压 -->
+      <rect x="10" y="0" width="565" height="35" fill="#111827" opacity="0.6"/>
+      <text x="20" y="22" font-family="Arial" font-size="12" fill="#94A3B8">电压(V)</text>
+      <text x="300" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">220</text>
+      <text x="420" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">219.9</text>
+      <text x="540" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">219.9</text>
+
+      <!-- Row 2: 电流 -->
+      <g transform="translate(0, 40)">
+        <text x="20" y="22" font-family="Arial" font-size="12" fill="#94A3B8">电流(A)</text>
+        <text x="300" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">24.7</text>
+        <text x="420" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">22.9</text>
+        <text x="540" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">29.7</text>
+      </g>
+
+       <!-- Row 3: 有功功率 (深色) -->
+      <g transform="translate(0, 80)">
+         <rect x="10" y="0" width="565" height="35" fill="#111827" opacity="0.6"/>
+         <text x="20" y="22" font-family="Arial" font-size="12" fill="#94A3B8">有功功率(KW)</text>
+         <text x="300" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">5.1</text>
+         <text x="420" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">4.7</text>
+         <text x="540" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">6.1</text>
+      </g>
+      
+      <!-- Row 4: 负载百分比 -->
+      <g transform="translate(0, 160)">
+         <text x="20" y="22" font-family="Arial" font-size="12" fill="#94A3B8">负载百分比(%)</text>
+         <text x="300" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">108</text>
+         <text x="420" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">100</text>
+         <text x="540" y="22" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">130</text>
+      </g>
+
+      <!-- 底部频率 -->
+      <g transform="translate(0, 200)">
+          <text x="292" y="0" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">频率</text>
+          <text x="292" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="middle">50</text>
+      </g>
+    </g>
+
+    <!-- L型装饰 -->
+    <path d="M 0 275 L 0 285 L 10 285" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+    <path d="M 575 285 L 585 285 L 585 275" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+  </g>
+
+  <!-- =========================
+       面板 D: 参数 (右下)
+       ========================= -->
+  <g transform="translate(605, 305)">
+    <rect x="0" y="0" width="585" height="285" fill="none" stroke="#2D3748" stroke-width="1"/>
+    
+    <rect x="1" y="1" width="583" height="32" fill="url(#headerGrad)"/>
+    <text x="15" y="22" font-family="Arial" font-weight="bold" font-size="14" fill="#60A5FA">>> 参数</text>
+    <text x="570" y="22" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="end" cursor="pointer">查看 ></text>
+
+    <!-- 参数网格 -->
+    <g transform="translate(0, 32)">
+        <line x1="195" y1="0" x2="195" y2="253" stroke="#2D3748" stroke-width="1"/>
+        <line x1="390" y1="0" x2="390" y2="253" stroke="#2D3748" stroke-width="1"/>
+        
+        <line x1="0" y1="126" x2="585" y2="126" stroke="#2D3748" stroke-width="1"/>
+
+        <!-- 电池电压 -->
+        <g transform="translate(20, 50)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池电压</text>
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="end">538.4 <tspan font-size="12" fill="#94A3B8">V</tspan></text>
+        </g>
+
+        <!-- 备电时间 -->
+        <g transform="translate(215, 50)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池备电时间</text>
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="end">1066 <tspan font-size="12" fill="#94A3B8">min</tspan></text>
+        </g>
+
+        <!-- 电池电流 -->
+        <g transform="translate(410, 50)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池电流</text>
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="end">0 <tspan font-size="12" fill="#94A3B8">A</tspan></text>
+        </g>
+
+        <!-- 电池温度 -->
+        <g transform="translate(20, 175)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池温度</text>
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="end">0 <tspan font-size="12" fill="#94A3B8">℃</tspan></text>
+        </g>
+
+        <!-- 剩余容量 -->
+        <g transform="translate(215, 175)">
+            <text x="0" y="0" font-family="Arial" font-size="13" fill="#94A3B8">电池剩余容量</text>
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="18" fill="#FFFFFF" text-anchor="end">100 <tspan font-size="12" fill="#94A3B8">%</tspan></text>
+        </g>
+    </g>
+
+    <!-- L型装饰 -->
+    <path d="M 0 275 L 0 285 L 10 285" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+    <path d="M 575 285 L 585 285 L 585 275" fill="none" stroke="#FFFFFF" stroke-width="2" filter="url(#glow)"/>
+  </g>
+
+</svg>

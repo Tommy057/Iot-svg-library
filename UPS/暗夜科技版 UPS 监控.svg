@@ -1,0 +1,184 @@
+<svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    设计风格：暗夜霓虹 (Dark Neon) - 对标参考图
+    场景：UPS 详情监控
+  -->
+
+  <defs>
+    <!-- 1. 全局背景网格 (Tech Grid) -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+
+    <!-- 2. 霓虹发光滤镜 (用于边框和高亮文字) -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 3. 卡片背景渐变 (玻璃质感) -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.6"/> <!-- 上部略亮 -->
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8"/> <!-- 下部深沉 -->
+    </linearGradient>
+
+    <!-- 4. 标题装饰渐变 -->
+    <linearGradient id="titleBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- =========================
+       全局画布背景
+       ========================= -->
+  <rect x="0" y="0" width="900" height="450" fill="#0B1121"/> <!-- 深渊底色 -->
+  <rect x="0" y="0" width="900" height="450" fill="url(#gridPattern)"/> <!-- 网格线 -->
+
+  <!-- =========================
+       左侧卡片：输入 (Input) - 仿表格布局
+       ========================= -->
+  <g transform="translate(10, 10)">
+    <!-- 卡片容器 -->
+    <g>
+        <!-- 半透明背景 -->
+        <rect x="0" y="0" width="435" height="430" fill="url(#cardBg)" stroke="#1E293B" stroke-width="1"/>
+        
+        <!-- 四角装饰 (HUD Corners) - 科技感的关键 -->
+        <path d="M 0 10 L 0 0 L 10 0" fill="none" stroke="#06B6D4" stroke-width="2" filter="url(#neonGlow)"/> <!-- 左上 -->
+        <path d="M 425 0 L 435 0 L 435 10" fill="none" stroke="#06B6D4" stroke-width="2" filter="url(#neonGlow)"/> <!-- 右上 -->
+        <path d="M 0 420 L 0 430 L 10 430" fill="none" stroke="#06B6D4" stroke-width="2" filter="url(#neonGlow)"/> <!-- 左下 -->
+        <path d="M 425 430 L 435 430 L 435 420" fill="none" stroke="#06B6D4" stroke-width="2" filter="url(#neonGlow)"/> <!-- 右下 -->
+    </g>
+
+    <!-- Header -->
+    <g transform="translate(0, 20)">
+        <!-- 标题前的装饰条 -->
+        <rect x="0" y="0" width="4" height="20" fill="#06B6D4" filter="url(#neonGlow)"/>
+        <!-- 渐变底条 -->
+        <rect x="4" y="0" width="431" height="20" fill="url(#titleBarGrad)" opacity="0.2"/>
+        
+        <text x="15" y="15" font-family="Arial" font-weight="bold" font-size="14" fill="#E2E8F0">
+            >> 输入 (INPUT)
+        </text>
+    </g>
+
+    <!-- 表格内容 -->
+    <g transform="translate(10, 60)">
+        
+        <!-- 表头 -->
+        <line x1="0" y1="0" x2="415" y2="0" stroke="#334155" stroke-width="1"/>
+        <text x="160" y="-10" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">A 相</text>
+        <text x="240" y="-10" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">B 相</text>
+        <text x="320" y="-10" font-family="Arial" font-size="12" fill="#94A3B8" text-anchor="middle">C 相</text>
+
+        <!-- 行 1: 电压 -->
+        <g transform="translate(0, 20)">
+            <rect x="0" y="0" width="415" height="40" fill="#1E293B" rx="2" opacity="0.5"/> <!-- 隔行变色 -->
+            <text x="10" y="25" font-family="Arial" font-size="12" fill="#06B6D4">电压 (V)</text>
+            <!-- 数值高亮 -->
+            <text x="160" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">224.3</text>
+            <text x="240" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">224.0</text>
+            <text x="320" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#FFFFFF" text-anchor="middle">225.9</text>
+        </g>
+
+        <!-- 行 2: 电流 -->
+        <g transform="translate(0, 70)">
+            <text x="10" y="25" font-family="Arial" font-size="12" fill="#06B6D4">电流 (A)</text>
+            <text x="160" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">27.1</text>
+            <text x="240" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">25.3</text>
+            <text x="320" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">25.8</text>
+            <!-- 极细分隔线 -->
+            <line x1="0" y1="45" x2="415" y2="45" stroke="#334155" stroke-width="0.5" stroke-dasharray="2 2"/>
+        </g>
+
+        <!-- 行 3: 旁路电压 -->
+        <g transform="translate(0, 120)">
+            <rect x="0" y="0" width="415" height="40" fill="#1E293B" rx="2" opacity="0.5"/>
+            <text x="10" y="25" font-family="Arial" font-size="12" fill="#06B6D4">旁路电压 (V)</text>
+            <text x="160" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">225.2</text>
+            <text x="240" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">225.1</text>
+            <text x="320" y="25" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">226.4</text>
+        </g>
+        
+        <!-- 底部频率 -->
+        <g transform="translate(10, 200)">
+            <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">频率 (Hz)</text>
+            <text x="0" y="30" font-family="Arial" font-weight="bold" font-size="28" fill="#FFFFFF" filter="url(#neonGlow)">50.00</text>
+        </g>
+    </g>
+  </g>
+
+  <!-- =========================
+       右侧卡片：状态 (Status) - 矩阵布局
+       ========================= -->
+  <g transform="translate(455, 10)">
+    <!-- 卡片背景与装饰 -->
+    <g>
+        <rect x="0" y="0" width="435" height="430" fill="url(#cardBg)" stroke="#1E293B" stroke-width="1"/>
+        <!-- 四角装饰 -->
+        <path d="M 0 10 L 0 0 L 10 0" fill="none" stroke="#3B82F6" stroke-width="2"/>
+        <path d="M 425 0 L 435 0 L 435 10" fill="none" stroke="#3B82F6" stroke-width="2"/>
+        <path d="M 0 420 L 0 430 L 10 430" fill="none" stroke="#3B82F6" stroke-width="2"/>
+        <path d="M 425 430 L 435 430 L 435 420" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    </g>
+
+    <!-- Header -->
+    <g transform="translate(0, 20)">
+        <rect x="0" y="0" width="4" height="20" fill="#3B82F6" filter="url(#neonGlow)"/>
+        <rect x="4" y="0" width="431" height="20" fill="url(#titleBarGrad)" opacity="0.1"/>
+        <text x="15" y="15" font-family="Arial" font-weight="bold" font-size="14" fill="#E2E8F0">
+            >> 状态 (STATUS)
+        </text>
+    </g>
+
+    <!-- 状态网格 -->
+    <g transform="translate(10, 60)">
+        <!-- 网格线 (参考图中的十字线) -->
+        <line x1="210" y1="0" x2="210" y2="300" stroke="#334155" stroke-width="1"/> <!-- 垂直中线 -->
+        <line x1="0" y1="75" x2="420" y2="75" stroke="#334155" stroke-width="1"/> <!-- 横线1 -->
+        <line x1="0" y1="150" x2="420" y2="150" stroke="#334155" stroke-width="1"/> <!-- 横线2 -->
+        <line x1="0" y1="225" x2="420" y2="225" stroke="#334155" stroke-width="1"/> <!-- 横线3 -->
+
+        <!-- 单元格 1: 整流配置 -->
+        <g transform="translate(10, 20)">
+            <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">整流配置</text>
+            <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+
+        <!-- 单元格 2: 供电方式 -->
+        <g transform="translate(220, 20)">
+            <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">供电方式</text>
+            <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#10B981" text-anchor="end" filter="url(#neonGlow)">市电供电</text>
+        </g>
+
+        <!-- 单元格 3: 电池自检 -->
+        <g transform="translate(10, 95)">
+            <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">电池自检状态</text>
+            <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+
+        <!-- 单元格 4: 电池状态 (浮充) -->
+        <g transform="translate(220, 95)">
+            <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">电池状态</text>
+            <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#F59E0B" text-anchor="end">浮充</text>
+        </g>
+        
+        <!-- 单元格 5: 逆变器 -->
+        <g transform="translate(10, 170)">
+             <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">逆变器状态</text>
+             <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="end">正常</text>
+        </g>
+
+        <!-- 单元格 6: 通讯状态 -->
+        <g transform="translate(220, 170)">
+             <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">通讯状态</text>
+             <text x="180" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#10B981" text-anchor="end">在线</text>
+        </g>
+    </g>
+  </g>
+
+</svg>
