@@ -1,0 +1,80 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白梦幻渐变 (你指定的风格) -->
+    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />      <!-- 左上：纯白 -->
+      <stop offset="0.4" stop-color="#FFF0F3" /> <!-- 中间：极浅粉 -->
+      <stop offset="1" stop-color="#FFD1DC" />   <!-- 右下：樱花粉 -->
+    </linearGradient>
+
+    <!-- 2. 图标主体：深海蓝宝石渐变 -->
+    <!-- 关键点：为了在浅色背景上“发光”，颜色必须够深、够纯 -->
+    <linearGradient id="gem_gradient" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C6FF" /> <!-- 上部：明亮的青空蓝 -->
+      <stop offset="0.5" stop-color="#0072FF" /> <!-- 中部：纯蓝 -->
+      <stop offset="1" stop-color="#0038A8" />   <!-- 下部：深邃宝蓝 -->
+    </linearGradient>
+
+    <!-- 3. 玻璃高光 (Gloss)：营造“晶莹剔透”的核心 -->
+    <linearGradient id="glass_shine" x1="512" y1="380" x2="512" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/> <!-- 极亮 -->
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 彩色投影：让宝石悬浮 -->
+    <filter id="gem_shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="25" />
+      <feOffset dx="0" dy="25" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.35"/> <!-- 投影也是蓝色的，显透 -->
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- === 背景层 === -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  
+  <!-- 背景表面微光 (让背景不那么平) -->
+  <radialGradient id="surface_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 0) rotate(90) scale(512 1024)">
+    <stop stop-color="white" stop-opacity="0.5"/>
+    <stop offset="1" stop-color="white" stop-opacity="0"/>
+  </radialGradient>
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#surface_light)"/>
+
+  <!-- === 核心图标层 (带投影) === -->
+  <g filter="url(#gem_shadow)">
+    
+    <!-- 锁梁：使用了深色渐变，显得坚固 -->
+    <path d="M352 380V296C352 207.634 423.634 136 512 136C600.366 136 672 207.634 672 296V380" 
+          stroke="url(#gem_gradient)" 
+          stroke-width="80" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    
+    <!-- 锁体：主体宝石 -->
+    <rect x="256" y="380" width="512" height="420" rx="90" fill="url(#gem_gradient)"/>
+    
+    <!-- === 质感细节 (The Magic) === -->
+    
+    <!-- 1. 内部辉光 (Inner Glow)：让边缘看起来像玻璃一样透光 -->
+    <rect x="266" y="390" width="492" height="400" rx="80" stroke="white" stroke-opacity="0.3" stroke-width="6"/>
+
+    <!-- 2. 顶部强反射高光 (模拟光滑曲面) -->
+    <!-- 这就是让你觉得“晶莹剔透”的那一道光 -->
+    <path d="M266 460 C 266 390, 758 390, 758 460 L 758 410 C 758 390, 266 390, 266 410 Z" fill="white" fill-opacity="0.4"/>
+    <rect x="270" y="395" width="484" height="220" rx="80" fill="url(#glass_shine)"/>
+
+    <!-- 3. 钥匙孔 (纯白反差) -->
+    <!-- 在深蓝底色上，白色最显眼 -->
+    <circle cx="512" cy="560" r="50" fill="white"/>
+    <rect x="492" y="560" width="40" height="130" rx="20" fill="white"/>
+  </g>
+
+  <!-- === 边框修饰 === -->
+  <!-- 极细的白色描边，区分背景 -->
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+</svg>

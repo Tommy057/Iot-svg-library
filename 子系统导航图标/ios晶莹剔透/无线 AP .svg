@@ -1,0 +1,32 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 复用 defs -->
+  <defs>
+    <linearGradient id="bg_gradient_ap" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+    <linearGradient id="gem_gradient_ap" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#0038A8" />
+    </linearGradient>
+    <filter id="gem_shadow_ap" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="25" /><feOffset dx="0" dy="25" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.35"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_ap)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#gem_shadow_ap)">
+    <!-- 核心点 -->
+    <circle cx="512" cy="780" r="90" fill="url(#gem_gradient_ap)"/>
+    <circle cx="512" cy="780" r="40" fill="white"/>
+    
+    <!-- 中波 -->
+    <path d="M280 620 C 280 620, 380 480, 512 480 C 644 480, 744 620, 744 620" stroke="url(#gem_gradient_ap)" stroke-width="100" stroke-linecap="round"/>
+    
+    <!-- 大波 -->
+    <path d="M150 450 C 150 450, 300 240, 512 240 C 724 240, 874 450, 874 450" stroke="url(#gem_gradient_ap)" stroke-width="100" stroke-linecap="round"/>
+    
+    <!-- 高光修饰 (让波纹有玻璃感) -->
+    <path d="M290 610 C 290 610, 385 490, 512 490 C 639 490, 734 610, 734 610" stroke="white" stroke-width="20" stroke-opacity="0.5" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

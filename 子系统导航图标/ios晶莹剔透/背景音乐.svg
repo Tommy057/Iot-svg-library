@@ -1,0 +1,65 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白梦幻渐变 (保持统一) -->
+    <linearGradient id="bg_gradient_music_v2" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 主体宝石渐变 -->
+    <linearGradient id="gem_gradient_music_v2" x1="512" y1="200" x2="512" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C6FF" /> <!-- 顶部高光青 -->
+      <stop offset="0.4" stop-color="#0072FF" /> <!-- 中间纯蓝 -->
+      <stop offset="1" stop-color="#002878" />   <!-- 底部深邃蓝 -->
+    </linearGradient>
+
+    <!-- 3. 玻璃高光 (Gloss) -->
+    <linearGradient id="glass_shine_music_v2" x1="512" y1="280" x2="512" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 投影 -->
+    <filter id="gem_shadow_music_v2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="25" />
+      <feOffset dx="0" dy="25" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.35"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- === 背景层 === -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_music_v2)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- === 核心图标层 === -->
+  <g filter="url(#gem_shadow_music_v2)">
+    
+    <!-- 音符主体结构 (合并路径，更整洁) -->
+    <!-- 左头(340,720) 右头(684,720) -->
+    <path d="M340 720 C 340 664.77 384.77 620 440 620 C 455 620 469 623 482 629 V 330 C 482 300 495 280 520 280 H 760 C 785 280 800 300 800 330 V 720 C 800 775.23 755.23 820 700 820 C 644.77 820 600 775.23 600 720 C 600 664.77 644.77 620 700 620 C 715 620 729 623 742 629 V 380 H 540 V 720 C 540 775.23 495.23 820 440 820 C 384.77 820 340 775.23 340 720 Z" 
+          fill="url(#gem_gradient_music_v2)"/>
+
+    <!-- === 质感细节 === -->
+
+    <!-- 1. 顶部横梁的高光 (模拟圆柱体反光) -->
+    <path d="M520 280 H 760 C 780 280 790 290 790 300 V 350 H 530 V 300 C 530 290 510 280 520 280 Z" fill="url(#glass_shine_music_v2)"/>
+
+    <!-- 2. 音符头的高光 (让珠子看起来是圆的) -->
+    <!-- 左珠子高光 -->
+    <ellipse cx="400" cy="680" rx="40" ry="25" fill="white" fill-opacity="0.5" transform="rotate(-45 400 680)"/>
+    <!-- 右珠子高光 -->
+    <ellipse cx="660" cy="680" rx="40" ry="25" fill="white" fill-opacity="0.5" transform="rotate(-45 660 680)"/>
+
+    <!-- 3. 内部边缘微光 (Inner Stroke) -->
+    <!-- 勾勒轮廓，增加精致度 -->
+    <path d="M340 720 C 340 664.77 384.77 620 440 620 C 455 620 469 623 482 629 V 330 C 482 300 495 280 520 280 H 760 C 785 280 800 300 800 330 V 720 C 800 775.23 755.23 820 700 820 C 644.77 820 600 775.23 600 720 C 600 664.77 644.77 620 700 620 C 715 620 729 623 742 629 V 380 H 540 V 720" 
+          stroke="white" stroke-opacity="0.2" stroke-width="4" fill="none"/>
+          
+  </g>
+</svg>

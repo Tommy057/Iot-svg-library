@@ -1,0 +1,72 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：午夜深空黑 (极致的黑，衬托光感) -->
+    <linearGradient id="bg_gradient" x1="512" y1="0" x2="512" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2C2C2E" /> <!-- 顶部深灰 -->
+      <stop offset="1" stop-color="#000000" /> <!-- 底部纯黑 -->
+    </linearGradient>
+
+    <!-- 2. 图标主体渐变：电光蓝青 (最强的科技感配色) -->
+    <linearGradient id="crystal_gradient" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DF9FF" /> <!-- 极亮青色 (高光部) -->
+      <stop offset="0.5" stop-color="#2AC9FF" /> 
+      <stop offset="1" stop-color="#007AFF" /> <!-- 深蓝色 (阴影部) -->
+    </linearGradient>
+
+    <!-- 3. 外发光滤镜 (Neon Glow)：营造“发光”氛围 -->
+    <filter id="neon_glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="30" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 4. 玻璃表面高光：制造“晶莹剔透”的关键 -->
+    <linearGradient id="glass_shine" x1="512" y1="380" x2="512" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="0.2" stop-color="white" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- === 底座层 === -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  
+  <!-- 底座边缘微光 (金属倒角感) -->
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.1" stroke-width="4"/>
+
+  <!-- === 核心图标层 (带发光滤镜) === -->
+  <g filter="url(#neon_glow)">
+    
+    <!-- 锁梁 (半透明金属感) -->
+    <path d="M352 380V296C352 207.634 423.634 136 512 136C600.366 136 672 207.634 672 296V380" 
+          stroke="url(#crystal_gradient)" 
+          stroke-width="80" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          stroke-opacity="0.8"/>
+    
+    <!-- 锁体 (水晶主体) -->
+    <rect x="256" y="380" width="512" height="420" rx="90" fill="url(#crystal_gradient)"/>
+    
+    <!-- === 细节刻画：让它看起来像真的物体 === -->
+    
+    <!-- 1. 顶部高光切面 (模拟玻璃反光) -->
+    <path d="M256 470 C 256 380, 768 380, 768 470 L 768 420 C 768 390, 256 390, 256 420 Z" fill="white" fill-opacity="0.2"/>
+
+    <!-- 2. 钥匙孔 (深色镂空，增加对比) -->
+    <circle cx="512" cy="560" r="55" fill="#151515"/> 
+    <rect x="487" y="560" width="50" height="140" rx="25" fill="#151515"/>
+
+    <!-- 3. 锁体表面反射 (最关键的一步：晶莹感) -->
+    <!-- 这是一个覆盖在锁体上的白色渐变，模拟光线打在曲面玻璃上的效果 -->
+    <rect x="270" y="390" width="484" height="200" rx="80" fill="url(#glass_shine)"/>
+    
+  </g>
+
+  <!-- === 整体氛围层 === -->
+  <!-- 底部环境光反射 (让整个图标像浮在桌面上) -->
+  <ellipse cx="512" cy="900" rx="300" ry="60" fill="#007AFF" fill-opacity="0.15" filter="url(#neon_glow)"/>
+
+</svg>

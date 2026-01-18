@@ -1,0 +1,22 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg_gradient_pk" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_pk" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#0038A8" /></linearGradient>
+    <linearGradient id="glass_shine_pk" x1="512" y1="200" x2="512" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="gem_shadow_pk" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="25" /><feOffset dx="0" dy="25" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.35"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_pk)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#gem_shadow_pk)">
+    <!-- 宝石底板 (模拟指示牌) -->
+    <rect x="232" y="232" width="560" height="560" rx="120" fill="url(#gem_gradient_pk)"/>
+    
+    <!-- 字母 P (反白镂空感) -->
+    <path d="M420 380 H 540 C 606.274 380 660 433.726 660 500 C 660 566.274 606.274 620 540 620 H 480 V 740 H 420 V 380 Z M 480 440 V 560 H 540 C 573.137 560 600 533.137 600 500 C 600 466.863 573.137 440 540 440 H 480 Z" fill="white"/>
+    
+    <!-- 表面高光 -->
+    <rect x="250" y="250" width="524" height="240" rx="100" fill="url(#glass_shine_pk)"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 同样引用公共样式 -->
+    <linearGradient id="bg_gradient_al" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_al" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#0038A8" /></linearGradient>
+    <linearGradient id="glass_shine_al" x1="512" y1="200" x2="512" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="gem_shadow_al" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="25" /><feOffset dx="0" dy="25" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.35"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_al)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#gem_shadow_al)">
+    <!-- 铃铛主体 -->
+    <path d="M512 180 C 379.45 180 272 287.45 272 420 V 680 L 192 780 H 832 L 752 680 V 420 C 752 287.45 644.55 180 512 180 Z" fill="url(#gem_gradient_al)"/>
+    <!-- 铃锤 -->
+    <circle cx="512" cy="850" r="50" fill="url(#gem_gradient_al)"/>
+    
+    <!-- 惊叹号 (反白) -->
+    <rect x="487" y="350" width="50" height="200" rx="25" fill="white"/>
+    <circle cx="512" cy="620" r="30" fill="white"/>
+    
+    <!-- 表面高光 -->
+    <path d="M290 450 Q 290 250 512 250 Q 734 250 734 450 L 734 500 Q 734 350 512 350 Q 290 350 290 500 Z" fill="url(#glass_shine_al)"/>
+  </g>
+</svg>

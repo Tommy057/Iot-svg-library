@@ -1,0 +1,24 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg_gradient_in" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_in" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#0038A8" /></linearGradient>
+    <linearGradient id="glass_shine_in" x1="512" y1="250" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="gem_shadow_in" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="25" /><feOffset dx="0" dy="25" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.35"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_in)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#gem_shadow_in)">
+    <!-- 圆形宝石底座 -->
+    <circle cx="512" cy="512" r="300" fill="url(#gem_gradient_in)"/>
+    
+    <!-- 字母 i (上部圆点) -->
+    <circle cx="512" cy="380" r="40" fill="white"/>
+    <!-- 字母 i (下部竖条) -->
+    <rect x="472" y="460" width="80" height="180" rx="40" fill="white"/>
+    
+    <!-- 表面高光 (球体反光) -->
+    <ellipse cx="512" cy="380" rx="220" ry="120" fill="url(#glass_shine_in)"/>
+  </g>
+</svg>

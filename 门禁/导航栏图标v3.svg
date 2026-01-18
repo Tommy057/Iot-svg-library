@@ -1,0 +1,66 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景渐变：粉白陶瓷感 -->
+    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />      <!-- 左上高光 -->
+      <stop offset="0.3" stop-color="#FFF0F5" /> <!-- 中间极浅粉 -->
+      <stop offset="1" stop-color="#FFC0CB" />   <!-- 右下柔和粉 -->
+    </linearGradient>
+
+    <!-- 2. 图标主体渐变：勃艮第红/深紫红 (高对比度) -->
+    <!-- 这种深色在浅色背景上非常醒目，且显得贵气 -->
+    <linearGradient id="icon_body_gradient" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E94057" />  <!-- 上部：明亮的胭脂红 -->
+      <stop offset="1" stop-color="#8A2387" /> <!-- 下部：深沉的紫红 -->
+    </linearGradient>
+
+    <!-- 3. 图标投影：增加层次感 -->
+    <filter id="icon_shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="25" />
+      <feOffset dx="0" dy="20" result="offsetblur"/>
+      <feFlood flood-color="#8A2387" flood-opacity="0.3"/> <!-- 紫红色投影，比黑色更透 -->
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- === 底座层 === -->
+  <!-- 主体背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  
+  <!-- 背景表面光泽 (玻璃感) -->
+  <linearGradient id="surface_shine" x1="0" y1="0" x2="1024" y2="800" gradientUnits="userSpaceOnUse">
+    <stop stop-color="white" stop-opacity="0.6"/>
+    <stop offset="0.4" stop-color="white" stop-opacity="0"/>
+  </linearGradient>
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#surface_shine)"/>
+
+  <!-- === 图标层 (智能锁) === -->
+  <g filter="url(#icon_shadow)">
+    <!-- 锁梁：实心线条，圆润端点 -->
+    <path d="M352 390V296C352 207.634 423.634 136 512 136C600.366 136 672 207.634 672 296V390" 
+          stroke="url(#icon_body_gradient)" 
+          stroke-width="85" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    
+    <!-- 锁体：圆润方块 -->
+    <rect x="256" y="390" width="512" height="420" rx="100" fill="url(#icon_body_gradient)"/>
+    
+    <!-- 细节：给锁体加一个微妙的“内高光”，让它像果冻/宝石一样鼓起来 -->
+    <rect x="276" y="410" width="472" height="380" rx="80" stroke="white" stroke-opacity="0.25" stroke-width="4"/>
+
+    <!-- 锁孔：纯白色，形成最强对比 -->
+    <!-- 这种处理方式会让图标看起来像是一个实体物理按钮 -->
+    <circle cx="512" cy="560" r="45" fill="#FFFFFF"/>
+    <rect x="492" y="560" width="40" height="130" rx="20" fill="#FFFFFF"/>
+  </g>
+
+  <!-- === 整体边框 === -->
+  <!-- 极细的外部边框，防止背景和白色网页混在一起 -->
+  <rect x="2" y="2" width="1020" height="1020" rx="238" stroke="#000000" stroke-opacity="0.05" stroke-width="2"/>
+
+</svg>
