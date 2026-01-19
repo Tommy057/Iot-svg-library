@@ -1,0 +1,34 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 复用定义 -->
+    <linearGradient id="bg_gradient_w" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_w" x1="512" y1="200" x2="512" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_w" x1="512" y1="300" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.9"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_w" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_w)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_w)">
+    <!-- 1. 背景管道环 (Pipe Cross-section) -->
+    <!-- 这是一个切面圆环，代表水管系统 -->
+    <circle cx="512" cy="550" r="320" stroke="url(#gem_gradient_w)" stroke-width="60" stroke-opacity="0.3"/>
+    
+    <!-- 2. 核心主体：巨型水滴 (Giant Droplet) -->
+    <!-- 形状非常饱满，底部像个球 -->
+    <path d="M512 250 C 512 250 720 480 720 620 C 720 735 626 830 512 830 C 398 830 304 735 304 620 C 304 480 512 250 512 250 Z" fill="url(#gem_gradient_w)"/>
+
+    <!-- 3. 液态高光 (Wet Highlight) -->
+    <!-- 这种高光形状模拟了液体表面的张力 -->
+    <path d="M380 580 Q 380 450 512 350" stroke="white" stroke-width="30" stroke-linecap="round" stroke-opacity="0.5"/>
+    
+    <!-- 4. 强烈反光点 (Specular Dot) -->
+    <!-- 让水滴看起来很“湿”的关键 -->
+    <ellipse cx="600" cy="550" rx="40" ry="70" fill="white" transform="rotate(20 600 550)"/>
+
+    <!-- 5. 整体通透感 (Inner Glow) -->
+    <!-- 在水滴边缘加一圈内发光 -->
+    <path d="M512 250 C 512 250 720 480 720 620 C 720 735 626 830 512 830 C 398 830 304 735 304 620 C 304 480 512 250 512 250 Z" stroke="white" stroke-width="10" stroke-opacity="0.15" fill="none"/>
+  </g>
+</svg>

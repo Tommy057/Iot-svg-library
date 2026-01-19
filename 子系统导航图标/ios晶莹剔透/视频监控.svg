@@ -1,46 +1,60 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- 引用公共样式 -->
   <defs>
-    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+    <!-- 背景：粉白渐变 -->
+    <linearGradient id="bg_gradient_cam3" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFFFFF" />
       <stop offset="0.4" stop-color="#FFF0F3" />
       <stop offset="1" stop-color="#FFD1DC" />
     </linearGradient>
-    <linearGradient id="gem_gradient" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse">
+
+    <!-- 主体：蓝宝石渐变 (范围调整得更大) -->
+    <linearGradient id="gem_gradient_cam3" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse">
       <stop stop-color="#00C6FF" />
       <stop offset="0.5" stop-color="#0072FF" />
-      <stop offset="1" stop-color="#0038A8" />
+      <stop offset="1" stop-color="#002060" />
     </linearGradient>
-    <linearGradient id="glass_shine" x1="512" y1="380" x2="512" y2="650" gradientUnits="userSpaceOnUse">
-      <stop stop-color="white" stop-opacity="0.95"/>
+
+    <!-- 顶部玻璃反光 -->
+    <linearGradient id="shine_cam3" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
       <stop offset="1" stop-color="white" stop-opacity="0"/>
     </linearGradient>
-    <filter id="gem_shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="25" />
-      <feOffset dx="0" dy="25" result="offsetblur"/>
-      <feFlood flood-color="#0055FF" flood-opacity="0.35"/>
+
+    <!-- 投影 -->
+    <filter id="shadow_cam3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
       <feComposite in2="offsetblur" operator="in"/>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
   <!-- 背景 -->
-  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_cam3)"/>
   <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
 
-  <!-- 图标主体：摄像头 -->
-  <g filter="url(#gem_shadow)">
-    <!-- 机身 -->
-    <path d="M220 400 H 804 C 830 400 850 420 850 446 V 700 C 850 755 805 800 750 800 H 270 C 215 800 170 755 170 700 V 450 C 170 422 192 400 220 400 Z" fill="url(#gem_gradient)"/>
-    <!-- 顶部支架装饰 -->
-    <rect x="362" y="280" width="300" height="100" rx="30" fill="url(#gem_gradient)"/>
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_cam3)">
+    <!-- 1. 外壳底座 (巨大的圆形切面) -->
+    <circle cx="512" cy="512" r="340" fill="url(#gem_gradient_cam3)"/>
     
-    <!-- 玻璃高光 -->
-    <rect x="190" y="420" width="640" height="180" rx="60" fill="url(#glass_shine)"/>
+    <!-- 2. 外壳高光 (模拟半球玻璃罩) -->
+    <circle cx="512" cy="512" r="340" fill="url(#shine_cam3)" fill-opacity="0.3"/>
     
-    <!-- 镜头部分 (纯白反差) -->
-    <circle cx="512" cy="600" r="110" fill="white" fill-opacity="0.2"/>
-    <circle cx="512" cy="600" r="80" fill="white"/>
-    <circle cx="512" cy="600" r="40" fill="#0038A8"/> <!-- 瞳孔 -->
+    <!-- 3. 内部镜头边框 (深色环) -->
+    <circle cx="512" cy="512" r="220" stroke="white" stroke-opacity="0.1" stroke-width="20"/>
+    <circle cx="512" cy="512" r="200" fill="#001530"/> <!-- 深邃的镜头底色 -->
+
+    <!-- 4. 核心镜头 (反光的大眼睛) -->
+    <circle cx="512" cy="512" r="120" fill="#00C6FF"/> <!-- 亮瞳孔 -->
+    <circle cx="512" cy="512" r="90" fill="#001020"/>  <!-- 瞳孔中心 -->
+    
+    <!-- 镜头反光点 -->
+    <ellipse cx="460" cy="460" rx="30" ry="20" fill="white" transform="rotate(-45 460 460)"/>
+    <circle cx="560" cy="560" r="10" fill="white" fill-opacity="0.5"/>
+
+    <!-- 5. 顶部强烈的高光 (让整个球体看起来像水晶球) -->
+    <ellipse cx="512" cy="320" rx="200" ry="120" fill="url(#shine_cam3)" fill-opacity="0.8"/>
   </g>
 </svg>

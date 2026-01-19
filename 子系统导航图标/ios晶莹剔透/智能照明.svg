@@ -1,31 +1,77 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg_gradient_li" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" />
+    <!-- 1. 背景：粉白渐变 (统一风格) -->
+    <linearGradient id="bg_gradient_light" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
     </linearGradient>
-    <linearGradient id="gem_gradient_li" x1="256" y1="200" x2="768" y2="900" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#0038A8" />
+
+    <!-- 2. 灯泡主体：高透蓝宝石渐变 -->
+    <!-- 中心亮(光源)，边缘深(玻璃厚度) -->
+    <radialGradient id="gem_gradient_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 450) rotate(90) scale(400)">
+      <stop stop-color="#7DF9FF" /> <!-- 中心：极亮青色 -->
+      <stop offset="0.6" stop-color="#0072FF" /> <!-- 中层：纯蓝 -->
+      <stop offset="1" stop-color="#002060" />   <!-- 边缘：深邃蓝 -->
+    </radialGradient>
+
+    <!-- 3. 灯座金属质感 -->
+    <linearGradient id="base_gradient" x1="512" y1="750" x2="512" y2="950" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#506080" />
+      <stop offset="1" stop-color="#102040" />
     </linearGradient>
-    <linearGradient id="glass_shine_li" x1="512" y1="200" x2="512" y2="500" gradientUnits="userSpaceOnUse">
-      <stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/>
+
+    <!-- 4. 玻璃高光 (Gloss) -->
+    <linearGradient id="shine_light" x1="512" y1="200" x2="512" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
     </linearGradient>
-    <filter id="gem_shadow_li" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="25" /><feOffset dx="0" dy="25" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.35"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+
+    <!-- 5. 投影 -->
+    <filter id="shadow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_li)"/>
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_light)"/>
   <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
 
-  <g filter="url(#gem_shadow_li)">
-    <!-- 灯泡主体 -->
-    <path d="M512 180 C 357.36 180 232 305.36 232 460 C 232 570 290 665 370 720 V 820 C 370 850 395 870 420 870 H 604 C 629 870 654 850 654 820 V 720 C 734 665 792 570 792 460 C 792 305.36 666.64 180 512 180 Z" fill="url(#gem_gradient_li)"/>
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_light)">
     
-    <!-- 内部灯丝/反白图形 -->
-    <path d="M512 350 V 600" stroke="white" stroke-width="40" stroke-linecap="round"/>
-    <path d="M420 500 L 512 600 L 604 500" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 1. 灯座 (螺纹接口) - 做得厚实一些 -->
+    <rect x="382" y="760" width="260" height="140" rx="30" fill="url(#base_gradient)"/>
+    <!-- 螺纹细节 -->
+    <path d="M382 810 H 642" stroke="#000000" stroke-opacity="0.3" stroke-width="6"/>
+    <path d="M382 850 H 642" stroke="#000000" stroke-opacity="0.3" stroke-width="6"/>
+    <!-- 底部触点 -->
+    <path d="M462 900 H 562 L 542 930 H 482 L 462 900 Z" fill="#304060"/>
+
+    <!-- 2. 灯泡主体 (巨大的圆形) -->
+    <!-- 稍微上移一点，留出底部给灯座 -->
+    <circle cx="512" cy="480" r="320" fill="url(#gem_gradient_light)"/>
     
-    <!-- 高光反射 -->
-    <path d="M300 350 Q 300 250 512 250 Q 724 250 724 350" fill="url(#glass_shine_li)" opacity="0.8"/>
+    <!-- 3. 内部核心：能量闪电 (Smart Core) -->
+    <!-- 这是一个抽象的灯丝，也是一个闪电符号，代表智能和电力 -->
+    <path d="M512 280 L 440 460 H 500 L 460 640 L 590 440 H 520 L 560 280 H 512 Z" fill="white"/>
+    
+    <!-- 能量芯的光晕 -->
+    <circle cx="512" cy="460" r="120" fill="white" fill-opacity="0.2"/>
+
+    <!-- 4. 玻璃球表面质感 -->
+    <!-- 顶部大反光 -->
+    <ellipse cx="512" cy="320" rx="220" ry="140" fill="url(#shine_light)"/>
+    
+    <!-- 边缘内发光 (Inner Glow) - 增加通透感 -->
+    <circle cx="512" cy="480" r="310" stroke="white" stroke-opacity="0.15" stroke-width="10"/>
+    
+    <!-- 5. 底部反光 (环境光) -->
+    <path d="M350 650 Q 512 750 674 650" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round"/>
+
   </g>
 </svg>

@@ -1,0 +1,36 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 复用标准定义 -->
+    <linearGradient id="bg_gradient_el" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_el" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_el" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.9"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_el" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_el)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_el)">
+    <!-- 左扇门 (厚重的晶体板) -->
+    <path d="M212 250 H 500 V 774 H 212 C 212 774 212 250 212 250 Z" fill="url(#gem_gradient_el)"/>
+    <path d="M212 250 H 500 V 774 H 212 C 212 774 212 250 212 250 Z" stroke="white" stroke-opacity="0.1" stroke-width="4"/> <!-- 边缘微光 -->
+
+    <!-- 右扇门 -->
+    <path d="M524 250 H 812 C 812 250 812 774 812 774 H 524 V 250 Z" fill="url(#gem_gradient_el)"/>
+    <path d="M524 250 H 812 C 812 250 812 774 812 774 H 524 V 250 Z" stroke="white" stroke-opacity="0.1" stroke-width="4"/>
+
+    <!-- 中缝辉光 (Energy Gap) -->
+    <!-- 暗示门后有光，增加神秘感 -->
+    <rect x="500" y="250" width="24" height="520" rx="12" fill="#00C6FF" fill-opacity="0.6" filter="blur(4px)"/>
+
+    <!-- 上下行指示箭头 (浮雕感) -->
+    <!-- 上行 -->
+    <path d="M356 400 L 406 340 L 456 400" stroke="white" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/>
+    <!-- 下行 -->
+    <path d="M568 624 L 618 684 L 668 624" stroke="white" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/>
+
+    <!-- 统一的大反光 (Gloss) -->
+    <!-- 让两扇门看起来在同一个光滑平面上 -->
+    <path d="M212 250 H 812 L 812 450 C 812 450 512 550 212 450 V 250 Z" fill="url(#shine_el)" fill-opacity="0.5"/>
+  </g>
+</svg>

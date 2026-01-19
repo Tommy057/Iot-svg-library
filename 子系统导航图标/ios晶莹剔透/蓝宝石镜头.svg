@@ -1,0 +1,59 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FFF0F3"/>
+      <stop offset="100%" stop-color="#FFD1DC"/>
+    </linearGradient>
+    
+    <linearGradient id="sapphireBody" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="50%" stop-color="#0072FF"/>
+      <stop offset="100%" stop-color="#002060"/>
+    </linearGradient>
+
+    <radialGradient id="lensReflect" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="#002060"/>
+      <stop offset="90%" stop-color="#0072FF"/>
+      <stop offset="100%" stop-color="#00C6FF"/>
+    </radialGradient>
+
+    <linearGradient id="glassShine" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="blueGlowShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="40"/>
+      <feOffset dx="0" dy="40" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bgGradient)"/>
+
+  <!-- 放大构图，占据主体 -->
+  <g transform="translate(512, 512) scale(0.85) translate(-512, -512)">
+    
+    <!-- 外壳底座 (带投影) -->
+    <rect x="112" y="112" width="800" height="800" rx="250" fill="url(#sapphireBody)" filter="url(#blueGlowShadow)"/>
+    
+    <!-- 内部大镜头圈 (模拟深邃光圈) -->
+    <circle cx="512" cy="512" r="300" fill="#001030" stroke="#00C6FF" stroke-width="10" stroke-opacity="0.3"/>
+    
+    <!-- 镜头玻璃 (Radial Gradient 模拟凸起) -->
+    <circle cx="512" cy="512" r="260" fill="url(#lensReflect)"/>
+
+    <!-- 镜头顶部高光 (典型的镜头反光点) -->
+    <ellipse cx="620" cy="380" rx="60" ry="40" transform="rotate(-45 620 380)" fill="white" fill-opacity="0.6" filter="blur(8px)"/>
+    <circle cx="420" cy="620" r="20" fill="#00C6FF" fill-opacity="0.6" filter="blur(4px)"/>
+
+    <!-- 顶部边缘高光条 -->
+    <path d="M162 162 C 300 50, 724 50, 862 162" stroke="url(#glassShine)" stroke-width="12" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

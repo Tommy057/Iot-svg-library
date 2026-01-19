@@ -1,0 +1,31 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 统一引用之前的定义，确保100%一致 -->
+  <defs>
+    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow)">
+    <!-- 底座 (很小，为了衬托灯罩的大) -->
+    <ellipse cx="512" cy="780" rx="300" ry="100" fill="#001530"/>
+    
+    <!-- 灯罩主体 (巨大的圆顶) -->
+    <path d="M212 780 C 212 780 240 280 512 280 C 784 280 812 780 812 780 H 212 Z" fill="url(#gem_gradient)"/>
+    
+    <!-- 内部核心 (频闪灯管) -->
+    <rect x="472" y="350" width="80" height="400" rx="40" fill="white" fill-opacity="0.3"/>
+    
+    <!-- 表面纹理 (菲涅尔纹，增加晶体感) -->
+    <path d="M240 700 H 784" stroke="white" stroke-opacity="0.1" stroke-width="10"/>
+    <path d="M260 600 H 764" stroke="white" stroke-opacity="0.1" stroke-width="10"/>
+    <path d="M300 500 H 724" stroke="white" stroke-opacity="0.1" stroke-width="10"/>
+
+    <!-- 顶部高光 (让它看起来像玻璃) -->
+    <ellipse cx="512" cy="400" rx="200" ry="120" fill="url(#shine)"/>
+  </g>
+</svg>

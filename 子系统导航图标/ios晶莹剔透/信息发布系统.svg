@@ -1,0 +1,71 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白梦幻渐变 (标准规范) -->
+    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 主体：深海蓝宝石渐变 (标准规范) -->
+    <linearGradient id="gem_gradient" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C6FF" /> <!-- 高光青 -->
+      <stop offset="0.5" stop-color="#0072FF" /> <!-- 纯蓝 -->
+      <stop offset="1" stop-color="#002060" />   <!-- 深邃蓝 -->
+    </linearGradient>
+
+    <!-- 3. 玻璃高光 (Gloss Shine) -->
+    <linearGradient id="shine" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 蓝光投影 (Blue Shadow) -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- === 背景层 === -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  <!-- 极细边框，防止融入白色背景 -->
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- === 图标主体 === -->
+  <g filter="url(#shadow)">
+    
+    <!-- 1. 屏幕边框主体 (巨大的蓝宝石板) -->
+    <rect x="152" y="252" width="720" height="520" rx="80" fill="url(#gem_gradient)"/>
+    
+    <!-- 2. 屏幕显示区内凹 (增加厚度感) -->
+    <rect x="202" y="302" width="620" height="420" rx="50" fill="#001530" fill-opacity="0.25"/>
+
+    <!-- 3. 核心符号：播放键 (实体白色三角) -->
+    <!-- 稍微偏左，留出空间给右上角的信号波 -->
+    <path d="M440 410 L 580 512 L 440 614 V 410 Z" fill="white"/>
+    
+    <!-- 播放键辉光 -->
+    <path d="M440 410 L 580 512 L 440 614 V 410 Z" fill="white" fill-opacity="0.3" filter="blur(10px)"/>
+
+    <!-- 4. 广播/发布信号波 (右上角) -->
+    <!-- 第一道波 -->
+    <path d="M640 380 C 670 400 670 450 640 470" stroke="white" stroke-width="24" stroke-linecap="round" stroke-opacity="0.9"/>
+    <!-- 第二道波 -->
+    <path d="M690 350 C 740 380 740 480 690 510" stroke="white" stroke-width="24" stroke-linecap="round" stroke-opacity="0.6"/>
+
+    <!-- 5. 玻璃反光层 (Diagonal Shine) -->
+    <!-- 对角线切割的高光，让屏幕看起来像 polished glass -->
+    <path d="M180 280 H 600 L 400 740 H 180 V 280 Z" fill="url(#shine)" fill-opacity="0.25"/>
+    
+    <!-- 顶部边缘高光 (Top Highlight) -->
+    <rect x="180" y="260" width="664" height="140" rx="50" fill="url(#shine)" fill-opacity="0.6"/>
+
+  </g>
+</svg>

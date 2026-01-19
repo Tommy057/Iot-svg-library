@@ -1,0 +1,41 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 复用标准定义 -->
+    <linearGradient id="bg_gradient" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow)">
+    <!-- 1. 外围风圈 (厚实的圆环) -->
+    <circle cx="512" cy="512" r="340" stroke="url(#gem_gradient)" stroke-width="80"/>
+    
+    <!-- 2. 核心轮毂 (Turbine Hub) -->
+    <circle cx="512" cy="512" r="100" fill="url(#gem_gradient)"/>
+    <circle cx="512" cy="512" r="40" fill="#001530"/> <!-- 轴心孔 -->
+
+    <!-- 3. 巨大的三叶涡轮 (旋转动态感) -->
+    <g fill="url(#gem_gradient)">
+      <!-- 叶片1 -->
+      <path d="M512 512 L 512 212 C 650 212 750 300 780 450 L 512 512 Z"/>
+      <!-- 叶片2 (旋转120度) -->
+      <path d="M512 512 L 771 662 C 680 780 550 812 400 780 L 512 512 Z"/>
+      <!-- 叶片3 (旋转240度) -->
+      <path d="M512 512 L 252 662 C 180 550 200 400 300 300 L 512 512 Z"/>
+    </g>
+
+    <!-- 4. 动态模糊光效 (Motion Blur Highlight) -->
+    <!-- 在叶片边缘增加白色抹痕，模拟旋转速度 -->
+    <path d="M720 350 C 760 400 770 440 780 450" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.4"/>
+    <path d="M450 780 C 420 780 350 750 300 700" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.4"/>
+    <path d="M250 450 C 230 400 240 350 280 320" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.4"/>
+
+    <!-- 5. 整体玻璃球反光 (Domed Glass Effect) -->
+    <circle cx="512" cy="512" r="340" fill="url(#shine)" fill-opacity="0.3"/>
+    <ellipse cx="512" cy="320" rx="200" ry="120" fill="url(#shine)" fill-opacity="0.6"/>
+  </g>
+</svg>

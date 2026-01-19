@@ -1,0 +1,67 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景：粉白渐变 -->
+    <linearGradient id="bg_gradient_sw3" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 主体：蓝宝石渐变 -->
+    <linearGradient id="gem_gradient_sw3" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C6FF" />
+      <stop offset="0.5" stop-color="#0072FF" />
+      <stop offset="1" stop-color="#002060" />
+    </linearGradient>
+
+    <!-- 顶部反光 -->
+    <linearGradient id="shine_sw3" x1="512" y1="260" x2="512" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 投影 -->
+    <filter id="shadow_sw3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_sw3)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_sw3)">
+    <!-- 1. 机身主体 (加高加厚) -->
+    <rect x="162" y="262" width="700" height="500" rx="60" fill="url(#gem_gradient_sw3)"/>
+    
+    <!-- 2. 中间的分隔线 (暗示是多层设备) -->
+    <rect x="162" y="500" width="700" height="24" fill="#001530" fill-opacity="0.2"/>
+
+    <!-- 3. 左侧：大量网口阵列 (核心视觉点) -->
+    <!-- 第一排 -->
+    <rect x="230" y="340" width="70" height="90" rx="15" fill="white"/>
+    <rect x="330" y="340" width="70" height="90" rx="15" fill="white"/>
+    <rect x="430" y="340" width="70" height="90" rx="15" fill="white"/>
+    <!-- 第二排 -->
+    <rect x="230" y="580" width="70" height="90" rx="15" fill="white" fill-opacity="0.8"/>
+    <rect x="330" y="580" width="70" height="90" rx="15" fill="white" fill-opacity="0.8"/>
+    <rect x="430" y="580" width="70" height="90" rx="15" fill="white" fill-opacity="0.8"/>
+
+    <!-- 4. 右侧：功能区 (指示灯和光口) -->
+    <!-- 两个大的光模块插口 -->
+    <rect x="580" y="340" width="200" height="90" rx="20" fill="#001530" fill-opacity="0.3"/>
+    <rect x="580" y="580" width="200" height="90" rx="20" fill="#001530" fill-opacity="0.3"/>
+    
+    <!-- 闪烁的指示灯 -->
+    <circle cx="196" cy="300" r="12" fill="#00FFCC"/>
+    <circle cx="230" cy="300" r="12" fill="#00C6FF"/>
+
+    <!-- 5. 整体玻璃质感反光 (覆盖上半部分) -->
+    <rect x="180" y="280" width="664" height="220" rx="50" fill="url(#shine_sw3)"/>
+  </g>
+</svg>
