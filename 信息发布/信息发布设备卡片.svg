@@ -1,0 +1,80 @@
+<svg width="320" height="140" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 信息发布设备智能卡片
+    风格: 宝石光晕 & 纯净白
+  -->
+  <defs>
+    <!-- 弥散阴影 -->
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+         <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 靛紫宝石渐变 -->
+    <radialGradient id="indigoGem" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#C7D2FE" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </radialGradient>
+  </defs>
+
+  <!-- 卡片容器 -->
+  <g filter="url(#cardShadow)">
+    <rect x="5" y="5" width="310" height="130" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <!-- 顶部装饰条 -->
+    <path d="M5 17 Q5 5 17 5 H305 Q315 5 315 17 V20 H5 V17 Z" fill="#EEF2FF"/>
+  </g>
+
+  <!-- 左侧：拟态图标 (屏幕 + 播放宝石) -->
+  <g transform="translate(30, 45)">
+    <!-- 屏幕边框 -->
+    <rect x="0" y="0" width="50" height="36" rx="4" fill="#FFFFFF" stroke="#6366F1" stroke-width="2"/>
+    <path d="M25 36 V46 M15 46 H35" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 核心宝石播放键 -->
+    <circle cx="25" cy="18" r="10" fill="url(#indigoGem)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M22 14 L30 18 L22 22 Z" fill="#FFFFFF"/>
+    
+    <!-- 信号波纹 -->
+    <path d="M55 10 A 25 25 0 0 1 55 26" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    <path d="M60 5 A 35 35 0 0 1 60 31" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- 右侧：信息详情 -->
+  <g transform="translate(100, 40)">
+    <!-- 标题 -->
+    <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1F2937">1F 大堂主屏 LED</text>
+    
+    <!-- 状态标签 -->
+    <g transform="translate(150, -10)">
+       <rect x="0" y="0" width="50" height="20" rx="10" fill="#ECFDF5"/>
+       <circle cx="10" cy="10" r="3" fill="#10B981"/>
+       <text x="20" y="14" font-size="10" font-weight="bold" fill="#10B981">在线</text>
+    </g>
+
+    <!-- 字段信息 -->
+    <g transform="translate(0, 25)">
+      <text x="0" y="0" font-size="12" fill="#9CA3AF">IP 地址:</text>
+      <text x="60" y="0" font-size="12" fill="#4B5563" font-family="monospace">192.168.10.101</text>
+    </g>
+
+    <g transform="translate(0, 45)">
+      <text x="0" y="0" font-size="12" fill="#9CA3AF">当前节目:</text>
+      <text x="60" y="0" font-size="12" fill="#6366F1" font-weight="bold">欢迎光临_V2.mp4</text>
+    </g>
+    
+    <!-- 进度条 -->
+    <g transform="translate(0, 60)">
+       <rect x="0" y="0" width="180" height="4" rx="2" fill="#F3F4F6"/>
+       <rect x="0" y="0" width="120" height="4" rx="2" fill="#6366F1"/> <!-- 播放进度 -->
+    </g>
+  </g>
+</svg>

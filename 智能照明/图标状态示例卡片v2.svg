@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="180" viewBox="0 0 300 180">
+    <!-- 背景卡片：带圆角和浅边框 -->
+    <rect x="2" y="2" width="296" height="176" rx="12" fill="#FFFFFF" stroke="#E4E7ED" stroke-width="1.5" />
+    
+    <!-- 顶部标题栏 -->
+    <path d="M14 22 L14 34" stroke="#409EFF" stroke-width="4" stroke-linecap="round"/>
+    <text x="25" y="32" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="600" fill="#303133">照明系统图例</text>
+    
+    <!-- 分隔线 -->
+    <line x1="20" y1="48" x2="280" y2="48" stroke="#EBEEF5" stroke-width="1"/>
+
+    <!-- 第一行：筒灯状态 -->
+    <text x="25" y="75" font-family="sans-serif" font-size="12" fill="#909399">筒灯 / Downlight</text>
+    
+    <!-- 筒灯-开启：采用双层圆形模拟发光 -->
+    <circle cx="150" cy="71" r="10" fill="#FF9900" fill-opacity="0.2" />
+    <circle cx="150" cy="71" r="6" fill="#FF9900" />
+    <text x="165" y="75" font-family="sans-serif" font-size="12" fill="#303133">开启</text>
+
+    <!-- 筒灯-关闭：深色主体+高亮白边 -->
+    <circle cx="230" cy="71" r="6.5" fill="#FFFFFF" stroke="#DCDFE6" stroke-width="0.5"/> <!-- 外圈细边 -->
+    <circle cx="230" cy="71" r="5" fill="#34495E" />
+    <text x="245" y="75" font-family="sans-serif" font-size="12" fill="#303133">关闭</text>
+
+    <!-- 第二行：灯带状态 -->
+    <text x="25" y="125" font-family="sans-serif" font-size="12" fill="#909399">灯带 / Light Strip</text>
+    
+    <!-- 灯带-开启：圆润的亮色块 -->
+    <rect x="140" y="118" width="40" height="10" rx="5" fill="#FFD700" />
+    <rect x="145" y="121" width="30" height="3" rx="1.5" fill="#FFFFFF" fill-opacity="0.5" /> <!-- 内部高光 -->
+    <text x="148" y="145" font-family="sans-serif" font-size="11" fill="#606266">开启</text>
+
+    <!-- 灯带-关闭：解决不明显的方案：深色填充+白色描边+内部刻度 -->
+    <rect x="220" y="118" width="40" height="10" rx="5" fill="#2C3E50" stroke="#FFFFFF" stroke-width="1" />
+    <!-- 内部加三个极细的小点，增加“设备感” -->
+    <circle cx="230" cy="123" r="1" fill="#5D6D7E" />
+    <circle cx="240" cy="123" r="1" fill="#5D6D7E" />
+    <circle cx="250" cy="123" r="1" fill="#5D6D7E" />
+    <text x="228" y="145" font-family="sans-serif" font-size="11" fill="#606266">关闭</text>
+</svg>

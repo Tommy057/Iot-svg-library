@@ -1,0 +1,56 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景 -->
+    <linearGradient id="bg_gradient_cold" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    
+    <!-- 2. 主体：极寒冰蓝渐变 (比其他图标更冷、更青) -->
+    <!-- 区别于深蓝宝石，这里用的是 Ice Blue -->
+    <linearGradient id="gem_gradient_ice" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0FFFF" /> <!-- 顶部的霜白 -->
+      <stop offset="0.4" stop-color="#00E5FF" /> <!-- 中间的冰青 -->
+      <stop offset="1" stop-color="#006090" />   <!-- 底部的深冰蓝 -->
+    </linearGradient>
+
+    <!-- 3. 高光 -->
+    <linearGradient id="shine_cold" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    
+    <!-- 4. 投影 (冷青色投影) -->
+    <filter id="shadow_cold" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0088AA" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_cold)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_cold)">
+    <!-- 1. 主体外壳：巨大的六边形冰块 (Hexagon Ice Block) -->
+    <!-- 六边形代表稳定的晶体结构，也代表工业螺母/蜂巢 -->
+    <path d="M512 180 L 824 360 V 720 L 512 900 L 200 720 V 360 L 512 180 Z" fill="url(#gem_gradient_ice)"/>
+    
+    <!-- 2. 内部结构：冷凝管束/内凹槽 -->
+    <!-- 模拟厚冰包裹的感觉 -->
+    <path d="M512 260 L 750 398 V 674 L 512 812 L 274 674 V 398 L 512 260 Z" fill="#003050" fill-opacity="0.2"/>
+
+    <!-- 3. 核心符号：工业雪花 (Industrial Snowflake) -->
+    <!-- 不是细线条，而是厚实的晶体块拼接 -->
+    <g fill="white" fill-opacity="0.9">
+        <!-- 中心圆 -->
+        <circle cx="512" cy="540" r="60"/>
+        <!-- 六个叶片 (圆角矩形) -->
+        <rect x="472" y="280" width="80" height="180" rx="40"/>
+        <rect x="472" y="620" width="80" height="180" rx="40"/>
+        
+        <rect x="472" y="280" width="80" height="180" rx="40" transform="rotate(60 512 540)"/>
+        <rect x="472" y="620" width="80" height="180" rx="40" transform="rotate(60 512 540)"/>
+        
+        <rect x="472" y="280" width="80" height="180" rx="40" transform="rotate(-60 512 540)"/>
+        <rect x="472" y="620" width="80" height="180" rx="40" transform="rotate(-60 512 540)"/>
+    </g>
+
+    <!-- 4. 霜冻质感 (Frost Texture) -->
+    <!-- 边缘的一圈白色微光，模拟结霜 -->
+    <path d="M512 180 L 824 360 V 720 L 512 900 L 200 720 V 360 L 512 180 Z" stroke="white" stroke-width="10" stroke-opacity="0.4" fill="none"/>
+
+    <!-- 5. 表面玻璃高光 -->
+    <path d="M512 180 L 824 360 L 824 500 L 512 600 L 200 500 V 360 L 512 180 Z" fill="url(#shine_cold)" fill-opacity="0.5"/>
+  </g>
+</svg>

@@ -1,0 +1,221 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 智慧停车综合驾驶舱 (Smart Parking Dashboard)
+    风格: 宝石光晕 & 纯净白 (Clean White)
+    布局: 复刻参考图布局
+  -->
+
+  <defs>
+    <!-- 1. 卡片悬浮阴影 -->
+    <filter id="panelShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 宝石渐变定义 -->
+    <!-- 蓝色 P -->
+    <radialGradient id="gemBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#BFDBFE"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </radialGradient>
+    <!-- 绿色 Car -->
+    <radialGradient id="gemGreen" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </radialGradient>
+    <!-- 红色 Stop -->
+    <radialGradient id="gemRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FECACA"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </radialGradient>
+
+    <!-- 3. 图表渐变 -->
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1200" height="675" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 顶部 KPI 卡片区
+       ======================================================================== -->
+  <g transform="translate(20, 20)">
+    
+    <!-- 卡片 1: 总车位 (P) -->
+    <g filter="url(#panelShadow)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF"/>
+      <!-- Icon -->
+      <circle cx="50" cy="50" r="24" fill="url(#gemBlue)"/>
+      <text x="50" y="58" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="24" fill="#FFFFFF">P</text>
+      <!-- Text -->
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">总车位</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#1F2937">1,089</text>
+    </g>
+
+    <!-- 卡片 2: 空余车位 (Car) -->
+    <g transform="translate(300, 0)" filter="url(#panelShadow)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF"/>
+      <!-- Icon: 抽象小车 -->
+      <g transform="translate(25, 30)">
+         <path d="M5 25 L10 10 L40 10 L45 25 H50 V35 H0 V25 Z" fill="url(#gemGreen)"/>
+         <circle cx="10" cy="35" r="4" fill="#059669"/>
+         <circle cx="40" cy="35" r="4" fill="#059669"/>
+      </g>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">空余车位</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#10B981">785</text>
+    </g>
+
+    <!-- 卡片 3: 占用车位 (Stop) -->
+    <g transform="translate(600, 0)" filter="url(#panelShadow)">
+      <rect width="280" height="100" rx="12" fill="#FFFFFF"/>
+      <circle cx="50" cy="50" r="24" fill="url(#gemRed)"/>
+      <rect x="35" y="46" width="30" height="8" fill="#FFFFFF"/>
+      <text x="90" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#6B7280">占用车位</text>
+      <text x="90" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#EF4444">304</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 左侧图表区
+       ======================================================================== -->
+  
+  <!-- 图表 1: 进场车辆统计 (Bar Chart) -->
+  <g transform="translate(20, 140)" filter="url(#panelShadow)">
+    <rect width="860" height="250" rx="12" fill="#FFFFFF"/>
+    <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">近一月逐日进场车辆统计</text>
+    
+    <!-- 坐标轴 -->
+    <line x1="40" y1="210" x2="820" y2="210" stroke="#F3F4F6" stroke-width="1"/>
+    
+    <!-- 柱状体 (模拟数据) -->
+    <g transform="translate(50, 60)">
+       <!-- 循环生成几个柱子 -->
+       <rect x="0" y="80" width="20" height="70" rx="2" fill="url(#barGradient)"/>
+       <rect x="40" y="50" width="20" height="100" rx="2" fill="url(#barGradient)"/>
+       <rect x="80" y="90" width="20" height="60" rx="2" fill="url(#barGradient)"/>
+       <rect x="120" y="40" width="20" height="110" rx="2" fill="url(#barGradient)"/>
+       <rect x="160" y="60" width="20" height="90" rx="2" fill="url(#barGradient)"/>
+       <rect x="200" y="100" width="20" height="50" rx="2" fill="url(#barGradient)"/>
+       <rect x="240" y="20" width="20" height="130" rx="2" fill="url(#barGradient)"/>
+       <rect x="280" y="50" width="20" height="100" rx="2" fill="url(#barGradient)"/>
+       <rect x="320" y="30" width="20" height="120" rx="2" fill="url(#barGradient)"/>
+       <rect x="360" y="80" width="20" height="70" rx="2" fill="url(#barGradient)"/>
+       <!-- 更多略... -->
+    </g>
+    <!-- X轴标签 -->
+    <text x="50" y="230" font-size="10" fill="#9CA3AF">20220101</text>
+    <text x="370" y="230" font-size="10" fill="#9CA3AF">20220115</text>
+  </g>
+
+  <!-- 图表 2: 收益统计 (Area Chart) -->
+  <g transform="translate(20, 410)" filter="url(#panelShadow)">
+    <rect width="860" height="245" rx="12" fill="#FFFFFF"/>
+    <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">近一月逐日收益统计 (Revenue)</text>
+    
+    <g transform="translate(50, 60)">
+       <line x1="0" y1="150" x2="780" y2="150" stroke="#F3F4F6" stroke-width="1"/>
+       <!-- 曲线路径 -->
+       <path d="M0 50 L40 40 L80 45 L120 120 L160 50 L200 40 L240 120 L280 50 L320 40 L360 42 L400 120 L440 50" 
+             fill="none" stroke="#0EA5E9" stroke-width="3"/>
+       <!-- 面积填充 -->
+       <path d="M0 50 L40 40 L80 45 L120 120 L160 50 L200 40 L240 120 L280 50 L320 40 L360 42 L400 120 L440 50 V 150 H 0 Z" 
+             fill="url(#areaGradient)"/>
+             
+       <!-- 关键点宝石 -->
+       <circle cx="200" cy="40" r="4" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="2"/>
+    </g>
+    <text x="50" y="230" font-size="10" fill="#9CA3AF">20220101</text>
+  </g>
+
+  <!-- ========================================================================
+       3. 右上角 实时监控 (Live Monitor)
+       ======================================================================== -->
+  <g transform="translate(900, 20)" filter="url(#panelShadow)">
+    <rect width="280" height="220" rx="12" fill="#FFFFFF"/>
+    <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#374151">实时监控 (Live)</text>
+    
+    <!-- 视频占位框 1 -->
+    <g transform="translate(20, 50)">
+      <rect width="115" height="80" fill="#F3F4F6" stroke="#E5E7EB"/>
+      <text x="57" y="45" text-anchor="middle" font-size="10" fill="#9CA3AF">B1 入口</text>
+      <rect x="0" y="90" width="115" height="4" rx="2" fill="#E5E7EB"/>
+      <rect x="0" y="90" width="60" height="4" rx="2" fill="#3B82F6"/> <!-- 蓝色进度条 -->
+    </g>
+
+    <!-- 视频占位框 2 -->
+    <g transform="translate(145, 50)">
+      <rect width="115" height="80" fill="#F3F4F6" stroke="#E5E7EB"/>
+      <text x="57" y="45" text-anchor="middle" font-size="10" fill="#9CA3AF">B1 出口</text>
+      <rect x="0" y="90" width="115" height="4" rx="2" fill="#E5E7EB"/>
+      <rect x="0" y="90" width="90" height="4" rx="2" fill="#3B82F6"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       4. 右下角 出入场记录 (Logs)
+       ======================================================================== -->
+  <g transform="translate(900, 260)" filter="url(#panelShadow)">
+    <rect width="280" height="395" rx="12" fill="#FFFFFF"/>
+    
+    <!-- 表头 -->
+    <g transform="translate(15, 30)">
+       <text x="0" y="0" font-size="12" fill="#9CA3AF" font-weight="bold">出入时间</text>
+       <text x="100" y="0" font-size="12" fill="#9CA3AF" font-weight="bold">车牌</text>
+       <text x="160" y="0" font-size="12" fill="#9CA3AF" font-weight="bold">类型</text>
+       <text x="200" y="0" font-size="12" fill="#9CA3AF" font-weight="bold">出入口</text>
+    </g>
+    <line x1="15" y1="40" x2="265" y2="40" stroke="#F3F4F6" stroke-width="1"/>
+
+    <!-- 数据列表 -->
+    <g transform="translate(15, 60)">
+       <!-- Row 1 -->
+       <g>
+         <text x="0" y="0" font-size="11" fill="#4B5563">08:12:13</text>
+         <text x="100" y="0" font-size="11" fill="#3B82F6" font-weight="bold">粤B002TE</text>
+         <text x="160" y="0" font-size="11" fill="#EF4444">出</text>
+         <text x="200" y="0" font-size="11" fill="#4B5563">立体车库</text>
+       </g>
+       <rect x="-5" y="10" width="260" height="20" fill="#F9FAFB"/> <!-- 斑马纹 -->
+
+       <!-- Row 2 -->
+       <g transform="translate(0, 25)">
+         <text x="0" y="0" font-size="11" fill="#4B5563">08:32:13</text>
+         <text x="100" y="0" font-size="11" fill="#3B82F6" font-weight="bold">粤B0RETE</text>
+         <text x="160" y="0" font-size="11" fill="#10B981">入</text>
+         <text x="200" y="0" font-size="11" fill="#4B5563">立体车库</text>
+       </g>
+
+       <!-- Row 3 -->
+       <g transform="translate(0, 50)">
+         <text x="0" y="0" font-size="11" fill="#4B5563">08:11:13</text>
+         <text x="100" y="0" font-size="11" fill="#3B82F6" font-weight="bold">粤BDRTYU</text>
+         <text x="160" y="0" font-size="11" fill="#10B981">入</text>
+         <text x="200" y="0" font-size="11" fill="#4B5563">地下车库</text>
+       </g>
+       <rect x="-5" y="60" width="260" height="20" fill="#F9FAFB"/>
+
+       <!-- Row 4 -->
+       <g transform="translate(0, 75)">
+         <text x="0" y="0" font-size="11" fill="#4B5563">08:15:13</text>
+         <text x="100" y="0" font-size="11" fill="#3B82F6" font-weight="bold">粤BNBERT</text>
+         <text x="160" y="0" font-size="11" fill="#10B981">入</text>
+         <text x="200" y="0" font-size="11" fill="#4B5563">地下车库</text>
+       </g>
+    </g>
+  </g>
+
+</svg>

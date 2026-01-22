@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200">
+  <!-- 1. 底层：iOS 18 经典的毛玻璃容器 (使用深浅两层模拟玻璃厚度) -->
+  <rect x="0" y="0" width="360" height="200" rx="36" fill="#E5E5EA" />
+  <rect x="3" y="3" width="354" height="194" rx="33" fill="#F2F2F7" />
+  
+  <!-- 玻璃顶部的反光线：iOS 质感的精髓 -->
+  <path d="M40 3 L320 3" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.6" stroke-linecap="round" />
+
+  <!-- 2. 顶部状态栏 -->
+  <g transform="translate(24, 28)">
+    <rect width="18" height="18" rx="5" fill="#007AFF" /> <!-- 模拟 iOS 系统图标背景 -->
+    <path d="M5 9 L8 12 L13 6" stroke="#FFFFFF" stroke-width="1.5" fill="none" />
+    <text x="26" y="14" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1C1C1E">楼层全局控制</text>
+  </g>
+
+  <!-- 3. 主操作区：iOS 18 风格大磁贴 -->
+  
+  <!-- --- 一键全开 (左侧) --- -->
+  <g transform="translate(18, 65)">
+    <!-- 按钮背板：纯白高亮，带内嵌高光 -->
+    <rect width="156" height="110" rx="28" fill="#FFFFFF" />
+    <!-- 模拟按键顶部的微弱反光边缘 -->
+    <path d="M20 1 L136 1" stroke="#F2F2F7" stroke-width="1" />
+    
+    <!-- 拟物图标：发光太阳 -->
+    <circle cx="40" cy="40" r="14" fill="#FF9500" fill-opacity="0.15" />
+    <circle cx="40" cy="40" r="8" fill="#FF9500" />
+    <!-- 动态光芒感 -->
+    <path d="M40 22 L40 25 M40 55 L40 58 M25 40 L28 40 M52 40 L55 40" stroke="#FF9500" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- 文字：iOS 典型的底部对齐 -->
+    <text x="20" y="82" font-family="sans-serif" font-size="16" font-weight="700" fill="#1C1C1E">一键全开</text>
+    <text x="20" y="98" font-family="sans-serif" font-size="11" font-weight="600" fill="#FF9500" opacity="0.8">ALL LIGHTS ON</text>
+  </g>
+
+  <!-- --- 一键全关 (右侧) --- -->
+  <g transform="translate(186, 65)">
+    <!-- 按钮背板：iOS 经典的 Dark Mode 磨砂黑质感 -->
+    <rect width="156" height="110" rx="28" fill="#1C1C1E" />
+    <!-- 内部玻璃光泽线 -->
+    <path d="M20 2 L136 2" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.1" />
+    
+    <!-- 拟物图标：熄灭电源键 -->
+    <circle cx="40" cy="40" r="12" fill="none" stroke="#FFFFFF" stroke-width="2" />
+    <path d="M40 32 L40 40" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- 文字：反白效果 -->
+    <text x="20" y="82" font-family="sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">一键全关</text>
+    <text x="20" y="98" font-family="sans-serif" font-size="11" font-weight="500" fill="#8E8E93">SYSTEM SHUTDOWN</text>
+    
+    <!-- 右下角的小点缀，模拟 iOS 控制组件的扩展性 -->
+    <circle cx="135" cy="90" r="3" fill="#3A3A3C" />
+    <circle cx="135" cy="80" r="3" fill="#3A3A3C" />
+  </g>
+</svg>

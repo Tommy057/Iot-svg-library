@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220">
+  <!-- 背景：深色渐变感卡片 -->
+  <rect x="2" y="2" width="316" height="216" rx="10" fill="#1A1C1E" stroke="#323639" stroke-width="2"/>
+  
+  <!-- 装饰：右上角三角形，增加科技感 -->
+  <path d="M280 2 L318 2 L318 40 Z" fill="#00CF92" fill-opacity="0.2"/>
+
+  <!-- 标题区 -->
+  <text x="20" y="35" font-family="Arial" font-size="16" font-weight="bold" fill="#00CF92">LIGHTING DASHBOARD</text>
+  <line x1="20" y1="50" x2="180" y2="50" stroke="#00CF92" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- 筒灯行 -->
+  <g transform="translate(0, 10)">
+    <text x="25" y="80" font-family="Arial" font-size="11" fill="#7B8187" letter-spacing="1">DOWNLIGHT</text>
+    <!-- 开 -->
+    <circle cx="160" cy="95" r="10" fill="#00CF92" fill-opacity="0.2"/>
+    <circle cx="160" cy="95" r="5" fill="#00CF92"/>
+    <text x="178" y="100" font-family="Arial" font-size="12" fill="#E1E3E5">Online</text>
+    <!-- 关 -->
+    <circle cx="245" cy="95" r="5" fill="none" stroke="#4A5056" stroke-width="2"/>
+    <text x="260" y="100" font-family="Arial" font-size="12" fill="#4A5056">Offline</text>
+  </g>
+
+  <!-- 灯带行 -->
+  <g transform="translate(0, 20)">
+    <text x="25" y="130" font-family="Arial" font-size="11" fill="#7B8187" letter-spacing="1">LINEAR STRIP</text>
+    <!-- 开 (采用双色叠层) -->
+    <rect x="140" y="145" width="50" height="8" rx="4" fill="#00CF92" fill-opacity="0.2"/>
+    <rect x="145" y="147" width="40" height="4" rx="2" fill="#00CF92"/>
+    <text x="150" y="170" font-family="Arial" font-size="10" fill="#00CF92">ACTIVE</text>
+    <!-- 关 (解决不明显的终极版：空心虚线) -->
+    <rect x="230" y="145" width="50" height="8" rx="4" fill="none" stroke="#4A5056" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="240" y="170" font-family="Arial" font-size="10" fill="#4A5056">IDLE</text>
+  </g>
+</svg>

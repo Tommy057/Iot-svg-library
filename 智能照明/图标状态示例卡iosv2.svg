@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="260" viewBox="0 0 340 260">
+  <!-- 1. 底层：模拟 iOS 18 玻璃背板 (通过叠层实现深浅效果) -->
+  <rect x="0" y="0" width="340" height="260" rx="32" fill="#E5E5EA" /> <!-- 基础底色 -->
+  <rect x="2" y="2" width="336" height="256" rx="30" fill="#F2F2F7" /> <!-- 表层色 -->
+  
+  <!-- 顶部的拟物装饰：模拟玻璃边缘的高光 -->
+  <path d="M30 2 L310 2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-opacity="0.8" />
+
+  <!-- 2. 标题区：苹果典型的紧凑型排版 -->
+  <text x="24" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#1C1C1E" letter-spacing="-0.5">控制中心图例</text>
+  <circle cx="300" cy="35" r="10" fill="#FFFFFF" /> <!-- 右上角装饰按钮感 -->
+  <circle cx="300" cy="35" r="4" fill="#8E8E93" />
+
+  <!-- 3. 筒灯控制组 (下凹感容器) -->
+  <rect x="15" y="65" width="310" height="80" rx="20" fill="#E5E5EA" fill-opacity="0.6" />
+  <text x="30" y="85" font-family="sans-serif" font-size="12" font-weight="600" fill="#8E8E93">筒灯节点 (Point)</text>
+  
+  <!-- 开：苹果橙色实体按键 -->
+  <g transform="translate(140, 80)">
+    <!-- 按钮主体 -->
+    <rect width="70" height="50" rx="15" fill="#FFFFFF" />
+    <rect width="70" height="50" rx="15" fill="none" stroke="#FF9500" stroke-width="1.5" stroke-opacity="0.2" />
+    <!-- 发光核心 -->
+    <circle cx="35" cy="25" r="10" fill="#FF9500" />
+    <!-- 模拟按键顶部高光线 -->
+    <path d="M10 5 L60 5" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.5" />
+    <text x="35" y="45" font-family="sans-serif" font-size="10" fill="#FF9500" text-anchor="middle" font-weight="bold">开启</text>
+  </g>
+
+  <!-- 关：熄灭感按键 -->
+  <g transform="translate(225, 80)">
+    <rect width="70" height="50" rx="15" fill="#D1D1D6" fill-opacity="0.5" />
+    <circle cx="35" cy="25" r="10" fill="#8E8E93" />
+    <circle cx="35" cy="25" r="8" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+    <text x="35" y="45" font-family="sans-serif" font-size="10" fill="#8E8E93" text-anchor="middle">关闭</text>
+  </g>
+
+  <!-- 4. 灯带控制组 -->
+  <rect x="15" y="160" width="310" height="80" rx="20" fill="#E5E5EA" fill-opacity="0.6" />
+  <text x="30" y="180" font-family="sans-serif" font-size="12" font-weight="600" fill="#8E8E93">线性灯带 (Strip)</text>
+  
+  <!-- 开：苹果黄色条带 -->
+  <g transform="translate(140, 175)">
+    <rect width="70" height="50" rx="15" fill="#FFFFFF" />
+    <rect x="15" y="15" width="40" height="10" rx="5" fill="#FFCC00" />
+    <!-- 灯带内部的高光 -->
+    <rect x="20" y="17" width="30" height="3" rx="1.5" fill="#FFFFFF" fill-opacity="0.6" />
+    <text x="35" y="42" font-family="sans-serif" font-size="10" fill="#FFCC00" text-anchor="middle" font-weight="bold">ON</text>
+  </g>
+
+  <!-- 关：极致辨识度的深色槽 -->
+  <g transform="translate(225, 175)">
+    <rect width="70" height="50" rx="15" fill="#D1D1D6" fill-opacity="0.5" />
+    <!-- 关键改进：深黑色胶囊 + 外部白边勾勒 -->
+    <rect x="15" y="15" width="40" height="10" rx="5" fill="#1C1C1E" stroke="#FFFFFF" stroke-width="1" />
+    <text x="35" y="42" font-family="sans-serif" font-size="10" fill="#8E8E93" text-anchor="middle">OFF</text>
+  </g>
+</svg>

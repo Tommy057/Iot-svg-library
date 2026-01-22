@@ -1,0 +1,42 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 统一视觉基因 -->
+    <linearGradient id="bg_gradient_pw" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_pw" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_pw" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_pw" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_pw)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_pw)">
+    <!-- 1. 变压器主体 (Main Block) -->
+    <!-- 一个厚重的切角矩形 -->
+    <rect x="232" y="250" width="560" height="524" rx="40" fill="url(#gem_gradient_pw)"/>
+    
+    <!-- 2. 两侧散热格栅 (Cooling Fins) - 工业特征 -->
+    <!-- 左侧散热片 -->
+    <path d="M190 300 H 232 V 700 H 190 C 170 700 160 690 160 670 V 330 C 160 310 170 300 190 300 Z" fill="#001530"/>
+    <rect x="240" y="300" width="20" height="400" rx="10" fill="#001530" fill-opacity="0.3"/>
+    <!-- 右侧散热片 -->
+    <path d="M792 300 H 834 C 854 300 864 310 864 330 V 670 C 864 690 854 700 834 700 H 792 V 300 Z" fill="#001530"/>
+    <rect x="764" y="300" width="20" height="400" rx="10" fill="#001530" fill-opacity="0.3"/>
+
+    <!-- 3. 核心能量窗口 (Energy Window) -->
+    <!-- 内凹的屏幕区域 -->
+    <rect x="332" y="320" width="360" height="380" rx="20" fill="#001020" fill-opacity="0.3"/>
+    
+    <!-- 闪电符号 (Lightning Bolt) -->
+    <!-- 粗壮、锐利 -->
+    <path d="M540 360 L 420 540 H 520 L 480 720 L 640 500 H 520 L 540 360 Z" fill="white"/>
+    <!-- 闪电辉光 -->
+    <path d="M540 360 L 420 540 H 520 L 480 720 L 640 500 H 520 L 540 360 Z" fill="white" fill-opacity="0.5" filter="blur(15px)"/>
+
+    <!-- 4. 底部底座 (Base) -->
+    <rect x="282" y="774" width="460" height="60" rx="10" fill="#001530"/>
+
+    <!-- 5. 顶部高光 (Glass Top) -->
+    <rect x="250" y="260" width="524" height="200" rx="30" fill="url(#shine_pw)"/>
+  </g>
+</svg>

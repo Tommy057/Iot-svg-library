@@ -1,0 +1,373 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 智能照明系统总览 (Smart Lighting Dashboard)
+    风格: 宝石光晕 & 纯净白
+    布局: 左(平面图) + 中(能耗数据) + 右(场景/告警)
+  -->
+
+  <defs>
+    <!-- 悬浮阴影 -->
+    <filter id="lightShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.12"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 灯光光晕 (Light Glow) -->
+    <radialGradient id="glowAmber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FDE68A" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- 灯泡本体宝石感 -->
+    <radialGradient id="bulbGem" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </radialGradient>
+
+    <!-- 节能绿叶渐变 -->
+    <linearGradient id="ecoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    
+    <!-- 功率曲线填充 -->
+    <linearGradient id="powerFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1600" height="900" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 左侧：照明平面拓扑图 (Visual Control) - 450px
+       ======================================================================== -->
+  <g transform="translate(20, 20)">
+    <g filter="url(#lightShadow)">
+      <rect width="450" height="860" rx="12" fill="#FFFFFF"/>
+      
+      <!-- 标题 -->
+      <g transform="translate(20, 25)">
+        <rect x="0" y="0" width="6" height="18" rx="3" fill="#F59E0B"/>
+        <text x="15" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">楼层照明状态 (1F)</text>
+      </g>
+      
+      <!-- 模拟楼层平面图 (Floor Plan) -->
+      <g transform="translate(25, 80)">
+         <!-- 墙体轮廓 -->
+         <path d="M0 0 H400 V700 H0 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+         <!-- 房间分隔 -->
+         <path d="M0 200 H250 V0" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+         <path d="M250 200 H400" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+         <path d="M0 500 H300 V700" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+
+         <!-- 区域名称 -->
+         <text x="20" y="30" font-size="12" fill="#94A3B8">办公大厅 (Zone A)</text>
+         <text x="270" y="30" font-size="12" fill="#94A3B8">会议室</text>
+         <text x="20" y="530" font-size="12" fill="#94A3B8">休息区 (Zone C)</text>
+         <text x="20" y="230" font-size="12" fill="#94A3B8">走廊通道 (Zone B)</text>
+
+         <!-- 灯具点位生成逻辑 -->
+         
+         <!-- Zone A: 办公大厅 (全亮 - 呼吸动画) -->
+         <g transform="translate(30, 60)">
+            <circle cx="0" cy="0" r="15" fill="url(#glowAmber)">
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="5" fill="#F59E0B"/>
+            
+            <circle cx="60" cy="0" r="15" fill="url(#glowAmber)">
+               <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="60" cy="0" r="5" fill="#F59E0B"/>
+
+            <circle cx="0" cy="60" r="15" fill="url(#glowAmber)">
+               <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="60" r="5" fill="#F59E0B"/>
+
+            <circle cx="60" cy="60" r="15" fill="url(#glowAmber)">
+               <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="60" cy="60" r="5" fill="#F59E0B"/>
+         </g>
+
+         <!-- Zone B: 走廊 (隔灯亮 - 节能模式) -->
+         <g transform="translate(100, 300)">
+            <!-- 亮 -->
+            <circle cx="0" cy="0" r="15" fill="url(#glowAmber)"/>
+            <circle cx="0" cy="0" r="4" fill="#F59E0B"/>
+            <!-- 灭 -->
+            <circle cx="0" cy="60" r="4" fill="#CBD5E1"/> 
+            <!-- 亮 -->
+            <circle cx="0" cy="120" r="15" fill="url(#glowAmber)"/>
+            <circle cx="0" cy="120" r="4" fill="#F59E0B"/>
+            <!-- 灭 -->
+            <circle cx="0" cy="180" r="4" fill="#CBD5E1"/>
+         </g>
+
+         <!-- Zone C: 休息区 (全灭) -->
+         <g transform="translate(50, 600)">
+            <circle cx="0" cy="0" r="4" fill="#CBD5E1"/>
+            <circle cx="60" cy="0" r="4" fill="#CBD5E1"/>
+            <circle cx="0" cy="60" r="4" fill="#CBD5E1"/>
+            <circle cx="60" cy="60" r="4" fill="#CBD5E1"/>
+         </g>
+         
+         <!-- 故障点位 (红色) -->
+         <g transform="translate(350, 100)">
+             <circle cx="0" cy="0" r="10" fill="#FEE2E2">
+                <animate attributeName="r" values="8;12;8" dur="1s" repeatCount="indefinite"/>
+             </circle>
+             <circle cx="0" cy="0" r="4" fill="#EF4444"/>
+             <text x="-15" y="20" font-size="10" fill="#EF4444">Fault</text>
+         </g>
+
+      </g>
+      
+      <!-- 底部控制栏 -->
+      <g transform="translate(20, 800)">
+         <rect x="0" y="0" width="410" height="40" rx="20" fill="#F1F5F9"/>
+         <text x="20" y="25" font-size="12" fill="#64748B">当前视角: 1F 平面图</text>
+         <rect x="300" y="5" width="100" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0"/>
+         <text x="350" y="25" text-anchor="middle" font-size="12" fill="#3B82F6">切换楼层</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 中间：能耗与状态核心 (Center Core) - 680px
+       ======================================================================== -->
+  <g transform="translate(490, 20)">
+    
+    <!-- 顶部 KPI 卡片 -->
+    <g filter="url(#lightShadow)">
+       <rect width="680" height="180" rx="12" fill="#FFFFFF"/>
+       
+       <!-- 核心: 总功率 -->
+       <g transform="translate(40, 40)">
+         <!-- 拟态大灯泡图标 -->
+         <circle cx="40" cy="40" r="35" fill="url(#bulbGem)"/>
+         <path d="M30 75 L50 75 L48 85 L32 85 Z" fill="#9CA3AF"/> <!-- 灯座 -->
+         <text x="100" y="30" font-size="14" fill="#64748B">实时总功率 (Active Power)</text>
+         <text x="100" y="70" font-size="48" font-weight="bold" fill="#F59E0B">42.8 <tspan font-size="20" fill="#9CA3AF">kW</tspan></text>
+       </g>
+       <line x1="340" y1="30" x2="340" y2="150" stroke="#F1F5F9" stroke-width="2"/>
+
+       <!-- 辅助: 开灯率 -->
+       <g transform="translate(380, 40)">
+         <text x="0" y="20" font-size="14" fill="#64748B">照明开启率</text>
+         <!-- 进度条 -->
+         <rect x="0" y="40" width="250" height="10" rx="5" fill="#F1F5F9"/>
+         <rect x="0" y="40" width="160" height="10" rx="5" fill="#F59E0B"/>
+         <text x="260" y="50" font-size="20" font-weight="bold" fill="#F59E0B">64%</text>
+
+         <!-- 辅助: 节能指标 -->
+         <text x="0" y="90" font-size="14" fill="#64748B">今日节能减排</text>
+         <rect x="0" y="110" width="250" height="10" rx="5" fill="#F1F5F9"/>
+         <rect x="0" y="110" width="200" height="10" rx="5" fill="url(#ecoGrad)"/>
+         <text x="260" y="120" font-size="20" font-weight="bold" fill="#10B981">80%</text>
+       </g>
+    </g>
+
+    <!-- 中部：24小时功率趋势图 -->
+    <g transform="translate(0, 200)" filter="url(#lightShadow)">
+       <rect width="680" height="300" rx="12" fill="#FFFFFF"/>
+       <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">24小时照明能耗趋势</text>
+       
+       <g transform="translate(50, 80)">
+         <!-- 坐标系 -->
+         <line x1="0" y1="180" x2="580" y2="180" stroke="#F1F5F9" stroke-width="1"/>
+         <line x1="0" y1="120" x2="580" y2="120" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
+         <line x1="0" y1="60" x2="580" y2="60" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4 4"/>
+         
+         <!-- 曲线 (早8点晚8点高峰) -->
+         <path d="M0 160 C 50 160, 100 80, 150 60 S 250 50, 300 60 S 400 160, 450 170 S 550 180, 580 180" 
+               fill="none" stroke="#F59E0B" stroke-width="3"/>
+         <path d="M0 160 C 50 160, 100 80, 150 60 S 250 50, 300 60 S 400 160, 450 170 S 550 180, 580 180 V 180 H 0 Z" 
+               fill="url(#powerFill)"/>
+               
+         <!-- X轴 -->
+         <text x="0" y="200" font-size="12" fill="#94A3B8">00:00</text>
+         <text x="150" y="200" font-size="12" fill="#94A3B8">08:00</text>
+         <text x="300" y="200" font-size="12" fill="#94A3B8">12:00</text>
+         <text x="450" y="200" font-size="12" fill="#94A3B8">18:00</text>
+         <text x="580" y="200" font-size="12" fill="#94A3B8">24:00</text>
+       </g>
+    </g>
+
+    <!-- 底部：详细回路状态卡片 -->
+    <g transform="translate(0, 520)" filter="url(#lightShadow)">
+       <rect width="680" height="340" rx="12" fill="#FFFFFF"/>
+       <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">区域回路监控</text>
+       
+       <!-- 列表头 -->
+       <g transform="translate(30, 60)">
+          <text x="0" y="0" font-size="12" font-weight="bold" fill="#94A3B8">区域名称</text>
+          <text x="150" y="0" font-size="12" font-weight="bold" fill="#94A3B8">回路编号</text>
+          <text x="280" y="0" font-size="12" font-weight="bold" fill="#94A3B8">电流(A)</text>
+          <text x="380" y="0" font-size="12" font-weight="bold" fill="#94A3B8">控制模式</text>
+          <text x="550" y="0" font-size="12" font-weight="bold" fill="#94A3B8" text-anchor="end">状态</text>
+       </g>
+       <line x1="30" y1="75" x2="650" y2="75" stroke="#F1F5F9" stroke-width="1"/>
+       
+       <!-- 列表内容 -->
+       <g transform="translate(30, 95)">
+          <!-- Row 1 -->
+          <g>
+             <text x="0" y="0" font-size="12" fill="#334155">1F 办公大厅</text>
+             <text x="150" y="0" font-size="12" fill="#64748B">Loop_1F_A01</text>
+             <text x="280" y="0" font-size="12" font-weight="bold" fill="#334155">12.5 A</text>
+             <rect x="380" y="-10" width="60" height="18" rx="9" fill="#EFF6FF"/>
+             <text x="410" y="2" text-anchor="middle" font-size="10" fill="#3B82F6">自动</text>
+             <circle cx="535" cy="-4" r="3" fill="#F59E0B"/>
+             <text x="550" y="0" text-anchor="end" font-size="12" fill="#F59E0B">ON</text>
+          </g>
+          
+          <!-- Row 2 -->
+          <g transform="translate(0, 40)">
+             <text x="0" y="0" font-size="12" fill="#334155">1F 会议室</text>
+             <text x="150" y="0" font-size="12" fill="#64748B">Loop_1F_M02</text>
+             <text x="280" y="0" font-size="12" font-weight="bold" fill="#334155">0.0 A</text>
+             <rect x="380" y="-10" width="60" height="18" rx="9" fill="#F3F4F6"/>
+             <text x="410" y="2" text-anchor="middle" font-size="10" fill="#64748B">手动</text>
+             <circle cx="535" cy="-4" r="3" fill="#94A3B8"/>
+             <text x="550" y="0" text-anchor="end" font-size="12" fill="#94A3B8">OFF</text>
+          </g>
+          
+          <!-- Row 3 -->
+          <g transform="translate(0, 80)">
+             <text x="0" y="0" font-size="12" fill="#334155">1F 走廊通道</text>
+             <text x="150" y="0" font-size="12" fill="#64748B">Loop_1F_C01</text>
+             <text x="280" y="0" font-size="12" font-weight="bold" fill="#334155">5.2 A</text>
+             <rect x="380" y="-10" width="60" height="18" rx="9" fill="#ECFDF5"/>
+             <text x="410" y="2" text-anchor="middle" font-size="10" fill="#10B981">节能</text>
+             <circle cx="535" cy="-4" r="3" fill="#F59E0B"/>
+             <text x="550" y="0" text-anchor="end" font-size="12" fill="#F59E0B">ON (50%)</text>
+          </g>
+
+          <!-- Row 4 (Fault) -->
+          <g transform="translate(0, 120)">
+             <text x="0" y="0" font-size="12" fill="#334155">2F 楼梯间</text>
+             <text x="150" y="0" font-size="12" fill="#64748B">Loop_2F_S01</text>
+             <text x="280" y="0" font-size="12" font-weight="bold" fill="#334155">0.0 A</text>
+             <rect x="380" y="-10" width="60" height="18" rx="9" fill="#FEE2E2"/>
+             <text x="410" y="2" text-anchor="middle" font-size="10" fill="#EF4444">故障</text>
+             <circle cx="535" cy="-4" r="3" fill="#EF4444"/>
+             <text x="550" y="0" text-anchor="end" font-size="12" fill="#EF4444" font-weight="bold">ERROR</text>
+          </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       3. 右侧：智能控制与告警 (Right Control) - 390px
+       ======================================================================== -->
+  <g transform="translate(1190, 20)">
+    
+    <!-- 模块 1: 智能场景控制 (Smart Scenes) -->
+    <g filter="url(#lightShadow)">
+       <rect width="390" height="380" rx="12" fill="#FFFFFF"/>
+       
+       <g transform="translate(20, 25)">
+          <rect x="0" y="0" width="6" height="18" rx="3" fill="#10B981"/>
+          <text x="15" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">快捷场景模式</text>
+       </g>
+       
+       <!-- 场景按钮矩阵 -->
+       <g transform="translate(20, 60)">
+          
+          <!-- Scene 1: 上班模式 (Active) -->
+          <g>
+             <rect width="165" height="80" rx="8" fill="#FFF7ED" stroke="#F59E0B" stroke-width="1"/>
+             <circle cx="30" cy="40" r="15" fill="#F59E0B"/>
+             <text x="20" y="45" font-size="16" fill="#FFFFFF">☀</text>
+             <text x="55" y="35" font-size="14" font-weight="bold" fill="#334155">上班模式</text>
+             <text x="55" y="55" font-size="10" fill="#94A3B8">全区高亮</text>
+             <!-- Active Check -->
+             <circle cx="150" cy="15" r="8" fill="#10B981"/>
+             <path d="M147 15 L149 17 L153 13" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+          </g>
+
+          <!-- Scene 2: 午休模式 -->
+          <g transform="translate(185, 0)">
+             <rect width="165" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+             <circle cx="30" cy="40" r="15" fill="#CBD5E1"/>
+             <text x="20" y="45" font-size="16" fill="#FFFFFF">☕</text>
+             <text x="55" y="35" font-size="14" font-weight="bold" fill="#64748B">午休模式</text>
+             <text x="55" y="55" font-size="10" fill="#94A3B8">部分调光</text>
+          </g>
+
+          <!-- Scene 3: 下班/安保 -->
+          <g transform="translate(0, 95)">
+             <rect width="165" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+             <circle cx="30" cy="40" r="15" fill="#3B82F6"/>
+             <text x="20" y="45" font-size="16" fill="#FFFFFF">☾</text>
+             <text x="55" y="35" font-size="14" font-weight="bold" fill="#64748B">下班模式</text>
+             <text x="55" y="55" font-size="10" fill="#94A3B8">仅保留走廊</text>
+          </g>
+
+          <!-- Scene 4: 全关 -->
+          <g transform="translate(185, 95)">
+             <rect width="165" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+             <circle cx="30" cy="40" r="15" fill="#EF4444"/>
+             <text x="20" y="45" font-size="16" fill="#FFFFFF">✕</text>
+             <text x="55" y="35" font-size="14" font-weight="bold" fill="#64748B">全区关闭</text>
+             <text x="55" y="55" font-size="10" fill="#94A3B8">强制切断</text>
+          </g>
+
+          <!-- 定时策略展示 -->
+          <g transform="translate(0, 200)">
+             <text x="0" y="10" font-weight="bold" fill="#334155">当前生效策略</text>
+             <rect x="0" y="25" width="350" height="40" rx="4" fill="#F0FDF4" stroke="#BBF7D0"/>
+             <text x="15" y="50" font-size="12" fill="#15803D">📅 工作日策略 (07:00 - 22:00)</text>
+          </g>
+       </g>
+    </g>
+
+    <!-- 模块 2: 设备告警 (Alarms) -->
+    <g transform="translate(0, 400)" filter="url(#lightShadow)">
+       <rect width="390" height="460" rx="12" fill="#FFFFFF"/>
+       
+       <g transform="translate(20, 25)">
+          <rect x="0" y="0" width="6" height="18" rx="3" fill="#EF4444"/>
+          <text x="15" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">设备告警</text>
+          <rect x="280" y="-2" width="70" height="20" rx="10" fill="#FEE2E2"/>
+          <text x="315" y="12" text-anchor="middle" font-size="10" fill="#EF4444" font-weight="bold">3 条未处理</text>
+       </g>
+       <line x1="20" y1="55" x2="370" y2="55" stroke="#F1F5F9" stroke-width="2"/>
+       
+       <!-- 告警列表 -->
+       <g transform="translate(20, 75)">
+          <!-- Item 1 -->
+          <g>
+             <circle cx="5" cy="15" r="4" fill="#EF4444"/>
+             <text x="20" y="10" font-size="12" font-weight="bold" fill="#334155">驱动器离线</text>
+             <text x="20" y="28" font-size="11" fill="#64748B">2F 楼梯间 Driver_04</text>
+             <text x="350" y="18" text-anchor="end" font-size="11" fill="#94A3B8">10:42</text>
+             <line x1="0" y1="40" x2="350" y2="40" stroke="#F8FAFC" stroke-width="1"/>
+          </g>
+          
+          <!-- Item 2 -->
+          <g transform="translate(0, 55)">
+             <circle cx="5" cy="15" r="4" fill="#F59E0B"/>
+             <text x="20" y="10" font-size="12" font-weight="bold" fill="#334155">灯具寿命预警</text>
+             <text x="20" y="28" font-size="11" fill="#64748B">1F 大厅主灯 L_01</text>
+             <text x="350" y="18" text-anchor="end" font-size="11" fill="#94A3B8">09:15</text>
+             <line x1="0" y1="40" x2="350" y2="40" stroke="#F8FAFC" stroke-width="1"/>
+          </g>
+       </g>
+    </g>
+
+  </g>
+
+</svg>

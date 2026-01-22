@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="160" viewBox="0 0 220 160">
+  <!-- 标题 -->
+  <text x="10" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333333">照明图例</text>
+
+  <!-- 筒灯开 (暖橙色+光晕圈) -->
+  <circle cx="25" cy="50" r="10" fill="#FF9800" fill-opacity="0.3" />
+  <circle cx="25" cy="50" r="6" fill="#FF9800" />
+  <text x="45" y="55" font-family="sans-serif" font-size="12" fill="#666666">筒灯：开启</text>
+
+  <!-- 筒灯关 (深灰色带白边) -->
+  <circle cx="135" cy="50" r="6" fill="#34495E" stroke="#FFFFFF" stroke-width="1" />
+  <text x="155" y="55" font-family="sans-serif" font-size="12" fill="#666666">筒灯：关闭</text>
+
+  <!-- 灯带开 (亮黄色渐变模拟) -->
+  <rect x="15" y="85" width="50" height="8" rx="4" fill="#FFD700" stroke="#FF9800" stroke-width="1" />
+  <text x="75" y="93" font-family="sans-serif" font-size="12" fill="#666666">灯带：开启</text>
+
+  <!-- 灯带关 (深灰色高对比版) -->
+  <rect x="15" y="115" width="50" height="8" rx="4" fill="#34495E" stroke="#FFFFFF" stroke-width="1" />
+  <text x="75" y="123" font-family="sans-serif" font-size="12" fill="#666666">灯带：关闭</text>
+</svg>

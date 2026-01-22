@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+  <!-- 卡片底色：模拟 iOS 的柔和玻璃质感 -->
+  <rect x="0" y="0" width="340" height="200" rx="28" fill="#F2F2F7" />
+  
+  <!-- 标题：经典的 San Francisco 字体感觉 -->
+  <text x="24" y="38" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#000000">照明控制图例</text>
+
+  <!-- --- 筒灯行 --- -->
+  <!-- 开启状态：带光晕的实体感 -->
+  <g transform="translate(24, 60)">
+    <rect width="140" height="54" rx="16" fill="#FFFFFF" />
+    <circle cx="28" cy="27" r="10" fill="#FF9F0A" /> <!-- iOS 经典橙 -->
+    <circle cx="28" cy="27" r="14" fill="#FF9F0A" fill-opacity="0.2" /> <!-- 扩散光晕 -->
+    <text x="52" y="32" font-family="sans-serif" font-size="13" font-weight="600" fill="#000000">筒灯：开</text>
+  </g>
+  
+  <!-- 关闭状态：静默凹陷感 -->
+  <g transform="translate(176, 60)">
+    <rect width="140" height="54" rx="16" fill="#E5E5EA" />
+    <circle cx="28" cy="27" r="10" fill="#8E8E93" stroke="#FFFFFF" stroke-width="1.5" />
+    <text x="52" y="32" font-family="sans-serif" font-size="13" font-weight="500" fill="#8E8E93">筒灯：关</text>
+  </g>
+
+  <!-- --- 灯带行 --- -->
+  <!-- 开启状态：胶囊发光体 -->
+  <g transform="translate(24, 126)">
+    <rect width="140" height="54" rx="16" fill="#FFFFFF" />
+    <rect x="15" y="22" width="30" height="10" rx="5" fill="#FFD60A" />
+    <rect x="15" y="22" width="30" height="10" rx="5" fill="none" stroke="#FFD60A" stroke-opacity="0.3" stroke-width="4" />
+    <text x="52" y="32" font-family="sans-serif" font-size="13" font-weight="600" fill="#000000">灯带：开</text>
+  </g>
+
+  <!-- 关闭状态：解决“不明显”问题的 iOS 方案 -->
+  <g transform="translate(176, 126)">
+    <rect width="140" height="54" rx="16" fill="#E5E5EA" />
+    <!-- 核心：使用深灰色主体 + 极细白边 (High-Gloss Look) -->
+    <rect x="15" y="22" width="30" height="10" rx="5" fill="#1C1C1E" stroke="#FFFFFF" stroke-width="1.2" />
+    <text x="52" y="32" font-family="sans-serif" font-size="13" font-weight="500" fill="#8E8E93">灯带：关</text>
+  </g>
+</svg>

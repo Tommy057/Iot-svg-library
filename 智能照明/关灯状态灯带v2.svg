@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20">
+  <!-- 第一层：白色外扩轮廓（确保在黑线上能跳出来） -->
+  <rect x="0" y="4" width="100" height="12" rx="6" fill="#FFFFFF" />
+  <!-- 第二层：深色主体 -->
+  <rect x="1" y="5" width="98" height="10" rx="5" fill="#34495E" />
+  <!-- 第三层：内部装饰细线（增加“灯具感”） -->
+  <rect x="15" y="9" width="70" height="2" rx="1" fill="#5D6D7E" />
+</svg>

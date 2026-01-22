@@ -1,0 +1,375 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 智能照明总控系统 (Campus Smart Lighting Control)
+    风格: 宝石光晕 & 纯净白
+    布局: 左(园区拓扑) + 中(地上区域控制) + 右(地下室分层控制)
+  -->
+
+  <defs>
+    <!-- 悬浮阴影 -->
+    <filter id="ctrlShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.12"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 暖光晕染 (用于亮灯状态) -->
+    <radialGradient id="warmLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#F59E0B" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 按钮宝石渐变 - 开 (Blue/Cyan) -->
+    <linearGradient id="btnOnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    
+    <!-- 按钮宝石渐变 - 关 (Gray) -->
+    <linearGradient id="btnOffGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3F4F6"/>
+      <stop offset="100%" stop-color="#E5E7EB"/>
+    </linearGradient>
+    
+    <!-- 按钮宝石渐变 - 全局总控 (Amber) -->
+    <linearGradient id="btnMasterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1600" height="900" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 左侧：园区照明拓扑概览 (Campus Lighting Map) - 400px
+       ======================================================================== -->
+  <g transform="translate(20, 20)">
+    <g filter="url(#ctrlShadow)">
+      <rect width="400" height="860" rx="12" fill="#FFFFFF"/>
+      
+      <!-- 标题 -->
+      <g transform="translate(20, 25)">
+        <rect x="0" y="0" width="6" height="18" rx="3" fill="#F59E0B"/>
+        <text x="15" y="14" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">园区光效概览</text>
+      </g>
+      
+      <!-- 简易地图示意 -->
+      <g transform="translate(20, 80)">
+        
+        <!-- 研发楼 (R&D) -->
+        <g transform="translate(50, 20)">
+           <rect x="0" y="0" width="120" height="100" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+           <text x="60" y="50" text-anchor="middle" font-weight="bold" fill="#94A3B8">研发楼</text>
+           <!-- 亮灯光斑 -->
+           <circle cx="20" cy="20" r="15" fill="url(#warmLight)">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
+           </circle>
+           <circle cx="100" cy="80" r="15" fill="url(#warmLight)"/>
+           <circle cx="60" cy="50" r="30" fill="url(#warmLight)" opacity="0.3"/>
+        </g>
+
+        <!-- 综合楼 (Complex) -->
+        <g transform="translate(200, 50)">
+           <rect x="0" y="0" width="100" height="120" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+           <text x="50" y="60" text-anchor="middle" font-weight="bold" fill="#94A3B8">综合楼</text>
+           <circle cx="50" cy="20" r="15" fill="url(#warmLight)"/>
+           <circle cx="20" cy="100" r="15" fill="url(#warmLight)"/>
+        </g>
+
+        <!-- 宿舍楼 (Dorm) -->
+        <g transform="translate(20, 150)">
+           <rect x="0" y="0" width="140" height="80" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+           <text x="70" y="45" text-anchor="middle" font-weight="bold" fill="#94A3B8">宿舍楼</text>
+           <!-- 宿舍是点状亮灯 -->
+           <circle cx="20" cy="20" r="8" fill="#F59E0B"/>
+           <circle cx="40" cy="20" r="8" fill="#E2E8F0"/>
+           <circle cx="60" cy="20" r="8" fill="#F59E0B"/>
+           <circle cx="20" cy="60" r="8" fill="#E2E8F0"/>
+        </g>
+
+        <!-- 厂房 (Factory) -->
+        <g transform="translate(50, 300)">
+           <path d="M0 20 L40 0 L80 20 L120 0 L160 20 V120 H0 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+           <text x="80" y="70" text-anchor="middle" font-weight="bold" fill="#94A3B8">生产厂房</text>
+           <!-- 厂房是大面积亮 -->
+           <rect x="10" y="30" width="140" height="80" fill="url(#warmLight)" opacity="0.5"/>
+        </g>
+        
+        <!-- 连线路径 -->
+        <path d="M110 120 L110 140 M170 80 L200 80 M90 230 L130 300" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 4"/>
+      </g>
+
+      <!-- 底部图例 -->
+      <g transform="translate(20, 800)">
+         <circle cx="10" cy="10" r="6" fill="#F59E0B"/>
+         <text x="25" y="14" font-size="12" fill="#64748B">亮灯区域</text>
+         <circle cx="100" cy="10" r="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+         <text x="115" y="14" font-size="12" fill="#64748B">熄灭区域</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 中间：地上区域控制矩阵 (Above Ground Controls) - 730px
+       ======================================================================== -->
+  <g transform="translate(440, 20)">
+    
+    <!-- 2.1 顶部全局总控 (Global Master Control) -->
+    <g filter="url(#ctrlShadow)">
+      <rect width="730" height="140" rx="12" fill="#FFFFFF"/>
+      
+      <!-- 总数据 -->
+      <g transform="translate(40, 35)">
+        <text x="0" y="0" font-size="14" fill="#64748B">全区灯具总数 (Total)</text>
+        <text x="0" y="45" font-size="40" font-weight="bold" fill="#1E293B">4,280</text>
+        
+        <g transform="translate(200, -10)">
+           <text x="0" y="10" font-size="12" fill="#94A3B8">开启 (On)</text>
+           <text x="0" y="35" font-size="20" font-weight="bold" fill="#F59E0B">3,120</text>
+           
+           <text x="100" y="10" font-size="12" fill="#94A3B8">关闭 (Off)</text>
+           <text x="100" y="35" font-size="20" font-weight="bold" fill="#64748B">1,155</text>
+           
+           <text x="200" y="10" font-size="12" fill="#94A3B8">故障 (Fault)</text>
+           <text x="200" y="35" font-size="20" font-weight="bold" fill="#EF4444">5</text>
+        </g>
+      </g>
+
+      <!-- 总全开/全关按钮 -->
+      <g transform="translate(520, 30)">
+         <!-- 全开 -->
+         <rect x="0" y="0" width="90" height="80" rx="8" fill="url(#btnMasterGrad)"/>
+         <path d="M45 25 V45 M35 35 H55" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+         <text x="45" y="65" text-anchor="middle" font-weight="bold" fill="#FFFFFF" font-size="14">全区全开</text>
+         
+         <!-- 全关 -->
+         <rect x="100" y="0" width="90" height="80" rx="8" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+         <circle cx="145" cy="35" r="10" stroke="#64748B" stroke-width="3" fill="none"/>
+         <line x1="145" y1="28" x2="145" y2="42" stroke="#64748B" stroke-width="3"/> <!-- Power Icon -->
+         <text x="145" y="65" text-anchor="middle" font-weight="bold" fill="#64748B" font-size="14">全区全关</text>
+      </g>
+    </g>
+
+    <!-- 2.2 区域控制卡片矩阵 -->
+    <g transform="translate(0, 160)">
+      
+      <!-- 定义卡片样式复用 -->
+      <!-- Card 1: 研发楼 -->
+      <g transform="translate(0, 0)" filter="url(#ctrlShadow)">
+        <rect width="355" height="220" rx="12" fill="#FFFFFF"/>
+        <path d="M0 12 Q0 0 12 0 H355 V6 H0 Z" fill="#3B82F6"/> <!-- Blue Top -->
+        <text x="20" y="35" font-weight="bold" font-size="16" fill="#1E293B">研发楼 (R&D)</text>
+        
+        <!-- 统计 -->
+        <g transform="translate(20, 70)">
+           <text x="0" y="0" font-size="12" fill="#94A3B8">开关回路总数</text>
+           <text x="0" y="25" font-size="24" font-weight="bold" fill="#1E293B">1,200</text>
+           <text x="120" y="0" font-size="12" fill="#94A3B8">开启数</text>
+           <text x="120" y="25" font-size="24" font-weight="bold" fill="#F59E0B">1,180</text>
+        </g>
+        
+        <!-- 按钮组 -->
+        <g transform="translate(20, 130)">
+           <rect x="0" y="0" width="150" height="40" rx="20" fill="url(#btnOnGrad)"/>
+           <text x="75" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="bold">一键全开</text>
+           
+           <rect x="165" y="0" width="150" height="40" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+           <text x="240" y="25" text-anchor="middle" fill="#64748B" font-weight="bold">一键全关</text>
+        </g>
+        <circle cx="330" cy="30" r="6" fill="#10B981"/> <!-- Online -->
+      </g>
+
+      <!-- Card 2: 宿舍楼 -->
+      <g transform="translate(375, 0)" filter="url(#ctrlShadow)">
+        <rect width="355" height="220" rx="12" fill="#FFFFFF"/>
+        <path d="M0 12 Q0 0 12 0 H355 V6 H0 Z" fill="#F59E0B"/> <!-- Orange Top -->
+        <text x="20" y="35" font-weight="bold" font-size="16" fill="#1E293B">宿舍楼 (Dorm)</text>
+        
+        <g transform="translate(20, 70)">
+           <text x="0" y="0" font-size="12" fill="#94A3B8">开关回路总数</text>
+           <text x="0" y="25" font-size="24" font-weight="bold" fill="#1E293B">800</text>
+           <text x="120" y="0" font-size="12" fill="#94A3B8">开启数</text>
+           <text x="120" y="25" font-size="24" font-weight="bold" fill="#F59E0B">200</text> <!-- 白天少 -->
+        </g>
+        
+        <g transform="translate(20, 130)">
+           <rect x="0" y="0" width="150" height="40" rx="20" fill="url(#btnOnGrad)"/>
+           <text x="75" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="bold">一键全开</text>
+           <rect x="165" y="0" width="150" height="40" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+           <text x="240" y="25" text-anchor="middle" fill="#64748B" font-weight="bold">一键全关</text>
+        </g>
+        <circle cx="330" cy="30" r="6" fill="#10B981"/>
+      </g>
+
+      <!-- Card 3: 综合楼 -->
+      <g transform="translate(0, 240)" filter="url(#ctrlShadow)">
+        <rect width="355" height="220" rx="12" fill="#FFFFFF"/>
+        <path d="M0 12 Q0 0 12 0 H355 V6 H0 Z" fill="#6366F1"/> <!-- Purple Top -->
+        <text x="20" y="35" font-weight="bold" font-size="16" fill="#1E293B">综合楼 (Complex)</text>
+        
+        <g transform="translate(20, 70)">
+           <text x="0" y="0" font-size="12" fill="#94A3B8">开关回路总数</text>
+           <text x="0" y="25" font-size="24" font-weight="bold" fill="#1E293B">600</text>
+           <text x="120" y="0" font-size="12" fill="#94A3B8">开启数</text>
+           <text x="120" y="25" font-size="24" font-weight="bold" fill="#F59E0B">580</text>
+        </g>
+        
+        <g transform="translate(20, 130)">
+           <rect x="0" y="0" width="150" height="40" rx="20" fill="url(#btnOnGrad)"/>
+           <text x="75" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="bold">一键全开</text>
+           <rect x="165" y="0" width="150" height="40" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+           <text x="240" y="25" text-anchor="middle" fill="#64748B" font-weight="bold">一键全关</text>
+        </g>
+        <circle cx="330" cy="30" r="6" fill="#10B981"/>
+      </g>
+
+      <!-- Card 4: 厂房 -->
+      <g transform="translate(375, 240)" filter="url(#ctrlShadow)">
+        <rect width="355" height="220" rx="12" fill="#FFFFFF"/>
+        <path d="M0 12 Q0 0 12 0 H355 V6 H0 Z" fill="#10B981"/> <!-- Green Top -->
+        <text x="20" y="35" font-weight="bold" font-size="16" fill="#1E293B">生产厂房 (Factory)</text>
+        
+        <g transform="translate(20, 70)">
+           <text x="0" y="0" font-size="12" fill="#94A3B8">开关回路总数</text>
+           <text x="0" y="25" font-size="24" font-weight="bold" fill="#1E293B">1,680</text>
+           <text x="120" y="0" font-size="12" fill="#94A3B8">开启数</text>
+           <text x="120" y="25" font-size="24" font-weight="bold" fill="#F59E0B">1,160</text>
+        </g>
+        
+        <g transform="translate(20, 130)">
+           <rect x="0" y="0" width="150" height="40" rx="20" fill="url(#btnOnGrad)"/>
+           <text x="75" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="bold">一键全开</text>
+           <rect x="165" y="0" width="150" height="40" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+           <text x="240" y="25" text-anchor="middle" fill="#64748B" font-weight="bold">一键全关</text>
+        </g>
+        <circle cx="330" cy="30" r="6" fill="#10B981"/>
+      </g>
+      
+      <!-- 列表补充：今日节能数据 -->
+      <g transform="translate(0, 480)" filter="url(#ctrlShadow)">
+        <rect width="730" height="220" rx="12" fill="#FFFFFF"/>
+        <text x="20" y="30" font-weight="bold" font-size="16" fill="#1E293B">运行日志与告警</text>
+        
+        <g transform="translate(20, 60)">
+           <text x="0" y="10" font-size="12" fill="#64748B">10:42 厂房 C区照明回路故障 (Fault)</text>
+           <circle cx="300" cy="6" r="4" fill="#EF4444"/>
+           <line x1="0" y1="30" x2="690" y2="30" stroke="#F1F5F9" stroke-width="1"/>
+           
+           <text x="0" y="50" font-size="12" fill="#64748B">08:00 研发楼已自动切换至“上班模式”</text>
+           <circle cx="300" cy="46" r="4" fill="#10B981"/>
+           <line x1="0" y1="70" x2="690" y2="70" stroke="#F1F5F9" stroke-width="1"/>
+           
+           <text x="0" y="90" font-size="12" fill="#64748B">07:00 全区景观照明自动关闭</text>
+           <circle cx="300" cy="86" r="4" fill="#10B981"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       3. 右侧：地下室分层专项控制 (Underground) - 400px
+       ======================================================================== -->
+  <g transform="translate(1190, 20)">
+    <g filter="url(#ctrlShadow)">
+      <rect width="390" height="860" rx="12" fill="#FFFFFF"/>
+      
+      <!-- 标题栏 (不同色区分) -->
+      <path d="M0 12 Q0 0 12 0 H390 V60 H0 V12 Z" fill="#F1F5F9"/>
+      <rect x="20" y="25" width="6" height="18" rx="3" fill="#64748B"/>
+      <text x="35" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">地下区域 (Underground)</text>
+      
+      <!-- BMF 夹层 -->
+      <g transform="translate(20, 80)">
+         <text x="0" y="15" font-weight="bold" fill="#475569" font-size="16">BMF 夹层</text>
+         <!-- 统计 -->
+         <rect x="0" y="30" width="350" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+         <text x="15" y="55" font-size="12" fill="#94A3B8">总数</text>
+         <text x="15" y="75" font-size="16" font-weight="bold" fill="#1E293B">80</text>
+         <text x="80" y="55" font-size="12" fill="#94A3B8">亮灯</text>
+         <text x="80" y="75" font-size="16" font-weight="bold" fill="#F59E0B">20</text>
+         
+         <!-- 按钮 -->
+         <rect x="180" y="40" width="70" height="40" rx="20" fill="#3B82F6"/>
+         <text x="215" y="65" text-anchor="middle" font-size="12" fill="#FFFFFF">全开</text>
+         <rect x="260" y="40" width="70" height="40" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+         <text x="295" y="65" text-anchor="middle" font-size="12" fill="#64748B">全关</text>
+         
+         <line x1="0" y1="110" x2="350" y2="110" stroke="#F1F5F9" stroke-width="2"/>
+      </g>
+
+      <!-- B1F 地下车库 -->
+      <g transform="translate(20, 210)">
+         <text x="0" y="15" font-weight="bold" fill="#475569" font-size="16">B1F 负一车库</text>
+         <rect x="0" y="30" width="350" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+         <text x="15" y="55" font-size="12" fill="#94A3B8">总数</text>
+         <text x="15" y="75" font-size="16" font-weight="bold" fill="#1E293B">400</text>
+         <text x="80" y="55" font-size="12" fill="#94A3B8">亮灯</text>
+         <text x="80" y="75" font-size="16" font-weight="bold" fill="#F59E0B">380</text>
+         
+         <rect x="180" y="40" width="70" height="40" rx="20" fill="#3B82F6"/>
+         <text x="215" y="65" text-anchor="middle" font-size="12" fill="#FFFFFF">全开</text>
+         <rect x="260" y="40" width="70" height="40" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+         <text x="295" y="65" text-anchor="middle" font-size="12" fill="#64748B">全关</text>
+         <line x1="0" y1="110" x2="350" y2="110" stroke="#F1F5F9" stroke-width="2"/>
+      </g>
+      
+      <!-- B2F 地下车库 -->
+      <g transform="translate(20, 340)">
+         <text x="0" y="15" font-weight="bold" fill="#475569" font-size="16">B2F 负二车库</text>
+         <rect x="0" y="30" width="350" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+         <text x="15" y="55" font-size="12" fill="#94A3B8">总数</text>
+         <text x="15" y="75" font-size="16" font-weight="bold" fill="#1E293B">400</text>
+         <text x="80" y="55" font-size="12" fill="#94A3B8">亮灯</text>
+         <text x="80" y="75" font-size="16" font-weight="bold" fill="#F59E0B">120</text>
+         
+         <rect x="180" y="40" width="70" height="40" rx="20" fill="#3B82F6"/>
+         <text x="215" y="65" text-anchor="middle" font-size="12" fill="#FFFFFF">全开</text>
+         <rect x="260" y="40" width="70" height="40" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+         <text x="295" y="65" text-anchor="middle" font-size="12" fill="#64748B">全关</text>
+         <line x1="0" y1="110" x2="350" y2="110" stroke="#F1F5F9" stroke-width="2"/>
+      </g>
+
+      <!-- B3F 人防工程 -->
+      <g transform="translate(20, 470)">
+         <text x="0" y="15" font-weight="bold" fill="#475569" font-size="16">B3F 人防工程</text>
+         <rect x="0" y="30" width="350" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+         <text x="15" y="55" font-size="12" fill="#94A3B8">总数</text>
+         <text x="15" y="75" font-size="16" font-weight="bold" fill="#1E293B">120</text>
+         <text x="80" y="55" font-size="12" fill="#94A3B8">亮灯</text>
+         <text x="80" y="75" font-size="16" font-weight="bold" fill="#94A3B8">0</text> <!-- 全黑 -->
+         
+         <rect x="180" y="40" width="70" height="40" rx="20" fill="#3B82F6"/>
+         <text x="215" y="65" text-anchor="middle" font-size="12" fill="#FFFFFF">全开</text>
+         <rect x="260" y="40" width="70" height="40" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+         <text x="295" y="65" text-anchor="middle" font-size="12" fill="#64748B">全关</text>
+      </g>
+      
+      <!-- 底部感应照明控制 (车来灯亮) -->
+      <g transform="translate(20, 620)">
+         <rect width="350" height="200" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+         <text x="20" y="30" font-weight="bold" fill="#166534">节能策略: 雷达感应</text>
+         <text x="20" y="55" font-size="12" fill="#166534" width="300">地下车库已启用雷达感应模式。</text>
+         <text x="20" y="75" font-size="12" fill="#166534" width="300">无车时保持 10% 微亮，有车全亮。</text>
+         
+         <g transform="translate(100, 120)">
+            <circle cx="0" cy="0" r="30" fill="none" stroke="#166534" stroke-width="2"/>
+            <path d="M-10 0 L10 0 M0 -10 L0 10" stroke="#166534" stroke-width="2"/>
+            <circle cx="0" cy="0" r="40" fill="none" stroke="#166534" stroke-width="1" stroke-dasharray="4 4" opacity="0.5">
+               <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="60" y="5" font-size="14" fill="#166534" font-weight="bold">雷达监测中...</text>
+         </g>
+      </g>
+
+    </g>
+  </g>
+
+</svg>

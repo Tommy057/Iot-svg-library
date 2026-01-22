@@ -1,0 +1,42 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 复用定义 -->
+    <linearGradient id="bg_gradient_p" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_p" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_p" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_p" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_p)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_p)">
+    <!-- 1. 传感器/显示屏主体 (Main Crystal Block) -->
+    <!-- 宽大的圆角矩形 -->
+    <rect x="180" y="230" width="664" height="564" rx="80" fill="url(#gem_gradient_p)"/>
+    
+    <!-- 2. 中间的分隔线 (Divider) -->
+    <rect x="502" y="280" width="20" height="464" rx="10" fill="#001530" fill-opacity="0.2"/>
+
+    <!-- 3. 上行箭头 (Inflow - Bright) -->
+    <!-- 代表进入的人流，使用亮白色 -->
+    <path d="M350 580 L 350 400 M 350 400 L 280 470 M 350 400 L 420 470" stroke="white" stroke-width="60" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 箭头底部的圆点 (象征人头) -->
+    <circle cx="350" cy="650" r="30" fill="white"/>
+
+    <!-- 4. 下行箭头 (Outflow - Deep Blue) -->
+    <!-- 代表离开的人流，使用深蓝色，形成对比 -->
+    <path d="M674 440 L 674 620 M 674 620 L 604 550 M 674 620 L 744 550" stroke="#001530" stroke-width="60" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.6"/>
+    <!-- 箭头顶部的圆点 -->
+    <circle cx="674" cy="370" r="30" fill="#001530" fill-opacity="0.6"/>
+
+    <!-- 5. 数据粒子 (Data Dots) -->
+    <!-- 漂浮在周围的小点，增加科技感 -->
+    <circle cx="512" cy="850" r="10" fill="#00C6FF"/>
+    <circle cx="480" cy="850" r="10" fill="#00C6FF" fill-opacity="0.5"/>
+    <circle cx="544" cy="850" r="10" fill="#00C6FF" fill-opacity="0.5"/>
+
+    <!-- 6. 玻璃表面高光 (Gloss Shine) -->
+    <path d="M200 250 H 824 L 700 600 H 324 L 200 250 Z" fill="url(#shine_p)" fill-opacity="0.4"/>
+  </g>
+</svg>

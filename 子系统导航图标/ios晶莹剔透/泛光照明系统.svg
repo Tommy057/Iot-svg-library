@@ -1,0 +1,91 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 复用定义 -->
+    <linearGradient id="bg_gradient_fl2" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_fl2" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_fl2" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    
+    <!-- 基础投影 -->
+    <filter id="shadow_fl2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+
+    <!-- 新增：强光晕染滤镜 (High Intensity Bloom) -->
+    <!-- 这个滤镜会让白色的圆点产生向外扩散的光晕 -->
+    <filter id="light_bloom" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 新增：灯珠核心辐射渐变 (从纯白到亮青) -->
+    <radialGradient id="bulb_glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.5 0.5) scale(0.5)">
+      <stop stop-color="#FFFFFF" offset="0.3" /> <!-- 中心极亮纯白 -->
+      <stop stop-color="#7DF9FF" offset="0.7" /> <!-- 边缘电光青 -->
+      <stop stop-color="#0072FF" offset="1" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_fl2)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_fl2)">
+    <!-- 1. 灯具外壳 (保持厚重感) -->
+    <rect x="180" y="180" width="664" height="664" rx="80" fill="url(#gem_gradient_fl2)"/>
+    
+    <!-- 2. 内部反射底板 (深色衬托亮光) -->
+    <rect x="230" y="230" width="564" height="564" rx="50" fill="#000815" fill-opacity="0.6"/>
+
+    <!-- 3. 四眼强光矩阵 (High Power Emitters) -->
+    <!-- 应用 bloom 滤镜，让它们看起来真的在发光 -->
+    <g filter="url(#light_bloom)">
+      
+      <!-- === 左上灯珠 === -->
+      <g transform="translate(376 376)">
+        <!-- 底座 -->
+        <circle r="100" fill="#0038A8"/>
+        <!-- 核心亮光 -->
+        <circle r="70" fill="white"/>
+        <!-- 光晕过渡 -->
+        <circle r="90" fill="url(#bulb_glow)" gradientTransform="scale(180)"/>
+        <!-- 刺眼星芒 (Diffraction Spike) -->
+        <path d="M-60 0 H 60 M 0 -60 V 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+      </g>
+
+      <!-- === 右上灯珠 === -->
+      <g transform="translate(648 376)">
+        <circle r="100" fill="#0038A8"/>
+        <circle r="70" fill="white"/>
+        <circle r="90" fill="url(#bulb_glow)" gradientTransform="scale(180)"/>
+        <path d="M-60 0 H 60 M 0 -60 V 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+      </g>
+
+      <!-- === 左下灯珠 === -->
+      <g transform="translate(376 648)">
+        <circle r="100" fill="#0038A8"/>
+        <circle r="70" fill="white"/>
+        <circle r="90" fill="url(#bulb_glow)" gradientTransform="scale(180)"/>
+        <path d="M-60 0 H 60 M 0 -60 V 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+      </g>
+
+      <!-- === 右下灯珠 === -->
+      <g transform="translate(648 648)">
+        <circle r="100" fill="#0038A8"/>
+        <circle r="70" fill="white"/>
+        <circle r="90" fill="url(#bulb_glow)" gradientTransform="scale(180)"/>
+        <path d="M-60 0 H 60 M 0 -60 V 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+      </g>
+    </g>
+
+    <!-- 4. 整体玻璃盖板 (Cover Glass) -->
+    <!-- 在强光之上再加一层反光，增加玻璃罩的存在感 -->
+    <rect x="200" y="200" width="624" height="280" rx="50" fill="url(#shine_fl2)" fill-opacity="0.4"/>
+    
+    <!-- 5. 边框螺丝细节 -->
+    <circle cx="210" cy="210" r="15" fill="#001530" fill-opacity="0.5"/>
+    <circle cx="814" cy="210" r="15" fill="#001530" fill-opacity="0.5"/>
+    <circle cx="210" cy="814" r="15" fill="#001530" fill-opacity="0.5"/>
+    <circle cx="814" cy="814" r="15" fill="#001530" fill-opacity="0.5"/>
+
+  </g>
+</svg>

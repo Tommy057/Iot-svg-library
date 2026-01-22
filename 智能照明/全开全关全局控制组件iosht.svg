@@ -1,0 +1,47 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="360" height="240" viewBox="0 0 360 240">
+  <!-- 1. 模拟 iOS 18 磨砂底板：双层圆角矩形制造边缘厚度 -->
+  <rect x="0" y="0" width="360" height="240" rx="36" fill="#E5E5EA" />
+  <rect x="2" y="2" width="356" height="236" rx="34" fill="#F2F2F7" />
+  
+  <!-- 2. 顶部微小的装饰线：模拟玻璃盖板的高光 -->
+  <rect x="40" y="2" width="280" height="1" rx="0.5" fill="#FFFFFF" opacity="0.8" />
+
+  <!-- 3. 标题区：iOS 经典的紧凑排版 -->
+  <rect x="24" y="24" width="20" height="20" rx="6" fill="#007AFF" />
+  <circle cx="34" cy="34" r="3" fill="none" stroke="#FFFFFF" stroke-width="1.5" />
+  <text x="52" y="39" font-family="Arial, sans-serif" font-size="16" font-weight="900" fill="#1C1C1E">FLOOR CONTROL</text>
+
+  <!-- 4. 主控布局：采用 iOS 18 标志性的模块化 Widget -->
+
+  <!-- --- 一键全开模块 (白色高光磁贴) --- -->
+  <rect x="18" y="65" width="156" height="150" rx="30" fill="#FFFFFF" />
+  <!-- 内部光影：底部的微弱阴影 -->
+  <rect x="23" y="205" width="146" height="2" rx="1" fill="#D1D1D6" opacity="0.3" />
+  
+  <!-- 太阳图标：采用 iOS 粗线条风格 -->
+  <circle cx="96" cy="115" r="14" fill="#FF9500" opacity="0.15" /> <!-- 模拟外溢光 -->
+  <circle cx="96" cy="115" r="8" fill="#FF9500" />
+  <!-- 太阳光芒 -->
+  <line x1="96" y1="98" x2="96" y2="102" stroke="#FF9500" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="96" y1="128" x2="96" y2="132" stroke="#FF9500" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="79" y1="115" x2="83" y2="115" stroke="#FF9500" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="109" y1="115" x2="113" y2="115" stroke="#FF9500" stroke-width="2.5" stroke-linecap="round" />
+  
+  <text x="96" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="900" fill="#1C1C1E" text-anchor="middle">一键全开</text>
+  <text x="96" y="192" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#FF9500" text-anchor="middle" opacity="0.8">LIGHTS ON</text>
+
+  <!-- --- 一键全关模块 (深空黑沉浸磁贴) --- -->
+  <rect x="186" y="65" width="156" height="150" rx="30" fill="#1C1C1E" />
+  <!-- 内部光影：顶部的微弱反光线 -->
+  <rect x="191" y="66" width="146" height="1" rx="0.5" fill="#FFFFFF" opacity="0.1" />
+  
+  <!-- 电源图标：iOS 经典开关风格 -->
+  <circle cx="264" cy="115" r="10" fill="none" stroke="#FFFFFF" stroke-width="2.5" />
+  <line x1="264" y1="108" x2="264" y2="115" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+  
+  <text x="264" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">一键全关</text>
+  <text x="264" y="192" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8E8E93" text-anchor="middle">SHUTDOWN</text>
+
+  <!-- 5. 底部装饰：模拟 iOS 的 Home Indicator 触控条感 -->
+  <rect x="140" y="228" width="80" height="4" rx="2" fill="#D1D1D6" opacity="0.5" />
+</svg>

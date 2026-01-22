@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24">
+  <!-- 1. 外部包络线：极浅的白边，提供物理厚度感 -->
+  <rect x="1" y="5" width="118" height="14" rx="7" fill="#FFFFFF" />
+  <!-- 2. 主体：iOS 经典的 Dark Gray，色值非常深，保证对比度 -->
+  <rect x="2" y="6" width="116" height="12" rx="6" fill="#1C1C1E" />
+  <!-- 3. 内部高光：顶部的一条细微亮线，模拟玻璃盖板边缘 -->
+  <path d="M10 8 Q60 8 110 8" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1" stroke-linecap="round"/>
+  <!-- 4. 中心装饰：三个极致简约的深色圆点，暗示这是一个灯具组件 -->
+  <circle cx="50" cy="12" r="1.2" fill="#48484A" />
+  <circle cx="60" cy="12" r="1.2" fill="#48484A" />
+  <circle cx="70" cy="12" r="1.2" fill="#48484A" />
+</svg>

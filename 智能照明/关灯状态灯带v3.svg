@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="24" viewBox="0 0 100 24">
+    <!-- 外层发光边框（浅灰色，用于衬托） -->
+    <rect x="2" y="6" width="96" height="12" rx="6" fill="none" stroke="#E4E7ED" stroke-width="3" />
+    <!-- 主体：深蓝灰色（代表熄灭） -->
+    <rect x="2" y="6" width="96" height="12" rx="6" fill="#2C3E50" />
+    <!-- 核心亮线：白色细边（这是最关键的一笔，确保对比度） -->
+    <rect x="2" y="6" width="96" height="12" rx="6" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+    <!-- 装饰：虚线，暗示这是个电器 -->
+    <line x1="20" y1="12" x2="80" y2="12" stroke="#5D6D7E" stroke-width="1" stroke-dasharray="2 4" />
+</svg>

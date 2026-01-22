@@ -1,0 +1,45 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 统一视觉基因 -->
+    <linearGradient id="bg_gradient_p2" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_p2" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_p2" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_p2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_p2)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_p2)">
+    <!-- 1. 显示屏底座 (Crystal Screen) -->
+    <rect x="162" y="250" width="700" height="524" rx="60" fill="url(#gem_gradient_p2)"/>
+    
+    <!-- 2. 人群剪影 (People Silhouettes) - 核心识别点 -->
+    <g fill="#001530" fill-opacity="0.4">
+      <!-- 左侧人 -->
+      <circle cx="320" cy="450" r="50"/>
+      <path d="M250 650 Q 320 500 390 650 H 250 Z"/>
+      <!-- 右侧人 -->
+      <circle cx="704" cy="450" r="50"/>
+      <path d="M634 650 Q 704 500 774 650 H 634 Z"/>
+      <!-- 中间人 (大，主角) -->
+      <circle cx="512" cy="420" r="70" fill="white" fill-opacity="0.2"/> <!-- 稍微亮一点 -->
+      <path d="M400 680 Q 512 480 624 680 H 400 Z" fill="white" fill-opacity="0.2"/>
+    </g>
+
+    <!-- 3. 扫描识别框 (Face ID / Detection Box) -->
+    <!-- 四个角标，表示正在锁定目标 -->
+    <path d="M350 350 H 300 V 400" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <path d="M674 350 H 724 V 400" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <path d="M350 650 H 300 V 600" stroke="white" stroke-width="20" stroke-linecap="round"/>
+    <path d="M674 650 H 724 V 600" stroke="white" stroke-width="20" stroke-linecap="round"/>
+
+    <!-- 4. 扫描激光线 (Scanning Beam) -->
+    <!-- 一条横跨的亮线，暗示正在计数 -->
+    <path d="M200 420 H 824" stroke="#00C6FF" stroke-width="10" stroke-opacity="0.8"/>
+    <rect x="200" y="410" width="624" height="20" fill="#00C6FF" fill-opacity="0.3" filter="blur(10px)"/>
+
+    <!-- 5. 玻璃反光 (Surface Gloss) -->
+    <path d="M162 250 H 862 L 750 500 H 274 L 162 250 Z" fill="url(#shine_p2)" fill-opacity="0.4"/>
+  </g>
+</svg>
