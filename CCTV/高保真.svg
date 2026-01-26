@@ -1,0 +1,218 @@
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" style="background-color:#E8EBF0; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">
+  
+  <defs>
+    <!-- 阴影滤镜 -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+    
+    <!-- 方案A：球机金属光泽渐变 -->
+    <radialGradient id="domeGradOnline" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#69F0AE"/> <!-- 高光 -->
+      <stop offset="50%" stop-color="#00C853"/> <!-- 固有色 -->
+      <stop offset="100%" stop-color="#006028"/> <!-- 暗部 -->
+    </radialGradient>
+    <radialGradient id="domeGradOffline" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FF8A80"/>
+      <stop offset="50%" stop-color="#D32F2F"/>
+      <stop offset="100%" stop-color="#8C1B1B"/>
+    </radialGradient>
+    
+    <!-- 方案A：枪机线性渐变 -->
+    <linearGradient id="bulletBodyOnline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="50%" stop-color="#2E7D32"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+     <linearGradient id="bulletBodyOffline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EF5350"/>
+      <stop offset="50%" stop-color="#C62828"/>
+      <stop offset="100%" stop-color="#8E1C1C"/>
+    </linearGradient>
+  </defs>
+
+  <text x="50" y="50" font-size="24" fill="#2C3E50" font-weight="800">CCTV 图标升级版 (High-Fidelity)</text>
+
+  <!-- ======================================================= -->
+  <!-- 方案 A：拟物光感 (Glossy Reality) - 推荐 -->
+  <!-- ======================================================= -->
+  <g transform="translate(50, 100)">
+    <text x="0" y="0" font-size="16" fill="#546E7A" font-weight="bold">方案 A: 拟物光感 (Glossy)</text>
+    
+    <!-- 卡片容器 -->
+    <rect x="0" y="20" width="340" height="200" rx="12" fill="#FFFFFF" filter="url(#dropShadow)"/>
+    
+    <!-- 图例头 -->
+    <g transform="translate(20, 50)">
+       <text x="0" y="0" font-size="14" fill="#90A4AE">图例状态</text>
+       <circle cx="80" cy="-5" r="5" fill="#00C853"/>
+       <text x="90" y="0" font-size="14" fill="#333" font-weight="bold">正常</text>
+       <circle cx="140" cy="-5" r="5" fill="#D32F2F"/>
+       <text x="150" y="0" font-size="14" fill="#333" font-weight="bold">故障</text>
+    </g>
+
+    <line x1="20" y1="70" x2="320" y2="70" stroke="#ECEFF1" stroke-width="1"/>
+
+    <!-- 球机展示 -->
+    <g transform="translate(40, 110)">
+      <text x="0" y="5" font-size="14" fill="#37474F" font-weight="bold">球机</text>
+      <!-- 在线球机 -->
+      <g transform="translate(100, 0)">
+        <circle cx="0" cy="0" r="14" fill="url(#domeGradOnline)" stroke="#FFF" stroke-width="2"/>
+        <!-- 镜头孔 -->
+        <circle cx="0" cy="0" r="6" fill="#263238" stroke="#004D40" stroke-width="1"/>
+        <circle cx="2" cy="-2" r="2" fill="#FFFFFF" opacity="0.4"/> <!-- 镜头反光 -->
+      </g>
+      <!-- 离线球机 -->
+      <g transform="translate(160, 0)">
+        <circle cx="0" cy="0" r="14" fill="url(#domeGradOffline)" stroke="#FFF" stroke-width="2"/>
+        <path d="M-4,-4 L4,4 M-4,4 L4,-4" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- 枪机展示 -->
+    <g transform="translate(40, 170)">
+      <text x="0" y="5" font-size="14" fill="#37474F" font-weight="bold">枪机</text>
+      <!-- 在线枪机 -->
+      <g transform="translate(100, 0)">
+        <!-- 支架 -->
+        <rect x="-8" y="-6" width="6" height="12" fill="#455A64" rx="1"/>
+        <!-- 机身 -->
+        <path d="M-2,-8 L24,-8 L28,-6 L28,6 L24,8 L-2,8 Z" fill="url(#bulletBodyOnline)" stroke="#FFF" stroke-width="1.5"/>
+        <!-- 镜头前端 -->
+        <rect x="24" y="-6" width="4" height="12" fill="#1B5E20"/>
+      </g>
+      <!-- 离线枪机 -->
+      <g transform="translate(160, 0)">
+        <rect x="-8" y="-6" width="6" height="12" fill="#455A64" rx="1"/>
+        <path d="M-2,-8 L24,-8 L28,-6 L28,6 L24,8 L-2,8 Z" fill="url(#bulletBodyOffline)" stroke="#FFF" stroke-width="1.5"/>
+         <path d="M10,-3 L16,3 M10,3 L16,-3" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- 方案 B：UI 徽章风格 (Badge/Pin) - 最清晰 -->
+  <!-- ======================================================= -->
+  <g transform="translate(450, 100)">
+    <text x="0" y="0" font-size="16" fill="#546E7A" font-weight="bold">方案 B: 地图标记 (Map Pin)</text>
+    
+    <rect x="0" y="20" width="340" height="200" rx="12" fill="#263238" filter="url(#dropShadow)"/>
+
+    <!-- 图例 -->
+    <g transform="translate(20, 50)">
+        <text x="0" y="0" font-size="14" fill="#B0BEC5">图例</text>
+        <rect x="50" y="-8" width="12" height="12" rx="3" fill="#00E676"/>
+        <text x="70" y="0" font-size="14" fill="#FFF">在线</text>
+        <rect x="120" y="-8" width="12" height="12" rx="3" fill="#FF1744"/>
+        <text x="140" y="0" font-size="14" fill="#FFF">离线</text>
+    </g>
+    <line x1="20" y1="70" x2="320" y2="70" stroke="#37474F" stroke-width="1"/>
+
+    <!-- 样式展示 -->
+    <g transform="translate(40, 110)">
+       <text x="0" y="5" font-size="14" fill="#ECEFF1" font-weight="bold">球机</text>
+       
+       <!-- 在线球机 PIN -->
+       <g transform="translate(100, 0)">
+         <!-- Pin 底座 -->
+         <path d="M-16,0 A16,16 0 1,1 16,0 L0,20 Z" fill="#FFFFFF"/>
+         <!-- 图标内胆 -->
+         <circle cx="0" cy="0" r="12" fill="#00E676"/>
+         <!-- 内部符号 -->
+         <circle cx="0" cy="0" r="5" fill="#004D40"/> 
+       </g>
+       
+        <!-- 离线球机 PIN -->
+       <g transform="translate(160, 0)">
+         <path d="M-16,0 A16,16 0 1,1 16,0 L0,20 Z" fill="#FFFFFF"/>
+         <circle cx="0" cy="0" r="12" fill="#FF1744"/>
+         <rect x="-2" y="-5" width="4" height="10" fill="#FFF"/>
+       </g>
+    </g>
+
+    <g transform="translate(40, 170)">
+       <text x="0" y="5" font-size="14" fill="#ECEFF1" font-weight="bold">枪机</text>
+       
+       <!-- 在线枪机 PIN -->
+       <g transform="translate(100, 0)">
+          <path d="M-18,-12 L18,-12 L18,12 L-18,12 Z" fill="#FFFFFF" rx="4"/>
+          <path d="M0,12 L-6,18 L6,18 Z" fill="#FFFFFF"/>
+          
+          <!-- 内部枪机符号 -->
+          <path d="M-12,-6 L8,-6 L12,0 L8,6 L-12,6 Z" fill="#00E676"/>
+       </g>
+
+        <!-- 离线枪机 PIN -->
+       <g transform="translate(160, 0)">
+          <path d="M-18,-12 L18,-12 L18,12 L-18,12 Z" fill="#FFFFFF" rx="4"/>
+          <path d="M0,12 L-6,18 L6,18 Z" fill="#FFFFFF"/>
+          
+          <path d="M-12,-6 L8,-6 L12,0 L8,6 L-12,6 Z" fill="#FF1744"/>
+       </g>
+    </g>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- 方案 C：高精工程 (Precision CAD) - 严谨风格 -->
+  <!-- ======================================================= -->
+  <g transform="translate(50, 350)">
+    <text x="0" y="0" font-size="16" fill="#546E7A" font-weight="bold">方案 C: 高精工程 (Precision)</text>
+    
+    <rect x="0" y="20" width="340" height="200" rx="0" fill="#F5F7FA" stroke="#CFD8DC" stroke-width="2"/>
+
+    <!-- 图例 -->
+    <g transform="translate(20, 50)">
+       <text x="0" y="0" font-size="14" fill="#333" font-family="monospace">STATUS:</text>
+       <rect x="70" y="-8" width="40" height="12" fill="#00C853" stroke="#000" stroke-width="1"/>
+       <text x="80" y="2" font-size="10" fill="#FFF" font-family="monospace">ON</text>
+       
+       <rect x="130" y="-8" width="40" height="12" fill="#D50000" stroke="#000" stroke-width="1"/>
+       <text x="140" y="2" font-size="10" fill="#FFF" font-family="monospace">OFF</text>
+    </g>
+    
+    <g transform="translate(40, 110)">
+      <text x="0" y="5" font-size="14" fill="#333" font-weight="bold">DOME</text>
+      <!-- 在线 -->
+      <g transform="translate(100, 0)">
+        <path d="M-14,0 A14,14 0 0,1 14,0" fill="none" stroke="#000" stroke-width="2"/> <!-- 视野框 -->
+        <circle cx="0" cy="0" r="10" fill="#00C853" stroke="#000" stroke-width="2"/>
+        <line x1="0" y1="-10" x2="0" y2="10" stroke="#000" stroke-width="1"/>
+        <line x1="-10" y1="0" x2="10" y2="0" stroke="#000" stroke-width="1"/>
+      </g>
+      <!-- 离线 -->
+      <g transform="translate(160, 0)">
+        <path d="M-14,0 A14,14 0 0,1 14,0" fill="none" stroke="#D50000" stroke-width="1" stroke-dasharray="2,2"/>
+        <circle cx="0" cy="0" r="10" fill="#D50000" stroke="#000" stroke-width="2"/>
+        <line x1="-6" y1="-6" x2="6" y2="6" stroke="#FFF" stroke-width="2"/>
+        <line x1="6" y1="-6" x2="-6" y2="6" stroke="#FFF" stroke-width="2"/>
+      </g>
+    </g>
+
+    <g transform="translate(40, 170)">
+      <text x="0" y="5" font-size="14" fill="#333" font-weight="bold">GUN</text>
+      <!-- 在线 -->
+      <g transform="translate(100, 0)">
+         <rect x="-10" y="-6" width="20" height="12" fill="#00C853" stroke="#000" stroke-width="2"/>
+         <rect x="10" y="-4" width="6" height="8" fill="#000"/>
+         <line x1="-10" y1="0" x2="10" y2="0" stroke="#000" stroke-width="1"/>
+      </g>
+      <!-- 离线 -->
+      <g transform="translate(160, 0)">
+         <rect x="-10" y="-6" width="20" height="12" fill="#D50000" stroke="#000" stroke-width="2"/>
+         <line x1="-6" y1="-4" x2="6" y2="4" stroke="#FFF" stroke-width="2"/>
+         <line x1="6" y1="-4" x2="-6" y2="4" stroke="#FFF" stroke-width="2"/>
+      </g>
+    </g>
+
+  </g>
+
+</svg>

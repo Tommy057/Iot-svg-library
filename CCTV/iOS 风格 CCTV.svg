@@ -1,0 +1,134 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="background-color:#F2F2F7; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;">
+  
+  <defs>
+    <!-- iOS 风格滤镜与渐变 -->
+    
+    <!-- 1. 投影: 柔和弥散阴影 -->
+    <filter id="ios-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+
+    <!-- 2. 在线状态渐变 (Apple Green Gradient) -->
+    <linearGradient id="grad-online" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34C759"/>
+      <stop offset="100%" stop-color="#30B753"/>
+    </linearGradient>
+
+    <!-- 3. 离线状态渐变 (Apple Red Gradient) -->
+    <linearGradient id="grad-offline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF3B30"/>
+      <stop offset="100%" stop-color="#E0332A"/>
+    </linearGradient>
+    
+    <!-- 4. 图标容器形状 (Squircle - 模拟超椭圆) -->
+    <rect id="ios-squircle" x="0" y="0" width="48" height="48" rx="12" ry="12" />
+
+    <!-- 5. 内部图标符号 (SF Symbols 风格) -->
+    <!-- 枪机符号 -->
+    <g id="symbol-bullet">
+      <rect x="12" y="16" width="20" height="12" rx="3" fill="#FFF"/> <!-- 机身 -->
+      <path d="M32,16 L38,12 L38,28 L32,24 Z" fill="#FFF"/> <!-- 镜头/遮罩 -->
+      <rect x="18" y="28" width="8" height="4" rx="1" fill="#FFF" fill-opacity="0.6"/> <!-- 支架 -->
+    </g>
+    <!-- 球机符号 -->
+    <g id="symbol-dome">
+       <path d="M10,24 A14,14 0 0,1 38,24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round"/> <!-- 外罩 -->
+       <circle cx="24" cy="24" r="8" fill="#FFF"/> <!-- 球体 -->
+       <circle cx="24" cy="24" r="3" fill="#333" fill-opacity="0.2"/> <!-- 镜头孔 -->
+    </g>
+
+  </defs>
+
+  <text x="50" y="50" font-size="24" font-weight="800" fill="#1C1C1E">iOS Design Style</text>
+  <text x="50" y="80" font-size="16" fill="#8E8E93">Squircle 容器 · 鲜艳渐变 · 毛玻璃图例</text>
+
+  <!-- ======================================================= -->
+  <!-- 图例卡片 (Legend Widget) -->
+  <!-- 风格：类似 iOS Widget 或 通知中心，半透明模糊背景 -->
+  <!-- ======================================================= -->
+  <g transform="translate(450, 50)">
+    
+    <!-- 背景层: 模拟毛玻璃 (SVG无法真模糊背景，用半透明白模拟) -->
+    <rect x="0" y="0" width="280" height="160" rx="24" fill="#FFFFFF" fill-opacity="0.85" stroke="#E5E5EA" stroke-width="1"/>
+    <!-- 投影层 -->
+    <rect x="0" y="0" width="280" height="160" rx="24" fill="none" filter="url(#ios-shadow)"/>
+
+    <!-- 标题 -->
+    <text x="24" y="36" font-size="13" font-weight="600" fill="#8E8E93" letter-spacing="0.5">DEVICE STATUS</text>
+
+    <!-- 行 1: 在线 (Online) -->
+    <g transform="translate(24, 60)">
+      <!-- 小图标 -->
+      <circle cx="12" cy="12" r="6" fill="#34C759"/>
+      <text x="30" y="17" font-size="17" font-weight="500" fill="#1C1C1E">在线</text>
+      <text x="200" y="17" font-size="15" fill="#34C759" font-weight="600" text-anchor="end">Normal</text>
+    </g>
+
+    <!-- 分割线 -->
+    <line x1="24" y1="95" x2="256" y2="95" stroke="#C6C6C8" stroke-width="0.5" stroke-opacity="0.5"/>
+
+    <!-- 行 2: 离线 (Offline) -->
+    <g transform="translate(24, 110)">
+      <circle cx="12" cy="12" r="6" fill="#FF3B30"/>
+      <text x="30" y="17" font-size="17" font-weight="500" fill="#1C1C1E">离线</text>
+      <text x="200" y="17" font-size="15" fill="#FF3B30" font-weight="600" text-anchor="end">Error</text>
+    </g>
+  </g>
+
+
+  <!-- ======================================================= -->
+  <!-- 地图图标展示区 (Map Icons) -->
+  <!-- 风格：App Icon 风格，高辨识度 -->
+  <!-- ======================================================= -->
+  
+  <!-- 组 1: 在线设备 (绿色渐变) -->
+  <g transform="translate(50, 150)">
+    <text x="10" y="-15" font-size="14" fill="#8E8E93" font-weight="600">Online Devices</text>
+    
+    <!-- 球机 (Dome) -->
+    <g transform="translate(0, 0)" filter="url(#ios-shadow)">
+      <use href="#ios-squircle" fill="url(#grad-online)"/>
+      <use href="#symbol-dome"/>
+      <!-- App Icon 光泽感 -->
+      <linearGradient id="shine" x1="0" y1="0" x2="0" y2="100%">
+        <stop offset="0" stop-color="#FFF" stop-opacity="0.4"/>
+        <stop offset="0.5" stop-color="#FFF" stop-opacity="0"/>
+      </linearGradient>
+      <path d="M0,0 H48 A12,12 0 0 1 48,12 V24 L0,12 Z" fill="url(#shine)" opacity="0.5"/>
+    </g>
+    <text x="24" y="65" font-size="12" fill="#333" text-anchor="middle">球机</text>
+
+    <!-- 枪机 (Bullet) -->
+    <g transform="translate(80, 0)" filter="url(#ios-shadow)">
+      <use href="#ios-squircle" fill="url(#grad-online)"/>
+      <use href="#symbol-bullet"/>
+      <!-- 简单的光泽遮罩 -->
+      <path d="M0,0 H48 A12,12 0 0 1 48,12 V20 C48,20 24,30 0,20 Z" fill="#FFF" fill-opacity="0.1"/>
+    </g>
+    <text x="104" y="65" font-size="12" fill="#333" text-anchor="middle">枪机</text>
+  </g>
+
+
+  <!-- 组 2: 离线设备 (红色渐变) -->
+  <g transform="translate(50, 260)">
+    <text x="10" y="-15" font-size="14" fill="#8E8E93" font-weight="600">Offline Devices</text>
+    
+    <!-- 球机 (离线) -->
+    <g transform="translate(0, 0)" filter="url(#ios-shadow)">
+      <use href="#ios-squircle" fill="url(#grad-offline)"/>
+      <use href="#symbol-dome"/>
+      <!-- 离线状态标识: 斜杠 -->
+      <line x1="12" y1="36" x2="36" y2="12" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <text x="24" y="65" font-size="12" fill="#333" text-anchor="middle">离线</text>
+
+    <!-- 枪机 (离线) -->
+    <g transform="translate(80, 0)" filter="url(#ios-shadow)">
+      <use href="#ios-squircle" fill="url(#grad-offline)"/>
+      <use href="#symbol-bullet"/>
+      <line x1="12" y1="36" x2="36" y2="12" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <text x="104" y="65" font-size="12" fill="#333" text-anchor="middle">离线</text>
+  </g>
+
+</svg>

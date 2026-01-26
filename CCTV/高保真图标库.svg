@@ -1,0 +1,193 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 高保真视频监控图标库 & 图例卡片
+    风格: 宝石光晕 (Gem Halo) - Pro版
+    特性: 拟态玻璃质感、动态扫描光效
+  -->
+
+  <defs>
+    <!-- 1. 深度悬浮阴影 (Deep Shadow) -->
+    <filter id="iconShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 材质渐变 (Materials) -->
+    <!-- 翡翠绿 (Online Body) -->
+    <linearGradient id="bodyGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <!-- 警示红 (Offline Body) -->
+    <linearGradient id="bodyRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+    <!-- 玻璃高光 (Glass Reflection) -->
+    <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- 3. 视锥光束 (View Beams) -->
+    <!-- 绿色扫描光 -->
+    <radialGradient id="beamGreen" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
+      <stop offset="80%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 红色脉冲光 -->
+    <radialGradient id="beamRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 (仅用于展示) -->
+  <rect width="800" height="500" fill="#F3F4F6"/>
+
+  <!-- ========================================================================
+       1. 独立图标展示区 (您可以直接复制这些 <g> 到 HT 编辑器)
+       ======================================================================== -->
+  
+  <text x="50" y="40" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" fill="#64748B">Icon Assets Preview</text>
+
+  <!-- === [图标 A] 枪机 (Gun Camera) - 在线 === -->
+  <g transform="translate(100, 100)" filter="url(#iconShadow)">
+     <!-- 视锥光束 (呼吸效果) -->
+     <path d="M15 0 L60 -25 L60 25 Z" fill="url(#beamGreen)">
+        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="d" values="M15 0 L60 -25 L60 25 Z; M15 0 L65 -28 L65 28 Z; M15 0 L60 -25 L60 25 Z" dur="3s" repeatCount="indefinite"/>
+     </path>
+     
+     <!-- 支架 -->
+     <path d="M-10 10 L0 5" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+     <!-- 机身主体 -->
+     <rect x="-15" y="-12" width="36" height="24" rx="4" fill="url(#bodyGreen)"/>
+     <!-- 镜头前盖 -->
+     <rect x="21" y="-10" width="4" height="20" rx="1" fill="#064E3B"/>
+     <!-- 玻璃高光层 (增加立体感) -->
+     <path d="M-15 -12 H15 Q21 -12 21 -6 V5 Q5 -5 -15 0 V-12 Z" fill="url(#glassShine)" opacity="0.6"/>
+     <!-- 红外灯装饰点 -->
+     <circle cx="23" cy="-4" r="1" fill="#FFFFFF" opacity="0.8"/>
+     <circle cx="23" cy="4" r="1" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+
+  <!-- === [图标 B] 球机 (Dome Camera) - 在线 === -->
+  <g transform="translate(250, 100)" filter="url(#iconShadow)">
+     <!-- 旋转扫描雷达 -->
+     <path d="M0 0 L-30 50 A 60 60 0 0 1 30 50 Z" fill="url(#beamGreen)" transform="rotate(180)">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="6s" repeatCount="indefinite"/>
+     </path>
+     
+     <!-- 底座环 -->
+     <circle cx="0" cy="0" r="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+     <!-- 核心球体 -->
+     <circle cx="0" cy="0" r="14" fill="url(#bodyGreen)"/>
+     <!-- 玻璃光泽 (球体反光) -->
+     <ellipse cx="-4" cy="-4" rx="6" ry="4" fill="#FFFFFF" opacity="0.4" transform="rotate(-45)"/>
+     <!-- 镜头瞳孔 -->
+     <circle cx="0" cy="0" r="5" fill="#022C22"/>
+     <circle cx="1" cy="-1" r="1.5" fill="#FFFFFF" opacity="0.8"/> <!-- 眼神光 -->
+  </g>
+
+  <!-- === [图标 C] 枪机 - 离线 (故障) === -->
+  <g transform="translate(100, 200)" filter="url(#iconShadow)">
+     <!-- 故障红晕 (脉冲) -->
+     <circle cx="5" cy="0" r="25" fill="url(#beamRed)">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+     </circle>
+     
+     <path d="M-10 10 L0 5" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+     <rect x="-15" y="-12" width="36" height="24" rx="4" fill="url(#bodyRed)"/>
+     <rect x="21" y="-10" width="4" height="20" rx="1" fill="#7F1D1D"/>
+     <path d="M-15 -12 H15 Q21 -12 21 -6 V5 Q5 -5 -15 0 V-12 Z" fill="url(#glassShine)" opacity="0.6"/>
+     <!-- 叉号 -->
+     <path d="M0 -5 L10 5 M10 -5 L0 5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- === [图标 D] 球机 - 离线 (故障) === -->
+  <g transform="translate(250, 200)" filter="url(#iconShadow)">
+     <circle cx="0" cy="0" r="25" fill="url(#beamRed)">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+     </circle>
+     
+     <circle cx="0" cy="0" r="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+     <circle cx="0" cy="0" r="14" fill="url(#bodyRed)"/>
+     <ellipse cx="-4" cy="-4" rx="6" ry="4" fill="#FFFFFF" opacity="0.4" transform="rotate(-45)"/>
+     <path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+
+  <!-- ========================================================================
+       2. 图例卡片 (Legend Card) - 高级UI版
+       ======================================================================== -->
+  <g transform="translate(450, 60)" filter="url(#iconShadow)">
+    <rect width="280" height="200" rx="12" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2"/>
+    
+    <!-- 顶部装饰条 -->
+    <path d="M2 14 Q2 2 14 2 H266 Q278 2 278 14 V40 H2 V14 Z" fill="#F1F5F9"/>
+    <rect x="20" y="15" width="4" height="14" rx="2" fill="#3B82F6"/>
+    <text x="35" y="26" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" fill="#334155" font-size="14">监控点位图例</text>
+
+    <!-- 表头 -->
+    <g transform="translate(20, 60)">
+       <text x="0" y="0" font-size="12" fill="#94A3B8">设备类型</text>
+       <text x="90" y="0" font-size="12" fill="#94A3B8" text-anchor="middle">在线状态</text>
+       <text x="190" y="0" font-size="12" fill="#94A3B8" text-anchor="middle">离线/故障</text>
+    </g>
+    <line x1="20" y1="70" x2="260" y2="70" stroke="#F1F5F9" stroke-width="1"/>
+
+    <!-- 列表内容区 -->
+    <g transform="translate(20, 95)">
+      
+      <!-- Row 1: 球机 -->
+      <g>
+        <text x="0" y="5" font-size="13" font-weight="bold" fill="#475569">球机</text>
+        <text x="0" y="20" font-size="10" fill="#94A3B8">Dome</text>
+        
+        <!-- 缩小版图标 - 绿 -->
+        <g transform="translate(90, 5) scale(0.8)">
+           <circle cx="0" cy="0" r="14" fill="url(#bodyGreen)"/>
+           <ellipse cx="-4" cy="-4" rx="6" ry="4" fill="#FFFFFF" opacity="0.4" transform="rotate(-45)"/>
+           <circle cx="0" cy="0" r="5" fill="#022C22"/>
+        </g>
+        
+        <!-- 缩小版图标 - 红 -->
+        <g transform="translate(190, 5) scale(0.8)">
+           <circle cx="0" cy="0" r="14" fill="url(#bodyRed)"/>
+           <path d="M-4 -4 L4 4 M4 -4 L-4 4" stroke="#FFFFFF" stroke-width="2"/>
+           <ellipse cx="-4" cy="-4" rx="6" ry="4" fill="#FFFFFF" opacity="0.4" transform="rotate(-45)"/>
+        </g>
+      </g>
+      
+      <!-- Row 2: 枪机 -->
+      <g transform="translate(0, 55)">
+        <text x="0" y="5" font-size="13" font-weight="bold" fill="#475569">枪机</text>
+        <text x="0" y="20" font-size="10" fill="#94A3B8">Gun</text>
+        
+        <!-- 缩小版图标 - 绿 -->
+        <g transform="translate(90, 5) scale(0.8)">
+           <rect x="-15" y="-10" width="30" height="20" rx="3" fill="url(#bodyGreen)"/>
+           <rect x="15" y="-8" width="3" height="16" rx="1" fill="#064E3B"/>
+           <path d="M-15 -10 H15 Q18 -10 18 -5 V4 Q4 -4 -15 0 V-10 Z" fill="url(#glassShine)" opacity="0.6"/>
+        </g>
+        
+        <!-- 缩小版图标 - 红 -->
+        <g transform="translate(190, 5) scale(0.8)">
+           <rect x="-15" y="-10" width="30" height="20" rx="3" fill="url(#bodyRed)"/>
+           <path d="M-4 -4 L4 4 M4 -4 L-4 4" stroke="#FFFFFF" stroke-width="2"/>
+           <path d="M-15 -10 H15 Q18 -10 18 -5 V4 Q4 -4 -15 0 V-10 Z" fill="url(#glassShine)" opacity="0.6"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+</svg>

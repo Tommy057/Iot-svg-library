@@ -1,0 +1,154 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 简约几何视频监控图标 (Geometric CCTV Icons)
+    风格: 宝石光晕 (Gem Halo) - 扁平化微质感
+    特点: 形状参考原CAD图，色彩参考宝石风格
+  -->
+
+  <defs>
+    <!-- 1. 实体渐变 (Enamel Look) -->
+    <!-- 在线绿 -->
+    <linearGradient id="flatGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <!-- 离线红 -->
+    <linearGradient id="flatRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+
+    <!-- 2. 视锥渐变 (FOV) - 半透明 -->
+    <linearGradient id="fovGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.1"/>
+    </linearGradient>
+    
+    <linearGradient id="fovRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- 3. 简单投影 -->
+    <filter id="simpleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="1.5" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="400" fill="#F8FAFC"/>
+  
+  <text x="30" y="30" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" fill="#64748B">Icon Set: Simple Geometric</text>
+
+  <!-- =======================================================
+       图标组 1: 枪机 (Gun Camera) - 矩形风格
+       ======================================================= -->
+  
+  <!-- 在线 (Online) -->
+  <g transform="translate(100, 100)">
+     <!-- 视锥 (梯形) -->
+     <path d="M20 5 L60 -15 L60 25 Z" fill="url(#fovGreen)">
+        <!-- 极简的呼吸动效 -->
+        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
+     </path>
+     <!-- 本体 -->
+     <g filter="url(#simpleShadow)">
+       <!-- 尾部 -->
+       <rect x="0" y="-8" width="24" height="16" rx="2" fill="url(#flatGreen)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <!-- 镜头头 -->
+       <rect x="22" y="-5" width="4" height="10" fill="#022C22"/> 
+     </g>
+  </g>
+
+  <!-- 离线 (Offline) -->
+  <g transform="translate(100, 200)">
+     <!-- 视锥 (红色) -->
+     <path d="M20 5 L60 -15 L60 25 Z" fill="url(#fovRed)"/>
+     <!-- 本体 -->
+     <g filter="url(#simpleShadow)">
+       <rect x="0" y="-8" width="24" height="16" rx="2" fill="url(#flatRed)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <rect x="22" y="-5" width="4" height="10" fill="#450A0A"/>
+       <!-- 离线小叉 -->
+       <path d="M8 -4 L16 4 M16 -4 L8 4" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+     </g>
+  </g>
+
+
+  <!-- =======================================================
+       图标组 2: 球机 (Dome Camera) - 半圆/扇形风格
+       ======================================================= -->
+
+  <!-- 在线 (Online) -->
+  <g transform="translate(300, 100)">
+     <!-- 视锥 (扇形) -->
+     <path d="M0 0 L40 -25 A 45 45 0 0 1 40 25 Z" fill="url(#fovGreen)">
+        <!-- 极简的扫动动效 -->
+        <animateTransform attributeName="transform" type="rotate" values="-10 0 0; 10 0 0; -10 0 0" dur="4s" repeatCount="indefinite"/>
+     </path>
+     <!-- 本体 (半圆) -->
+     <g filter="url(#simpleShadow)">
+       <path d="M0 -14 A 14 14 0 0 1 0 14" fill="url(#flatGreen)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <!-- 装饰线 -->
+       <path d="M-2 -8 A 10 10 0 0 1 -2 8" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/>
+     </g>
+  </g>
+
+  <!-- 离线 (Offline) -->
+  <g transform="translate(300, 200)">
+     <path d="M0 0 L40 -25 A 45 45 0 0 1 40 25 Z" fill="url(#fovRed)"/>
+     <g filter="url(#simpleShadow)">
+       <path d="M0 -14 A 14 14 0 0 1 0 14" fill="url(#flatRed)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <path d="M4 -4 L10 4 M10 -4 L4 4" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+     </g>
+  </g>
+
+
+  <!-- =======================================================
+       3. 图例卡片 (Legend) - 干净清爽
+       ======================================================= -->
+  <g transform="translate(450, 80)" filter="url(#simpleShadow)">
+     <!-- 卡片底 -->
+     <rect width="120" height="140" rx="6" fill="#FFFFFF"/>
+     
+     <!-- 标题 -->
+     <rect width="120" height="30" rx="6" fill="#F1F5F9"/> <!-- 只有圆角在背景 -->
+     <rect y="15" width="120" height="15" fill="#F1F5F9"/> <!-- 填补下半截 -->
+     <text x="10" y="20" font-size="12" font-weight="bold" fill="#475569">图例说明</text>
+     
+     <!-- 内容 -->
+     <g transform="translate(10, 50)">
+        <!-- 球机 - 在线 -->
+        <g>
+           <path d="M15 -8 A 8 8 0 0 1 15 8" fill="url(#flatGreen)"/>
+           <path d="M15 0 L30 -6 A 15 15 0 0 1 30 6 Z" fill="#10B981" opacity="0.4"/>
+           <text x="45" y="4" font-size="12" fill="#334155">球机 (在线)</text>
+        </g>
+        
+        <!-- 球机 - 离线 -->
+        <g transform="translate(0, 25)">
+           <path d="M15 -8 A 8 8 0 0 1 15 8" fill="url(#flatRed)"/>
+           <path d="M15 0 L30 -6 A 15 15 0 0 1 30 6 Z" fill="#EF4444" opacity="0.4"/>
+           <text x="45" y="4" font-size="12" fill="#94A3B8">球机 (离线)</text>
+        </g>
+        
+        <!-- 枪机 - 在线 -->
+        <g transform="translate(0, 55)">
+           <rect x="5" y="-6" width="14" height="10" rx="2" fill="url(#flatGreen)"/>
+           <path d="M20 0 L30 -6 L30 6 Z" fill="#10B981" opacity="0.4"/>
+           <text x="45" y="4" font-size="12" fill="#334155">枪机 (在线)</text>
+        </g>
+
+        <!-- 枪机 - 离线 -->
+        <g transform="translate(0, 80)">
+           <rect x="5" y="-6" width="14" height="10" rx="2" fill="url(#flatRed)"/>
+           <path d="M20 0 L30 -6 L30 6 Z" fill="#EF4444" opacity="0.4"/>
+           <text x="45" y="4" font-size="12" fill="#94A3B8">枪机 (离线)</text>
+        </g>
+     </g>
+  </g>
+
+</svg>

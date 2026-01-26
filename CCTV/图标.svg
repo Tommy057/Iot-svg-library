@@ -1,0 +1,168 @@
+<svg width="1000" height="900" viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg" style="background-color:#f0f2f5; font-family: 'Microsoft YaHei', sans-serif;">
+  
+  <!-- 标题 -->
+  <text x="50" y="50" font-size="24" fill="#333" font-weight="bold">HT 编辑器摄像头图标方案预览</text>
+  <text x="50" y="80" font-size="14" fill="#666">请选择一种风格，提取对应的 Group 代码使用</text>
+
+  <!-- ================================================================================== -->
+  <!-- 方案一：现代扁平风 (Modern Flat) - 推荐用于清爽风格 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(50, 120)">
+    <text x="0" y="-15" font-size="18" fill="#333" font-weight="bold">方案 1: 现代扁平 (Modern Flat)</text>
+    
+    <!-- 图例背景卡片 -->
+    <rect x="0" y="0" width="300" height="180" rx="8" fill="#FFFFFF" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.1))"/>
+    <rect x="0" y="0" width="300" height="40" rx="8" fill="#F9FAFB" clip-path="inset(0 0 78% 0)"/> <!-- Header -->
+    <text x="20" y="26" font-size="14" fill="#333" font-weight="bold">设备图例</text>
+    <text x="160" y="26" font-size="12" fill="#2ECC71" font-weight="bold">● 在线</text>
+    <text x="220" y="26" font-size="12" fill="#FF6B6B" font-weight="bold">● 离线</text>
+
+    <!-- 图标展示区 -->
+    <!-- 球机 (Dome) -->
+    <text x="20" y="80" font-size="14" fill="#555">球机</text>
+    
+    <!-- 球机在线 -->
+    <g transform="translate(160, 75)">
+      <circle cx="15" cy="0" r="12" fill="#2ECC71"/>
+      <circle cx="15" cy="0" r="5" fill="#FFFFFF" opacity="0.5"/>
+    </g>
+    <!-- 球机离线 -->
+    <g transform="translate(220, 75)">
+      <circle cx="15" cy="0" r="12" fill="#FF6B6B"/>
+      <line x1="8" y1="-7" x2="22" y2="7" stroke="white" stroke-width="2"/>
+      <line x1="22" y1="-7" x2="8" y2="7" stroke="white" stroke-width="2"/>
+    </g>
+
+    <!-- 枪机 (Bullet) -->
+    <text x="20" y="130" font-size="14" fill="#555">枪机</text>
+    
+    <!-- 枪机在线 -->
+    <g transform="translate(160, 125)">
+      <path d="M0,-8 L24,-8 L30,0 L24,8 L0,8 Z" fill="#2ECC71"/>
+      <rect x="-4" y="-4" width="4" height="8" fill="#27AE60"/> <!--支架-->
+    </g>
+    <!-- 枪机离线 -->
+    <g transform="translate(220, 125)">
+      <path d="M0,-8 L24,-8 L30,0 L24,8 L0,8 Z" fill="#FF6B6B"/>
+      <rect x="-4" y="-4" width="4" height="8" fill="#C0392B"/>
+      <line x1="8" y1="-4" x2="20" y2="4" stroke="white" stroke-width="2"/>
+      <line x1="20" y1="-4" x2="8" y2="4" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 方案二：科技视野风 (Tech HUD) - 推荐用于暗色底图/大屏 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(450, 120)">
+    <text x="0" y="-15" font-size="18" fill="#333" font-weight="bold">方案 2: 科技视野 (Tech HUD)</text>
+    
+    <!-- 图例背景卡片 (模拟毛玻璃深色) -->
+    <rect x="0" y="0" width="300" height="180" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="26" font-size="14" fill="#94A3B8" font-weight="bold">MONITORING</text>
+    <text x="160" y="26" font-size="12" fill="#00FFCC">ONLINE</text>
+    <text x="220" y="26" font-size="12" fill="#FF0055">OFFLINE</text>
+
+    <!-- 球机 (Dome) -->
+    <text x="20" y="80" font-size="14" fill="#CBD5E1">球机 Dome</text>
+    
+    <!-- 球机在线 (带视野) -->
+    <g transform="translate(175, 75)">
+      <!-- 视野扇区 FOV -->
+      <path d="M0,0 L-20,30 A36,36 0 0,0 20,30 Z" fill="#00FFCC" opacity="0.3"/>
+      <!-- 本体 -->
+      <circle cx="0" cy="0" r="10" fill="#00FFCC" stroke="#FFFFFF" stroke-width="1"/>
+      <circle cx="0" cy="0" r="4" fill="#0F172A"/>
+    </g>
+    <!-- 球机离线 -->
+    <g transform="translate(235, 75)">
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#FF0055" stroke-width="2"/>
+      <text x="-4" y="4" font-size="12" fill="#FF0055" font-weight="bold">!</text>
+    </g>
+
+    <!-- 枪机 (Bullet) -->
+    <text x="20" y="130" font-size="14" fill="#CBD5E1">枪机 Bullet</text>
+    
+    <!-- 枪机在线 (带光束) -->
+    <g transform="translate(160, 125)">
+      <!-- 视野光束 -->
+      <path d="M20,0 L60,-15 L60,15 Z" fill="url(#grad1)" opacity="0.4"/>
+      <!-- 本体 -->
+      <rect x="0" y="-6" width="20" height="12" fill="#00FFCC" rx="2"/>
+      <rect x="-4" y="-3" width="4" height="6" fill="#0F172A"/>
+    </g>
+    <!-- 枪机离线 -->
+    <g transform="translate(220, 125)">
+       <rect x="0" y="-6" width="20" height="12" fill="none" stroke="#FF0055" stroke-width="2" rx="2"/>
+       <path d="M5,-2 L15,2 M5,2 L15,-2" stroke="#FF0055" stroke-width="2"/>
+    </g>
+    
+    <!-- 渐变定义用于光束 -->
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#00FFCC;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#00FFCC;stop-opacity:0" />
+      </linearGradient>
+    </defs>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 方案三：2.5D 等轴 (Isometric) - 推荐配合立体底图 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(50, 400)">
+    <text x="0" y="-15" font-size="18" fill="#333" font-weight="bold">方案 3: 2.5D 等轴 (Isometric)</text>
+    
+    <!-- 图例背景 -->
+    <path d="M10,0 L310,0 L300,180 L0,180 Z" fill="#2C3E50" opacity="0.9"/>
+    <text x="20" y="30" font-size="14" fill="#ECF0F1" font-weight="bold">ISO LEGEND</text>
+    
+    <!-- 球机 (Dome) -->
+    <text x="30" y="80" font-size="14" fill="#BDC3C7">球机</text>
+    
+    <!-- 球机在线 -->
+    <g transform="translate(180, 80)">
+       <!-- 阴影 -->
+       <ellipse cx="0" cy="10" rx="14" ry="7" fill="#000" opacity="0.3"/>
+       <!-- 底部 -->
+       <path d="M-14,0 A14,7 0 0,0 14,0 L14,-5 A14,7 0 0,1 -14,-5 Z" fill="#27AE60"/>
+       <!-- 顶部 -->
+       <ellipse cx="0" cy="-5" rx="14" ry="7" fill="#2ECC71"/>
+       <!-- 镜头 -->
+       <ellipse cx="0" cy="-7" rx="5" ry="3" fill="#FFF"/>
+    </g>
+
+     <!-- 球机离线 -->
+    <g transform="translate(240, 80)">
+       <ellipse cx="0" cy="10" rx="14" ry="7" fill="#000" opacity="0.3"/>
+       <path d="M-14,0 A14,7 0 0,0 14,0 L14,-5 A14,7 0 0,1 -14,-5 Z" fill="#C0392B"/>
+       <ellipse cx="0" cy="-5" rx="14" ry="7" fill="#E74C3C"/>
+       <path d="M-4,-8 L4,-2 M4,-8 L-4,-2" stroke="#FFF" stroke-width="2"/>
+    </g>
+
+    <!-- 枪机 (Bullet) -->
+    <text x="30" y="140" font-size="14" fill="#BDC3C7">枪机</text>
+    
+    <!-- 枪机在线 -->
+    <g transform="translate(160, 130)">
+       <!-- 阴影 -->
+       <path d="M5,10 L35,0 L25,-5 L-5,5 Z" fill="#000" opacity="0.3"/>
+       <!-- 侧面 -->
+       <path d="M-5,5 L20,-5 L20,5 L-5,15 Z" fill="#27AE60"/>
+       <!-- 顶面 -->
+       <path d="M-5,5 L10,0 L35,-10 L20,-5 Z" fill="#2ECC71"/>
+       <!-- 镜头面 -->
+       <path d="M20,5 L20,-5 L35,-10 L35,0 Z" fill="#229954"/>
+    </g>
+
+     <!-- 枪机离线 -->
+    <g transform="translate(240, 130)">
+       <path d="M5,10 L35,0 L25,-5 L-5,5 Z" fill="#000" opacity="0.3"/>
+       <!-- 侧面 -->
+       <path d="M-5,5 L20,-5 L20,5 L-5,15 Z" fill="#C0392B"/>
+       <!-- 顶面 -->
+       <path d="M-5,5 L10,0 L35,-10 L20,-5 Z" fill="#E74C3C"/>
+       <!-- 镜头面 -->
+       <path d="M20,5 L20,-5 L35,-10 L35,0 Z" fill="#922B21"/>
+    </g>
+  </g>
+
+</svg>

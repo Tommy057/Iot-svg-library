@@ -1,0 +1,105 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="background-color:#eee; font-family: 'Microsoft YaHei', sans-serif;">
+
+  <!-- 提示文字 -->
+  <text x="50" y="40" font-size="16" fill="#666">回归原图风格图标 + 重新设计的图例卡片</text>
+
+  <!-- 定义复用的图标形状 (完全参考原图: 纯色、几何块面) -->
+  <defs>
+    <!-- 球机形状: 一个简单的半圆 -->
+    <path id="icon-dome" d="M-12,0 A12,12 0 0,0 12,0 Z" />
+    
+    <!-- 枪机形状: 长条形，带一点透视或方向感 -->
+    <path id="icon-bullet" d="M-14,-5 L8,-5 L14,0 L8,5 L-14,5 Z" />
+  </defs>
+
+  <!-- ======================================================= -->
+  <!-- 方案一：深色半透明风格 (优化了原图的深色卡片) -->
+  <!-- ======================================================= -->
+  <g transform="translate(50, 80)">
+    <text x="0" y="-10" font-size="14" fill="#333" font-weight="bold">方案 1: 深色专业版 (Dark Professional)</text>
+    
+    <!-- 卡片背景：深蓝灰，带一点透明度，圆角 -->
+    <rect x="0" y="0" width="280" height="140" rx="6" fill="#2d3436" fill-opacity="0.9" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
+    
+    <!-- 标题栏分隔线 -->
+    <line x1="10" y1="40" x2="270" y2="40" stroke="#636e72" stroke-width="1"/>
+
+    <!-- 表头 -->
+    <text x="30" y="28" fill="#b2bec3" font-size="12" font-weight="bold">类型</text>
+    <text x="140" y="28" fill="#b2bec3" font-size="12" text-anchor="middle" font-weight="bold">在线</text>
+    <text x="220" y="28" fill="#b2bec3" font-size="12" text-anchor="middle" font-weight="bold">离线</text>
+
+    <!-- 第一行：球机 -->
+    <g transform="translate(0, 70)">
+      <text x="30" y="5" fill="#dfe6e9" font-size="13">球机</text>
+      <!-- 在线图标 (绿) -->
+      <use href="#icon-dome" x="140" y="0" fill="#00e170"/>
+      <!-- 离线图标 (红) -->
+      <use href="#icon-dome" x="220" y="0" fill="#ff4757"/>
+    </g>
+
+    <!-- 第二行：枪机 -->
+    <g transform="translate(0, 110)">
+      <text x="30" y="5" fill="#dfe6e9" font-size="13">枪机</text>
+      <!-- 在线图标 (绿) -->
+      <use href="#icon-bullet" x="140" y="0" fill="#00e170"/>
+      <!-- 离线图标 (红) -->
+      <use href="#icon-bullet" x="220" y="0" fill="#ff4757"/>
+    </g>
+  </g>
+
+
+  <!-- ======================================================= -->
+  <!-- 方案二：浅色悬浮风格 (适合白底图纸) -->
+  <!-- ======================================================= -->
+  <g transform="translate(400, 80)">
+    <text x="0" y="-10" font-size="14" fill="#333" font-weight="bold">方案 2: 浅色清爽版 (Light Clean)</text>
+
+    <!-- 卡片背景：纯白，强阴影 -->
+    <rect x="0" y="0" width="280" height="140" rx="8" fill="#ffffff" filter="drop-shadow(0 2px 10px rgba(0,0,0,0.1))"/>
+    
+    <!-- 浅色表头背景 -->
+    <path d="M0,8 A8,8 0 0,1 8,0 L272,0 A8,8 0 0,1 280,8 L280,40 L0,40 Z" fill="#f1f2f6"/>
+    
+    <!-- 表头文字 -->
+    <text x="30" y="26" fill="#747d8c" font-size="12" font-weight="bold">设备类型</text>
+    <text x="140" y="26" fill="#2ed573" font-size="12" text-anchor="middle" font-weight="bold">正常</text>
+    <text x="220" y="26" fill="#ff4757" font-size="12" text-anchor="middle" font-weight="bold">故障</text>
+
+    <!-- 第一行：球机 -->
+    <g transform="translate(0, 75)">
+      <text x="30" y="5" fill="#2f3542" font-size="13" font-weight="bold">球机</text>
+      <!-- 在线 (使用原图亮绿色) -->
+      <use href="#icon-dome" x="140" y="0" fill="#2ed573"/> 
+      <!-- 离线 -->
+      <use href="#icon-dome" x="220" y="0" fill="#ff4757"/>
+    </g>
+
+    <!-- 第二行：枪机 -->
+    <g transform="translate(0, 115)">
+      <text x="30" y="5" fill="#2f3542" font-size="13" font-weight="bold">枪机</text>
+      <!-- 在线 -->
+      <use href="#icon-bullet" x="140" y="0" fill="#2ed573"/>
+      <!-- 离线 -->
+      <use href="#icon-bullet" x="220" y="0" fill="#ff4757"/>
+    </g>
+  </g>
+
+  <!-- 图标单独提取区 (方便您在HT中使用) -->
+  <g transform="translate(50, 300)">
+    <text x="0" y="0" font-size="14" fill="#666">单独的图标资源 (复制这些 shape 到 HT):</text>
+    
+    <!-- 枪机 -->
+    <g transform="translate(40, 40)">
+       <use href="#icon-bullet" fill="#2ed573"/>
+       <text x="-20" y="25" font-size="12" fill="#999">枪机(绿)</text>
+    </g>
+    
+    <!-- 球机 -->
+    <g transform="translate(120, 40)">
+       <use href="#icon-dome" fill="#2ed573"/>
+       <text x="-15" y="25" font-size="12" fill="#999">球机(绿)</text>
+    </g>
+  </g>
+
+</svg>

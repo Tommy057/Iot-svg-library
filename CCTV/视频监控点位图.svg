@@ -1,0 +1,198 @@
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    组件: 视频监控点位部署图 (CCTV Floor Plan Layout)
+    风格: 宝石光晕 & 纯净白
+    还原: 包含枪机、球机、在线/离线状态及建筑底图
+  -->
+
+  <defs>
+    <!-- 1. 悬浮卡片阴影 (用于图例) -->
+    <filter id="floatShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 宝石渐变定义 -->
+    <!-- 在线绿 (Online) -->
+    <linearGradient id="gemGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/> <!-- 亮部 -->
+      <stop offset="100%" stop-color="#059669"/> <!-- 暗部 -->
+    </linearGradient>
+    
+    <!-- 离线红 (Offline) -->
+    <linearGradient id="gemRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+
+    <!-- 3. 扫描视锥渐变 (Field of View) -->
+    <radialGradient id="viewConeGreen" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="viewConeRed" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 4. 建筑纹理 -->
+    <pattern id="hatchPattern" patternUnits="userSpaceOnUse" width="4" height="4">
+      <path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" stroke="#E2E8F0" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- 背景画布 -->
+  <rect width="1000" height="700" fill="#FFFFFF"/>
+
+  <!-- ========================================================================
+       1. 建筑底图 (Floor Plan Geometry) - 模拟原图结构
+       ======================================================================== -->
+  <g transform="translate(100, 50)">
+    
+    <!-- 地板填充 -->
+    <path d="M100 0 L600 0 L600 500 L100 500 L100 400 L0 400 L0 100 L100 0 Z" fill="#F8FAFC"/>
+    
+    <!-- 墙体描边 -->
+    <path d="M100 0 L600 0 L600 500 L100 500 L100 400 L0 400 L0 100 L100 0 Z" fill="none" stroke="#334155" stroke-width="4"/>
+    
+    <!-- 内部核心筒/电梯井 (填充斜线纹理) -->
+    <rect x="0" y="250" width="80" height="150" fill="url(#hatchPattern)" stroke="#94A3B8" stroke-width="1"/>
+    <rect x="520" y="0" width="80" height="100" fill="url(#hatchPattern)" stroke="#94A3B8" stroke-width="1"/>
+    
+    <!-- 承重柱 (Solid Black Squares - 还原原图特征) -->
+    <g fill="#0F172A">
+      <!-- 第一排 -->
+      <rect x="100" y="20" width="12" height="12"/>
+      <rect x="200" y="20" width="12" height="12"/>
+      <rect x="300" y="20" width="12" height="12"/>
+      <rect x="400" y="20" width="12" height="12"/>
+      
+      <!-- 第二排 -->
+      <rect x="100" y="120" width="12" height="12"/>
+      <rect x="200" y="120" width="12" height="12"/>
+      <rect x="300" y="120" width="12" height="12"/>
+      <rect x="400" y="120" width="12" height="12"/>
+      
+      <!-- 第三排 -->
+      <rect x="100" y="220" width="12" height="12"/>
+      <rect x="200" y="220" width="12" height="12"/>
+      <rect x="300" y="220" width="12" height="12"/>
+      <rect x="400" y="220" width="12" height="12"/>
+
+      <!-- 第四排 -->
+      <rect x="100" y="320" width="12" height="12"/>
+      <rect x="200" y="320" width="12" height="12"/>
+      <rect x="300" y="320" width="12" height="12"/>
+      <rect x="400" y="320" width="12" height="12"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================
+       2. 摄像头点位 (Camera Icons)
+       ======================================================================== -->
+  <g transform="translate(100, 50)">
+
+    <!-- CAM 1: 球机 (Dome) - 在线 -->
+    <g transform="translate(350, 260)">
+       <!-- 扫描动画 -->
+       <path d="M0 0 L-25 40 A 30 30 0 0 1 25 40 Z" fill="url(#viewConeGreen)">
+          <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>
+       </path>
+       <!-- 本体 -->
+       <circle cx="0" cy="0" r="10" fill="url(#gemGreen)" stroke="#FFFFFF" stroke-width="2"/>
+       <!-- 镜头点 -->
+       <circle cx="0" cy="0" r="4" fill="#064E3B"/>
+    </g>
+
+    <!-- CAM 2: 枪机 (Gun) - 在线 -->
+    <g transform="translate(250, 260) rotate(-30)">
+       <!-- 视锥 -->
+       <path d="M5 0 L30 -15 L30 15 Z" fill="url(#viewConeGreen)">
+          <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
+       </path>
+       <!-- 本体 (长条宝石) -->
+       <rect x="-10" y="-6" width="20" height="12" rx="2" fill="url(#gemGreen)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <rect x="10" y="-3" width="4" height="6" fill="#064E3B"/> <!-- 镜头 -->
+    </g>
+
+    <!-- CAM 3: 枪机 (Gun) - 离线 (Offline) -->
+    <g transform="translate(150, 160) rotate(45)">
+       <!-- 故障脉冲圈 -->
+       <circle cx="0" cy="0" r="15" fill="none" stroke="#EF4444" stroke-width="1" opacity="0">
+          <animate attributeName="r" values="10;25" dur="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="1.5s" repeatCount="indefinite"/>
+       </circle>
+       <!-- 本体 -->
+       <rect x="-10" y="-6" width="20" height="12" rx="2" fill="url(#gemRed)" stroke="#FFFFFF" stroke-width="1.5"/>
+       <rect x="10" y="-3" width="4" height="6" fill="#7F1D1D"/>
+       <!-- 叉号 -->
+       <path d="M-4 -4 L4 4 M4 -4 L-4 4" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+
+    <!-- CAM 4: 球机 (Dome) - 离线 (Offline) -->
+    <g transform="translate(450, 160)">
+       <circle cx="0" cy="0" r="10" fill="url(#gemRed)" stroke="#FFFFFF" stroke-width="2"/>
+       <path d="M-4 -4 L4 4 M4 -4 L-4 4" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+
+    <!-- 更多点位 (模拟分布) -->
+    <g transform="translate(250, 60) rotate(90)"> <!-- 顶部墙角 -->
+       <path d="M5 0 L40 -15 L40 15 Z" fill="url(#viewConeGreen)"/>
+       <rect x="-10" y="-6" width="20" height="12" rx="2" fill="url(#gemGreen)" stroke="#FFFFFF" stroke-width="1.5"/>
+    </g>
+
+    <g transform="translate(50, 350)"> <!-- 左下角球机 -->
+       <path d="M0 0 L-25 40 A 30 30 0 0 1 25 40 Z" fill="url(#viewConeGreen)" transform="rotate(45)"/>
+       <circle cx="0" cy="0" r="10" fill="url(#gemGreen)" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+
+  </g>
+
+  <!-- ========================================================================
+       3. 图例卡片 (Legend) - 右上角悬浮
+       ======================================================================== -->
+  <g transform="translate(750, 50)">
+    <g filter="url(#floatShadow)">
+      <rect width="200" height="160" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <!-- 标题栏 -->
+      <path d="M0 8 Q0 0 8 0 H192 Q200 0 200 8 V35 H0 V8 Z" fill="#3B82F6"/>
+      <text x="15" y="22" font-family="'Microsoft YaHei', sans-serif" font-weight="bold" fill="#FFFFFF" font-size="14">设备图例</text>
+      
+      <!-- 表头 -->
+      <text x="20" y="60" font-size="12" fill="#94A3B8">类型</text>
+      <text x="80" y="60" font-size="12" fill="#94A3B8" text-anchor="middle">在线 (Online)</text>
+      <text x="150" y="60" font-size="12" fill="#94A3B8" text-anchor="middle">离线 (Offline)</text>
+      
+      <!-- Row 1: 球机 -->
+      <g transform="translate(0, 80)">
+        <text x="20" y="5" font-size="12" fill="#334155" font-weight="bold">球机</text>
+        <!-- 绿球 -->
+        <circle cx="80" cy="0" r="8" fill="url(#gemGreen)" stroke="#FFFFFF"/>
+        <!-- 红球 -->
+        <circle cx="150" cy="0" r="8" fill="url(#gemRed)" stroke="#FFFFFF"/>
+      </g>
+      
+      <!-- Row 2: 枪机 -->
+      <g transform="translate(0, 115)">
+        <text x="20" y="5" font-size="12" fill="#334155" font-weight="bold">枪机</text>
+        <!-- 绿枪 -->
+        <rect x="70" y="-6" width="20" height="12" rx="2" fill="url(#gemGreen)"/>
+        <!-- 红枪 -->
+        <rect x="140" y="-6" width="20" height="12" rx="2" fill="url(#gemRed)"/>
+      </g>
+      
+      <!-- 分割线 -->
+      <line x1="20" y1="98" x2="180" y2="98" stroke="#F1F5F9" stroke-width="1"/>
+    </g>
+  </g>
+
+</svg>
