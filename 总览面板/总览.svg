@@ -1,0 +1,329 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="background-color: #F8F9FC; font-family: 'Microsoft YaHei', sans-serif;">
+  
+  <!-- ======================================================================== -->
+  <!-- 0. 定义区 (Definitions): 阴影、渐变(仅用于形状)、滤镜 -->
+  <!-- ======================================================================== -->
+  <defs>
+    <!-- 卡片悬浮阴影 (Soft Shadow) -->
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08" /> <!-- 极淡的阴影透明度 -->
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 宝石质感: 蓝色 (视频/科技) -->
+    <radialGradient id="gemBlue" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+
+    <!-- 宝石质感: 橙色 (照明/暖光) -->
+    <radialGradient id="gemAmber" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </radialGradient>
+
+    <!-- 宝石质感: 紫色 (能耗/综合) -->
+    <radialGradient id="gemPurple" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A78BFA" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </radialGradient>
+
+    <!-- 宝石质感: 青色 (冷源/AP) -->
+    <radialGradient id="gemCyan" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </radialGradient>
+    
+    <!-- 呼吸动画定义 -->
+    <style>
+      .pulse { animation: pulseAnim 3s infinite ease-in-out; transform-origin: center; }
+      @keyframes pulseAnim {
+        0% { opacity: 0.6; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.6; transform: scale(0.95); }
+      }
+    </style>
+  </defs>
+
+  <!-- ======================================================================== -->
+  <!-- 1. 顶部标题栏 (Header) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(0, 0)">
+    <!-- 顶栏背景: 纯白长条 + 底部极细蓝线 -->
+    <rect x="0" y="0" width="1920" height="80" fill="#FFFFFF" />
+    <rect x="0" y="78" width="1920" height="2" fill="#E2E8F0" />
+    <rect x="800" y="78" width="320" height="2" fill="#2563EB" /> <!-- 强调线 -->
+
+    <!-- 标题文字 -->
+    <text x="960" y="52" font-size="32" fill="#1E293B" font-weight="bold" text-anchor="middle" letter-spacing="2">
+      隔岸新兴产业大楼 · 智慧总控中心
+    </text>
+    
+    <!-- 右侧时间 -->
+    <text x="1880" y="52" font-size="20" fill="#64748B" text-anchor="end" font-family="'Consolas', 'Microsoft YaHei', monospace">
+      2026-01-29 22:45:00
+    </text>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 2. 左侧面板 (Left Panel): 宽度 460px -->
+  <!-- ======================================================================== -->
+  
+  <!-- 2.1 冷源板块 (Cold Source) -->
+  <g transform="translate(20, 100)" filter="url(#cardShadow)">
+    <rect width="460" height="300" rx="12" ry="12" fill="#FFFFFF" />
+    <!-- 标题 -->
+    <rect x="0" y="20" width="6" height="24" fill="#2563EB" rx="2" />
+    <text x="20" y="40" font-size="20" fill="#1E293B" font-weight="bold">冷源监测 (Cold Source)</text>
+    
+    <!-- 仪表盘拟态 -->
+    <g transform="translate(130, 160)">
+        <!-- 背景圆环 -->
+        <circle cx="0" cy="0" r="80" fill="none" stroke="#F1F5F9" stroke-width="12" />
+        <!-- 进度圆环 (75%) -->
+        <path d="M -56.5 56.5 A 80 80 0 1 1 56.5 56.5" fill="none" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" />
+        <!-- 中心数值 -->
+        <text x="0" y="10" text-anchor="middle" font-size="36" fill="#1E293B" font-weight="bold">10.23</text>
+        <text x="0" y="35" text-anchor="middle" font-size="14" fill="#94A3B8">COP 卓越</text>
+    </g>
+    
+    <!-- 右侧数据列表 -->
+    <g transform="translate(260, 110)">
+        <text x="0" y="0" font-size="14" fill="#64748B">实时功率 (kW)</text>
+        <text x="0" y="28" font-size="24" fill="#1E293B" font-weight="bold">50</text>
+        <!-- 极细分割线 -->
+        <line x1="0" y1="45" x2="160" y2="45" stroke="#E2E8F0" stroke-width="1" />
+        
+        <text x="0" y="70" font-size="14" fill="#64748B">实时负荷 (kW)</text>
+        <text x="0" y="98" font-size="24" fill="#F59E0B" font-weight="bold">80%</text> <!-- 橙色预警 -->
+    </g>
+  </g>
+
+  <!-- 2.2 能源板块 (Energy) -->
+  <g transform="translate(20, 420)" filter="url(#cardShadow)">
+    <rect width="460" height="400" rx="12" ry="12" fill="#FFFFFF" />
+    <!-- 标题 -->
+    <rect x="0" y="20" width="6" height="24" fill="#7C3AED" rx="2" /> <!-- 紫色系 -->
+    <text x="20" y="40" font-size="20" fill="#1E293B" font-weight="bold">今日大厦能耗</text>
+    
+    <!-- 总数展示 (卡片风格) -->
+    <g transform="translate(20, 70)">
+        <rect x="0" y="0" width="420" height="60" rx="8" fill="#F5F3FF" />
+        <text x="20" y="38" font-size="16" fill="#5B21B6">总用电量 (kWh)</text>
+        <text x="400" y="42" font-size="32" fill="#5B21B6" text-anchor="end" font-weight="bold">3,727</text>
+    </g>
+
+    <!-- 简单的趋势图 -->
+    <g transform="translate(40, 180)">
+        <!-- 坐标轴 -->
+        <line x1="0" y1="0" x2="0" y2="200" stroke="#E2E8F0" />
+        <line x1="0" y1="200" x2="380" y2="200" stroke="#E2E8F0" />
+        
+        <!-- 折线路径 (模拟) -->
+        <polyline points="0,150 50,120 100,160 150,80 200,100 250,50 300,90 350,40" 
+                  fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- 区域填充示意 (半透明) -->
+        <path d="M0,150 L50,120 L100,160 L150,80 L200,100 L250,50 L300,90 L350,40 V200 H0 Z" 
+              fill="#7C3AED" opacity="0.1" />
+              
+        <text x="0" y="220" font-size="12" fill="#94A3B8">08:00</text>
+        <text x="350" y="220" font-size="12" fill="#94A3B8" text-anchor="end">22:00</text>
+    </g>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 3. 中间区域 (Center): 3D场景留白 + 底部控制栏 -->
+  <!-- ======================================================================== -->
+  
+  <!-- 3D 场景占位提示 (实际开发中这层在HT View的下层，这里仅作示意，背景透明) -->
+  <text x="960" y="400" text-anchor="middle" font-size="24" fill="#CBD5E1" letter-spacing="4">
+    [ 3D 园区场景渲染区域 ]
+  </text>
+
+  <!-- 3.1 底部楼控板块 (Building Controls) - 重点设计 -->
+  <g transform="translate(500, 840)" filter="url(#cardShadow)">
+    <!-- 纯白长条底座 -->
+    <rect width="920" height="220" rx="16" ry="16" fill="#FFFFFF" />
+    
+    <!-- 标题 -->
+    <text x="460" y="40" text-anchor="middle" font-size="18" fill="#64748B" letter-spacing="2">—— 楼控子系统概览 ——</text>
+
+    <!-- 循环生成 4 个仪表 (Smart Lighting, HVAC, Elevator, Background Music) -->
+    
+    <!-- 1. 智能照明 (Amber/Orange) -->
+    <g transform="translate(100, 80)">
+        <!-- 外圈进度 -->
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#FFF7ED" stroke-width="8" />
+        <path d="M 50 10 A 40 40 0 0 1 85 70" fill="none" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" />
+        <!-- 宝石中心 (功能拟态：光晕) -->
+        <circle cx="50" cy="50" r="15" fill="url(#gemAmber)" class="pulse" />
+        <!-- 文字 -->
+        <text x="50" y="110" text-anchor="middle" font-size="16" fill="#1E293B" font-weight="bold">照明</text>
+        <text x="50" y="130" text-anchor="middle" font-size="12" fill="#F59E0B">开启 80%</text>
+    </g>
+
+    <!-- 2. 空调通风 (Cyan/Teal) -->
+    <g transform="translate(340, 80)">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#F0FDFA" stroke-width="8" />
+        <path d="M 50 10 A 40 40 0 1 1 30 15" fill="none" stroke="#14B8A6" stroke-width="8" stroke-linecap="round" />
+        <!-- 宝石中心 (功能拟态：风扇中心) -->
+        <circle cx="50" cy="50" r="15" fill="url(#gemCyan)" />
+        <circle cx="50" cy="50" r="25" fill="none" stroke="#14B8A6" stroke-width="1" stroke-dasharray="4 4" opacity="0.5">
+             <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite"/>
+        </circle>
+        
+        <text x="50" y="110" text-anchor="middle" font-size="16" fill="#1E293B" font-weight="bold">HVAC</text>
+        <text x="50" y="130" text-anchor="middle" font-size="12" fill="#14B8A6">舒适运行</text>
+    </g>
+
+    <!-- 3. 电梯监测 (Sapphire/Blue) -->
+    <g transform="translate(580, 80)">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#EFF6FF" stroke-width="8" />
+        <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#3B82F6" stroke-width="8" stroke-linecap="round" />
+        <!-- 宝石中心 (功能拟态：上下行指示) -->
+        <circle cx="50" cy="50" r="15" fill="url(#gemBlue)" />
+        <!-- 小箭头 -->
+        <path d="M 50 42 L 56 50 L 44 50 Z" fill="#FFFFFF" />
+        
+        <text x="50" y="110" text-anchor="middle" font-size="16" fill="#1E293B" font-weight="bold">电梯</text>
+        <text x="50" y="130" text-anchor="middle" font-size="12" fill="#3B82F6">上行中</text>
+    </g>
+
+    <!-- 4. 背景音乐 (Purple) -->
+    <g transform="translate(820, 80)">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#F3E8FF" stroke-width="8" />
+        <path d="M 50 10 A 40 40 0 0 1 90 50" fill="none" stroke="#8B5CF6" stroke-width="8" stroke-linecap="round" />
+        <!-- 宝石中心 -->
+        <circle cx="50" cy="50" r="15" fill="url(#gemPurple)" class="pulse"/>
+        
+        <text x="50" y="110" text-anchor="middle" font-size="16" fill="#1E293B" font-weight="bold">广播</text>
+        <text x="50" y="130" text-anchor="middle" font-size="12" fill="#8B5CF6">轻音乐</text>
+    </g>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 4. 右侧面板 (Right Panel): 宽度 460px -->
+  <!-- ======================================================================== -->
+
+  <!-- 4.1 客流统计 (Passenger Flow) -->
+  <g transform="translate(1440, 100)" filter="url(#cardShadow)">
+    <rect width="460" height="180" rx="12" ry="12" fill="#FFFFFF" />
+    <rect x="0" y="20" width="6" height="24" fill="#0EA5E9" rx="2" />
+    <text x="20" y="40" font-size="20" fill="#1E293B" font-weight="bold">客流统计 (Flow)</text>
+
+    <!-- 两个数据块 -->
+    <g transform="translate(20, 70)">
+        <!-- 在楼人数 -->
+        <rect x="0" y="0" width="200" height="90" rx="8" fill="#F0F9FF" />
+        <text x="20" y="30" font-size="14" fill="#0369A1">当前在楼人数</text>
+        <text x="20" y="70" font-size="32" fill="#0EA5E9" font-weight="bold" font-family="'Consolas', monospace">1,824</text>
+        
+        <!-- 进楼人数 -->
+        <rect x="220" y="0" width="200" height="90" rx="8" fill="#F0F9FF" />
+        <text x="240" y="30" font-size="14" fill="#0369A1">今日累计进入</text>
+        <text x="240" y="70" font-size="32" fill="#0EA5E9" font-weight="bold" font-family="'Consolas', monospace">8,824</text>
+    </g>
+  </g>
+
+  <!-- 4.2 安防板块 (Security) -->
+  <g transform="translate(1440, 300)" filter="url(#cardShadow)">
+    <rect width="460" height="260" rx="12" ry="12" fill="#FFFFFF" />
+    <rect x="0" y="20" width="6" height="24" fill="#2563EB" rx="2" />
+    <text x="20" y="40" font-size="20" fill="#1E293B" font-weight="bold">安防监测</text>
+    
+    <!-- 简单的柱状图 -->
+    <g transform="translate(40, 80)">
+        <!-- 视频监控 -->
+        <rect x="0" y="50" width="40" height="100" fill="#DBEAFE" rx="4"/>
+        <rect x="0" y="70" width="40" height="80" fill="#3B82F6" rx="4">
+             <animate attributeName="height" from="0" to="80" dur="1s" fill="freeze" />
+             <animate attributeName="y" from="150" to="70" dur="1s" fill="freeze" />
+        </rect>
+        <text x="20" y="170" text-anchor="middle" font-size="12" fill="#64748B">视频</text>
+        
+        <!-- 智慧门禁 -->
+        <rect x="80" y="30" width="40" height="120" fill="#CCFBF1" rx="4"/>
+        <rect x="80" y="50" width="40" height="100" fill="#14B8A6" rx="4">
+             <animate attributeName="height" from="0" to="100" dur="1.2s" fill="freeze" />
+             <animate attributeName="y" from="150" to="50" dur="1.2s" fill="freeze" />
+        </rect>
+        <text x="100" y="170" text-anchor="middle" font-size="12" fill="#64748B">门禁</text>
+        
+        <!-- 入侵报警 -->
+        <rect x="160" y="80" width="40" height="70" fill="#FEE2E2" rx="4"/>
+        <rect x="160" y="140" width="40" height="10" fill="#EF4444" rx="4">
+             <!-- 红色低值 -->
+        </rect>
+        <text x="180" y="170" text-anchor="middle" font-size="12" fill="#64748B">报警</text>
+        
+        <!-- 数据说明 -->
+        <g transform="translate(250, 40)">
+             <circle cx="0" cy="0" r="6" fill="#3B82F6"/>
+             <text x="15" y="5" font-size="12" fill="#64748B">设备在线率 98%</text>
+             
+             <circle cx="0" cy="30" r="6" fill="#EF4444"/>
+             <text x="15" y="35" font-size="12" fill="#64748B">待处理告警 2</text>
+        </g>
+    </g>
+  </g>
+
+  <!-- 4.3 运维板块 (Operations) -->
+  <g transform="translate(1440, 580)" filter="url(#cardShadow)">
+    <rect width="460" height="480" rx="12" ry="12" fill="#FFFFFF" />
+    <rect x="0" y="20" width="6" height="24" fill="#10B981" rx="2" />
+    <text x="20" y="40" font-size="20" fill="#1E293B" font-weight="bold">运维工单 (Ops)</text>
+    
+    <!-- 头部统计 -->
+    <g transform="translate(20, 70)">
+        <text x="0" y="0" font-size="14" fill="#64748B">今日工单完成率</text>
+        <text x="0" y="40" font-size="40" fill="#10B981" font-weight="bold">99.8%</text>
+    </g>
+    
+    <!-- 进度条列表 -->
+    <g transform="translate(20, 140)">
+        <!-- 条目1 -->
+        <text x="0" y="0" font-size="14" fill="#475569">已完成 (8804)</text>
+        <rect x="0" y="10" width="420" height="8" rx="4" fill="#E2E8F0" />
+        <rect x="0" y="10" width="410" height="8" rx="4" fill="#10B981" />
+        
+        <!-- 条目2 -->
+        <text x="0" y="50" font-size="14" fill="#475569">处理中 (19)</text>
+        <rect x="0" y="60" width="420" height="8" rx="4" fill="#E2E8F0" />
+        <rect x="0" y="60" width="80" height="8" rx="4" fill="#3B82F6" />
+        
+        <!-- 条目3 -->
+        <text x="0" y="100" font-size="14" fill="#475569">待完成 (1)</text>
+        <rect x="0" y="110" width="420" height="8" rx="4" fill="#E2E8F0" />
+        <rect x="0" y="110" width="10" height="8" rx="4" fill="#F59E0B" />
+    </g>
+
+    <!-- 简易表格 -->
+    <g transform="translate(20, 280)">
+        <!-- 表头 -->
+        <rect x="0" y="0" width="420" height="30" fill="#F1F5F9" rx="4"/>
+        <text x="10" y="20" font-size="12" fill="#64748B">类型</text>
+        <text x="80" y="20" font-size="12" fill="#64748B">内容</text>
+        <text x="350" y="20" font-size="12" fill="#64748B">状态</text>
+        
+        <!-- 行1 -->
+        <text x="10" y="60" font-size="12" fill="#1E293B">维修</text>
+        <text x="80" y="60" font-size="12" fill="#1E293B">厕所灯光损坏...</text>
+        <text x="350" y="60" font-size="12" fill="#10B981">已处理</text>
+        <line x1="0" y1="80" x2="420" y2="80" stroke="#F1F5F9" />
+
+        <!-- 行2 -->
+        <text x="10" y="100" font-size="12" fill="#1E293B">维保</text>
+        <text x="80" y="100" font-size="12" fill="#1E293B">空调柜机异响...</text>
+        <text x="350" y="100" font-size="12" fill="#3B82F6">处理中</text>
+        <line x1="0" y1="120" x2="420" y2="120" stroke="#F1F5F9" />
+    </g>
+  </g>
+
+</svg>

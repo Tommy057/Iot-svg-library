@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="150" viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- ===================== -->
+  <!-- Legend Panel (Flat, Engineering Style) -->
+  <!-- ===================== -->
+  <rect x="0" y="0" width="240" height="150" rx="4" fill="#5E6F8A"/>
+
+  <!-- ===================== -->
+  <!-- Title -->
+  <!-- ===================== -->
+  <text x="16" y="28"
+        font-family="Microsoft YaHei, PingFang SC, Arial"
+        font-size="16"
+        font-weight="600"
+        fill="#FFFFFF">
+    图例
+  </text>
+
+  <!-- Column headers -->
+  <text x="110" y="28" font-size="13" fill="#DCE6F2">在线</text>
+  <text x="165" y="28" font-size="13" fill="#DCE6F2">离线</text>
+
+  <!-- ===================== -->
+  <!-- Dome Camera (球机) -->
+  <!-- ===================== -->
+  <text x="16" y="62"
+        font-size="14"
+        fill="#FFFFFF">
+    球机
+  </text>
+
+  <!-- Online Dome -->
+  <path
+    d="M110 58 A10 10 0 0 1 130 58 L110 58 Z"
+    fill="#2AFF3B"
+  />
+
+  <!-- Offline Dome -->
+  <path
+    d="M165 58 A10 10 0 0 1 185 58 L165 58 Z"
+    fill="#FF2A2A"
+  />
+
+  <!-- ===================== -->
+  <!-- Bullet Camera (枪机) -->
+  <!-- ===================== -->
+  <text x="16" y="102"
+        font-size="14"
+        fill="#FFFFFF">
+    枪机
+  </text>
+
+  <!-- Online Bullet -->
+  <polygon
+    points="110,96 128,92 134,98 128,104 110,100"
+    fill="#2AFF3B"
+  />
+
+  <!-- Offline Bullet -->
+  <polygon
+    points="165,96 183,92 189,98 183,104 165,100"
+    fill="#FF2A2A"
+  />
+
+</svg>
