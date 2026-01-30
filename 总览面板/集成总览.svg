@@ -1,0 +1,309 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <!-- Definitions -->
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D1D9E6" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F1F5F9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Card Glass Effect -->
+    <filter id="glassBlur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+    
+    <!-- Cyan Gradient (Cooling/Water) -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Violet Gradient (Power) -->
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Blue Gradient (Security) -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0EA5E9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Orange Gradient (Alert) -->
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Radial Gem Effect -->
+    <radialGradient id="gemGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#06B6D4;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <!-- Colored Shadows -->
+    <filter id="cyanShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="#06B6D4" flood-opacity="0.15"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="blueShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="#3B82F6" flood-opacity="0.15"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bgGradient)"/>
+  <rect width="1920" height="1080" fill="url(#gridPattern)"/>
+  
+  <!-- Header -->
+  <g id="header">
+    <rect x="40" y="20" width="1840" height="70" rx="12" fill="#FFFFFF" fill-opacity="0.92" stroke="#FFFFFF" stroke-width="1"/>
+    <line x1="60" y1="30" x2="180" y2="30" stroke="url(#cyanGrad)" stroke-width="2"/>
+    <line x1="1740" y1="30" x2="1860" y2="30" stroke="url(#blueGrad)" stroke-width="2"/>
+    
+    <text x="100" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B">2026-01-30</text>
+    <text x="100" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">14:28:36</text>
+    
+    <text x="960" y="62" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#1E293B" text-anchor="middle">智慧楼宇总览驾驶舱</text>
+    
+    <text x="1780" y="55" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#64748B" text-anchor="end">晴 22°C</text>
+    <text x="1780" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8" text-anchor="end">空气质量优</text>
+  </g>
+  
+  <!-- Left Panel -->
+  <g id="leftPanel">
+    <!-- Energy Efficiency Center Card -->
+    <rect x="40" y="110" width="440" height="380" rx="12" fill="#FFFFFF" fill-opacity="0.93" filter="url(#cyanShadow)"/>
+    <line x1="40" y1="110" x2="480" y2="110" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="60" y="145" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">能效中心</text>
+    <rect x="60" y="152" width="60" height="3" fill="url(#cyanGrad)" rx="1.5"/>
+    
+    <!-- Ring Chart -->
+    <circle cx="170" cy="280" r="80" fill="url(#gemGlow)"/>
+    <circle cx="170" cy="280" r="75" fill="none" stroke="#E2E8F0" stroke-width="18"/>
+    <circle cx="170" cy="280" r="75" fill="none" stroke="url(#cyanGrad)" stroke-width="18" stroke-dasharray="353 471" stroke-linecap="round" transform="rotate(-90 170 280)">
+      <animate attributeName="stroke-dasharray" values="0 471;353 471" dur="2s" fill="freeze"/>
+    </circle>
+    
+    <text x="170" y="270" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="bold" fill="#0D9488" text-anchor="middle">75%</text>
+    <text x="170" y="295" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B" text-anchor="middle">综合能效</text>
+    
+    <!-- Area Chart -->
+    <g transform="translate(280, 180)">
+      <path d="M 0 120 L 20 100 L 40 85 L 60 95 L 80 75 L 100 80 L 120 65 L 140 70 L 160 55 L 180 60 L 180 120 Z" fill="url(#violetGrad)" opacity="0.3"/>
+      <path d="M 0 120 L 20 100 L 40 85 L 60 95 L 80 75 L 100 80 L 120 65 L 140 70 L 160 55 L 180 60" fill="none" stroke="url(#violetGrad)" stroke-width="3"/>
+    </g>
+    
+    <text x="290" y="325" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#8B5CF6">1,247</text>
+    <text x="290" y="345" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">kWh 今日用电</text>
+    
+    <text x="290" y="375" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#06B6D4">328</text>
+    <text x="290" y="395" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">m³ 今日用水</text>
+    
+    <text x="390" y="375" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#0EA5E9">19.2</text>
+    <text x="390" y="395" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8">°C 平均温度</text>
+    
+    <!-- Device Status Matrix Card -->
+    <rect x="40" y="510" width="440" height="320" rx="12" fill="#FFFFFF" fill-opacity="0.93" filter="url(#cyanShadow)"/>
+    <line x1="40" y1="510" x2="480" y2="510" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="60" y="545" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">设备状态矩阵</text>
+    <rect x="60" y="552" width="60" height="3" fill="url(#violetGrad)" rx="1.5"/>
+    
+    <!-- Status Grid -->
+    <g id="deviceGrid" transform="translate(60, 580)">
+      <rect x="0" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)">
+        <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="40" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="80" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="120" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="160" y="0" width="30" height="30" rx="4" fill="#E2E8F0"/>
+      <rect x="200" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="240" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="280" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="320" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="360" y="0" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      
+      <rect x="0" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="40" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="80" y="40" width="30" height="30" rx="4" fill="url(#orangeGrad)">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="120" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="160" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="200" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="240" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="280" y="40" width="30" height="30" rx="4" fill="#E2E8F0"/>
+      <rect x="320" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="360" y="40" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      
+      <rect x="0" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="40" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="80" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="120" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="160" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="200" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="240" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="280" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="320" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="360" y="80" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      
+      <rect x="0" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="40" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="80" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="120" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="160" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="200" y="120" width="30" height="30" rx="4" fill="#E2E8F0"/>
+      <rect x="240" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="280" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="320" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+      <rect x="360" y="120" width="30" height="30" rx="4" fill="url(#cyanGrad)"/>
+    </g>
+    
+    <text x="70" y="755" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#334155">冷源主机运行状态</text>
+    <text x="70" y="780" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#06B6D4">36/40</text>
+    <text x="180" y="785" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">台在线</text>
+    
+    <rect x="280" y="745" width="12" height="12" rx="2" fill="url(#cyanGrad)"/>
+    <text x="300" y="755" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">运行</text>
+    
+    <rect x="280" y="770" width="12" height="12" rx="2" fill="#E2E8F0"/>
+    <text x="300" y="780" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">离线</text>
+    
+    <rect x="350" y="745" width="12" height="12" rx="2" fill="url(#orangeGrad)"/>
+    <text x="370" y="755" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">告警</text>
+  </g>
+  
+  <!-- Right Panel -->
+  <g id="rightPanel">
+    <!-- Security Status Card -->
+    <rect x="1440" y="110" width="440" height="380" rx="12" fill="#FFFFFF" fill-opacity="0.93" filter="url(#blueShadow)"/>
+    <line x1="1440" y1="110" x2="1880" y2="110" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="1460" y="145" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">安防态势</text>
+    <rect x="1460" y="152" width="60" height="3" fill="url(#blueGrad)" rx="1.5"/>
+    
+    <!-- Radar Scan -->
+    <circle cx="1580" cy="280" r="90" fill="none" stroke="#E2E8F0" stroke-width="1" opacity="0.5"/>
+    <circle cx="1580" cy="280" r="60" fill="none" stroke="#E2E8F0" stroke-width="1" opacity="0.5"/>
+    <circle cx="1580" cy="280" r="30" fill="none" stroke="#E2E8F0" stroke-width="1" opacity="0.5"/>
+    
+    <line x1="1580" y1="280" x2="1580" y2="190" stroke="#CBD5E1" stroke-width="0.5"/>
+    <line x1="1580" y1="280" x2="1670" y2="280" stroke="#CBD5E1" stroke-width="0.5"/>
+    
+    <path d="M 1580 280 L 1580 190 A 90 90 0 0 1 1650 240 Z" fill="url(#blueGrad)" opacity="0.3">
+      <animateTransform attributeName="transform" type="rotate" from="0 1580 280" to="360 1580 280" dur="4s" repeatCount="indefinite"/>
+    </path>
+    
+    <circle cx="1620" cy="240" r="5" fill="#3B82F6">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1640" cy="300" r="5" fill="#0EA5E9">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <text x="1750" y="230" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#334155">在线设备</text>
+    <text x="1750" y="255" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#3B82F6">247</text>
+    
+    <text x="1750" y="290" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#334155">今日通行</text>
+    <text x="1750" y="315" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#0EA5E9">3,628</text>
+    
+    <text x="1750" y="350" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#334155">异常事件</text>
+    <text x="1750" y="375" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#F97316">2</text>
+    
+    <!-- Work Order Statistics Card -->
+    <rect x="1440" y="510" width="440" height="320" rx="12" fill="#FFFFFF" fill-opacity="0.93" filter="url(#blueShadow)"/>
+    <line x1="1440" y1="510" x2="1880" y2="510" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="1460" y="545" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">工单统计</text>
+    <rect x="1460" y="552" width="60" height="3" fill="url(#violetGrad)" rx="1.5"/>
+    
+    <!-- Progress Bars -->
+    <g transform="translate(1460, 590)">
+      <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">设备维护</text>
+      <rect x="0" y="10" width="380" height="20" rx="10" fill="#E2E8F0"/>
+      <rect x="0" y="10" width="304" height="20" rx="10" fill="url(#cyanGrad)">
+        <animate attributeName="width" from="0" to="304" dur="1.5s" fill="freeze"/>
+      </rect>
+      <text x="390" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#0D9488" text-anchor="end">80%</text>
+      
+      <text x="0" y="60" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">巡检任务</text>
+      <rect x="0" y="70" width="380" height="20" rx="10" fill="#E2E8F0"/>
+      <rect x="0" y="70" width="247" height="20" rx="10" fill="url(#violetGrad)">
+        <animate attributeName="width" from="0" to="247" dur="1.5s" fill="freeze"/>
+      </rect>
+      <text x="390" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#8B5CF6" text-anchor="end">65%</text>
+      
+      <text x="0" y="120" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">故障处理</text>
+      <rect x="0" y="130" width="380" height="20" rx="10" fill="#E2E8F0"/>
+      <rect x="0" y="130" width="342" height="20" rx="10" fill="url(#blueGrad)">
+        <animate attributeName="width" from="0" to="342" dur="1.5s" fill="freeze"/>
+      </rect>
+      <text x="390" y="145" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#3B82F6" text-anchor="end">90%</text>
+      
+      <text x="0" y="180" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">清洁保养</text>
+      <rect x="0" y="190" width="380" height="20" rx="10" fill="#E2E8F0"/>
+      <rect x="0" y="190" width="171" height="20" rx="10" fill="url(#orangeGrad)">
+        <animate attributeName="width" from="0" to="171" dur="1.5s" fill="freeze"/>
+      </rect>
+      <text x="390" y="205" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#F97316" text-anchor="end">45%</text>
+    </g>
+  </g>
+  
+  <!-- Bottom Control Dock -->
+  <g id="bottomDock">
+    <rect x="660" y="950" width="600" height="100" rx="50" fill="#FFFFFF" fill-opacity="0.95"/>
+    <line x1="660" y1="950" x2="1260" y2="950" stroke="#FFFFFF" stroke-width="2"/>
+    
+    <!-- Lighting Control -->
+    <circle cx="765" cy="1000" r="35" fill="url(#orangeGrad)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="765" cy="1000" r="30" fill="url(#gemGlow)"/>
+    <text x="765" y="1008" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold" text-anchor="middle">照明</text>
+    
+    <!-- HVAC Control -->
+    <circle cx="915" cy="1000" r="35" fill="url(#cyanGrad)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="915" cy="1000" r="30" fill="url(#gemGlow)"/>
+    <text x="915" y="1008" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold" text-anchor="middle">暖通</text>
+    
+    <!-- Elevator Control -->
+    <circle cx="1065" cy="1000" r="35" fill="url(#blueGrad)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1065" cy="1000" r="30" fill="url(#gemGlow)"/>
+    <text x="1065" y="1008" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold" text-anchor="middle">电梯</text>
+    
+    <!-- Broadcast Control -->
+    <circle cx="1215" cy="1000" r="35" fill="url(#violetGrad)">
+      <animate attributeName="opacity" values="1;0.8;1" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1215" cy="1000" r="30" fill="url(#gemGlow)"/>
+    <text x="1215" y="1008" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold" text-anchor="middle">广播</text>
+  </g>
+</svg>

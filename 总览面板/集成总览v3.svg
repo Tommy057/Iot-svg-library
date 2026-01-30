@@ -1,0 +1,183 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 定义资源库 -->
+    <defs>
+        <!-- 背景微纹理 -->
+        <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="0.5" fill="#E2E8F0" />
+        </pattern>
+
+        <!-- 宝石放射渐变 (Gem Halo) -->
+        <radialGradient id="gem-cyan" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="40%" stop-color="#22D3EE" />
+            <stop offset="100%" stop-color="#0D9488" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="gem-violet" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="40%" stop-color="#A855F7" />
+            <stop offset="100%" stop-color="#4F46E5" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="gem-amber" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="40%" stop-color="#F59E0B" />
+            <stop offset="100%" stop-color="#D97706" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="gem-blue" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="40%" stop-color="#3B82F6" />
+            <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- 线性渐变 (进度条/图表) -->
+        <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#22D3EE" />
+            <stop offset="100%" stop-color="#0D9488" />
+        </linearGradient>
+        <linearGradient id="grad-violet" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#A855F7" />
+            <stop offset="100%" stop-color="#4F46E5" />
+        </linearGradient>
+
+        <!-- 卡片阴影 -->
+        <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000" flood-opacity="0.04" />
+        </filter>
+    </defs>
+
+    <!-- 2. 全局底色 -->
+    <rect width="1920" height="1080" fill="#F8FAFC" />
+    <rect width="1920" height="1080" fill="url(#dot-pattern)" />
+
+    <!-- 3. 顶部大标题 -->
+    <g transform="translate(480, 20)">
+        <text x="480" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="900" fill="#1E293B" text-anchor="middle" letter-spacing="4">隔岸新兴产业大楼 · 隔岸智创大厦</text>
+        <path d="M280 60 H680" stroke="#CBD5E1" stroke-width="1" />
+    </g>
+
+    <!-- 4. 左侧栏：视频、冷源、能源 -->
+    <g transform="translate(30, 30)">
+        <!-- 视频监控 -->
+        <rect width="420" height="200" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+        <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#64748B">视频监控 PROMOTION VIDEO</text>
+        <rect x="20" y="50" width="180" height="130" rx="4" fill="#F1F5F9" />
+        <rect x="220" y="50" width="180" height="130" rx="4" fill="#F1F5F9" />
+
+        <!-- 冷源板块 -->
+        <g transform="translate(0, 220)">
+            <rect width="420" height="300" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+            <circle cx="30" cy="30" r="12" fill="url(#gem-cyan)">
+                <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" />
+            </circle>
+            <text x="50" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">冷源板块 COLD SOURCE</text>
+            
+            <!-- 仪表盘模拟 -->
+            <circle cx="100" cy="140" r="60" stroke="#F1F5F9" stroke-width="8" fill="none" />
+            <path d="M57 183 A 60 60 0 1 1 143 183" stroke="url(#grad-cyan)" stroke-width="10" stroke-linecap="round" fill="none" />
+            <text x="100" y="145" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#0D9488" text-anchor="middle">10.23</text>
+            <text x="100" y="165" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#94A3B8" text-anchor="middle">卓越</text>
+            
+            <!-- 实时负载列表 -->
+            <g transform="translate(180, 80)">
+                <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">实时功率 (kW)</text>
+                <text x="0" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">50</text>
+                <rect x="0" y="35" width="200" height="4" rx="2" fill="#F1F5F9" />
+                <rect x="0" y="35" width="160" height="4" rx="2" fill="url(#grad-cyan)" />
+            </g>
+        </g>
+
+        <!-- 能源板块 -->
+        <g transform="translate(0, 540)">
+            <rect width="420" height="480" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+            <circle cx="30" cy="30" r="12" fill="url(#gem-violet)" />
+            <text x="50" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">能源板块 ENERGY SECTOR</text>
+            
+            <!-- 今日能耗数字 -->
+            <text x="20" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">今日大厦能耗</text>
+            <g transform="translate(20, 100)">
+                <rect x="0" y="0" width="30" height="40" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+                <text x="15" y="28" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#4F46E5" text-anchor="middle">3</text>
+                <rect x="35" y="0" width="30" height="40" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+                <text x="50" y="28" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#4F46E5" text-anchor="middle">7</text>
+                <rect x="70" y="0" width="30" height="40" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+                <text x="85" y="28" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#4F46E5" text-anchor="middle">2</text>
+                <rect x="105" y="0" width="30" height="40" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+                <text x="120" y="28" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#4F46E5" text-anchor="middle">7</text>
+            </g>
+
+            <!-- 趋势图模拟 -->
+            <path d="M40 420 L100 350 L160 380 L220 320 L280 390 L380 340" stroke="#A855F7" stroke-width="3" fill="none" opacity="0.8" />
+            <path d="M40 420 L100 350 L160 380 L220 320 L280 390 L380 340 V 450 H 40 Z" fill="url(#grad-violet)" opacity="0.1" />
+        </g>
+    </g>
+
+    <!-- 5. 中间主视觉占位 -->
+    <g transform="translate(470, 90)">
+        <rect width="980" height="650" rx="16" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+        <text x="490" y="325" font-family="'Microsoft YaHei', sans-serif" font-size="24" fill="#94A3B8" text-anchor="middle">[ 3D 数字孪生建筑渲染层 ]</text>
+        
+        <!-- 底部楼控板块 (Donut Charts) -->
+        <g transform="translate(20, 680)">
+            <rect width="940" height="270" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+            <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">楼控板块 BUILDING CONTROL</text>
+            
+            <!-- 5个环形图示例 -->
+            <g transform="translate(100, 140)">
+                <circle r="45" stroke="#F1F5F9" stroke-width="12" fill="none" />
+                <circle r="45" stroke="url(#grad-cyan)" stroke-width="12" fill="none" stroke-dasharray="200, 282" />
+                <text y="5" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">智能照明</text>
+                <text y="25" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#94A3B8" text-anchor="middle">开: 20%</text>
+            </g>
+            <g transform="translate(300, 140)">
+                <circle r="45" stroke="#F1F5F9" stroke-width="12" fill="none" />
+                <circle r="45" stroke="url(#grad-violet)" stroke-width="12" fill="none" stroke-dasharray="150, 282" />
+                <text y="5" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">空调通风</text>
+            </g>
+            <!-- 更多环形图依次类推... -->
+        </g>
+    </g>
+
+    <!-- 6. 右侧栏：客流、安防、运维 -->
+    <g transform="translate(1470, 30)">
+        <!-- 客流统计 -->
+        <rect width="420" height="150" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+        <circle cx="30" cy="30" r="12" fill="url(#gem-blue)" />
+        <text x="50" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">客流统计 PASSENGER FLOW</text>
+        <text x="210" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#1D4ED8" text-anchor="middle">2026-01-30 14:27:16</text>
+
+        <!-- 安防板块 (柱状图) -->
+        <g transform="translate(0, 170)">
+            <rect width="420" height="300" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+            <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#64748B">安防板块 SECURITY MONITORING</text>
+            <rect x="50" y="100" width="40" height="120" fill="url(#grad-blue)" rx="2" />
+            <rect x="120" y="140" width="40" height="80" fill="url(#grad-cyan)" rx="2" />
+            <rect x="190" y="110" width="40" height="110" fill="url(#grad-blue)" rx="2" />
+            <rect x="260" y="150" width="40" height="70" fill="url(#grad-cyan)" rx="2" />
+        </g>
+
+        <!-- 运维板块 (表格) -->
+        <g transform="translate(0, 490)">
+            <rect width="420" height="530" rx="12" fill="white" filter="url(#card-shadow)" stroke="#E2E8F0" stroke-width="0.5" />
+            <circle cx="30" cy="30" r="12" fill="url(#gem-amber)" />
+            <text x="50" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#334155">运维板块 O&amp;M SECTION</text>
+            
+            <text x="20" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#D97706">8824</text>
+            <text x="100" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#94A3B8">工单总数</text>
+            <text x="320" y="80" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#10B981">99.8%</text>
+
+            <!-- 极简表格行 -->
+            <g transform="translate(20, 120)">
+                <rect width="380" height="40" fill="#F8FAFC" />
+                <text x="10" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">维修 | 2025-02-24 | 厕所灯光损坏</text>
+                <text x="320" y="25" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#10B981">已处理</text>
+                
+                <rect y="50" width="380" height="40" fill="white" />
+                <text x="10" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">维修 | 2025-04-24 | 大堂门禁无法关闭</text>
+                <text x="320" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#10B981">已处理</text>
+                
+                <rect y="100" width="380" height="40" fill="#F8FAFC" />
+                <text x="10" y="125" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#475569">维修 | 2025-05-24 | 空调不制冷</text>
+                <text x="320" y="125" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#F59E0B">待处理</text>
+            </g>
+        </g>
+    </g>
+</svg>
