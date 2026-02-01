@@ -1,0 +1,86 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 240 300" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 1. 背景渐变：Soft UI 质感 -->
+        <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F4F7FB" />
+            <stop offset="100%" stop-color="#FFFFFF" />
+        </linearGradient>
+
+        <!-- 2. 核心阴影：浅蓝色极柔和投影 -->
+        <filter id="softGlow" x="-30%" y="-20%" width="160%" height="160%">
+            <feOffset dx="0" dy="12" in="SourceAlpha" result="offOut" />
+            <feGaussianBlur stdDeviation="10" in="offOut" result="blurOut" />
+            <feFlood flood-color="#85BDD7" flood-opacity="0.5" result="flood" />
+            <feComposite in="flood" in2="blurOut" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 3. 内嵌式槽位滤镜 (让图标看起来像是在卡片上微微下陷) -->
+        <filter id="slotShadow">
+            <feOffset dx="-1" dy="1" />
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceAlpha" in2="blur" operator="out" result="shadow" />
+            <feFlood flood-color="#D1E5F0" />
+            <feComposite in2="shadow" operator="in" />
+            <feComposite in2="SourceAlpha" operator="in" />
+        </filter>
+
+        <!-- 4. 摄像头图标基本形状定义 (复刻图 2) -->
+        <g id="camera_shape">
+            <!-- 顶部矩形 -->
+            <path d="M-18 -15 h36 a2 2 0 0 1 2 2 v6 a2 2 0 0 1 -2 2 h-36 a2 2 0 0 1 -2 -2 v-6 a2 2 0 0 1 2 -2 Z" />
+            <!-- 底部半圆 -->
+            <path d="M-18 -3 a18 18 0 0 0 36 0 Z" />
+            <!-- 蓝色三角形透镜 -->
+            <path d="M-5 5 L5 5 L0 -8 Z" fill="#1089D3" />
+        </g>
+    </defs>
+
+    <!-- 卡片主体容器 -->
+    <g id="legend_card" filter="url(#softGlow)">
+        <rect x="10" y="10" width="220" height="280" rx="40" fill="url(#cardBg)" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+
+    <!-- 标题部分 -->
+    <g id="header" transform="translate(40, 60)">
+        <text x="0" y="0" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#1089D3">图例</text>
+        <!-- 装饰线条 -->
+        <rect x="0" y="15" width="40" height="4" rx="2" fill="#1089D3" opacity="0.3" />
+    </g>
+
+    <!-- 图例列表 -->
+    <g id="legend_items" transform="translate(45, 120)">
+        
+        <!-- 在线项 (Online) -->
+        <g id="item_online" transform="translate(0, 0)">
+            <!-- 图标槽位背景 -->
+            <rect x="-5" y="-15" width="50" height="50" rx="15" fill="#FFFFFF" filter="url(#slotShadow)" />
+            <!-- 摄像头图标 (Green) -->
+            <g transform="translate(20, 15)">
+                <use xlink:href="#camera_shape" fill="#00E676" />
+                <!-- 呼吸动画 -->
+                <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite" />
+            </g>
+            <text x="70" y="20" font-family="Arial" font-size="18" font-weight="bold" fill="#555555">在线</text>
+        </g>
+
+        <!-- 离线项 (Offline) -->
+        <g id="item_offline" transform="translate(0, 80)">
+            <!-- 图标槽位背景 -->
+            <rect x="-5" y="-15" width="50" height="50" rx="15" fill="#FFFFFF" filter="url(#slotShadow)" />
+            <!-- 摄像头图标 (Red) -->
+            <g transform="translate(20, 15)">
+                <use xlink:href="#camera_shape" fill="#FF5252" />
+            </g>
+            <text x="70" y="20" font-family="Arial" font-size="18" font-weight="bold" fill="#555555">离线</text>
+        </g>
+
+    </g>
+
+    <!-- 底部修饰 -->
+    <circle cx="120" cy="270" r="3" fill="#1089D3" opacity="0.5" />
+</svg>

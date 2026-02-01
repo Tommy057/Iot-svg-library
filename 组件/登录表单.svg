@@ -1,0 +1,117 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 350 520" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 背景卡片渐变 -->
+        <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F4F7FB" />
+            <stop offset="100%" stop-color="#FFFFFF" />
+        </linearGradient>
+
+        <!-- 登录按钮渐变 -->
+        <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1089D3" />
+            <stop offset="100%" stop-color="#12B1D1" />
+        </linearGradient>
+
+        <!-- 社交按钮渐变 -->
+        <linearGradient id="socialGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#000000" />
+            <stop offset="100%" stop-color="#707070" />
+        </linearGradient>
+
+        <!-- 主卡片阴影 (模拟 rgba(133, 189, 215, 0.87) 0 30 30 -20) -->
+        <filter id="cardShadow" x="-20%" y="-10%" width="140%" height="150%">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="offOut" />
+            <feGaussianBlur stdDeviation="15" in="offOut" result="blurOut" />
+            <feFlood flood-color="#85BDD7" flood-opacity="0.6" result="flood" />
+            <feComposite in="flood" in2="blurOut" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 输入框投影 -->
+        <filter id="inputShadow" x="-10%" y="-10%" width="120%" height="140%">
+            <feOffset dx="0" dy="5" />
+            <feGaussianBlur stdDeviation="5" />
+            <feFlood flood-color="#CFF0FF" />
+            <feComposite in2="SourceAlpha" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 按钮悬停呼吸效果 -->
+        <filter id="btnGlow">
+            <feGaussianBlur stdDeviation="3" result="glow" />
+            <feMerge>
+                <feMergeNode in="glow" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- 背景容器 -->
+    <g id="main_container" filter="url(#cardShadow)">
+        <rect x="10" y="10" width="330" height="490" rx="40" fill="url(#cardBg)" stroke="#FFFFFF" stroke-width="5" />
+    </g>
+
+    <!-- 标题 -->
+    <text x="175" y="70" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#1089D3" text-anchor="middle">LOGIN</text>
+
+    <!-- 输入表单组 -->
+    <g id="form_inputs" transform="translate(35, 100)">
+        <!-- 账号输入框 -->
+        <g id="input_email" filter="url(#inputShadow)">
+            <rect x="0" y="0" width="280" height="50" rx="20" fill="#FFFFFF" />
+            <text x="20" y="30" font-family="Arial" font-size="14" fill="#AAAAAA">Email Address</text>
+        </g>
+        
+        <!-- 密码输入框 -->
+        <g id="input_password" filter="url(#inputShadow)" transform="translate(0, 65)">
+            <rect x="0" y="0" width="280" height="50" rx="20" fill="#FFFFFF" />
+            <text x="20" y="30" font-family="Arial" font-size="14" fill="#AAAAAA">Password</text>
+        </g>
+
+        <!-- 忘记密码 -->
+        <text x="10" y="135" font-family="Arial" font-size="11" fill="#0099FF">Forgot Password?</text>
+    </g>
+
+    <!-- 登录按钮 -->
+    <g id="login_button" transform="translate(35, 260)">
+        <rect x="0" y="0" width="280" height="50" rx="20" fill="url(#btnGrad)" filter="url(#btnGlow)">
+            <!-- 模拟 Hover 缩放呼吸 -->
+            <animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="3s" repeatCount="indefinite" additive="sum" pivot="140 25" />
+        </rect>
+        <text x="140" y="32" font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle" pointer-events="none">LOG IN</text>
+    </g>
+
+    <!-- 社交登录 -->
+    <g id="social_section" transform="translate(0, 350)">
+        <text x="175" y="0" font-family="Arial" font-size="10" fill="#AAAAAA" text-anchor="middle">Or sign in with</text>
+        
+        <g id="social_buttons" transform="translate(105, 20)">
+            <!-- 社交按钮 1 -->
+            <g transform="translate(0, 0)">
+                <circle cx="20" cy="20" r="20" fill="url(#socialGrad)" stroke="#FFFFFF" stroke-width="4" />
+                <path d="M15 15 L25 25 M25 15 L15 25" stroke="white" stroke-width="2" /> <!-- 占位图标 -->
+                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="4s" repeatCount="indefinite" additive="sum" />
+            </g>
+            <!-- 社交按钮 2 -->
+            <g transform="translate(55, 0)">
+                <circle cx="20" cy="20" r="20" fill="url(#socialGrad)" stroke="#FFFFFF" stroke-width="4" />
+                <circle cx="20" cy="20" r="6" fill="white" /> <!-- 占位图标 -->
+            </g>
+            <!-- 社交按钮 3 -->
+            <g transform="translate(110, 0)">
+                <circle cx="20" cy="20" r="20" fill="url(#socialGrad)" stroke="#FFFFFF" stroke-width="4" />
+                <rect x="14" y="14" width="12" height="12" fill="white" /> <!-- 占位图标 -->
+            </g>
+        </g>
+    </g>
+
+    <!-- 协议说明 -->
+    <text x="175" y="460" font-family="Arial" font-size="9" fill="#0099FF" text-anchor="middle">User Agreement &amp; Privacy Policy</text>
+</svg>

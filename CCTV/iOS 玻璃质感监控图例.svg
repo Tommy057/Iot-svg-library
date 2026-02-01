@@ -1,0 +1,84 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 280 320" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 1. 极轻微的阴影：仅用于在纯白背景下勾勒轮廓 -->
+        <filter id="iosShadow" x="-20%" y="-10%" width="140%" height="130%">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="offOut" />
+            <feGaussianBlur stdDeviation="8" in="offOut" result="blurOut" />
+            <feFlood flood-color="#000000" flood-opacity="0.05" result="flood" />
+            <feComposite in="flood" in2="blurOut" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 2. 玻璃高光渐变 -->
+        <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.4" />
+        </linearGradient>
+
+        <!-- 3. iOS 风格图标形状 (超椭圆/Squircle 基础) -->
+        <g id="camera_icon_shape">
+            <!-- 外框 -->
+            <rect x="-16" y="-12" width="32" height="24" rx="6" />
+            <!-- 镜头 -->
+            <circle cx="0" cy="0" r="8" fill="#FFFFFF" fill-opacity="0.3" stroke="#FFFFFF" stroke-width="1.5" />
+            <circle cx="0" cy="0" r="3" fill="#FFFFFF" fill-opacity="0.8" />
+        </g>
+    </defs>
+
+    <!-- 背景卡片：模拟 iOS 微透玻璃 -->
+    <g id="glass_card" filter="url(#iosShadow)">
+        <!-- 底层乳白色微透 -->
+        <rect x="10" y="10" width="260" height="300" rx="50" fill="url(#glassGradient)" stroke="#FFFFFF" stroke-width="2" />
+    </g>
+
+    <!-- 标题：采用 iOS 典型的 SF Pro 风格排版 -->
+    <g id="header" transform="translate(45, 65)">
+        <text font-family="SF Pro Display, Arial, sans-serif" font-size="24" font-weight="600" fill="#1D1D1F" style="letter-spacing: -0.5px;">设备状态</text>
+        <text x="0" y="20" font-family="Arial" font-size="10" font-weight="bold" fill="#86868B" opacity="0.6">DEVICE LEGEND</text>
+    </g>
+
+    <!-- 图例项列表 -->
+    <g id="items" transform="translate(45, 125)">
+        
+        <!-- 在线项 (iOS Green) -->
+        <g id="online_item">
+            <!-- 玻璃质感图标槽位 -->
+            <rect x="0" y="0" width="56" height="56" rx="18" fill="#34C759" fill-opacity="0.1" />
+            <rect x="0" y="0" width="56" height="56" rx="18" fill="none" stroke="#34C759" stroke-width="1.5" stroke-opacity="0.2" />
+            
+            <g transform="translate(28, 28)">
+                <use xlink:href="#camera_icon_shape" fill="#34C759" />
+                <!-- 柔和的绿光呼吸 -->
+                <circle r="22" fill="#34C759" opacity="0.15">
+                    <animate attributeName="r" from="18" to="26" dur="2.5s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" from="0.2" to="0" dur="2.5s" repeatCount="indefinite" />
+                </circle>
+            </g>
+
+            <text x="75" y="24" font-family="Arial" font-size="16" font-weight="600" fill="#1D1D1F">在线</text>
+            <text x="75" y="42" font-family="Arial" font-size="11" fill="#34C759" font-weight="bold">ACTIVE</text>
+        </g>
+
+        <!-- 离线项 (iOS Red) -->
+        <g id="offline_item" transform="translate(0, 90)">
+            <!-- 玻璃质感图标槽位 -->
+            <rect x="0" y="0" width="56" height="56" rx="18" fill="#FF3B30" fill-opacity="0.05" />
+            <rect x="0" y="0" width="56" height="56" rx="18" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-opacity="0.1" />
+            
+            <g transform="translate(28, 28)">
+                <use xlink:href="#camera_icon_shape" fill="#FF3B30" />
+            </g>
+
+            <text x="75" y="24" font-family="Arial" font-size="16" font-weight="600" fill="#1D1D1F">离线</text>
+            <text x="75" y="42" font-family="Arial" font-size="11" fill="#FF3B30" opacity="0.6">OFFLINE</text>
+        </g>
+    </g>
+
+    <!-- 底部细节装饰：类似 iOS Home Indicator 的极简线 -->
+    <rect x="110" y="285" width="60" height="4" rx="2" fill="#EBEBEB" />
+
+</svg>

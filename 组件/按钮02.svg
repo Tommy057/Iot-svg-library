@@ -1,0 +1,87 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 1. 外部落阴影 (对应 shadow-[-1px_2px_4px_0px_#00bdb0]) -->
+        <filter id="outerDropShadow" x="-20%" y="-20%" width="150%" height="150%">
+            <feOffset dx="-1" dy="2" />
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feFlood flood-color="#00bdb0" flood-opacity="0.8" />
+            <feComposite in2="blur" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 2. 复合内阴影滤镜 (新态设计的核心) -->
+        <filter id="innerNeumorphism">
+            <!-- 阴影部分 (1px -1px 4px #00bdb0) -->
+            <feComponentTransfer in="SourceAlpha">
+                <feFuncA type="table" tableValues="1 0" />
+            </feComponentTransfer>
+            <feOffset dx="1" dy="-1" />
+            <feGaussianBlur stdDeviation="2" result="darkBlur" />
+            <feFlood flood-color="#00bdb0" />
+            <feComposite in2="darkBlur" operator="in" result="darkShadow" />
+
+            <!-- 高光部分 (-1px 1px 4px #f0fffe) -->
+            <feComponentTransfer in="SourceAlpha">
+                <feFuncA type="table" tableValues="1 0" />
+            </feComponentTransfer>
+            <feOffset dx="-1" dy="1" />
+            <feGaussianBlur stdDeviation="1.5" result="lightBlur" />
+            <feFlood flood-color="#f0fffe" />
+            <feComposite in2="lightBlur" operator="in" result="lightShadow" />
+
+            <!-- 合并内阴影并剪裁至主体内 -->
+            <feComposite in="darkShadow" in2="SourceAlpha" operator="in" result="finalDark" />
+            <feComposite in="lightShadow" in2="SourceAlpha" operator="in" result="finalLight" />
+            <feMerge>
+                <feMergeNode in="finalDark" />
+                <feMergeNode in="finalLight" />
+            </feMerge>
+        </filter>
+
+        <!-- 3. 勾选状态下的内阴影反转滤镜 -->
+        <filter id="innerNeumorphismChecked">
+            <feComponentTransfer in="SourceAlpha">
+                <feFuncA type="table" tableValues="1 0" />
+            </feComponentTransfer>
+            <feOffset dx="1" dy="-1" />
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feFlood flood-color="#f0fffe" />
+            <feComposite in2="blur" operator="in" />
+            <feComposite in2="SourceAlpha" operator="in" />
+        </filter>
+    </defs>
+
+    <!-- 主容器层 (Label) -->
+    <g id="container_layer" filter="url(#outerDropShadow)">
+        <rect x="5" y="5" width="90" height="90" rx="30" fill="#b3fffa" />
+        <!-- 内部凹陷效果层 -->
+        <rect x="5" y="5" width="90" height="90" rx="30" fill="none" filter="url(#innerNeumorphism)" />
+    </g>
+
+    <!-- 交互按钮层 (Span / Thumb) -->
+    <g id="thumb_group" transform="translate(15, 15)">
+        <rect id="thumb_bg" x="0" y="0" width="70" height="70" rx="20" fill="#ccfffc" filter="url(#outerDropShadow)" />
+        <rect id="thumb_inner_shadow" x="0" y="0" width="70" height="70" rx="20" fill="none" filter="url(#innerNeumorphism)">
+            <!-- 模拟 HT 状态切换：内阴影变化动画 -->
+            <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
+        </rect>
+
+        <!-- 图标组：未选中状态 (Checkmark) -->
+        <g id="icon_uncheck" opacity="1">
+            <path d="M20 50 l10 10 l25 -25" fill="none" stroke="#00756d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                 <animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.5s" fill="freeze" />
+            </path>
+            <!-- 若要在 HT 中控制显示隐藏，可将此 opacity 绑定至 data 属性 -->
+        </g>
+
+        <!-- 图标组：选中状态 (X Mark) -->
+        <g id="icon_checked" opacity="0">
+            <path d="M25 25 l20 20 M45 25 l-20 20" fill="none" stroke="#00756d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- 演示用：可通过 HT 脚本修改此处 opacity -->
+        </g>
+    </g>
+</svg>

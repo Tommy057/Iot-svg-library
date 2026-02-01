@@ -1,0 +1,98 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 280 340" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 1. 核心阴影：极具空气感的扩散蓝影 -->
+        <filter id="mainGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feOffset dx="0" dy="15" in="SourceAlpha" result="offOut" />
+            <feGaussianBlur stdDeviation="15" in="offOut" result="blurOut" />
+            <feFlood flood-color="#8BBEDA" flood-opacity="0.45" result="flood" />
+            <feComposite in="flood" in2="blurOut" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 2. 镜头高光渐变 -->
+        <radialGradient id="lensReflect" cx="30%" cy="30%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- 3. 抽象摄像头图标：现代几何设计 -->
+        <g id="modern_camera">
+            <!-- 镜头支架 -->
+            <path d="M-22 -8 a4 4 0 0 1 4 -4 h36 a4 4 0 0 1 4 4 v4 a4 4 0 0 1 -4 4 h-36 a4 4 0 0 1 -4 -4 z" opacity="0.9" />
+            <!-- 镜头主体（带微弱内发光感） -->
+            <path d="M-18 4 q0 18 18 18 t18 -18 z" />
+            <!-- 镜头深邃感 -->
+            <circle cx="0" cy="5" r="7" fill="#0D2C4D" />
+            <!-- 镜头反光点 -->
+            <circle cx="-2" cy="3" r="2.5" fill="url(#lensReflect)" />
+        </g>
+        
+        <!-- 4. 脉冲波动画定义 -->
+        <filter id="onlineGlow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- 主容器：高质感卡片 -->
+    <g id="base_card" filter="url(#mainGlow)">
+        <!-- 渐变背景：营造微微的弧度感 -->
+        <rect x="15" y="15" width="250" height="310" rx="45" fill="linear-gradient(135deg, #F9FBFF 0%, #FFFFFF 100%)" stroke="#FFFFFF" stroke-width="3" />
+    </g>
+
+    <!-- 装饰性元素：左上角小点 -->
+    <circle cx="45" cy="45" r="4" fill="#1089D3" opacity="0.2" />
+
+    <!-- 标题：现代排版 -->
+    <g id="header" transform="translate(50, 75)">
+        <text font-family="PingFang SC, Microsoft YaHei, Arial" font-size="24" font-weight="1000" fill="#1089D3" style="letter-spacing: 4px;">图例</text>
+        <rect x="0" y="12" width="20" height="3" rx="1.5" fill="#24B7D8" />
+    </g>
+
+    <!-- 图例列表 -->
+    <g id="items" transform="translate(55, 135)">
+        
+        <!-- 在线 (Modern Online) -->
+        <g id="legend_online">
+            <!-- 动态扩散圆环 -->
+            <circle cx="20" cy="15" r="15" fill="none" stroke="#00E676" stroke-width="2">
+                <animate attributeName="r" from="15" to="30" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite" />
+            </circle>
+            
+            <!-- 摄像头图标组 -->
+            <g transform="translate(20, 15)">
+                <use xlink:href="#modern_camera" fill="#00E676" filter="url(#onlineGlow)" />
+            </g>
+            
+            <text x="75" y="22" font-family="Arial" font-size="16" font-weight="bold" fill="#3E4E59" style="letter-spacing: 1px;">在线</text>
+            <text x="75" y="42" font-family="Arial" font-size="10" fill="#99AABB" style="text-transform: uppercase;">Streaming</text>
+        </g>
+
+        <!-- 离线 (Modern Offline) -->
+        <g id="legend_offline" transform="translate(0, 95)">
+            <g transform="translate(20, 15)">
+                <use xlink:href="#modern_camera" fill="#FF5252" />
+                <!-- 离线灰色遮罩 -->
+                <circle cx="0" cy="5" r="10" fill="#FFFFFF" opacity="0.2" />
+            </g>
+            
+            <text x="75" y="22" font-family="Arial" font-size="16" font-weight="bold" fill="#3E4E59" style="letter-spacing: 1px;">离线</text>
+            <text x="75" y="42" font-family="Arial" font-size="10" fill="#FF5252" opacity="0.6" style="text-transform: uppercase;">Connection Lost</text>
+        </g>
+    </g>
+
+    <!-- 底部装饰性条形码/编号感元素 -->
+    <g transform="translate(200, 270)" opacity="0.3">
+        <rect width="2" height="15" fill="#1089D3" />
+        <rect x="5" width="2" height="15" fill="#1089D3" />
+        <rect x="10" width="6" height="15" fill="#1089D3" />
+    </g>
+</svg>

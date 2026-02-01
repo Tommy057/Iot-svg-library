@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- 外层容器阴影滤镜 -->
+    <filter id="outerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="-1" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#00bdb0" flood-opacity="0.6"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 内凹阴影滤镜（模拟inset shadow） -->
+    <filter id="insetShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="-1" dy="1" result="offsetBlur1"/>
+      <feOffset in="blur" dx="1" dy="-1" result="offsetBlur2"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur1"/>
+        <feMergeNode in="offsetBlur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 内部按钮未选中阴影 -->
+    <filter id="innerUnchecked" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="-1" dy="1" result="offset1"/>
+      <feFlood flood-color="#00bdb0" flood-opacity="0.5"/>
+      <feComposite in2="offset1" operator="in" result="shadow1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="-1" dy="1" result="offset2"/>
+      <feFlood flood-color="#00bdb0" flood-opacity="0.4"/>
+      <feComposite in2="offset2" operator="in" result="shadow2"/>
+      <feMerge>
+        <feMergeNode in="shadow1"/>
+        <feMergeNode in="shadow2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 内部按钮选中阴影 -->
+    <filter id="innerChecked" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="1" dy="-1" result="offset1"/>
+      <feFlood flood-color="#00bdb0" flood-opacity="0.5"/>
+      <feComposite in2="offset1" operator="in" result="shadow1"/>
+      <feMerge>
+        <feMergeNode in="shadow1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 裁剪路径 -->
+    <clipPath id="roundedOuter">
+      <rect x="10" y="10" width="80" height="80" rx="32"/>
+    </clipPath>
+    <clipPath id="roundedInner">
+      <rect x="17" y="17" width="66" height="66" rx="21"/>
+    </clipPath>
+  </defs>
+  
+  <!-- 外层容器 (label背景) -->
+  <rect id="outerBox" x="10" y="10" width="80" height="80" rx="32" 
+        fill="#b3fffa" filter="url(#outerShadow)"/>
+  
+  <!-- 内部按钮层 (span) - 默认未选中状态 -->
+  <g id="innerButton">
+    <rect id="innerRect" x="17" y="17" width="66" height="66" rx="21" 
+          fill="#ccfffc" filter="url(#innerUnchecked)">
+      <!-- 点击状态切换动画 -->
+      <animate id="toChecked" attributeName="filter" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="url(#innerUnchecked)" to="url(#innerChecked)"/>
+      <animate id="toUnchecked" attributeName="filter" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="url(#innerChecked)" to="url(#innerUnchecked)"/>
+    </rect>
+  </g>
+  
+  <!-- 对勾图标 (未选中时显示) -->
+  <g id="checkIcon" transform="translate(50, 50)">
+    <path d="M-16.7 5.5l2.2-2.2 5.5 5.5L6.7-7 9-4.8l-14.3 14.3z" 
+          fill="#00756d" opacity="1">
+      <!-- 选中时淡出 -->
+      <animate id="checkFadeOut" attributeName="opacity" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="1" to="0"/>
+      <!-- 取消选中时淡入 -->
+      <animate id="checkFadeIn" attributeName="opacity" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="0" to="1"/>
+    </path>
+  </g>
+  
+  <!-- 叉号图标 (选中时显示) -->
+  <g id="crossIcon" transform="translate(50, 50) scale(0.0625)">
+    <path d="M147.4 247.2l61.8-61.8L23.8 0l185.4-185.4-61.8-61.8L0-61.8-185.4-247.2l-61.8 61.8L-61.8 0-247.2 185.4l61.8 61.8L0 61.8z" 
+          fill="#00756d" opacity="0">
+      <!-- 选中时淡入 -->
+      <animate id="crossFadeIn" attributeName="opacity" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="0" to="1"/>
+      <!-- 取消选中时淡出 -->
+      <animate id="crossFadeOut" attributeName="opacity" 
+               begin="indefinite" dur="200ms" fill="freeze"
+               from="1" to="0"/>
+    </path>
+  </g>
+  
+  <!-- 交互触发区域（透明点击层） -->
+  <rect id="clickArea" x="10" y="10" width="80" height="80" rx="32" 
+        fill="transparent" cursor="pointer" style="pointer-events: all;">
+    <set attributeName="onclick" to="
+      let checked = document.getElementById('checkIcon').firstElementChild.getAttribute('opacity') === '0';
+      if(checked) {
+        document.getElementById('toUnchecked').beginElement();
+        document.getElementById('checkFadeIn').beginElement();
+        document.getElementById('crossFadeOut').beginElement();
+      } else {
+        document.getElementById('toChecked').beginElement();
+        document.getElementById('checkFadeOut').beginElement();
+        document.getElementById('crossFadeIn').beginElement();
+      }
+    "/>
+  </rect>
+</svg>
