@@ -1,0 +1,69 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 1. 基础按钮发光滤镜 (包含外发光和内发光模拟) -->
+        <filter id="buttonGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <!-- 外部扩散发光 (Spread Glow) -->
+            <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur6" />
+            <feFlood flood-color="rgba(191, 123, 255, 0.8)" result="glowColor" />
+            <feComposite in="glowColor" in2="blur6" operator="in" result="softGlow" />
+            
+            <!-- 核心亮色边缘 (Enhanced Glow) -->
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur2" />
+            <feFlood flood-color="rgb(217, 176, 255)" result="brightColor" />
+            <feComposite in="brightColor" in2="blur2" operator="in" result="coreGlow" />
+            
+            <!-- 合并效果 -->
+            <feMerge>
+                <feMergeNode in="softGlow" />
+                <feMergeNode in="coreGlow" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 2. 地面投影滤镜 (模糊 + 扩展) -->
+        <filter id="reflectionBlur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="8" />
+        </filter>
+
+        <!-- 3. 内发光模拟 (通过渐变实现) -->
+        <radialGradient id="innerGlowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(100, 61, 136, 1)" />
+            <stop offset="90%" stop-color="rgba(100, 61, 136, 1)" />
+            <stop offset="100%" stop-color="rgb(217, 176, 255)" />
+        </radialGradient>
+    </defs>
+
+    <!-- 图层分组：地面投影 (模拟 CSS ::after) -->
+    <g id="reflection_layer" transform="translate(150, 160) scale(1, 0.4)">
+        <rect x="-80" y="0" width="160" height="40" rx="20" fill="rgba(191, 123, 255, 0.7)" filter="url(#reflectionBlur)">
+            <!-- 呼吸动画：模拟投影强弱变化 -->
+            <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" />
+        </rect>
+    </g>
+
+    <!-- 图层分组：主体按钮 -->
+    <g id="button_main" transform="translate(150, 80)">
+        <!-- 按钮背景与边框 -->
+        <rect x="-85" y="-30" width="170" height="60" rx="15" 
+              fill="url(#innerGlowGrad)" 
+              stroke="rgb(217, 176, 255)" 
+              stroke-width="4" 
+              filter="url(#buttonGlow)">
+            <!-- 模拟 Hover 时的亮度脉冲 -->
+            <animate attributeName="stroke-width" values="4;5;4" dur="2s" repeatCount="indefinite" />
+        </rect>
+
+        <!-- 安全文本渲染：禁止渐变填充 -->
+        <text x="0" y="8" 
+              font-family="Arial, sans-serif" 
+              font-size="16" 
+              font-weight="bold" 
+              fill="rgb(217, 176, 255)" 
+              text-anchor="middle" 
+              style="letter-spacing: 2px;">
+            ENHANCED
+            <!-- 文字发光模拟 -->
+            <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
+        </text>
+    </g>
+</svg>

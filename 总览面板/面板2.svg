@@ -1,0 +1,129 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 1. 3D 深度滤镜：产生物体厚度感 -->
+        <filter id="depth-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="15" stdDeviation="10" flood-color="#475569" flood-opacity="0.2" />
+        </filter>
+
+        <!-- 2. 玻璃管道渐变 (用于3D曲线) -->
+        <linearGradient id="glass-pipe-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#22D3EE" /> <!-- 顶部高光 -->
+            <stop offset="50%" stop-color="#0891B2" /> <!-- 中间主色 -->
+            <stop offset="100%" stop-color="#164E63" /> <!-- 底部暗影 -->
+        </linearGradient>
+
+        <!-- 3. 3D 环形图厚度渐变 -->
+        <linearGradient id="ring-side-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#E2E8F0" />
+            <stop offset="100%" stop-color="#94A3B8" />
+        </linearGradient>
+
+        <!-- 4. 玻璃卡片底色 -->
+        <linearGradient id="glass-panel" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="white" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="white" stop-opacity="0.3" />
+        </linearGradient>
+    </defs>
+
+    <!-- 背景 -->
+    <rect width="1920" height="1080" fill="#F1F5F9" />
+
+    <!-- ========================================== -->
+    <!-- 组件一：3D 玻璃环形能量仓 (Energy Donut) -->
+    <!-- ========================================== -->
+    <g transform="translate(150, 200)">
+        <text x="0" y="-80" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">3D 实时负载能耗</text>
+        
+        <!-- 3D 环形图层叠 -->
+        <g transform="rotate(15) skewX(-10)"> <!-- 模拟 3D 透视 -->
+            <!-- 1. 底部投影层 -->
+            <ellipse cx="150" cy="165" rx="100" ry="60" fill="#CBD5E1" opacity="0.5" filter="url(#depth-shadow)" />
+            
+            <!-- 2. 环体厚度层 (侧面) -->
+            <path d="M 50 150 A 100 60 0 0 0 250 150 L 250 165 A 100 60 0 0 1 50 165 Z" fill="url(#ring-side-grad)" />
+            
+            <!-- 3. 环体顶面 (底色) -->
+            <ellipse cx="150" cy="150" rx="100" ry="60" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+            
+            <!-- 4. 动态数据段 (3D 玻璃管感) -->
+            <path d="M 50 150 A 100 60 0 0 1 210 105" fill="none" stroke="url(#glass-pipe-cyan)" stroke-width="24" stroke-linecap="round" filter="url(#depth-shadow)">
+                <animate attributeName="stroke-dasharray" from="0,1000" to="300,1000" dur="2s" fill="freeze" />
+            </path>
+            
+            <!-- 5. 顶层镜面高光线 -->
+            <path d="M 55 145 A 95 55 0 0 1 205 105" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.6" stroke-linecap="round" />
+        </g>
+
+        <!-- 中心宝石核心 (浮在 3D 环中心) -->
+        <g transform="translate(135, 120)">
+            <circle r="40" fill="url(#glass-panel)" stroke="white" stroke-width="1" />
+            <text y="10" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="900" fill="#0891B2" text-anchor="middle">78</text>
+            <text y="30" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">%</text>
+        </g>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- 组件二：3D 玻璃管道实时曲线 (Isometric Line) -->
+    <!-- ========================================== -->
+    <g transform="translate(600, 200)">
+        <rect width="800" height="400" rx="24" fill="url(#glass-panel)" stroke="white" stroke-width="2" />
+        <text x="30" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#334155">系统运行压力趋势 (Isometric)</text>
+        
+        <!-- 图表网格 (带有透视感) -->
+        <g transform="skewY(-5)">
+            <path d="M 50 300 L 750 300 M 50 200 L 750 200 M 50 100 L 750 100" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,4" />
+            
+            <!-- 3D 曲线底层阴影 -->
+            <path d="M 50 280 Q 150 100 250 250 T 450 150 T 650 200 T 750 100" fill="none" stroke="#64748B" stroke-width="12" stroke-opacity="0.1" transform="translate(0, 15)" />
+            
+            <!-- 3D 曲线主体 (模拟玻璃管道) -->
+            <path d="M 50 280 Q 150 100 250 250 T 450 150 T 650 200 T 750 100" fill="none" stroke="url(#glass-pipe-cyan)" stroke-width="12" stroke-linecap="round" filter="url(#depth-shadow)">
+                <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite" />
+            </path>
+            
+            <!-- 曲线顶层高光亮线 -->
+            <path d="M 50 276 Q 150 96 250 246 T 450 146 T 650 196 T 750 96" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.8" stroke-linecap="round" />
+            
+            <!-- 实时动态节点 (宝石球) -->
+            <g transform="translate(450, 150)">
+                <circle r="12" fill="white" filter="url(#depth-shadow)" />
+                <circle r="6" fill="#06B6D4">
+                    <animate attributeName="r" values="5;8;5" dur="1s" repeatCount="indefinite" />
+                </circle>
+            </g>
+        </g>
+        
+        <!-- 底部数据标注 -->
+        <rect x="30" y="340" width="120" height="40" rx="20" fill="#F1F5F9" />
+        <text x="90" y="365" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#0891B2" text-anchor="middle">PEAK: 12.5 Mpa</text>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- 组件三：3D 玻璃发光柱状图 (Glowing Glass Pillars) -->
+    <!-- ========================================== -->
+    <g transform="translate(150, 650)">
+        <text x="0" y="-30" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#334155">分段监测 (Stacking Pillars)</text>
+        
+        <!-- 柱状图：利用菱形模拟 3D 顶面 -->
+        <g transform="translate(0, 50)">
+            <!-- 柱子 1 -->
+            <g transform="translate(0, 100)">
+                <rect width="40" height="150" fill="url(#glass-pipe-cyan)" fill-opacity="0.6" stroke="white" stroke-opacity="0.5" />
+                <path d="M 0 0 L 20 -10 L 60 -10 L 40 0 Z" fill="#22D3EE" /> <!-- 柱顶高光面 -->
+                <text x="20" y="170" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">A-01</text>
+            </g>
+            <!-- 柱子 2 -->
+            <g transform="translate(80, 50)">
+                <rect width="40" height="200" fill="url(#glass-pipe-cyan)" fill-opacity="0.8" stroke="white" stroke-opacity="0.5" />
+                <path d="M 0 0 L 20 -10 L 60 -10 L 40 0 Z" fill="#22D3EE" />
+                <text x="20" y="220" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">A-02</text>
+            </g>
+             <!-- 柱子 3 (紫色) -->
+            <g transform="translate(160, 120)">
+                <rect width="40" height="130" fill="#A855F7" fill-opacity="0.6" stroke="white" stroke-opacity="0.5" />
+                <path d="M 0 0 L 20 -10 L 60 -10 L 40 0 Z" fill="#C084FC" />
+                <text x="20" y="150" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">A-03</text>
+            </g>
+        </g>
+    </g>
+</svg>

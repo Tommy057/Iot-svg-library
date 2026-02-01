@@ -1,0 +1,38 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250">
+    <defs>
+        <!-- 罐体金属质感 -->
+        <linearGradient id="tankBody" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333" />
+            <stop offset="50%" stop-color="#666" />
+            <stop offset="100%" stop-color="#333" />
+        </linearGradient>
+
+        <!-- 液位裁剪区域 -->
+        <clipPath id="liquidClip">
+            <rect x="25" y="50" width="150" height="170" rx="10" />
+        </clipPath>
+    </defs>
+
+    <!-- 罐体外壳 -->
+    <g id="tank_structure">
+        <rect x="20" y="40" width="160" height="190" rx="15" fill="url(#tankBody)" stroke="#111" stroke-width="2" />
+        <!-- 视窗 -->
+        <rect x="25" y="50" width="150" height="170" rx="10" fill="#1a1a1a" />
+    </g>
+
+    <!-- 动态液位层 -->
+    <g clip-path="url(#liquidClip)">
+        <g id="liquid_group">
+            <!-- 模拟波动：通过移动长路径实现 -->
+            <path d="M 0 150 Q 50 140 100 150 T 200 150 T 300 150 T 400 150 V 250 H 0 Z" fill="#0099FF" opacity="0.7">
+                <animateTransform attributeName="transform" type="translate" from="0,0" to="-200,0" dur="3s" repeatCount="indefinite" />
+            </path>
+            <path d="M 0 160 Q 50 170 100 160 T 200 160 T 300 160 T 400 160 V 250 H 0 Z" fill="#00CCFF" opacity="0.5">
+                <animateTransform attributeName="transform" type="translate" from="-200,0" to="0,0" dur="4s" repeatCount="indefinite" />
+            </path>
+        </g>
+    </g>
+
+    <!-- HT 数据显示区 -->
+    <text x="100" y="235" font-family="Verdana" font-size="12" fill="#FFFFFF" text-anchor="middle">LEVEL: 65%</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 科技感荧光发光 -->
+        <filter id="techGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        
+        <!-- 定义基础形状：六边形/圆环组合 -->
+        <symbol id="frame_part">
+            <path d="M 100 20 L 180 60 L 180 140 L 100 180 L 20 140 L 20 60 Z" fill="none" stroke-width="2" />
+        </symbol>
+    </defs>
+
+    <!-- 整个组合中心点设为 200,200 -->
+    <g id="main_container" transform="translate(200, 200)">
+        
+        <!-- 第4层：底层背景 (最远) -->
+        <g id="layer_out3" stroke="#ff0" opacity="0.4" filter="url(#techGlow)">
+            <circle r="90" fill="none" stroke-width="1" stroke-dasharray="10 5" />
+            <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="3s" repeatCount="indefinite" />
+        </g>
+
+        <!-- 第3层：中后层 -->
+        <g id="layer_out2" stroke="#00F2FF" opacity="0.6">
+            <path d="M -80 -40 L 0 -85 L 80 -40 L 80 40 L 0 85 L -80 40 Z" fill="none" stroke-width="2" />
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="7s" repeatCount="indefinite" />
+        </g>
+
+        <!-- 第2层：中前层 -->
+        <g id="layer_inner3" stroke="#00F2FF" opacity="0.8">
+            <rect x="-60" y="-60" width="120" height="120" rx="10" fill="none" stroke-width="1.5" stroke-dasharray="100 20" />
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite" />
+        </g>
+
+        <!-- 第1层：核心层 (最近) -->
+        <g id="center_layer">
+            <!-- 核心填充块 -->
+            <g id="center1" fill="#ff0">
+                <circle r="15" />
+                <path d="M -25 0 L 25 0 M 0 -25 L 0 25" stroke="#ff0" stroke-width="2" />
+                <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="2s" repeatCount="indefinite" />
+            </g>
+            
+            <!-- 核心外圈 -->
+            <g id="center_ring" stroke="#00F2FF">
+                <circle r="35" fill="none" stroke-width="3" stroke-dasharray="2 4" />
+                <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="5s" repeatCount="indefinite" />
+            </g>
+        </g>
+
+        <!-- 模拟原 CSS 的 Hover 倾斜矩阵 (静态预览态)
+             若在 HT 中需要交互，可以通过绑定该 group 的 transform 属性来实现。
+             此处预设一个微小的偏转角以体现空间感 -->
+        <animateTransform 
+            attributeName="transform" 
+            type="rotate" 
+            values="0; -5; 0" 
+            dur="10s" 
+            additive="sum"
+            repeatCount="indefinite" />
+    </g>
+
+    <!-- HT 专用文本区域：确保在中心位置 -->
+    <text x="200" y="300" font-family="Arial" font-size="12" fill="#00F2FF" text-anchor="middle" font-weight="bold">
+        CORE ACTIVATED
+    </text>
+</svg>

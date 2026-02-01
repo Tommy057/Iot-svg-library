@@ -1,0 +1,44 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <!-- 边缘发光滤镜 -->
+        <filter id="blueGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 渐变流光 -->
+        <linearGradient id="scanGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00F2FF" stop-opacity="0" />
+            <stop offset="50%" stop-color="#00F2FF" stop-opacity="1" />
+            <stop offset="100%" stop-color="#00F2FF" stop-opacity="0" />
+        </linearGradient>
+    </defs>
+
+    <!-- 主边框底层 -->
+    <g id="frame_base" filter="url(#blueGlow)">
+        <rect x="10" y="10" width="380" height="280" fill="rgba(0, 30, 60, 0.3)" stroke="#005577" stroke-width="1" />
+        
+        <!-- 四角装饰件 -->
+        <g id="corners" stroke="#00F2FF" stroke-width="3" fill="none">
+            <!-- 左上 -->
+            <path d="M 10 50 L 10 10 L 50 10" />
+            <!-- 右上 -->
+            <path d="M 350 10 L 390 10 L 390 50" />
+            <!-- 右下 -->
+            <path d="M 390 250 L 390 290 L 350 290" />
+            <!-- 左下 -->
+            <path d="M 50 290 L 10 290 L 10 250" />
+            
+            <!-- 呼吸闪烁动画 -->
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+        </g>
+    </g>
+
+    <!-- 动态扫描线 -->
+    <rect x="15" y="15" width="370" height="2" fill="url(#scanGradient)">
+        <animate attributeName="y" from="15" to="285" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- HT 文本安全区 -->
+    <text x="20" y="35" font-family="Arial" font-size="14" fill="#00F2FF" font-weight="bold">SYSTEM MONITOR</text>
+</svg>

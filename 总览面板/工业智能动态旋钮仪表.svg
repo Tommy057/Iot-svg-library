@@ -1,0 +1,73 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+    <!-- HT Technical Standards: All definitions must be in <defs> -->
+    <defs>
+        <!-- 金属质感渐变 -->
+        <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#45484d;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#000000;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#45484d;stop-opacity:1" />
+        </linearGradient>
+        
+        <!-- 呼吸灯发光滤镜 -->
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <!-- 装饰刻度线 -->
+        <g id="tick">
+            <line x1="100" y1="20" x2="100" y2="30" stroke="#00F2FF" stroke-width="2" opacity="0.6" />
+        </g>
+    </defs>
+
+    <!-- 背景层 -->
+    <g id="background_layer">
+        <circle cx="100" cy="100" r="90" fill="url(#metalGradient)" stroke="#1A1A1A" stroke-width="2" />
+        <circle cx="100" cy="100" r="75" fill="#0A0A0A" stroke="#333333" stroke-width="1" />
+    </g>
+
+    <!-- 动态旋转刻度层 -->
+    <g id="rotating_ticks">
+        <use xlink:href="#tick" transform="rotate(0, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(30, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(60, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(90, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(120, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(150, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(180, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(210, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(240, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(270, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(300, 100, 100)" />
+        <use xlink:href="#tick" transform="rotate(330, 100, 100)" />
+        
+        <!-- Native SVG Animation for HT -->
+        <animateTransform 
+            attributeName="transform" 
+            type="rotate" 
+            from="0 100 100" 
+            to="360 100 100" 
+            dur="10s" 
+            repeatCount="indefinite" />
+    </g>
+
+    <!-- 中心装饰与数据位 -->
+    <g id="center_display" filter="url(#glow)">
+        <path d="M 100 50 A 50 50 0 1 1 99.99 50" fill="none" stroke="#00F2FF" stroke-width="3" stroke-dasharray="10, 5" />
+        <circle cx="100" cy="100" r="40" fill="#111111" stroke="#00F2FF" stroke-opacity="0.3" />
+        
+        <!-- HT Text Rendering Safety: Use solid Hex color -->
+        <text x="100" y="95" font-family="Arial, sans-serif" font-size="20" fill="#00F2FF" text-anchor="middle" font-weight="bold">
+            85.5
+        </text>
+        <text x="100" y="115" font-family="Arial, sans-serif" font-size="10" fill="#AAAAAA" text-anchor="middle">
+            PRESSURE %
+        </text>
+    </g>
+
+    <!-- 状态指示灯动画 -->
+    <circle cx="100" cy="155" r="4" fill="#00FF41">
+        <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+</svg>

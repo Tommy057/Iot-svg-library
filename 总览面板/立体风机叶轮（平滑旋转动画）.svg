@@ -1,0 +1,40 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <defs>
+        <!-- 叶片侧影渐变，产生立体感 -->
+        <linearGradient id="bladeShader" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#BDC3C7" />
+            <stop offset="100%" stop-color="#2C3E50" />
+        </linearGradient>
+    </defs>
+
+    <!-- 风机外圈 -->
+    <circle cx="100" cy="100" r="95" fill="none" stroke="#444" stroke-width="4" stroke-dasharray="5,3" />
+
+    <!-- 旋转叶轮组 -->
+    <g id="impeller">
+        <!-- 单个叶片逻辑分组 -->
+        <g id="blades">
+            <!-- 叶片 1 -->
+            <path d="M 100 100 L 100 20 C 130 20 150 40 140 70 Z" fill="url(#bladeShader)" stroke="#222" stroke-width="1" />
+            <!-- 叶片 2 -->
+            <path d="M 100 100 L 180 100 C 180 130 160 150 130 140 Z" fill="url(#bladeShader)" stroke="#222" stroke-width="1" />
+            <!-- 叶片 3 -->
+            <path d="M 100 100 L 100 180 C 70 180 50 160 60 130 Z" fill="url(#bladeShader)" stroke="#222" stroke-width="1" />
+            <!-- 叶片 4 -->
+            <path d="M 100 100 L 20 100 C 20 70 40 50 70 60 Z" fill="url(#bladeShader)" stroke="#222" stroke-width="1" />
+        </g>
+        
+        <!-- 轴承中心 -->
+        <circle cx="100" cy="100" r="12" fill="#7F8C8D" stroke="#333" stroke-width="2" />
+        <circle cx="100" cy="100" r="4" fill="#ECF0F1" />
+
+        <!-- 平滑旋转动画 -->
+        <animateTransform 
+            attributeName="transform" 
+            type="rotate" 
+            from="0 100 100" 
+            to="360 100 100" 
+            dur="2s" 
+            repeatCount="indefinite" />
+    </g>
+</svg>
