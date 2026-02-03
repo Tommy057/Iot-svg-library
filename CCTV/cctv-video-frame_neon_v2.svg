@@ -1,0 +1,85 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+    <defs>
+        <!-- 1. 玻璃边缘渐变：模拟 iOS 玻璃侧边光泽 -->
+        <linearGradient id="frameGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+            <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.2" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.5" />
+        </linearGradient>
+
+        <!-- 2. 柔和投影：增强层级感，但不影响纯白背景 -->
+        <filter id="overlayShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="offOut" />
+            <feGaussianBlur stdDeviation="6" in="offOut" result="blurOut" />
+            <feFlood flood-color="#000000" flood-opacity="0.1" result="flood" />
+            <feComposite in="flood" in2="blurOut" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 3. 录制状态呼吸红点 -->
+        <filter id="recGlow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- 主体边框容器 (中间全透明，仅保留四周护角和装饰) -->
+    <g id="video_frame_group">
+        <!-- 外围极细辅助线 -->
+        <rect x="2" y="2" width="796" height="446" rx="20" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.3" />
+
+        <!-- 四角 L 型玻璃护角 (增强视觉锚点) -->
+        <g id="corners" stroke="url(#frameGlass)" stroke-width="4" fill="none" stroke-linecap="round">
+            <path d="M 20 60 L 20 20 L 60 20" /> <!-- 左上 -->
+            <path d="M 740 20 L 780 20 L 780 60" /> <!-- 右上 -->
+            <path d="M 780 390 L 780 430 L 740 430" /> <!-- 右下 -->
+            <path d="M 60 430 L 20 430 L 20 390" /> <!-- 左下 -->
+        </g>
+    </g>
+
+    <!-- 顶部信息栏：玻璃质感标签 -->
+    <g id="top_info" transform="translate(30, 30)" filter="url(#overlayShadow)">
+        <rect x="0" y="0" width="180" height="32" rx="12" fill="#FFFFFF" fill-opacity="0.7" />
+        <!-- 实时状态红点 -->
+        <circle cx="18" cy="16" r="4" fill="#FF3B30" filter="url(#recGlow)">
+            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+        <text x="32" y="21" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#1D1D1F">CAM-01 LIVE</text>
+    </g>
+
+    <!-- 右上角：分辨率/帧率标签 -->
+    <g id="quality_tag" transform="translate(680, 30)" filter="url(#overlayShadow)">
+        <rect x="0" y="0" width="90" height="32" rx="12" fill="#FFFFFF" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="1" />
+        <text x="45" y="21" font-family="Arial" font-size="10" font-weight="bold" fill="#1D1D1F" text-anchor="middle">4K / 60FPS</text>
+    </g>
+
+    <!-- 底部功能栏 (模拟扫描感/数据感) -->
+    <g id="bottom_overlay" transform="translate(30, 395)">
+        <!-- 时间戳 -->
+        <g filter="url(#overlayShadow)">
+            <rect x="0" y="0" width="160" height="28" rx="10" fill="rgba(255,255,255,0.4)" />
+            <text x="12" y="18" font-family="Courier New, monospace" font-size="12" font-weight="bold" fill="#1D1D1F">2024-05-20 14:30:05</text>
+        </g>
+        
+        <!-- 信号强度 -->
+        <g transform="translate(680, 5)">
+            <rect x="0" y="10" width="4" height="8" fill="#34C759" rx="1" />
+            <rect x="6" y="6" width="4" height="12" fill="#34C759" rx="1" />
+            <rect x="12" y="2" width="4" height="16" fill="#34C759" rx="1" />
+            <rect x="18" y="-2" width="4" height="20" fill="#34C759" rx="1" />
+        </g>
+    </g>
+
+    <!-- 中心十字辅助线 (极简透感) -->
+    <g id="center_aim" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.2">
+        <line x1="390" y1="225" x2="410" y2="225" />
+        <line x1="400" y1="215" x2="400" y2="235" />
+    </g>
+</svg>

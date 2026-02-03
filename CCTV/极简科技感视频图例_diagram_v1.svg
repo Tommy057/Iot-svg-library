@@ -1,0 +1,46 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 280 340" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <g id="camera_simple">
+      <rect x="-22" y="-8" width="44" height="16" rx="3" fill="#3E4E59" />
+      <path d="M-18 4 q0 18 18 18 t18 -18 z" fill="#5C6B74" />
+      <circle cx="0" cy="5" r="7" fill="#1F2A30" />
+      <circle cx="-2" cy="3" r="2" fill="#9BB3C5" />
+    </g>
+  </defs>
+
+  <rect x="14" y="14" width="252" height="312" rx="28" fill="#FFFFFF" stroke="#C9D6E2" stroke-width="1.5" />
+
+  <circle cx="45" cy="45" r="4" fill="#2A7BCB" opacity="0.35" />
+
+  <g id="header" transform="translate(50, 75)">
+    <text font-family="'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#2A7BCB" letter-spacing="3">图例</text>
+    <rect x="0" y="12" width="20" height="3" rx="1.5" fill="#5AA7E6" />
+  </g>
+
+  <g id="items" transform="translate(55, 135)">
+    <g id="legend_online">
+      <circle cx="20" cy="15" r="15" fill="none" stroke="#2A7BCB" stroke-width="1.5" />
+      <g transform="translate(20, 15)">
+        <use xlink:href="#camera_simple" fill="#2A7BCB" />
+      </g>
+      <text x="75" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#3E4E59">在线</text>
+      <text x="75" y="42" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#7C8A96">Streaming</text>
+    </g>
+
+    <g id="legend_offline" transform="translate(0, 95)">
+      <circle cx="20" cy="15" r="15" fill="none" stroke="#A0AAB4" stroke-width="1.5" />
+      <g transform="translate(20, 15)">
+        <use xlink:href="#camera_simple" fill="#A0AAB4" />
+        <line x1="-12" y1="-12" x2="12" y2="12" stroke="#A0AAB4" stroke-width="1.5" />
+      </g>
+      <text x="75" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#3E4E59">离线</text>
+      <text x="75" y="42" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#A0AAB4">Connection Lost</text>
+    </g>
+  </g>
+
+  <g transform="translate(200, 270)" opacity="0.35">
+    <rect width="2" height="15" fill="#2A7BCB" />
+    <rect x="5" width="2" height="15" fill="#2A7BCB" />
+    <rect x="10" width="6" height="15" fill="#2A7BCB" />
+  </g>
+</svg>

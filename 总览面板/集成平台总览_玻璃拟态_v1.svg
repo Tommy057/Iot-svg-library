@@ -1,0 +1,146 @@
+﻿<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glass-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" />
+    </filter>
+    <filter id="float-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.08" />
+    </filter>
+    <linearGradient id="glass-card-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.45" />
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#E2E8F0" stroke-width="0.5" />
+    </pattern>
+    <radialGradient id="gem-blue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+    <radialGradient id="gem-green" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#15803D" />
+    </radialGradient>
+    <radialGradient id="gem-red" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#FB7185" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </radialGradient>
+    <radialGradient id="gem-amber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#F0F4F8" />
+  <rect width="1920" height="1080" fill="url(#grid)" />
+
+  <!-- Top header bar -->
+  <g transform="translate(40, 20)">
+    <rect width="1840" height="70" rx="28" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+    <rect width="1840" height="70" rx="28" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="40" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="24" font-weight="700" fill="#1E293B">集成平台 · 全局总览</text>
+    <text x="1800" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B" text-anchor="end">2026-02-03 10:30</text>
+  </g>
+
+  <!-- KPI row -->
+  <g transform="translate(40, 110)">
+    <g>
+      <rect width="360" height="120" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+      <text x="24" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">总设备数</text>
+      <text x="24" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="800" fill="#2563EB">2,480</text>
+      <circle cx="320" cy="50" r="16" fill="url(#gem-blue)" />
+      <circle cx="320" cy="50" r="6" fill="#2563EB" />
+    </g>
+    <g transform="translate(380, 0)">
+      <rect width="360" height="120" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+      <text x="24" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">在线数</text>
+      <text x="24" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="800" fill="#16A34A">2,371</text>
+      <circle cx="320" cy="50" r="16" fill="url(#gem-green)" />
+      <circle cx="320" cy="50" r="6" fill="#16A34A" />
+    </g>
+    <g transform="translate(760, 0)">
+      <rect width="360" height="120" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+      <text x="24" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">告警数</text>
+      <text x="24" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="800" fill="#E11D48">17</text>
+      <circle cx="320" cy="50" r="16" fill="url(#gem-red)" />
+      <circle cx="320" cy="50" r="6" fill="#E11D48" />
+    </g>
+    <g transform="translate(1140, 0)">
+      <rect width="360" height="120" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+      <text x="24" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">系统健康度</text>
+      <text x="24" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="800" fill="#0EA5E9">96%</text>
+      <circle cx="320" cy="50" r="16" fill="url(#gem-blue)" />
+      <circle cx="320" cy="50" r="6" fill="#0EA5E9" />
+    </g>
+    <g transform="translate(1520, 0)">
+      <rect width="360" height="120" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+      <text x="24" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">数据吞吐量</text>
+      <text x="24" y="85" font-family="'Microsoft YaHei', sans-serif" font-size="36" font-weight="800" fill="#B45309">1.2 GB/s</text>
+      <circle cx="320" cy="50" r="16" fill="url(#gem-amber)" />
+      <circle cx="320" cy="50" r="6" fill="#B45309" />
+    </g>
+  </g>
+
+  <!-- Middle placeholder area -->
+  <g transform="translate(40, 260)">
+    <rect width="1200" height="520" rx="24" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+    <rect x="0" y="0" width="1200" height="520" rx="24" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="40" y="60" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="600" fill="#64748B">中心图片区（手动替换）</text>
+  </g>
+
+  <!-- Right side: subsystem status cards -->
+  <g transform="translate(1280, 260)">
+    <rect width="600" height="520" rx="24" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+    <text x="30" y="50" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#1E293B">子系统状态概览</text>
+
+    <g transform="translate(30, 90)">
+      <g>
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">CCTV</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 70)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">背景音乐</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 140)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">电梯监控</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 210)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">门禁</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 280)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">无线AP</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 350)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">信息发布</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+      <g transform="translate(0, 420)">
+        <rect width="540" height="56" rx="14" fill="#FFFFFF" fill-opacity="0.6" />
+        <text x="20" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#1E293B">智能照明</text>
+        <text x="480" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#16A34A" text-anchor="end">在线</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom status bar -->
+  <g transform="translate(40, 820)">
+    <rect width="1840" height="80" rx="20" fill="url(#glass-card-fill)" filter="url(#float-shadow)" />
+    <text x="30" y="48" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#334155">系统状态：运行稳定 · 数据同步正常 · 无严重告警</text>
+    <circle cx="1770" cy="40" r="8" fill="url(#gem-green)" />
+  </g>
+</svg>

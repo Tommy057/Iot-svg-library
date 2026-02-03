@@ -1,0 +1,43 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 340" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <g id="camera_line">
+      <rect x="-22" y="-8" width="44" height="16" rx="3" fill="none" stroke="#2E3A42" stroke-width="1.5" />
+      <path d="M-18 4 q0 18 18 18 t18 -18 z" fill="none" stroke="#2E3A42" stroke-width="1.5" />
+      <circle cx="0" cy="5" r="7" fill="none" stroke="#2E3A42" stroke-width="1.5" />
+      <circle cx="-2" cy="3" r="2" fill="#9BB3C5" />
+    </g>
+  </defs>
+
+  <rect x="14" y="14" width="252" height="312" rx="18" fill="#FFFFFF" stroke="#C9D6E2" stroke-width="1.5" />
+  <rect x="26" y="26" width="228" height="288" rx="12" fill="none" stroke="#D7E2EC" stroke-width="1.5" />
+
+  <g id="header" transform="translate(44, 64)">
+    <text font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#2A7BCB" letter-spacing="2">图例</text>
+    <line x1="0" y1="12" x2="26" y2="12" stroke="#2A7BCB" stroke-width="1.5" />
+  </g>
+
+  <g id="items" transform="translate(50, 120)">
+    <g id="legend_online">
+      <circle cx="18" cy="14" r="12" fill="none" stroke="#2A7BCB" stroke-width="1.5" />
+      <g transform="translate(18, 14)">
+        <use href="#camera_line" />
+      </g>
+      <text x="68" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#3E4E59">在线</text>
+      <text x="68" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#7C8A96">Streaming</text>
+    </g>
+
+    <g id="legend_offline" transform="translate(0, 80)">
+      <circle cx="18" cy="14" r="12" fill="none" stroke="#A0AAB4" stroke-width="1.5" />
+      <g transform="translate(18, 14)">
+        <use href="#camera_line" />
+        <line x1="-11" y1="-11" x2="11" y2="11" stroke="#A0AAB4" stroke-width="1.5" />
+      </g>
+      <text x="68" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#3E4E59">离线</text>
+      <text x="68" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#A0AAB4">Connection Lost</text>
+    </g>
+  </g>
+
+  <g transform="translate(40, 260)" opacity="0.35">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#2A7BCB" stroke-width="1.5" stroke-dasharray="4 6" />
+  </g>
+</svg>

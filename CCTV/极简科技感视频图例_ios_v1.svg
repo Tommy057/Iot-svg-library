@@ -1,0 +1,54 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 340" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="iosBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAF4FF" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feOffset dx="0" dy="12" in="SourceAlpha" result="offOut" />
+      <feGaussianBlur stdDeviation="10" in="offOut" result="blurOut" />
+      <feFlood flood-color="#A7BED3" flood-opacity="0.35" result="flood" />
+      <feComposite in="flood" in2="blurOut" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <g id="camera_ios">
+      <rect x="-26" y="-10" width="52" height="20" rx="5" fill="#2A7BCB" />
+      <path d="M-20 6 q0 20 20 20 t20 -20 z" fill="#4C8FD5" />
+      <circle cx="0" cy="7" r="8" fill="#1C2A35" />
+      <circle cx="-2" cy="5" r="3" fill="#BFD8F0" />
+    </g>
+  </defs>
+
+  <rect x="14" y="14" width="252" height="312" rx="44" fill="url(#iosBg)" stroke="#E2E8F0" stroke-width="1" filter="url(#softShadow)" />
+
+  <g id="header" transform="translate(50, 70)">
+    <text font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#2A7BCB" letter-spacing="2">图例</text>
+    <rect x="0" y="12" width="22" height="3" rx="1.5" fill="#7BB1E6" />
+  </g>
+
+  <g id="items" transform="translate(52, 130)">
+    <g id="legend_online">
+      <rect x="0" y="0" width="190" height="46" rx="16" fill="#FFFFFF" stroke="#E3ECF5" stroke-width="1" />
+      <g transform="translate(26, 24)">
+        <use href="#camera_ios" />
+      </g>
+      <text x="78" y="26" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#2A7BCB">在线</text>
+      <circle cx="164" cy="24" r="5" fill="#20C45A" />
+    </g>
+
+    <g id="legend_offline" transform="translate(0, 64)">
+      <rect x="0" y="0" width="190" height="46" rx="16" fill="#F7FAFD" stroke="#E8EEF5" stroke-width="1" />
+      <g transform="translate(26, 24)">
+        <use href="#camera_ios" fill="#A0AAB4" />
+        <line x1="-12" y1="-12" x2="12" y2="12" stroke="#A0AAB4" stroke-width="1.5" />
+      </g>
+      <text x="78" y="26" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#6B7785">离线</text>
+      <circle cx="164" cy="24" r="5" fill="#FF5B5B" />
+    </g>
+  </g>
+</svg>

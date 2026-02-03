@@ -1,0 +1,47 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+    <defs>
+        <!-- 1. 边缘反光渐变：模拟玻璃侧边的物理高光 -->
+        <linearGradient id="edgeLight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+            <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.2" />
+            <stop offset="70%" stop-color="#FFFFFF" stop-opacity="0.2" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.7" />
+        </linearGradient>
+
+        <!-- 2. 极轻微阴影：用于在纯白背景下产生“浮动感” -->
+        <filter id="subtleFloat" x="-5%" y="-5%" width="110%" height="110%">
+            <feGaussianBlur stdDeviation="5" in="SourceAlpha" />
+            <feOffset dx="0" dy="4" result="offsetblur" />
+            <feFlood flood-color="#000000" flood-opacity="0.06" />
+            <feComposite in2="offsetblur" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- 视频边框主体：中间完全镂空，确保视频画面无损呈现 -->
+    <g id="frame_layer" filter="url(#subtleFloat)">
+        <!-- 基础半透明描边 (iOS 风格大圆角) -->
+        <rect x="4" y="4" width="792" height="442" rx="24" 
+              fill="none" 
+              stroke="#E0E0E0" 
+              stroke-width="1" 
+              stroke-opacity="0.5" />
+        
+        <!-- 玻璃边缘高光层：通过渐变产生通透感 -->
+        <rect x="4" y="4" width="792" height="442" rx="24" 
+              fill="none" 
+              stroke="url(#edgeLight)" 
+              stroke-width="2" />
+
+        <!-- 装饰性四角护角：极简科技锚点 -->
+        <g id="accents" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" fill="none">
+            <path d="M 4 80 L 4 28 A 24 24 0 0 1 28 4 L 80 4" /> <!-- 左上角提亮 -->
+            <path d="M 720 4 L 772 4 A 24 24 0 0 1 796 28 L 796 80" /> <!-- 右上角提亮 -->
+            <path d="M 796 370 L 796 422 A 24 24 0 0 1 772 446 L 720 446" /> <!-- 右下角提亮 -->
+            <path d="M 80 446 L 28 446 A 24 24 0 0 1 4 422 L 4 370" /> <!-- 左下角提亮 -->
+        </g>
+    </g>
+</svg>

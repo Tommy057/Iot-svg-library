@@ -1,0 +1,62 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+    <defs>
+        <!-- 1. 强化版投影：在纯白底上产生清晰的浮动感 -->
+        <filter id="iosStrongShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+            <feOffset dx="0" dy="6" result="offsetblur" />
+            <!-- 稍微加深了阴影颜色，确保在白底可见 -->
+            <feFlood flood-color="#4A80A4" flood-opacity="0.15" /> 
+            <feComposite in2="offsetblur" operator="in" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- 2. 边框厚度渐变：模拟银色铝合金/磨砂玻璃边缘 -->
+        <linearGradient id="bezelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#D1D9E6" /> <!-- 浅冷灰 -->
+            <stop offset="50%" stop-color="#F0F4F8" /> <!-- 接近白 -->
+            <stop offset="100%" stop-color="#B8C5D6" /> <!-- 深冷灰 -->
+        </linearGradient>
+
+        <!-- 3. 内侧高光：模拟玻璃倒角折射 -->
+        <filter id="innerRim">
+            <feOffset dx="1" dy="1" />
+            <feGaussianBlur stdDeviation="1" result="blur" />
+            <feComposite in="SourceAlpha" in2="blur" operator="out" result="shadow" />
+            <feFlood flood-color="#FFFFFF" />
+            <feComposite in2="shadow" operator="in" />
+        </filter>
+    </defs>
+
+    <!-- 视频边框主体 -->
+    <g id="main_frame" filter="url(#iosStrongShadow)">
+        <!-- A. 基础框体（稍微宽一点，增加物理存在感） -->
+        <rect x="6" y="6" width="788" height="438" rx="28" 
+              fill="none" 
+              stroke="url(#bezelGradient)" 
+              stroke-width="3" />
+
+        <!-- B. 极细的内部轮廓线：增加精致度 -->
+        <rect x="8" y="8" width="784" height="434" rx="26" 
+              fill="none" 
+              stroke="#FFFFFF" 
+              stroke-width="1" 
+              stroke-opacity="0.8" />
+
+        <!-- C. 四角高光增强：模拟 iOS 图标那种圆润的质感 -->
+        <g id="corner_highlights" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round">
+            <!-- 左上角高光 -->
+            <path d="M 10 80 L 10 34 A 24 24 0 0 1 34 10 L 80 10" stroke-opacity="0.9" />
+            <!-- 右下角深色描边（增加厚度感） -->
+            <path d="M 720 440 L 766 440 A 24 24 0 0 0 790 416 L 790 370" stroke="#AAB8C8" stroke-opacity="0.5" />
+        </g>
+    </g>
+
+    <!-- 中心十字准星（可选，极细灰，增加专业感） -->
+    <g id="center_marker" stroke="#D1D9E6" stroke-width="1" stroke-opacity="0.3">
+        <line x1="395" y1="225" x2="405" y2="225" />
+        <line x1="400" y1="220" x2="400" y2="230" />
+    </g>
+</svg>

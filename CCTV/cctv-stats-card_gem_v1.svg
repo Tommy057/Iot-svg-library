@@ -1,0 +1,62 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FBFF" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feOffset dx="0" dy="12" in="SourceAlpha" result="offOut" />
+      <feGaussianBlur stdDeviation="10" in="offOut" result="blurOut" />
+      <feFlood flood-color="#A7BED3" flood-opacity="0.35" result="flood" />
+      <feComposite in="flood" in2="blurOut" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <radialGradient id="gemBlue" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#BFE7FF" />
+      <stop offset="100%" stop-color="#1786D8" />
+    </radialGradient>
+    <radialGradient id="gemGreen" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#C7F5D7" />
+      <stop offset="100%" stop-color="#16A34A" />
+    </radialGradient>
+    <radialGradient id="gemRed" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFD1D1" />
+      <stop offset="100%" stop-color="#FF5B5B" />
+    </radialGradient>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <rect x="12" y="12" width="496" height="156" rx="22" fill="url(#cardBg)" stroke="#E3ECF5" stroke-width="1.2" />
+  </g>
+
+  <g transform="translate(30, 42)">
+    <text font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#2A7BCB" letter-spacing="2">视频监控统计</text>
+    <rect x="0" y="12" width="26" height="3" rx="1.5" fill="#7BB1E6" />
+  </g>
+
+  <g transform="translate(30, 82)">
+    <g>
+      <circle cx="18" cy="18" r="11" fill="#2A7BCB" opacity="0.12" />
+      <circle cx="18" cy="18" r="5" fill="url(#gemBlue)" />
+      <text x="44" y="16" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#7C8A96">总数量</text>
+      <text x="44" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#2A7BCB">128</text>
+    </g>
+
+    <g transform="translate(170, 0)">
+      <circle cx="18" cy="18" r="11" fill="#20C45A" opacity="0.12" />
+      <circle cx="18" cy="18" r="5" fill="url(#gemGreen)" />
+      <text x="44" y="16" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#7C8A96">在线数量</text>
+      <text x="44" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#20C45A">120</text>
+    </g>
+
+    <g transform="translate(340, 0)">
+      <circle cx="18" cy="18" r="11" fill="#FF5B5B" opacity="0.12" />
+      <circle cx="18" cy="18" r="5" fill="url(#gemRed)" />
+      <text x="44" y="16" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#7C8A96">离线数量</text>
+      <text x="44" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#FF5B5B">8</text>
+    </g>
+  </g>
+</svg>

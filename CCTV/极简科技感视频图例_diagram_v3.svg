@@ -1,0 +1,38 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 340" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <g id="camera_solid">
+      <rect x="-22" y="-8" width="44" height="16" rx="3" fill="#2A7BCB" />
+      <path d="M-18 4 q0 18 18 18 t18 -18 z" fill="#4C8FD5" />
+      <circle cx="0" cy="5" r="7" fill="#1F2A30" />
+      <circle cx="-2" cy="3" r="2" fill="#B9D5EC" />
+    </g>
+  </defs>
+
+  <rect x="12" y="12" width="256" height="316" rx="30" fill="#FFFFFF" stroke="#C9D6E2" stroke-width="1.5" />
+
+  <g id="header" transform="translate(50, 68)">
+    <text font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="700" fill="#2A7BCB" letter-spacing="3">图例</text>
+    <rect x="0" y="12" width="24" height="3" rx="1.5" fill="#5AA7E6" />
+  </g>
+
+  <g id="items" transform="translate(48, 128)">
+    <g id="legend_online">
+      <rect x="0" y="0" width="190" height="44" rx="10" fill="#F3F7FB" stroke="#D7E2EC" stroke-width="1.5" />
+      <g transform="translate(22, 22)">
+        <use href="#camera_solid" />
+      </g>
+      <text x="70" y="24" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#3E4E59">在线</text>
+      <text x="140" y="24" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#2A7BCB">Streaming</text>
+    </g>
+
+    <g id="legend_offline" transform="translate(0, 64)">
+      <rect x="0" y="0" width="190" height="44" rx="10" fill="#F8FAFC" stroke="#E1E8EF" stroke-width="1.5" />
+      <g transform="translate(22, 22)">
+        <use href="#camera_solid" fill="#A0AAB4" />
+        <line x1="-12" y1="-12" x2="12" y2="12" stroke="#A0AAB4" stroke-width="1.5" />
+      </g>
+      <text x="70" y="24" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#3E4E59">离线</text>
+      <text x="140" y="24" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#A0AAB4">Lost</text>
+    </g>
+  </g>
+</svg>
