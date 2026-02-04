@@ -1,0 +1,56 @@
+<svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景深色底色，模拟大屏背景 -->
+  <rect width="200" height="200" fill="#0a192f" />
+
+  <defs>
+    <!-- 1. 定义环形的渐变色：从亮青色到深蓝色 -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2ff" />
+      <stop offset="100%" stop-color="#0066ff" />
+    </linearGradient>
+
+    <!-- 2. 定义发光滤镜 -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- 3. 中心圆盘的放射渐变 -->
+    <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1b3a60" />
+      <stop offset="100%" stop-color="#0a192f" />
+    </radialGradient>
+  </defs>
+
+  <!-- [底层] 装饰性的外阴影圆环 -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#162a48" stroke-width="2" opacity="0.5" />
+
+  <!-- [中层] 黑色背景环（形成凹槽感） -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#051020" stroke-width="12" />
+
+  <!-- [数据层] 进度圆环 -->
+  <!-- stroke-dasharray: 第一个值是长度(2 * PI * R * 百分比)，第二个值是周长 -->
+  <!-- 这里的 330 是大约 75% 的进度 -->
+  <circle cx="100" cy="100" r="70" fill="none" 
+          stroke="url(#ringGradient)" 
+          stroke-width="12" 
+          stroke-linecap="round"
+          stroke-dasharray="330 440" 
+          transform="rotate(-90 100 100)"
+          filter="url(#glow)" />
+
+  <!-- [顶层] 内部中心装饰盘 -->
+  <circle cx="100" cy="100" r="50" fill="url(#centerGradient)" stroke="#254a7d" stroke-width="1" />
+  
+  <!-- [装饰线] 内部细圈 -->
+  <circle cx="100" cy="100" r="45" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 2" />
+
+  <!-- [文字] 数据展示 -->
+  <text x="100" y="95" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffffff" font-weight="bold">300</text>
+  <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="10" fill="#a0c4ff">总计</text>
+
+  <!-- 增加一个动态扫光效果的小圆点（模拟 HT 中的动画） -->
+  <circle cx="100" cy="30" r="3" fill="#ffffff">
+    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="3s" repeatCount="indefinite" />
+  </circle>
+</svg>
