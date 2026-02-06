@@ -1,0 +1,289 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="background-color: #F8FAFC; font-family: 'Microsoft YaHei', sans-serif;">
+
+  <!-- ======================================================================== -->
+  <!-- 0. 资源定义 (Definitions) -->
+  <!-- ======================================================================== -->
+  <defs>
+    <!-- 1. 卡片阴影 (Soft Shadow) -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.06" /> <!-- 极淡阴影 -->
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 2. 宝石渐变 (Gem Gradients) - 适配 HT (用于形状填充) -->
+    <!-- 蓝色 (总数) -->
+    <radialGradient id="gemBlue" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+    <!-- 青色 (正常/开门) -->
+    <radialGradient id="gemTeal" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </radialGradient>
+    <!-- 橙色 (异常/关门) -->
+    <radialGradient id="gemAmber" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </radialGradient>
+    <!-- 灰色 (离线) -->
+    <radialGradient id="gemGray" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </radialGradient>
+
+    <!-- 3. 背景网格 -->
+    <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+    
+    <!-- 4. 呼吸动画 -->
+    <style>
+      .pulse { animation: pulseAnim 2s infinite ease-in-out; }
+      @keyframes pulseAnim {
+        0% { opacity: 0.6; transform: scale(0.95); transform-origin: center; }
+        50% { opacity: 1; transform: scale(1.05); transform-origin: center; }
+        100% { opacity: 0.6; transform: scale(0.95); transform-origin: center; }
+      }
+    </style>
+  </defs>
+
+  <!-- 背景层 -->
+  <rect width="1920" height="1080" fill="url(#gridPattern)" />
+
+  <!-- ======================================================================== -->
+  <!-- 1. 顶部标题栏 (Header) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(0, 0)">
+     <rect width="1920" height="80" fill="#FFFFFF" filter="url(#cardShadow)"/>
+     <rect x="0" y="78" width="1920" height="2" fill="#E2E8F0"/>
+     <!-- 装饰线 -->
+     <rect x="40" y="0" width="4" height="80" fill="#2563EB" />
+     
+     <text x="70" y="50" font-size="28" fill="#1E293B" font-weight="bold" letter-spacing="1">门禁设备运行状态监测</text>
+     <text x="1880" y="50" font-size="18" fill="#64748B" text-anchor="end" font-family="Consolas, monospace">2026-02-05 10:30:00</text>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 2. 顶部统计指标 (KPI Cards) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(40, 110)">
+    
+    <!-- Card 1: 设备总数 (Blue) -->
+    <g transform="translate(0, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="140" rx="12" fill="#FFFFFF" />
+      <path d="M 0 12 A 12 12 0 0 1 12 0 H 440 V 4 H 0 Z" fill="#3B82F6" /> <!-- 顶部彩条 -->
+      <!-- 图标容器 -->
+      <circle cx="70" cy="70" r="30" fill="#EFF6FF" />
+      <circle cx="70" cy="70" r="14" fill="url(#gemBlue)" />
+      <!-- 数据 -->
+      <text x="120" y="60" font-size="16" fill="#64748B">设备总数 (Total)</text>
+      <text x="120" y="100" font-size="40" fill="#1E293B" font-weight="bold">633</text>
+    </g>
+
+    <!-- Card 2: 在线/开门 (Teal) -->
+    <g transform="translate(460, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="140" rx="12" fill="#FFFFFF" />
+      <path d="M 0 12 A 12 12 0 0 1 12 0 H 440 V 4 H 0 Z" fill="#10B981" />
+      <circle cx="70" cy="70" r="30" fill="#ECFDF5" />
+      <circle cx="70" cy="70" r="14" fill="url(#gemTeal)" class="pulse"/>
+      <text x="120" y="60" font-size="16" fill="#64748B">在线设备 (Online)</text>
+      <text x="120" y="100" font-size="40" fill="#059669" font-weight="bold">631</text>
+    </g>
+
+    <!-- Card 3: 异常/关门 (Amber) -->
+    <g transform="translate(920, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="140" rx="12" fill="#FFFFFF" />
+      <path d="M 0 12 A 12 12 0 0 1 12 0 H 440 V 4 H 0 Z" fill="#F59E0B" />
+      <circle cx="70" cy="70" r="30" fill="#FFFBEB" />
+      <circle cx="70" cy="70" r="14" fill="url(#gemAmber)" />
+      <text x="120" y="60" font-size="16" fill="#64748B">关闭/异常 (Closed)</text>
+      <text x="120" y="100" font-size="40" fill="#D97706" font-weight="bold">0</text>
+    </g>
+
+    <!-- Card 4: 离线 (Gray) -->
+    <g transform="translate(1380, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="140" rx="12" fill="#FFFFFF" />
+      <path d="M 0 12 A 12 12 0 0 1 12 0 H 440 V 4 H 0 Z" fill="#64748B" />
+      <circle cx="70" cy="70" r="30" fill="#F1F5F9" />
+      <circle cx="70" cy="70" r="14" fill="url(#gemGray)" />
+      <text x="120" y="60" font-size="16" fill="#64748B">离线设备 (Offline)</text>
+      <text x="120" y="100" font-size="40" fill="#475569" font-weight="bold">2</text>
+    </g>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 3. 列表区域 (Main Table) - 双栏布局 -->
+  <!-- ======================================================================== -->
+  <g transform="translate(40, 280)" filter="url(#cardShadow)">
+    <!-- 大背景板 -->
+    <rect width="1840" height="760" rx="12" fill="#FFFFFF" />
+    
+    <!-- 垂直分割线 (Vertical Divider) -->
+    <line x1="920" y1="20" x2="920" y2="740" stroke="#E2E8F0" stroke-width="1" />
+
+    <!-- === 左栏 (Column 1) === -->
+    <g transform="translate(0, 0)">
+      <!-- 表头 -->
+      <path d="M 0 12 A 12 12 0 0 1 12 0 H 920 V 60 H 0 Z" fill="#F8FAFC" />
+      <text x="40" y="38" font-size="16" fill="#64748B" font-weight="bold">设备名称</text>
+      <text x="400" y="38" font-size="16" fill="#64748B" font-weight="bold">设备编号</text>
+      <text x="750" y="38" font-size="16" fill="#64748B" font-weight="bold">运行状态</text>
+      <line x1="0" y1="60" x2="920" y2="60" stroke="#E2E8F0" />
+
+      <!-- Row 1: 离线 -->
+      <g transform="translate(0, 60)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <text x="40" y="42" font-size="16" fill="#334155">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_01</text>
+         
+         <!-- Status Pill (Offline) -->
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#F1F5F9" />
+         <circle cx="755" cy="35" r="5" fill="#94A3B8" />
+         <text x="770" y="40" font-size="14" fill="#64748B">离线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+      <!-- Row 2: 在线 -->
+      <g transform="translate(0, 130)">
+         <rect width="920" height="70" fill="#FFFFFF" /> <!-- 纯白背景 -->
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" /> <!-- 绿色状态条 -->
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_02</text>
+         
+         <!-- Status Pill (Online) -->
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+      <!-- Row 3: 离线 -->
+      <g transform="translate(0, 200)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <text x="40" y="42" font-size="16" fill="#334155">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_03</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#F1F5F9" />
+         <circle cx="755" cy="35" r="5" fill="#94A3B8" />
+         <text x="770" y="40" font-size="14" fill="#64748B">离线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+      <!-- Row 4: 在线 -->
+      <g transform="translate(0, 270)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" />
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_04</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+       <!-- Row 5: 在线 -->
+      <g transform="translate(0, 340)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" />
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_05</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+    </g>
+
+    <!-- === 右栏 (Column 2) === -->
+    <g transform="translate(920, 0)">
+      <!-- 表头 -->
+      <path d="M 0 0 H 908 A 12 12 0 0 1 920 12 V 60 H 0 Z" fill="#F8FAFC" />
+      <text x="40" y="38" font-size="16" fill="#64748B" font-weight="bold">设备名称</text>
+      <text x="400" y="38" font-size="16" fill="#64748B" font-weight="bold">设备编号</text>
+      <text x="750" y="38" font-size="16" fill="#64748B" font-weight="bold">运行状态</text>
+      <line x1="0" y1="60" x2="920" y2="60" stroke="#E2E8F0" />
+
+      <!-- Row 1: 离线 -->
+      <g transform="translate(0, 60)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <text x="40" y="42" font-size="16" fill="#334155">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_06</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#F1F5F9" />
+         <circle cx="755" cy="35" r="5" fill="#94A3B8" />
+         <text x="770" y="40" font-size="14" fill="#64748B">离线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+      <!-- Row 2: 在线 -->
+      <g transform="translate(0, 130)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" />
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_07</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+      
+      <!-- Row 3: 离线 -->
+      <g transform="translate(0, 200)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <text x="40" y="42" font-size="16" fill="#334155">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_08</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#F1F5F9" />
+         <circle cx="755" cy="35" r="5" fill="#94A3B8" />
+         <text x="770" y="40" font-size="14" fill="#64748B">离线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+
+      <!-- Row 4: 在线 -->
+      <g transform="translate(0, 270)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" />
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_09</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+      
+      <!-- Row 5: 在线 -->
+      <g transform="translate(0, 340)">
+         <rect width="920" height="70" fill="#FFFFFF" />
+         <rect x="0" y="0" width="4" height="70" fill="#10B981" />
+         <text x="40" y="42" font-size="16" fill="#334155" font-weight="bold">9F电梯厅大门门禁</text>
+         <text x="400" y="42" font-size="16" fill="#64748B" font-family="Consolas">MJ_9Fdtdm_10</text>
+         
+         <rect x="740" y="20" width="100" height="30" rx="15" fill="#ECFDF5" />
+         <circle cx="755" cy="35" r="5" fill="#10B981" class="pulse"/>
+         <text x="770" y="40" font-size="14" fill="#059669" font-weight="bold">在线</text>
+         <line x1="20" y1="70" x2="900" y2="70" stroke="#F1F5F9" />
+      </g>
+    </g>
+    
+    <!-- 列表底部淡出遮罩 (模拟还有更多数据) -->
+    <rect x="0" y="660" width="1840" height="100" fill="url(#fadeGradient)" rx="0 0 12 12" opacity="0.5"/>
+    <defs>
+      <linearGradient id="fadeGradient" x1="0" y1="0" x2="0" y2="1">
+         <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+         <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+  </g>
+</svg>

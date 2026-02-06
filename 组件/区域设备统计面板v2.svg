@@ -1,0 +1,140 @@
+<svg width="420" height="240" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" style="background-color: #F8FAFC; font-family: 'Microsoft YaHei', sans-serif;">
+  
+  <!-- ======================================================================== -->
+  <!-- 0. 定义区：滤镜与渐变 -->
+  <!-- ======================================================================== -->
+  <defs>
+    <!-- 1. 深度投影 (更立体) -->
+    <filter id="depthShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.12" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 2. 内发光 (用于环形图) -->
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 3. 背景装饰纹理 (斜线) -->
+    <pattern id="stripeFill" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="4" height="8" fill="#FFFFFF" fill-opacity="0.3"/>
+    </pattern>
+
+    <!-- 4. 宝石渐变 (用于图标/进度条) -->
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <linearGradient id="gradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+    <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+  </defs>
+
+  <!-- ======================================================================== -->
+  <!-- 1. 主卡片容器 -->
+  <!-- ======================================================================== -->
+  <g filter="url(#depthShadow)">
+    <!-- 卡片底座 -->
+    <rect x="10" y="10" width="400" height="220" rx="16" fill="#FFFFFF" />
+    
+    <!-- 顶部装饰条 -->
+    <path d="M 10 26 A 16 16 0 0 1 26 10 H 394 A 16 16 0 0 1 410 26 V 50 H 10 Z" fill="#F1F5F9" />
+    <rect x="10" y="50" width="400" height="1" fill="#E2E8F0" />
+    
+    <!-- 标题区域 -->
+    <rect x="24" y="22" width="4" height="16" rx="2" fill="#3B82F6" />
+    <text x="36" y="36" font-size="16" fill="#334155" font-weight="bold">区域设备概览</text>
+    
+    <!-- 右上角装饰点 -->
+    <circle cx="380" cy="30" r="3" fill="#94A3B8" />
+    <circle cx="390" cy="30" r="3" fill="#CBD5E1" />
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 2. 左侧：仪表盘 (Dashboard Ring) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(110, 145)"> <!-- 调整位置居中左侧 -->
+    
+    <!-- 外圈刻度装饰 -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#F1F5F9" stroke-width="15" stroke-dasharray="2 4" />
+    
+    <!-- 进度底轨 -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#E2E8F0" stroke-width="12" stroke-linecap="round"/>
+    
+    <!-- 进度条 (85%) -->
+    <!-- r=55, C=345. 85%=293 -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="url(#gradTeal)" stroke-width="12" stroke-linecap="round" stroke-dasharray="293 345" transform="rotate(-90)" filter="url(#glowEffect)">
+      <animate attributeName="stroke-dasharray" from="0 345" to="293 345" dur="1s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" />
+    </circle>
+    
+    <!-- 中心数据 -->
+    <text x="0" y="8" text-anchor="middle" font-size="28" fill="#0D9488" font-weight="bold">85%</text>
+    <text x="0" y="28" text-anchor="middle" font-size="12" fill="#94A3B8">在线率</text>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 3. 右侧：数据色块矩阵 (Data Blocks) -->
+  <!-- ======================================================================== -->
+  <!-- 布局策略：右侧分为上下两部分，下部分再分左右，形成紧凑的拼图感 -->
+  
+  <g transform="translate(220, 65)">
+    
+    <!-- Block A: 设备总数 (占据上方) -->
+    <g>
+      <!-- 蓝色微光背景 -->
+      <rect x="0" y="0" width="170" height="65" rx="8" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1"/>
+      <!-- 装饰角标 -->
+      <path d="M 150 0 H 170 V 20" fill="none" stroke="#BFDBFE" stroke-width="2" />
+      
+      <!-- Icon -->
+      <circle cx="30" cy="32" r="16" fill="#FFFFFF" />
+      <circle cx="30" cy="32" r="6" fill="url(#gradBlue)" />
+      
+      <!-- Text -->
+      <text x="60" y="25" font-size="12" fill="#64748B">设备总数</text>
+      <text x="60" y="50" font-size="24" fill="#1E40AF" font-weight="bold" font-family="Consolas">633</text>
+    </g>
+
+    <!-- Block B: 在线 (左下) -->
+    <g transform="translate(0, 75)">
+      <!-- 青色微光背景 -->
+      <rect x="0" y="0" width="80" height="70" rx="8" fill="#ECFDF5" stroke="#CCFBF1" stroke-width="1"/>
+      
+      <text x="10" y="25" font-size="12" fill="#047857">在线</text>
+      <circle cx="65" cy="20" r="4" fill="#10B981">
+         <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      
+      <text x="10" y="55" font-size="20" fill="#059669" font-weight="bold">631</text>
+    </g>
+
+    <!-- Block C: 离线 (右下) -->
+    <g transform="translate(90, 75)">
+      <!-- 橙色微光背景 - 替换原本单调的灰色 -->
+      <rect x="0" y="0" width="80" height="70" rx="8" fill="#FFF7ED" stroke="#FFEDD5" stroke-width="1"/>
+      
+      <text x="10" y="25" font-size="12" fill="#C2410C">离线</text>
+      <circle cx="65" cy="20" r="4" fill="#F97316" />
+      
+      <text x="10" y="55" font-size="20" fill="#EA580C" font-weight="bold">2</text>
+    </g>
+
+  </g>
+
+</svg>

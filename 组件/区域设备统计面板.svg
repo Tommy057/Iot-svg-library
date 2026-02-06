@@ -1,0 +1,128 @@
+<svg width="420" height="240" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" style="background-color: #F8FAFC; font-family: 'Microsoft YaHei', sans-serif;">
+  
+  <!-- ======================================================================== -->
+  <!-- 0. 资源定义 (Definitions) -->
+  <!-- ======================================================================== -->
+  <defs>
+    <!-- 卡片悬浮阴影 -->
+    <filter id="widgetShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 宝石渐变: 蓝色 (总数) -->
+    <radialGradient id="gemBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+
+    <!-- 宝石渐变: 青色 (在线) -->
+    <radialGradient id="gemTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </radialGradient>
+
+    <!-- 宝石渐变: 灰色 (离线) -->
+    <radialGradient id="gemGray" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </radialGradient>
+
+    <!-- 呼吸动画 -->
+    <style>
+      .pulse { animation: pulseAnim 2s infinite ease-in-out; transform-origin: center; }
+      @keyframes pulseAnim {
+        0% { opacity: 0.8; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.8; transform: scale(0.95); }
+      }
+      .rotateRing { animation: rotateAnim 10s linear infinite; transform-origin: 90px 110px; }
+      @keyframes rotateAnim {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </defs>
+
+  <!-- ======================================================================== -->
+  <!-- 1. 卡片容器 -->
+  <!-- ======================================================================== -->
+  <g filter="url(#widgetShadow)">
+    <!-- 背景白卡 -->
+    <rect x="10" y="10" width="400" height="220" rx="12" fill="#FFFFFF" />
+    <!-- 顶部装饰条 (青色代表健康) -->
+    <path d="M 10 22 A 12 12 0 0 1 22 10 H 410 V 14 H 10 Z" fill="#10B981" />
+    <!-- 标题 -->
+    <text x="30" y="45" font-size="16" fill="#1E293B" font-weight="bold">核心区域设备统计</text>
+    <!-- 分割线 -->
+    <line x1="30" y1="60" x2="390" y2="60" stroke="#F1F5F9" stroke-width="1" />
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 2. 左侧：可视化环图 (Visual Ring) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(30, 20)">
+    <!-- 1. 外圈装饰轨 (灰色) -->
+    <circle cx="90" cy="110" r="60" fill="none" stroke="#F1F5F9" stroke-width="12" />
+    
+    <!-- 2. 动态旋转虚线 (装饰) -->
+    <circle cx="90" cy="110" r="75" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4" class="rotateRing" />
+
+    <!-- 3. 数据进度条 (Teal, 85%) -->
+    <!-- path长度计算: 2*PI*60 ≈ 377. 85% ≈ 320 -->
+    <circle cx="90" cy="110" r="60" fill="none" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" stroke-dasharray="320 377" transform="rotate(-90 90 110)" />
+
+    <!-- 4. 中心宝石 (Gem Core) -->
+    <circle cx="90" cy="110" r="35" fill="#ECFDF5" /> <!-- 光晕底 -->
+    <circle cx="90" cy="110" r="12" fill="url(#gemTeal)" class="pulse" /> <!-- 宝石实体 -->
+    
+    <!-- 5. 中心文字 -->
+    <text x="90" y="160" text-anchor="middle" font-size="12" fill="#64748B">在线率</text>
+    <text x="90" y="145" text-anchor="middle" font-size="20" fill="#0D9488" font-weight="bold">85%</text>
+  </g>
+
+  <!-- ======================================================================== -->
+  <!-- 3. 右侧：数据列表 (Data List) -->
+  <!-- ======================================================================== -->
+  <g transform="translate(200, 80)">
+    
+    <!-- Row 1: 设备总数 (Blue) -->
+    <g transform="translate(0, 0)">
+       <!-- 图标 -->
+       <rect x="0" y="0" width="32" height="32" rx="8" fill="#EFF6FF" />
+       <circle cx="16" cy="16" r="6" fill="url(#gemBlue)" />
+       <!-- 文字 -->
+       <text x="45" y="14" font-size="12" fill="#64748B">设备总数</text>
+       <text x="45" y="32" font-size="18" fill="#1E293B" font-weight="bold" font-family="Consolas">1,248</text>
+    </g>
+
+    <!-- Row 2: 在线数量 (Teal) -->
+    <g transform="translate(0, 50)">
+       <!-- 图标 -->
+       <rect x="0" y="0" width="32" height="32" rx="8" fill="#ECFDF5" />
+       <circle cx="16" cy="16" r="6" fill="url(#gemTeal)" class="pulse" />
+       <!-- 文字 -->
+       <text x="45" y="14" font-size="12" fill="#64748B">正常在线</text>
+       <text x="45" y="32" font-size="18" fill="#10B981" font-weight="bold" font-family="Consolas">1,060</text>
+    </g>
+
+    <!-- Row 3: 离线数量 (Gray) -->
+    <g transform="translate(0, 100)">
+       <!-- 图标 -->
+       <rect x="0" y="0" width="32" height="32" rx="8" fill="#F1F5F9" />
+       <circle cx="16" cy="16" r="6" fill="url(#gemGray)" />
+       <!-- 文字 -->
+       <text x="45" y="14" font-size="12" fill="#64748B">离线/维护</text>
+       <text x="45" y="32" font-size="18" fill="#64748B" font-weight="bold" font-family="Consolas">188</text>
+    </g>
+    
+  </g>
+
+</svg>
