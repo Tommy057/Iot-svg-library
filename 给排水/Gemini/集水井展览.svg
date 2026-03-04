@@ -1,0 +1,89 @@
+<svg width="320" height="220" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 滤镜定义 (阴影与高光) -->
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.1" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <!-- 宝石质感梯度 -->
+    <radialGradient id="gemGradient" cx="35%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#059669" />
+    </radialGradient>
+    
+    <!-- 呼吸光晕动画 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 2. 卡片背景 -->
+  <rect x="10" y="10" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#softShadow)" />
+  
+  <!-- 3. 顶部标题 -->
+  <text x="25" y="38" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1F2937">集水坑 #1#01</text>
+  <circle cx="285" cy="34" r="4" fill="#10B981" /> <!-- 运行指示灯 -->
+
+  <!-- 4. 集水井功能拟态图形 -->
+  <g transform="translate(25, 60)">
+    <!-- 水池外框 -->
+    <path d="M0,0 L0,100 Q0,110 10,110 L120,110 Q130,110 130,100 L130,0" fill="none" stroke="#D1D5DB" stroke-width="2" />
+    
+    <!-- 水位表现 (动态) -->
+    <rect x="4" y="50" width="122" height="56" rx="4" fill="#EFF6FF" />
+    <path d="M4,55 Q30,45 60,55 T126,55" fill="none" stroke="#3B82F6" stroke-width="1.5">
+      <animate attributeName="d" dur="3s" repeatCount="indefinite" 
+        values="M4,55 Q30,45 60,55 T126,55; M4,55 Q30,65 60,55 T126,55; M4,55 Q30,45 60,55 T126,55" />
+    </path>
+
+    <!-- 水位刻度线 -->
+    <line x1="135" y1="20" x2="145" y2="20" stroke="#9CA3AF" stroke-width="1" />
+    <text x="150" y="24" font-family="'Microsoft YaHei'" font-size="10" fill="#6B7280">高水位</text>
+    
+    <line x1="135" y1="55" x2="145" y2="55" stroke="#3B82F6" stroke-width="2" />
+    <text x="150" y="59" font-family="'Microsoft YaHei'" font-size="10" fill="#3B82F6" font-weight="bold">当前水位</text>
+    
+    <line x1="135" y1="90" x2="145" y2="90" stroke="#9CA3AF" stroke-width="1" />
+    <text x="150" y="94" font-family="'Microsoft YaHei'" font-size="10" fill="#6B7280">低水位</text>
+
+    <!-- 5. 核心宝石组件 - 泵1 -->
+    <g transform="translate(30, 70)">
+      <!-- 功能形状拟态 (泵体) -->
+      <path d="M-10,20 L10,20 L8,0 L-8,0 Z" fill="#94A3B8" />
+      <!-- 宝石光晕 -->
+      <circle cx="0" cy="12" r="7" fill="url(#gemGradient)" filter="url(#glow)">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <text x="-12" y="35" font-family="'Microsoft YaHei'" font-size="9" fill="#6B7280">1# 泵</text>
+    </g>
+
+    <!-- 核心宝石组件 - 泵2 -->
+    <g transform="translate(80, 70)">
+      <path d="M-10,20 L10,20 L8,0 L-8,0 Z" fill="#94A3B8" />
+      <!-- 停止状态使用灰色宝石 -->
+      <circle cx="0" cy="12" r="7" fill="#D1D5DB" />
+      <text x="-12" y="35" font-family="'Microsoft YaHei'" font-size="9" fill="#6B7280">2# 泵</text>
+    </g>
+  </g>
+
+  <!-- 6. 右侧状态数值面板 -->
+  <g transform="translate(200, 150)">
+    <rect x="0" y="0" width="90" height="40" rx="6" fill="#F9FAFB" stroke="#F3F4F6" />
+    <text x="10" y="18" font-family="'Microsoft YaHei'" font-size="10" fill="#9CA3AF">水位报警</text>
+    <text x="10" y="32" font-family="'Microsoft YaHei'" font-size="12" font-weight="bold" fill="#10B981">正常</text>
+  </g>
+  
+  <g transform="translate(200, 100)">
+    <text x="0" y="0" font-family="'Microsoft YaHei'" font-size="10" fill="#9CA3AF">系统压力</text>
+    <text x="0" y="20" font-family="'Microsoft YaHei'" font-size="16" font-weight="bold" fill="#2563EB">0.42 <tspan font-size="10" font-weight="normal">MPa</tspan></text>
+  </g>
+</svg>
