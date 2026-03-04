@@ -1,0 +1,79 @@
+<svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 滤镜定义：轻量化投影 -->
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <!-- 宝石质感梯度 (仅用于图形，HT渲染安全) -->
+    <radialGradient id="gemRunning" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </radialGradient>
+    <radialGradient id="gemAlarm" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#DC2626" />
+    </radialGradient>
+  </defs>
+
+  <!-- 2. 卡片底座：纯净白悬浮风格 -->
+  <rect x="10" y="10" width="280" height="160" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#cardShadow)" />
+
+  <!-- 3. 顶部标题栏：通过浅灰色块区分 -->
+  <path d="M10,20 Q10,10 20,10 L280,10 Q290,10 290,20 L290,45 L10,45 Z" fill="#F9FAFB" />
+  <text x="24" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="13" font-weight="bold" fill="#111827">集水井 #1-01</text>
+  <circle cx="270" cy="28" r="4" fill="#10B981" /> <!-- 设备通讯状态指示 -->
+
+  <!-- 4. 左侧视觉区：功能拟态井道 (Non-overlapping Mimicry) -->
+  <g transform="translate(24, 60)">
+    <!-- 井道外廓 -->
+    <path d="M0,0 L0,85 Q0,90 5,90 L85,90 Q90,90 90,85 L90,0" fill="none" stroke="#D1D5DB" stroke-width="1.5" stroke-dasharray="2,2" />
+    
+    <!-- 液位视觉：深蓝宝石色块 -->
+    <rect x="2" y="45" width="86" height="43" rx="2" fill="#EFF6FF" />
+    <line x1="2" y1="45" x2="88" y2="45" stroke="#3B82F6" stroke-width="2" /> <!-- 水平线 -->
+
+    <!-- 泵体1：宝石光晕 - 运行态 -->
+    <g transform="translate(25, 55)">
+      <rect x="-10" y="0" width="20" height="24" rx="3" fill="#94A3B8" /> <!-- 泵体支架 -->
+      <circle cx="0" cy="12" r="7" fill="url(#gemRunning)" stroke="#FFFFFF" stroke-width="1" />
+      <text x="0" y="38" font-family="'Microsoft YaHei'" font-size="9" fill="#6B7280" text-anchor="middle">1# 泵</text>
+    </g>
+
+    <!-- 泵体2：宝石光晕 - 停止态 -->
+    <g transform="translate(65, 55)">
+      <rect x="-10" y="0" width="20" height="24" rx="3" fill="#E5E7EB" />
+      <circle cx="0" cy="12" r="7" fill="#D1D5DB" stroke="#FFFFFF" stroke-width="1" />
+      <text x="0" y="38" font-family="'Microsoft YaHei'" font-size="9" fill="#6B7280" text-anchor="middle">2# 泵</text>
+    </g>
+  </g>
+
+  <!-- 5. 右侧数据区：结构化、零重叠对齐 (Grid Alignment) -->
+  <g transform="translate(140, 65)">
+    <!-- 实时液位 -->
+    <text x="0" y="10" font-family="'Microsoft YaHei'" font-size="11" fill="#9CA3AF">实时液位</text>
+    <text x="0" y="32" font-family="'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#2563EB">1.42 <tspan font-size="10" font-weight="normal">m</tspan></text>
+    
+    <!-- 状态胶囊 (Capsule Design) -->
+    <g transform="translate(0, 48)">
+      <rect x="0" y="0" width="60" height="20" rx="10" fill="#ECFDF5" />
+      <text x="30" y="14" font-family="'Microsoft YaHei'" font-size="10" font-weight="bold" fill="#059669" text-anchor="middle">水位正常</text>
+      
+      <rect x="70" y="0" width="60" height="20" rx="10" fill="#F1F5F9" />
+      <text x="100" y="14" font-family="'Microsoft YaHei'" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">自动模式</text>
+    </g>
+
+    <!-- 分割线 -->
+    <line x1="0" y1="82" x2="140" y2="82" stroke="#F3F4F6" stroke-width="1" />
+
+    <!-- 次要信息对齐展示 -->
+    <text x="0" y="102" font-family="'Microsoft YaHei'" font-size="10" fill="#9CA3AF">累计运行</text>
+    <text x="140" y="102" font-family="'Microsoft YaHei'" font-size="10" font-weight="600" fill="#374151" text-anchor="end">256.5 h</text>
+
+    <text x="0" y="122" font-family="'Microsoft YaHei'" font-size="10" fill="#9CA3AF">故障统计</text>
+    <text x="140" y="122" font-family="'Microsoft YaHei'" font-size="10" font-weight="600" fill="#EF4444" text-anchor="end">0 次</text>
+  </g>
+</svg>

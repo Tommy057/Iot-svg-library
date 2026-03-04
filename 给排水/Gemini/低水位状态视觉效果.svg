@@ -1,0 +1,59 @@
+<svg width="280" height="180" viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 投影与渐变定义 -->
+  <defs>
+    <filter id="cardShadow" x="-10" y="-10" width="300" height="200" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="6" in="SourceAlpha"/>
+      <feOffset dy="4"/>
+      <feComposite in2="SourceAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+    </filter>
+    
+    <linearGradient id="pitGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3F4F6"/>
+      <stop offset="100%" stop-color="#E5E7EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 容器层 -->
+  <rect x="0.5" y="0.5" width="279" height="179" rx="11.5" fill="#FFFFFF" stroke="#E5E7EB"/>
+
+  <!-- 2. 标题栏 -->
+  <text x="16" y="24" fill="#1F2937" style="font-family: sans-serif; font-size: 12px; font-weight: bold;">集水坑 01#</text>
+  <rect x="210" y="12" width="54" height="18" rx="9" fill="#F0FDF4"/>
+  <text x="218" y="24" fill="#15803D" style="font-family: sans-serif; font-size: 10px;">通讯正常</text>
+
+  <!-- 3. 左侧拟态井道 - 低水位表现 [1] -->
+  <g transform="translate(16, 48)">
+    <path d="M0 0V90C0 94.4 3.6 98 8 98H92C96.4 98 100 94.4 100 90V0" fill="url(#pitGradient)"/>
+    
+    <!-- 低液位填充: 高度降至 16px (对应约 0.3m 水位) -->
+    <path d="M0 82V90C0 94.4 3.6 98 8 98H92C96.4 98 100 94.4 100 90V82H0Z" fill="#3B82F6" fill-opacity="0.4"/>
+    <line x1="0" y1="82" x2="100" y2="82" stroke="#60A5FA" stroke-width="2"/>
+    
+    <!-- 低水位刻度标识 [1] -->
+    <line x1="102" y1="82" x2="108" y2="82" stroke="#9CA3AF" stroke-width="1"/>
+    <text x="112" y="85" fill="#9CA3AF" style="font-family: sans-serif; font-size: 8px;">低水位</text>
+
+    <!-- 水泵组件 - 停止状态 -->
+    <rect x="35" y="65" width="30" height="25" rx="2" fill="#D1D5DB"/>
+    <circle cx="50" cy="77.5" r="4" fill="#9CA3AF"/> <!-- 停止状态：冷灰色宝石点 -->
+  </g>
+
+  <!-- 4. 右侧数据网格 - 预警状态 -->
+  <g transform="translate(148, 56)">
+    <text x="0" y="10" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">当前水位</text>
+    <text x="0" y="28" fill="#111827" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">0.32 <tspan font-size="10" font-weight="normal">m</tspan></text>
+
+    <text x="65" y="10" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">今日排量</text>
+    <text x="65" y="28" fill="#111827" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">12.4 <tspan font-size="10" font-weight="normal">m³</tspan></text>
+
+    <!-- 状态胶囊: 低水位预警 (采用琥珀色系) -->
+    <text x="0" y="55" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">水位状态</text>
+    <rect x="0" y="62" width="55" height="18" rx="4" fill="#FFFBEB"/>
+    <text x="11" y="74" fill="#92400E" style="font-family: sans-serif; font-size: 10px; font-weight: bold;">低水位</text>
+
+    <text x="65" y="55" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">运行频率</text>
+    <text x="65" y="74" fill="#9CA3AF" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">0.0 <tspan font-size="10" font-weight="normal">Hz</tspan></text>
+  </g>
+</svg>

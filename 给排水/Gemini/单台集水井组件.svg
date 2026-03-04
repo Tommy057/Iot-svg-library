@@ -1,0 +1,74 @@
+<svg width="280" height="160" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 背景与阴影 -->
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <!-- 宝石高光渐变 (仅用于图形，不用于文字) -->
+    <radialGradient id="gemEmerald" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A7F3D0" />
+      <stop offset="100%" stop-color="#10B981" />
+    </radialGradient>
+  </defs>
+
+  <!-- 2. 悬浮白卡片底座 -->
+  <rect x="5" y="5" width="270" height="150" rx="8" fill="#FFFFFF" stroke="#F3F4F6" stroke-width="1" filter="url(#cardShadow)" />
+
+  <!-- 3. 顶部标题栏 -->
+  <rect x="5" y="5" width="270" height="32" rx="8" fill="#F9FAFB" />
+  <path d="M5,25 L5,13 Q5,5 13,5 L267,5 Q275,5 275,13 L275,25 Z" fill="#F9FAFB" />
+  <text x="15" y="26" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="600" fill="#374151">集水井 #1#01</text>
+  <!-- 总体在线状态 -->
+  <circle cx="255" cy="21" r="4" fill="#10B981" />
+
+  <!-- 4. 左侧：拟态水箱 (Functional Form) -->
+  <g transform="translate(15, 50)">
+    <!-- 水箱外廓 -->
+    <path d="M0,0 L0,70 Q0,75 5,75 L95,75 Q100,75 100,70 L100,0" fill="none" stroke="#E5E7EB" stroke-width="2" />
+    <!-- 内部水层 (蓝色) -->
+    <rect x="2" y="30" width="96" height="43" rx="2" fill="#DBEAFE" />
+    
+    <!-- 1# 泵拟态 -->
+    <g transform="translate(25, 45)">
+      <rect x="-8" y="0" width="16" height="22" rx="2" fill="#94A3B8" />
+      <!-- 宝石光晕 - 运行 -->
+      <circle cx="0" cy="11" r="5" fill="url(#gemEmerald)" />
+      <circle cx="-1.5" cy="9.5" r="1.5" fill="#FFFFFF" fill-opacity="0.5" />
+      <text x="-12" y="34" font-family="'Microsoft YaHei'" font-size="9" fill="#9CA3AF">1# 泵</text>
+    </g>
+
+    <!-- 2# 泵拟态 -->
+    <g transform="translate(75, 45)">
+      <rect x="-8" y="0" width="16" height="22" rx="2" fill="#E5E7EB" />
+      <!-- 宝石状态 - 停止 -->
+      <circle cx="0" cy="11" r="5" fill="#D1D5DB" />
+      <text x="-12" y="34" font-family="'Microsoft YaHei'" font-size="9" fill="#9CA3AF">2# 泵</text>
+    </g>
+  </g>
+
+  <!-- 5. 右侧：结构化数据区 (无重叠设计) -->
+  <g transform="translate(130, 50)">
+    <!-- 水位状态行 -->
+    <text x="0" y="12" font-family="'Microsoft YaHei'" font-size="11" fill="#6B7280">水位报警：</text>
+    <rect x="60" y="0" width="45" height="18" rx="4" fill="#ECFDF5" />
+    <text x="82.5" y="13" font-family="'Microsoft YaHei'" font-size="10" font-weight="bold" fill="#059669" text-anchor="middle">正常</text>
+
+    <!-- 实时液位行 -->
+    <text x="0" y="42" font-family="'Microsoft YaHei'" font-size="11" fill="#6B7280">实时液位：</text>
+    <text x="60" y="42" font-family="'Microsoft YaHei'" font-size="14" font-weight="bold" fill="#2563EB">1.25 <tspan font-size="10" font-weight="normal">m</tspan></text>
+    
+    <!-- 分割线 -->
+    <line x1="0" y1="58" x2="135" y2="58" stroke="#F3F4F6" stroke-width="1" />
+
+    <!-- 泵运行时间统计 -->
+    <text x="0" y="78" font-family="'Microsoft YaHei'" font-size="11" fill="#6B7280">累计运行：</text>
+    <text x="60" y="78" font-family="'Microsoft YaHei'" font-size="11" fill="#374151">128.5 h</text>
+    
+    <text x="0" y="98" font-family="'Microsoft YaHei'" font-size="11" fill="#6B7280">故障统计：</text>
+    <text x="60" y="98" font-family="'Microsoft YaHei'" font-size="11" fill="#EF4444">0 次</text>
+  </g>
+</svg>

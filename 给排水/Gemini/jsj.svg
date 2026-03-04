@@ -1,0 +1,33 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Card Background with Shadow -->
+  <rect x="10" y="10" width="380" height="280" rx="12" fill="white" stroke="#E2E8F0" stroke-width="1" />
+  <!-- Header Status -->
+  <rect x="10" y="10" width="380" height="40" rx="12" fill="#F8FAFC" />
+  <circle cx="30" cy="30" r="4" fill="#10B981" />
+  <text x="45" y="35" font-family="'DM Sans', sans-serif" font-size="14" font-weight="600" fill="#1E293B">Sump System: Operational</text>
+  <!-- U-Shaped Pit -->
+  <path d="M120 80 V220 C120 230 130 240 140 240 H260 C270 240 280 230 280 220 V80" stroke="#94A3B8" stroke-width="4" fill="none" />
+  <!-- Sapphire Water -->
+  <path d="M124 160 V220 C124 225 128 230 134 230 H266 C272 230 276 225 276 220 V160 H124Z" fill="#0EA5E9" fill-opacity="0.8" />
+  <!-- Pump 1 (Left) -->
+  <g data-name="Pump 1">
+    <rect x="140" y="180" width="30" height="45" rx="4" fill="#334155" />
+    <circle cx="155" cy="188" r="3" fill="#10B981" /> <!-- Gem Status -->
+    <text x="140" y="260" font-family="'DM Sans', sans-serif" font-size="10" font-weight="bold" fill="#64748B">PUMP 1</text>
+  </g>
+  <!-- Pump 2 (Right) -->
+  <g data-name="Pump 2">
+    <rect x="230" y="180" width="30" height="45" rx="4" fill="#334155" />
+    <circle cx="245" cy="188" r="3" fill="#10B981" /> <!-- Gem Status -->
+    <text x="230" y="260" font-family="'DM Sans', sans-serif" font-size="10" font-weight="bold" fill="#64748B">PUMP 2</text>
+  </g>
+  <!-- Metrics Panel -->
+  <g transform="translate(40, 80)">
+    <text y="0" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8">LEVEL</text>
+    <text y="24" font-family="'DM Sans', sans-serif" font-size="18" font-weight="bold" fill="#0EA5E9">42%</text>
+    <text y="60" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8">CURRENT</text>
+    <text y="84" font-family="'DM Sans', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">8.4 A</text>
+    <text y="120" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8">STARTS/HR</text>
+    <text y="144" font-family="'DM Sans', sans-serif" font-size="18" font-weight="bold" fill="#1E293B">12</text>
+  </g>
+</svg>

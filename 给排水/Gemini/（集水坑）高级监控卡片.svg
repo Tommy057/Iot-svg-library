@@ -1,0 +1,78 @@
+<svg width="280" height="180" viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 投影定义 -->
+  <defs>
+    <filter id="cardShadow" x="-10" y="-10" width="300" height="200" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="6"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    
+    <!-- 井道渐变 -->
+    <linearGradient id="pitGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3F4F6"/>
+      <stop offset="100%" stop-color="#E5E7EB"/>
+    </linearGradient>
+
+    <!-- 运行状态宝石渐变 (绿色) -->
+    <radialGradient id="gemRunning" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#6EE7B7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </radialGradient>
+
+    <!-- 故障状态宝石渐变 (红色) -->
+    <radialGradient id="gemFault" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 容器层 -->
+  <rect x="0.5" y="0.5" width="279" height="179" rx="11.5" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#cardShadow)"/>
+
+  <!-- 3. 标题栏 (Height: 36px) -->
+  <text x="16" y="24" fill="#1F2937" style="font-family: sans-serif; font-size: 12px; font-weight: bold;">集水坑 01#</text>
+  <!-- 通讯状态胶囊 -->
+  <rect x="210" y="12" width="54" height="18" rx="9" fill="#F0FDF4"/>
+  <text x="218" y="24" fill="#15803D" style="font-family: sans-serif; font-size: 10px;">通讯正常</text>
+
+  <!-- 2. 左侧拟态井道 (45% Width ≈ 126px) -->
+  <g transform="translate(16, 48)">
+    <!-- U型井道 -->
+    <path d="M0 0V90C0 94.4 3.6 98 8 98H92C96.4 98 100 94.4 100 90V0" fill="url(#pitGradient)"/>
+    
+    <!-- 液位表现 (当前50%) -->
+    <path d="M0 50V90C0 94.4 3.6 98 8 98H92C96.4 98 100 94.4 100 90V50H0Z" fill="#3B82F6" fill-opacity="0.4"/>
+    <line x1="0" y1="50" x2="100" y2="50" stroke="#60A5FA" stroke-width="2"/>
+
+    <!-- 水泵组件 (精密圆柱体) -->
+    <rect x="35" y="65" width="30" height="25" rx="2" fill="#9CA3AF"/>
+    <!-- 宝石光晕核心 - 运行状态示例 -->
+    <circle cx="50" cy="77.5" r="7" fill="#6EE7B7" fill-opacity="0.2"/> <!-- 扩散光圈 -->
+    <circle cx="50" cy="77.5" r="4" fill="url(#gemRunning)"/>
+  </g>
+
+  <!-- 3. 右侧数据网格 (55% Width, 从140px开始) -->
+  <g transform="translate(140, 56)">
+    <!-- 第一组数据 -->
+    <text x="0" y="10" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">当前水位</text>
+    <text x="0" y="28" fill="#111827" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">1.45 <tspan font-size="10" font-weight="normal">m</tspan></text>
+
+    <!-- 第二组数据 -->
+    <text x="75" y="10" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">今日排量</text>
+    <text x="75" y="28" fill="#111827" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">12.4 <tspan font-size="10" font-weight="normal">m³</tspan></text>
+
+    <!-- 第三组数据 (报警状态胶囊) -->
+    <text x="0" y="55" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">水位状态</text>
+    <rect x="0" y="62" width="55" height="18" rx="4" fill="#FEF2F2"/>
+    <text x="6" y="74" fill="#991B1B" style="font-family: sans-serif; font-size: 10px; font-weight: bold;">高水位</text>
+
+    <!-- 第四组数据 (水泵状态) -->
+    <text x="75" y="55" fill="#9CA3AF" style="font-family: sans-serif; font-size: 10px;">运行频率</text>
+    <text x="75" y="74" fill="#111827" style="font-family: 'DIN', sans-serif; font-size: 14px; font-weight: bold;">45.2 <tspan font-size="10" font-weight="normal">Hz</tspan></text>
+  </g>
+</svg>
