@@ -1,0 +1,54 @@
+<svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景定义 (用于独立预览) -->
+  <rect x="0" y="0" width="220" height="180" fill="#FFFFFF" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- 1. 水位报警行 -->
+  <g transform="translate(15, 20)">
+    <!-- 标签 -->
+    <text x="0" y="16" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">水位报警</text>
+    
+    <!-- 状态胶囊 - 正常态 -->
+    <g transform="translate(100, 0)">
+      <rect width="80" height="24" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="0.5" />
+      <!-- 宝石光晕点 -->
+      <circle cx="12" cy="12" r="4" fill="#10B981" />
+      <text x="48" y="17" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#059669" text-anchor="middle">水位正常</text>
+    </g>
+  </g>
+
+  <!-- 分割线 -->
+  <line x1="15" y1="55" x2="205" y2="55" stroke="#F1F5F9" stroke-width="1" />
+
+  <!-- 2. 1# 泵状态行 -->
+  <g transform="translate(15, 70)">
+    <text x="0" y="16" font-family="'Microsoft YaHei'" font-size="12" fill="#64748B">1# 泵状态</text>
+    
+    <!-- 状态胶囊 - 运行态 -->
+    <g transform="translate(100, 0)">
+      <rect width="80" height="24" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="0.5" />
+      <!-- 运行态宝石带呼吸感色值 -->
+      <circle cx="12" cy="12" r="4" fill="#22C55E" />
+      <text x="48" y="17" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#15803D" text-anchor="middle">运行中</text>
+    </g>
+  </g>
+
+  <!-- 3. 2# 泵状态行 -->
+  <g transform="translate(15, 110)">
+    <text x="0" y="16" font-family="'Microsoft YaHei'" font-size="12" fill="#64748B">2# 泵状态</text>
+    
+    <!-- 状态胶囊 - 停止态 -->
+    <g transform="translate(100, 0)">
+      <rect width="80" height="24" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="0.5" />
+      <!-- 停止态宝石 -->
+      <circle cx="12" cy="12" r="4" fill="#94A3B8" />
+      <text x="48" y="17" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#64748B" text-anchor="middle">已停止</text>
+    </g>
+  </g>
+
+  <!-- 底部强调：液位数值 -->
+  <g transform="translate(15, 145)">
+    <rect width="190" height="28" rx="6" fill="#F1F5F9" />
+    <text x="10" y="18" font-family="'Microsoft YaHei'" font-size="11" fill="#475569">实时液位：</text>
+    <text x="180" y="19" font-family="'Arial'" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="end">1.45 m</text>
+  </g>
+</svg>

@@ -1,0 +1,100 @@
+<svg width="400" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 3D管道渐变：模拟金属圆柱体 -->
+    <linearGradient id="pipe3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="40%" stop-color="#F8FAFC" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+
+    <!-- 2. 背景液位渐变：深邃感水体 -->
+    <linearGradient id="liquidBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- 3. 水泵机身渐变 (写实绿) -->
+    <linearGradient id="pumpBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+
+    <!-- 4. 卡片投影 -->
+    <filter id="cardGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- [卡体] 增强分界感：细边框 + 柔和投影 -->
+  <rect x="5" y="5" width="390" height="210" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" filter="url(#cardGlow)" />
+
+  <!-- [顶部标题栏] -->
+  <path d="M5,17 Q5,5 17,5 L383,5 Q395,5 395,17 L395,40 L5,40 Z" fill="#F8FAFC" />
+  <text x="20" y="28" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1E293B">1# 生活变频主泵 (P-Dom-01)</text>
+  <text x="375" y="27" font-family="'Microsoft YaHei'" font-size="11" fill="#64748B" text-anchor="end">远程监控模式</text>
+
+  <!-- [左侧视觉区] -->
+  <g transform="translate(20, 55)">
+    <!-- 静态液位背景 -->
+    <rect x="0" y="40" width="160" height="100" rx="4" fill="url(#liquidBg)" stroke="#BFDBFE" stroke-width="1" stroke-dasharray="4,2" />
+    <line x1="0" y1="40" x2="160" y2="40" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.6" />
+    <text x="155" y="35" font-family="'Microsoft YaHei'" font-size="9" fill="#3B82F6" text-anchor="end">静态液位面</text>
+
+    <!-- 3.D立体管道系统 -->
+    <g fill="none" stroke="url(#pipe3D)">
+      <path d="M35,60 L35,20 L125,20 L125,60" stroke-width="8" stroke-linecap="round" />
+      <path d="M125,20 L155,20" stroke-width="8" stroke-linecap="round" />
+    </g>
+
+    <!-- 1# 水泵 (写实缩略版) -->
+    <g transform="translate(15, 60) scale(0.6)">
+      <rect x="0" y="0" width="60" height="100" rx="4" fill="url(#pumpBody)" />
+      <rect x="-10" y="80" width="15" height="20" fill="#064E3B" /> <!-- 出水口 -->
+      <!-- 宝石指示灯 -->
+      <circle cx="30" cy="40" r="12" fill="#042F2E" />
+      <circle cx="30" cy="40" r="8" fill="#10B981" stroke="#FFFFFF" stroke-width="1" />
+    </g>
+
+    <!-- 2# 水泵 (写实缩略版) -->
+    <g transform="translate(105, 60) scale(0.6)">
+      <rect x="0" y="0" width="60" height="100" rx="4" fill="#94A3B8" /> <!-- 停止态颜色 -->
+      <rect x="-10" y="80" width="15" height="20" fill="#475569" />
+      <circle cx="30" cy="40" r="12" fill="#334155" />
+      <circle cx="30" cy="40" r="8" fill="#64748B" stroke="#FFFFFF" stroke-width="1" />
+    </g>
+  </g>
+
+  <!-- [右侧参数监控区] - 纯监控布局 -->
+  <g transform="translate(200, 65)">
+    <!-- (1) 水位报警状态 -->
+    <text x="10" y="15" font-family="'Microsoft YaHei'" font-size="12" fill="#64748B">水位报警</text>
+    <rect x="100" y="0" width="75" height="24" rx="12" fill="#ECFDF5" />
+    <text x="137.5" y="16" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#059669" text-anchor="middle">正常</text>
+
+    <!-- (2) 1# 泵状态 -->
+    <g transform="translate(0, 40)">
+      <text x="10" y="15" font-family="'Microsoft YaHei'" font-size="12" fill="#64748B">1# 泵状态</text>
+      <rect x="100" y="0" width="75" height="24" rx="12" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+      <text x="137.5" y="16" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#16A34A" text-anchor="middle">运行中</text>
+    </g>
+
+    <!-- (3) 2# 泵状态 -->
+    <g transform="translate(0, 80)">
+      <text x="10" y="15" font-family="'Microsoft YaHei'" font-size="12" fill="#64748B">2# 泵状态</text>
+      <rect x="100" y="0" width="75" height="24" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+      <text x="137.5" y="16" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#94A3B8" text-anchor="middle">已停止</text>
+    </g>
+
+    <!-- 实时液位数值 (重要指标) -->
+    <g transform="translate(10, 130)">
+      <rect x="0" y="0" width="165" height="35" rx="6" fill="#EFF6FF" />
+      <text x="10" y="22" font-family="'Microsoft YaHei'" font-size="11" fill="#3B82F6">实时液位高度：</text>
+      <text x="155" y="24" font-family="'Arial'" font-size="18" font-weight="bold" fill="#1E40AF" text-anchor="end">1.45 <tspan font-size="10" font-weight="normal">m</tspan></text>
+    </g>
+  </g>
+</svg>
