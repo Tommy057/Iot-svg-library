@@ -1,0 +1,70 @@
+<svg width="200" height="280" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 运行态机身渐变 (深绿-亮绿-反光) -->
+    <linearGradient id="bodyRunning" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="30%" stop-color="#059669" />
+      <stop offset="45%" stop-color="#34D399" />
+      <stop offset="60%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+
+    <!-- 宝石核心渐变 -->
+    <radialGradient id="gemRunning" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#A7F3D0" />
+      <stop offset="100%" stop-color="#059669" />
+    </radialGradient>
+
+    <!-- 金属高光叠加 -->
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 底部投影：解决“悬浮断开感”的关键 -->
+  <ellipse cx="100" cy="265" rx="45" ry="6" fill="#000000" fill-opacity="0.1" />
+
+  <g transform="translate(55, 10)">
+    <!-- 1. 顶部：电机盖与吊装环 -->
+    <rect x="35" y="0" width="20" height="8" rx="1" fill="#064E3B" />
+    <rect x="25" y="8" width="40" height="15" rx="2" fill="url(#bodyRunning)" />
+    
+    <!-- 2. 上段：电机腔室 -->
+    <path d="M15,23 L75,23 L70,85 L20,85 Z" fill="url(#bodyRunning)" />
+    
+    <!-- 3. 中段：加强型法兰（连接处） -->
+    <rect x="10" y="85" width="70" height="12" rx="2" fill="#064E3B" />
+    <circle cx="20" cy="91" r="1.5" fill="#34D399" opacity="0.6" />
+    <circle cx="45" cy="91" r="1.5" fill="#34D399" opacity="0.6" />
+    <circle cx="70" cy="91" r="1.5" fill="#34D399" opacity="0.6" />
+
+    <!-- 4. 下段：主泵体（涡轮室） -->
+    <path d="M10,97 L80,97 L85,190 Q85,200 75,200 L15,200 Q5,200 5,190 Z" fill="url(#bodyRunning)" />
+
+    <!-- 5. 特征：侧向法兰出口 (已通过重叠和渐变解决断开感) -->
+    <g transform="translate(-25, 160)">
+      <rect x="0" y="5" width="35" height="25" fill="#059669" />
+      <rect x="-6" y="0" width="10" height="35" rx="1" fill="#064E3B" />
+      <!-- 连接处阴影 -->
+      <rect x="25" y="5" width="10" height="25" fill="#000000" fill-opacity="0.2" />
+    </g>
+
+    <!-- 6. 装饰线条：增强体积感 -->
+    <g stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="0.5">
+      <line x1="30" y1="23" x2="25" y2="85" />
+      <line x1="45" y1="23" x2="45" y2="85" />
+      <line x1="60" y1="23" x2="65" y2="85" />
+    </g>
+
+    <!-- 7. 核心：宝石光晕指示灯 -->
+    <g transform="translate(45, 55)">
+      <circle r="12" fill="#042F2E" /> <!-- 金属底座 -->
+      <circle r="8" fill="url(#gemRunning)" stroke="#FFFFFF" stroke-width="1" />
+      <circle cx="-3" cy="-3" r="2" fill="#FFFFFF" fill-opacity="0.5" />
+    </g>
+
+    <!-- 8. 全局高光扫光 -->
+    <rect x="35" y="23" width="8" height="177" fill="url(#shine)" />
+  </g>
+</svg>

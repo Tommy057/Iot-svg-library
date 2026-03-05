@@ -1,0 +1,78 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 滤镜定义：提供高亮宝石的弥散光和泵体的深度感 -->
+  <defs>
+    <!-- 宝石发光效果 -->
+    <filter id="gemGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- 金属质感渐变 -->
+    <linearGradient id="metalReflex" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="30%" stop-color="#E2E8F0" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="70%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#94A3B8" />
+    </linearGradient>
+
+    <!-- 运行状态宝石渐变 -->
+    <radialGradient id="gemEmerald" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#059669" />
+    </radialGradient>
+  </defs>
+
+  <!-- 2. 功能拟态：泵体结构 -->
+  <g transform="translate(80, 20)">
+    
+    <!-- A. 顶部接线盒与吊环拟态 (阶梯状) -->
+    <rect x="25" y="0" width="30" height="10" rx="2" fill="#64748B" />
+    <rect x="20" y="10" width="40" height="15" rx="2" fill="#475569" />
+    
+    <!-- B. 上部电机腔室 (带金属反光) -->
+    <rect x="10" y="25" width="60" height="60" rx="4" fill="url(#metalReflex)" stroke="#CBD5E1" stroke-width="0.5" />
+    
+    <!-- C. 加强筋细节 (垂直线条) -->
+    <line x1="20" y1="25" x2="20" y2="85" stroke="#CBD5E1" stroke-width="1" />
+    <line x1="40" y1="25" x2="40" y2="85" stroke="#FFFFFF" stroke-width="1" opacity="0.8" />
+    <line x1="60" y1="25" x2="60" y2="85" stroke="#CBD5E1" stroke-width="1" />
+
+    <!-- D. 中间连接法兰 (带螺栓点) -->
+    <rect x="5" y="85" width="70" height="12" rx="2" fill="#334155" />
+    <circle cx="15" cy="91" r="1.5" fill="#94A3B8" />
+    <circle cx="40" cy="91" r="1.5" fill="#94A3B8" />
+    <circle cx="65" cy="91" r="1.5" fill="#94A3B8" />
+
+    <!-- E. 下部涡轮室 -->
+    <path d="M5,97 L75,97 L80,140 Q80,145 75,145 L5,145 Q0,145 0,140 L5,97" fill="url(#metalReflex)" stroke="#CBD5E1" stroke-width="0.5" />
+    
+    <!-- F. 侧向法兰出口 (特征点) -->
+    <rect x="-25" y="115" width="30" height="20" rx="2" fill="#475569" />
+    <rect x="-30" y="110" width="8" height="30" rx="1" fill="#334155" />
+
+    <!-- 3. 宝石光晕：核心状态指示器 (核心设计语言) -->
+    <!-- 放置在泵体视觉中心 -->
+    <g transform="translate(40, 55)">
+      <!-- 运行状态光晕 (当运行状态时，此组可见) -->
+      <circle cx="0" cy="0" r="14" fill="#10B981" opacity="0.15">
+        <!-- 若需要动画可在此添加，此处保持静止符合最新需求 -->
+      </circle>
+      <!-- 宝石核心 -->
+      <circle cx="0" cy="0" r="9" fill="url(#gemEmerald)" stroke="#FFFFFF" stroke-width="1.5" filter="url(#gemGlow)" />
+      <!-- 宝石高光点 -->
+      <circle cx="-3" cy="-3" r="2.5" fill="#FFFFFF" opacity="0.6" />
+    </g>
+  </g>
+
+  <!-- 4. 文字标注 (HT兼容：纯色填充) -->
+  <g transform="translate(120, 190)">
+    <text x="0" y="0" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1E293B">排污泵 P-01</text>
+    <text x="0" y="22" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#10B981" font-weight="600">运行中</text>
+    
+    <!-- 底部参数区 -->
+    <rect x="-50" y="32" width="100" height="1" fill="#F1F5F9" />
+    <text x="-45" y="50" text-anchor="start" font-family="'Microsoft YaHei'" font-size="10" fill="#94A3B8">频率：</text>
+    <text x="45" y="50" text-anchor="end" font-family="'Microsoft YaHei'" font-size="11" font-weight="bold" fill="#334151">48.5 Hz</text>
+  </g>
+</svg>
