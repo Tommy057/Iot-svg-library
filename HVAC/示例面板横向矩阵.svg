@@ -1,0 +1,144 @@
+<svg width="440" height="280" viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净阴影 -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 状态宝石渐变 (Hex 纯色) -->
+    <linearGradient id="gemGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="gemGrey" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <linearGradient id="gemRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+    
+    <!-- 科技蓝渐变 (用于设备类型图标) -->
+    <linearGradient id="gemBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 主面板容器 (横向宽卡片) -->
+  <!-- ========================================== -->
+  <rect x="10" y="10" width="420" height="250" rx="16" fill="#FFFFFF" fill-opacity="0.95" stroke="#E2E8F0" stroke-width="1.5" filter="url(#cleanShadow)"/>
+  
+  <!-- 顶部标题栏 -->
+  <path d="M 10 26 A 16 16 0 0 1 26 10 L 414 10 A 16 16 0 0 1 430 26 L 430 46 L 10 46 Z" fill="#F8FAFC"/>
+  <line x1="10" y1="46" x2="430" y2="46" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="20" y="20" width="4" height="16" rx="2" fill="#3B82F6"/>
+  <text x="32" y="33" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1E293B">综合图例说明 (Legend)</text>
+
+  <!-- ========================================== -->
+  <!-- 上半部：识图 (设备类型矩阵) -->
+  <!-- ========================================== -->
+  <text x="25" y="70" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#64748B">1. 认形状 (设备类型)</text>
+
+  <!-- 1.1 送风机 (X:25) -->
+  <g transform="translate(25, 85)">
+    <rect width="120" height="85" rx="10" fill="#F8FAFC" stroke="#F1F5F9" stroke-width="1"/>
+    <g transform="translate(60, 35)">
+        <circle cx="0" cy="0" r="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+        <!-- 展开的扇叶 (确保HT解析) -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
+            <path d="M 0 0 C 4 -12 12 -9 12 -1 C 12 4 6 5 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(0)"/>
+            <path d="M 0 0 C 4 -12 12 -9 12 -1 C 12 4 6 5 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(120)"/>
+            <path d="M 0 0 C 4 -12 12 -9 12 -1 C 12 4 6 5 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(240)"/>
+        </g>
+        <circle cx="0" cy="0" r="4" fill="url(#gemBlue)"/>
+    </g>
+    <text x="60" y="68" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" font-weight="bold" fill="#1E293B">送风机</text>
+    <text x="60" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94A3B8">轴流式</text>
+  </g>
+
+  <!-- 1.2 排风机 (X:155 = 25+120+10) -->
+  <g transform="translate(155, 85)">
+    <rect width="120" height="85" rx="10" fill="#F8FAFC" stroke="#F1F5F9" stroke-width="1"/>
+    <g transform="translate(60, 35)">
+        <path d="M -6 -16 A 16 16 0 1 0 18 8 V -16 H -6 Z" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="-10" y="-19" width="30" height="3" fill="#3B82F6"/>
+        <circle cx="2" cy="8" r="10" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1"/>
+        <circle cx="2" cy="8" r="4" fill="url(#gemBlue)"/>
+    </g>
+    <text x="60" y="68" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" font-weight="bold" fill="#1E293B">排风机</text>
+    <text x="60" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94A3B8">离心式</text>
+  </g>
+
+  <!-- 1.3 加压风机 (X:285 = 155+120+10) -->
+  <g transform="translate(285, 85)">
+    <rect width="120" height="85" rx="10" fill="#F8FAFC" stroke="#F1F5F9" stroke-width="1"/>
+    <g transform="translate(60, 35)">
+        <circle cx="0" cy="0" r="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+        <circle cx="0" cy="0" r="11" fill="none" stroke="#93C5FD" stroke-width="1"/>
+        <!-- 6片小直叶 -->
+        <g>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(0)"/>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(60)"/>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(120)"/>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(180)"/>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(240)"/>
+            <path d="M 0 0 C 2 -10 6 -8 6 -1 C 6 2 3 3 0 0 Z" fill="#3B82F6" opacity="0.8" transform="rotate(300)"/>
+        </g>
+        <circle cx="0" cy="0" r="4" fill="url(#gemBlue)"/>
+    </g>
+    <text x="60" y="68" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" font-weight="bold" fill="#1E293B">加压风机</text>
+    <text x="60" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94A3B8">涵道式</text>
+  </g>
+
+  <!-- 柔和的分割线 -->
+  <line x1="25" y1="185" x2="415" y2="185" stroke="#F1F5F9" stroke-width="1"/>
+
+  <!-- ========================================== -->
+  <!-- 下半部：识色 (颜色状态矩阵) -->
+  <!-- ========================================== -->
+  <text x="25" y="210" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#64748B">2. 认颜色 (运行状态)</text>
+
+  <!-- 2.1 运行 (Run) -->
+  <g transform="translate(25, 220)">
+    <rect x="0" y="0" width="120" height="30" rx="6" fill="#ECFDF5"/>
+    <!-- 呼吸外晕 -->
+    <circle cx="16" cy="15" r="5" fill="none" stroke="#10B981" stroke-width="1.5">
+       <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+       <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="16" cy="15" r="5" fill="url(#gemGreen)"/>
+    <text x="32" y="19" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#065F46">运行 (Run)</text>
+  </g>
+
+  <!-- 2.2 停止 (Stop) -->
+  <g transform="translate(155, 220)">
+    <rect x="0" y="0" width="120" height="30" rx="6" fill="#F8FAFC" stroke="#F1F5F9" stroke-width="1"/>
+    <circle cx="16" cy="15" r="5" fill="url(#gemGrey)"/>
+    <text x="32" y="19" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#475569">停止 (Stop)</text>
+  </g>
+
+  <!-- 2.3 故障 (Error) -->
+  <g transform="translate(285, 220)">
+    <rect x="0" y="0" width="120" height="30" rx="6" fill="#FEF2F2"/>
+    <circle cx="16" cy="15" r="5" fill="url(#gemRed)">
+       <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M 14 13 L 18 17 M 14 17 L 18 13" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+    <text x="32" y="19" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#991B1B">故障 (Error)</text>
+  </g>
+
+</svg>

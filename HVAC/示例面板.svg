@@ -1,0 +1,131 @@
+<svg width="300" height="250" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净的高级弥散阴影 (Clean Diffuse Shadow) -->
+    <filter id="panelShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/> <!-- 极淡的阴影 -->
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 状态宝石核心渐变 -->
+    <linearGradient id="gemRun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="gemStop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <linearGradient id="gemError" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 主面板容器 -->
+  <!-- ========================================== -->
+  <!-- 纯白底板 -->
+  <rect x="15" y="15" width="270" height="220" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#panelShadow)"/>
+  
+  <!-- 顶部标题栏 (微灰底色区分层级) -->
+  <path d="M 15 31 A 16 16 0 0 1 31 15 L 269 15 A 16 16 0 0 1 285 31 L 285 55 L 15 55 Z" fill="#F8FAFC"/>
+  <line x1="15" y1="55" x2="285" y2="55" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <rect x="30" y="27" width="4" height="16" rx="2" fill="#3B82F6"/> <!-- 蓝色小饰条 -->
+  <text x="42" y="40" font-family="'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold" fill="#1E293B">风机状态图例</text>
+  <text x="235" y="40" font-family="sans-serif" font-size="12" fill="#94A3B8">Legend</text>
+
+  <!-- ========================================== -->
+  <!-- 图例列表项 (List Items) -->
+  <!-- ========================================== -->
+
+  <!-- 1. 正常运行 (Run) -->
+  <g transform="translate(30, 75)">
+    <!-- 浅绿色交互态背景底色 -->
+    <rect x="0" y="0" width="240" height="42" rx="8" fill="#ECFDF5"/>
+    
+    <!-- 微缩风机图标 -->
+    <g transform="translate(20, 21)">
+        <circle cx="0" cy="0" r="10" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+        <g>
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.5s" repeatCount="indefinite"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#10B981" opacity="0.8" transform="rotate(0)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#10B981" opacity="0.8" transform="rotate(120)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#10B981" opacity="0.8" transform="rotate(240)"/>
+        </g>
+        <circle cx="0" cy="0" r="3.5" fill="url(#gemRun)"/>
+    </g>
+
+    <!-- 文本描述 -->
+    <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#065F46">正常运行</text>
+    <text x="45" y="34" font-family="sans-serif" font-size="11" fill="#059669">Supply/Run</text>
+    
+    <!-- 右侧状态点缀 -->
+    <circle cx="220" cy="21" r="4" fill="#10B981"/>
+  </g>
+
+  <!-- 2. 停止待机 (Stop) -->
+  <g transform="translate(30, 125)">
+    <!-- 浅灰色交互态背景底色 -->
+    <rect x="0" y="0" width="240" height="42" rx="8" fill="#F8FAFC"/>
+    
+    <!-- 微缩风机图标 -->
+    <g transform="translate(20, 21)">
+        <circle cx="0" cy="0" r="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <g>
+            <!-- 静止扇叶 -->
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#94A3B8" opacity="0.6" transform="rotate(0)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#94A3B8" opacity="0.6" transform="rotate(120)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#94A3B8" opacity="0.6" transform="rotate(240)"/>
+        </g>
+        <circle cx="0" cy="0" r="3.5" fill="url(#gemStop)"/>
+    </g>
+
+    <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">停止待机</text>
+    <text x="45" y="34" font-family="sans-serif" font-size="11" fill="#64748B">Standby/Stop</text>
+    
+    <!-- 右侧状态点缀 -->
+    <circle cx="220" cy="21" r="4" fill="#94A3B8"/>
+  </g>
+
+  <!-- 3. 故障报警 (Error) -->
+  <g transform="translate(30, 175)">
+    <!-- 浅红色交互态背景底色 -->
+    <rect x="0" y="0" width="240" height="42" rx="8" fill="#FEF2F2"/>
+    
+    <!-- 微缩风机图标 -->
+    <g transform="translate(20, 21)">
+        <!-- 红色闪烁外晕 -->
+        <circle cx="0" cy="0" r="12" fill="#FEE2E2">
+           <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="0" cy="0" r="10" fill="#FFFFFF" stroke="#EF4444" stroke-width="1.5"/>
+        <g>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#EF4444" opacity="0.8" transform="rotate(0)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#EF4444" opacity="0.8" transform="rotate(120)"/>
+            <path d="M 0 0 C 4 -8 8 -6 8 0 C 8 3 4 4 0 0 Z" fill="#EF4444" opacity="0.8" transform="rotate(240)"/>
+        </g>
+        <circle cx="0" cy="0" r="3.5" fill="url(#gemError)"/>
+        <!-- 故障红叉 -->
+        <path d="M -1.5 -1.5 L 1.5 1.5 M -1.5 1.5 L 1.5 -1.5" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+    </g>
+
+    <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#991B1B">故障报警</text>
+    <text x="45" y="34" font-family="sans-serif" font-size="11" fill="#DC2626">Fault/Error</text>
+    
+    <!-- 右侧状态点缀 -->
+    <circle cx="220" cy="21" r="4" fill="#EF4444">
+       <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+</svg>
