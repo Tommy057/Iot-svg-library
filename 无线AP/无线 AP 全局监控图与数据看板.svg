@@ -1,0 +1,234 @@
+<svg width="1200" height="650" viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净卡片阴影 (Clean Shadow) -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.06"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. AP 宝石质感渐变 (Gem Core) -->
+    <linearGradient id="gemGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/> <!-- 亮翡翠 -->
+      <stop offset="100%" stop-color="#059669"/> <!-- 深翡翠 -->
+    </linearGradient>
+
+    <linearGradient id="gemRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/> <!-- 亮红宝石 -->
+      <stop offset="100%" stop-color="#DC2626"/> <!-- 深红宝石 -->
+    </linearGradient>
+
+    <linearGradient id="gemBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <!-- 3. 环形图渐变 -->
+    <linearGradient id="donutGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- 4. AP 节点模板 (复用结构) -->
+    <g id="ap-online">
+      <!-- 信号覆盖波纹 (WiFi Arcs) - 带呼吸动画 -->
+      <path d="M-12 -14 A 18 18 0 0 1 12 -14" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-20 -22 A 30 30 0 0 1 20 -22" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" opacity="0.3">
+        <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-28 -30 A 42 42 0 0 1 28 -30" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" opacity="0.1">
+        <animate attributeName="opacity" values="0.1;0;0.1" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- 宝石核心 -->
+      <circle cx="0" cy="0" r="12" fill="url(#gemGreen)"/>
+      <!-- 高光点 -->
+      <circle cx="-3" cy="-3" r="4" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+
+    <g id="ap-offline">
+      <!-- 断裂的信号波纹 (Broken Static Arcs) -->
+      <path d="M-12 -14 A 18 18 0 0 1 12 -14" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" opacity="0.4" stroke-dasharray="4 4"/>
+      <path d="M-20 -22 A 30 30 0 0 1 20 -22" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" opacity="0.2" stroke-dasharray="6 6"/>
+      
+      <!-- 宝石核心 -->
+      <circle cx="0" cy="0" r="12" fill="url(#gemRed)"/>
+      <circle cx="-3" cy="-3" r="4" fill="#FFFFFF" opacity="0.5"/>
+      <!-- 故障叉号 -->
+      <path d="M-4 -4 L4 4 M-4 4 L4 -4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 极简背景底板 (模拟平面图背景空间) -->
+  <!-- ========================================== -->
+  <rect width="1200" height="650" fill="#F8FAFC"/>
+  <!-- 简单的结构线示意建筑轮廓 -->
+  <g stroke="#E2E8F0" stroke-width="2" fill="none">
+    <rect x="40" y="40" width="760" height="570" rx="20" fill="#FFFFFF" filter="url(#cleanShadow)"/>
+    <line x1="40" y1="325" x2="800" y2="325"/>
+    <line x1="420" y1="40" x2="420" y2="610"/>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 左侧平面图区域：撒点 AP (Map Nodes Overlay) -->
+  <!-- ================================================================================== -->
+  <g transform="translate(0, 0)">
+    
+    <!-- === 区域 1: 正常运行组 === -->
+    <g transform="translate(200, 150)">
+        <use href="#ap-online" x="0" y="0"/>
+        <!-- 悬浮标签 -->
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">AP-030</text>
+    </g>
+
+    <g transform="translate(350, 180)">
+        <use href="#ap-online" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">AP-033</text>
+    </g>
+
+    <g transform="translate(250, 450)">
+        <use href="#ap-online" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">AP-040</text>
+    </g>
+    
+    <g transform="translate(680, 520)">
+        <use href="#ap-online" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">AP-056</text>
+    </g>
+
+    <!-- === 区域 2: 离线故障组 === -->
+    <g transform="translate(120, 120)">
+        <use href="#ap-offline" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">AP-028</text>
+    </g>
+
+    <g transform="translate(580, 140)">
+        <use href="#ap-offline" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">AP-046</text>
+    </g>
+
+    <g transform="translate(420, 360)">
+        <use href="#ap-offline" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">AP-043</text>
+    </g>
+    
+    <g transform="translate(680, 240)">
+        <use href="#ap-offline" x="0" y="0"/>
+        <rect x="-35" y="18" width="70" height="22" rx="11" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.5"/>
+        <text x="0" y="33" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">AP-049</text>
+    </g>
+
+  </g>
+
+
+  <!-- ================================================================================== -->
+  <!-- 右侧悬浮 UI 面板 (Right Dashboards) -->
+  <!-- ================================================================================== -->
+  
+  <g transform="translate(850, 40)">
+    
+    <!-- ================= 1. 状态图例说明面板 (Legend Panel) ================= -->
+    <g transform="translate(0, 0)">
+        <rect width="310" height="170" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#cleanShadow)"/>
+        
+        <text x="155" y="35" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">状态图例说明</text>
+        
+        <!-- 在线状态条 -->
+        <g transform="translate(20, 55)">
+            <rect width="270" height="46" rx="12" fill="#ECFDF5"/> <!-- 浅绿色背景 -->
+            
+            <!-- 小 AP 图标 -->
+            <g transform="translate(25, 23)">
+                <circle cx="0" cy="0" r="8" fill="url(#gemGreen)"/>
+                <path d="M-6 -8 A 10 10 0 0 1 6 -8" fill="none" stroke="#10B981" stroke-width="1.5"/>
+                <path d="M-10 -12 A 15 15 0 0 1 10 -12" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.5"/>
+            </g>
+
+            <text x="55" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#065F46">正常在线</text>
+            <text x="55" y="36" font-family="sans-serif" font-size="10" fill="#059669">Device Online</text>
+
+            <!-- 满格信号图标 -->
+            <path d="M 235 30 L 235 20 M 240 30 L 240 16 M 245 30 L 245 12" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- 离线状态条 -->
+        <g transform="translate(20, 110)">
+            <rect width="270" height="46" rx="12" fill="#FEF2F2"/> <!-- 浅红色背景 -->
+            
+            <g transform="translate(25, 23)">
+                <circle cx="0" cy="0" r="8" fill="url(#gemRed)"/>
+                <path d="M-3 -3 L3 3 M-3 3 L3 -3" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+
+            <text x="55" y="22" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#991B1B">连接中断</text>
+            <text x="55" y="36" font-family="sans-serif" font-size="10" fill="#DC2626">Connection Lost</text>
+
+            <!-- 断开信号图标 -->
+            <path d="M 235 30 L 235 24 M 240 30 L 240 26" stroke="#FCA5A5" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 230 20 L 250 12" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/> <!-- 删除线 -->
+        </g>
+    </g>
+
+    <!-- ================= 2. 区域设备概览面板 (Overview Panel) ================= -->
+    <g transform="translate(0, 190)">
+        <rect width="310" height="230" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#cleanShadow)"/>
+        
+        <text x="155" y="35" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">区域设备概览</text>
+        <line x1="20" y1="50" x2="290" y2="50" stroke="#F1F5F9" stroke-width="1"/>
+
+        <!-- 总量概览块 -->
+        <g transform="translate(20, 65)">
+            <rect width="270" height="85" rx="12" fill="#EFF6FF"/> <!-- 浅蓝色背景 -->
+            
+            <text x="20" y="30" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#3B82F6">AP 设备总数</text>
+            <text x="20" y="70" font-family="'Microsoft YaHei', sans-serif" font-size="42" font-weight="bold" fill="#2563EB">142</text>
+            <text x="95" y="70" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#60A5FA">台</text>
+
+            <!-- 在线率环形图 (Gem Ring Chart) -->
+            <g transform="translate(210, 42)">
+                <!-- 轨道 -->
+                <circle cx="0" cy="0" r="30" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="6"/>
+                <!-- 进度 90.1% (30 * 2 * pi = 188.5, 188.5 * 0.9 = 170) -->
+                <circle cx="0" cy="0" r="30" fill="none" stroke="url(#donutGradient)" stroke-width="6" stroke-linecap="round" stroke-dasharray="170 188.5" transform="rotate(-90)"/>
+                
+                <text x="0" y="5" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1E293B">90%</text>
+                <text x="0" y="18" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#64748B">在线率</text>
+            </g>
+        </g>
+
+        <!-- 底部数据拆分块 -->
+        <g transform="translate(20, 165)">
+            <!-- 在线数量 -->
+            <rect width="130" height="45" rx="8" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5"/>
+            <circle cx="15" cy="15" r="3" fill="#10B981"/>
+            <text x="25" y="18" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">在线数量</text>
+            <text x="65" y="38" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#059669">128</text>
+
+            <!-- 离线数量 -->
+            <g transform="translate(140, 0)">
+                <rect width="130" height="45" rx="8" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.5"/>
+                <circle cx="15" cy="15" r="3" fill="#EF4444"/>
+                <text x="25" y="18" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">离线数量</text>
+                <text x="65" y="38" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#DC2626">14</text>
+            </g>
+        </g>
+    </g>
+
+  </g>
+</svg>

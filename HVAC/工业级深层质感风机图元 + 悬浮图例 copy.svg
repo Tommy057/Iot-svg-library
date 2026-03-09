@@ -1,0 +1,190 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. HT 安全的单层投影阴影 -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 工业金属外壳 (Brushed Metal) -->
+    <linearGradient id="metalCasing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="50%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <!-- 3. 深渊风道阴影 (3D Depth) -->
+    <radialGradient id="ductDepth" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </radialGradient>
+
+    <!-- 4. 状态发光渐变 (替代不支持的滤镜) -->
+    <radialGradient id="glowRun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </radialGradient>
+    
+    <radialGradient id="glowStop" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="50%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </radialGradient>
+
+    <radialGradient id="glowError" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="50%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#991B1B"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景底色 (去除了导致报错的 pattern 网格，仅保留纯净暗色) -->
+  <rect width="1000" height="600" fill="#1E293B"/>
+
+  <!-- ================================================================================== -->
+  <!-- 工业设备图元 (HT for Web 完全兼容版) -->
+  <!-- ================================================================================== -->
+
+  <!-- 1. 送风机 (Supply Fan) - 运行 (绿) -->
+  <g transform="translate(150, 300)">
+    <!-- 法兰底板 -->
+    <rect x="-65" y="-65" width="130" height="130" rx="10" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/>
+    <circle cx="-50" cy="-50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="50" cy="-50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="-50" cy="50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+
+    <!-- 管道深坑 -->
+    <circle cx="0" cy="0" r="55" fill="url(#ductDepth)" stroke="#0F172A" stroke-width="3"/>
+    
+    <!-- 发光底晕 (代替滤镜) -->
+    <circle cx="0" cy="0" r="45" fill="url(#glowRun)" opacity="0.15"/>
+
+    <!-- 旋转扇叶 (展开 <use> 标签，直接写 Path 保证解析) -->
+    <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1s" repeatCount="indefinite"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowRun)" opacity="0.9" transform="rotate(0)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowRun)" opacity="0.9" transform="rotate(90)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowRun)" opacity="0.9" transform="rotate(180)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowRun)" opacity="0.9" transform="rotate(270)"/>
+        
+        <circle cx="0" cy="0" r="14" fill="#047857" stroke="#34D399" stroke-width="2"/>
+        <circle cx="0" cy="0" r="5" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+
+    <!-- 防护网罩 -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="-55" y1="0" x2="55" y2="0" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="0" y1="-55" x2="0" y2="55" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- 标签 -->
+    <rect x="-35" y="75" width="70" height="20" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+    <text x="0" y="89" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#34D399">送风机</text>
+  </g>
+
+  <!-- 2. 排风机 (Exhaust Fan) - 停止 (灰) -->
+  <g transform="translate(450, 300)">
+    <!-- 蜗壳本体 -->
+    <rect x="-15" y="-75" width="75" height="50" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/>
+    <line x1="0" y1="-75" x2="0" y2="-25" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="-75" x2="20" y2="-25" stroke="#475569" stroke-width="2"/>
+    <line x1="40" y1="-75" x2="40" y2="-25" stroke="#475569" stroke-width="2"/>
+    
+    <path d="M -15 -25 A 60 60 0 1 0 60 50 V -25 H -15 Z" fill="url(#metalCasing)" stroke="#475569" stroke-width="2" stroke-linejoin="round"/>
+    
+    <circle cx="10" cy="20" r="45" fill="url(#ductDepth)" stroke="#1E293B" stroke-width="4"/>
+    
+    <!-- 静止离心扇叶 (展开 <use>) -->
+    <g transform="translate(10, 20)">
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(0)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(45)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(90)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(135)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(180)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(225)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(270)"/>
+        <path d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z" fill="url(#glowStop)" opacity="0.8" transform="rotate(315)"/>
+        
+        <circle cx="0" cy="0" r="12" fill="#475569" stroke="#94A3B8" stroke-width="2"/>
+    </g>
+
+    <rect x="-25" y="85" width="70" height="20" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="10" y="99" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#94A3B8">排风机</text>
+  </g>
+
+  <!-- 3. 加压风机 (Pressurization) - 故障 (红) -->
+  <g transform="translate(750, 300)">
+    <!-- 警告斑马纹底板 -->
+    <rect x="-65" y="-65" width="130" height="130" rx="65" fill="#1E293B" stroke="#DC2626" stroke-width="3"/>
+    
+    <!-- 涵道外框 -->
+    <circle cx="0" cy="0" r="58" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/>
+    <circle cx="0" cy="0" r="48" fill="url(#ductDepth)" stroke="#0F172A" stroke-width="4"/>
+
+    <circle cx="0" cy="0" r="45" fill="url(#glowError)" opacity="0.2"/> <!-- 发光底晕 -->
+
+    <!-- 故障扇叶 (展开 <use>) -->
+    <g>
+        <animateTransform attributeName="transform" type="rotate" values="-2 0 0; 2 0 0; -2 0 0" dur="0.1s" repeatCount="indefinite"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(0) scale(0.9)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(60) scale(0.9)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(120) scale(0.9)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(180) scale(0.9)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(240) scale(0.9)"/>
+        <path d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z" fill="url(#glowError)" transform="rotate(300) scale(0.9)"/>
+        
+        <!-- 轴心报警灯 -->
+        <circle cx="0" cy="0" r="14" fill="#991B1B" stroke="#F87171" stroke-width="3">
+           <animate attributeName="opacity" values="1;0.2;1" dur="0.8s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- 工业防护格栅 -->
+    <path d="M -48 -48 L 48 48 M -48 48 L 48 -48" stroke="#E2E8F0" stroke-width="4" opacity="0.6"/>
+    <circle cx="0" cy="0" r="8" fill="#1E293B" stroke="#E2E8F0" stroke-width="2"/>
+
+    <rect x="-35" y="75" width="70" height="20" rx="4" fill="#450A0A" stroke="#DC2626" stroke-width="1"/>
+    <text x="0" y="89" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#FCA5A5">加压风机</text>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 图例卡片 (纯净玻璃态) -->
+  <!-- ================================================================================== -->
+  <g transform="translate(800, 30)">
+    <!-- 应用 HT 安全的单层投影 -->
+    <rect width="170" height="150" rx="12" fill="#FFFFFF" fill-opacity="0.95" stroke="#E2E8F0" stroke-width="1" filter="url(#cleanShadow)"/>
+    
+    <rect x="0" y="0" width="170" height="35" rx="12" fill="#F8FAFC"/>
+    <path d="M 0 25 L 0 35 L 170 35 L 170 25 Z" fill="#F8FAFC"/>
+    <text x="15" y="23" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">Legend / 图例</text>
+    <line x1="0" y1="35" x2="170" y2="35" stroke="#E2E8F0" stroke-width="1"/>
+
+    <g transform="translate(15, 55)">
+        <circle cx="10" cy="10" r="8" fill="#022C22" stroke="#10B981" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">Run (运行)</text>
+    </g>
+
+    <g transform="translate(15, 85)">
+        <circle cx="10" cy="10" r="8" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">Stop (停止)</text>
+    </g>
+
+    <g transform="translate(15, 115)">
+        <circle cx="10" cy="10" r="8" fill="#450A0A" stroke="#EF4444" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">Error (故障)</text>
+    </g>
+  </g>
+
+</svg>

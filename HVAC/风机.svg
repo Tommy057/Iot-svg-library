@@ -1,0 +1,215 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 纯净卡片阴影 (用于图例和底座) -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 2. 状态宝石核心渐变 (Hex Hex) -->
+    <!-- 运行 (Run - Emerald Green) -->
+    <linearGradient id="gemRun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    
+    <!-- 停止 (Stop - Slate Grey) -->
+    <linearGradient id="gemStop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <!-- 故障 (Error - Ruby Red) -->
+    <linearGradient id="gemError" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+
+    <!-- 3. 风机外壳金属渐变 (Clean Metal) -->
+    <linearGradient id="metalCasing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+
+    <!-- 4. 扇叶定义 (可复用) -->
+    <path id="blade" d="M 0 0 C 15 -25 35 -15 40 0 C 35 15 15 25 0 0 Z"/>
+    <path id="blade-small" d="M 0 0 C 10 -15 25 -10 30 0 C 25 10 10 15 0 0 Z"/>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 整体画布背景：极浅灰以衬托纯白卡片 -->
+  <!-- ========================================== -->
+  <rect width="900" height="500" fill="#F8FAFC"/>
+
+  <!-- ================================================================================== -->
+  <!-- 图例卡片 (Legend Card) - 右上角 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(700, 20)">
+    <rect width="180" height="180" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#cleanShadow)"/>
+    
+    <!-- 标题 -->
+    <text x="20" y="35" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#1E293B">风机状态图例</text>
+    <line x1="20" y1="45" x2="160" y2="45" stroke="#F1F5F9" stroke-width="1"/>
+
+    <!-- 1. 运行 (Run) -->
+    <g transform="translate(20, 65)">
+        <!-- 小风机图标 -->
+        <circle cx="15" cy="15" r="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+        <path d="M 15 15 L 15 3 A 12 12 0 0 1 25 9 Z" fill="#10B981" opacity="0.8"/>
+        <path d="M 15 15 L 25 21 A 12 12 0 0 1 5 21 Z" fill="#10B981" opacity="0.8"/>
+        <path d="M 15 15 L 5 9 A 12 12 0 0 1 15 3 Z" fill="#10B981" opacity="0.8"/>
+        <circle cx="15" cy="15" r="4" fill="url(#gemRun)"/>
+        
+        <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#059669">运行 (Run)</text>
+    </g>
+
+    <!-- 2. 停止 (Stop) -->
+    <g transform="translate(20, 105)">
+        <circle cx="15" cy="15" r="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+        <path d="M 15 15 L 15 3 A 12 12 0 0 1 25 9 Z" fill="#94A3B8" opacity="0.6"/>
+        <path d="M 15 15 L 25 21 A 12 12 0 0 1 5 21 Z" fill="#94A3B8" opacity="0.6"/>
+        <path d="M 15 15 L 5 9 A 12 12 0 0 1 15 3 Z" fill="#94A3B8" opacity="0.6"/>
+        <circle cx="15" cy="15" r="4" fill="url(#gemStop)"/>
+        
+        <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">停止 (Stop)</text>
+    </g>
+
+    <!-- 3. 故障 (Error) -->
+    <g transform="translate(20, 145)">
+        <circle cx="15" cy="15" r="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+        <path d="M 15 15 L 15 3 A 12 12 0 0 1 25 9 Z" fill="#EF4444" opacity="0.8"/>
+        <path d="M 15 15 L 25 21 A 12 12 0 0 1 5 21 Z" fill="#EF4444" opacity="0.8"/>
+        <path d="M 15 15 L 5 9 A 12 12 0 0 1 15 3 Z" fill="#EF4444" opacity="0.8"/>
+        <!-- 故障灯闪烁 -->
+        <circle cx="15" cy="15" r="4" fill="url(#gemError)">
+           <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        
+        <text x="45" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#DC2626">故障 (Error)</text>
+    </g>
+  </g>
+
+
+  <!-- ================================================================================== -->
+  <!-- 核心组件：风机类型拟态设计 (Functional Form Fan Types) -->
+  <!-- ================================================================================== -->
+  
+  <text x="40" y="50" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#1E293B">设备功能拟态展示</text>
+  <text x="40" y="75" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#64748B">结合物理形态与状态色彩的全新组件</text>
+
+
+  <!-- 1. 送风机 (Supply Fan) - 轴流式 - 状态：运行(绿) -->
+  <g transform="translate(40, 120)">
+    <rect width="200" height="260" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#cleanShadow)"/>
+    
+    <g transform="translate(100, 110)">
+        <!-- 送风机外壳：轴流法兰盘 (带4个安装耳) -->
+        <rect x="-55" y="-10" width="110" height="20" fill="#E2E8F0" rx="2" transform="rotate(45)"/>
+        <rect x="-55" y="-10" width="110" height="20" fill="#E2E8F0" rx="2" transform="rotate(-45)"/>
+        <circle cx="0" cy="0" r="50" fill="url(#metalCasing)" stroke="#CBD5E1" stroke-width="3"/>
+        <circle cx="0" cy="0" r="40" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/> <!-- 内壁深感 -->
+
+        <!-- 扇叶组 (Run Animation) -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.5s" repeatCount="indefinite"/>
+            <use href="#blade" x="0" y="0" fill="#10B981" opacity="0.8" transform="rotate(0)"/>
+            <use href="#blade" x="0" y="0" fill="#10B981" opacity="0.8" transform="rotate(120)"/>
+            <use href="#blade" x="0" y="0" fill="#10B981" opacity="0.8" transform="rotate(240)"/>
+        </g>
+        
+        <!-- 宝石核心 (Run) -->
+        <circle cx="0" cy="0" r="10" fill="url(#gemRun)"/>
+        <circle cx="-3" cy="-3" r="3" fill="#FFFFFF" opacity="0.5"/> <!-- 高光 -->
+
+        <!-- 送风指示箭头 (向外发散，表示送出冷/暖风) -->
+        <path d="M 0 65 L 8 55 L -8 55 Z" fill="#10B981"/>
+    </g>
+
+    <!-- 文本信息 -->
+    <text x="100" y="210" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">送风机 (Supply)</text>
+    <rect x="75" y="225" width="50" height="20" rx="10" fill="#D1FAE5"/>
+    <text x="100" y="239" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">运行中</text>
+  </g>
+
+
+  <!-- 2. 排风机 (Exhaust Fan) - 离心蜗壳式 - 状态：停止(灰) -->
+  <g transform="translate(260, 120)">
+    <rect width="200" height="260" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#cleanShadow)"/>
+    
+    <g transform="translate(100, 110)">
+        <!-- 排风机外壳：典型的离心蜗壳形态 (Snail/Volute Casing) -->
+        <!-- 矩形出风口 -->
+        <rect x="-10" y="-60" width="55" height="40" fill="url(#metalCasing)" stroke="#CBD5E1" stroke-width="3"/>
+        <rect x="-15" y="-65" width="65" height="5" fill="#CBD5E1"/> <!-- 法兰接口 -->
+        <!-- 蜗壳圆体 -->
+        <path d="M -10 -20 A 45 45 0 1 0 45 35 V -20 H -10 Z" fill="url(#metalCasing)" stroke="#CBD5E1" stroke-width="3" stroke-linejoin="round"/>
+        <!-- 进风口圈 -->
+        <circle cx="5" cy="15" r="30" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="2"/>
+
+        <!-- 离心扇叶组 (Stop State - No animation) -->
+        <g transform="translate(5, 15)">
+            <use href="#blade" x="0" y="0" fill="#94A3B8" opacity="0.6" transform="rotate(30)"/>
+            <use href="#blade" x="0" y="0" fill="#94A3B8" opacity="0.6" transform="rotate(150)"/>
+            <use href="#blade" x="0" y="0" fill="#94A3B8" opacity="0.6" transform="rotate(270)"/>
+        </g>
+        
+        <!-- 宝石核心 (Stop) -->
+        <circle cx="5" cy="15" r="10" fill="url(#gemStop)"/>
+        <circle cx="2" cy="12" r="3" fill="#FFFFFF" opacity="0.5"/>
+        
+        <!-- 排风指示箭头 (向外抽风) -->
+        <path d="M 17 -75 L 25 -85 L 33 -75 Z" fill="#94A3B8"/>
+    </g>
+
+    <text x="100" y="210" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#1E293B">排风机 (Exhaust)</text>
+    <rect x="75" y="225" width="50" height="20" rx="10" fill="#F1F5F9"/>
+    <text x="100" y="239" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#64748B">已停止</text>
+  </g>
+
+
+  <!-- 3. 加压风机 (Pressurization Fan) - 涵道式 - 状态：故障(红) -->
+  <g transform="translate(480, 120)">
+    <rect width="200" height="260" rx="16" fill="#FFF1F2" stroke="#FECACA" stroke-width="1" filter="url(#cleanShadow)"/> <!-- 故障背景微红 -->
+    
+    <g transform="translate(100, 110)">
+        <!-- 加压风机外壳：厚重的双层涵道 (暗示高风压) -->
+        <!-- 八角形外框 -->
+        <path d="M -25 -55 L 25 -55 L 55 -25 L 55 25 L 25 55 L -25 55 L -55 25 L -55 -25 Z" fill="url(#metalCasing)" stroke="#FECACA" stroke-width="4"/>
+        <!-- 双层内圈 -->
+        <circle cx="0" cy="0" r="45" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1"/>
+        <circle cx="0" cy="0" r="38" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+
+        <!-- 密集扇叶组 (多叶片代表高压) -->
+        <g>
+            <!-- 故障时卡顿或极其缓慢的转动动画，这里用静止加闪烁表示卡死 -->
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(0)"/>
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(60)"/>
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(120)"/>
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(180)"/>
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(240)"/>
+            <use href="#blade-small" x="0" y="0" fill="#EF4444" opacity="0.9" transform="rotate(300)"/>
+        </g>
+        
+        <!-- 宝石核心 (Error) - 急促闪烁 -->
+        <circle cx="0" cy="0" r="12" fill="url(#gemError)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="-3" cy="-3" r="4" fill="#FFFFFF" opacity="0.6"/>
+
+        <!-- 警示标志 -->
+        <path d="M -8 -20 L 8 -20 L 0 -35 Z" fill="#EF4444"/>
+    </g>
+
+    <text x="100" y="210" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#991B1B">加压风机 (Pressurize)</text>
+    <rect x="70" y="225" width="60" height="20" rx="10" fill="#FEE2E2"/>
+    <text x="100" y="239" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">故障报警</text>
+  </g>
+
+</svg>

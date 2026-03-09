@@ -1,0 +1,226 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- ========================================== -->
+    <!-- 工业质感渐变与滤镜 (Industrial Textures) -->
+    <!-- ========================================== -->
+    
+    <!-- 1. 金属外壳 (Brushed Metal) -->
+    <linearGradient id="metalCasing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="50%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <!-- 2. 风道深渊阴影 (Deep Duct Shadow) - 制造3D纵深感 -->
+    <radialGradient id="ductDepth" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#020617"/> <!-- 极黑核心 -->
+      <stop offset="100%" stop-color="#334155"/> <!-- 边缘金属反光 -->
+    </radialGradient>
+
+    <!-- 3. 发光宝石质感 (Glowing Gem Cores) -->
+    <radialGradient id="glowRun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </radialGradient>
+    
+    <radialGradient id="glowStop" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="50%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </radialGradient>
+
+    <radialGradient id="glowError" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCA5A5"/>
+      <stop offset="50%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#991B1B"/>
+    </radialGradient>
+
+    <!-- 4. 霓虹光晕滤镜 (Neon Bloom) - 用于运行和故障状态 -->
+    <filter id="neonBloom" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 5. 纯白卡片投影 (用于图例) -->
+    <filter id="cardDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="0" dy="5"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 基础扇叶 Path -->
+    <path id="heavyBlade" d="M 0 0 C 15 -35 45 -25 50 0 C 45 25 15 35 0 0 Z"/>
+    <path id="curveBlade" d="M 0 0 Q 30 -20 50 10 Q 20 20 0 0 Z"/>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 模拟底图背景 (Simulated SCADA Dark Grid) -->
+  <!-- 注意：实际在HT中，您可以删掉这个rect，直接使用里面的 g 标签 -->
+  <!-- ========================================== -->
+  <rect width="1000" height="600" fill="#1E293B"/>
+  <g opacity="0.1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </pattern>
+    <rect width="1000" height="600" fill="url(#grid)"/>
+  </g>
+
+  <!-- ================================================================================== -->
+  <!-- 工业设备图元 (Industrial Symbols for Map Overlay) -->
+  <!-- ================================================================================== -->
+
+  <!-- 1. 送风机 (Supply Fan) - 轴流法兰式 - 状态：运行 (Green) -->
+  <g transform="translate(150, 300)">
+    <!-- 1.1 安装法兰 (方形金属背板) -->
+    <rect x="-65" y="-65" width="130" height="130" rx="10" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/>
+    <!-- 四角固定螺丝 -->
+    <circle cx="-50" cy="-50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="50" cy="-50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="-50" cy="50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4" fill="#1E293B" stroke="#CBD5E1" stroke-width="1"/>
+
+    <!-- 1.2 深渊风道 (制造凹陷深度感) -->
+    <circle cx="0" cy="0" r="55" fill="url(#ductDepth)" stroke="#0F172A" stroke-width="3"/>
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#10B981" stroke-width="1" opacity="0.3"/> <!-- 绿光反射边缘 -->
+
+    <!-- 1.3 旋转扇叶 (带发光滤镜) -->
+    <g filter="url(#neonBloom)">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1s" repeatCount="indefinite"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowRun)" opacity="0.85" transform="rotate(0)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowRun)" opacity="0.85" transform="rotate(90)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowRun)" opacity="0.85" transform="rotate(180)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowRun)" opacity="0.85" transform="rotate(270)"/>
+        <!-- 轴心电机冒 -->
+        <circle cx="0" cy="0" r="14" fill="#047857" stroke="#34D399" stroke-width="2"/>
+        <circle cx="0" cy="0" r="5" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+
+    <!-- 1.4 金属防护网罩 (Safety Grill) - 增加工业写实感 -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="-55" y1="0" x2="55" y2="0" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="0" y1="-55" x2="0" y2="55" stroke="#94A3B8" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- 底部状态标签 -->
+    <rect x="-35" y="75" width="70" height="20" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+    <text x="0" y="89" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#34D399">送风机</text>
+  </g>
+
+  <!-- 2. 排风机 (Exhaust Fan) - 离心蜗壳式 - 状态：停止 (Grey) -->
+  <g transform="translate(450, 300)">
+    <!-- 2.1 蜗壳本体 (金属外壳质感加强) -->
+    <rect x="-15" y="-75" width="75" height="50" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/> <!-- 出风口管道 -->
+    <!-- 管道加强筋 -->
+    <line x1="0" y1="-75" x2="0" y2="-25" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="-75" x2="20" y2="-25" stroke="#475569" stroke-width="2"/>
+    <line x1="40" y1="-75" x2="40" y2="-25" stroke="#475569" stroke-width="2"/>
+    
+    <path d="M -15 -25 A 60 60 0 1 0 60 50 V -25 H -15 Z" fill="url(#metalCasing)" stroke="#475569" stroke-width="2" stroke-linejoin="round"/>
+    
+    <!-- 2.2 进风口深渊 -->
+    <circle cx="10" cy="20" r="45" fill="url(#ductDepth)" stroke="#1E293B" stroke-width="4"/>
+    
+    <!-- 2.3 离心扇叶 (静止状态，灰色系) -->
+    <g transform="translate(10, 20)">
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(0)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(45)"/>
+        <use href="#curve মোহ Blade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(90)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(135)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(180)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(225)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(270)"/>
+        <use href="#curveBlade" x="0" y="0" fill="url(#glowStop)" opacity="0.8" transform="rotate(315)"/>
+        
+        <!-- 静止的电机盖 -->
+        <circle cx="0" cy="0" r="12" fill="#475569" stroke="#94A3B8" stroke-width="2"/>
+    </g>
+
+    <rect x="-25" y="85" width="70" height="20" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="10" y="99" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#94A3B8">排风机</text>
+  </g>
+
+  <!-- 3. 加压风机 (Pressurization) - 重型双重涵道 - 状态：故障报警 (Red Flashing) -->
+  <g transform="translate(750, 300)">
+    <!-- 3.1 警告斑马纹底板 -->
+    <rect x="-65" y="-65" width="130" height="130" rx="65" fill="#1E293B" stroke="#DC2626" stroke-width="3"/>
+    
+    <!-- 3.2 双层金属厚壁 (耐高压) -->
+    <circle cx="0" cy="0" r="58" fill="url(#metalCasing)" stroke="#475569" stroke-width="2"/>
+    <circle cx="0" cy="0" r="48" fill="url(#ductDepth)" stroke="#0F172A" stroke-width="4"/>
+
+    <!-- 3.3 故障扇叶 (密集，红色报警发光) -->
+    <g filter="url(#neonBloom)">
+        <!-- 故障微震动效果 (使用小角度晃动代替旋转) -->
+        <animateTransform attributeName="transform" type="rotate" values="-2 0 0; 2 0 0; -2 0 0" dur="0.1s" repeatCount="indefinite"/>
+        
+        <!-- 多叶片系统 -->
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(0) scale(0.9)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(60) scale(0.9)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(120) scale(0.9)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(180) scale(0.9)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(240) scale(0.9)"/>
+        <use href="#heavyBlade" x="0" y="0" fill="url(#glowError)" transform="rotate(300) scale(0.9)"/>
+        
+        <!-- 轴心报警灯 -->
+        <circle cx="0" cy="0" r="14" fill="#991B1B" stroke="#F87171" stroke-width="3">
+           <animate attributeName="opacity" values="1;0.2;1" dur="0.8s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- 3.4 工业防护格栅 (十字加固) -->
+    <path d="M -48 -48 L 48 48 M -48 48 L 48 -48" stroke="#E2E8F0" stroke-width="4" opacity="0.6"/>
+    <circle cx="0" cy="0" r="8" fill="#1E293B" stroke="#E2E8F0" stroke-width="2"/> <!-- 中心铆钉 -->
+
+    <rect x="-35" y="75" width="70" height="20" rx="4" fill="#450A0A" stroke="#DC2626" stroke-width="1"/>
+    <text x="0" y="89" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#FCA5A5">加压风机</text>
+  </g>
+
+
+  <!-- ================================================================================== -->
+  <!-- 4. 右上角悬浮图例卡片 (Floating Legend) - 纯净白风格 -->
+  <!-- 用于盖在暗色底图上，形成高级UI反差 -->
+  <!-- ================================================================================== -->
+  <g transform="translate(800, 30)">
+    <!-- 纯白玻璃感底板 -->
+    <rect width="170" height="150" rx="12" fill="#FFFFFF" fill-opacity="0.95" stroke="#E2E8F0" stroke-width="1" filter="url(#cardDropShadow)"/>
+    
+    <!-- 顶栏 -->
+    <rect x="0" y="0" width="170" height="35" rx="12" fill="#F8FAFC"/>
+    <path d="M 0 25 L 0 35 L 170 35 L 170 25 Z" fill="#F8FAFC"/> <!-- 填平底角 -->
+    <text x="15" y="23" font-family="'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#334155">Legend / 图例</text>
+    <line x1="0" y1="35" x2="170" y2="35" stroke="#E2E8F0" stroke-width="1"/>
+
+    <!-- 运行 -->
+    <g transform="translate(15, 55)">
+        <!-- 简化的工业齿轮/风机小图标 -->
+        <circle cx="10" cy="10" r="8" fill="#022C22" stroke="#10B981" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#059669">Run (运行)</text>
+    </g>
+
+    <!-- 停止 -->
+    <g transform="translate(15, 85)">
+        <circle cx="10" cy="10" r="8" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#64748B">Stop (停止)</text>
+    </g>
+
+    <!-- 故障 -->
+    <g transform="translate(15, 115)">
+        <circle cx="10" cy="10" r="8" fill="#450A0A" stroke="#EF4444" stroke-width="1.5"/>
+        <path d="M 10 10 L 10 4 M 10 10 L 15 13 M 10 10 L 5 13" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="15" font-family="'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#DC2626">Error (故障)</text>
+    </g>
+  </g>
+
+</svg>
