@@ -1,0 +1,38 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- 玻璃背景 (具有极低透明度，防止遮挡背景大屏的网格感) -->
+    <path d="M0 10 L10 0 L150 0 L160 10 L160 110 L150 120 L10 120 L0 110 Z" 
+          fill="rgba(15, 23, 42, 0.8)" 
+          stroke="#38BDF8" 
+          stroke-width="1" />
+    
+    <!-- 顶部标题区装饰线 -->
+    <path d="M10 25 L150 25" stroke="#1E293B" stroke-width="1" />
+
+    <!-- 设备名称 -->
+    <text x="10" y="18" font-family="'Microsoft YaHei'" font-size="11" fill="#BAE6FD">厂房A一层弱电井</text>
+    
+    <!-- 状态指示点 (动态色) -->
+    <!-- 逻辑：正常状态 fill="#00FFFF", 故障 fill="#FF1744" -->
+    <circle id="status-dot" cx="145" cy="14" r="3" fill="#00E676">
+        <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- IP地址 -->
+    <text x="10" y="42" font-family="'Microsoft YaHei'" font-size="9" fill="#64748B">IP: 192.168.1.101</text>
+
+    <!-- 中心数值区 (音量/状态) -->
+    <g id="data-value">
+        <text x="10" y="85" font-family="Arial" font-size="32" fill="#FFFFFF" font-weight="bold">65</text>
+        <text x="50" y="85" font-family="'Microsoft YaHei'" font-size="10" fill="#38BDF8">dB</text>
+    </g>
+
+    <!-- 底部功能按钮 (模拟拟态) -->
+    <g id="btn-volume" cursor="pointer">
+        <rect x="85" y="65" width="65" height="22" rx="4" fill="rgba(56, 189, 248, 0.1)" stroke="#38BDF8" stroke-width="0.5" />
+        <path d="M95 76 L100 72 L100 80 Z" fill="#38BDF8" /> <!-- 模拟音量图标 -->
+        <text x="105" y="79" font-family="'Microsoft YaHei'" font-size="9" fill="#38BDF8">音量设置</text>
+    </g>
+
+    <!-- 装饰角标 -->
+    <path d="M150 110 L160 110 L160 120" fill="none" stroke="#00E5FF" stroke-width="2" />
+</svg>

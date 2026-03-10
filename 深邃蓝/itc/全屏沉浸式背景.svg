@@ -1,0 +1,33 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 背景底色 -->
+  <rect width="1600" height="900" fill="#0B1120" />
+
+  <!-- 2. 核心径向渐变 (让中心亮起来) -->
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0B1120" />
+    </radialGradient>
+    
+    <!-- 科技网格纹理 -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.15" />
+      <circle cx="0" cy="0" r="1" fill="#3B82F6" fill-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  <!-- 应用渐变 -->
+  <rect width="1600" height="900" fill="url(#bgGlow)" />
+  
+  <!-- 应用网格 -->
+  <rect width="1600" height="900" fill="url(#gridPattern)" />
+
+  <!-- 3. 装饰性氛围光 (角落微光) -->
+  <circle cx="0" cy="0" r="400" fill="#0EA5E9" fill-opacity="0.03" filter="blur(80px)" />
+  <circle cx="1600" cy="900" r="400" fill="#0EA5E9" fill-opacity="0.03" filter="blur(80px)" />
+  
+  <!-- 4. 动态扫描线 (点睛之笔) -->
+  <rect width="1600" height="2" fill="#3B82F6" fill-opacity="0.1">
+    <animate attributeName="y" values="-10;910" dur="8s" repeatCount="indefinite" />
+  </rect>
+</svg>

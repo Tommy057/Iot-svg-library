@@ -1,0 +1,63 @@
+<svg width="300" height="160" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 霓虹发光滤镜 -->
+    <filter id="neonFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- [状态配置变量说明]：
+       有任务：PrimaryColor=#F59E0B (橙), Glow=0.8, Anim=Running
+       空闲：  PrimaryColor=#10B981 (绿), Glow=0.4, Anim=Static
+       离线：  PrimaryColor=#64748B (灰), Glow=0.1, Anim=None
+  -->
+
+  <!-- 1. 容器底板 (毛玻璃效果) -->
+  <path d="M 0 10 L 10 0 L 290 0 L 300 10 L 300 150 L 290 160 L 10 160 L 0 150 Z" 
+        fill="#1E293B" fill-opacity="0.7" stroke="#F59E0B" stroke-width="1.5" filter="url(#neonFilter)" />
+  
+  <!-- 2. 装饰角 (强化科技感) -->
+  <polyline points="0,30 0,0 30,0" fill="none" stroke="#F59E0B" stroke-width="3" />
+  <polyline points="270,160 300,160 300,130" fill="none" stroke="#F59E0B" stroke-width="3" />
+
+  <!-- 3. 头部信息 -->
+  <text x="15" y="30" font-family="Microsoft YaHei, Arial" font-size="16" font-weight="bold" fill="#F8FAFC">
+    1F 艺术大厅
+  </text>
+  <text x="15" y="52" font-family="Monaco, monospace" font-size="12" fill="#94A3B8">
+    IP: 192.168.1.101
+  </text>
+
+  <!-- 4. 状态标签 (右上角) -->
+  <rect x="220" y="15" width="65" height="22" rx="11" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1" />
+  <circle cx="232" cy="26" r="4" fill="#F59E0B">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  <text x="242" y="30" font-family="Microsoft YaHei" font-size="11" fill="#F59E0B" font-weight="bold">有任务</text>
+
+  <!-- 5. 核心数值 (音量显示) -->
+  <g transform="translate(15, 80)">
+    <!-- 装饰环 -->
+    <circle cx="30" cy="30" r="28" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="4,2" />
+    <!-- 动态进度环 (根据音量百分比计算 dasharray) -->
+    <circle cx="30" cy="30" r="28" fill="none" stroke="#F59E0B" stroke-width="4" stroke-dasharray="130,175" stroke-linecap="round" filter="url(#neonFilter)">
+        <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="10s" repeatCount="indefinite" />
+    </circle>
+    <!-- 音量数字 -->
+    <text x="30" y="38" font-family="Arial" font-size="22" font-weight="bold" fill="#F8FAFC" text-anchor="middle">65</text>
+    <text x="75" y="25" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">VOLUME</text>
+    <text x="75" y="45" font-family="Microsoft YaHei" font-size="10" fill="#F59E0B">PLAYING...</text>
+  </g>
+
+  <!-- 6. 交互按钮 (右下角) -->
+  <g transform="translate(190, 115)">
+    <rect width="90" height="30" rx="4" fill="#0EA5E9" fill-opacity="0.2" stroke="#0EA5E9" stroke-width="1" />
+    <text x="45" y="20" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle">音量设置</text>
+    <!-- 悬浮光效 -->
+    <rect width="90" height="30" rx="4" fill="none" stroke="#0EA5E9" stroke-width="2" opacity="0.5">
+        <animate attributeName="stroke-width" values="1;4;1" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+    </rect>
+  </g>
+</svg>

@@ -1,0 +1,83 @@
+<svg width="320" height="180" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景微弱网格，增加饱满度 -->
+    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.1"/>
+    </pattern>
+    <!-- 发光滤镜 -->
+    <filter id="strongGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. 复合底座 (多层叠加工艺) -->
+  <path d="M 0 15 L 15 0 L 305 0 L 320 15 L 320 165 L 305 180 L 15 180 L 0 165 Z" 
+        fill="#1E293B" stroke="#334155" stroke-width="2" />
+  <!-- 内部网格填充，解决“不饱满”感 -->
+  <path d="M 5 18 L 18 5 L 302 5 L 315 18 L 315 162 L 302 175 L 18 175 L 5 162 Z" 
+        fill="url(#grid)" fill-opacity="0.5" />
+
+  <!-- 2. 状态顶栏 (依据状态切换颜色：#F59E0B / #10B981 / #EF4444) -->
+  <path d="M 0 15 L 15 0 L 120 0 L 130 15 Z" fill="#F59E0B" fill-opacity="0.8" />
+  <text x="12" y="11" font-family="Microsoft YaHei" font-size="10" font-weight="bold" fill="#0F172A">TASK ACTIVE</text>
+
+  <!-- 3. 设备名称 (加粗并带发光) -->
+  <text x="15" y="45" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="bold" fill="#F8FAFC" filter="url(#strongGlow)">
+    1F 艺术大厅音乐终端
+  </text>
+
+  <!-- 4. IP地址专用信息仓 (解决文字不明显问题) -->
+  <rect x="15" y="58" width="160" height="22" rx="4" fill="#0F172A" stroke="#38BDF8" stroke-opacity="0.5" />
+  <text x="22" y="74" font-family="Monaco, monospace" font-size="13" font-weight="bold" fill="#38BDF8">
+    IP: 192.168.1.101
+  </text>
+
+  <!-- 5. 核心状态显示区 (分段音量条) -->
+  <g transform="translate(15, 100)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">音量输出控制 (Volume)</text>
+    <!-- 分段进度条背景 -->
+    <g opacity="0.3">
+        <rect x="0" y="10" width="15" height="12" fill="#334155" />
+        <rect x="20" y="10" width="15" height="12" fill="#334155" />
+        <rect x="40" y="10" width="15" height="12" fill="#334155" />
+        <rect x="60" y="10" width="15" height="12" fill="#334155" />
+        <rect x="80" y="10" width="15" height="12" fill="#334155" />
+        <rect x="100" y="10" width="15" height="12" fill="#334155" />
+        <rect x="120" y="10" width="15" height="12" fill="#334155" />
+        <rect x="140" y="10" width="15" height="12" fill="#334155" />
+    </g>
+    <!-- 激活的音量段 (根据数值动态显示) -->
+    <g fill="#F59E0B" filter="url(#strongGlow)">
+        <rect x="0" y="10" width="15" height="12" />
+        <rect x="20" y="10" width="15" height="12" />
+        <rect x="40" y="10" width="15" height="12" />
+        <rect x="60" y="10" width="15" height="12" />
+        <rect x="80" y="10" width="15" height="12" />
+        <animate attributeName="opacity" values="1;0.6;1" dur="1s" repeatCount="indefinite" />
+    </g>
+    <text x="165" y="21" font-family="Verdana" font-size="18" font-weight="bold" fill="#F59E0B">65%</text>
+  </g>
+
+  <!-- 6. 状态标签 (右上角) -->
+  <g transform="translate(235, 15)">
+    <text x="70" y="15" font-family="Microsoft YaHei" font-size="14" fill="#F59E0B" font-weight="bold" text-anchor="end">有任务</text>
+    <path d="M 0 25 L 70 25" stroke="#F59E0B" stroke-width="2" stroke-dasharray="2,2" />
+  </g>
+
+  <!-- 7. 底部控制区 (按钮提升至“操作台”质感) -->
+  <g transform="translate(190, 135)">
+    <path d="M 5 0 L 110 0 L 115 5 L 115 25 L 110 30 L 5 30 L 0 25 L 0 5 Z" fill="#0EA5E9" fill-opacity="0.2" stroke="#0EA5E9" />
+    <text x="57" y="20" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle" font-weight="bold">音量设置</text>
+    <!-- 按钮角落小灯 -->
+    <rect x="2" y="2" width="4" height="4" fill="#0EA5E9" />
+  </g>
+
+  <!-- 8. 视觉点缀 (装饰性散热孔) -->
+  <g transform="translate(15, 150)" fill="#334155">
+    <rect width="3" height="3" />
+    <rect x="8" width="3" height="3" />
+    <rect x="16" width="3" height="3" />
+    <rect x="24" width="3" height="3" />
+  </g>
+</svg>
