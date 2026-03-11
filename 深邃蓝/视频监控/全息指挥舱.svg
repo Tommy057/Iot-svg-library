@@ -1,0 +1,91 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 霓虹发光 -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. 全局底板 -->
+  <rect width="1200" height="600" fill="#0B1120" />
+  <path d="M 20 20 L 1180 20 L 1180 580 L 20 580 Z" fill="#1E293B" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.2" />
+
+  <!-- 2. 顶部标题栏 -->
+  <g transform="translate(40, 40)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="24" font-weight="bold" fill="#F8FAFC">视频监控指挥中心</text>
+    <text x="0" y="25" font-family="Monaco" font-size="12" fill="#38BDF8">VMS-UNIT-04 | GLOBAL SECURITY NODE</text>
+    
+    <!-- 录像状态灯 -->
+    <g transform="translate(280, -18)">
+      <circle cx="10" cy="10" r="6" fill="#EF4444" filter="url(#neonGlow)">
+        <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite" />
+      </circle>
+      <text x="25" y="15" font-family="Arial" font-size="14" font-weight="bold" fill="#EF4444">REC</text>
+    </g>
+  </g>
+
+  <!-- 3. 主视频窗口 (模拟 16:9 画面) -->
+  <g transform="translate(40, 100)">
+    <!-- 视频占位背板 -->
+    <rect width="800" height="450" fill="#0F172A" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.5" />
+    
+    <!-- 视频画面内部：模拟扫描线 -->
+    <rect width="800" height="2" fill="#0EA5E9" fill-opacity="0.1">
+      <animate attributeName="y" values="0;450;0" dur="5s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- AI 识别框 (动态移动) -->
+    <g>
+      <path d="M 0 0 L 20 0 M 0 0 L 0 20" stroke="#10B981" stroke-width="3" />
+      <path d="M 120 0 L 100 0 M 120 0 L 120 20" stroke="#10B981" stroke-width="3" />
+      <path d="M 0 120 L 20 120 M 0 120 L 0 100" stroke="#10B981" stroke-width="3" />
+      <path d="M 120 120 L 100 120 M 120 120 L 120 100" stroke="#10B981" stroke-width="3" />
+      <text x="5" y="-10" font-family="Arial" font-size="10" fill="#10B981" font-weight="bold">TARGET: HUMAN (98.5%)</text>
+      
+      <animateTransform attributeName="transform" type="translate" 
+                        values="200,150; 450,180; 250,220; 200,150" 
+                        dur="8s" repeatCount="indefinite" />
+    </g>
+
+    <!-- 画面角落坐标 HUD -->
+    <text x="10" y="440" font-family="Monaco" font-size="10" fill="#94A3B8">COORD: 34.22.11 N / 108.99.32 E</text>
+    <text x="790" y="440" font-family="Monaco" font-size="10" fill="#94A3B8" text-anchor="end">FPS: 60.0 | BITRATE: 4500kbps</text>
+  </g>
+
+  <!-- 4. 右侧控制台：全息云台 (PTZ Controller) -->
+  <g transform="translate(980, 250)">
+    <text x="0" y="-120" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle">云台控制 (PTZ)</text>
+    
+    <!-- 罗盘底盘 -->
+    <circle r="80" fill="none" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.4" />
+    <circle r="60" fill="none" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,4" />
+    
+    <!-- 方向按钮 -->
+    <path d="M 0 -85 L -10 -70 L 10 -70 Z" fill="#0EA5E9" filter="url(#neonGlow)" /> <!-- 上 -->
+    <path d="M 0 85 L -10 70 L 10 70 Z" fill="#0EA5E9" /> <!-- 下 -->
+    <path d="M -85 0 L -70 -10 L -70 10 Z" fill="#0EA5E9" /> <!-- 左 -->
+    <path d="M 85 0 L 70 -10 L 70 10 Z" fill="#0EA5E9" /> <!-- 右 -->
+
+    <!-- 中心摇杆按钮 -->
+    <circle r="25" fill="#1E293B" stroke="#0EA5E9" stroke-width="2" filter="url(#neonGlow)" />
+    <text y="5" font-family="Arial" font-size="10" fill="#F8FAFC" text-anchor="middle">PUSH</text>
+    
+    <!-- 缩放控制 (Zoom) -->
+    <g transform="translate(-80, 110)">
+      <rect width="160" height="30" rx="15" fill="#0F172A" stroke="#3B82F6" stroke-opacity="0.4" />
+      <text x="20" y="20" font-family="Arial" font-size="14" fill="#F8FAFC">-</text>
+      <text x="140" y="20" font-family="Arial" font-size="14" fill="#F8FAFC" text-anchor="end">+</text>
+      <text x="80" y="20" font-family="Arial" font-size="12" fill="#0EA5E9" text-anchor="middle">ZOOM</text>
+    </g>
+  </g>
+
+  <!-- 5. 右下角：设备列表摘要 -->
+  <g transform="translate(880, 450)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="14" font-weight="bold" fill="#94A3B8">通道选择</text>
+    <rect x="0" y="15" width="220" height="40" rx="4" fill="#0EA5E9" fill-opacity="0.1" stroke="#0EA5E9" stroke-width="1" />
+    <text x="15" y="40" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC">CH-01: 西门广场北向</text>
+    <circle cx="205" cy="35" r="4" fill="#10B981" />
+  </g>
+
+</svg>
