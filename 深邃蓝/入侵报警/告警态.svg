@@ -1,0 +1,49 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="redGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="500" fill="#0B1120" />
+  
+  <!-- 左侧：能量柱 (崩塌频闪) -->
+  <g transform="translate(40, 50)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="20" fill="#F8FAFC">紧急告警状态</text>
+    <rect x="0" y="40" width="10" height="380" fill="#EF4444" fill-opacity="0.1" rx="5" />
+    <rect x="0" y="300" width="10" height="120" fill="#EF4444" rx="5" filter="url(#redGlow)">
+      <animate attributeName="height" values="120;140;120" dur="0.2s" repeatCount="indefinite" />
+      <animate attributeName="y" values="300;280;300" dur="0.2s" repeatCount="indefinite" />
+    </rect>
+    <text x="30" y="70" font-family="Arial" font-size="28" font-weight="bold" fill="#EF4444">
+      BREACHED!
+      <animate attributeName="opacity" values="1;0;1" dur="0.3s" repeatCount="indefinite" />
+    </text>
+  </g>
+
+  <!-- 中间：雷达 (加速红色扫描) -->
+  <g transform="translate(450, 250)">
+    <circle r="180" fill="none" stroke="#EF4444" stroke-width="1" stroke-opacity="0.3" />
+    <path d="M 0 0 L 0 -180 A 180 180 0 0 1 90 -150 Z" fill="#EF4444" fill-opacity="0.4" filter="url(#redGlow)">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="1.5s" repeatCount="indefinite" />
+    </path>
+    <circle r="10" fill="#EF4444" filter="url(#redGlow)">
+        <animate attributeName="r" values="8;15;8" dur="0.3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- 右侧：拓扑图 (红色波纹扩散) -->
+  <g transform="translate(700, 120)">
+    <rect x="0" y="0" width="200" height="300" fill="#7F1D1D" fill-opacity="0.3" stroke="#EF4444" stroke-width="2" filter="url(#redGlow)" />
+    <!-- 扩散波纹 -->
+    <rect x="0" y="0" width="200" height="300" fill="none" stroke="#EF4444" stroke-width="2">
+        <animate attributeName="width" values="200;240" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="height" values="300;340" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="x" values="0;-20" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;-20" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.8;0" dur="1s" repeatCount="indefinite" />
+    </rect>
+    <text x="100" y="150" font-family="Microsoft YaHei" font-size="16" fill="#F8FAFC" font-weight="bold" text-anchor="middle">检测到入侵!</text>
+  </g>
+</svg>

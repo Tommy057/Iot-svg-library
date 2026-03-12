@@ -1,0 +1,35 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="greenGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="500" fill="#0B1120" />
+  
+  <!-- 左侧：能量柱 (稳态) -->
+  <g transform="translate(40, 50)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="20" fill="#F8FAFC">安全防御状态</text>
+    <rect x="0" y="40" width="10" height="380" fill="#10B981" fill-opacity="0.2" rx="5" />
+    <rect x="0" y="40" width="10" height="380" fill="#10B981" rx="5" filter="url(#greenGlow)">
+      <animate attributeName="height" values="375;380;375" dur="4s" repeatCount="indefinite" />
+    </rect>
+    <text x="30" y="70" font-family="Arial" font-size="24" font-weight="bold" fill="#10B981">SECURED</text>
+  </g>
+
+  <!-- 中间：雷达 (匀速扫描) -->
+  <g transform="translate(450, 250)">
+    <circle r="180" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.2" />
+    <path d="M 0 0 L 0 -180 A 180 180 0 0 1 40 -175 Z" fill="#10B981" fill-opacity="0.2">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="5s" repeatCount="indefinite" />
+    </path>
+    <circle r="5" fill="#10B981" filter="url(#greenGlow)" />
+  </g>
+
+  <!-- 右侧：拓扑图 (绿线轮廓) -->
+  <g transform="translate(700, 120)">
+    <rect x="0" y="0" width="200" height="300" fill="none" stroke="#10B981" stroke-width="1" stroke-opacity="0.5" />
+    <text x="100" y="150" font-family="Microsoft YaHei" font-size="14" fill="#10B981" text-anchor="middle">仓库区域 [正常]</text>
+  </g>
+</svg>

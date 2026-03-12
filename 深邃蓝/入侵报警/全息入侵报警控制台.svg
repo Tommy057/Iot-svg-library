@@ -1,0 +1,83 @@
+<svg width="1100" height="550" viewBox="0 0 1100 550" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1100" height="550" fill="#0B1120" />
+  
+  <!-- ==================== 左侧：控制与状态能量柱 ==================== -->
+  <g transform="translate(40, 50)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="22" font-weight="bold" fill="#F8FAFC">安全控制中心</text>
+    
+    <!-- 1. 布防/撤防 切换按钮组 -->
+    <g transform="translate(0, 50)">
+      <!-- 布防按钮 (Active 状态演示) -->
+      <g transform="translate(0, 0)">
+        <rect width="120" height="45" rx="4" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="2" filter="url(#neonGlow)" />
+        <path d="M 15 22 L 25 32 L 45 12" fill="none" stroke="#10B981" stroke-width="3" />
+        <text x="55" y="28" font-family="Microsoft YaHei" font-size="14" font-weight="bold" fill="#F8FAFC">强制布防</text>
+      </g>
+      
+      <!-- 撤防按钮 (Inactive 状态演示) -->
+      <g transform="translate(140, 0)">
+        <rect width="120" height="45" rx="4" fill="#334155" fill-opacity="0.5" stroke="#94A3B8" stroke-width="1" />
+        <circle cx="25" cy="22" r="8" fill="none" stroke="#94A3B8" stroke-width="2" />
+        <path d="M 21 18 L 29 26 M 29 18 L 21 26" stroke="#94A3B8" stroke-width="2" />
+        <text x="55" y="28" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8">一键撤防</text>
+      </g>
+    </g>
+
+    <!-- 2. 状态能量柱 (随布防状态变化高度) -->
+    <g transform="translate(0, 130)">
+      <text x="0" y="0" font-family="Arial" font-size="12" fill="#94A3B8">DEFENSE ENERGY LEVEL</text>
+      <rect x="0" y="15" width="12" height="280" fill="#1E293B" rx="6" />
+      <rect x="0" y="15" width="12" height="280" fill="#10B981" rx="6" filter="url(#neonGlow)">
+        <animate attributeName="height" values="275;280;275" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <!-- 指示标签 -->
+      <g transform="translate(25, 15)">
+        <text y="10" font-family="Arial" font-size="24" font-weight="bold" fill="#10B981">ARMED</text>
+        <text y="30" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">系统已进入全警戒模式</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== 中间：雷达扫描 (随布防开启) ==================== -->
+  <g transform="translate(520, 280)">
+    <circle r="180" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.2" />
+    <circle r="120" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.1" stroke-dasharray="5,5" />
+    
+    <!-- 扫描光束 -->
+    <path d="M 0 0 L 0 -180 A 180 180 0 0 1 45 -170 Z" fill="#10B981" fill-opacity="0.3">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite" />
+    </path>
+    <circle r="6" fill="#10B981" filter="url(#neonGlow)" />
+  </g>
+
+  <!-- ==================== 右侧：2D 防区拓扑 ==================== -->
+  <g transform="translate(800, 100)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC">实时空间拓扑</text>
+    
+    <!-- 房间 A -->
+    <rect x="0" y="30" width="180" height="120" fill="none" stroke="#3B82F6" stroke-opacity="0.4" />
+    <rect x="10" y="40" width="5" height="5" fill="#10B981" />
+    <text x="25" y="46" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">01 办公区 [安全]</text>
+
+    <!-- 房间 B -->
+    <rect x="0" y="170" width="180" height="180" fill="none" stroke="#3B82F6" stroke-opacity="0.4" />
+    <rect x="10" y="180" width="5" height="5" fill="#10B981" />
+    <text x="25" y="186" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">02 核心机房 [安全]</text>
+    
+    <!-- 动态扫描点 (模拟传感器在线) -->
+    <circle cx="90" cy="260" r="3" fill="#10B981">
+        <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- 底部饰线条 -->
+  <path d="M 40 520 L 1060 520" stroke="#3B82F6" stroke-width="1" stroke-dasharray="20,10" stroke-opacity="0.2" />
+</svg>

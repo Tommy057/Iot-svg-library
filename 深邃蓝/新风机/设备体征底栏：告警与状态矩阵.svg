@@ -1,0 +1,38 @@
+<svg width="1100" height="100" viewBox="0 0 1100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 0 0 L 1100 0 L 1080 100 L 20 100 Z" fill="#1E293B" fill-opacity="0.8" stroke="#3B82F6" stroke-width="1.5" />
+  
+  <g transform="translate(50, 35)">
+    <!-- 运行状态 -->
+    <g>
+      <circle cx="10" cy="15" r="6" fill="#10B981" />
+      <text x="25" y="20" font-family="Microsoft YaHei" font-size="14" fill="#F8FAFC">运行状态: 正常</text>
+    </g>
+    
+    <!-- 故障 (告警态演示) -->
+    <g transform="translate(200, 0)">
+      <rect width="160" height="30" y="0" rx="4" fill="#7F1D1D" fill-opacity="0.3" stroke="#EF4444" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values="1;0;1" dur="0.8s" repeatCount="indefinite" />
+      </rect>
+      <text x="80" y="20" font-family="Microsoft YaHei" font-size="14" fill="#EF4444" font-weight="bold" text-anchor="middle">送风机故障!</text>
+    </g>
+
+    <!-- 滤网压差 -->
+    <g transform="translate(420, 0)">
+      <text x="0" y="20" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8">滤网压差:</text>
+      <text x="70" y="20" font-family="Microsoft YaHei" font-size="14" fill="#10B981">正常</text>
+    </g>
+
+    <!-- 风机压差 -->
+    <g transform="translate(580, 0)">
+      <text x="0" y="20" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8">风机压差:</text>
+      <text x="70" y="20" font-family="Microsoft YaHei" font-size="14" fill="#10B981">正常</text>
+    </g>
+
+    <!-- 启停状态 -->
+    <g transform="translate(740, 0)">
+      <text x="0" y="20" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8">风机启停:</text>
+      <rect x="70" y="2" width="40" height="20" rx="10" fill="#10B981" />
+      <circle cx="100" cy="12" r="7" fill="#F8FAFC" />
+    </g>
+  </g>
+</svg>

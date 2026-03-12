@@ -1,0 +1,94 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="scanLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0" />
+      <stop offset="50%" stop-color="#0EA5E9" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 全局底板 -->
+  <rect width="1200" height="600" fill="#0B1120" />
+  
+  <!-- 顶部状态统计 (中央) -->
+  <g transform="translate(600, 50)">
+    <text y="-20" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8" text-anchor="middle">TOTAL CAMERAS ONLINE</text>
+    <text y="15" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC" text-anchor="middle">02 / 02</text>
+    <rect x="-100" y="25" width="200" height="2" fill="#0EA5E9" fill-opacity="0.3" />
+  </g>
+
+  <!-- ==================== 左侧：CAMERA 01 ==================== -->
+  <g transform="translate(40, 100)">
+    <!-- 视频视窗 HUD -->
+    <path d="M 0 10 L 10 0 L 510 0 L 520 10 L 520 290 L 510 300 L 10 300 L 0 290 Z" 
+          fill="#1E293B" fill-opacity="0.4" stroke="#0EA5E9" stroke-width="1.5" filter="url(#neonGlow)" />
+    <rect x="10" y="10" width="500" height="280" fill="#000" fill-opacity="0.6" />
+    
+    <!-- 动态扫描线 -->
+    <rect x="10" y="10" width="500" height="30" fill="url(#scanLine)">
+      <animate attributeName="y" values="10;260;10" dur="3s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- AI 识别框 (机房目标) -->
+    <g transform="translate(150, 80)">
+      <path d="M 0 15 L 0 0 L 15 0 M 85 0 L 100 0 L 100 15 M 100 85 L 100 100 L 85 100 M 15 100 L 0 100 L 0 85" 
+            fill="none" stroke="#0EA5E9" stroke-width="2" />
+      <text x="5" y="-10" font-family="Arial" font-size="10" fill="#0EA5E9">TARGET: SERVER_RACK</text>
+    </g>
+
+    <!-- 参数仓 -->
+    <g transform="translate(0, 320)">
+      <text x="5" y="20" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC">CAM-01 厂房西侧</text>
+      <text x="5" y="45" font-family="Monaco" font-size="12" fill="#94A3B8">IP: 10.12.1.101 | 4K 60FPS</text>
+      <!-- 流量脉冲 -->
+      <path d="M 350 35 Q 360 10 370 35 T 390 35 T 410 35 T 430 35 T 450 35" fill="none" stroke="#0EA5E9" stroke-width="2">
+        <animate attributeName="stroke-dasharray" values="0,100;100,0" dur="1s" repeatCount="indefinite" />
+      </path>
+    </g>
+  </g>
+
+  <!-- ==================== 右侧：CAMERA 02 ==================== -->
+  <g transform="translate(640, 100)">
+    <!-- 视频视窗 HUD -->
+    <path d="M 0 10 L 10 0 L 510 0 L 520 10 L 520 290 L 510 300 L 10 300 L 0 290 Z" 
+          fill="#1E293B" fill-opacity="0.4" stroke="#10B981" stroke-width="1.5" filter="url(#neonGlow)" />
+    <rect x="10" y="10" width="500" height="280" fill="#000" fill-opacity="0.6" />
+
+    <!-- 动态扫描线 (绿色) -->
+    <rect x="10" y="10" width="500" height="30" fill="url(#scanLine)" opacity="0.5">
+      <animate attributeName="y" values="10;260;10" dur="4s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- AI 识别框 (人员目标) -->
+    <g transform="translate(250, 120)">
+      <path d="M 0 15 L 0 0 L 15 0 M 65 0 L 80 0 L 80 15 M 80 135 L 80 150 L 65 150 M 15 150 L 0 150 L 0 135" 
+            fill="none" stroke="#10B981" stroke-width="2" />
+      <text x="5" y="-10" font-family="Arial" font-size="10" fill="#10B981">TARGET: STAFF_04</text>
+    </g>
+
+    <!-- 参数仓 -->
+    <g transform="translate(0, 320)">
+      <text x="5" y="20" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC">CAM-02 厂房东侧</text>
+      <text x="5" y="45" font-family="Monaco" font-size="12" fill="#94A3B8">IP: 10.12.1.102 | 4K 30FPS</text>
+      <!-- 状态指示 -->
+      <circle cx="500" cy="20" r="5" fill="#10B981" filter="url(#neonGlow)">
+        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </g>
+
+  <!-- 底部：全局录像回放轴预览 (装饰性) -->
+  <g transform="translate(40, 520)">
+    <rect width="1120" height="40" rx="4" fill="#0F172A" stroke="#3B82F6" stroke-opacity="0.2" />
+    <text x="10" y="-10" font-family="Arial" font-size="12" fill="#94A3B8">TIMELINE TRACKER</text>
+    <!-- 时间刻度 -->
+    <path d="M 0 20 L 1120 20" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="400" y="10" width="200" height="20" fill="#0EA5E9" fill-opacity="0.2" />
+    <text x="405" y="24" font-family="Arial" font-size="10" fill="#0EA5E9">BUFFERING RECORD...</text>
+  </g>
+
+</svg>
