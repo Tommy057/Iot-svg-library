@@ -1,0 +1,66 @@
+<svg width="400" height="550" viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur" /><feComposite in="SourceGraphic" in2="blur" operator="over" /></filter>
+  </defs>
+
+  <!-- 玻璃背板 -->
+  <path d="M 0 20 L 20 0 L 380 0 L 400 20 L 400 530 L 380 550 L 20 550 L 0 530 Z" fill="#1E293B" fill-opacity="0.8" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.3" />
+  <text x="25" y="35" font-family="Microsoft YaHei" font-size="18" font-weight="bold" fill="#F8FAFC" letter-spacing="2">REAL-TIME FEEDBACK</text>
+  <rect x="25" y="45" width="150" height="2" fill="#0EA5E9" />
+
+  <!-- 数据切片：温湿度对比区 -->
+  <g transform="translate(25, 80)">
+    <!-- 回风 -->
+    <g>
+      <text font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">RETURN AIR TEMP/HUM</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">24.5<tspan font-size="14" fill="#0EA5E9" dx="5">℃</tspan></text>
+      <text x="160" y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">55.2<tspan font-size="14" fill="#0EA5E9" dx="5">%</tspan></text>
+      <rect y="45" width="350" height="1" fill="#3B82F6" fill-opacity="0.1" />
+    </g>
+    <!-- 送风 -->
+    <g transform="translate(0, 70)">
+      <text font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">SUPPLY AIR TEMP/HUM</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">18.2<tspan font-size="14" fill="#0EA5E9" dx="5">℃</tspan></text>
+      <text x="160" y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">62.8<tspan font-size="14" fill="#0EA5E9" dx="5">%</tspan></text>
+    </g>
+  </g>
+
+  <!-- 数据切片：阀门反馈区 (全数据展示) -->
+  <g transform="translate(25, 250)">
+    <text font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">ACTUATOR FEEDBACK (REAL-TIME)</text>
+    
+    <!-- 新风阀反馈 -->
+    <g transform="translate(0, 25)">
+      <rect width="350" height="50" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">新风阀反馈</text>
+      <text x="335" y="35" font-family="Arial" font-size="28" font-weight="bold" fill="#F8FAFC" text-anchor="end">49.0<tspan font-size="12" fill="#0EA5E9" dx="5">%</tspan></text>
+      <rect x="0" y="0" width="3" height="50" fill="#0EA5E9" filter="url(#neon)" />
+    </g>
+
+    <!-- 回风阀反馈 -->
+    <g transform="translate(0, 85)">
+      <rect width="350" height="50" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">回风阀反馈</text>
+      <text x="335" y="35" font-family="Arial" font-size="28" font-weight="bold" fill="#F8FAFC" text-anchor="end">79.5<tspan font-size="12" fill="#0EA5E9" dx="5">%</tspan></text>
+      <rect x="0" y="0" width="3" height="50" fill="#0EA5E9" filter="url(#neon)" />
+    </g>
+
+    <!-- 水阀反馈 -->
+    <g transform="translate(0, 145)">
+      <rect width="350" height="50" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">水阀反馈</text>
+      <text x="335" y="35" font-family="Arial" font-size="28" font-weight="bold" fill="#3B82F6" text-anchor="end">39.2<tspan font-size="12" fill="#3B82F6" dx="5">%</tspan></text>
+      <rect x="0" y="0" width="3" height="50" fill="#3B82F6" filter="url(#neon)" />
+    </g>
+  </g>
+
+  <!-- 环境质量指标 -->
+  <g transform="translate(25, 480)">
+    <text font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">ENV QUALITY (CO2)</text>
+    <text y="40" font-family="Arial" font-size="36" font-weight="bold" fill="#10B981">450 <tspan font-size="14">PPM</tspan></text>
+    <!-- 动态微型扫描点 -->
+    <circle cx="150" cy="30" r="3" fill="#10B981" filter="url(#neon)">
+        <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

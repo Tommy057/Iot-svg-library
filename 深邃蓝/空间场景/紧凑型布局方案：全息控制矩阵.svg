@@ -1,0 +1,120 @@
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. 全局底盘：工业背板 -->
+  <rect width="1000" height="700" fill="#0B1120" />
+  <path d="M 50 50 L 950 50 L 980 80 L 980 620 L 950 650 L 50 650 L 20 620 L 20 80 Z" 
+        fill="#1E293B" fill-opacity="0.6" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.2" />
+
+  <!-- 2. 全局十字分割线 (增加饱满度) -->
+  <g stroke="#3B82F6" stroke-width="1" stroke-opacity="0.15">
+    <line x1="500" y1="80" x2="500" y2="620" stroke-dasharray="10,5" />
+    <line x1="50" y1="350" x2="950" y2="350" stroke-dasharray="10,5" />
+    <circle cx="500" cy="350" r="120" fill="none" />
+    <circle cx="500" cy="350" r="140" fill="none" stroke-opacity="0.05" />
+  </g>
+
+  <!-- ==================== A区：门禁管理 (左上) ==================== -->
+  <g transform="translate(100, 100)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="18" font-weight="bold" fill="#F8FAFC">通行安全 / ACCESS</text>
+    <g transform="translate(0, 50)">
+      <!-- 状态图标 -->
+      <path d="M 0 0 L 60 0 L 60 70 L 0 70 Z" fill="#10B981" fill-opacity="0.1" stroke="#10B981" />
+      <text x="30" y="45" font-family="Arial" font-size="28" fill="#10B981" text-anchor="middle">🔒</text>
+      <text x="80" y="30" font-family="Microsoft YaHei" font-size="14" fill="#F8FAFC">当前状态：已锁定</text>
+      <text x="80" y="55" font-family="Microsoft YaHei" font-size="11" fill="#94A3B8">SECURED BY AI-LINK</text>
+      <!-- 远程开门 -->
+      <g transform="translate(0, 100)">
+        <rect width="300" height="45" rx="4" fill="#0EA5E9" fill-opacity="0.2" stroke="#0EA5E9" stroke-width="2" filter="url(#neonGlow)" />
+        <text x="150" y="28" font-family="Microsoft YaHei" font-size="14" font-weight="bold" fill="#F8FAFC" text-anchor="middle">远程一键授权开门</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== B区：窗帘调控 (右上) ==================== -->
+  <g transform="translate(600, 100)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="18" font-weight="bold" fill="#F8FAFC">窗帘环境 / CURTAIN</text>
+    <g transform="translate(0, 50)">
+      <!-- 调节拉条 -->
+      <text font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">开启幅度控制 (OPEN RATE)</text>
+      <rect y="20" width="300" height="8" rx="4" fill="#0F172A" />
+      <rect y="20" width="180" height="8" rx="4" fill="#38BDF8" filter="url(#neonGlow)" />
+      <circle cx="180" cy="24" r="10" fill="#F8FAFC" stroke="#38BDF8" stroke-width="2" />
+      <text x="300" y="60" font-family="Arial" font-size="32" font-weight="bold" fill="#38BDF8" text-anchor="end">60<tspan font-size="14">%</tspan></text>
+      <!-- 快捷按钮 -->
+      <g transform="translate(0, 100)">
+        <rect width="90" height="35" rx="4" stroke="#3B82F6" fill="none" />
+        <text x="45" y="22" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle">全开</text>
+        <rect x="105" width="90" height="35" rx="4" stroke="#3B82F6" fill="none" />
+        <text x="150" y="22" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle">停止</text>
+        <rect x="210" width="90" height="35" rx="4" stroke="#3B82F6" fill="none" />
+        <text x="255" y="22" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle">全关</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== C区：空调气候 (左下) ==================== -->
+  <g transform="translate(100, 400)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="18" font-weight="bold" fill="#F8FAFC">空调暖通 / HVAC</text>
+    <g transform="translate(0, 40)">
+      <!-- 风机启停 -->
+      <rect width="300" height="60" rx="4" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.3" />
+      <text x="20" y="35" font-family="Microsoft YaHei" font-size="14" fill="#F8FAFC">风机启停状态</text>
+      <g transform="translate(220, 18)">
+        <rect width="60" height="24" rx="12" fill="#10B981" />
+        <circle cx="48" cy="12" r="10" fill="#F8FAFC" />
+      </g>
+      <!-- 档位调节 -->
+      <g transform="translate(0, 80)">
+        <rect width="95" height="40" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" />
+        <text x="47" y="25" font-family="Arial" font-size="14" fill="#FFF" text-anchor="middle" font-weight="bold">HIGH</text>
+        <rect x="102" width="95" height="40" fill="#1E293B" stroke="#334155" />
+        <text x="150" y="25" font-family="Arial" font-size="14" fill="#94A3B8" text-anchor="middle">MID</text>
+        <rect x="205" width="95" height="40" fill="#1E293B" stroke="#334155" />
+        <text x="252" y="25" font-family="Arial" font-size="14" fill="#94A3B8" text-anchor="middle">LOW</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== D区：照明系统 (右下) ==================== -->
+  <g transform="translate(600, 400)">
+    <text x="0" y="20" font-family="Microsoft YaHei" font-size="18" font-weight="bold" fill="#F8FAFC">全息照明 / LIGHTING</text>
+    <g transform="translate(0, 40)">
+      <!-- 氛围灯带 -->
+      <text font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">RGB 霓虹灯带控制</text>
+      <rect y="15" width="300" height="6" rx="3" fill="#A855F7" filter="url(#neonGlow)">
+          <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+      </rect>
+      <g transform="translate(0, 40)">
+        <!-- 灯光矩阵 -->
+        <rect width="145" height="80" fill="#1E293B" stroke="#A855F7" stroke-width="1.5" />
+        <text x="72" y="35" font-family="Microsoft YaHei" font-size="12" fill="#F8FAFC" text-anchor="middle">区域主灯</text>
+        <text x="72" y="60" font-family="Arial" font-size="14" fill="#10B981" text-anchor="middle" font-weight="bold">ON</text>
+
+        <rect x="155" width="145" height="80" fill="#1E293B" stroke="#334155" />
+        <text x="227" y="35" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8" text-anchor="middle">辅助射灯</text>
+        <text x="227" y="60" font-family="Arial" font-size="14" fill="#64748B" text-anchor="middle">OFF</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== 中心：核心状态球 (Scene Orb) ==================== -->
+  <g transform="translate(500, 350)">
+    <!-- 环绕光环 -->
+    <circle r="70" fill="none" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="5,5">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+    </circle>
+    <!-- 核心球体 -->
+    <circle r="55" fill="#1E293B" stroke="#0EA5E9" stroke-width="2" filter="url(#neonGlow)" />
+    <text y="-5" font-family="Microsoft YaHei" font-size="14" font-weight="bold" fill="#0EA5E9" text-anchor="middle">空间场景</text>
+    <text y="20" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle">回家模式</text>
+  </g>
+
+  <!-- 5. 底部装饰：数据流纹理 -->
+  <text x="500" y="640" font-family="Monaco" font-size="10" fill="#3B82F6" fill-opacity="0.3" text-anchor="middle">SYSTEM_ID: SPATIAL_NODE_01 | STATUS: OPERATIONAL | ENCRYPTION: ACTIVE</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg width="1200" height="150" viewBox="0 0 1200 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. 长幅全息底座 -->
+  <path d="M 0 30 L 30 0 L 1170 0 L 1200 30 L 1200 120 L 1170 150 L 30 150 L 0 120 Z" 
+        fill="#1E293B" fill-opacity="0.85" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.3" />
+  
+  <!-- 装饰背景线 -->
+  <path d="M 30 0 L 1170 0" stroke="#0EA5E9" stroke-width="2" filter="url(#neon)" />
+  <path d="M 10 35 L 10 115 M 1190 35 L 1190 115" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.3" />
+
+  <!-- ==================== A区：回风环境监测 (左段) ==================== -->
+  <g transform="translate(40, 35)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="11" fill="#94A3B8" letter-spacing="1">RETURN AIR MONITORING</text>
+    
+    <g transform="translate(0, 35)">
+      <text font-family="Microsoft YaHei" font-size="10" fill="#38BDF8">回风温度</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">24.5<tspan font-size="14" fill="#94A3B8" dx="5">℃</tspan></text>
+    </g>
+    
+    <g transform="translate(120, 35)">
+      <text font-family="Microsoft YaHei" font-size="10" fill="#38BDF8">回风湿度</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">55<tspan font-size="14" fill="#94A3B8" dx="5">%</tspan></text>
+    </g>
+
+    <g transform="translate(240, 35)">
+      <text font-family="Microsoft YaHei" font-size="10" fill="#38BDF8">CO2浓度</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#10B981">450<tspan font-size="12" fill="#94A3B8" dx="5">PPM</tspan></text>
+    </g>
+  </g>
+
+  <!-- 垂直分割线 -->
+  <line x1="380" y1="30" x2="380" y2="120" stroke="#3B82F6" stroke-opacity="0.2" stroke-dasharray="4,4" />
+
+  <!-- ==================== B区：执行器反馈矩阵 (中段) ==================== -->
+  <g transform="translate(410, 35)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="11" fill="#0EA5E9" letter-spacing="1">ACTUATOR REAL-TIME FEEDBACK</text>
+    
+    <g transform="translate(0, 35)">
+      <rect width="120" height="55" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="10" y="18" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">新风阀反馈</text>
+      <text x="110" y="45" font-family="Arial" font-size="24" font-weight="bold" fill="#F8FAFC" text-anchor="end">49<tspan font-size="12" fill="#0EA5E9">%</tspan></text>
+    </g>
+
+    <g transform="translate(135, 0)">
+      <rect width="120" height="55" y="35" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="10" y="53" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">回风阀反馈</text>
+      <text x="110" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="#F8FAFC" text-anchor="end">79<tspan font-size="12" fill="#0EA5E9">%</tspan></text>
+    </g>
+
+    <g transform="translate(270, 0)">
+      <rect width="120" height="55" y="35" fill="#0F172A" fill-opacity="0.6" stroke="#3B82F6" stroke-opacity="0.2" />
+      <text x="10" y="53" font-family="Microsoft YaHei" font-size="10" fill="#94A3B8">冷冻水阀反馈</text>
+      <text x="110" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="#3B82F6" text-anchor="end">39<tspan font-size="12" fill="#3B82F6">%</tspan></text>
+    </g>
+  </g>
+
+  <!-- 垂直分割线 -->
+  <line x1="820" y1="30" x2="820" y2="120" stroke="#3B82F6" stroke-opacity="0.2" stroke-dasharray="4,4" />
+
+  <!-- ==================== C区：送风环境监测 (右段) ==================== -->
+  <g transform="translate(850, 35)">
+    <text x="0" y="0" font-family="Microsoft YaHei" font-size="11" fill="#94A3B8" letter-spacing="1">SUPPLY AIR MONITORING</text>
+    
+    <g transform="translate(0, 35)">
+      <text font-family="Microsoft YaHei" font-size="10" fill="#38BDF8">送风温度</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">18.2<tspan font-size="14" fill="#94A3B8" dx="5">℃</tspan></text>
+    </g>
+    
+    <g transform="translate(150, 35)">
+      <text font-family="Microsoft YaHei" font-size="10" fill="#38BDF8">送风湿度</text>
+      <text y="35" font-family="Arial" font-size="32" font-weight="bold" fill="#F8FAFC">62.8<tspan font-size="14" fill="#94A3B8" dx="5">%</tspan></text>
+    </g>
+  </g>
+
+  <!-- 装饰性闪烁扫描点 -->
+  <circle cx="1180" cy="20" r="3" fill="#10B981" filter="url(#neon)">
+    <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite" />
+  </circle>
+</svg>
