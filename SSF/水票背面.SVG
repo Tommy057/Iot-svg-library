@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540">
+  <defs>
+    <!-- 背景渐变色 -->
+    <linearGradient id="bgGradBack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBE8F6" />
+      <stop offset="100%" stop-color="#9BCBE2" />
+    </linearGradient>
+  </defs>
+
+  <!-- 铺满背景 -->
+  <rect width="900" height="540" fill="url(#bgGradBack)" />
+
+  <!-- 水波纹底纹装饰 (简单的曲线模拟) -->
+  <path d="M 0 200 Q 200 300 450 200 T 900 200" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.3"/>
+  <path d="M 0 400 Q 300 500 600 350 T 900 450" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+
+  <!-- 左上角二维码占位框 (一定要用生成的高清二维码替换！) -->
+  <rect x="100" y="70" width="180" height="180" fill="#ffffff" stroke="#999999" stroke-width="2" rx="10"/>
+  <rect x="110" y="80" width="160" height="160" fill="none" stroke="#cccccc" stroke-dasharray="4,4"/>
+  <text x="190" y="160" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="20" fill="#666666" text-anchor="middle">删除此框</text>
+  <text x="190" y="190" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="20" fill="#666666" text-anchor="middle">替换您的高清二维码</text>
+
+  <!-- 底部：使用须知 -->
+  <text x="80" y="320" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="34" font-weight="bold" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">使用须知：</text>
+  <text x="80" y="320" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="34" font-weight="bold" fill="#DE2C2C">使用须知：</text>
+
+  <!-- 使用须知条款 -->
+  <text x="80" y="375" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1B1439" letter-spacing="1">1、本票盖章有效，一票一桶；</text>
+  <text x="80" y="425" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1B1439" letter-spacing="1">2、请妥善保管遗失不补；</text>
+  <text x="80" y="475" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1B1439" letter-spacing="1">3、本小区内免费配送；</text>
+  <text x="80" y="525" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1B1439" letter-spacing="1">4、本票一经售出概不退换现金。</text>
+
+  <!-- 右侧竖排大字：好水喝出健康来！ -->
+  <g transform="translate(730, 80)">
+    <!-- 底层白边 -->
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="65" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" writing-mode="vertical-rl" letter-spacing="5">好水喝出健康来！</text>
+    <!-- 顶层渐变橙红字 -->
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="65" fill="#E84F25" writing-mode="vertical-rl" letter-spacing="5">好水喝出健康来！</text>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540">
+  <defs>
+    <!-- 背景渐变色 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#84C6E2" />
+      <stop offset="100%" stop-color="#D9F0FA" />
+    </linearGradient>
+  </defs>
+
+  <!-- 铺满背景 -->
+  <rect width="900" height="540" fill="url(#bgGrad)" />
+
+  <!-- 添加几个简单的水泡装饰 -->
+  <circle cx="120" cy="400" r="15" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="280" cy="480" r="8" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="620" cy="450" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 左上角：绿源纯净水 (底层白边 + 顶层黑字) -->
+  <text x="80" y="110" font-family="'STXingkai', '华文行楷', cursive" font-size="65" font-weight="bold" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">绿源纯净水</text>
+  <text x="80" y="110" font-family="'STXingkai', '华文行楷', cursive" font-size="65" font-weight="bold" fill="#111111">绿源纯净水</text>
+
+  <!-- 右上角：天然，无污染 -->
+  <text x="560" y="100" font-family="'STXingkai', '华文行楷', cursive" font-size="32" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">天然，无污染</text>
+  <text x="560" y="100" font-family="'STXingkai', '华文行楷', cursive" font-size="32" fill="#755E69">天然，无污染</text>
+
+  <!-- 中间大字：水票 (底层白边 + 顶层红字) -->
+  <text x="450" y="270" font-family="'STXingkai', '华文行楷', cursive" font-size="170" text-anchor="middle" stroke="#ffffff" stroke-width="16" stroke-linejoin="round">水票</text>
+  <text x="450" y="270" font-family="'STXingkai', '华文行楷', cursive" font-size="170" text-anchor="middle" fill="#DE2C2C">水票</text>
+
+  <!-- 红色圆角矩形标签：一票一桶 -->
+  <rect x="330" y="315" width="240" height="46" rx="23" fill="#E63935" />
+  <text x="450" y="348" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="4">一票一桶</text>
+
+  <!-- 底部联系方式 -->
+  <text x="330" y="420" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#222222">电话：15291145933</text>
+  <text x="330" y="470" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#222222">地址：学院坊小区9号楼1单元102</text>
+
+  <!-- 图片占位框：水桶 (导入CDR后删掉，替换为真实水桶PNG) -->
+  <rect x="50" y="150" width="230" height="340" fill="rgba(255,255,255,0.4)" stroke="#0055ff" stroke-width="2" stroke-dasharray="8,4" rx="10"/>
+  <text x="165" y="310" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="18" fill="#0055ff" text-anchor="middle">在此处放入</text>
+  <text x="165" y="340" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="18" fill="#0055ff" text-anchor="middle">水桶免抠图</text>
+
+  <!-- 图片占位框：送水小哥 (导入CDR后删掉，替换为真实卡通人物PNG) -->
+  <rect x="660" y="150" width="200" height="340" fill="rgba(255,255,255,0.4)" stroke="#0055ff" stroke-width="2" stroke-dasharray="8,4" rx="10"/>
+  <text x="760" y="310" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="18" fill="#0055ff" text-anchor="middle">在此处放入</text>
+  <text x="760" y="340" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="18" fill="#0055ff" text-anchor="middle">送水小哥PNG</text>
+</svg>
