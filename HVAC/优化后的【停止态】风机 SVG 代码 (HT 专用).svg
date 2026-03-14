@@ -1,0 +1,33 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 关键：增加悬浮投影，产生立体高度 -->
+    <filter id="stopFloatShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="0" dy="1.5" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 绘图组 -->
+  <g filter="url(#stopFloatShadow)" transform="translate(30, 30)">
+    
+    <!-- 1. 核心改进：白色外廓背衬 (White Buffer) -->
+    <!-- 这个圆圈比机身稍大，强行遮挡背景线条 -->
+    <circle r="22" fill="#FFFFFF" />
+
+    <!-- 2. 风机外壳：增加白色描边 (The White Rim) -->
+    <circle r="19" fill="#94A3B8" stroke="#FFFFFF" stroke-width="2" />
+    <circle r="19" fill="none" stroke="#64748B" stroke-width="0.5" /> <!-- 极细深灰内边线增加精致感 -->
+
+    <!-- 3. 停止态扇叶：对比度增强 -->
+    <g opacity="0.8">
+      <path d="M-3,-16 Q0,-19 3,-16 L5,-3 Q0,0 -5,-3 Z" fill="#475569" transform="rotate(0)" />
+      <path d="M-3,-16 Q0,-19 3,-16 L5,-3 Q0,0 -5,-3 Z" fill="#475569" transform="rotate(120)" />
+      <path d="M-3,-16 Q0,-19 3,-16 L5,-3 Q0,0 -5,-3 Z" fill="#475569" transform="rotate(240)" />
+    </g>
+
+    <!-- 4. 宝石核心：停止态改为哑光灰 -->
+    <circle r="5" fill="#64748B" stroke="#FFFFFF" stroke-width="1" />
+  </g>
+</svg>
