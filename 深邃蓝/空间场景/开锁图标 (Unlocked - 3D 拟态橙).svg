@@ -1,0 +1,34 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD54F" />
+      <stop offset="100%" stop-color="#FF8A65" />
+    </linearGradient>
+    <linearGradient id="shackleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#BDBDBD" />
+      <stop offset="50%" stop-color="#F5F5F5" />
+      <stop offset="100%" stop-color="#9E9E9E" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 锁钩 (弹开态) -->
+  <g transform="translate(0, -20) rotate(-20, 60, 80)">
+    <path d="M 60 80 L 60 50 A 40 40 0 0 1 140 50 L 140 65" fill="none" stroke="url(#shackleGrad)" stroke-width="22" stroke-linecap="round" />
+  </g>
+  
+  <!-- 2. 锁体 -->
+  <rect x="40" y="75" width="120" height="100" rx="25" fill="url(#bodyGrad)" filter="drop-shadow(0 10 15 rgba(0,0,0,0.3))" />
+  
+  <!-- 3. 高光 -->
+  <rect x="55" y="85" width="90" height="40" rx="15" fill="white" fill-opacity="0.2" />
+
+  <!-- 4. 钥匙孔 (开启时可增加微光) -->
+  <g>
+    <circle cx="100" cy="115" r="12" fill="#3E2723" />
+    <path d="M 92 115 L 108 115 L 115 145 L 85 145 Z" fill="#3E2723" />
+    <!-- 内部透出的光 -->
+    <circle cx="100" cy="115" r="5" fill="#FFD54F">
+        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

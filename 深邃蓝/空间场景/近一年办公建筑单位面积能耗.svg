@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="40" viewBox="0 0 580 40">
+  <defs>
+    <!-- 提取自原图：顶部纯白、底部浅蓝的平滑过渡渐变 -->
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#a4bff2" />
+    </linearGradient>
+  </defs>
+
+  <!-- 
+    1. skewX(-14): 完美复刻原图的科技风倾斜角度
+    2. font-weight="900": 还原原图极粗的笔划效果
+    3. 字体栈优先使用了大屏常用的标题黑体，如果没有则回退到加粗微软雅黑
+  -->
+  <text 
+    x="20" 
+    y="28" 
+    font-family="'YouSheBiaoTiHei', 'PangMenZhengDao', 'Arial Black', 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif" 
+    font-size="24" 
+    font-weight="900" 
+    fill="url(#techGradient)"
+    letter-spacing="1"
+    transform="skewX(-14)"
+  >近一年办公建筑单位面积能耗 ( kWh/(a.m2) )</text>
+</svg>

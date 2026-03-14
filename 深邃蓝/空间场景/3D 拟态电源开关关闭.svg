@@ -1,0 +1,21 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 灰色磨砂渐变 -->
+    <linearGradient id="offGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 按钮主体 (沉稳态) -->
+  <circle cx="75" cy="75" r="50" fill="url(#offGrad)" filter="drop-shadow(0 4 6 rgba(0,0,0,0.4))" />
+  <circle cx="75" cy="75" r="48" fill="none" stroke="white" stroke-width="1" stroke-opacity="0.05" />
+
+  <!-- 2. 电源图标 (暗色态) -->
+  <g opacity="0.3">
+    <path d="M 75 45 L 75 65 M 60 52 A 20 20 0 1 0 90 52" fill="none" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <!-- 3. 状态文字 -->
+  <text x="75" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#64748B" text-anchor="middle">OFFLINE</text>
+</svg>

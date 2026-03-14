@@ -1,0 +1,94 @@
+<svg width="600" height="500" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <!-- 3.D 拟物阴影 -->
+    <filter id="clayShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- 1. 背景底座 -->
+  <path d="M 30 50 L 570 50 L 590 70 L 590 430 L 570 450 L 30 450 L 10 430 L 10 70 Z" 
+        fill="#1E293B" fill-opacity="0.85" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.3" />
+
+  <!-- 2. 顶部状态栏 (在线/电源) -->
+  <g transform="translate(40, 20)">
+    <!-- 在线状态 -->
+    <rect width="80" height="24" rx="12" fill="#10B981" fill-opacity="0.1" stroke="#10B981" />
+    <circle cx="12" cy="12" r="4" fill="#10B981">
+        <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <text x="22" y="17" font-family="Microsoft YaHei" font-size="11" fill="#10B981">设备在线</text>
+    
+    <!-- 电源开关 (拟物按钮感) -->
+    <g transform="translate(450, -5)">
+      <rect width="80" height="34" rx="17" fill="#10B981" filter="url(#clayShadow)" />
+      <circle cx="60" cy="17" r="12" fill="#F8FAFC" />
+      <text x="-10" y="22" font-family="Microsoft YaHei" font-size="14" fill="#F8FAFC" text-anchor="end" font-weight="bold">POWER ON</text>
+    </g>
+  </g>
+
+  <!-- 3. 中央温度控制枢纽 -->
+  <g transform="translate(300, 240)">
+    <!-- 目标温度调节环 (16-32度) -->
+    <circle r="140" fill="none" stroke="#0F172A" stroke-width="20" />
+    <!-- 22度位置的进度条 -->
+    <path d="M -130 50 A 140 140 0 1 1 130 50" fill="none" stroke="#334155" stroke-width="12" stroke-linecap="round" />
+    <path d="M -130 50 A 140 140 0 0 1 -40 -134" fill="none" stroke="#38BDF8" stroke-width="12" stroke-linecap="round" filter="url(#neonGlow)" />
+    
+    <!-- 调节手柄 (3D 拟态) -->
+    <circle cx="-40" cy="-134" r="15" fill="#38BDF8" filter="url(#clayShadow)" stroke="#F8FAFC" stroke-width="2" />
+
+    <!-- 当前温度大数字 -->
+    <text y="-20" font-family="Arial" font-size="14" fill="#94A3B8" text-anchor="middle">CURRENT TEMP</text>
+    <text y="40" font-family="Arial" font-size="72" font-weight="bold" fill="#F8FAFC" text-anchor="middle">24.5<tspan font-size="24" dy="-30">℃</tspan></text>
+    
+    <!-- 目标温度设定数值 -->
+    <rect y="60" x="-45" width="90" height="30" rx="15" fill="#0F172A" />
+    <text y="81" font-family="Arial" font-size="16" font-weight="bold" fill="#38BDF8" text-anchor="middle">SET: 22.0℃</text>
+  </g>
+
+  <!-- 4. 模式切换 (通风/制冷) -->
+  <g transform="translate(50, 120)">
+    <text font-family="Microsoft YaHei" font-size="13" fill="#94A3B8">工作模式</text>
+    <!-- 制冷 (Active) -->
+    <g transform="translate(0, 20)">
+      <rect width="100" height="40" rx="4" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8" stroke-width="2" />
+      <text x="50" y="25" font-family="Microsoft YaHei" font-size="14" fill="#F8FAFC" text-anchor="middle" font-weight="bold">❄ 制冷</text>
+    </g>
+    <!-- 通通 (Inactive) -->
+    <g transform="translate(0, 70)">
+      <rect width="100" height="40" rx="4" fill="#0F172A" stroke="#334155" />
+      <text x="50" y="25" font-family="Microsoft YaHei" font-size="14" fill="#64748B" text-anchor="middle">🌀 通风</text>
+    </g>
+  </g>
+
+  <!-- 5. 风速控制 (低/中/高/自动) -->
+  <g transform="translate(450, 120)">
+    <text font-family="Microsoft YaHei" font-size="13" fill="#94A3B8" text-anchor="end" x="100">风速调节</text>
+    <g transform="translate(0, 20)">
+      <rect x="20" width="80" height="30" fill="#0F172A" stroke="#334155" /> <text x="60" y="20" font-family="Microsoft YaHei" font-size="11" fill="#64748B" text-anchor="middle">低速</text>
+      <rect x="20" y="35" width="80" height="30" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8" stroke-width="1.5" /> <text x="60" y="55" font-family="Microsoft YaHei" font-size="11" fill="#F8FAFC" text-anchor="middle">中速</text>
+      <rect x="20" y="70" width="80" height="30" fill="#0F172A" stroke="#334155" /> <text x="60" y="90" font-family="Microsoft YaHei" font-size="11" fill="#64748B" text-anchor="middle">高速</text>
+      <rect x="20" y="105" width="80" height="30" fill="#0F172A" stroke="#334155" /> <text x="60" y="125" font-family="Microsoft YaHei" font-size="11" fill="#64748B" text-anchor="middle">自动</text>
+    </g>
+  </g>
+
+  <!-- 6. 动态风扇预览 (随着风速旋转) -->
+  <g transform="translate(50, 350)">
+    <circle r="40" fill="#0F172A" stroke="#3B82F6" stroke-width="1" stroke-dasharray="4,2" />
+    <g>
+      <path d="M -25 0 L 25 0 M 0 -25 L 0 25" stroke="#38BDF8" stroke-width="6" stroke-linecap="round" filter="url(#neonGlow)">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.5s" repeatCount="indefinite" />
+      </path>
+      <circle r="6" fill="#F8FAFC" />
+    </g>
+    <text y="60" font-family="Arial" font-size="10" fill="#94A3B8" text-anchor="middle">FAN SPEED: MID</text>
+  </g>
+
+  <!-- 底部饰线条 -->
+  <path d="M 50 480 L 550 480" stroke="#3B82F6" stroke-width="1" stroke-dasharray="10,5" stroke-opacity="0.3" />
+</svg>

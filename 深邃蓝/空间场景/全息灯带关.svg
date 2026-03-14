@@ -1,0 +1,19 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 深灰色渐变底座 -->
+    <linearGradient id="offBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 3D 拟物底座 -->
+  <rect x="40" y="40" width="100" height="100" rx="20" fill="url(#offBase)" filter="drop-shadow(0 4 6 rgba(0,0,0,0.4))" />
+  <rect x="40" y="40" width="100" height="100" rx="20" fill="none" stroke="white" stroke-opacity="0.05" stroke-width="1" />
+
+  <!-- 2. 核心灯带图标 (熄灭态) -->
+  <path d="M 60 90 L 120 90" stroke="#64748B" stroke-width="8" stroke-linecap="round" stroke-opacity="0.4" />
+  
+  <!-- 3. 状态标签 -->
+  <text x="90" y="160" font-family="Arial" font-size="12" font-weight="bold" fill="#64748B" text-anchor="middle">STRIP OFF</text>
+</svg>
