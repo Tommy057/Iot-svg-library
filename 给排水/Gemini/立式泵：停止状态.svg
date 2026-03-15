@@ -1,0 +1,60 @@
+<svg width="200" height="280" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 停止态机身渐变 (深灰-中灰-冷灰) -->
+    <linearGradient id="bodyStop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="30%" stop-color="#475569" />
+      <stop offset="45%" stop-color="#94A3B8" />
+      <stop offset="60%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <!-- 停止态宝石核心 -->
+    <radialGradient id="gemStop" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#64748B" />
+    </radialGradient>
+
+    <linearGradient id="shineStop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="100" cy="265" rx="45" ry="6" fill="#000000" fill-opacity="0.1" />
+
+  <g transform="translate(55, 10)">
+    <rect x="35" y="0" width="20" height="8" rx="1" fill="#1E293B" />
+    <rect x="25" y="8" width="40" height="15" rx="2" fill="url(#bodyStop)" />
+    <path d="M15,23 L75,23 L70,85 L20,85 Z" fill="url(#bodyStop)" />
+    
+    <!-- 法兰连接处 -->
+    <rect x="10" y="85" width="70" height="12" rx="2" fill="#1E293B" />
+    <circle cx="20" cy="91" r="1.5" fill="#94A3B8" opacity="0.5" />
+    <circle cx="45" cy="91" r="1.5" fill="#94A3B8" opacity="0.5" />
+    <circle cx="70" cy="91" r="1.5" fill="#94A3B8" opacity="0.5" />
+
+    <path d="M10,97 L80,97 L85,190 Q85,200 75,200 L15,200 Q5,200 5,190 Z" fill="url(#bodyStop)" />
+
+    <!-- 侧向出口 -->
+    <g transform="translate(-25, 160)">
+      <rect x="0" y="5" width="35" height="25" fill="#475569" />
+      <rect x="-6" y="0" width="10" height="35" rx="1" fill="#1E293B" />
+      <rect x="25" y="5" width="10" height="25" fill="#000000" fill-opacity="0.1" />
+    </g>
+
+    <g stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="0.5">
+      <line x1="30" y1="23" x2="25" y2="85" />
+      <line x1="45" y1="23" x2="45" y2="85" />
+      <line x1="60" y1="23" x2="65" y2="85" />
+    </g>
+
+    <g transform="translate(45, 55)">
+      <circle r="12" fill="#1E293B" /> 
+      <circle r="8" fill="url(#gemStop)" stroke="#FFFFFF" stroke-width="1" />
+      <circle cx="-3" cy="-3" r="2" fill="#FFFFFF" fill-opacity="0.3" />
+    </g>
+
+    <rect x="35" y="23" width="8" height="177" fill="url(#shineStop)" />
+  </g>
+</svg>
