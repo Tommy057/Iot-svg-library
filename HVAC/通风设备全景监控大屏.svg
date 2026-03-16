@@ -1,0 +1,157 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 核心滤镜：悬浮感阴影 -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- 宝石发光 -->
+    <filter id="glowGreen"><feGaussianBlur stdDeviation="2.5"/><feComposite in="SourceGraphic" operator="over"/></filter>
+    <filter id="glowRed"><feGaussianBlur stdDeviation="2.5"/><feComposite in="SourceGraphic" operator="over"/></filter>
+
+    <!-- 各区域标题渐变集 -->
+    <linearGradient id="gradUnder" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EFF6FF"/><stop offset="1" stop-color="#DBEAFE"/></linearGradient>
+    <linearGradient id="gradBuilding" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F5F3FF"/><stop offset="1" stop-color="#EDE9FE"/></linearGradient>
+  </defs>
+
+  <!-- 1. 全局背景 -->
+  <rect width="1920" height="1080" fill="#F8FAFC" />
+
+  <!-- 2. 顶部导航/全局统计 -->
+  <g transform="translate(40, 30)" filter="url(#cardShadow)">
+    <rect width="1840" height="100" rx="12" fill="#FFFFFF" stroke="#E2E8F0" />
+    <rect width="6" height="32" x="30" y="34" rx="3" fill="#2563EB" />
+    <text x="50" y="58" font-family="'Microsoft YaHei'" font-size="24" font-weight="bold" fill="#0F172A">园区通风系统全景总览 (Smart Ventilation Monitor)</text>
+    
+    <g transform="translate(900, 35)">
+      <text x="0" y="0" font-size="12" fill="#94A3B8">设备总数</text>
+      <text x="0" y="35" font-size="36" font-weight="bold" fill="#0F172A">842</text>
+      <text x="250" y="0" font-size="12" fill="#94A3B8">运行中</text>
+      <text x="250" y="35" font-size="36" font-weight="bold" fill="#10B981">816</text>
+      <text x="500" y="0" font-size="12" fill="#94A3B8">故障中</text>
+      <text x="500" y="35" font-size="36" font-weight="bold" fill="#EF4444">26</text>
+    </g>
+  </g>
+
+  <!-- ======================= 第一排：地下区域 (BMF, B1F, B2F, B3F) ======================= -->
+  <g transform="translate(40, 160)">
+    <!-- 卡片公共宽度: 440px, 间距: 26.6px -->
+    
+    <!-- 1. BMF 地下夹层 -->
+    <g transform="translate(0, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="url(#gradUnder)" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" filter="url(#glowGreen)" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#1E40AF">地下夹层 BMF</text>
+      <!-- 数据列表注入 -->
+      <g transform="translate(20, 75)">
+         <!-- SF Row -->
+         <rect width="400" height="90" rx="12" fill="#F8FAFC" />
+         <circle cx="45" cy="45" r="32" fill="#0F172A" />
+         <text x="45" y="50" text-anchor="middle" font-size="10" fill="#94A3B8" font-weight="bold">SF</text>
+         <text x="90" y="35" font-size="14" font-weight="bold" fill="#475569">送风机总数</text>
+         <text x="90" y="65" font-size="24" font-weight="bold" fill="#0F172A">32 <tspan font-size="12" fill="#10B981">/ 运行 32</tspan> <tspan font-size="12" fill="#EF4444">/ 故障 0</tspan></text>
+         <!-- EF Row -->
+         <g transform="translate(0, 105)">
+            <rect width="400" height="90" rx="12" fill="#F8FAFC" />
+            <circle cx="45" cy="45" r="32" fill="#0F172A" />
+            <text x="45" y="50" text-anchor="middle" font-size="10" fill="#94A3B8" font-weight="bold">EF</text>
+            <text x="90" y="35" font-size="14" font-weight="bold" fill="#475569">排风机总数</text>
+            <text x="90" y="65" font-size="24" font-weight="bold" fill="#0F172A">24 <tspan font-size="12" fill="#10B981">/ 运行 22</tspan> <tspan font-size="12" fill="#EF4444">/ 故障 2</tspan></text>
+         </g>
+         <!-- PF Row -->
+         <g transform="translate(0, 210)">
+            <rect width="400" height="90" rx="12" fill="#F8FAFC" />
+            <circle cx="45" cy="45" r="32" fill="#0F172A" />
+            <text x="45" y="50" text-anchor="middle" font-size="10" fill="#94A3B8" font-weight="bold">PF</text>
+            <text x="90" y="35" font-size="14" font-weight="bold" fill="#475569">加压风机总数</text>
+            <text x="90" y="65" font-size="24" font-weight="bold" fill="#0F172A">12 <tspan font-size="12" fill="#10B981">/ 运行 12</tspan> <tspan font-size="12" fill="#EF4444">/ 故障 0</tspan></text>
+         </g>
+      </g>
+    </g>
+
+    <!-- 2. B1F 地下一层 -->
+    <g transform="translate(466, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#ECFEFF" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" filter="url(#glowGreen)" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#0891B2">地下一层 B1F</text>
+      <!-- 数据结构同上，数值变化 -->
+      <g transform="translate(20, 75)">
+         <rect width="400" height="90" rx="12" fill="#F8FAFC" /><text x="90" y="65" font-size="24" font-weight="bold">56 / 54 / 2</text>
+         <g transform="translate(0, 105)"><rect width="400" height="90" rx="12" fill="#F8FAFC" /><text x="90" y="65" font-size="24" font-weight="bold">42 / 42 / 0</text></g>
+         <g transform="translate(0, 210)"><rect width="400" height="90" rx="12" fill="#F8FAFC" /><text x="90" y="65" font-size="24" font-weight="bold">18 / 18 / 0</text></g>
+      </g>
+    </g>
+
+    <!-- 3. B2F 地下二层 -->
+    <g transform="translate(932, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#F0F9FF" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#EF4444" filter="url(#glowRed)" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#1E40AF">地下二层 B2F</text>
+      <!-- 数据略 -->
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">B2F 详情数据</text>
+    </g>
+
+    <!-- 4. B3F 地下三层 -->
+    <g transform="translate(1398, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#F1F5F9" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#94A3B8" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#334155">地下三层 B3F</text>
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">B3F 详情数据</text>
+    </g>
+  </g>
+
+  <!-- ======================= 第二排：地面建筑 (研发楼, 宿舍楼, 综合楼, 厂房) ======================= -->
+  <g transform="translate(40, 620)">
+    <!-- 5. 研发楼 -->
+    <g transform="translate(0, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="url(#gradBuilding)" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" filter="url(#glowGreen)" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#5B21B6">研发楼 R&amp;D Center</text>
+      <!-- 数据略 -->
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">研发楼 详情数据</text>
+    </g>
+
+    <!-- 6. 宿舍楼 -->
+    <g transform="translate(466, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#FFFBEB" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#F59E0B" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#92400E">宿舍楼 Dormitory</text>
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">宿舍楼 详情数据</text>
+    </g>
+
+    <!-- 7. 综合楼 -->
+    <g transform="translate(932, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#FFF1F2" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#9F1239">综合楼 Complex</text>
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">综合楼 详情数据</text>
+    </g>
+
+    <!-- 8. 生产厂房 -->
+    <g transform="translate(1398, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="420" rx="16" fill="#FFFFFF" stroke="#E2E8F0" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,50 L0,50 Z" fill="#F0FDFA" />
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" />
+      <text x="55" y="32" font-size="16" font-weight="bold" fill="#0D9488">生产厂房 Factory</text>
+      <text x="220" y="240" text-anchor="middle" fill="#94A3B8">生产厂房 详情数据</text>
+    </g>
+  </g>
+</svg>

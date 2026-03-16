@@ -1,0 +1,151 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 柔和弥散阴影 -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <!-- 宝石发光滤镜 -->
+    <filter id="gemGlowGreen"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <filter id="gemGlowRed"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+
+    <!-- 渐变定义 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+  </defs>
+
+  <!-- 💡 背景基调 -->
+  <rect width="1200" height="800" fill="#F9FAFB" />
+
+  <!-- 🚀 1. 顶部全局总览栏 -->
+  <g transform="translate(20, 20)" filter="url(#softShadow)">
+    <rect width="1160" height="100" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" />
+    <line x1="40" y1="35" x2="40" y2="65" stroke="#2563EB" stroke-width="4" />
+    <text x="55" y="58" font-family="'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#1E293B">园区通风系统总览</text>
+    
+    <!-- 全局统计项 -->
+    <g transform="translate(350, 0)">
+      <text x="0" y="35" font-size="12" fill="#94A3B8">设备总数</text>
+      <text x="0" y="75" font-size="32" font-weight="bold" fill="#1E293B">586</text>
+      
+      <text x="150" y="35" font-size="12" fill="#94A3B8">正常运行</text>
+      <text x="150" y="75" font-size="32" font-weight="bold" fill="#10B981">572</text>
+      
+      <text x="300" y="35" font-size="12" fill="#94A3B8">严重故障</text>
+      <text x="300" y="75" font-size="32" font-weight="bold" fill="#EF4444">14</text>
+    </g>
+
+    <!-- 全局警报胶囊 -->
+    <g transform="translate(1000, 25)">
+      <rect width="120" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" />
+      <text x="30" y="32" font-size="24" font-weight="bold" fill="#B91C1C">14</text>
+      <text x="70" y="32" font-size="14" font-weight="bold" fill="#B91C1C">告警</text>
+    </g>
+  </g>
+
+  <!-- 🚀 2. 地下室区域展示 (Grid Layout) -->
+  <text x="30" y="160" font-family="'Microsoft YaHei'" font-size="16" font-weight="bold" fill="#64748B">地下区域通风监测 (Underground)</text>
+
+  <!-- 示例卡片生成逻辑 (BMF) -->
+  <g transform="translate(20, 180)">
+    <!-- 卡片1: BMF -->
+    <g transform="translate(0, 0)" filter="url(#softShadow)">
+      <rect width="275" height="280" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
+      <rect width="275" height="50" rx="12" fill="url(#headerGrad)" />
+      <path d="M0,40 L0,50 L275,50 L275,40 Z" fill="#F1F5F9" /> <!-- 修正顶部圆角过渡 -->
+      
+      <!-- 空间图标 (黑金拟态) -->
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#10B981" filter="url(#gemGlowGreen)" />
+      <text x="55" y="32" font-weight="bold" fill="#1E293B">地下夹层 BMF</text>
+      <text x="255" y="32" text-anchor="end" font-size="11" fill="#EF4444" font-weight="bold">2 告警</text>
+
+      <!-- 数据内容区 (三维度展示) -->
+      <g transform="translate(15, 75)">
+        <!-- 表头 -->
+        <text x="0" y="0" font-size="11" fill="#94A3B8">风机类型</text>
+        <text x="100" y="0" font-size="11" fill="#94A3B8">总数</text>
+        <text x="160" y="0" font-size="11" fill="#94A3B8">运行</text>
+        <text x="220" y="0" font-size="11" fill="#94A3B8">故障</text>
+        
+        <!-- 送风机 SF -->
+        <g transform="translate(0, 35)">
+          <rect width="245" height="30" rx="4" fill="#F8FAFC" />
+          <text x="8" y="20" font-size="12" font-weight="bold" fill="#1E293B">SF 送风</text>
+          <text x="100" y="20" font-size="14" font-weight="bold" fill="#1E293B">24</text>
+          <text x="160" y="20" font-size="14" font-weight="bold" fill="#10B981">23</text>
+          <text x="220" y="20" font-size="14" font-weight="bold" fill="#EF4444">1</text>
+        </g>
+        
+        <!-- 排风机 EF -->
+        <g transform="translate(0, 75)">
+          <rect width="245" height="30" rx="4" fill="#F8FAFC" />
+          <text x="8" y="20" font-size="12" font-weight="bold" fill="#1E293B">EF 排风</text>
+          <text x="100" y="20" font-size="14" font-weight="bold" fill="#1E293B">18</text>
+          <text x="160" y="20" font-size="14" font-weight="bold" fill="#10B981">18</text>
+          <text x="220" y="20" font-size="14" font-weight="bold" fill="#64748B">0</text>
+        </g>
+
+        <!-- 加压风机 PF -->
+        <g transform="translate(0, 115)">
+          <rect width="245" height="30" rx="4" fill="#F8FAFC" />
+          <text x="8" y="20" font-size="12" font-weight="bold" fill="#1E293B">PF 加压</text>
+          <text x="100" y="20" font-size="14" font-weight="bold" fill="#1E293B">12</text>
+          <text x="160" y="20" font-size="14" font-weight="bold" fill="#10B981">11</text>
+          <text x="220" y="20" font-size="14" font-weight="bold" fill="#EF4444">1</text>
+        </g>
+      </g>
+
+      <!-- 底部健康度 -->
+      <g transform="translate(15, 245)">
+        <text x="0" y="0" font-size="11" fill="#94A3B8">设备正常率</text>
+        <text x="245" y="0" text-anchor="end" font-size="12" font-weight="bold" fill="#10B981">96%</text>
+        <rect y="10" width="245" height="6" rx="3" fill="#E2E8F0" />
+        <rect y="10" width="235" height="6" rx="3" fill="#10B981" />
+      </g>
+    </g>
+
+    <!-- 卡片2: B1F (位置平移) -->
+    <g transform="translate(295, 0)" filter="url(#softShadow)">
+       <!-- ... 重复结构，仅修改标题和数值 ... -->
+       <rect width="275" height="280" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
+       <rect width="275" height="50" rx="12" fill="#ECFEFF" /> <!-- B1F 采用青色标题背景 -->
+       <text x="55" y="32" font-weight="bold" fill="#0E7490">地下一层 B1F</text>
+       <text x="255" y="32" text-anchor="end" font-size="11" fill="#10B981" font-weight="bold">运行中</text>
+       <text x="137" y="160" font-size="12" fill="#94A3B8" text-anchor="middle">数据同上结构...</text>
+    </g>
+
+    <!-- 卡片3: B2F -->
+    <g transform="translate(590, 0)" filter="url(#softShadow)">
+       <rect width="275" height="280" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
+       <rect width="275" height="50" rx="12" fill="#F0F9FF" /> <!-- B2F 采用蓝色标题背景 -->
+       <text x="55" y="32" font-weight="bold" fill="#1E40AF">地下二层 B2F</text>
+    </g>
+  </g>
+
+  <!-- 🚀 3. 楼宇区域展示 -->
+  <text x="30" y="500" font-family="'Microsoft YaHei'" font-size="16" font-weight="bold" fill="#64748B">地面楼宇通风监测 (Buildings)</text>
+  <g transform="translate(20, 520)">
+    <!-- 宿舍楼示例 -->
+    <g filter="url(#softShadow)">
+      <rect width="275" height="250" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
+      <rect width="275" height="50" rx="12" fill="#F5F3FF" /> <!-- 楼宇采用紫色调 -->
+      <rect x="15" y="10" width="30" height="30" rx="6" fill="#0F172A" />
+      <circle cx="30" cy="25" r="3" fill="#F59E0B" filter="url(#gemGlowGreen)" /> <!-- 警告态 -->
+      <text x="55" y="32" font-weight="bold" fill="#5B21B6">宿舍楼 Dormitory</text>
+      <!-- 数值区域省略，保持与上方一致 -->
+      <text x="137" y="150" font-size="14" font-weight="bold" fill="#94A3B8" text-anchor="middle">宿舍楼通风统计</text>
+    </g>
+    
+    <g transform="translate(295, 0)" filter="url(#softShadow)">
+      <rect width="275" height="250" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
+      <rect width="275" height="50" rx="12" fill="#FFFBEB" /> <!-- 厂房采用橙黄色调 -->
+      <text x="55" y="32" font-weight="bold" fill="#92400E">生产厂房 Factory</text>
+    </g>
+  </g>
+</svg>

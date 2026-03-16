@@ -1,0 +1,143 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 基础滤镜：柔和悬浮阴影 -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="6" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.12"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- 宝石发光滤镜 -->
+    <filter id="glowGreen"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <filter id="glowRed"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+
+    <!-- 标题栏渐变 -->
+    <linearGradient id="blueHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EFF6FF" />
+      <stop offset="100%" stop-color="#DBEAFE" />
+    </linearGradient>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="1920" height="1080" fill="#F3F4F6" />
+
+  <!-- 🚀 顶部：全局状态看板 (饱满跨度) -->
+  <g transform="translate(40, 30)" filter="url(#cardShadow)">
+    <rect width="1840" height="120" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" />
+    <rect width="8" height="40" x="40" y="40" rx="4" fill="#2563EB" />
+    <text x="65" y="72" font-family="'Microsoft YaHei', sans-serif" font-size="28" font-weight="bold" fill="#1E293B">园区通风系统全景总览 (Smart Ventilation Dashboard)</text>
+    
+    <!-- 全局核心指标 -->
+    <g transform="translate(850, 0)">
+      <text x="0" y="50" font-size="14" fill="#94A3B8">通风设备总数</text>
+      <text x="0" y="95" font-size="42" font-weight="bold" fill="#1E293B">1,284</text>
+      
+      <text x="250" y="50" font-size="14" fill="#94A3B8">当前在线运行</text>
+      <text x="250" y="95" font-size="42" font-weight="bold" fill="#10B981">1,242</text>
+      
+      <text x="500" y="50" font-size="14" fill="#94A3B8">异常待检故障</text>
+      <text x="500" y="95" font-size="42" font-weight="bold" fill="#EF4444">42</text>
+    </g>
+
+    <!-- 告警状态块 -->
+    <g transform="translate(1650, 30)">
+      <rect width="150" height="60" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2" />
+      <text x="75" y="40" font-size="32" font-weight="bold" fill="#B91C1C" text-anchor="middle">42 <tspan font-size="14">告警</tspan></text>
+    </g>
+  </g>
+
+  <!-- 🚀 第一排：地下区域 (BMF, B1F, B2F, B3F) -->
+  <!-- 每一列卡片宽度约 440px -->
+  <g transform="translate(40, 180)">
+    <!-- 空间卡片模版：BMF (其余同理) -->
+    <g transform="translate(0, 0)" filter="url(#cardShadow)">
+      <rect width="440" height="400" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,60 L0,60 Z" fill="url(#blueHeader)" />
+      
+      <!-- 空间图标：黑金基座 -->
+      <rect x="20" y="12" width="36" height="36" rx="8" fill="#0F172A" />
+      <circle cx="38" cy="30" r="3.5" fill="#10B981" filter="url(#glowGreen)" />
+      <text x="70" y="38" font-size="18" font-weight="bold" fill="#1E40AF">地下室夹层 BMF</text>
+      
+      <!-- 风机统计矩阵 -->
+      <g transform="translate(20, 80)">
+        <!-- 表头 -->
+        <text x="70" y="10" font-size="12" fill="#94A3B8">设备类型</text>
+        <text x="210" y="10" font-size="12" fill="#94A3B8" text-anchor="middle">总数</text>
+        <text x="300" y="10" font-size="12" fill="#94A3B8" text-anchor="middle">运行</text>
+        <text x="390" y="10" font-size="12" fill="#94A3B8" text-anchor="middle">故障</text>
+
+        <!-- 1. SF 送风机行 -->
+        <g transform="translate(0, 30)">
+          <rect width="400" height="80" rx="12" fill="#F8FAFC" />
+          <!-- 拟态图标预览 (3叶) -->
+          <circle cx="35" cy="40" r="28" fill="#0F172A" />
+          <path d="M35,20 L38,38 L32,38 Z" fill="#94A3B8" transform="rotate(0, 35, 40)" />
+          <path d="M35,20 L38,38 L32,38 Z" fill="#94A3B8" transform="rotate(120, 35, 40)" />
+          <path d="M35,20 L38,38 L32,38 Z" fill="#94A3B8" transform="rotate(240, 35, 40)" />
+          <circle cx="35" cy="40" r="3" fill="#10B981" />
+          
+          <text x="75" y="45" font-size="16" font-weight="bold" fill="#334155">SF 送风机</text>
+          <text x="210" y="47" font-size="22" font-weight="bold" fill="#1E293B" text-anchor="middle">48</text>
+          <text x="300" y="47" font-size="22" font-weight="bold" fill="#16A34A" text-anchor="middle">46</text>
+          <text x="390" y="47" font-size="22" font-weight="bold" fill="#EF4444" text-anchor="middle">2</text>
+        </g>
+
+        <!-- 2. EF 排风机行 -->
+        <g transform="translate(0, 125)">
+          <rect width="400" height="80" rx="12" fill="#F8FAFC" />
+          <!-- 拟态图标预览 (4叶) -->
+          <circle cx="35" cy="40" r="28" fill="#0F172A" />
+          <rect x="20" y="38" width="30" height="4" fill="#94A3B8" rx="2" />
+          <rect x="20" y="38" width="30" height="4" fill="#94A3B8" rx="2" transform="rotate(90, 35, 40)" />
+          <circle cx="35" cy="40" r="3" fill="#10B981" />
+          
+          <text x="75" y="45" font-size="16" font-weight="bold" fill="#334155">EF 排风机</text>
+          <text x="210" y="47" font-size="22" font-weight="bold" fill="#1E293B" text-anchor="middle">32</text>
+          <text x="300" y="47" font-size="22" font-weight="bold" fill="#16A34A" text-anchor="middle">32</text>
+          <text x="390" y="47" font-size="22" font-weight="bold" fill="#64748B" text-anchor="middle">0</text>
+        </g>
+
+        <!-- 3. PF 加压风机行 -->
+        <g transform="translate(0, 220)">
+          <rect width="400" height="80" rx="12" fill="#F8FAFC" />
+          <!-- 拟态图标预览 (6叶) -->
+          <circle cx="35" cy="40" r="28" fill="#0F172A" />
+          <circle cx="35" cy="40" r="18" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4,2" />
+          <circle cx="35" cy="40" r="3" fill="#EF4444" />
+          
+          <text x="75" y="45" font-size="16" font-weight="bold" fill="#334155">PF 加压风机</text>
+          <text x="210" y="47" font-size="22" font-weight="bold" fill="#1E293B" text-anchor="middle">12</text>
+          <text x="300" y="47" font-size="22" font-weight="bold" fill="#16A34A" text-anchor="middle">10</text>
+          <text x="390" y="47" font-size="22" font-weight="bold" fill="#EF4444" text-anchor="middle">2</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 其余地下室卡片 (B1F, B2F, B3F) 横向排列 -->
+    <g transform="translate(465, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">B1F 卡片结构同上...</text></g>
+    <g transform="translate(930, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">B2F 卡片结构同上...</text></g>
+    <g transform="translate(1395, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">B3F 卡片结构同上...</text></g>
+  </g>
+
+  <!-- 🚀 第二排：地面楼宇 (研发楼, 宿舍楼, 综合楼, 生产厂房) -->
+  <g transform="translate(40, 610)">
+    <!-- 研发楼示例 -->
+    <g filter="url(#cardShadow)">
+      <rect width="440" height="400" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
+      <path d="M0,16 Q0,0 16,0 L424,0 Q440,0 440,16 L440,60 L0,60 Z" fill="#F5F3FF" />
+      <rect x="20" y="12" width="36" height="36" rx="8" fill="#0F172A" />
+      <circle cx="38" cy="30" r="3.5" fill="#EF4444" filter="url(#glowRed)" />
+      <text x="70" y="38" font-size="18" font-weight="bold" fill="#5B21B6">研发楼 R&amp;D Building</text>
+      
+      <!-- 这里嵌入与上方完全一致的风机列表结构，确保饱满 -->
+      <text x="220" y="230" text-anchor="middle" font-size="14" fill="#94A3B8">风机列表详情 (SF/EF/PF Matrix)</text>
+    </g>
+
+    <!-- 宿舍楼, 综合楼, 厂房依次排列 -->
+    <g transform="translate(465, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">宿舍楼卡片...</text></g>
+    <g transform="translate(930, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">综合楼卡片...</text></g>
+    <g transform="translate(1395, 0)"><text x="220" y="200" text-anchor="middle" fill="#94A3B8">生产厂房卡片...</text></g>
+  </g>
+</svg>

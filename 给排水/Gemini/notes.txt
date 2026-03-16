@@ -1,0 +1,314 @@
+1. 波浪前景色 (waveForeground)
+逻辑：根据状态返回对应的【宝石质感】渐变色数组。
+code
+JavaScript
+var level1 = data.a("level.hi");
+var level2 = data.a("level.nor");
+var level3 = data.a("level.low");
+
+if (level1 == 1) {
+    return ["#991B1B", "#EF4444"]; // 故障红
+}
+if (level2 == 1) {
+    return ["#0369A1", "#38BDF8"]; // 科技蓝
+}
+if (level3 == 1) {
+    return ["#92400E", "#F59E0B"]; // 警告橙
+}
+return ["#94A3B8", "#64748B"]; // 默认灰色
+2. 波浪背景色 (waveBackground)
+逻辑：返回浅色的半透明背景，确保“纯净白”风格的一致性。
+code
+JavaScript
+var level1 = data.a("level.hi");
+var level2 = data.a("level.nor");
+var level3 = data.a("level.low");
+
+if (level1 == 1) {
+    return "#FEF2F2"; // 极浅红
+}
+if (level2 == 1) {
+    return "#F0F9FF"; // 极浅蓝
+}
+if (level3 == 1) {
+    return "#FFFBEB"; // 极浅橙
+}
+return "#F8FAFC"; // 默认浅灰
+3. 波浪水位 (waveRange)
+逻辑：自动调整水位高度，直观反映风险。
+code
+JavaScript
+var level1 = data.a("level.hi");
+var level2 = data.a("level.nor");
+var level3 = data.a("level.low");
+
+if (level1 == 1) {
+    return 0.85; // 高水位
+}
+if (level2 == 1) {
+    return 0.50; // 中水位
+}
+if (level3 == 1) {
+    return 0.15; // 低水位
+}
+return 0;
+4. 波浪高度 (waveHeight)
+逻辑：通过起伏幅度暗示水的“危险程度”。
+code
+JavaScript
+var level1 = data.a("level.hi");
+var level2 = data.a("level.nor");
+var level3 = data.a("level.low");
+
+if (level1 == 1) {
+    return 8; // 动荡起伏
+}
+if (level2 == 1) {
+    return 4; // 平稳起伏
+}
+if (level3 == 1) {
+    return 2; // 微弱波纹
+}
+return 0;
+5. 波浪宽度 (waveWidth)
+逻辑：调整波形的疏密程度。
+code
+JavaScript
+var level1 = data.a("level.hi");
+var level2 = data.a("level.nor");
+var level3 = data.a("level.low");
+
+if (level1 == 1) {
+    return 0.08; // 宽波
+}
+if (level2 == 1) {
+    return 0.05; // 标波
+}
+if (level3 == 1) {
+    return 0.03; // 窄波
+}
+return 0.05;
+👨‍🎨 开发特别提示：
+优先级处理：在函数中，我将 level.hi 放在了最上面。这意味着如果同时触发了两个状态（虽然逻辑上不应发生），系统会优先显示最高级别的报警（红色）。
+默认值：如果三个状态都为 0，我设置了默认的灰色或 0 水位，防止界面出现异常空缺。
+动画建议：对于 wareXOffset (波浪位移)，建议不要写函数，而是使用 HT 的 gv.addScheduleTask 脚本来全局驱动：
+code
+JavaScript
+// 在场景初始化脚本中加入
+gv.addScheduleTask({
+    interval: 50,
+    action: function(data) {
+        if(data.a('level.hi')) {
+            data.a('wareXOffset', data.a('wareXOffset') + 0.1); // 报警时流速快
+        } else {
+            data.a('wareXOffset', data.a('wareXOffset') + 0.05); // 正常流速
+        }
+    }
+});
+既然逻辑简化为两个开关（level.hi 和 level.low），那么我们需要处理三种逻辑状态：
+高液位报警：level.hi == 1（优先级最高）。
+低液位预警：level.low == 1。
+正常状态：当 level.hi == 0 且 level.low == 0 时。
+以下是为您重新优化的全套 JS 函数，您可以直接复制到 HT 编辑器对应属性的 "f" (函数按钮) 中。
+1. 波浪前景色 (waveForeground)
+code
+JavaScript
+var hi = data.a("level.hi");
+var low = data.a("level.low");
+
+if (hi == 1) {
+    return ["#991B1B", "#EF4444"]; // 高位报警：深红-亮红
+} else if (low == 1) {
+    return ["#92400E", "#F59E0B"]; // 低位预警：深橙-琥珀
+} else {
+    return ["#0369A1", "#38BDF8"]; // 正常水位：深蓝-天蓝
+}
+2. 波浪背景色 (waveBackground)
+code
+JavaScript
+var hi = data.a("level.hi");
+var low = data.a("level.low");
+
+if (hi == 1) {
+    return "#FEF2F2"; // 浅红背景
+} else if (low == 1) {
+    return "#FFFBEB"; // 浅橙背景
+} else {
+    return "#F0F9FF"; // 浅蓝背景
+}
+3. 波浪水位 (waveRange)
+code
+JavaScript
+var hi = data.a("level.hi");
+var low = data.a("level.low");
+
+if (hi == 1) return 0.85; // 高水位 85%
+if (low == 1) return 0.15; // 低水位 15%
+return 0.50; // 正常水位 50%
+4. 波浪高度 (waveHeight)
+code
+JavaScript
+var hi = data.a("level.hi");
+var low = data.a("level.low");
+
+if (hi == 1) return 8; // 报警时波动剧烈
+if (low == 1) return 2; // 低位时几乎静止
+return 4; // 正常波动
+5. 波浪宽度 (waveWidth)
+code
+JavaScript
+var hi = data.a("level.hi");
+var low = data.a("level.low");
+
+if (hi == 1) return 0.08; // 密集波浪
+if (low == 1) return 0.02; // 稀疏波浪
+return 0.04; // 正常宽度
+🚀 最终图纸预览：动态位移流动脚本
+这是让液位在预览中真正“流动”起来的核心。请将其放在图纸的 Setup Script (预置脚本) 中：
+code
+JavaScript
+var gv = this;
+
+gv.addScheduleTask({
+    interval: 50,
+    action: function(data) {
+        // 确保该节点拥有液位属性
+        if (data.a('waveRange') !== undefined) {
+            var hi = data.a('level.hi');
+            var low = data.a('level.low');
+            var currentOffset = data.a('wareXOffset') || 0;
+            
+            // 设定流速逻辑
+            var speed = 0.05; // 默认流速
+            if (hi == 1) {
+                speed = 0.12; // 报警时流速变快
+            } else if (low == 1) {
+                speed = 0.02; // 枯水时流速极慢
+            }
+            
+            // 执行位移累加
+            data.a('wareXOffset', currentOffset + speed);
+        }
+    }
+});
+👨‍🎨 为什么这样写最专业？
+优先级原则：通过 if...else if 结构，我们确保了如果后台数据同时传回 hi:1 和 low:1（虽然物理上不可能，但为了防错），系统会优先显示最严重的红色高位报警。
+视觉反馈一致性：正常状态下呈现沉稳的蓝色和均匀的波动。一旦状态切换，颜色、水位高度、起伏剧烈程度以及流速会同步变化。这种“多维度反馈”能让运维人员在不需要阅读文字的情况下，通过眼角余光就能判断水位健康度。
+性能友好：函数中使用了 data.a() 获取属性，这在 HT 中渲染效率极高，即便是大屏幕上展示上百个液位计也不会卡顿。
+您可以直接将这些函数部署到图纸中进行最终预览。有其他联动逻辑需要优化吗？
+
+
+
+. 水泵状态切换（可见性 visible）
+由于你的图纸中水泵是重叠摆放的，我们需要通过 visible 属性来控制哪一台显示。
+1# 水泵 (左侧一组)
+1# 故障水泵：
+code
+JavaScript
+// 绑定到 visible 属性
+return data.a('1gzzt') == '1';
+1# 运行水泵（仅当不故障且运行时显示）：
+code
+JavaScript
+// 绑定到 visible 属性
+return data.a('1yxzt') == '1' && data.a('1gzzt') != '1';
+1# 停止水泵（既不故障也不运行）：
+code
+JavaScript
+// 绑定到 visible 属性
+return data.a('1yxzt') != '1' && data.a('1gzzt') != '1';
+2# 水泵 (右侧一组)
+2# 故障水泵：
+code
+JavaScript
+return data.a('2gzzt') == '1';
+2# 运行水泵：
+code
+JavaScript
+return data.a('2yxzt') == '1' && data.a('2gzzt') != '1';
+2# 停止水泵：
+code
+JavaScript
+return data.a('2yxzt') != '1' && data.a('2gzzt') != '1';
+2. 右侧状态胶囊联动（文字与颜色）
+你需要为右侧的每一个“状态胶囊”组（由背景 Shape、宝石点 Shape 和文字 Text 组成）编写函数。
+(1) 水位报警胶囊 (高/低水位)
+以“高水位报警”文字为例：
+Text (文字内容)：
+code
+JavaScript
+return data.a('level.hi') == '1' ? '高水位报警' : '水位正常';
+Background (背景色)：
+code
+JavaScript
+return data.a('level.hi') == '1' ? '#FEF2F2' : '#ECFDF5';
+Text Color (文字颜色)：
+code
+JavaScript
+return data.a('level.hi') == '1' ? '#B91C1C' : '#059669';
+(2) 水泵运行状态胶囊
+以“1#泵运行状态”为例：
+Text (文字内容)：
+code
+JavaScript
+return data.a('1yxzt') == '1' ? '运行中' : '已停止';
+宝石点 / 背景颜色：
+code
+JavaScript
+// 运行中为绿色，停止为灰色
+return data.a('1yxzt') == '1' ? '#22C55E' : '#94A3B8';
+(3) 水泵故障状态胶囊
+以“1#泵故障状态”为例：
+Text (文字内容)：
+code
+JavaScript
+return data.a('1gzzt') == '1' ? '故障' : '正常';
+宝石点 / 背景颜色：
+code
+JavaScript
+// 故障为红色，正常为绿色
+return data.a('1gzzt') == '1' ? '#EF4444' : '#10B981';
+(4) 手自动状态胶囊
+Text (文字内容)：
+code
+JavaScript
+// 假设 "1" 为自动，"0" 为手动
+return data.a('szdzt') == '1' ? '自动模式' : '手动模式';
+Background (背景色)：
+code
+JavaScript
+return data.a('szdzt') == '1' ? '#ECFEFF' : '#EEF2FF';
+宝石点颜色：
+code
+JavaScript
+return data.a('szdzt') == '1' ? '#22D3EE' : '#6366F1';
+3. 动态位移（流动感）建议
+在你的图纸 JSON（displays/甲岸给排水系统test.json）中，为了让 wave 组件真的“动起来”，请在图纸的 Setup Script（预置脚本） 中添加以下代码：
+code
+JavaScript
+var gv = this;
+gv.addScheduleTask({
+    interval: 50,
+    action: function(data) {
+        // 只有当节点使用了该弹窗图标时才计算
+        if (data.getImage() === 'symbols/甲岸/给排水/变频水泵详情弹窗.json') {
+            var hi = data.a('level.hi');
+            var low = data.a('level.low');
+            var offset = data.a('wareXOffset') || 0;
+            
+            // 流速逻辑
+            var speed = 0.05;
+            if (hi == '1') speed = 0.15;
+            else if (low == '1') speed = 0.02;
+            
+            data.a('wareXOffset', offset + speed);
+        }
+    }
+});
+💡 专家提示：
+数据类型注意：在你的 JSON 定义中，valueType 是 String。所以在写函数时，请使用引号（如 == '1'），否则可能会因为类型不匹配导致逻辑失效。
+重叠管理：在 HT 编辑器中，建议将不同状态的水泵放入不同的层级（Layer）或者通过树状列表重命名，方便你准确地选中每一个并绑定 visible 函数。
+宝石点位置：我注意到你有一些宝石点是独立的 Shape，记得也要给它们的 background 绑定和文字颜色逻辑一致的函数。
+
+
+

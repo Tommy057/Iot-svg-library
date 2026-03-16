@@ -1,0 +1,413 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 940" width="100%" height="100%" style="background-color: #F8FAFC; font-family: 'Microsoft YaHei', sans-serif;">
+  
+  <defs>
+    <!-- 卡片悬浮投影 (Clean White Suspension) -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.04" />
+    </filter>
+
+    <!-- 故障红宝石发光光晕 (Ruby Glow) -->
+    <filter id="glow-ruby" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- 运行翡翠绿发光光晕 (Emerald Glow) -->
+    <filter id="glow-emerald" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- 停机哑光投影 -->
+    <filter id="glow-slate" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#64748B" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 顶栏：园区风机全局总览 (Global Overview) -->
+  <!-- ========================================== -->
+  <g transform="translate(40, 30)">
+    <rect width="1360" height="100" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+    
+    <rect x="30" y="30" width="6" height="40" rx="3" fill="#0F172A" />
+    <text x="50" y="58" font-size="24" font-weight="bold" fill="#0F172A">全域风机机组总览</text>
+
+    <!-- 宏观数据统计 -->
+    <line x1="340" y1="25" x2="340" y2="75" stroke="#E2E8F0" stroke-width="1" />
+    <g transform="translate(380, 30)">
+      <text x="0" y="15" font-size="14" fill="#64748b">机组总数 (Total Units)</text>
+      <text x="0" y="50" font-size="36" font-weight="bold" fill="#0F172A">456</text>
+    </g>
+
+    <line x1="580" y1="25" x2="580" y2="75" stroke="#E2E8F0" stroke-width="1" />
+    <g transform="translate(620, 30)">
+      <text x="0" y="15" font-size="14" fill="#64748b">运行中 (Running)</text>
+      <text x="0" y="50" font-size="36" font-weight="bold" fill="#10B981">439</text>
+    </g>
+
+    <line x1="820" y1="25" x2="820" y2="75" stroke="#E2E8F0" stroke-width="1" />
+    <g transform="translate(860, 30)">
+      <text x="0" y="15" font-size="14" fill="#64748b">已停机 (Stopped)</text>
+      <text x="0" y="50" font-size="36" font-weight="bold" fill="#64748B">12</text>
+    </g>
+
+    <!-- 全局严重告警 -->
+    <g transform="translate(1080, 20)">
+      <rect width="250" height="60" rx="8" fill="#FEF2F2" />
+      <circle cx="35" cy="30" r="6" fill="#EF4444" filter="url(#glow-ruby)" />
+      <text x="55" y="38" font-size="24" font-weight="bold" fill="#EF4444">5</text>
+      <text x="80" y="36" font-size="16" font-weight="bold" fill="#B91C1C">台风机发生故障</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 第一排：地上建筑空间 (4张卡片 - 包含研发楼) -->
+  <!-- 单卡宽度 325px，间距 20px -->
+  <!-- ========================================== -->
+  <g transform="translate(40, 160)">
+    <text x="0" y="0" font-size="18" font-weight="bold" fill="#64748B">地上建筑空间 (Above Ground)</text>
+    
+    <!-- 卡片 1：研发楼 (R&D) - 【送风机故障】 -->
+    <g transform="translate(0, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#EF4444" /> <!-- 故障红顶 -->
+      
+      <!-- 卡片头 -->
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#F1F5F9" />
+        <path d="M12 28 l8 -12 l8 12 z M16 28 v6 h8 v-6" fill="#334155" />
+        <text x="50" y="18" font-size="18" font-weight="bold" fill="#0F172A">研发楼</text>
+        <text x="50" y="36" font-size="12" fill="#64748B">总设备: 84</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <!-- 风机插槽阵列 -->
+      <g transform="translate(20, 90)">
+        <!-- 送风机 (故障红) -->
+        <rect width="285" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+        <circle cx="20" cy="25" r="5" fill="#EF4444" filter="url(#glow-ruby)" />
+        <text x="35" y="30" font-size="15" font-weight="bold" fill="#B91C1C">送风机</text>
+        <text x="110" y="30" font-size="18" font-weight="bold" fill="#EF4444">30</text>
+        <text x="135" y="29" font-size="14" fill="#94A3B8">/ 32</text>
+        <rect x="215" y="13" width="60" height="24" rx="12" fill="#EF4444" />
+        <text x="227" y="30" font-size="12" font-weight="bold" fill="#FFFFFF">2 故障</text>
+
+        <!-- 排风机 (正常) -->
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">36</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 36</text>
+        </g>
+
+        <!-- 加压风机 (正常) -->
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">16</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 16</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 2：综合楼 (Complex) - 【全正常】 -->
+    <g transform="translate(345, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#6366F1" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#EEF2FF" />
+        <path d="M12 14 h16 v20 h-16 z M16 18 h2 v2 h-2 z" fill="#4338CA" />
+        <text x="50" y="18" font-size="18" font-weight="bold" fill="#0F172A">综合大楼</text>
+        <text x="50" y="36" font-size="12" fill="#64748B">总设备: 128</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <!-- 送风机 -->
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#15803D">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">45</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 45</text>
+          <text x="245" y="30" font-size="13" font-weight="bold" fill="#15803D">100% 运行</text>
+        </g>
+        <!-- 排风机 -->
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#15803D">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">53</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 53</text>
+        </g>
+        <!-- 加压风机 -->
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#15803D">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">30</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 30</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 3：生产厂房 (Factory) - 【排风机故障】 -->
+    <g transform="translate(690, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#EF4444" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#FEF2F2" />
+        <path d="M12 28 v-12 l8 -4 l8 4 v12 M18 28 v-6 h4 v6" fill="#DC2626" />
+        <text x="50" y="18" font-size="18" font-weight="bold" fill="#0F172A">生产厂房</text>
+        <text x="50" y="36" font-size="12" fill="#64748B">总设备: 96</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <!-- 送风机 -->
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">40</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 40</text>
+        </g>
+        <!-- 排风机 (重度故障红) -->
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+          <circle cx="20" cy="25" r="5" fill="#EF4444" filter="url(#glow-ruby)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#B91C1C">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#EF4444">23</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 26</text>
+          <rect x="215" y="13" width="60" height="24" rx="12" fill="#EF4444" />
+          <text x="227" y="30" font-size="12" font-weight="bold" fill="#FFFFFF">3 故障</text>
+        </g>
+        <!-- 加压风机 -->
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">30</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 30</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 4：宿舍楼 (Dorm) - 【排风机停机】 -->
+    <g transform="translate(1035, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#F59E0B" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#FFFBEB" />
+        <path d="M14 26 l6 -10 l6 10 z" fill="#D97706" />
+        <text x="50" y="18" font-size="18" font-weight="bold" fill="#0F172A">员工宿舍</text>
+        <text x="50" y="36" font-size="12" fill="#64748B">总设备: 42</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <!-- 送风机 -->
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">12</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 12</text>
+        </g>
+        <!-- 排风机 (部分停机) -->
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F1F5F9" />
+          <!-- 停机灰色圆点 -->
+          <circle cx="20" cy="25" r="5" fill="#94A3B8" filter="url(#glow-slate)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#475569">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#64748B">18</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 24</text>
+          <rect x="215" y="13" width="60" height="24" rx="12" fill="#E2E8F0" />
+          <text x="227" y="30" font-size="12" font-weight="bold" fill="#475569">6 停机</text>
+        </g>
+        <!-- 加压风机 -->
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">6</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 6</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 第二排：地下室空间 (4张卡片 - 包含BMF, B1F, B2F, B3F) -->
+  <!-- ========================================== -->
+  <g transform="translate(40, 520)">
+    <text x="0" y="0" font-size="18" font-weight="bold" fill="#64748B">地下网络空间 (Underground Level)</text>
+    
+    <!-- 卡片 5：BMF 夹层 -->
+    <g transform="translate(0, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#14B8A6" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#F0FDFA" />
+        <text x="25" y="45" font-size="12" font-weight="bold" fill="#0D9488">BMF</text>
+        <text x="55" y="18" font-size="18" font-weight="bold" fill="#0F172A">地下夹层</text>
+        <text x="55" y="36" font-size="12" fill="#64748B">总设备: 22</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">10</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 10</text>
+        </g>
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">8</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 8</text>
+        </g>
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">4</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 4</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 6：B1F 地下一层 -->
+    <g transform="translate(345, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#0EA5E9" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#F0F9FF" />
+        <text x="28" y="45" font-size="12" font-weight="bold" fill="#0369A1">B1F</text>
+        <text x="55" y="18" font-size="18" font-weight="bold" fill="#0F172A">地下一层 (Parking)</text>
+        <text x="55" y="36" font-size="12" fill="#64748B">总设备: 28</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">12</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 12</text>
+        </g>
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">10</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 10</text>
+        </g>
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">6</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 6</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 7：B2F 地下二层 - 【加压风机故障】 -->
+    <g transform="translate(690, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#EF4444" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#F3E8FF" />
+        <text x="28" y="45" font-size="12" font-weight="bold" fill="#7E22CE">B2F</text>
+        <text x="55" y="18" font-size="18" font-weight="bold" fill="#0F172A">地下二层 (Deep)</text>
+        <text x="55" y="36" font-size="12" fill="#64748B">总设备: 29</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <!-- 送风机 -->
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">10</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 10</text>
+        </g>
+        <!-- 排风机 (部分停机) -->
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F1F5F9" />
+          <circle cx="20" cy="25" r="5" fill="#94A3B8" filter="url(#glow-slate)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#475569">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#64748B">9</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 15</text>
+          <rect x="215" y="13" width="60" height="24" rx="12" fill="#E2E8F0" />
+          <text x="227" y="30" font-size="12" font-weight="bold" fill="#475569">6 停机</text>
+        </g>
+        <!-- 加压风机 (严重故障) -->
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+          <circle cx="20" cy="25" r="5" fill="#EF4444" filter="url(#glow-ruby)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#B91C1C">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#EF4444">3</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 4</text>
+          <rect x="215" y="13" width="60" height="24" rx="12" fill="#EF4444" />
+          <text x="227" y="30" font-size="12" font-weight="bold" fill="#FFFFFF">1 故障</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- 卡片 8：B3F 地下三层 -->
+    <g transform="translate(1035, 20)">
+      <rect width="325" height="290" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" />
+      <rect width="325" height="4" rx="2" fill="#64748B" />
+      
+      <g transform="translate(20, 20)">
+        <rect width="40" height="40" rx="8" fill="#F1F5F9" />
+        <text x="28" y="45" font-size="12" font-weight="bold" fill="#475569">B3F</text>
+        <text x="55" y="18" font-size="18" font-weight="bold" fill="#0F172A">地下三层 (Bottom)</text>
+        <text x="55" y="36" font-size="12" fill="#64748B">总设备: 27</text>
+      </g>
+      <line x1="20" y1="75" x2="305" y2="75" stroke="#F1F5F9" stroke-width="2" />
+
+      <g transform="translate(20, 90)">
+        <g transform="translate(0, 0)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">送风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">12</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 12</text>
+        </g>
+        <g transform="translate(0, 60)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">排风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">11</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 11</text>
+        </g>
+        <g transform="translate(0, 120)">
+          <rect width="285" height="50" rx="8" fill="#F8FAFC" />
+          <circle cx="20" cy="25" r="5" fill="#10B981" filter="url(#glow-emerald)" />
+          <text x="35" y="30" font-size="15" font-weight="bold" fill="#334155">加压风机</text>
+          <text x="110" y="30" font-size="18" font-weight="bold" fill="#10B981">4</text>
+          <text x="135" y="29" font-size="14" fill="#94A3B8">/ 4</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+</svg>
