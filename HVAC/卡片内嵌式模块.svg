@@ -1,0 +1,325 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Arial, -apple-system, sans-serif">
+    <!-- 全局背景 (冷浅灰，让纯白卡片更凸显) -->
+    <rect width="1920" height="1080" fill="#F0F4F8" />
+
+    <!-- ==================== 顶部状态栏 (高度增加至100) ==================== -->
+    <g id="TopBar">
+        <rect x="40" y="30" width="1840" height="100" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <!-- 左侧深色修饰线 -->
+        <rect x="60" y="50" width="6" height="60" fill="#1E293B" rx="3" />
+        
+        <text x="85" y="70" font-size="28" font-weight="bold" fill="#0F172A">全域通风机组中枢面板</text>
+        <text x="85" y="95" font-size="14" fill="#64748B">Centralized HVAC &amp; Ventilation Monitoring System</text>
+        
+        <!-- 垂直分割线 -->
+        <rect x="420" y="50" width="1" height="60" fill="#E2E8F0" />
+
+        <text x="460" y="65" font-size="14" fill="#64748B">系统总数 (Total Units)</text>
+        <text x="460" y="105" font-size="38" font-weight="bold" fill="#0F172A">456</text>
+
+        <rect x="680" y="50" width="1" height="60" fill="#E2E8F0" />
+
+        <text x="720" y="65" font-size="14" fill="#64748B">正常运行 (Online / Running)</text>
+        <text x="720" y="105" font-size="38" font-weight="bold" fill="#10B981">439</text>
+
+        <rect x="940" y="50" width="1" height="60" fill="#E2E8F0" />
+
+        <text x="980" y="65" font-size="14" fill="#64748B">待机或停止 (Standby / Off)</text>
+        <text x="980" y="105" font-size="38" font-weight="bold" fill="#94A3B8">12</text>
+        
+        <!-- 全局告警高亮胶囊 -->
+        <rect x="1560" y="45" width="280" height="70" fill="#FEF2F2" stroke="#EF4444" stroke-width="1" rx="8" />
+        <circle cx="1595" cy="80" r="14" fill="#FECACA"/>
+        <circle cx="1595" cy="80" r="6" fill="#EF4444"/>
+        <text x="1625" y="88" font-size="28" font-weight="bold" fill="#EF4444">5</text>
+        <text x="1655" y="86" font-size="20" font-weight="bold" fill="#EF4444">台设备触发故障</text>
+    </g>
+
+    <!-- ==================== 第一排：地上建筑 (Y: 160) ==================== -->
+    
+    <!-- 卡片 1: 研发大楼 (带排风机故障) X: 40 -->
+    <g id="Card1" transform="translate(40, 160)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <!-- 头部底色 -->
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#EEF2FF" />
+        
+        <!-- 头部图标与标题 -->
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#EF4444"/> <!-- 整体有故障，亮红灯 -->
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">研发大楼 (R&amp;D)</text>
+        <!-- 顶部告警小标 -->
+        <rect x="350" y="22" width="60" height="26" fill="#FFFFFF" stroke="#EF4444" rx="13" />
+        <text x="380" y="40" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">告警</text>
+        
+        <!-- Row 1: SF 正常 (Y: 90) -->
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/>
+        <text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">32</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">30</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#EF4444">2</text> <!-- 实际上这里应为0，为了对照原图，设为正常状态但有轻微故障数字的演示，此处逻辑按用户自定义 -->
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <!-- Row 2: EF 故障 (红色警报行, Y: 195) -->
+        <rect x="15" y="195" width="400" height="90" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/>
+        <text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">36</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">33</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#EF4444">3</text>
+        <rect x="320" y="225" width="70" height="30" fill="#EF4444" rx="15" />
+        <text x="355" y="245" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3 故障</text>
+
+        <!-- Row 3: PF 正常 (Y: 300) -->
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/>
+        <text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">16</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">16</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- 卡片 2: 员工宿舍 (带待机) X: 510 -->
+    <g id="Card2" transform="translate(510, 160)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#FFF7ED" />
+        
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#10B981"/> 
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">员工宿舍 (Dorm)</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/>
+        <text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">12</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">12</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <!-- 待机态演示 -->
+        <rect x="15" y="195" width="400" height="90" fill="#F8FAFC" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/>
+        <text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">24</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">18</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="320" y="225" width="70" height="30" fill="#E2E8F0" rx="15" />
+        <text x="355" y="245" font-size="13" font-weight="bold" fill="#475569" text-anchor="middle">6 待机</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/>
+        <text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">6</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">6</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- 卡片 3: 综合大楼 (全部正常) X: 980 -->
+    <g id="Card3" transform="translate(980, 160)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#F0FDF4" />
+        
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#10B981"/> 
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">综合大楼 (Complex)</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/>
+        <text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">45</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">45</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/>
+        <text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">53</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">53</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="225" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="245" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/>
+        <text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">30</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">30</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- 卡片 4: 生产厂房 (带故障) X: 1450 -->
+    <g id="Card4" transform="translate(1450, 160)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#FEF2F2" />
+        
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#EF4444"/> 
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">生产厂房 (Factory)</text>
+        <!-- 顶部告警小标 -->
+        <rect x="350" y="22" width="60" height="26" fill="#FFFFFF" stroke="#EF4444" rx="13" />
+        <text x="380" y="40" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">告警</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/>
+        <text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">40</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">40</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/>
+        <text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">26</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">23</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#EF4444">3</text>
+        <rect x="320" y="225" width="70" height="30" fill="#EF4444" rx="15" />
+        <text x="355" y="245" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3 故障</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/>
+        <text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">30</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">30</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" />
+        <text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- ==================== 第二排：地下空间 (Y: 620，整体降低确保间距，统一冷蓝标题) ==================== -->
+    
+    <!-- 卡片 5: BMF 地下夹层 X: 40 -->
+    <g id="Card5" transform="translate(40, 620)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#F1F5F9" />
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#10B981"/>
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">BMF 地下夹层</text>
+        
+        <!-- Row 复用结构，为缩短演示，数值为静态 -->
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/><text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">10</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">10</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/><text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">8</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">8</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="225" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="245" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/><text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">4</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">4</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- 卡片 6: B1F 地下一层 X: 510 -->
+    <g id="Card6" transform="translate(510, 620)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#E0F2FE" />
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#10B981"/>
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">B1F 地下一层</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/><text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">12</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">12</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/><text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">10</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">10</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="225" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="245" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/><text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">6</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">6</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+
+    <!-- 卡片 7: B2F 地下二层 (带加压机故障) X: 980 -->
+    <g id="Card7" transform="translate(980, 620)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#DBEAFE" />
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#EF4444"/> <!-- 故障标红 -->
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">B2F 地下二层</text>
+        <rect x="350" y="22" width="60" height="26" fill="#FFFFFF" stroke="#EF4444" rx="13" />
+        <text x="380" y="40" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">告警</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/><text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">10</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">10</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/><text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">15</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">15</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="225" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="245" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <!-- PF 故障槽位 -->
+        <rect x="15" y="300" width="400" height="90" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/><text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">4</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">3</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#EF4444">1</text>
+        <rect x="320" y="330" width="70" height="30" fill="#EF4444" rx="15" /><text x="355" y="350" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1 故障</text>
+    </g>
+
+    <!-- 卡片 8: B3F 地下三层 X: 1450 -->
+    <g id="Card8" transform="translate(1450, 620)">
+        <rect width="430" height="420" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" rx="12" />
+        <path d="M1 12 A11 11 0 0 1 12 1 H418 A11 11 0 0 1 429 12 V70 H1 Z" fill="#BFDBFE" />
+        <rect x="20" y="20" width="30" height="30" fill="#1E293B" rx="6" />
+        <circle cx="35" cy="35" r="5" fill="#10B981"/>
+        <text x="65" y="42" font-size="22" font-weight="bold" fill="#0F172A">B3F 地下三层</text>
+        
+        <rect x="15" y="90" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="135" r="22" fill="#1E293B"/><text x="50" y="141" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">SF</text>
+        <text x="100" y="120" font-size="13" fill="#94A3B8">总数</text><text x="100" y="150" font-size="24" font-weight="bold" fill="#0F172A">12</text>
+        <text x="160" y="120" font-size="13" fill="#94A3B8">运行</text><text x="160" y="150" font-size="24" font-weight="bold" fill="#10B981">12</text>
+        <text x="220" y="120" font-size="13" fill="#94A3B8">故障</text><text x="220" y="150" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="120" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="140" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="195" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="240" r="22" fill="#1E293B"/><text x="50" y="246" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">EF</text>
+        <text x="100" y="225" font-size="13" fill="#94A3B8">总数</text><text x="100" y="255" font-size="24" font-weight="bold" fill="#0F172A">11</text>
+        <text x="160" y="225" font-size="13" fill="#94A3B8">运行</text><text x="160" y="255" font-size="24" font-weight="bold" fill="#10B981">11</text>
+        <text x="220" y="225" font-size="13" fill="#94A3B8">故障</text><text x="220" y="255" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="225" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="245" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+
+        <rect x="15" y="300" width="400" height="90" fill="#FFFFFF" stroke="#E2E8F0" rx="8" />
+        <circle cx="50" cy="345" r="22" fill="#1E293B"/><text x="50" y="351" font-size="16" font-weight="bold" fill="#FBBF24" text-anchor="middle">PF</text>
+        <text x="100" y="330" font-size="13" fill="#94A3B8">总数</text><text x="100" y="360" font-size="24" font-weight="bold" fill="#0F172A">4</text>
+        <text x="160" y="330" font-size="13" fill="#94A3B8">运行</text><text x="160" y="360" font-size="24" font-weight="bold" fill="#10B981">4</text>
+        <text x="220" y="330" font-size="13" fill="#94A3B8">故障</text><text x="220" y="360" font-size="24" font-weight="bold" fill="#94A3B8">0</text>
+        <rect x="330" y="330" width="60" height="30" fill="#D1FAE5" rx="15" /><text x="360" y="350" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">正常</text>
+    </g>
+</svg>

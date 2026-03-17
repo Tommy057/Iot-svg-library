@@ -1,0 +1,255 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Arial, -apple-system, sans-serif">
+    <!-- 全局背景 -->
+    <rect width="1920" height="1080" fill="#F8FAFC" />
+
+    <!-- ==================== 顶部状态栏 ==================== -->
+    <g id="TopBar">
+        <rect x="40" y="40" width="1840" height="80" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <text x="80" y="88" font-size="24" font-weight="bold" fill="#0F172A">全域通风机组中枢面板</text>
+        
+        <text x="1200" y="86" font-size="18" fill="#64748B">系统总数: <tspan fill="#0F172A" font-weight="bold">456</tspan></text>
+        <text x="1350" y="86" font-size="18" fill="#64748B">正常运行: <tspan fill="#10B981" font-weight="bold">439</tspan></text>
+        <text x="1500" y="86" font-size="18" fill="#64748B">待机停止: <tspan fill="#94A3B8" font-weight="bold">12</tspan></text>
+        
+        <!-- 全局告警高亮胶囊 -->
+        <rect x="1660" y="55" width="160" height="50" fill="#FEF2F2" stroke="#EF4444" stroke-width="1" rx="25" />
+        <text x="1740" y="87" font-size="18" font-weight="bold" fill="#EF4444" text-anchor="middle">设备告警: 5</text>
+    </g>
+
+    <!-- ==================== 第一排：地上建筑 (Y: 150) ==================== -->
+    
+    <!-- 卡片 1: 研发大楼 (带排风机故障) X: 40 -->
+    <g id="Card1" transform="translate(40, 150)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#F3E8FF" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">研发大楼 (地上)</text>
+        
+        <!-- Row 1: SF 正常 -->
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">12</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">12</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <!-- Row 2: EF 故障 (红色警报行) -->
+        <rect x="10" y="170" width="410" height="90" fill="#FEF2F2" rx="6" />
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#EF4444"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">8</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">5</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#EF4444" font-weight="bold">3</tspan></text>
+        <rect x="340" y="200" width="70" height="30" fill="#EF4444" rx="15" />
+        <text x="375" y="221" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3 故障</text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <!-- Row 3: PF 正常 -->
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">4</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">4</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- 卡片 2: 员工宿舍 (待机停止) X: 510 -->
+    <g id="Card2" transform="translate(510, 150)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#FFEDD5" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">员工宿舍 (地上)</text>
+        
+        <!-- Row 1: SF 待机 -->
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#94A3B8"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">6</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <!-- Row 2: EF 待机 -->
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#94A3B8"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">4</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <!-- Row 3: PF 待机 -->
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#94A3B8"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">2</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- 卡片 3: 综合大楼 (正常) X: 980 -->
+    <g id="Card3" transform="translate(980, 150)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#FCE7F3" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">综合大楼 (地上)</text>
+        
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">20</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">20</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">15</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">15</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">10</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">10</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- 卡片 4: 生产厂房 (带送风机故障) X: 1450 -->
+    <g id="Card4" transform="translate(1450, 150)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#FFE4E6" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">生产厂房 (地上)</text>
+        
+        <!-- Row 1: SF 故障 -->
+        <rect x="10" y="70" width="410" height="90" fill="#FEF2F2" rx="6" />
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#EF4444"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">30</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">29</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#EF4444" font-weight="bold">1</tspan></text>
+        <rect x="340" y="100" width="70" height="30" fill="#EF4444" rx="15" />
+        <text x="375" y="121" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1 故障</text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">25</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">25</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">15</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">15</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- ==================== 第二排：地下空间 (Y: 590, 统一冷蓝色标题) ==================== -->
+    
+    <!-- 卡片 5: BMF 地下夹层 X: 40 -->
+    <g id="Card5" transform="translate(40, 590)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#EFF6FF" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">BMF 地下夹层</text>
+        
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">5</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">5</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">5</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">5</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">2</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">2</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- 卡片 6: B1F 地下一层 X: 510 -->
+    <g id="Card6" transform="translate(510, 590)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#EFF6FF" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">B1F 地下一层</text>
+        
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">8</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">8</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">6</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">6</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">4</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">4</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+
+    <!-- 卡片 7: B2F 地下二层 (带加压机故障) X: 980 -->
+    <g id="Card7" transform="translate(980, 590)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#EFF6FF" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">B2F 地下二层</text>
+        
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">10</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">10</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">10</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">10</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <!-- Row 3: PF 故障 (红色警报行) -->
+        <rect x="10" y="270" width="410" height="90" fill="#FEF2F2" rx="6" />
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#EF4444"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">5</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">4</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#EF4444" font-weight="bold">1</tspan></text>
+        <rect x="340" y="300" width="70" height="30" fill="#EF4444" rx="15" />
+        <text x="375" y="321" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1 故障</text>
+    </g>
+
+    <!-- 卡片 8: B3F 地下三层 X: 1450 -->
+    <g id="Card8" transform="translate(1450, 590)">
+        <rect width="430" height="400" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" rx="8" />
+        <path d="M0 8 A8 8 0 0 1 8 0 H422 A8 8 0 0 1 430 8 V60 H0 Z" fill="#EFF6FF" />
+        <text x="20" y="38" font-size="20" font-weight="bold" fill="#0F172A">B3F 地下三层</text>
+        
+        <circle cx="30" cy="115" r="8" fill="#0F172A"/><circle cx="30" cy="115" r="3" fill="#10B981"/>
+        <text x="50" y="121" font-size="16" font-weight="bold" fill="#0F172A">SF (送风机)</text>
+        <text x="150" y="121" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">4</tspan></text>
+        <text x="220" y="121" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">4</tspan></text>
+        <text x="290" y="121" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="165" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="215" r="8" fill="#0F172A"/><circle cx="30" cy="215" r="3" fill="#10B981"/>
+        <text x="50" y="221" font-size="16" font-weight="bold" fill="#0F172A">EF (排风机)</text>
+        <text x="150" y="221" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">4</tspan></text>
+        <text x="220" y="221" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">4</tspan></text>
+        <text x="290" y="221" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+        <rect x="10" y="265" width="410" height="1" fill="#F1F5F9" />
+
+        <circle cx="30" cy="315" r="8" fill="#0F172A"/><circle cx="30" cy="315" r="3" fill="#10B981"/>
+        <text x="50" y="321" font-size="16" font-weight="bold" fill="#0F172A">PF (加压机)</text>
+        <text x="150" y="321" font-size="14" fill="#64748B">总数 <tspan fill="#0F172A" font-weight="bold">2</tspan></text>
+        <text x="220" y="321" font-size="14" fill="#64748B">运行 <tspan fill="#10B981" font-weight="bold">2</tspan></text>
+        <text x="290" y="321" font-size="14" fill="#64748B">故障 <tspan fill="#94A3B8" font-weight="bold">0</tspan></text>
+    </g>
+</svg>
