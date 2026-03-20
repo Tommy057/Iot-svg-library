@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="40" viewBox="0 0 80 40">
+  <!-- 2px 强制隔离外边框 (白色) -->
+  <path d="M10 2 H70 A8 8 0 0 1 70 38 H10 A8 8 0 0 1 10 2 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+  
+  <!-- 主体背板 (机能黑) -->
+  <path d="M10 2 H70 A8 8 0 0 1 70 38 H10 A8 8 0 0 1 10 2 Z" fill="#1A1A1B"/>
+  
+  <!-- 状态指示色块 (左侧电感区) -->
+  <!-- 这里的 fill 会根据数据绑定动态变化 -->
+  <rect x="4" y="4" width="24" height="32" rx="4" fill="#0284C7"/>
+  
+  <!-- 拟态门板图标 (简化几何) -->
+  <rect x="10" y="10" width="12" height="20" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="18" y="18" width="2" height="4" fill="#0284C7"/> <!-- 门把手 -->
+  
+  <!-- 文本区刻度线 (工业精密度细节) -->
+  <line x1="32" y1="12" x2="32" y2="28" stroke="#454546" stroke-width="1"/>
+  
+  <!-- 占位符：MJ025 (实际渲染时建议使用 HT 的文本属性填充) -->
+  <text x="38" y="25" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="bold" font-size="12">MJ025</text>
+</svg>

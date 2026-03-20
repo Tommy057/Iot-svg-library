@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Three.js 物理热敏纸小票</title>
+<style>
+    body { margin:0; overflow:hidden; background:#fff; font-family: system-ui; }
+    canvas { display:block; }
+    #info {
+        position: absolute; top: 20px; left: 20px; color: #333; background: rgba(255,255,255,0.85);
+        padding: 12px 18px; border-radius: 8px; font-size: 14px; pointer-events: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body>
+<div id="info">鼠标左键按住拖拽小票<br>松手后自然摆动、折叠、回弹</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script>
+// ============== 参数 ==============
+const WIDTH = 280;          // 世界单位宽度
+const HEIGHT = 520;         // 世界单位高度
+const COLS = 25;            // 横向粒子数
+const ROWS = 45;            // 纵向粒子数
+const GRAVITY = new THREE.Vector3(0, -0.028, 0);
+const DAMPING = 0.96;
+const ITERATIONS = 12;
+
+// ============== Three.js 基础 ==============
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xffffff);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000);
+camera.position.set(0, 50, 650);
+camera.lookAt(0, -80, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+document.body.appendChild(renderer.domElement);
+
+const ambient = new THREE.AmbientLight(0xffffff, 0.75);
+scene.add(ambient);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.65);
+dirLight.position.set(120, 180, 150);
+scene.add(dirLight);
+
+// ============== 热敏纸纹理 ==============
+const texCanvas = document.createElement('canvas');
+texCanvas.width = 512;
+texCanvas.height = 1024;
+const ctx = texCanvas.getContext('2d');
+ctx.fillStyle = '#fffdf0';
+ctx.fillRect(0, 0, 512, 1024);
+
+// 收据内容（搞笑 3D 图形术语）
+ctx.fillStyle = '#111';
+ctx.font = 'bold 42px monospace';
+ctx.textAlign = 'center';
+ctx.fillText('3D GRAPHICS STORE', 256, 80);
+
+ctx.font = '22px monospace';
+ctx.textAlign = 'left';
+let y = 140;
+const items = [
+    {name: "THREE.JS CORE",          price: "FREE"},
+    {name: "GLSL SHADER v420",       price: "128.00"},
+    {name: "RTX 5090 RAY TRACER",    price: "666.66"},
+    {name: "VERTEX BUFFER 8K",       price: "99.99"},
+    {name: "NORMAL MAP 16K",         price: "42.00"},
+    {name: "TESSELLATION x 64",      price: "256.00"},
+    {name: "GEOMETRY SHADER",        price: "15.75"},
+    {name: "PBR MATERIAL SET",       price: "88.88"},
+    {name: "INSTANCED DRAW CALL",    price: "0.01"},
+];
+items.forEach(item => {
+    ctx.fillText(item.name.padEnd(22), 40, y);
+    ctx.textAlign = 'right';
+    ctx.fillText(item.price, 460, y);
+    ctx.textAlign = 'left';
+    y += 48;
+});
+
+ctx.strokeStyle = '#111';
+ctx.lineWidth = 2;
+ctx.beginPath(); ctx.moveTo(40, y+10); ctx.lineTo(470, y+10); ctx.stroke();
+
+ctx.font = 'bold 28px monospace';
+ctx.textAlign = 'center';
+ctx.fillText('TOTAL: $1,697.39', 256, y + 70);
+ctx.font = '18px monospace';
+ctx.fillText('THANK YOU FOR SHOPPING IN THE MATRIX', 256, y + 130);
+
+const texture = new THREE.CanvasTexture(texCanvas);
+
+// ============== 纸张 Mesh ==============
+const geometry = new THREE.PlaneGeometry(WIDTH, HEIGHT, COLS - 1, ROWS - 1);
+const material = new THREE.MeshPhongMaterial({
+    map: texture,
+    shininess: 3,
+    specular: 0x222222,
+    side: THREE.DoubleSide,
+    flatShading: false
+});
+const mesh = new THREE.Mesh(geometry, material);
+mesh.position.y = -60;
+scene.add(mesh);
+
+// ============== Verlet 粒子系统 ==============
+const particles = [];
+const constraints = [];
+const initialTopX = [];
+const topY = HEIGHT / 2;
+
+for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
+        const x = (j / (COLS - 1) - 0.5) * WIDTH;
+        const y = (0.5 - i / (ROWS - 1)) * HEIGHT;
+        const p = {
+            pos: new THREE.Vector3(x, y, 0),
+            prev: new THREE.Vector3(x, y, 0),
+            pinned: (i === 0)
+        };
+        particles.push(p);
+        if (i === 0) initialTopX.push(x);
+    }
+}
+
+// 创建约束
+function createConstraints() {
+    // 结构约束
+    for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLS - 1; j++) {
+            const p1 = i * COLS + j;
+            const p2 = i * COLS + j + 1;
+            const rest = particles[p1].pos.distanceTo(particles[p2].pos);
+            constraints.push({p1, p2, rest, stiff: 1.0});
+        }
+    }
+    for (let i = 0; i < ROWS - 1; i++) {
+        for (let j = 0; j < COLS; j++) {
+            const p1 = i * COLS + j;
+            const p2 = (i + 1) * COLS + j;
+            const rest = particles[p1].pos.distanceTo(particles[p2].pos);
+            constraints.push({p1, p2, rest, stiff: 0.95});
+        }
+    }
+    // 剪切约束
+    for (let i = 0; i < ROWS - 1; i++) {
+        for (let j = 0; j < COLS - 1; j++) {
+            let p1 = i * COLS + j;
+            let p2 = (i + 1) * COLS + j + 1;
+            constraints.push({p1, p2, rest: particles[p1].pos.distanceTo(particles[p2].pos), stiff: 0.7});
+            p1 = i * COLS + j + 1;
+            p2 = (i + 1) * COLS + j;
+            constraints.push({p1, p2, rest: particles[p1].pos.distanceTo(particles[p2].pos), stiff: 0.7});
+        }
+    }
+    // 弯曲约束（纸张刚性）
+    for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLS - 2; j++) {
+            const p1 = i * COLS + j;
+            const p2 = i * COLS + j + 2;
+            const rest = particles[p1].pos.distanceTo(particles[p2].pos);
+            constraints.push({p1, p2, rest, stiff: 0.55});
+        }
+    }
+    for (let i = 0; i < ROWS - 2; i++) {
+        for (let j = 0; j < COLS; j++) {
+            const p1 = i * COLS + j;
+            const p2 = (i + 2) * COLS + j;
+            const rest = particles[p1].pos.distanceTo(particles[p2].pos);
+            constraints.push({p1, p2, rest, stiff: 0.55});
+        }
+    }
+}
+createConstraints();
+
+// ============== 物理更新 ==============
+function updatePhysics() {
+    // Verlet 积分
+    for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (p.pinned) continue;
+        const vel = p.pos.clone().sub(p.prev).multiplyScalar(DAMPING);
+        p.prev.copy(p.pos);
+        p.pos.add(vel).add(GRAVITY);
+    }
+
+    // 约束满足
+    for (let n = 0; n < ITERATIONS; n++) {
+        for (let c of constraints) {
+            const p1 = particles[c.p1];
+            const p2 = particles[c.p2];
+            const delta = p2.pos.clone().sub(p1.pos);
+            const dist = delta.length();
+            if (dist < 0.0001) continue;
+            const diff = (dist - c.rest) / dist;
+            const offset = delta.multiplyScalar(diff * 0.5 * c.stiff);
+
+            p1.pos.add(offset);
+            p2.pos.sub(offset);
+        }
+    }
+
+    // 强制固定整条顶部（关键约束）
+    for (let j = 0; j < COLS; j++) {
+        const idx = j; // 第 0 行
+        const p = particles[idx];
+        p.pos.x = initialTopX[j];
+        p.pos.y = topY;
+        p.pos.z = 0;
+        p.prev.copy(p.pos); // 消除顶部速度
+    }
+}
+
+// ============== 更新几何体 ==============
+const posAttr = geometry.attributes.position;
+function updateGeometry() {
+    for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        posAttr.setXYZ(i, p.pos.x, p.pos.y, p.pos.z);
+    }
+    posAttr.needsUpdate = true;
+    geometry.computeVertexNormals();
+}
+
+// ============== 鼠标交互 ==============
+let isDragging = false;
+let grabbedIdx = -1;
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const dragPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+
+function onMouseDown(e) {
+    if (e.button !== 0) return;
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(mesh);
+    if (intersects.length === 0) return;
+
+    const hit = intersects[0].point;
+    let minDist = Infinity;
+    grabbedIdx = -1;
+
+    for (let i = 0; i < particles.length; i++) {
+        const row = Math.floor(i / COLS);
+        if (row === 0) continue; // 禁止抓取顶部
+        const d = particles[i].pos.distanceTo(hit);
+        if (d < minDist) {
+            minDist = d;
+            grabbedIdx = i;
+        }
+    }
+    if (minDist > 35 || grabbedIdx < 0) return;
+
+    isDragging = true;
+    const gp = particles[grabbedIdx].pos;
+    dragPlane.set(new THREE.Vector3(0, 0, 1), -gp.z);
+}
+
+function onMouseMove(e) {
+    if (!isDragging || grabbedIdx < 0) return;
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const target = new THREE.Vector3();
+    if (raycaster.ray.intersectPlane(dragPlane, target)) {
+        particles[grabbedIdx].pos.copy(target);
+    }
+}
+
+function onMouseUp() {
+    isDragging = false;
+    grabbedIdx = -1;
+}
+
+renderer.domElement.addEventListener('mousedown', onMouseDown);
+window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('mouseup', onMouseUp);
+window.addEventListener('mouseleave', onMouseUp);
+
+// ============== 窗口大小 ==============
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ============== 动画循环 ==============
+function animate() {
+    requestAnimationFrame(animate);
+    updatePhysics();
+    updateGeometry();
+    renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

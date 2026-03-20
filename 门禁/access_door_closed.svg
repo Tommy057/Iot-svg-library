@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- 2px 强制隔离外圈 (白色) -->
+  <circle cx="32" cy="32" r="30" fill="#FFFFFF"/>
+  <!-- 主体外壳 -->
+  <circle cx="32" cy="32" r="28" fill="#1A1A1B"/>
+  
+  <!-- 门框 - 绝对坐标定位 -->
+  <rect x="20" y="16" width="24" height="32" fill="#2D2D2E" rx="2"/>
+  
+  <!-- 门板 - 锁定蓝 -->
+  <rect x="22" y="18" width="20" height="28" fill="#0284C7" rx="1"/>
+  
+  <!-- 工业细节：磁力锁状态感应点 (纯白) -->
+  <rect x="38" y="28" width="2" height="6" fill="#FFFFFF"/>
+  
+  <!-- 下方状态文字底座 -->
+  <rect x="22" y="48" width="20" height="4" fill="#0284C7" opacity="0.5"/>
+</svg>
