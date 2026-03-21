@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Interactive 3D Receipt</title>
+<style>
+body { margin:0; background:#ffffff; overflow:hidden;}
+</style>
+</head>
+<body>
+
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+
+<script>
+// ================= 基础 =================
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 100);
+camera.position.set(0,0,8);
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+document.body.appendChild(renderer.domElement);
+
+// ================= 光 =================
+const dirLight = new THREE.DirectionalLight(0xffffff,1.2);
+dirLight.position.set(5,10,5);
+dirLight.castShadow = true;
+scene.add(dirLight);
+
+scene.add(new THREE.AmbientLight(0xffffff,0.5));
+
+// ================= 小票纹理 =================
+const canvas = document.createElement('canvas');
+canvas.width = 512;
+canvas.height = 1024;
+const ctx = canvas.getContext('2d');
+
+ctx.fillStyle = "#f8f5ee";
+ctx.fillRect(0,0,512,1024);
+
+ctx.fillStyle = "#111";
+ctx.font = "20px monospace";
+
+const lines = [
+"=== 3D RECEIPT ===",
+"",
+"☑ Buy: more FPS",
+"☑ Fix: z-fighting",
+"☑ Debug: normals",
+"☑ Add: bloom ✨",
+"☑ Remove: bugs 🐛",
+"",
+"TOTAL: ∞ hrs",
+"THANK YOU"
+];
+
+lines.forEach((l,i)=>{
+  ctx.fillText(l,40,60+i*40);
+});
+
+const texture = new THREE.CanvasTexture(canvas);
+
+// ================= 物理参数 =================
+const W=3, H=5, SX=22, SY=36;
+
+class P{
+  constructor(x,y,z){
+    this.pos=new THREE.Vector3(x,y,z);
+    this.prev=this.pos.clone();
+    this.acc=new THREE.Vector3();
+    this.lock=false;
+  }
+}
+
+const ps=[];
+function get(x,y){return ps[y*(SX+1)+x];}
+
+// 创建粒子
+for(let y=0;y<=SY;y++){
+  for(let x=0;x<=SX;x++){
+    let px=(x/SX-0.5)*W;
+    let py=(0.5-y/SY)*H;
+    ps.push(new P(px,py,0));
+  }
+}
+
+// ================= 约束 =================
+const cons=[];
+
+function add(p1,p2){
+  cons.push({p1,p2,d:p1.pos.distanceTo(p2.pos)});
+}
+
+// 结构
+for(let y=0;y<=SY;y++){
+  for(let x=0;x<=SX;x++){
+    if(x<SX)add(get(x,y),get(x+1,y));
+    if(y<SY)add(get(x,y),get(x,y+1));
+  }
+}
+
+// 弯曲
+for(let y=0;y<=SY;y++){
+  for(let x=0;x<=SX;x++){
+    if(x<SX-1)add(get(x,y),get(x+2,y));
+    if(y<SY-1)add(get(x,y),get(x,y+2));
+  }
+}
+
+// ================= 顶部刚性 =================
+function fixTop(){
+  let step=W/SX;
+  for(let x=0;x<=SX;x++){
+    let p=get(x,0);
+    p.pos.y=H/2;
+    p.pos.x=-W/2+x*step;
+  }
+}
+
+// ================= 几何 =================
+const geo=new THREE.PlaneGeometry(W,H,SX,SY);
+
+const mat=new THREE.MeshStandardMaterial({
+  map:texture,
+  roughness:0.9,
+  metalness:0,
+  side:THREE.DoubleSide
+});
+
+const mesh=new THREE.Mesh(geo,mat);
+mesh.castShadow=true;
+scene.add(mesh);
+
+// ================= 接触阴影（fake） =================
+const shadowGeo=new THREE.PlaneGeometry(4,6);
+const shadowMat=new THREE.MeshBasicMaterial({
+  color:0x000000,
+  transparent:true,
+  opacity:0.15
+});
+const shadow=new THREE.Mesh(shadowGeo,shadowMat);
+shadow.position.y=-2.5;
+shadow.rotation.x=-Math.PI/2;
+scene.add(shadow);
+
+// ================= 鼠标交互 =================
+const raycaster=new THREE.Raycaster();
+const mouse=new THREE.Vector2();
+
+let selected=null;
+
+window.addEventListener('mousedown',e=>{
+  mouse.x=(e.clientX/innerWidth)*2-1;
+  mouse.y=-(e.clientY/innerHeight)*2+1;
+
+  raycaster.setFromCamera(mouse,camera);
+
+  let min=Infinity;
+
+  ps.forEach(p=>{
+    let sp=p.pos.clone().project(camera);
+    let d=(sp.x-mouse.x)**2+(sp.y-mouse.y)**2;
+    if(d<min){
+      min=d;
+      selected=p;
+    }
+  });
+
+  if(selected) selected.lock=true;
+});
+
+window.addEventListener('mousemove',e=>{
+  if(!selected)return;
+
+  let x=(e.clientX/innerWidth)*2-1;
+  let y=-(e.clientY/innerHeight)*2+1;
+
+  let vec=new THREE.Vector3(x,y,0.5).unproject(camera);
+  selected.pos.copy(vec);
+});
+
+window.addEventListener('mouseup',()=>{
+  if(selected) selected.lock=false;
+  selected=null;
+});
+
+// ================= 模拟 =================
+function sim(){
+
+  ps.forEach(p=>{
+    if(p.lock)return;
+
+    p.acc.y-=0.002;
+
+    let temp=p.pos.clone();
+
+    p.pos.add(
+      p.pos.clone().sub(p.prev).multiplyScalar(0.995)
+    ).add(p.acc);
+
+    p.prev.copy(temp);
+    p.acc.set(0,0,0);
+  });
+
+  for(let i=0;i<4;i++){
+    cons.forEach(c=>{
+      let diff=c.p2.pos.clone().sub(c.p1.pos);
+      let d=diff.length();
+      let err=(d-c.d)/d;
+
+      if(!c.p1.lock)c.p1.pos.add(diff.clone().multiplyScalar(0.5*err));
+      if(!c.p2.lock)c.p2.pos.sub(diff.clone().multiplyScalar(0.5*err));
+    });
+
+    fixTop();
+  }
+}
+
+// ================= 更新几何 =================
+function update(){
+  let arr=geo.attributes.position;
+  let i=0;
+
+  for(let y=0;y<=SY;y++){
+    for(let x=0;x<=SX;x++){
+      let p=get(x,y).pos;
+      arr.setXYZ(i++,p.x,p.y,p.z);
+    }
+  }
+
+  arr.needsUpdate=true;
+  geo.computeVertexNormals();
+}
+
+// ================= 动画 =================
+function animate(){
+  requestAnimationFrame(animate);
+
+  sim();
+  update();
+
+  renderer.render(scene,camera);
+}
+animate();
+
+// ================= resize =================
+window.addEventListener('resize',()=>{
+  camera.aspect=innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);
+});
+
+</script>
+</body>
+</html>

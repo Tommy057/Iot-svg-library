@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>给朵朵的专属恋爱小票</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #fce4ec; font-family: 'Microsoft YaHei', sans-serif; }
+        #ui-overlay {
+            position: absolute; top: 30px; left: 30px; color: #ad1457;
+            pointer-events: none; user-select: none;
+        }
+        .heart { position: absolute; pointer-events: none; color: #ff80ab; font-size: 20px; animation: floatUp 2s ease-out forwards; }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="ui-overlay">
+        <h1 style="margin:0; font-size: 24px;">♥ 团子 & 朵朵的恋爱账单 ♥</h1>
+        <p style="color: #c2185b;">拖拽这张纸，查看我们的回忆...</p>
+    </div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    // --- 浪漫配置 ---
+    const LOVE_CONF = {
+        boyName: "团子",
+        girlName: "朵朵",
+        // 在这里替换照片的链接！
+        photos: [
+            './dd1.jpg','./dd2.jpg','./dd3.jpg', // 照片1 (可以用本地路径如 './d1.jpg')
+        ],
+        memories: [
+            ["2023.05.20", "初次心动", "∞"],
+            ["2023.08.15", "一起看的首场电影", "★"],
+            ["2023.12.24", "初雪时的火锅", "99.9"],
+            ["2024.02.14", "你说你最爱我的那一天", "VAL"],
+            ["每天", "想你 1440 次", "0.00"]
+        ]
+    };
+
+    const PHYS_CONF = {
+        w: 12, h: 28, segW: 16, segH: 38,
+        gravity: -0.4, friction: 0.96, stiffness: 1.1, iterations: 15
+    };
+
+    let scene, camera, renderer, clock, particles = [], constraints = [], clothMesh, clothGeometry;
+    let grabbedParticle = null, raycaster = new THREE.Raycaster(), mouse = new THREE.Vector2();
+
+    // --- 1. 物理类 ---
+    class Particle {
+        constructor(x, y, z) {
+            this.pos = new THREE.Vector3(x, y, z);
+            this.oldPos = new THREE.Vector3(x, y, z);
+            this.initPos = new THREE.Vector3(x, y, z);
+            this.acc = new THREE.Vector3(0, 0, 0);
+            this.fixed = false;
+        }
+        update(dt2) {
+            if (this.fixed) return;
+            let vel = this.pos.clone().sub(this.oldPos).multiplyScalar(PHYS_CONF.friction);
+            this.oldPos.copy(this.pos);
+            this.pos.add(vel).add(this.acc.multiplyScalar(dt2));
+            this.acc.set(0, 0, 0);
+        }
+    }
+
+    class Constraint {
+        constructor(p1, p2, dist) { this.p1 = p1; this.p2 = p2; this.dist = dist; }
+        solve() {
+            let diff = this.p1.pos.clone().sub(this.p2.pos);
+            let d = diff.length();
+            if (d === 0) return;
+            let f = (d - this.dist) / d * 0.5 * PHYS_CONF.stiffness;
+            if (!this.p1.fixed) this.p1.pos.sub(diff.clone().multiplyScalar(f));
+            if (!this.p2.fixed) this.p2.pos.add(diff.clone().multiplyScalar(f));
+        }
+    }
+
+    // --- 2. 浪漫贴图生成 (Canvas) ---
+    async function createLoveTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 1024;
+        const ctx = canvas.getContext('2d');
+
+        // 背景：淡淡的米黄色复古纸张
+        ctx.fillStyle = '#fffef0';
+        ctx.fillRect(0, 0, 512, 1024);
+
+        // 边框装饰
+        ctx.strokeStyle = '#f8bbd0';
+        ctx.lineWidth = 10;
+        ctx.strokeRect(5, 5, 502, 1014);
+
+        // 抬头
+        ctx.fillStyle = '#ad1457';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 36px "Microsoft YaHei"';
+        ctx.fillText(`${LOVE_CONF.boyName} ♥ ${LOVE_CONF.girlName}`, 256, 70);
+        ctx.font = '20px "Microsoft YaHei"';
+        ctx.fillText('专属幸福超市 消费凭证', 256, 105);
+
+        // 装饰线
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(40, 130); ctx.lineTo(472, 130); ctx.stroke();
+
+        // 渲染照片 (异步加载)
+        const loadImg = (url) => new Promise(res => {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.src = url;
+            img.onload = () => res(img);
+        });
+
+        let y = 180;
+        for (let i = 0; i < LOVE_CONF.photos.length; i++) {
+            try {
+                const img = await loadImg(LOVE_CONF.photos[i]);
+                // 拍立得相框效果
+                ctx.fillStyle = 'white';
+                ctx.shadowColor = 'rgba(0,0,0,0.1)'; ctx.shadowBlur = 10;
+                ctx.fillRect(130, y, 252, 220); // 相框
+                ctx.drawImage(img, 146, y + 15, 220, 160); // 照片
+                ctx.shadowBlur = 0;
+                y += 260;
+            } catch(e) { y += 50; }
+        }
+
+        // 清单
+        ctx.setLineDash([]);
+        LOVE_CONF.memories.forEach(m => {
+            ctx.fillStyle = '#880e4f';
+            ctx.font = 'bold 18px Courier New';
+            ctx.textAlign = 'left'; ctx.fillText(m[0], 40, y);
+            ctx.font = '16px "Microsoft YaHei"';
+            ctx.fillText(m[1], 160, y);
+            ctx.textAlign = 'right'; ctx.fillText(m[2], 472, y);
+            y += 45;
+        });
+
+        // 底部二维码占位
+        ctx.fillStyle = '#f06292';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 24px "Microsoft YaHei"';
+        ctx.fillText('爱你每一天', 256, y + 40);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.anisotropy = 16;
+        return tex;
+    }
+
+    // --- 3. 场景逻辑 ---
+    async function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xfce4ec);
+
+        camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 5, 50);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        document.body.appendChild(renderer.domElement);
+
+        clock = new THREE.Clock();
+
+        // 灯光
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(10, 20, 15);
+        light.castShadow = true;
+        scene.add(light);
+
+        // 爱心夹子模型
+        const clipGeo = new THREE.CapsuleGeometry(0.3, 13, 4, 8);
+        const clipMat = new THREE.MeshStandardMaterial({ color: 0xc2185b });
+        const clip = new THREE.Mesh(clipGeo, clipMat);
+        clip.rotation.z = Math.PI/2;
+        clip.position.set(0, 18.2, 0);
+        scene.add(clip);
+
+        // 物理
+        const dx = PHYS_CONF.w / PHYS_CONF.segW;
+        const dy = PHYS_CONF.h / PHYS_CONF.segH;
+        for (let j = 0; j <= PHYS_CONF.segH; j++) {
+            for (let i = 0; i <= PHYS_CONF.segW; i++) {
+                const p = new Particle(i * dx - PHYS_CONF.w/2, 18 - j * dy, 0);
+                if (j === 0) p.fixed = true; // 顶边绝对锁定
+                particles.push(p);
+            }
+        }
+        for (let j = 0; j <= PHYS_CONF.segH; j++) {
+            for (let i = 0; i <= PHYS_CONF.segW; i++) {
+                let idx = j * (PHYS_CONF.segW + 1) + i;
+                if (i < PHYS_CONF.segW) constraints.push(new Constraint(particles[idx], particles[idx+1], dx));
+                if (j < PHYS_CONF.segH) constraints.push(new Constraint(particles[idx], particles[idx+(PHYS_CONF.segW+1)], dy));
+                if (i < PHYS_CONF.segW - 2) constraints.push(new Constraint(particles[idx], particles[idx+2], dx*2));
+                if (j < PHYS_CONF.segH - 2) constraints.push(new Constraint(particles[idx], particles[idx+(PHYS_CONF.segW+1)*2], dy*2));
+            }
+        }
+
+        // 网格
+        clothGeometry = new THREE.PlaneGeometry(PHYS_CONF.w, PHYS_CONF.h, PHYS_CONF.segW, PHYS_CONF.segH);
+        const tex = await createLoveTexture();
+        const material = new THREE.MeshStandardMaterial({ map: tex, side: THREE.DoubleSide, roughness: 0.6 });
+        clothMesh = new THREE.Mesh(clothGeometry, material);
+        clothMesh.castShadow = true;
+        scene.add(clothMesh);
+
+        window.addEventListener('mousedown', onDown);
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', () => grabbedParticle = null);
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    }
+
+    function createHeart(x, y) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.style.left = x + 'px';
+        h.style.top = y + 'px';
+        h.innerHTML = '♥';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+    }
+
+    function onDown(e) {
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        const hits = raycaster.intersectObject(clothMesh);
+        if (hits.length > 0) {
+            let p = hits[0].point;
+            let bestDist = Infinity;
+            particles.forEach(pt => {
+                let d = pt.pos.distanceTo(p);
+                if (d < bestDist) { bestDist = d; grabbedParticle = pt; }
+            });
+            createHeart(e.clientX, e.clientY);
+        }
+    }
+
+    function onMove(e) {
+        if (!grabbedParticle) return;
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -grabbedParticle.pos.z);
+        const target = new THREE.Vector3();
+        raycaster.ray.intersectPlane(plane, target);
+        grabbedParticle.pos.copy(target);
+        if(Math.random() > 0.8) createHeart(e.clientX, e.clientY);
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        const dt2 = Math.pow(Math.min(clock.getDelta(), 0.03), 2);
+        
+        particles.forEach(p => {
+            if (!p.fixed && p !== grabbedParticle) {
+                p.acc.add(new THREE.Vector3(0, PHYS_CONF.gravity, 0));
+                // 微风
+                const wind = Math.sin(Date.now()*0.001 + p.pos.y)*0.03;
+                p.acc.add(new THREE.Vector3(wind, 0, 0));
+                p.update(dt2);
+            }
+        });
+
+        for (let n = 0; n < PHYS_CONF.iterations; n++) {
+            constraints.forEach(c => c.solve());
+            for(let i=0; i<=PHYS_CONF.segW; i++) particles[i].pos.set(i * (PHYS_CONF.w/PHYS_CONF.segW) - PHYS_CONF.w/2, 18, 0);
+        }
+
+        const posAttr = clothGeometry.attributes.position;
+        particles.forEach((p, i) => posAttr.setXYZ(i, p.pos.x, p.pos.y, p.pos.z));
+        posAttr.needsUpdate = true;
+        clothGeometry.computeVertexNormals();
+        renderer.render(scene, camera);
+    }
+
+    init();
+</script>
+</body>
+</html>

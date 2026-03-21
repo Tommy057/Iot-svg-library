@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>团子与朵朵的星空</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; }
+        #label {
+            position: absolute; bottom: 50px; width: 100%; text-align: center;
+            color: white; font-family: "PingFang SC", sans-serif;
+            letter-spacing: 5px; pointer-events: none; text-shadow: 0 0 10px rgba(255,192,203,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="label">
+        <h1 id="title">每一个微光，都是想念朵朵的瞬间</h1>
+        <p>— 团子专属构建 —</p>
+    </div>
+<script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+    import * as THREE from 'three';
+
+    let scene, camera, renderer, particles;
+    const count = 5000;
+
+    function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 创建粒子
+        const geo = new THREE.BufferGeometry();
+        const positions = new Float32Array(count * 3);
+        const colors = new Float32Array(count * 3);
+        const color = new THREE.Color();
+
+        for(let i=0; i<count; i++) {
+            // 初始星云分布
+            const r = 20 + Math.random() * 10;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+            
+            positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+            positions[i*3+2] = r * Math.cos(phi);
+
+            // 颜色：粉白交替
+            color.setHSL(Math.random() * 0.1 + 0.9, 0.7, 0.8);
+            colors[i*3] = color.r;
+            colors[i*3+1] = color.g;
+            colors[i*3+2] = color.b;
+        }
+
+        geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const mat = new THREE.PointsMaterial({
+            size: 0.15,
+            vertexColors: true,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            opacity: 0.8
+        });
+
+        particles = new THREE.Points(geo, mat);
+        scene.add(particles);
+
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = -(e.clientY / window.innerHeight) * 2 + 1;
+            // 让星云随鼠标轻微倾斜
+            particles.rotation.y = x * 0.5;
+            particles.rotation.x = y * 0.5;
+        });
+
+        animate();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.z += 0.001; // 缓慢自转
+        
+        // 让粒子产生呼吸感
+        const time = Date.now() * 0.001;
+        particles.scale.setScalar(1 + Math.sin(time) * 0.05);
+        
+        renderer.render(scene, camera);
+    }
+
+    init();
+</script>
+</body>
+</html>
