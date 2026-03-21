@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540">
+  <defs>
+    <!-- 背景上下渐变 -->
+    <linearGradient id="bgGradBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9BCDE2" />
+      <stop offset="50%" stop-color="#CBE6F3" />
+      <stop offset="100%" stop-color="#93C6DD" />
+    </linearGradient>
+
+    <!-- 底部文字的三色渐变 (紫 -> 红 -> 黄) -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A52078" />
+      <stop offset="50%" stop-color="#E83020" />
+      <stop offset="100%" stop-color="#DE9015" />
+    </linearGradient>
+
+    <!-- 简单的投影效果 -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- 背景底色 -->
+  <rect width="900" height="540" fill="url(#bgGradBack)" />
+
+  <!-- 中部水波纹装饰 -->
+  <path d="M 0 300 Q 150 280 300 320 T 600 300 T 900 330 L 900 360 L 0 360 Z" fill="#ffffff" opacity="0.4" />
+  <path d="M 0 320 Q 200 350 450 310 T 900 340 L 900 380 L 0 380 Z" fill="#75B8D8" opacity="0.4" />
+  <circle cx="200" cy="380" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="250" cy="400" r="6" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="700" cy="360" r="8" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 左上角：使用须知 -->
+  <text x="80" y="100" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="36" font-weight="bold" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">使用须知：</text>
+  <text x="80" y="100" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="36" font-weight="bold" fill="#D32F2F">使用须知：</text>
+
+  <!-- 须知条款 (暗紫色/深黑色) -->
+  <g font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#2B1A2C" letter-spacing="1">
+    <text x="80" y="165">1、本票盖章有效，一票一桶；</text>
+    <text x="80" y="225">2、请妥善保管遗失不补；</text>
+    <text x="80" y="285">3、本小区内免费配送；</text>
+    <text x="80" y="345">4、本票一经售出概不退换现金。</text>
+  </g>
+
+  <!-- ================= 右侧二维码区域 ================= -->
+  <!-- 白色圆角底板 -->
+  <rect x="580" y="60" width="230" height="230" rx="15" fill="#ffffff" filter="url(#dropShadow)" />
+  <g transform="translate(595, 75)">
+    <!-- 虚线提示框 (在CDR里删掉这个框，把你的二维码放进来) -->
+    <rect width="200" height="200" fill="none" stroke="#cccccc" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="100" y="90" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#999999" text-anchor="middle">请删除此框</text>
+    <text x="100" y="120" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#999999" text-anchor="middle">并拖入你上传的</text>
+    <text x="100" y="150" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#999999" text-anchor="middle">二维码图片</text>
+  </g>
+
+  <!-- 底部大字：好水喝出健康来！ (横排、渐变、白边、投影) -->
+  <g transform="translate(450, 480)">
+    <!-- 投影及白边 -->
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="75" text-anchor="middle" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" letter-spacing="8" filter="url(#dropShadow)">好水喝出健康来！</text>
+    <!-- 渐变色文字 -->
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="75" text-anchor="middle" fill="url(#textGradient)" letter-spacing="8">好水喝出健康来！</text>
+  </g>
+</svg>
