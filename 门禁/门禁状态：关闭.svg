@@ -1,0 +1,31 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 停止态宝石渐变 (冷石板色) -->
+    <radialGradient id="gemSlate" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#64748B" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 物理隔离层 -->
+  <rect x="5" y="5" width="90" height="90" rx="12" fill="#FFFFFF" />
+
+  <!-- 2. 黑金基座 -->
+  <rect x="10" y="10" width="80" height="80" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  
+  <!-- 3. 门体拟态：紧闭状态 -->
+  <g stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M35,30 L35,70" stroke-opacity="0.4" /> <!-- 门缝细节 -->
+    <rect x="30" y="30" width="40" height="40" rx="2" stroke-opacity="0.8" />
+    <!-- 锁梁感 -->
+    <path d="M40,30 L40,25 Q50,15 60,25 L60,30" stroke-opacity="0.8" />
+  </g>
+
+  <!-- 4. 核心：宝石光晕指示灯 (石板灰) -->
+  <g transform="translate(50, 50)">
+    <!-- 宝石核心 (哑光) -->
+    <circle cx="0" cy="0" r="8" fill="url(#gemSlate)" stroke="#FFFFFF" stroke-width="1.5" />
+    <!-- 辅助高光 -->
+    <circle cx="-2.5" cy="-2.5" r="2.5" fill="#FFFFFF" fill-opacity="0.3" />
+  </g>
+</svg>

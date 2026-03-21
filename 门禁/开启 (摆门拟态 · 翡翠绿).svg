@@ -1,0 +1,33 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 扩散光晕：强化“通过”感 -->
+    <filter id="spreadGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="gemOpen" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#10B981" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 定位盘：纯白大底座 (在复杂底图中锁定位置) -->
+  <circle cx="50" cy="50" r="45" fill="#FFFFFF" shadow="true" />
+  
+  <!-- 2. 黑金核心：Obsidian 基座 -->
+  <circle cx="50" cy="50" r="38" fill="#0F172A" stroke="#334155" stroke-width="1" />
+
+  <!-- 3. 摆门拟态：张开动作 -->
+  <g transform="translate(50, 50)">
+    <!-- 门框定位线 -->
+    <path d="M-25,0 L25,0" stroke="#475569" stroke-width="2" stroke-dasharray="2,2" />
+    <!-- 开启状态的门扇 (45度张开) -->
+    <line x1="-25" y1="0" x2="-5" y2="-25" stroke="#10B981" stroke-width="6" stroke-linecap="round" filter="url(#spreadGlow)" />
+    <!-- 开启圆弧路径 -->
+    <path d="M-5,-25 Q15,-20 25,0" fill="none" stroke="#10B981" stroke-width="2" stroke-opacity="0.4" />
+  </g>
+
+  <!-- 4. 宝石光晕：中心状态点 -->
+  <circle cx="50" cy="50" r="9" fill="url(#gemOpen)" stroke="#FFFFFF" stroke-width="1.5" />
+  <circle cx="47" cy="47" r="2.5" fill="#FFFFFF" fill-opacity="0.6" />
+</svg>

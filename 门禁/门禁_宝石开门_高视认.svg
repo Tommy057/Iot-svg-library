@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- 1. 最外层：2px 强制白色隔离保护圈 -->
+  <circle cx="40" cy="40" r="38" fill="#FFFFFF"/>
+  
+  <!-- 2. 中间层：黑金机能底座 -->
+  <circle cx="40" cy="40" r="35" fill="#1A1A1B"/>
+  
+  <!-- 3. 装饰层：祖母绿溢光环 (表示通行许可) -->
+  <circle cx="40" cy="40" r="32" stroke="#10B981" stroke-width="2" fill="none" opacity="0.5"/>
+  
+  <!-- 4. 核心：透视宝石门板 (开门状态 - 向右摆开) -->
+  <!-- 使用 Path 绘制具有厚度感的侧开门 -->
+  <path d="M30 22 L45 16 L45 54 L30 58 Z" fill="#10B981"/>
+  <path d="M45 16 L50 19 L50 57 L45 54 Z" fill="#059669" opacity="0.8"/> <!-- 门侧边厚度 -->
+  
+  <!-- 5. 宝石质感：随透视偏转的高光 -->
+  <path d="M32 21 L43 17 L43 21 L32 25 Z" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- 6. 状态符号：动效箭头 (翠绿发光) -->
+  <path d="M55 35 L62 40 L55 45" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 7. 底部状态胶囊标签 (祖母绿) -->
+  <rect x="20" y="62" width="40" height="12" rx="6" fill="#10B981"/>
+  <text x="40" y="71" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-weight="bold" font-size="9">OPEN</text>
+</svg>

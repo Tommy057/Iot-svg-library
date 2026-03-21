@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- 1. 最外层：2px 强制白色隔离保护圈 (对抗 CAD 线条的关键) -->
+  <circle cx="40" cy="40" r="38" fill="#FFFFFF"/>
+  
+  <!-- 2. 中间层：黑金机能底座 -->
+  <circle cx="40" cy="40" r="35" fill="#1A1A1B"/>
+  
+  <!-- 3. 装饰层：蓝宝石溢光环 (低透明度) -->
+  <circle cx="40" cy="40" r="32" stroke="#0284C7" stroke-width="2" fill="none" opacity="0.4"/>
+  
+  <!-- 4. 核心：宝石门板 (关门状态) -->
+  <rect x="28" y="22" width="24" height="36" rx="2" fill="#0284C7"/>
+  
+  <!-- 5. 宝石质感：月牙高光 -->
+  <path d="M30 24 L50 24 A2 2 0 0 1 50 28 L30 28 A2 2 0 0 1 30 24" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- 6. 状态符号：白色闭锁 (拟态) -->
+  <rect x="36" y="38" width="8" height="6" fill="#FFFFFF"/>
+  <path d="M37 38 V35 A3 3 0 0 1 43 35 V38" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- 7. 底部状态胶囊标签 (高对比度) -->
+  <rect x="20" y="62" width="40" height="12" rx="6" fill="#0284C7"/>
+  <text x="40" y="71" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-weight="bold" font-size="9">LOCKED</text>
+</svg>

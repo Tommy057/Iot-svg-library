@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" viewBox="0 0 100 120">
+  <!-- 0. 底部投影 (模拟立体悬浮) -->
+  <circle cx="52" cy="52" r="30" fill="#000000" opacity="0.2"/>
+
+  <!-- 1. 金属外圈底座 (黑金质感) -->
+  <circle cx="50" cy="50" r="32" fill="#2D2D2E"/>
+  <circle cx="50" cy="50" r="28" fill="#1A1A1B"/>
+
+  <!-- 2. 宝石核心层 (蓝宝石) -->
+  <!-- HT 支持简单线性渐变，此处模拟深度 -->
+  <circle cx="50" cy="50" r="24" fill="#0284C7"/>
+  
+  <!-- 3. 内部折射层 (底层微亮) -->
+  <path d="M30 50 A20 20 0 0 0 70 50 Z" fill="#FFFFFF" opacity="0.15"/>
+  
+  <!-- 4. 核心高光点 (月牙形 - 宝石感的灵魂) -->
+  <path d="M36 36 A20 20 0 0 1 64 36 A16 16 0 0 0 36 36 Z" fill="#FFFFFF" opacity="0.6"/>
+
+  <!-- 5. 状态符号 (极简白) -->
+  <rect x="44" y="44" width="12" height="12" rx="2" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+  <path d="M46 44 V40 A4 4 0 0 1 54 40 V44" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- 6. 底部数据标签 (胶囊宝石座) -->
+  <rect x="20" y="85" width="60" height="20" rx="4" fill="#1A1A1B" stroke="#0284C7" stroke-width="1.5"/>
+  <text x="50" y="100" text-anchor="middle" fill="#00F2FF" font-family="Arial" font-weight="bold" font-size="12">MJ-025</text>
+  
+  <!-- 标签顶部的微量发光线条 -->
+  <line x1="30" y1="85" x2="70" y2="85" stroke="#00F2FF" stroke-width="2" opacity="0.8"/>
+</svg>

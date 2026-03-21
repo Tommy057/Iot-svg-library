@@ -1,0 +1,36 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 宝石发光 -->
+    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <!-- 宝石渐变 -->
+    <radialGradient id="gemEmerald" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#10B981" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 物理隔离层 (White Shield) -->
+  <rect x="5" y="5" width="90" height="90" rx="12" fill="#FFFFFF" />
+
+  <!-- 2. 黑金基座 (Obsidian Base) -->
+  <rect x="10" y="10" width="80" height="80" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+  
+  <!-- 3. 门体拟态：双开门张开状态 -->
+  <g stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M30,30 L20,25 L20,75 L30,70" stroke-opacity="0.6" /> <!-- 左扇门 -->
+    <path d="M70,30 L80,25 L80,75 L70,70" stroke-opacity="0.6" /> <!-- 右扇门 -->
+  </g>
+
+  <!-- 4. 核心：宝石光晕指示灯 -->
+  <g transform="translate(50, 50)">
+    <!-- 状态光晕 -->
+    <circle cx="0" cy="0" r="14" fill="#10B981" fill-opacity="0.15" filter="url(#glowGreen)" />
+    <!-- 宝石核心 -->
+    <circle cx="0" cy="0" r="8" fill="url(#gemEmerald)" stroke="#FFFFFF" stroke-width="1.5" />
+    <!-- 高光点 -->
+    <circle cx="-2.5" cy="-2.5" r="2.5" fill="#FFFFFF" fill-opacity="0.6" />
+  </g>
+</svg>

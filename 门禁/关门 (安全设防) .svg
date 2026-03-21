@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>门禁-关门状态 (Door Closed)</title>
+
+  <!-- 1. 实体偏移阴影 (规避引擎滤镜，向下偏移4px) -->
+  <rect x="6" y="8" width="52" height="52" rx="14" fill="#000000" opacity="0.2" />
+
+  <!-- 2. 高亮翡翠绿外壳 (表示安全设防) & 强制白边隔离 -->
+  <rect x="6" y="4" width="52" height="52" rx="14" fill="#059669" stroke="#FFFFFF" stroke-width="2.5" />
+
+  <!-- 3. 内嵌纯白瓷感屏幕 -->
+  <rect x="12" y="10" width="40" height="40" rx="8" fill="#F8FAFC" />
+
+  <!-- ========================================== -->
+  <!-- 4. 核心宝石指示灯 (绿光 - 设防中) -->
+  <!-- ========================================== -->
+  <circle cx="32" cy="16" r="4" fill="#10B981" opacity="0.2" />
+  <circle cx="32" cy="16" r="2" fill="#10B981" opacity="0.6" />
+  <circle cx="32" cy="16" r="1" fill="#10B981" />
+
+  <!-- ========================================== -->
+  <!-- 5. 黑金拟态：物理门扇 (完全闭合) -->
+  <!-- ========================================== -->
+  <!-- 门框 -->
+  <rect x="20" y="22" width="24" height="24" rx="1" fill="none" stroke="#64748B" stroke-width="2" />
+  
+  <!-- 左门扇 -->
+  <rect x="21" y="23" width="11" height="22" fill="#0F172A" />
+  <!-- 右门扇 -->
+  <rect x="32" y="23" width="11" height="22" fill="#0F172A" />
+  
+  <!-- 门缝中线 -->
+  <line x1="32" y1="23" x2="32" y2="45" stroke="#FFFFFF" stroke-width="1" opacity="0.5" />
+
+  <!-- 智能门把手/门禁锁 (对接闭合状态) -->
+  <rect x="29" y="32" width="1.5" height="4" rx="0.5" fill="#FFFFFF" />
+  <rect x="33.5" y="32" width="1.5" height="4" rx="0.5" fill="#FFFFFF" />
+
+</svg>

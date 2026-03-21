@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>门禁-开门状态 (Door Open)</title>
+
+  <!-- 1. 实体偏移阴影 -->
+  <rect x="6" y="8" width="52" height="52" rx="14" fill="#000000" opacity="0.2" />
+
+  <!-- 2. 高亮琥珀橙外壳 (表示防线打开/通行中) & 强制白边隔离 -->
+  <rect x="6" y="4" width="52" height="52" rx="14" fill="#F59E0B" stroke="#FFFFFF" stroke-width="2.5" />
+
+  <!-- 3. 内嵌纯白瓷感屏幕 -->
+  <rect x="12" y="10" width="40" height="40" rx="8" fill="#F8FAFC" />
+
+  <!-- ========================================== -->
+  <!-- 4. 核心宝石指示灯 (橙光 - 警告/开门) -->
+  <!-- ========================================== -->
+  <circle cx="32" cy="16" r="4" fill="#F59E0B" opacity="0.2" />
+  <circle cx="32" cy="16" r="2" fill="#F59E0B" opacity="0.6" />
+  <circle cx="32" cy="16" r="1" fill="#F59E0B" />
+
+  <!-- ========================================== -->
+  <!-- 5. 黑金拟态：物理门扇 (3D向内敞开透视) -->
+  <!-- ========================================== -->
+  <!-- 门框内部空间 (露出走廊的浅灰色) -->
+  <rect x="20" y="22" width="24" height="24" rx="1" fill="#E2E8F0" stroke="#64748B" stroke-width="2" />
+  <!-- 门槛线/深度线 -->
+  <line x1="21" y1="41" x2="43" y2="41" stroke="#CBD5E1" stroke-width="1" />
+
+  <!-- 左门扇 (向后推开的透视多边形) -->
+  <polygon points="21,23 27,26 27,42 21,45" fill="#0F172A" />
+  
+  <!-- 右门扇 (向后推开的透视多边形) -->
+  <polygon points="43,23 37,26 37,42 43,45" fill="#0F172A" />
+
+  <!-- 智能门把手 (跟随透视角度移动) -->
+  <rect x="25" y="32" width="1" height="4" rx="0.5" fill="#FFFFFF" />
+  <rect x="38" y="32" width="1" height="4" rx="0.5" fill="#FFFFFF" />
+
+</svg>
