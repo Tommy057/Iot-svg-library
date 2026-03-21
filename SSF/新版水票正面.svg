@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540">
+  <defs>
+    <!-- 纯净水淡蓝背景渐变 -->
+    <linearGradient id="bgGradFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6DB1D5" />
+      <stop offset="60%" stop-color="#A5D4E8" />
+      <stop offset="100%" stop-color="#D7EFF8" />
+    </linearGradient>
+    
+    <!-- 阴影滤镜 (专门给新加的价格徽章使用，让它更有立体感) -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- 背景底色 -->
+  <rect width="900" height="540" fill="url(#bgGradFront)" />
+
+  <!-- 模拟水波纹底纹 -->
+  <path d="M -50 400 Q 250 450 450 380 T 950 420" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.4" />
+  <path d="M 0 430 Q 300 480 500 400 T 900 450" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3" />
+
+
+  <!-- 顶部左侧：绿源纯净水 (底层白边 + 顶层黑字) -->
+  <text x="50" y="110" font-family="'STXingkai', '华文行楷', cursive" font-size="65" font-weight="bold" stroke="#ffffff" stroke-width="10" stroke-linejoin="round">绿源纯净水</text>
+  <text x="50" y="110" font-family="'STXingkai', '华文行楷', cursive" font-size="65" font-weight="bold" fill="#1A1A1A">绿源纯净水</text>
+
+  <!-- 顶部右侧：天然，无污染 -->
+  <text x="570" y="100" font-family="'STXingkai', '华文行楷', cursive" font-size="32" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">天然，无污染</text>
+  <text x="570" y="100" font-family="'STXingkai', '华文行楷', cursive" font-size="32" fill="#6C5B67">天然，无污染</text>
+
+  <!-- 核心大字：水票 (底层白边 + 顶层红字) -->
+  <text x="470" y="290" font-family="'STXingkai', '华文行楷', cursive" font-size="180" text-anchor="middle" stroke="#ffffff" stroke-width="18" stroke-linejoin="round">水票</text>
+  <text x="470" y="290" font-family="'STXingkai', '华文行楷', cursive" font-size="180" text-anchor="middle" fill="#DE2C2C">水票</text>
+
+  <!-- 红色圆角矩形标签：一票一桶 -->
+  <rect x="370" y="325" width="220" height="48" rx="24" fill="#E63935" />
+  <text x="480" y="360" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="6">一票一桶</text>
+
+  <!-- 底部联系方式 -->
+  <text x="330" y="440" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1A1A1A" letter-spacing="1">电话：13772285248</text>
+  <text x="330" y="490" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#1A1A1A" letter-spacing="1">地址：学院坊小区9号楼1单元102</text>
+
+  <!-- ================= 图片替换区 ================= -->
+  <!-- 左侧水桶占位 -->
+  <g transform="translate(40, 160)">
+    <rect width="250" height="350" fill="rgba(255,255,255,0.5)" stroke="#0055ff" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+    <text x="125" y="160" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#0055ff" text-anchor="middle">删除此框</text>
+    <text x="125" y="190" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#0055ff" text-anchor="middle">拖入水桶图片</text>
+  </g>
+
+  <!-- 右侧小哥占位 -->
+  <g transform="translate(640, 130)">
+    <rect width="230" height="400" fill="rgba(255,255,255,0.5)" stroke="#0055ff" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+    <text x="115" y="190" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#0055ff" text-anchor="middle">删除此框</text>
+    <text x="115" y="220" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#0055ff" text-anchor="middle">拖入送水小哥</text>
+  </g>
+
+  <!-- ================= 核心修改：价格专属徽章 ================= -->
+  <!-- 放在最后面，这样徽章就会盖在所有东西的最上层 -->
+  <g transform="translate(260, 180)">
+    <!-- 徽章阴影底圈 (金黄色) -->
+    <circle cx="0" cy="0" r="50" fill="#FFC107" stroke="#ffffff" stroke-width="4" filter="url(#dropShadow)" />
+    <!-- 徽章内圈虚线 -->
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#E65100" stroke-width="2" stroke-dasharray="4,4" />
+    
+    <!-- ★★★ 价格数字 (要打印7元水票时，把下面的 5 改成 7) ★★★ -->
+    <text x="-12" y="18" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="52" font-weight="bold" fill="#D32F2F" text-anchor="middle">5</text>
+    
+    <!-- 价格单位 "元" -->
+    <text x="16" y="14" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="22" font-weight="bold" fill="#D32F2F" text-anchor="start">元</text>
+  </g>
+</svg>

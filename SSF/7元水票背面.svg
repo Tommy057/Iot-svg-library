@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540">
+  <defs>
+    <linearGradient id="bgGradBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9BCDE2" />
+      <stop offset="50%" stop-color="#CBE6F3" />
+      <stop offset="100%" stop-color="#93C6DD" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A52078" />
+      <stop offset="50%" stop-color="#E83020" />
+      <stop offset="100%" stop-color="#DE9015" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="540" fill="url(#bgGradBack)" />
+  <path d="M 0 300 Q 150 280 300 320 T 600 300 T 900 330 L 900 360 L 0 360 Z" fill="#ffffff" opacity="0.4" />
+  <path d="M 0 320 Q 200 350 450 310 T 900 340 L 900 380 L 0 380 Z" fill="#75B8D8" opacity="0.4" />
+  <circle cx="200" cy="380" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="250" cy="400" r="6" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <circle cx="700" cy="360" r="8" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+
+  <text x="80" y="100" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="36" font-weight="bold" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">使用须知：</text>
+  <text x="80" y="100" font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="36" font-weight="bold" fill="#D32F2F">使用须知：</text>
+
+  <!-- 7元版特有使用须知 -->
+  <g font-family="'Microsoft YaHei', '黑体', sans-serif" font-size="28" fill="#2B1A2C" letter-spacing="1">
+    <text x="80" y="165">1、本票盖章有效，一票一桶；</text>
+    <text x="80" y="225">2、请妥善保管遗失不补；</text>
+    <!-- 特别修改的第3条 -->
+    <text x="80" y="285" fill="#1A611D" font-weight="bold">3、本小区内免费送水上门；</text>
+    <text x="80" y="345">4、本票一经售出概不退换现金。</text>
+  </g>
+
+  <rect x="580" y="60" width="230" height="230" rx="15" fill="#ffffff" filter="url(#dropShadow)" />
+  <g transform="translate(595, 75)">
+    <rect width="200" height="200" fill="none" stroke="#cccccc" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="100" y="105" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#999999" text-anchor="middle">在此放入二维码</text>
+  </g>
+
+  <g transform="translate(450, 480)">
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="75" text-anchor="middle" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" letter-spacing="8" filter="url(#dropShadow)">好水喝出健康来！</text>
+    <text font-family="'STXingkai', '华文行楷', cursive" font-size="75" text-anchor="middle" fill="url(#textGradient)" letter-spacing="8">好水喝出健康来！</text>
+  </g>
+</svg>
