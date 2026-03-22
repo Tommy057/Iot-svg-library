@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100%" height="100%">
+  <defs>
+    <!-- 发光滤镜 -->
+    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadowPanel" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+    </filter>
+    <!-- 3D 倒角渐变 -->
+    <linearGradient id="bevelGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A7F3D0" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#022C22" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- ================= 1. 定位针系统 (Map Anchor) ================= -->
+  <!-- 底部锚点光环 -->
+  <ellipse cx="50" cy="120" rx="12" ry="4" fill="none" stroke="#10B981" stroke-width="1" opacity="0.6">
+    <animate attributeName="rx" values="6; 16; 6" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="2; 6; 2" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8; 0; 0.8" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- 锚点核心 -->
+  <circle cx="50" cy="120" r="3" fill="#10B981" filter="url(#glowGreen)"/>
+  <!-- 悬浮光束引脚 -->
+  <line x1="50" y1="116" x2="50" y2="85" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.8"/>
+  <path d="M 40 95 L 50 105 L 60 95" fill="none" stroke="#10B981" stroke-width="1" opacity="0.5"/>
+
+  <!-- ================= 2. 全息拟态主面板 (Glassmorphism Panel) ================= -->
+  <!-- 投影层 -->
+  <path d="M 25 20 L 75 20 A 10 10 0 0 1 85 30 L 85 75 A 10 10 0 0 1 75 85 L 55 85 L 50 90 L 45 85 L 25 85 A 10 10 0 0 1 15 75 L 15 30 A 10 10 0 0 1 25 20 Z" fill="#020617" opacity="0.6" filter="url(#shadowPanel)" transform="translate(0, 4)"/>
+  <!-- 玻璃基底 -->
+  <path d="M 25 20 L 75 20 A 10 10 0 0 1 85 30 L 85 75 A 10 10 0 0 1 75 85 L 55 85 L 50 90 L 45 85 L 25 85 A 10 10 0 0 1 15 75 L 15 30 A 10 10 0 0 1 25 20 Z" fill="#1E293B" fill-opacity="0.8" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- 3D 厚度内发光 -->
+  <path d="M 25 22 L 75 22 A 8 8 0 0 1 83 30 L 83 75 A 8 8 0 0 1 75 83 L 54 83 L 50 87 L 46 83 L 25 83 A 8 8 0 0 1 17 75 L 17 30 A 8 8 0 0 1 25 22 Z" fill="none" stroke="url(#bevelGreen)" stroke-width="1.5"/>
+
+  <!-- 动态全息扫描线 -->
+  <line x1="17" y1="30" x2="83" y2="30" stroke="#10B981" stroke-width="1" opacity="0.3">
+    <animate attributeName="y1" values="25;80;25" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="y2" values="25;80;25" dur="4s" repeatCount="indefinite" />
+  </line>
+
+  <!-- ================= 3. 门禁图腾 - 关门态 (Door Graphic) ================= -->
+  <g transform="translate(0, 5)">
+    <!-- 门框 -->
+    <path d="M 35 65 L 35 30 A 4 4 0 0 1 39 26 L 61 26 A 4 4 0 0 1 65 30 L 65 65" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- 闭合门板 -->
+    <rect x="38" y="29" width="24" height="36" fill="#047857" stroke="#A7F3D0" stroke-width="1"/>
+    <!-- 门禁状态灯带 (顶部) -->
+    <line x1="42" y1="32" x2="58" y2="32" stroke="#A7F3D0" stroke-width="1.5" filter="url(#glowGreen)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <!-- 门把手 -->
+    <circle cx="43" cy="48" r="1.5" fill="#A7F3D0" filter="url(#glowGreen)"/>
+  </g>
+</svg>

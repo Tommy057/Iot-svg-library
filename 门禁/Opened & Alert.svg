@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100%" height="100%">
+  <defs>
+    <!-- 警告发光滤镜 -->
+    <filter id="glowRed" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadowPanel" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+    </filter>
+    <!-- 警告态 3D 倒角渐变 -->
+    <linearGradient id="bevelRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCA5A5" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#450A0A" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- ================= 1. 定位针系统 (急促警告波纹) ================= -->
+  <!-- 底部锚点高频扩散光环 -->
+  <ellipse cx="50" cy="120" rx="4" ry="1.5" fill="none" stroke="#EF4444" stroke-width="2">
+    <animate attributeName="rx" values="4; 24" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="1.5; 8" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1; 0" dur="1s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="50" cy="120" rx="4" ry="1.5" fill="none" stroke="#F59E0B" stroke-width="1">
+    <animate attributeName="rx" values="4; 16" dur="1s" repeatCount="indefinite" begin="0.2s"/>
+    <animate attributeName="ry" values="1.5; 5" dur="1s" repeatCount="indefinite" begin="0.2s"/>
+    <animate attributeName="opacity" values="1; 0" dur="1s" repeatCount="indefinite" begin="0.2s"/>
+  </ellipse>
+  <!-- 锚点核心 -->
+  <circle cx="50" cy="120" r="3.5" fill="#EF4444" filter="url(#glowRed)">
+    <animate attributeName="opacity" values="0.5; 1; 0.5" dur="0.5s" repeatCount="indefinite"/>
+  </circle>
+  <!-- 红色警告光束 -->
+  <line x1="50" y1="116" x2="50" y2="85" stroke="#EF4444" stroke-width="2" stroke-dasharray="8 4" opacity="0.9">
+    <animate attributeName="stroke-dashoffset" values="12; 0" dur="0.8s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- ================= 2. 全息拟态主面板 (Glassmorphism Panel) ================= -->
+  <!-- 投影层 -->
+  <path d="M 25 20 L 75 20 A 10 10 0 0 1 85 30 L 85 75 A 10 10 0 0 1 75 85 L 55 85 L 50 90 L 45 85 L 25 85 A 10 10 0 0 1 15 75 L 15 30 A 10 10 0 0 1 25 20 Z" fill="#020617" opacity="0.8" filter="url(#shadowPanel)" transform="translate(0, 4)"/>
+  <!-- 玻璃基底 (带红色警报边框高频闪烁) -->
+  <path d="M 25 20 L 75 20 A 10 10 0 0 1 85 30 L 85 75 A 10 10 0 0 1 75 85 L 55 85 L 50 90 L 45 85 L 25 85 A 10 10 0 0 1 15 75 L 15 30 A 10 10 0 0 1 25 20 Z" fill="#1E293B" fill-opacity="0.85" stroke="#EF4444" stroke-width="1.5">
+    <animate attributeName="stroke-opacity" values="0.3; 1; 0.3" dur="0.6s" repeatCount="indefinite"/>
+  </path>
+  <!-- 3D 厚度内发光 -->
+  <path d="M 25 22 L 75 22 A 8 8 0 0 1 83 30 L 83 75 A 8 8 0 0 1 75 83 L 54 83 L 50 87 L 46 83 L 25 83 A 8 8 0 0 1 17 75 L 17 30 A 8 8 0 0 1 25 22 Z" fill="none" stroke="url(#bevelRed)" stroke-width="2"/>
+
+  <!-- ================= 3. 门禁图腾 - 开门态 (Door Graphic) ================= -->
+  <g transform="translate(0, 5)">
+    <!-- 门框背面 (模拟空间深度) -->
+    <path d="M 35 65 L 35 30 A 4 4 0 0 1 39 26 L 61 26 A 4 4 0 0 1 65 30 L 65 65" fill="#450A0A" fill-opacity="0.4"/>
+    <!-- 门框 -->
+    <path d="M 35 65 L 35 30 A 4 4 0 0 1 39 26 L 61 26 A 4 4 0 0 1 65 30 L 65 65" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- 开启的门板 (带有透视角度，向外开启) -->
+    <path d="M 38 29 L 52 23 L 52 71 L 38 65 Z" fill="#7F1D1D" stroke="#FCA5A5" stroke-width="1.2"/>
+    
+    <!-- 门禁状态灯带 (顶部变红) -->
+    <path d="M 40 28 L 50 25" stroke="#FCA5A5" stroke-width="1.5" filter="url(#glowRed)"/>
+    
+    <!-- 门把手 -->
+    <circle cx="48" cy="47" r="1.5" fill="#FCA5A5" filter="url(#glowRed)"/>
+
+    <!-- 开门警告声波/动态指示符 -->
+    <path d="M 60 38 Q 65 43 60 48" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round">
+      <animate attributeName="opacity" values="0; 1; 0" dur="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="transform" values="translate(-2, 0); translate(2, 0); translate(-2, 0)" dur="0.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 64 35 Q 71 43 64 51" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" filter="url(#glowRed)">
+      <animate attributeName="opacity" values="0; 1; 0" dur="0.8s" repeatCount="indefinite" begin="0.2s"/>
+    </path>
+  </g>
+</svg>
