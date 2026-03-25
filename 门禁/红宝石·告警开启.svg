@@ -1,0 +1,45 @@
+<svg width="100" height="130" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <radialGradient id="gem_red" cx="50%" cy="40%" r="50%" fx="50%" fy="30%">
+            <stop offset="0%" stop-color="#F87171" />
+            <stop offset="70%" stop-color="#EF4444" />
+            <stop offset="100%" stop-color="#7F1D1D" />
+        </radialGradient>
+        <filter id="glow_red" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 底部警告波纹 -->
+    <circle cx="50" cy="55" r="40" fill="none" stroke="#EF4444" stroke-width="2">
+        <animate attributeName="r" values="40;55" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.6;0" dur="1s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 底部标签背景 -->
+    <rect x="15" y="95" width="70" height="24" rx="12" fill="rgba(239, 68, 68, 0.15)" stroke="#EF4444" stroke-width="1" />
+
+    <!-- 宝石主体 (带有高频闪烁) -->
+    <circle cx="50" cy="55" r="40" fill="url(#gem_red)" filter="url(#glow_red)">
+        <animate attributeName="opacity" values="1;0.8;1" dur="0.5s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 顶部玻璃反光高光 -->
+    <path d="M25 35 Q50 15 75 35 Q50 25 25 35" fill="white" opacity="0.5" />
+
+    <!-- 开启态门禁图标 (侧旋透视风格) -->
+    <g transform="translate(35, 40)" fill="white">
+        <!-- 门框 -->
+        <path d="M0 0 L25 0 L25 25 L0 25 Z" fill="none" stroke="white" stroke-width="2" opacity="0.4" />
+        <!-- 开启的门板 -->
+        <path d="M0 0 L15 -5 L15 20 L0 25 Z" opacity="1">
+             <animateTransform attributeName="transform" type="translate" values="0 0; 2 0; 0 0" dur="0.5s" repeatCount="indefinite" />
+        </path>
+    </g>
+
+    <!-- 核心高亮 -->
+    <circle cx="50" cy="55" r="8" fill="#F59E0B" filter="url(#glow_red)">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="0.6s" repeatCount="indefinite" />
+    </circle>
+</svg>

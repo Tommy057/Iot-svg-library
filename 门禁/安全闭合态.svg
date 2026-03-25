@@ -1,0 +1,42 @@
+<svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- 定义滤镜与渐变 -->
+    <defs>
+        <filter id="glow_safe" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <linearGradient id="beam_safe" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#10B981" stop-opacity="0.1" />
+        </linearGradient>
+    </defs>
+
+    <!-- 底部全息引脚与定位点 -->
+    <path d="M50 118 L42 90 L58 90 Z" fill="url(#beam_safe)">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" />
+    </path>
+    <circle cx="50" cy="118" r="3" fill="#10B981" filter="url(#glow_safe)">
+        <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 毛玻璃悬浮面板 -->
+    <rect x="15" y="10" width="70" height="80" rx="12" fill="rgba(30, 41, 59, 0.85)" stroke="#10B981" stroke-width="1.5" filter="url(#glow_safe)" />
+    
+    <!-- 3D 拟物感门禁图标 (关门) -->
+    <g transform="translate(30, 25)">
+        <!-- 门框 -->
+        <rect x="5" y="5" width="30" height="45" rx="2" fill="none" stroke="#10B981" stroke-width="3" opacity="0.6" />
+        <!-- 门板 - 闭合 -->
+        <rect x="7" y="7" width="26" height="41" rx="1" fill="#10B981">
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+        </rect>
+        <!-- 装饰线条 -->
+        <line x1="5" y1="15" x2="40" y2="15" stroke="#10B981" stroke-width="0.5" opacity="0.4" />
+    </g>
+
+    <!-- 全息扫描线 -->
+    <line x1="15" y1="10" x2="85" y2="10" stroke="#10B981" stroke-width="2" opacity="0.5">
+        <animate attributeName="y1" values="15;85;15" dur="4s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="15;85;15" dur="4s" repeatCount="indefinite" />
+    </line>
+</svg>

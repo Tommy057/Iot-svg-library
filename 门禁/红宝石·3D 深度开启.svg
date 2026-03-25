@@ -1,0 +1,57 @@
+<svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 宝石框架：深红到亮红，模拟倒角 -->
+        <linearGradient id="frame_ruby" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7F1D1D" />
+            <stop offset="20%" stop-color="#EF4444" />
+            <stop offset="80%" stop-color="#B91C1C" />
+            <stop offset="100%" stop-color="#450A0A" />
+        </linearGradient>
+        
+        <!-- 门洞深处：模拟内部空间深度 -->
+        <radialGradient id="door_void" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#450A0A" />
+        </radialGradient>
+
+        <!-- 门板厚度切面：比门面更暗，形成 3D 感 -->
+        <linearGradient id="door_side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#991B1B" />
+            <stop offset="100%" stop-color="#450A0A" />
+        </linearGradient>
+
+        <filter id="ruby_glow_heavy" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 3D 门框：通过厚描边和外发光体现体积 -->
+    <rect x="15" y="15" width="90" height="120" rx="8" fill="#450A0A" stroke="url(#frame_ruby)" stroke-width="6" filter="url(#ruby_glow_heavy)" />
+
+    <!-- 2. 门洞内部空间：表现“开门后里面有光” -->
+    <rect x="21" y="21" width="78" height="108" rx="4" fill="url(#door_void)" />
+
+    <!-- 3. 3D 旋转门板组 -->
+    <g transform="translate(21, 21)">
+        <!-- 门板侧边（厚度面）：这是体现拟态的关键 -->
+        <path d="M55 5 L65 0 L65 108 L55 103 Z" fill="url(#door_side)" stroke="#450A0A" stroke-width="0.5" />
+        
+        <!-- 门板正面：向左侧旋转透视 -->
+        <path d="M0 0 L55 5 L55 103 L0 108 Z" fill="#EF4444" stroke="#FCA5A5" stroke-width="1">
+            <!-- 宝石表面高光 -->
+            <animate attributeName="fill" values="#EF4444; #B91C1C; #EF4444" dur="2s" repeatCount="indefinite" />
+        </path>
+
+        <!-- 门面上的高级感弧形反光 -->
+        <path d="M5 20 Q27 15 50 20" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.3" />
+        
+        <!-- 门把手 -->
+        <circle cx="48" cy="55" r="3" fill="white" opacity="0.8" />
+    </g>
+
+    <!-- 4. 底部警告霓虹条 -->
+    <rect x="20" y="140" width="80" height="4" rx="2" fill="#EF4444" filter="url(#ruby_glow_heavy)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+</svg>

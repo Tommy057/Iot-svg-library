@@ -1,0 +1,44 @@
+<svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 红宝石框架：带高频闪烁动效 -->
+        <linearGradient id="grad_ruby_frame" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#EF4444" />
+            <stop offset="50%" stop-color="#991B1B" />
+            <stop offset="100%" stop-color="#450A0A" />
+        </linearGradient>
+        <radialGradient id="grad_ruby_door" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#F87171" />
+            <stop offset="100%" stop-color="#450A0A" />
+        </radialGradient>
+        <filter id="glow_ruby" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 3D 门框 (带有红色警示脉冲) -->
+    <rect x="15" y="15" width="90" height="120" rx="8" fill="#450A0A" stroke="url(#grad_ruby_frame)" stroke-width="6" filter="url(#glow_ruby)">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="0.4s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- 2. 故障锁死的门板 (深红背景 + 内部警告光) -->
+    <rect x="24" y="24" width="72" height="102" rx="4" fill="url(#grad_ruby_door)" stroke="#EF4444" stroke-width="0.5" />
+
+    <!-- 3. 晶钻高光 (故障态下高光呈红色色散) -->
+    <path d="M30 40 Q60 20 90 40" fill="none" stroke="#FCA5A5" stroke-width="8" stroke-linecap="round" opacity="0.3" />
+
+    <!-- 4. 故障标识：门心位置的警示感叹号 -->
+    <g transform="translate(56, 55)" filter="url(#glow_ruby)">
+        <rect x="0" y="0" width="8" height="25" rx="4" fill="white">
+            <animate attributeName="opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite" />
+        </rect>
+        <circle cx="4" cy="35" r="4.5" fill="white">
+            <animate attributeName="opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite" />
+        </circle>
+    </g>
+
+    <!-- 5. 底部装饰：高频闪烁能量条 -->
+    <rect x="20" y="142" width="80" height="3" rx="1.5" fill="#EF4444" filter="url(#glow_ruby)">
+        <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite" />
+    </rect>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="100" height="130" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 门框渐变：模拟深色玉石边缘 -->
+        <linearGradient id="frame_green" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#065F46" />
+            <stop offset="50%" stop-color="#10B981" />
+            <stop offset="100%" stop-color="#064E3B" />
+        </linearGradient>
+        <!-- 门板渐变：晶莹剔透的翡翠中心 -->
+        <radialGradient id="door_body_green" cx="50%" cy="40%" r="70%">
+            <stop offset="0%" stop-color="#6EE7B7" />
+            <stop offset="80%" stop-color="#059669" />
+            <stop offset="100%" stop-color="#064E3B" />
+        </radialGradient>
+        <!-- 宝石级外发光 -->
+        <filter id="gem_glow_green" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 宝石外门框 (厚重拟物) -->
+    <path d="M15 10 L85 10 L85 115 L15 115 Z M25 20 L25 105 L75 105 L75 20 Z" fill="url(#frame_green)" filter="url(#gem_glow_green)" />
+
+    <!-- 2. 翡翠门板 (主体) -->
+    <rect x="25" y="20" width="50" height="85" fill="url(#door_body_green)" rx="2" stroke="#6EE7B7" stroke-width="0.5" />
+
+    <!-- 3. 晶钻切面高光 (核心：模拟玻璃/宝石反射) -->
+    <!-- 顶部弧形亮光 -->
+    <path d="M28 35 Q50 15 72 35" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+    <!-- 侧边斜切光 -->
+    <line x1="28" y1="25" x2="28" y2="90" stroke="white" stroke-width="1.5" opacity="0.2" />
+
+    <!-- 4. 拟物门把手 (点睛宝石) -->
+    <circle cx="68" cy="65" r="4" fill="white" filter="url(#gem_glow_green)">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- 5. 底部装饰线条 (增加科技感) -->
+    <rect x="15" y="120" width="70" height="3" rx="1.5" fill="#10B981" opacity="0.6" />
+</svg>

@@ -1,0 +1,35 @@
+<svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 蓝宝石框架渐变 -->
+        <linearGradient id="frame_sapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1E40AF" />
+            <stop offset="50%" stop-color="#3B82F6" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </linearGradient>
+        <!-- 门板：深邃的蓝宝石材质 -->
+        <radialGradient id="door_sapphire" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#60A5FA" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </radialGradient>
+        <filter id="sapphire_glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 3D 倒角门框 (蓝宝石) -->
+    <rect x="15" y="15" width="90" height="120" rx="8" fill="#172554" stroke="url(#frame_sapphire)" stroke-width="6" filter="url(#sapphire_glow)" />
+
+    <!-- 2. 内嵌式门板 -->
+    <rect x="24" y="24" width="72" height="102" rx="4" fill="url(#door_sapphire)" stroke="#93C5FD" stroke-width="0.5" />
+
+    <!-- 3. 晶钻高光 (灵魂：弧形反光) -->
+    <path d="M30 40 Q60 20 90 40" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" opacity="0.2" />
+    <path d="M30 30 L50 30" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.15" />
+
+    <!-- 4. 拟物化锁具 (霓虹青) -->
+    <rect x="80" y="65" width="4" height="12" rx="2" fill="#0EA5E9" filter="url(#sapphire_glow)" />
+    
+    <!-- 5. 底部装饰 -->
+    <rect x="20" y="142" width="80" height="3" rx="1.5" fill="#3B82F6" opacity="0.5" />
+</svg>

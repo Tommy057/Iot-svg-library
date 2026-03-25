@@ -1,0 +1,50 @@
+<svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 琥珀框架渐变 -->
+        <linearGradient id="frame_amber" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#B45309" />
+            <stop offset="50%" stop-color="#F59E0B" />
+            <stop offset="100%" stop-color="#78350F" />
+        </linearGradient>
+        <!-- 门洞深处：温暖的室内溢光 -->
+        <radialGradient id="void_amber" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FEF3C7" />
+            <stop offset="100%" stop-color="#78350F" />
+        </radialGradient>
+        <!-- 开启门板的侧面（厚度） -->
+        <linearGradient id="door_side_amber" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#92400E" />
+            <stop offset="100%" stop-color="#451A03" />
+        </linearGradient>
+        <filter id="amber_glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 3D 琥珀门框 -->
+    <rect x="15" y="15" width="90" height="120" rx="8" fill="#451A03" stroke="url(#frame_amber)" stroke-width="6" filter="url(#amber_glow)" />
+
+    <!-- 2. 门洞内部空间 -->
+    <rect x="21" y="21" width="78" height="108" rx="4" fill="url(#void_amber)" />
+
+    <!-- 3. 3D 旋转门板组 -->
+    <g transform="translate(21, 21)">
+        <!-- 门板厚度（侧面） -->
+        <path d="M55 5 L68 0 L68 108 L55 103 Z" fill="url(#door_side_amber)" />
+        
+        <!-- 门板正面（向左侧旋转） -->
+        <path d="M0 0 L55 5 L55 103 L0 108 Z" fill="#F59E0B" stroke="#FDE68A" stroke-width="1" />
+
+        <!-- 门面高光 -->
+        <path d="M5 25 Q27 18 50 25" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.4" />
+        
+        <!-- 门把手 -->
+        <circle cx="48" cy="55" r="3" fill="#451A03" opacity="0.6" />
+    </g>
+
+    <!-- 4. 底部装饰 -->
+    <rect x="20" y="142" width="80" height="3" rx="1.5" fill="#F59E0B" opacity="0.5">
+        <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite" />
+    </rect>
+</svg>

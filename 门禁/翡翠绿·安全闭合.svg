@@ -1,0 +1,39 @@
+<svg width="100" height="130" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 宝石主体径向渐变 -->
+        <radialGradient id="gem_green" cx="50%" cy="40%" r="50%" fx="50%" fy="30%">
+            <stop offset="0%" stop-color="#34D399" />
+            <stop offset="70%" stop-color="#10B981" />
+            <stop offset="100%" stop-color="#064E3B" />
+        </radialGradient>
+        <!-- 外部光晕滤镜 -->
+        <filter id="glow_green" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 底部标签背景 (仿 AP 风格) -->
+    <rect x="15" y="95" width="70" height="24" rx="12" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="1" />
+
+    <!-- 宝石主体 -->
+    <circle cx="50" cy="55" r="40" fill="url(#gem_green)" filter="url(#glow_green)">
+        <animate attributeName="r" values="39;41;39" dur="3s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 顶部玻璃反光高光 (宝石质感的核心) -->
+    <path d="M25 35 Q50 15 75 35 Q50 25 25 35" fill="white" opacity="0.4" />
+
+    <!-- 门禁图标 (白色简洁丝印风格) -->
+    <g transform="translate(37, 40)" fill="white">
+        <path d="M2 24 L2 2 Q2 0 4 0 L22 0 Q24 0 24 2 L24 24 Z" opacity="0.9" />
+        <rect x="18" y="11" width="3" height="3" rx="1" fill="#064E3B" />
+        <rect x="5" y="3" width="16" height="1" opacity="0.3" />
+    </g>
+    
+    <!-- 内部核心呼吸光亮 -->
+    <circle cx="50" cy="55" r="15" fill="white" opacity="0.2">
+        <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite" />
+    </circle>
+</svg>

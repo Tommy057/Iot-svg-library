@@ -1,0 +1,43 @@
+<svg width="100" height="130" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 红宝石门框渐变 -->
+        <linearGradient id="frame_red" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#991B1B" />
+            <stop offset="50%" stop-color="#EF4444" />
+            <stop offset="100%" stop-color="#7F1D1D" />
+        </linearGradient>
+        <!-- 开启后的室内溢光 (琥珀色) -->
+        <radialGradient id="alarm_light" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FDE68A" />
+            <stop offset="100%" stop-color="#EF4444" stop-opacity="0" />
+        </radialGradient>
+        <filter id="gem_glow_red" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 宝石门框 (带呼吸动效) -->
+    <path d="M15 10 L85 10 L85 115 L15 115 Z M25 20 L25 105 L75 105 L75 20 Z" fill="url(#frame_red)" filter="url(#gem_glow_red)">
+        <animate attributeName="opacity" values="1;0.7;1" dur="0.8s" repeatCount="indefinite" />
+    </path>
+
+    <!-- 2. 门后溢出的宝石能量光 (门洞感) -->
+    <rect x="25" y="20" width="50" height="85" fill="url(#alarm_light)">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="1s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- 3. 3D 侧开宝石门板 (斜向透视) -->
+    <!-- 这个形状直接模拟您图中 MJ071 的开启姿态 -->
+    <path d="M25 20 L60 10 L60 100 L25 115 Z" fill="#7F1D1D" stroke="#FCA5A5" stroke-width="1" opacity="0.95">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 2 0; 0 0" dur="1.5s" repeatCount="indefinite" />
+    </path>
+
+    <!-- 4. 开启态门板上的宝石反光 -->
+    <path d="M30 30 L50 25" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.3" />
+
+    <!-- 5. 警示符号 (在门洞中心闪烁) -->
+    <circle cx="62" cy="60" r="3" fill="#F59E0B" filter="url(#gem_glow_red)">
+        <animate attributeName="r" values="2;5;2" dur="0.5s" repeatCount="indefinite" />
+    </circle>
+</svg>
