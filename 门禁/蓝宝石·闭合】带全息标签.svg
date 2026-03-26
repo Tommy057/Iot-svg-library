@@ -1,0 +1,30 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="glow_sapphire" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <radialGradient id="grad_door_sapphire" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#60A5FA" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </radialGradient>
+    </defs>
+
+    <!-- 1. 顶部全息标签柜 (HUD Plate) -->
+    <g transform="translate(10, 5)">
+        <!-- 玻璃底板 -->
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="rgba(30, 64, 175, 0.3)" stroke="#3B82F6" stroke-width="1" />
+        <!-- 四角护角装饰线 (增加科技感) -->
+        <path d="M0 10 L0 0 L10 0 M90 0 L100 0 L100 10 M100 25 L100 35 L90 35 M10 35 L0 35 L0 25" fill="none" stroke="#60A5FA" stroke-width="2" />
+        <!-- 标签文字 (MJ001) -->
+        <text x="50" y="24" font-family="Arial-BoldMT, Arial" font-size="16" font-weight="bold" fill="#60A5FA" text-anchor="middle" filter="url(#glow_sapphire)">MJ001</text>
+    </g>
+
+    <!-- 2. 3D 蓝宝石门框 -->
+    <g transform="translate(0, 45)">
+        <rect x="15" y="15" width="90" height="110" rx="8" fill="#172554" stroke="#3B82F6" stroke-width="5" filter="url(#glow_sapphire)" />
+        <rect x="24" y="24" width="72" height="92" rx="4" fill="url(#grad_door_sapphire)" />
+        <path d="M30 40 Q60 20 90 40" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" opacity="0.2" />
+        <rect x="80" y="65" width="4" height="12" rx="2" fill="#0EA5E9" />
+    </g>
+</svg>

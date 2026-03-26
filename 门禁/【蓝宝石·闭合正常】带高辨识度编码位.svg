@@ -1,0 +1,24 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="sapphire_blur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" />
+        </filter>
+    </defs>
+    <!-- 1. 编码标签区：高辨识度设计 -->
+    <g transform="translate(10, 5)">
+        <!-- 深色压底背景（确保在复杂图纸上文字清晰） -->
+        <rect x="0" y="0" width="100" height="38" rx="6" fill="#0F172A" stroke="#3B82F6" stroke-width="2" />
+        <!-- 装饰侧边条 -->
+        <rect x="2" y="2" width="4" height="34" rx="2" fill="#3B82F6" />
+        <!-- 示例文字（实际在HT中建议叠加原生Text组件） -->
+        <text x="55" y="25" font-family="Arial-Bold" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">MJ001</text>
+    </g>
+
+    <!-- 2. 3D 蓝宝石门 -->
+    <g transform="translate(0, 50)">
+        <rect x="15" y="10" width="90" height="110" rx="10" fill="#172554" stroke="#3B82F6" stroke-width="6" />
+        <rect x="24" y="18" width="72" height="94" rx="4" fill="linear-gradient(to bottom, #60A5FA, #1E3A8A)" />
+        <path d="M30 35 Q60 15 90 35" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" opacity="0.3" />
+        <circle cx="80" cy="65" r="4" fill="#0EA5E9" />
+    </g>
+</svg>

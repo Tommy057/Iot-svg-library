@@ -1,0 +1,32 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="glow_ruby" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 顶部全息标签柜 (带闪烁动画) -->
+    <g transform="translate(10, 5)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="rgba(153, 27, 27, 0.4)" stroke="#EF4444" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="1;0.3;1" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <text x="50" y="24" font-family="Arial-BoldMT, Arial" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle" filter="url(#glow_ruby)">
+            <animate attributeName="fill" values="#FFFFFF;#FCA5A5;#FFFFFF" dur="0.6s" repeatCount="indefinite" />
+            MJ001
+        </text>
+    </g>
+
+    <!-- 2. 3D 故障锁定门 -->
+    <g transform="translate(0, 45)">
+        <rect x="15" y="15" width="90" height="110" rx="8" fill="#450A0A" stroke="#EF4444" stroke-width="5" filter="url(#glow_ruby)" />
+        <rect x="24" y="24" width="72" height="92" rx="4" fill="#7F1D1D" stroke="#EF4444" stroke-width="0.5" />
+        <!-- 故障感叹号 -->
+        <g transform="translate(56, 45)" filter="url(#glow_ruby)">
+            <rect x="0" y="0" width="8" height="25" rx="4" fill="white">
+                <animate attributeName="opacity" values="1;0.3;1" dur="0.4s" repeatCount="indefinite" />
+            </rect>
+            <circle cx="4" cy="35" r="4" fill="white" />
+        </g>
+    </g>
+</svg>
