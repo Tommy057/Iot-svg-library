@@ -1,0 +1,185 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 背景层：纯净白/浅灰磨砂质感 -->
+  <rect width="1200" height="675" fill="#F0F2F5"/>
+  
+  <!-- 定义渐变与滤镜 -->
+  <defs>
+    <!-- 蓝宝石渐变 (关闭态) -->
+    <linearGradient id="gem_blue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <!-- 琥珀金渐变 (开启态) -->
+    <linearGradient id="gem_gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <!-- 卡片投影 -->
+    <filter id="card_shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- 2. 顶部统计栏 (Top Header) -->
+  <g transform="translate(20, 20)">
+    <!-- 总数 -->
+    <rect width="220" height="80" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <circle cx="40" cy="40" r="20" fill="#3B82F6" fill-opacity="0.1"/>
+    <path d="M35 40 L45 40 M40 35 L40 45" stroke="#3B82F6" stroke-width="3"/>
+    <text x="70" y="35" fill="#9CA3AF" font-size="12">设备总数</text>
+    <text x="70" y="60" fill="#1E40AF" font-size="24" font-weight="bold">1057</text>
+
+    <!-- 在线 -->
+    <rect x="240" width="220" height="80" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <circle cx="280" cy="40" r="20" fill="#10B981" fill-opacity="0.1"/>
+    <path d="M275 40 L278 43 L285 36" stroke="#10B981" stroke-width="3" fill="none"/>
+    <text x="310" y="35" fill="#9CA3AF" font-size="12">在线设备</text>
+    <text x="310" y="60" fill="#059669" font-size="24" font-weight="bold">1057</text>
+
+    <!-- 故障/离线 -->
+    <rect x="480" width="220" height="80" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <circle cx="520" cy="40" r="20" fill="#EF4444" fill-opacity="0.1"/>
+    <text x="517" y="45" fill="#EF4444" font-size="20" font-weight="bold">!</text>
+    <text x="550" y="35" fill="#9CA3AF" font-size="12">离线/故障</text>
+    <text x="550" y="60" fill="#B91C1C" font-size="24" font-weight="bold">0</text>
+  </g>
+
+  <!-- 3. 中间区域：空间楼栋卡片 (Grid Layout) -->
+  <g transform="translate(260, 120)">
+    <!-- 定义楼栋卡片函数样式 (手动渲染 6 个) -->
+    <!-- 1. 厂房 -->
+    <g transform="translate(0, 0)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#3B82F6"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">厂房</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">92</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+    <!-- 2. 研发楼 -->
+    <g transform="translate(240, 0)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#10B981"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">研发楼</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">242</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+    <!-- 3. 宿舍楼 -->
+    <g transform="translate(0, 170)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#F59E0B"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">宿舍楼</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">393</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+    <!-- 4. 综合楼 -->
+    <g transform="translate(240, 170)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#8B5CF6"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">综合楼</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">17</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+    <!-- 5. 地下室 -->
+    <g transform="translate(0, 340)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#EC4899"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">地下室</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">227</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+    <!-- 6. 室外 -->
+    <g transform="translate(240, 340)">
+        <rect width="220" height="150" rx="8" fill="white" filter="url(#card_shadow)"/>
+        <rect width="220" height="4" rx="2" fill="#F97316"/>
+        <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">室外</text>
+        <text x="15" y="60" fill="#9CA3AF" font-size="10">总数</text>
+        <text x="15" y="85" fill="#111827" font-size="20" font-weight="bold">86</text>
+        <circle cx="170" cy="80" r="35" stroke="#E5E7EB" stroke-width="6" fill="none"/>
+        <path d="M170 45 A 35 35 0 1 1 169.9 45" stroke="#10B981" stroke-width="6" fill="none"/>
+        <text x="170" y="85" text-anchor="middle" fill="#1F2937" font-size="12" font-weight="bold">100%</text>
+    </g>
+  </g>
+
+  <!-- 4. 左侧：重点门禁实时监控 (取代原视频位置) -->
+  <g transform="translate(20, 120)">
+    <rect width="220" height="530" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <text x="15" y="30" fill="#1F2937" font-size="16" font-weight="bold">| 重点门禁</text>
+    
+    <!-- 重点门禁 1: 蓝宝石 (关闭) -->
+    <g transform="translate(60, 60)">
+        <ellipse cx="50" cy="110" rx="40" ry="10" fill="black" fill-opacity="0.05" />
+        <path d="M20 30 L20 100 L35 115 L35 45 Z" fill="#1E3A8A" /> <!-- 侧面 -->
+        <path d="M35 15 L35 115 L85 95 L85 5 Z" fill="url(#gem_blue)" stroke="white" stroke-width="1.5" /> <!-- 正面 -->
+        <path d="M40 25 Q 60 15 80 15" stroke="white" stroke-opacity="0.5" stroke-width="2" fill="none"/>
+        <text x="50" y="140" text-anchor="middle" fill="#6B7280" font-size="12">研发1F大门 (关)</text>
+    </g>
+
+    <!-- 重点门禁 2: 琥珀金 (开启) -->
+    <g transform="translate(60, 240)">
+        <ellipse cx="50" cy="110" rx="40" ry="10" fill="black" fill-opacity="0.05" />
+        <path d="M20 30 L20 100 L35 115 L35 45 Z" fill="#B45309" />
+        <path d="M35 15 L35 115 L85 95 L85 5 Z" fill="url(#gem_gold)" stroke="white" stroke-width="1.5" />
+        <path d="M40 25 Q 60 15 80 15" stroke="white" stroke-opacity="0.5" stroke-width="2" fill="none"/>
+        <text x="50" y="140" text-anchor="middle" fill="#6B7280" font-size="12">厂房A侧门 (开)</text>
+    </g>
+
+    <!-- 重点门禁 3: 蓝宝石 (关闭) -->
+    <g transform="translate(60, 420)">
+        <ellipse cx="50" cy="110" rx="40" ry="10" fill="black" fill-opacity="0.05" />
+        <path d="M20 30 L20 100 L35 115 L35 45 Z" fill="#1E3A8A" />
+        <path d="M35 15 L35 115 L85 95 L85 5 Z" fill="url(#gem_blue)" stroke="white" stroke-width="1.5" />
+        <text x="50" y="140" text-anchor="middle" fill="#6B7280" font-size="12">宿舍楼入口 (关)</text>
+    </g>
+  </g>
+
+  <!-- 5. 右侧：告警与状态列表 -->
+  <g transform="translate(760, 20)">
+    <!-- 实时告警 -->
+    <rect width="420" height="280" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <text x="15" y="30" fill="#EF4444" font-size="16" font-weight="bold">| 实时告警事件</text>
+    <rect x="15" y="50" width="390" height="30" fill="#F9FAFB" rx="4"/>
+    <text x="25" y="70" fill="#9CA3AF" font-size="12">告警时间</text>
+    <text x="150" y="70" fill="#9CA3AF" font-size="12">设备编码</text>
+    <text x="300" y="70" fill="#9CA3AF" font-size="12">内容</text>
+    
+    <!-- 列表数据示例 -->
+    <text x="25" y="105" fill="#4B5563" font-size="12">08:05:12</text>
+    <text x="150" y="105" fill="#4B5563" font-size="12">MJ0061</text>
+    <text x="300" y="105" fill="#EF4444" font-size="12">非法刷卡</text>
+    <line x1="15" y1="120" x2="405" y2="120" stroke="#F3F4F6" />
+
+    <!-- 设备状态列表 -->
+    <rect y="300" width="420" height="330" rx="8" fill="white" filter="url(#card_shadow)"/>
+    <text x="15" y="330" fill="#1F2937" font-size="16" font-weight="bold">| 设备状态列表</text>
+    <rect x="15" y="350" width="390" height="30" fill="#F9FAFB" rx="4"/>
+    <text x="25" y="370" fill="#9CA3AF" font-size="12">设备名称</text>
+    <text x="200" y="370" fill="#9CA3AF" font-size="12">设备编码</text>
+    <text x="350" y="370" fill="#9CA3AF" font-size="12">状态</text>
+    
+    <!-- 列表数据示例 -->
+    <text x="25" y="405" fill="#4B5563" font-size="12">研发楼28F电梯厅</text>
+    <text x="200" y="405" fill="#4B5563" font-size="12">MJ0660</text>
+    <text x="350" y="405" fill="#10B981" font-size="12">在线</text>
+    <line x1="15" y1="420" x2="405" y2="420" stroke="#F3F4F6" />
+    
+    <text x="25" y="445" fill="#4B5563" font-size="12">厂房A-14F左侧电梯</text>
+    <text x="200" y="445" fill="#4B5563" font-size="12">MJ0420</text>
+    <text x="350" y="445" fill="#10B981" font-size="12">在线</text>
+    <line x1="15" y1="460" x2="405" y2="460" stroke="#F3F4F6" />
+  </g>
+</svg>

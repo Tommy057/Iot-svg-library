@@ -1,0 +1,141 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 背景：复刻摄像头的浅灰色背景 -->
+  <rect width="1280" height="720" fill="#F0F2F5"/>
+
+  <defs>
+    <!-- 舒适阴影：漫反射效果 -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.05"/>
+    </filter>
+    <!-- 3D 晶钻渐变：更饱满的色彩 -->
+    <linearGradient id="gemBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8AFF" />
+      <stop offset="100%" stop-color="#2463EB" />
+    </linearGradient>
+    <linearGradient id="gemGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD24D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+
+  <!-- 第一部分：顶部 4 个统计卡片 (内容对齐门禁图) -->
+  <g transform="translate(20, 20)">
+    <!-- 设备总数 -->
+    <rect width="215" height="85" rx="10" fill="white" filter="url(#softShadow)"/>
+    <circle cx="45" cy="42" r="22" fill="#4F8AFF" fill-opacity="0.1"/>
+    <path d="M38 42 L52 42 M45 35 L45 49" stroke="#4F8AFF" stroke-width="3" stroke-linecap="round"/>
+    <text x="75" y="35" fill="#94A3B8" font-size="11">设备总数</text>
+    <text x="75" y="65" fill="#1E40AF" font-size="28" font-weight="bold">110</text>
+    
+    <!-- 开门数 -->
+    <rect x="235" width="215" height="85" rx="10" fill="white" filter="url(#softShadow)"/>
+    <circle cx="280" cy="42" r="22" fill="#10B981" fill-opacity="0.1"/>
+    <path d="M272 42 L278 48 L288 35" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <text x="310" y="35" fill="#94A3B8" font-size="11">开门数</text>
+    <text x="310" y="65" fill="#059669" font-size="28" font-weight="bold">26</text>
+
+    <!-- 关门数 -->
+    <rect x="470" width="215" height="85" rx="10" fill="white" filter="url(#softShadow)"/>
+    <circle cx="515" cy="42" r="22" fill="#F59E0B" fill-opacity="0.1"/>
+    <rect x="508" y="35" width="14" height="15" rx="2" fill="#F59E0B"/>
+    <text x="545" y="35" fill="#94A3B8" font-size="11">关门数</text>
+    <text x="545" y="65" fill="#D97706" font-size="28" font-weight="bold">73</text>
+
+    <!-- 离线数 -->
+    <rect x="705" width="215" height="85" rx="10" fill="white" filter="url(#softShadow)"/>
+    <circle cx="750" cy="42" r="22" fill="#64748B" fill-opacity="0.1"/>
+    <text x="750" y="50" text-anchor="middle" fill="#64748B" font-size="20" font-weight="bold">!</text>
+    <text x="780" y="35" fill="#94A3B8" font-size="11">离线数</text>
+    <text x="780" y="65" fill="#475569" font-size="28" font-weight="bold">1</text>
+  </g>
+
+  <!-- 第二部分：重点区域楼栋统计 (布局参考门禁图，色彩参考摄像头图) -->
+  <g transform="translate(20, 125)">
+    <text x="0" y="0" fill="#1E40AF" font-size="16" font-weight="bold">» 重点区域</text>
+    <g transform="translate(0, 15)">
+      <!-- 第一行：厂房、宿舍楼、厂房1F、综合楼1F -->
+      <g transform="translate(0, 0)">
+        <rect width="225" height="125" rx="10" fill="white" filter="url(#softShadow)"/>
+        <path d="M0 4 Q0 0 4 0 L221 0 Q225 0 225 4 L225 6 L0 6 Z" fill="#4F8AFF"/>
+        <text x="15" y="30" fill="#1E293B" font-size="13" font-weight="bold">研发楼1F</text>
+        <text x="15" y="60" fill="#94A3B8" font-size="10">总数: 6 | 开门: 6 | 关门: 0</text>
+        <!-- 在线率圆环 -->
+        <circle cx="175" cy="70" r="32" stroke="#F1F5F9" stroke-width="7" fill="none"/>
+        <path d="M175 38 A 32 32 0 1 1 174.9 38" stroke="#10B981" stroke-width="7" fill="none"/>
+        <text x="175" y="75" text-anchor="middle" fill="#1E293B" font-size="12" font-weight="bold">100%</text>
+      </g>
+      <g transform="translate(240, 0)">
+        <rect width="225" height="125" rx="10" fill="white" filter="url(#softShadow)"/>
+        <path d="M0 4 Q0 0 4 0 L221 0 Q225 0 225 4 L225 6 L0 6 Z" fill="#10B981"/>
+        <text x="15" y="30" fill="#1E293B" font-size="13" font-weight="bold">宿舍楼1F</text>
+        <text x="175" y="75" text-anchor="middle" fill="#1E293B" font-size="12" font-weight="bold">75%</text>
+      </g>
+      <g transform="translate(480, 0)">
+        <rect width="225" height="125" rx="10" fill="white" filter="url(#softShadow)"/>
+        <path d="M0 4 Q0 0 4 0 L221 0 Q225 0 225 4 L225 6 L0 6 Z" fill="#F59E0B"/>
+        <text x="15" y="30" fill="#1E293B" font-size="13" font-weight="bold">厂房1F</text>
+      </g>
+      <g transform="translate(720, 0)">
+        <rect width="225" height="125" rx="10" fill="white" filter="url(#softShadow)"/>
+        <path d="M0 4 Q0 0 4 0 L221 0 Q225 0 225 4 L225 6 L0 6 Z" fill="#8B5CF6"/>
+        <text x="15" y="30" fill="#1E293B" font-size="13" font-weight="bold">综合楼1F</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 第三部分：底部左侧 重点门禁 (网格布局 + 3D晶钻) -->
+  <g transform="translate(20, 305)">
+    <rect width="465" height="395" rx="12" fill="white" filter="url(#softShadow)"/>
+    <text x="15" y="25" fill="#1E293B" font-size="14" font-weight="bold">■ 重点门禁</text>
+    
+    <!-- 门禁单元网格 -->
+    <g transform="translate(15, 45)">
+      <!-- 单元1 -->
+      <g>
+        <rect width="140" height="100" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <text x="10" y="20" fill="#64748B" font-size="10">综合楼电梯大门</text>
+        <path d="M30 40 L30 80 L40 90 L40 50 Z" fill="#1E3A8A"/> <!-- 3D侧面 -->
+        <path d="M40 35 L40 90 L75 80 L75 25 Z" fill="url(#gemBlue)" stroke="white" stroke-width="1.5"/> <!-- 3D正面 -->
+        <rect x="85" y="40" width="45" height="20" rx="4" fill="#3B82F6"/>
+        <text x="107" y="54" text-anchor="middle" fill="white" font-size="9" font-weight="bold">开门</text>
+      </g>
+      <!-- 单元2 -->
+      <g transform="translate(150, 0)">
+        <rect width="140" height="100" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <text x="10" y="20" fill="#64748B" font-size="10">研发楼1F大门</text>
+        <path d="M40 35 L40 90 L75 80 L75 25 Z" fill="url(#gemGold)" stroke="white" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 第四部分：底部中间 重点门禁实时监控 -->
+  <g transform="translate(500, 305)">
+    <rect width="440" height="395" rx="12" fill="white" filter="url(#softShadow)"/>
+    <text x="15" y="25" fill="#1E293B" font-size="14" font-weight="bold">■ 重点门禁实时监控</text>
+    <rect x="15" y="45" width="410" height="330" fill="#1E293B" rx="8"/>
+    <path d="M205 190 L235 210 L205 230 Z" fill="white" fill-opacity="0.8"/>
+  </g>
+
+  <!-- 第五部分：右侧边栏 列表与告警 -->
+  <g transform="translate(960, 20)">
+    <!-- 门禁列表 -->
+    <rect width="300" height="350" rx="12" fill="white" filter="url(#softShadow)"/>
+    <text x="15" y="30" fill="#1E40AF" font-size="15" font-weight="bold">» 门禁列表</text>
+    <rect x="10" y="50" width="280" height="25" fill="#F8FAFC" rx="4"/>
+    <text x="20" y="67" fill="#94A3B8" font-size="11">门禁设备</text>
+    <text x="200" y="67" fill="#94A3B8" font-size="11">状态</text>
+    <!-- 列表数据项 -->
+    <text x="20" y="100" fill="#334155" font-size="11">一号门禁</text>
+    <text x="200" y="100" fill="#3B82F6" font-size="11">关闭</text>
+    <line x1="10" y1="110" x2="290" y2="110" stroke="#F1F5F9"/>
+
+    <!-- 实时告警 -->
+    <rect y="370" width="300" height="330" rx="12" fill="white" filter="url(#softShadow)"/>
+    <text x="15" y="400" fill="#EF4444" font-size="15" font-weight="bold">» 门禁实时告警</text>
+    <g transform="translate(10, 420)">
+      <rect width="280" height="50" rx="6" fill="#FEF2F2" stroke="#FEE2E2"/>
+      <text x="10" y="20" fill="#991B1B" font-size="11" font-weight="bold">非法刷卡: MJ001</text>
+      <text x="10" y="40" fill="#EF4444" font-size="10" opacity="0.7">2025-07-22 08:05:12</text>
+    </g>
+  </g>
+</svg>

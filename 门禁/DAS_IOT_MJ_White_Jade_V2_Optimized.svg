@@ -1,0 +1,201 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 背景层：带微弱径向渐变的浅灰蓝，增加视觉深度 -->
+  <rect width="1280" height="800" fill="url(#bg_grad)"/>
+  
+  <defs>
+    <radialGradient id="bg_grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F8FAFF" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </radialGradient>
+
+    <!-- 增强版：蓝宝石 4层渐变 -->
+    <linearGradient id="gem_sapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="40%" stop-color="#2563EB" />
+      <stop offset="80%" stop-color="#1E40AF" />
+      <stop offset="100%" stop-color="#1E3A8A" />
+    </linearGradient>
+
+    <!-- 增强版：琥珀金 4层渐变 -->
+    <linearGradient id="gem_amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="80%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+
+    <!-- 模块阴影：更深邃的软阴影 -->
+    <filter id="soft_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#1E293B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- 2. 顶部核心指标栏 (更加饱满的图标设计) -->
+  <g transform="translate(30, 30)">
+    <g transform="translate(0, 0)">
+      <rect width="230" height="90" rx="16" fill="white" filter="url(#soft_glow)"/>
+      <rect width="6" height="40" x="0" y="25" rx="3" fill="#3B82F6"/> <!-- 装饰条 -->
+      <circle cx="50" cy="45" r="25" fill="#3B82F6" fill-opacity="0.15"/>
+      <path d="M42 45 L58 45 M50 37 L50 53" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
+      <text x="85" y="40" fill="#64748B" font-size="13" font-weight="600">设备总数</text>
+      <text x="85" y="72" fill="#0F172A" font-size="32" font-weight="800">1,057</text>
+    </g>
+
+    <g transform="translate(260, 0)">
+      <rect width="230" height="90" rx="16" fill="white" filter="url(#soft_glow)"/>
+      <rect width="6" height="40" x="0" y="25" rx="3" fill="#10B981"/>
+      <circle cx="50" cy="45" r="25" fill="#10B981" fill-opacity="0.15"/>
+      <path d="M42 45 L47 50 L58 38" stroke="#10B981" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <text x="85" y="40" fill="#64748B" font-size="13" font-weight="600">在线运行</text>
+      <text x="85" y="72" fill="#065F46" font-size="32" font-weight="800">1,056</text>
+    </g>
+
+    <g transform="translate(520, 0)">
+      <rect width="230" height="90" rx="16" fill="white" filter="url(#soft_glow)"/>
+      <rect width="6" height="40" x="0" y="25" rx="3" fill="#F59E0B"/>
+      <circle cx="50" cy="45" r="25" fill="#F59E0B" fill-opacity="0.15"/>
+      <path d="M45 38 L55 38 L55 52 L45 52 Z" stroke="#F59E0B" stroke-width="3" fill="none"/>
+      <text x="85" y="40" fill="#64748B" font-size="13" font-weight="600">当前开启</text>
+      <text x="85" y="72" fill="#92400E" font-size="32" font-weight="800">26</text>
+    </g>
+
+    <g transform="translate(780, 0)">
+      <rect width="230" height="90" rx="16" fill="white" filter="url(#soft_glow)"/>
+      <rect width="6" height="40" x="0" y="25" rx="3" fill="#EF4444"/>
+      <circle cx="50" cy="45" r="25" fill="#EF4444" fill-opacity="0.15"/>
+      <text x="50" y="55" text-anchor="middle" fill="#EF4444" font-size="28" font-weight="900">!</text>
+      <text x="85" y="40" fill="#64748B" font-size="13" font-weight="600">异常告警</text>
+      <text x="85" y="72" fill="#991B1B" font-size="32" font-weight="800">01</text>
+    </g>
+  </g>
+
+  <!-- 3. 中间层：空间楼栋区块 (六宫格优化版) -->
+  <g transform="translate(30, 150)">
+    <text x="5" y="20" fill="#1E40AF" font-size="18" font-weight="bold" letter-spacing="2">SPACE INFRASTRUCTURE 重点区域分布</text>
+    <g transform="translate(0, 40)">
+      <!-- 厂房 (蓝色系) -->
+      <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+      <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#3B82F6"/>
+      <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">厂房区</text>
+      <text x="15" y="75" fill="#94A3B8" font-size="12">Total: 92</text>
+      <circle cx="82" cy="110" r="28" stroke="#F1F5F9" stroke-width="8" fill="none"/>
+      <path d="M82 82 A 28 28 0 0 1 110 110" stroke="#3B82F6" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <text x="82" y="115" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="bold">100%</text>
+
+      <!-- 研发楼 (绿色系) -->
+      <g transform="translate(185, 0)">
+        <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+        <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#10B981"/>
+        <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">研发楼</text>
+        <circle cx="82" cy="110" r="28" stroke="#F1F5F9" stroke-width="8" fill="none"/>
+        <path d="M82 82 A 28 28 0 1 1 81.9 82" stroke="#10B981" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <text x="82" y="115" text-anchor="middle" fill="#10B981" font-size="12" font-weight="bold">100%</text>
+      </g>
+
+      <!-- 宿舍楼 (橙色系) -->
+      <g transform="translate(370, 0)">
+        <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+        <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#F59E0B"/>
+        <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">宿舍楼</text>
+      </g>
+      
+      <!-- 综合楼 (紫色系) -->
+      <g transform="translate(555, 0)">
+        <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+        <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#8B5CF6"/>
+        <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">综合楼</text>
+      </g>
+
+      <!-- 地下室 (粉红系) -->
+      <g transform="translate(740, 0)">
+        <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+        <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#EC4899"/>
+        <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">地下室</text>
+      </g>
+
+      <!-- 室外 (青色系) -->
+      <g transform="translate(925, 0)">
+        <rect width="165" height="150" rx="12" fill="white" filter="url(#soft_glow)"/>
+        <path d="M0 12 Q0 0 12 0 L153 0 Q165 0 165 12 L165 15 L0 15 Z" fill="#06B6D4"/>
+        <text x="15" y="45" fill="#1E293B" font-size="16" font-weight="bold">室外区</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 4. 底层指挥仓：左侧 3D 操控 + 右侧监控视频 (合体布局) -->
+  <g transform="translate(30, 370)">
+    <rect width="1090" height="400" rx="20" fill="white" fill-opacity="0.6" filter="url(#soft_glow)"/>
+    <text x="25" y="35" fill="#1E40AF" font-size="18" font-weight="bold">■ 核心枢纽：远程监控与决策终端</text>
+    
+    <!-- 3D 晶钻操控区 -->
+    <g transform="translate(25, 60)">
+      <!-- 门禁单元 1 -->
+      <rect width="200" height="150" rx="12" fill="white" stroke="#E2E8F0" stroke-width="2"/>
+      <text x="15" y="30" fill="#64748B" font-size="12" font-weight="bold">研发楼 1F 主入口</text>
+      <!-- 3D 晶钻 -->
+      <g transform="translate(30, 45)">
+          <path d="M0 20 L0 70 L15 85 L15 35 Z" fill="#1E3A8A"/> <!-- 侧面厚度 -->
+          <path d="M15 15 L15 85 L65 70 L65 0 Z" fill="url(#gem_sapphire)" stroke="white" stroke-width="1.5"/> <!-- 正面 -->
+          <path d="M25 25 Q45 15 60 15" stroke="white" stroke-opacity="0.6" stroke-width="2" fill="none"/> <!-- 高亮 -->
+      </g>
+      <!-- 操作按钮 -->
+      <rect x="110" y="55" width="70" height="30" rx="6" fill="#3B82F6"/>
+      <text x="145" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">远程开门</text>
+      <rect x="110" y="95" width="70" height="30" rx="6" fill="#F1F5F9"/>
+      <text x="145" y="115" text-anchor="middle" fill="#64748B" font-size="12">查看视频</text>
+    </g>
+
+    <g transform="translate(25, 225)">
+      <!-- 门禁单元 2 (开启态) -->
+      <rect width="200" height="150" rx="12" fill="white" stroke="#E2E8F0" stroke-width="2"/>
+      <text x="15" y="30" fill="#64748B" font-size="12" font-weight="bold">厂房 A2 侧通道</text>
+      <g transform="translate(30, 45)">
+          <path d="M0 20 L0 70 L15 85 L15 35 Z" fill="#B45309"/>
+          <path d="M15 15 L15 85 L65 70 L65 0 Z" fill="url(#gem_amber)" stroke="white" stroke-width="1.5"/>
+          <path d="M25 25 Q45 15 60 15" stroke="white" stroke-opacity="0.6" stroke-width="2" fill="none"/>
+      </g>
+      <rect x="110" y="55" width="70" height="30" rx="6" fill="#F59E0B"/>
+      <text x="145" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">正在通行</text>
+    </g>
+
+    <!-- 视频监控大屏 (参考摄像头风格) -->
+    <g transform="translate(240, 60)">
+      <rect width="825" height="315" rx="12" fill="#1E293B"/>
+      <path d="M412 140 L442 157 L412 175 Z" fill="white" fill-opacity="0.8"/>
+      <text x="412" y="200" text-anchor="middle" fill="white" fill-opacity="0.5" font-size="14">CAM-研发楼正面-004 实时回传</text>
+      <!-- 扫掠线动效模拟 -->
+      <rect width="825" height="2" y="100" fill="white" fill-opacity="0.1">
+        <animate attributeName="y" from="0" to="315" dur="4s" repeatCount="indefinite" />
+      </rect>
+    </g>
+  </g>
+
+  <!-- 5. 右侧垂直信息流：设备列表与极简告警 -->
+  <g transform="translate(1050, 30)">
+    <rect width="200" height="740" rx="20" fill="white" filter="url(#soft_glow)"/>
+    <text x="20" y="35" fill="#1E40AF" font-size="16" font-weight="bold">设备列表</text>
+    
+    <!-- 列表项 1 -->
+    <g transform="translate(15, 60)">
+      <rect width="170" height="40" rx="8" fill="#F8FAFC"/>
+      <circle cx="15" cy="20" r="4" fill="#10B981"/>
+      <text x="30" y="24" fill="#334155" font-size="11">MJ-1MD-001</text>
+      <text x="135" y="24" fill="#64748B" font-size="10">在线</text>
+    </g>
+    <!-- 列表项 2 (选中态) -->
+    <g transform="translate(15, 110)">
+      <rect width="170" height="40" rx="8" fill="#3B82F6"/>
+      <circle cx="15" cy="20" r="4" fill="white"/>
+      <text x="30" y="24" fill="white" font-size="11" font-weight="bold">MJ-1MD-002</text>
+      <text x="135" y="24" fill="white" font-size="10">开启</text>
+    </g>
+
+    <line x1="20" y1="400" x2="180" y2="400" stroke="#F1F5F9" stroke-width="2"/>
+    <text x="20" y="430" fill="#EF4444" font-size="16" font-weight="bold">实时告警</text>
+    <g transform="translate(15, 450)">
+      <rect width="170" height="60" rx="8" fill="#FEF2F2" stroke="#FEE2E2"/>
+      <text x="10" y="20" fill="#991B1B" font-size="11" font-weight="bold">非法闯入：研发楼3F</text>
+      <text x="10" y="45" fill="#EF4444" font-size="10">2025-07-22 17:43:12</text>
+    </g>
+  </g>
+</svg>

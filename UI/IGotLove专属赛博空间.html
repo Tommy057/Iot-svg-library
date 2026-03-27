@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>I Got Love - Audio Visualizer</title>
+    <style>
+        body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; }
+        #start-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 20px 40px; background: none; border: 2px solid #ff007b; color: #ff007b;
+            cursor: pointer; font-size: 20px; z-index: 100; transition: 0.3s;
+        }
+        #start-btn:hover { background: #ff007b; color: #fff; box-shadow: 0 0 20px #ff007b; }
+        #overlay-text {
+            position: absolute; bottom: 30px; width: 100%; text-align: center;
+            color: rgba(255, 255, 255, 0.2); letter-spacing: 10px; font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button id="start-btn">点击开启：I GOT LOVE 空间</button>
+    <div id="overlay-text">TUANZI ♥ DUODUO | EXPERIMENTAL VISUALS</div>
+
+<script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    let scene, camera, renderer, analyser, dataArray, particles;
+    const PARTICLE_COUNT = 8000;
+
+    async function init() {
+        // 场景设置
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 100;
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+
+        // 创建粒子系统
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array(PARTICLE_COUNT * 3);
+        const colors = new Float32Array(PARTICLE_COUNT * 3);
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            // 初始分布在一个球体中
+            const r = 40 + Math.random() * 5;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+            pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+            pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+            pos[i * 3 + 2] = r * Math.cos(phi);
+        }
+
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        
+        const mat = new THREE.PointsMaterial({
+            size: 0.5,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            color: 0xff007b
+        });
+
+        particles = new THREE.Points(geo, mat);
+        scene.add(particles);
+
+        // 音频分析器初始化
+        const audioListener = new THREE.AudioListener();
+        camera.add(audioListener);
+        const sound = new THREE.Audio(audioListener);
+        
+        // 注意：你需要在这里替换为你电脑上的 I Got Love.mp3 链接
+        const audioLoader = new THREE.AudioLoader();
+        // 提示：你可以把歌放在同一个目录下叫 song.mp3
+        audioLoader.load('https://b9.baidupcs.com/file/... (你的歌曲链接)', (buffer) => {
+            sound.setBuffer(buffer);
+            sound.setLoop(true);
+            sound.setVolume(0.5);
+            sound.play();
+        });
+
+        analyser = new THREE.AudioAnalyser(sound, 128);
+        dataArray = analyser.data;
+
+        animate();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // 获取音频数据
+        const data = analyser.getFrequencyData();
+        const avgFreq = analyser.getAverageFrequency();
+
+        // 粒子随节拍震动
+        const positions = particles.geometry.attributes.position.array;
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const index = i * 3;
+            const freqValue = data[i % data.length] / 255;
+            
+            // 基础律动
+            const angle = Date.now() * 0.001 + i;
+            positions[index] += Math.sin(angle) * freqValue * 1.5;
+            positions[index+1] += Math.cos(angle) * freqValue * 1.5;
+            
+            // 遇到重低音爆炸效果
+            if (avgFreq > 50) {
+                positions[index] *= 1.002;
+                positions[index+1] *= 1.002;
+            } else {
+                // 缓慢收缩回球体
+                positions[index] *= 0.999;
+                positions[index+1] *= 0.999;
+            }
+        }
+        particles.geometry.attributes.position.needsUpdate = true;
+        
+        // 整个相机随重低音晃动 (Camera Shake)
+        camera.position.z = 100 + Math.sin(Date.now() * 0.01) * (avgFreq / 10);
+        
+        // 颜色随频率变换（粉色到蓝色切换）
+        particles.material.color.setHSL(0.8 + (avgFreq / 300), 1, 0.5);
+
+        particles.rotation.y += 0.005;
+        renderer.render(scene, camera);
+    }
+
+    document.getElementById('start-btn').addEventListener('click', function() {
+        this.style.display = 'none';
+        init();
+    });
+</script>
+</body>
+</html>
