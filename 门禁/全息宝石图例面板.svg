@@ -1,0 +1,55 @@
+<svg width="180" height="120" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 1. 毛玻璃背景滤镜 -->
+        <filter id="glass_blur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="5" />
+        </filter>
+        <!-- 2. 蓝宝石图标渐变 -->
+        <radialGradient id="lg_sapphire" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#60A5FA" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </radialGradient>
+        <!-- 3. 琥珀金图标渐变 -->
+        <radialGradient id="lg_amber" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#FBBF24" />
+            <stop offset="100%" stop-color="#78350F" />
+        </radialGradient>
+        <!-- 4. 霓虹外发光 -->
+        <filter id="neon_glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 背景底板 (全息毛玻璃) -->
+    <rect x="5" y="5" width="170" height="110" rx="10" fill="rgba(15, 23, 42, 0.7)" stroke="rgba(59, 130, 246, 0.5)" stroke-width="1" />
+    
+    <!-- 装饰切角 (体现科技感) -->
+    <path d="M5 25 L5 15 L15 5 M165 5 L175 15 L175 25 M175 95 L175 105 L165 115 M15 115 L5 105 L5 95" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.8" filter="url(#neon_glow)" />
+
+    <!-- 图例标题 -->
+    <text x="90" y="25" font-family="Arial-Bold" font-size="12" fill="#93C5FD" text-anchor="middle" letter-spacing="2" opacity="0.8">状态图例说明</text>
+    <line x1="30" y1="32" x2="150" y2="32" stroke="rgba(147, 197, 253, 0.2)" stroke-width="1" />
+
+    <!-- 第一行：闭合态 (蓝宝石) -->
+    <g transform="translate(25, 45)">
+        <!-- 微缩宝石门 -->
+        <rect x="0" y="0" width="18" height="24" rx="3" fill="#172554" stroke="#3B82F6" stroke-width="2" />
+        <rect x="3" y="3" width="12" height="18" rx="1" fill="url(#lg_sapphire)" />
+        <path d="M4 8 Q9 4 14 8" fill="none" stroke="white" stroke-width="2" opacity="0.2" />
+        <!-- 文字 -->
+        <text x="30" y="17" font-family="Arial-Bold" font-size="14" font-weight="bold" fill="#FFFFFF">正常在线</text>
+        <text x="100" y="17" font-family="Arial" font-size="10" fill="#93C5FD" opacity="0.6">CLOSED</text>
+    </g>
+
+    <!-- 第二行：开启态 (琥珀金) -->
+    <g transform="translate(25, 80)">
+        <!-- 微缩琥珀门 (3D开启感) -->
+        <rect x="0" y="0" width="18" height="24" rx="3" fill="#451A03" stroke="#F59E0B" stroke-width="2" />
+        <rect x="2" y="2" width="14" height="20" rx="1" fill="#78350F" />
+        <path d="M2 2 L12 0 L12 20 L2 22 Z" fill="#F59E0B" stroke="#FEF3C7" stroke-width="0.5" />
+        <!-- 文字 -->
+        <text x="30" y="17" font-family="Arial-Bold" font-size="14" font-weight="bold" fill="#FFFFFF">正在通行</text>
+        <text x="100" y="17" font-family="Arial" font-size="10" fill="#F59E0B" opacity="0.6">OPENED</text>
+    </g>
+</svg>
