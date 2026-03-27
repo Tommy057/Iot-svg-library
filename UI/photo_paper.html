@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>纸张物理 — 拖拽你的图片</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#D8D3CB}
+
+/* ── Upload overlay ── */
+#upload-screen{
+  position:fixed;inset:0;z-index:100;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#EDEAE3 0%,#D8D4CB 100%);
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#upload-screen.hidden{opacity:0;visibility:hidden}
+
+#drop-zone{
+  width:360px;max-width:88vw;
+  border:2.5px dashed rgba(0,0,0,0.18);
+  border-radius:20px;
+  padding:52px 32px 44px;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,transform .15s;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(6px);
+}
+#drop-zone:hover,#drop-zone.over{
+  border-color:rgba(0,0,0,0.4);
+  background:rgba(255,255,255,0.82);
+  transform:scale(1.015);
+}
+#drop-zone svg{opacity:.35;margin-bottom:18px}
+#drop-zone h2{
+  font-family:'Georgia',serif;
+  font-size:22px;font-weight:400;
+  color:#333;margin-bottom:10px;letter-spacing:-.01em
+}
+#drop-zone p{
+  font-family:monospace;font-size:12px;color:#888;
+  line-height:1.7;margin-bottom:22px
+}
+#file-btn{
+  display:inline-block;padding:10px 28px;
+  background:#2A2A2A;color:#FFF;
+  border-radius:50px;font-family:monospace;font-size:13px;
+  letter-spacing:.04em;cursor:pointer;
+  transition:background .18s,transform .12s;
+  border:none;outline:none
+}
+#file-btn:hover{background:#444;transform:scale(1.04)}
+#file-input{display:none}
+
+#presets{margin-top:24px;font-family:monospace;font-size:11px;color:#999;text-align:center}
+#presets span{display:inline-block;margin:4px 6px;padding:4px 12px;
+  background:rgba(0,0,0,0.07);border-radius:20px;cursor:pointer;
+  transition:background .15s}
+#presets span:hover{background:rgba(0,0,0,0.14);color:#333}
+
+/* ── HUD ── */
+#hud{
+  position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+  font-family:monospace;font-size:11.5px;
+  color:rgba(40,35,28,0.52);
+  pointer-events:none;user-select:none;
+  text-shadow:0 1px 3px rgba(255,255,255,0.7);
+  white-space:nowrap
+}
+#reset-btn{
+  position:fixed;top:16px;right:16px;
+  background:rgba(0,0,0,0.12);border:none;
+  border-radius:50px;padding:7px 16px;
+  font-family:monospace;font-size:11px;color:#444;
+  cursor:pointer;backdrop-filter:blur(4px);
+  transition:background .15s;
+  display:none;
+}
+#reset-btn:hover{background:rgba(0,0,0,0.22);color:#111}
+
+/* ── Settings ── */
+#settings{
+  position:fixed;top:16px;left:16px;
+  display:flex;gap:8px;align-items:center;
+  display:none;
+}
+.pill{
+  background:rgba(0,0,0,0.1);border:none;border-radius:50px;
+  padding:6px 14px;font-family:monospace;font-size:11px;
+  color:#444;cursor:pointer;backdrop-filter:blur(4px);
+  transition:background .15s,color .15s
+}
+.pill:hover{background:rgba(0,0,0,0.2);color:#111}
+.pill.active{background:rgba(0,0,0,0.75);color:#FFF}
+</style>
+</head>
+<body>
+
+<!-- Upload Screen -->
+<div id="upload-screen">
+  <div id="drop-zone">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.4">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21,15 16,10 5,21"/>
+    </svg>
+    <h2>拖入你的图片</h2>
+    <p>支持 JPG · PNG · GIF · WebP<br>图片将变成可拖拽的物理纸张</p>
+    <button id="file-btn">选择文件</button>
+    <input type="file" id="file-input" accept="image/*">
+  </div>
+  <div id="presets">
+    或试试内置示例：
+    <span data-preset="gradient">渐变色卡</span>
+    <span data-preset="grid">网格纸</span>
+    <span data-preset="photo">风景照</span>
+    <span data-preset="poster">海报</span>
+  </div>
+</div>
+
+<div id="hud">🖱 左键拖拽·弯曲·折叠纸张 &nbsp;·&nbsp; 松开回弹</div>
+<button id="reset-btn">↩ 换图片</button>
+<div id="settings">
+  <button class="pill active" data-mode="paper">📄 纸张</button>
+  <button class="pill" data-mode="photo">🖼 照片纸</button>
+  <button class="pill" data-mode="fabric">🧵 布料</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+'use strict';
+
+// ── PRNG (must be first — used by particle init & texture builders) ──
+function mulberry32(seed){
+  return function(){
+    seed|=0; seed=seed+0x6D2B79F5|0;
+    let t=Math.imul(seed^seed>>>15,1|seed);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return((t^t>>>14)>>>0)/4294967296;
+  };
+}
+
+// ════════════════════════════════════════════════
+//  PHYSICS CONFIG — changes per "mode"
+// ════════════════════════════════════════════════
+const MODES = {
+  paper:  { stiffness:0.88, damping:0.984, gravity:0.000135, bend:true,  roughness:0.90 },
+  photo:  { stiffness:0.78, damping:0.977, gravity:0.000180, bend:true,  roughness:0.25 },
+  fabric: { stiffness:0.55, damping:0.968, gravity:0.000280, bend:false, roughness:0.88 },
+};
+let CFG = { ...MODES.paper };
+
+const COLS  = 16;
+const ROWS  = 24;
+let   PAPER_W = 2.2;   // aspect-corrected on image load
+let   PAPER_H = 3.0;
+let   DX = PAPER_W/(COLS-1), DY = PAPER_H/(ROWS-1);
+const ITERS = 16;
+
+// ════════════════════════════════════════════════
+//  THREE.JS SETUP
+// ════════════════════════════════════════════════
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.appendChild(renderer.domElement);
+renderer.domElement.style.display = 'none';
+
+const scene  = new THREE.Scene();
+scene.background = new THREE.Color(0xD8D3CB);
+scene.fog = new THREE.FogExp2(0xD8D3CB, 0.03);
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.01, 80);
+camera.position.set(0, 0.2, 6.2);
+camera.lookAt(0,0.1,0);
+
+// Lights
+const amb = new THREE.AmbientLight(0xFFF8EC, 0.65);
+scene.add(amb);
+const sun = new THREE.DirectionalLight(0xFFFAF0, 1.1);
+sun.position.set(2.8,6,7); sun.castShadow=true;
+sun.shadow.mapSize.set(1024,1024);
+Object.assign(sun.shadow.camera,{left:-5,right:5,top:6,bottom:-6,near:.5,far:30});
+sun.shadow.bias=-0.001;
+scene.add(sun);
+const fillL = new THREE.DirectionalLight(0xC0D0FF, 0.25);
+fillL.position.set(-4, -1, 5);
+scene.add(fillL);
+const rimL = new THREE.DirectionalLight(0xFFE0A0, 0.15);
+rimL.position.set(0, 2, -4);
+scene.add(rimL);
+
+// Background
+const wallMat = new THREE.MeshStandardMaterial({color:0xE0DAD0,roughness:0.98,metalness:0});
+const wall = new THREE.Mesh(new THREE.PlaneGeometry(30,20),wallMat);
+wall.position.z=-1.2; wall.receiveShadow=true; scene.add(wall);
+
+const floorMat = new THREE.MeshStandardMaterial({color:0xC8C2B5,roughness:1,metalness:0});
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30,14),floorMat);
+floor.rotation.x=-Math.PI/2; floor.position.y=-3.5; floor.receiveShadow=true; scene.add(floor);
+
+// ════════════════════════════════════════════════
+//  PARTICLE STATE (SoA)
+// ════════════════════════════════════════════════
+const N = COLS*ROWS;
+let px_=new Float64Array(N), py_=new Float64Array(N), pz_=new Float64Array(N);
+let ox_=new Float64Array(N), oy_=new Float64Array(N), oz_=new Float64Array(N);
+let ix_=new Float64Array(N), iy_=new Float64Array(N), iz_=new Float64Array(N);
+let pinned=new Uint8Array(N);
+
+// Constraints
+let cAArr, cBArr, cRArr;
+
+function buildParticles(pw, ph) {
+  PAPER_W=pw; PAPER_H=ph;
+  DX=pw/(COLS-1); DY=ph/(ROWS-1);
+  const rng=mulberry32(0x42);
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+    const i=r*COLS+c;
+    const x=-pw/2+c*DX, y=ph/2-r*DY, z=(rng()-.5)*.004;
+    px_[i]=ox_[i]=ix_[i]=x;
+    py_[i]=oy_[i]=iy_[i]=y;
+    pz_[i]=oz_[i]=iz_[i]=z;
+    pinned[i]=(r===0)?1:0;
+  }
+  buildConstraints(pw,ph);
+  settle(140);
+}
+
+function buildConstraints(pw,ph) {
+  const cA=[],cB=[],cR=[];
+  function add(i,j){
+    const dx=px_[i]-px_[j],dy=py_[i]-py_[j],dz=pz_[i]-pz_[j];
+    cA.push(i);cB.push(j);cR.push(Math.sqrt(dx*dx+dy*dy+dz*dz));
+  }
+  // structural
+  for(let r=0;r<ROWS;r++)   for(let c=0;c<COLS-1;c++) add(r*COLS+c,r*COLS+c+1);
+  for(let r=0;r<ROWS-1;r++) for(let c=0;c<COLS;c++)   add(r*COLS+c,(r+1)*COLS+c);
+  // shear
+  for(let r=0;r<ROWS-1;r++) for(let c=0;c<COLS-1;c++){
+    add(r*COLS+c,(r+1)*COLS+c+1);
+    add(r*COLS+c+1,(r+1)*COLS+c);
+  }
+  // bend (paper stiffness)
+  if(CFG.bend){
+    for(let r=0;r<ROWS;r++)   for(let c=0;c<COLS-2;c++) add(r*COLS+c,r*COLS+c+2);
+    for(let r=0;r<ROWS-2;r++) for(let c=0;c<COLS;c++)   add(r*COLS+c,(r+2)*COLS+c);
+  }
+  cAArr=new Int32Array(cA); cBArr=new Int32Array(cB); cRArr=new Float64Array(cR);
+}
+
+function resetTopRow(){
+  for(let c=0;c<COLS;c++){
+    px_[c]=ix_[c];py_[c]=iy_[c];pz_[c]=iz_[c];
+    ox_[c]=ix_[c];oy_[c]=iy_[c];oz_[c]=iz_[c];
+  }
+}
+
+function settle(steps){
+  const nc=cAArr.length;
+  for(let s=0;s<steps;s++){
+    for(let i=0;i<N;i++){
+      if(pinned[i])continue;
+      const vx=(px_[i]-ox_[i])*CFG.damping;
+      const vy=(py_[i]-oy_[i])*CFG.damping;
+      const vz=(pz_[i]-oz_[i])*CFG.damping;
+      ox_[i]=px_[i];oy_[i]=py_[i];oz_[i]=pz_[i];
+      px_[i]+=vx;py_[i]+=vy-CFG.gravity;pz_[i]+=vz;
+    }
+    for(let it=0;it<ITERS;it++){
+      for(let k=0;k<nc;k++){
+        const a=cAArr[k],b=cBArr[k];
+        const dx=px_[b]-px_[a],dy=py_[b]-py_[a],dz=pz_[b]-pz_[a];
+        const d2=dx*dx+dy*dy+dz*dz;if(d2<1e-14)continue;
+        const diff=(Math.sqrt(d2)-cRArr[k])/Math.sqrt(d2)*CFG.stiffness*.5;
+        const cx=dx*diff,cy=dy*diff,cz=dz*diff;
+        if(!pinned[a]){px_[a]+=cx;py_[a]+=cy;pz_[a]+=cz;}
+        if(!pinned[b]){px_[b]-=cx;py_[b]-=cy;pz_[b]-=cz;}
+      }
+      resetTopRow();
+    }
+  }
+}
+
+// ════════════════════════════════════════════════
+//  GEOMETRY
+// ════════════════════════════════════════════════
+const geo = new THREE.BufferGeometry();
+{
+  const idx=[];
+  for(let r=0;r<ROWS-1;r++) for(let c=0;c<COLS-1;c++){
+    const i=r*COLS+c;
+    idx.push(i,i+COLS,i+1);
+    idx.push(i+1,i+COLS,i+COLS+1);
+  }
+  geo.setIndex(idx);
+}
+const posArr=new Float32Array(N*3);
+const normArr=new Float32Array(N*3);
+const uvArr=new Float32Array(N*2);
+for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+  const i=r*COLS+c;
+  uvArr[i*2]=c/(COLS-1); uvArr[i*2+1]=1-r/(ROWS-1);
+}
+const posAttr=new THREE.BufferAttribute(posArr,3).setUsage(THREE.DynamicDrawUsage);
+const normAttr=new THREE.BufferAttribute(normArr,3).setUsage(THREE.DynamicDrawUsage);
+geo.setAttribute('position',posAttr);
+geo.setAttribute('normal',normAttr);
+geo.setAttribute('uv',new THREE.BufferAttribute(uvArr,2));
+
+const mat=new THREE.MeshStandardMaterial({
+  side:THREE.DoubleSide, roughness:CFG.roughness, metalness:0.0, color:0xFFFFFF
+});
+
+const mesh=new THREE.Mesh(geo,mat);
+mesh.castShadow=mesh.receiveShadow=true;
+scene.add(mesh);
+
+// ════════════════════════════════════════════════
+//  GEOMETRY UPDATER
+// ════════════════════════════════════════════════
+const idxArrG=geo.index.array, faceCount=idxArrG.length/3;
+const _vA=new THREE.Vector3(),_vB=new THREE.Vector3(),_vC=new THREE.Vector3();
+const _eAB=new THREE.Vector3(),_eAC=new THREE.Vector3(),_fn=new THREE.Vector3();
+
+function updateGeometry(){
+  for(let i=0;i<N;i++){
+    posArr[i*3]=px_[i];posArr[i*3+1]=py_[i];posArr[i*3+2]=pz_[i];
+  }
+  normArr.fill(0);
+  for(let f=0;f<faceCount;f++){
+    const ia=idxArrG[f*3],ib=idxArrG[f*3+1],ic=idxArrG[f*3+2];
+    _vA.set(posArr[ia*3],posArr[ia*3+1],posArr[ia*3+2]);
+    _vB.set(posArr[ib*3],posArr[ib*3+1],posArr[ib*3+2]);
+    _vC.set(posArr[ic*3],posArr[ic*3+1],posArr[ic*3+2]);
+    _eAB.subVectors(_vB,_vA); _eAC.subVectors(_vC,_vA);
+    _fn.crossVectors(_eAB,_eAC);
+    normArr[ia*3]+=_fn.x;normArr[ia*3+1]+=_fn.y;normArr[ia*3+2]+=_fn.z;
+    normArr[ib*3]+=_fn.x;normArr[ib*3+1]+=_fn.y;normArr[ib*3+2]+=_fn.z;
+    normArr[ic*3]+=_fn.x;normArr[ic*3+1]+=_fn.y;normArr[ic*3+2]+=_fn.z;
+  }
+  for(let i=0;i<N;i++){
+    const nx=normArr[i*3],ny=normArr[i*3+1],nz=normArr[i*3+2];
+    const l=Math.sqrt(nx*nx+ny*ny+nz*nz)||1;
+    normArr[i*3]=nx/l;normArr[i*3+1]=ny/l;normArr[i*3+2]=nz/l;
+  }
+  posAttr.needsUpdate=normAttr.needsUpdate=true;
+  geo.computeBoundingSphere();
+}
+
+// ════════════════════════════════════════════════
+//  PHYSICS STEP
+// ════════════════════════════════════════════════
+let dragIdx=-1, dragTX=0, dragTY=0, dragTZ=0;
+let animT=0;
+
+function physicsStep(){
+  const nc=cAArr ? cAArr.length : 0;
+  for(let i=0;i<N;i++){
+    if(pinned[i])continue;
+    const vx=(px_[i]-ox_[i])*CFG.damping;
+    const vy=(py_[i]-oy_[i])*CFG.damping;
+    const vz=(pz_[i]-oz_[i])*CFG.damping;
+    ox_[i]=px_[i];oy_[i]=py_[i];oz_[i]=pz_[i];
+    px_[i]+=vx; py_[i]+=vy-CFG.gravity; pz_[i]+=vz;
+  }
+  if(dragIdx>=0&&!pinned[dragIdx]){
+    const sp=0.38;
+    const ddx=dragTX-px_[dragIdx],ddy=dragTY-py_[dragIdx],ddz=dragTZ-pz_[dragIdx];
+    px_[dragIdx]+=ddx*sp; py_[dragIdx]+=ddy*sp; pz_[dragIdx]+=ddz*sp;
+    ox_[dragIdx]=px_[dragIdx]-(px_[dragIdx]-ox_[dragIdx])*.35;
+    oy_[dragIdx]=py_[dragIdx]-(py_[dragIdx]-oy_[dragIdx])*.35;
+    oz_[dragIdx]=pz_[dragIdx]-(pz_[dragIdx]-oz_[dragIdx])*.35;
+  }
+  for(let it=0;it<ITERS;it++){
+    for(let k=0;k<nc;k++){
+      const a=cAArr[k],b=cBArr[k];
+      const dx=px_[b]-px_[a],dy=py_[b]-py_[a],dz=pz_[b]-pz_[a];
+      const d2=dx*dx+dy*dy+dz*dz; if(d2<1e-14)continue;
+      const d=Math.sqrt(d2);
+      const diff=(d-cRArr[k])/d*CFG.stiffness*.5;
+      const cx=dx*diff,cy=dy*diff,cz=dz*diff;
+      if(!pinned[a]){px_[a]+=cx;py_[a]+=cy;pz_[a]+=cz;}
+      if(!pinned[b]){px_[b]-=cx;py_[b]-=cy;pz_[b]-=cz;}
+    }
+    resetTopRow();
+  }
+  // ambient breathe
+  if(dragIdx<0){
+    const bc=(ROWS-1)*COLS+Math.floor(COLS/2);
+    const amp=0.000018;
+    px_[bc]+=Math.sin(animT*.7)*amp;
+    pz_[bc]+=Math.cos(animT*1.05)*amp;
+  }
+}
+
+// ════════════════════════════════════════════════
+//  TEXTURE CREATION FROM IMAGE
+// ════════════════════════════════════════════════
+function makeTextureFromImage(img) {
+  const tw = 1024, th = Math.round(tw * img.height / img.width);
+  const cv = document.createElement('canvas');
+  cv.width=tw; cv.height=th;
+  const g=cv.getContext('2d');
+
+  // Draw user image
+  g.drawImage(img,0,0,tw,th);
+
+  // Subtle paper grain overlay (may fail in sandboxed env, that's OK)
+  try {
+    const imgData = g.getImageData(0, 0, tw, th);
+    const d = imgData.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const n = (Math.random() - .5) * 6;
+      d[i]   = Math.max(0, Math.min(255, d[i]   + n));
+      d[i+1] = Math.max(0, Math.min(255, d[i+1] + n));
+      d[i+2] = Math.max(0, Math.min(255, d[i+2] + n));
+    }
+    g.putImageData(imgData, 0, 0);
+  } catch(e) { /* skip grain if canvas is tainted */ }
+
+  // Vignette
+  const vig=g.createRadialGradient(tw/2,th/2,th*.28,tw/2,th/2,th*.75);
+  vig.addColorStop(0,'rgba(0,0,0,0)');
+  vig.addColorStop(1,'rgba(0,0,0,0.22)');
+  g.fillStyle=vig; g.fillRect(0,0,tw,th);
+
+  // Top light streak (glossy print feel)
+  const streak=g.createLinearGradient(0,0,0,th*.18);
+  streak.addColorStop(0,'rgba(255,255,255,0.09)');
+  streak.addColorStop(1,'rgba(255,255,255,0)');
+  g.fillStyle=streak; g.fillRect(0,0,tw,th*.18);
+
+  // Torn bottom edge
+  const tY=th-Math.round(th*.03);
+  g.fillStyle='#D8D3CB';
+  g.beginPath(); g.moveTo(0,th);
+  const rng=mulberry32(0xABCDEF);
+  const segs=32;
+  for(let i=0;i<=segs;i++){
+    const tx=(i/segs)*tw;
+    const amp=i%2===0?rng()*th*.008+th*.003:rng()*th*.018+th*.009;
+    g.lineTo(tx,tY-amp);
+  }
+  g.lineTo(tw,th); g.closePath(); g.fill();
+
+  const tex=new THREE.CanvasTexture(cv);
+  tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
+  return {tex, aspect: img.width/img.height};
+}
+
+function makePlaceholderTexture(type){
+  const tw=512,th=768;
+  const cv=document.createElement('canvas'); cv.width=tw; cv.height=th;
+  const g=cv.getContext('2d');
+  const cx=tw/2,cy=th/2;
+
+  if(type==='gradient'){
+    const gr=g.createLinearGradient(0,0,tw,th);
+    gr.addColorStop(0,'#FF6B9D'); gr.addColorStop(.25,'#C44DE8');
+    gr.addColorStop(.5,'#5B7CF0'); gr.addColorStop(.75,'#30D5C8');
+    gr.addColorStop(1,'#FFD93D');
+    g.fillStyle=gr; g.fillRect(0,0,tw,th);
+    // Grid overlay
+    g.strokeStyle='rgba(255,255,255,0.15)'; g.lineWidth=1;
+    for(let x=0;x<tw;x+=64){g.beginPath();g.moveTo(x,0);g.lineTo(x,th);g.stroke();}
+    for(let y=0;y<th;y+=64){g.beginPath();g.moveTo(0,y);g.lineTo(tw,y);g.stroke();}
+    g.fillStyle='rgba(255,255,255,0.9)';g.font='bold 28px Georgia';g.textAlign='center';
+    g.fillText('渐变色卡 ✦ Gradient',cx,cy);
+    g.font='15px monospace';g.fillStyle='rgba(255,255,255,0.6)';
+    g.fillText('drag & bend me',cx,cy+36);
+  }
+  else if(type==='grid'){
+    g.fillStyle='#FDFBF5'; g.fillRect(0,0,tw,th);
+    g.strokeStyle='rgba(180,210,255,0.6)'; g.lineWidth=0.8;
+    for(let x=0;x<tw;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,th);g.stroke();}
+    for(let y=0;y<th;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(tw,y);g.stroke();}
+    g.strokeStyle='rgba(120,170,255,0.35)'; g.lineWidth=1.5;
+    for(let x=0;x<tw;x+=160){g.beginPath();g.moveTo(x,0);g.lineTo(x,th);g.stroke();}
+    for(let y=0;y<th;y+=160){g.beginPath();g.moveTo(0,y);g.lineTo(tw,y);g.stroke();}
+    // Red margin line
+    g.strokeStyle='rgba(255,100,100,0.4)'; g.lineWidth=1.5;
+    g.beginPath();g.moveTo(96,0);g.lineTo(96,th);g.stroke();
+    // Some handwriting
+    g.fillStyle='#3340A0';g.font='italic 22px Georgia';g.textAlign='left';
+    const lines=['物理纸张模拟','Three.js + Verlet','左键拖拽折叠','松开自然回弹','~~ 真实感 ~~'];
+    lines.forEach((l,i)=>g.fillText(l,112,140+i*52));
+  }
+  else if(type==='photo'){
+    // Sky
+    const sky=g.createLinearGradient(0,0,0,th*.55);
+    sky.addColorStop(0,'#1A3A6B'); sky.addColorStop(.6,'#4A7FBF'); sky.addColorStop(1,'#87CEEB');
+    g.fillStyle=sky; g.fillRect(0,0,tw,th*.55);
+    // Clouds
+    g.fillStyle='rgba(255,255,255,0.85)';
+    [[120,100,80,30],[280,80,110,25],[400,120,70,20]].forEach(([x,y,w,h])=>{
+      g.beginPath();g.ellipse(x,y,w,h,0,0,Math.PI*2);g.fill();
+      g.beginPath();g.ellipse(x+w*.3,y-h*.3,w*.65,h*.65,0,0,Math.PI*2);g.fill();
+      g.beginPath();g.ellipse(x-w*.25,y-h*.2,w*.5,h*.5,0,0,Math.PI*2);g.fill();
+    });
+    // Sun
+    const sun2=g.createRadialGradient(380,70,5,380,70,50);
+    sun2.addColorStop(0,'rgba(255,255,180,1)'); sun2.addColorStop(1,'rgba(255,200,50,0)');
+    g.fillStyle=sun2; g.beginPath();g.arc(380,70,50,0,Math.PI*2);g.fill();
+    // Mountain
+    g.fillStyle='#4A5568';
+    g.beginPath();g.moveTo(0,th*.55);g.lineTo(150,th*.2);g.lineTo(300,th*.55);g.closePath();g.fill();
+    g.fillStyle='#5A6780';
+    g.beginPath();g.moveTo(200,th*.55);g.lineTo(340,th*.15);g.lineTo(tw,th*.55);g.closePath();g.fill();
+    // Snow caps
+    g.fillStyle='rgba(255,255,255,0.9)';
+    g.beginPath();g.moveTo(150,th*.2);g.lineTo(135,th*.28);g.lineTo(165,th*.28);g.closePath();g.fill();
+    g.beginPath();g.moveTo(340,th*.15);g.lineTo(320,th*.24);g.lineTo(360,th*.24);g.closePath();g.fill();
+    // Ground
+    const grd=g.createLinearGradient(0,th*.55,0,th);
+    grd.addColorStop(0,'#4A7A3A'); grd.addColorStop(1,'#2D5220');
+    g.fillStyle=grd; g.fillRect(0,th*.55,tw,th*.45);
+    // Water reflection
+    g.fillStyle='rgba(80,140,200,0.4)';
+    g.beginPath();g.ellipse(cx,th*.72,200,30,0,0,Math.PI*2);g.fill();
+    // Label
+    g.fillStyle='rgba(255,255,255,0.88)';g.font='bold 20px Georgia';g.textAlign='center';
+    g.fillText('🏔 Mountain View',cx,th-.06*th);
+    g.font='12px monospace';g.fillStyle='rgba(255,255,255,0.5)';
+    g.fillText('synthetic landscape • drag to fold',cx,th-.035*th);
+  }
+  else if(type==='poster'){
+    g.fillStyle='#0F0F0F'; g.fillRect(0,0,tw,th);
+    // Concentric circles
+    for(let r=20;r<400;r+=22){
+      g.strokeStyle=`hsla(${r*0.8},80%,60%,${0.06+r/4000})`;
+      g.lineWidth=1.5;
+      g.beginPath();g.arc(cx,cy*.85,r,0,Math.PI*2);g.stroke();
+    }
+    // Typography
+    g.fillStyle='#FFFFFF';g.font='bold 62px Georgia';g.textAlign='center';
+    g.fillText('FOLD',cx,cy*.6);
+    g.fillStyle='#888';g.font='15px monospace';g.letterSpacing='0.2em';
+    g.fillText('P H Y S I C S   P A P E R',cx,cy*.6+36);
+    g.fillStyle='rgba(255,200,50,0.9)';g.font='bold 32px Georgia';g.textAlign='center';
+    g.fillText('纸张模拟',cx,cy*.6+80);
+    // Bottom text
+    g.fillStyle='rgba(255,255,255,0.25)';g.font='11px monospace';
+    g.fillText('THREE.JS + VERLET INTEGRATION + WEBGL',cx,th*.9);
+  }
+
+  // Torn edge (same as real photo)
+  const tY=th-Math.round(th*.04);
+  g.fillStyle='#D8D3CB';
+  g.beginPath(); g.moveTo(0,th);
+  const rng=mulberry32(0x12345);
+  for(let i=0;i<=32;i++){
+    const tx=(i/32)*tw;
+    const amp=i%2===0?rng()*th*.008:rng()*th*.018+th*.009;
+    g.lineTo(tx,tY-amp);
+  }
+  g.lineTo(tw,th); g.closePath(); g.fill();
+
+  const tex=new THREE.CanvasTexture(cv);
+  tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
+  return {tex, aspect: tw/th};
+}
+
+// ════════════════════════════════════════════════
+//  INIT SCENE WITH TEXTURE
+// ════════════════════════════════════════════════
+function initScene(texResult){
+  const {tex, aspect} = texResult;
+  if(mat.map) mat.map.dispose();
+  mat.map = tex;
+  mat.roughness = CFG.roughness;
+  mat.needsUpdate = true;
+
+  // Compute physical size fitting the screen (~2.8 tall, aspect-correct wide)
+  const ph = 3.0;
+  const pw = ph * aspect;
+  buildParticles(pw, ph);
+  updateGeometry();
+
+  document.getElementById('upload-screen').classList.add('hidden');
+  renderer.domElement.style.display = 'block';
+  document.getElementById('reset-btn').style.display = 'block';
+  document.getElementById('settings').style.display = 'flex';
+  setLoading(false);
+}
+
+// ════════════════════════════════════════════════
+//  MOUSE / TOUCH DRAG
+// ════════════════════════════════════════════════
+const raycaster=new THREE.Raycaster();
+const mouseVec=new THREE.Vector2();
+const dragPlane=new THREE.Plane();
+const hitPoint=new THREE.Vector3();
+
+function setMouse(e){
+  mouseVec.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);
+}
+function startDrag(e){
+  setMouse(e); raycaster.setFromCamera(mouseVec,camera);
+  const hits=raycaster.intersectObject(mesh);
+  if(!hits.length)return;
+  const pt=hits[0].point;
+  let best=-1,bestD2=Infinity;
+  for(let i=0;i<N;i++){
+    if(pinned[i])continue;
+    const d2=(px_[i]-pt.x)**2+(py_[i]-pt.y)**2+(pz_[i]-pt.z)**2;
+    if(d2<bestD2){bestD2=d2;best=i;}
+  }
+  if(best>=0){
+    dragIdx=best;
+    const cd=camera.position.clone().sub(pt).normalize();
+    dragPlane.setFromNormalAndCoplanarPoint(cd,pt);
+    raycaster.ray.intersectPlane(dragPlane,hitPoint);
+    dragTX=hitPoint.x;dragTY=hitPoint.y;dragTZ=hitPoint.z;
+    renderer.domElement.style.cursor='grabbing';
+  }
+}
+function moveDrag(e){
+  if(dragIdx<0)return;
+  setMouse(e); raycaster.setFromCamera(mouseVec,camera);
+  if(raycaster.ray.intersectPlane(dragPlane,hitPoint)){
+    dragTX=hitPoint.x;dragTY=hitPoint.y;dragTZ=hitPoint.z;
+  }
+}
+function endDrag(){dragIdx=-1;renderer.domElement.style.cursor='default';}
+
+renderer.domElement.addEventListener('mousedown',startDrag);
+window.addEventListener('mousemove',moveDrag);
+window.addEventListener('mouseup',endDrag);
+renderer.domElement.addEventListener('touchstart',e=>{e.preventDefault();startDrag(e.touches[0]);},{passive:false});
+window.addEventListener('touchmove',e=>{e.preventDefault();moveDrag(e.touches[0]);},{passive:false});
+window.addEventListener('touchend',endDrag);
+renderer.domElement.addEventListener('mousemove',e=>{
+  if(dragIdx>=0)return;
+  setMouse(e);raycaster.setFromCamera(mouseVec,camera);
+  renderer.domElement.style.cursor=raycaster.intersectObject(mesh).length?'grab':'default';
+});
+
+// ════════════════════════════════════════════════
+//  UI — FILE UPLOAD
+// ════════════════════════════════════════════════
+const fileInput = document.getElementById('file-input');
+const dropZone  = document.getElementById('drop-zone');
+
+// Show a brief loading label so user knows something is happening
+function setLoading(on) {
+  const btn = document.getElementById('file-btn');
+  btn.textContent = on ? '加载中…' : '选择文件';
+  btn.disabled = on;
+}
+
+// Core: given a File/Blob, read → Image → initScene
+function processFile(file) {
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { alert('请选择图片文件 (JPG/PNG/WebP/GIF)'); return; }
+  setLoading(true);
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const result = makeTextureFromImage(img);
+        initScene(result);
+      } catch(err) {
+        console.error('纹理/物理初始化失败:', err);
+        alert('图片处理失败：' + err.message);
+        setLoading(false);
+      }
+    };
+    img.onerror = () => { alert('图片解码失败，请换一张'); setLoading(false); };
+    img.src = ev.target.result;   // data: URL — always same-origin
+  };
+  reader.onerror = () => { alert('文件读取失败'); setLoading(false); };
+  reader.readAsDataURL(file);     // capture File ref NOW before input is cleared
+}
+
+// Button click → open file dialog
+document.getElementById('file-btn').addEventListener('click', () => fileInput.click());
+
+// File selected via dialog
+fileInput.addEventListener('change', function() {
+  const f = this.files[0];
+  if (!f) return;
+  processFile(f);
+  // Defer reset so the same file can be re-selected later
+  setTimeout(() => { try { this.value = ''; } catch(e){} }, 500);
+});
+
+// Drag & drop
+dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('over'); });
+dropZone.addEventListener('dragleave', ()  => dropZone.classList.remove('over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('over');
+  processFile(e.dataTransfer.files[0]);
+});
+
+// Paste from clipboard (Ctrl+V)
+document.addEventListener('paste', e => {
+  const items = e.clipboardData?.items;
+  if (!items) return;
+  for (const it of items) {
+    if (it.type.startsWith('image/')) { processFile(it.getAsFile()); break; }
+  }
+});
+
+// Preset examples
+document.querySelectorAll('[data-preset]').forEach(el => {
+  el.addEventListener('click', () => {
+    try { initScene(makePlaceholderTexture(el.dataset.preset)); }
+    catch(err) { console.error(err); alert('预设加载失败: ' + err.message); }
+  });
+});
+
+document.getElementById('reset-btn').onclick = () => {
+  renderer.domElement.style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'none';
+  document.getElementById('settings').style.display = 'none';
+  document.getElementById('upload-screen').classList.remove('hidden');
+  setLoading(false);
+};
+
+// ════════════════════════════════════════════════
+//  SETTINGS — MODE SWITCH
+// ════════════════════════════════════════════════
+document.querySelectorAll('[data-mode]').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('[data-mode]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const mode=btn.dataset.mode;
+    Object.assign(CFG,MODES[mode]);
+    mat.roughness=CFG.roughness; mat.needsUpdate=true;
+    // Rebuild constraints (bend on/off)
+    buildConstraints(PAPER_W,PAPER_H);
+    settle(60);
+  };
+});
+
+// ════════════════════════════════════════════════
+//  RESIZE
+// ════════════════════════════════════════════════
+window.addEventListener('resize',()=>{
+  camera.aspect=innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);
+});
+
+// ════════════════════════════════════════════════
+//  RENDER LOOP
+// ════════════════════════════════════════════════
+function animate(){
+  requestAnimationFrame(animate);
+  if(!cAArr)return;
+  animT+=0.016;
+  physicsStep();
+  updateGeometry();
+  renderer.render(scene,camera);
+}
+animate();
+</script>
+</body>
+</html>
