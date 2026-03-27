@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>DuoDuo - Triple Evolution Final</title>
+    <style>
+        body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Arial', sans-serif; }
+        
+        /* 启动按钮样式 */
+        #start-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 20px 50px; background: #fff; border: none; color: #000;
+            cursor: pointer; font-size: 20px; font-weight: bold; z-index: 100;
+            border-radius: 5px; box-shadow: 0 0 30px rgba(255,255,255,0.8);
+            display: none; /* 初始隐藏 */
+        }
+
+        #status {
+            position: absolute; top: 20px; left: 20px; color: #ff007b;
+            font-family: monospace; font-size: 14px; z-index: 101;
+            background: rgba(0,0,0,0.6); padding: 10px; border-radius: 5px;
+        }
+
+        /* 隐藏原生音频控件 */
+        #my-audio { display: none; }
+    </style>
+</head>
+<body>
+    <div id="status">正在同步维度数据...</div>
+    <button id="start-btn">开启：三生三世重组空间</button>
+    
+    <!-- 使用原生音频标签，更稳定 -->
+    <audio id="my-audio" src="./song.mp3" preload="auto" loop></audio>
+
+<script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    let scene, camera, renderer, analyser, points;
+    let particleStates = []; 
+    let velocities = [];
+    let currentImgIndex = 0;
+    let isPlaying = false;
+    let lastSwitchTime = 0;
+
+    const images = ['./dd1.jpg', './dd2.jpg', './dd3.jpg'];
+    const startBtn = document.getElementById('start-btn');
+    const statusDiv = document.getElementById('status');
+    const audioElement = document.getElementById('my-audio');
+
+    // 预先创建音频相关对象，防止点击时出现 undefined
+    const listener = new THREE.AudioListener();
+    const sound = new THREE.Audio(listener);
+
+    // 1. 图像处理
+    async function processImages() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 160; canvas.height = 160;
+
+        for (let url of images) {
+            try {
+                const img = await new Promise((resolve, reject) => {
+                    const i = new Image();
+                    i.src = url;
+                    i.onload = () => resolve(i);
+                    i.onerror = () => reject(`图片 ${url} 加载失败`);
+                });
+                ctx.clearRect(0, 0, 160, 160);
+                ctx.drawImage(img, 0, 0, 160, 160);
+                const data = ctx.getImageData(0, 0, 160, 160).data;
+                const pos = [], cols = [];
+                for (let y = 0; y < 160; y++) {
+                    for (let x = 0; x < 160; x++) {
+                        const i = (y * 160 + x) * 4;
+                        if (data[i+3] > 128) {
+                            pos.push((x-80)*0.5, (80-y)*0.5, 0);
+                            cols.push(data[i]/255, data[i+1]/255, data[i+2]/255);
+                        }
+                    }
+                }
+                particleStates.push({ pos, cols });
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+        checkReady();
+    }
+
+    // 2. 检查资源是否就绪
+    function checkReady() {
+        if (particleStates.length > 0) {
+            statusDiv.innerText = "数据同步完成，等待音频就绪...";
+            // 如果音频已经加载好，或者正在缓冲
+            if (audioElement.readyState >= 2) {
+                onAllReady();
+            } else {
+                audioElement.oncanplaythrough = onAllReady;
+            }
+        }
+    }
+
+    function onAllReady() {
+        statusDiv.innerText = "一切就绪，准备开启空间！";
+        startBtn.style.display = "block";
+        initThree();
+    }
+
+    // 3. 初始化场景
+    function initThree() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
+        camera.position.z = 100;
+        camera.add(listener);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const firstState = particleStates[0];
+        const numPoints = firstState.pos.length / 3;
+        const initialPositions = new Float32Array(numPoints * 3);
+        
+        for (let i = 0; i < numPoints; i++) {
+            initialPositions[i*3] = (Math.random()-0.5)*200;
+            initialPositions[i*3+1] = (Math.random()-0.5)*200;
+            initialPositions[i*3+2] = (Math.random()-0.5)*200;
+            velocities.push(0, 0, 0);
+        }
+
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(initialPositions, 3));
+        geo.setAttribute('color', new THREE.Float32BufferAttribute(firstState.cols, 3));
+        
+        const mat = new THREE.PointsMaterial({ size: 0.35, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true });
+        points = new THREE.Points(geo, mat);
+        scene.add(points);
+
+        // 将音频标签关联到 Three.js 的分析器
+        sound.setMediaElementSource(audioElement);
+        analyser = new THREE.AudioAnalyser(sound, 128);
+
+        animate();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        if (!points) return;
+
+        if (!isPlaying) {
+            points.rotation.y += 0.001;
+            renderer.render(scene, camera);
+            return;
+        }
+
+        const data = analyser.getFrequencyData();
+        const bass = data[1] + data[2] + data[3]; 
+        const avg = analyser.getAverageFrequency();
+
+        const posAttr = points.geometry.attributes.position;
+        const target = particleStates[currentImgIndex].pos;
+
+        // 低音卡点切换
+        if (bass > 500 && Date.now() - lastSwitchTime > 2500) {
+            currentImgIndex = (currentImgIndex + 1) % particleStates.length;
+            lastSwitchTime = Date.now();
+            points.geometry.setAttribute('color', new THREE.Float32BufferAttribute(particleStates[currentImgIndex].cols, 3));
+        }
+
+        for (let i = 0; i < posAttr.count; i++) {
+            const i3 = i * 3;
+            // 爆炸力
+            if (bass > 500) {
+                const s = (bass / 500) * 2;
+                velocities[i3] += (Math.random()-0.5) * s;
+                velocities[i3+1] += (Math.random()-0.5) * s;
+                velocities[i3+2] += (Math.random()-0.5) * s * 12;
+            }
+            // 目标引力
+            const tx = target[i3] || 0, ty = target[i3+1] || 0, tz = target[i3+2] || 0;
+            velocities[i3] += (tx - posAttr.array[i3]) * 0.04;
+            velocities[i3+1] += (ty - posAttr.array[i3+1]) * 0.04;
+            velocities[i3+2] += (tz - posAttr.array[i3+2]) * 0.04;
+
+            posAttr.array[i3] += velocities[i3];
+            posAttr.array[i3+1] += velocities[i3+1];
+            posAttr.array[i3+2] += velocities[i3+2];
+            
+            velocities[i3] *= 0.82; 
+            velocities[i3+1] *= 0.82; 
+            velocities[i3+2] *= 0.82;
+        }
+        posAttr.needsUpdate = true;
+        camera.position.z = 100 + Math.sin(Date.now()*0.01) * (avg/8);
+        points.rotation.y += 0.004;
+        renderer.render(scene, camera);
+    }
+
+    // 启动按钮逻辑
+    startBtn.addEventListener('click', () => {
+        // 激活音频上下文
+        if (listener.context.state === 'suspended') {
+            listener.context.resume();
+        }
+        audioElement.play();
+        isPlaying = true;
+        startBtn.style.display = 'none';
+        statusDiv.style.display = 'none';
+    });
+
+    processImages();
+
+    window.addEventListener('resize', () => {
+        if(camera && renderer) {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    });
+</script>
+</body>
+</html>

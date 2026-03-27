@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>DuoDuo - Heartbeat Visualizer</title>
+    <style>
+        body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Arial', sans-serif; }
+        #start-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 15px 40px; background: none; border: 2px solid #ff4081; color: #ff4081;
+            cursor: pointer; font-size: 20px; z-index: 100; border-radius: 30px;
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+        }
+        #start-btn:hover { background: #ff4081; color: #fff; box-shadow: 0 0 30px #ff4081; }
+        #msg { position: absolute; bottom: 30px; width: 100%; text-align: center; color: #ff4081; font-size: 14px; opacity: 0.7; letter-spacing: 5px; }
+    </style>
+</head>
+<body>
+    <button id="start-btn">激活：朵朵的心跳空间</button>
+    <div id="msg">AUDIO REACTIVE SYSTEM // FOR DUODUO</div>
+
+<script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    let scene, camera, renderer, analyser, sound, heartPoints, stars;
+    const startBtn = document.getElementById('start-btn');
+
+    function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15;
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 1. 创建心形粒子
+        const heartGeo = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+        
+        // 心形数学公式 (Parametric Heart Equation)
+        for (let i = 0; i < 15000; i++) {
+            const t = Math.random() * Math.PI * 2;
+            // 核心公式
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+            const z = (Math.random() - 0.5) * 5; // 增加一点厚度
+            
+            positions.push(x * 0.4, y * 0.4, z * 0.4);
+            colors.push(1, 0.25, 0.5); // 初始粉色
+        }
+        heartGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        heartGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        const heartMat = new THREE.PointsMaterial({
+            size: 0.08,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.8
+        });
+        heartPoints = new THREE.Points(heartGeo, heartMat);
+        scene.add(heartPoints);
+
+        // 2. 创建背景星空 (穿越感)
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = [];
+        for(let i=0; i<2000; i++) {
+            starPos.push((Math.random()-0.5)*100, (Math.random()-0.5)*100, (Math.random()-1)*100);
+        }
+        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+        stars = new THREE.Points(starGeo, new THREE.PointsMaterial({color: 0xffffff, size: 0.1}));
+        scene.add(stars);
+
+        // 3. 音频
+        const listener = new THREE.AudioListener();
+        camera.add(listener);
+        sound = new THREE.Audio(listener);
+        const audioLoader = new THREE.AudioLoader();
+        audioLoader.load('./song.mp3', (buffer) => {
+            sound.setBuffer(buffer);
+            sound.setLoop(true);
+            sound.setVolume(0.7);
+        });
+        analyser = new THREE.AudioAnalyser(sound, 128);
+
+        animate();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const data = analyser ? analyser.getFrequencyData() : [0];
+        const avg = analyser ? analyser.getAverageFrequency() : 0;
+        const bass = data[0]; // 获取低音
+
+        // 心跳缩放动画
+        const scale = 1 + (bass / 255) * 0.5;
+        heartPoints.scale.set(scale, scale, scale);
+
+        // 颜色律动
+        const colorAttr = heartPoints.geometry.attributes.color;
+        for(let i=0; i<colorAttr.count; i++) {
+            // 随着频率变色 (紫罗兰 -> 鲜红)
+            const r = 0.5 + (avg/100);
+            colorAttr.setXYZ(i, r, 0.1, 0.4);
+        }
+        colorAttr.needsUpdate = true;
+
+        // 星空穿梭效果
+        const sPos = stars.geometry.attributes.position;
+        for(let i=0; i<sPos.count; i++) {
+            let z = sPos.getZ(i);
+            z += 0.2 + (avg/50); // 速度随节奏变快
+            if(z > 10) z = -90;
+            sPos.setZ(i, z);
+        }
+        sPos.needsUpdate = true;
+
+        // 整体旋转
+        heartPoints.rotation.y += 0.005;
+        heartPoints.rotation.z += (avg / 500);
+
+        renderer.render(scene, camera);
+    }
+
+    startBtn.addEventListener('click', () => {
+        if (sound.context.state === 'suspended') sound.context.resume();
+        sound.play();
+        startBtn.style.display = 'none';
+    });
+
+    init();
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Only For DuoDuo - Particle Image</title>
+    <style>
+        body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Arial', sans-serif; }
+        #start-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 15px 40px; background: none; border: 2px solid #fff; color: #fff;
+            cursor: pointer; font-size: 18px; z-index: 100; letter-spacing: 2px;
+            transition: 0.3s; border-radius: 4px;
+        }
+        #start-btn:hover { background: #fff; color: #000; box-shadow: 0 0 20px #fff; }
+        #label {
+            position: absolute; bottom: 30px; width: 100%; text-align: center;
+            color: white; font-size: 12px; letter-spacing: 4px; opacity: 0.5; pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="start-btn">开启：团子的粒子情书</button>
+    <div id="label">万千星辰中，我只看到了朵朵</div>
+
+<script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    let scene, camera, renderer, analyser, particles, particlePositions;
+    let targetPositions = []; // 照片的坐标
+    let randomPositions = []; // 散乱的坐标
+    let colors = [];
+    let isAssembled = false;
+
+    const imgURL = './dd1.jpg'; // 你的照片名
+    const songURL = './song.mp3';
+    const particleCount = 20000; // 粒子数量
+
+    // 1. 采样照片像素
+    function loadAndSampleImage() {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = imgURL;
+            img.crossOrigin = "Anonymous";
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                // 采样尺寸，150x150 左右效果最好
+                canvas.width = 150; 
+                canvas.height = 150;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                for (let y = 0; y < canvas.height; y++) {
+                    for (let x = 0; x < canvas.width; x++) {
+                        const i = (y * canvas.width + x) * 4;
+                        if (imageData[i + 3] > 128) { // 如果不是透明的
+                            // 映射到 3D 坐标
+                            const px = (x - canvas.width / 2) * 0.4;
+                            const py = (canvas.height / 2 - y) * 0.4;
+                            const pz = 0;
+                            targetPositions.push(px, py, pz);
+                            
+                            // 记录颜色
+                            colors.push(imageData[i]/255, imageData[i+1]/255, imageData[i+2]/255);
+                        }
+                    }
+                }
+                resolve();
+            };
+        });
+    }
+
+    async function init() {
+        await loadAndSampleImage();
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 60;
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const geo = new THREE.BufferGeometry();
+        const actualParticleCount = targetPositions.length / 3;
+        
+        const posArray = new Float32Array(actualParticleCount * 3);
+        const randArray = new Float32Array(actualParticleCount * 3);
+        
+        for (let i = 0; i < actualParticleCount; i++) {
+            // 初始散乱位置：全宇宙随机
+            randArray[i*3] = (Math.random() - 0.5) * 200;
+            randArray[i*3+1] = (Math.random() - 0.5) * 200;
+            randArray[i*3+2] = (Math.random() - 0.5) * 200;
+            
+            posArray[i*3] = randArray[i*3];
+            posArray[i*3+1] = randArray[i*3+1];
+            posArray[i*3+2] = randArray[i*3+2];
+        }
+
+        geo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        
+        const mat = new THREE.PointsMaterial({
+            size: 0.15,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true
+        });
+
+        particles = new THREE.Points(geo, mat);
+        scene.add(particles);
+
+        // 音频设置
+        const listener = new THREE.AudioListener();
+        camera.add(listener);
+        const sound = new THREE.Audio(listener);
+        const audioLoader = new THREE.AudioLoader();
+        audioLoader.load(songURL, (buffer) => {
+            sound.setBuffer(buffer);
+            sound.setLoop(true);
+            sound.setVolume(0.6);
+        });
+        analyser = new THREE.AudioAnalyser(sound, 128);
+
+        window.sound = sound;
+        animate(randArray);
+    }
+
+    function animate(randArray) {
+        requestAnimationFrame(() => animate(randArray));
+
+        const avg = analyser ? analyser.getAverageFrequency() : 0;
+        const posAttr = particles.geometry.attributes.position;
+        
+        // 逻辑：如果音量超过一定阈值 (比如 50)，或者手动控制，粒子聚拢
+        // 对于 I Got Love，我们可以设定：当音乐在播放且重低音够强时聚拢
+        const threshold = 45;
+        const assembleSpeed = 0.08;
+
+        for (let i = 0; i < posAttr.count; i++) {
+            const i3 = i * 3;
+            let targetX, targetY, targetZ;
+
+            if (avg > threshold) {
+                // 向照片聚拢
+                targetX = targetPositions[i3];
+                targetY = targetPositions[i3+1];
+                targetZ = targetPositions[i3+2];
+            } else {
+                // 回到随机漂浮
+                targetX = randArray[i3] + Math.sin(Date.now()*0.001 + i)*2;
+                targetY = randArray[i3+1] + Math.cos(Date.now()*0.001 + i)*2;
+                targetZ = randArray[i3+2];
+            }
+
+            // 平滑插值 (Lerp)
+            posAttr.array[i3] += (targetX - posAttr.array[i3]) * assembleSpeed;
+            posAttr.array[i3+1] += (targetY - posAttr.array[i3+1]) * assembleSpeed;
+            posAttr.array[i3+2] += (targetZ - posAttr.array[i3+2]) * assembleSpeed;
+        }
+
+        posAttr.needsUpdate = true;
+        
+        // 随低音轻微晃动相机
+        camera.position.z = 60 + Math.sin(Date.now()*0.01) * (avg/20);
+        particles.rotation.y += 0.002;
+
+        renderer.render(scene, camera);
+    }
+
+    document.getElementById('start-btn').addEventListener('click', function() {
+        this.style.display = 'none';
+        if (window.sound.context.state === 'suspended') window.sound.context.resume();
+        window.sound.play();
+    });
+
+    init();
+</script>
+</body>
+</html>
