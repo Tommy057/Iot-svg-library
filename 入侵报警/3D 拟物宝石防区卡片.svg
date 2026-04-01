@@ -1,0 +1,38 @@
+<!-- DASIOT Holographic Gem Component -->
+<svg width="240" height="300" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 材质滤镜：增加内部发光与深度感 -->
+        <filter id="gem-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 动态颜色定义：通过脚本改变 fill -->
+        <!-- 蓝宝石: #1E40AF | 琥珀金: #F59E0B | 红宝石: #EF4444 -->
+    </defs>
+
+    <!-- 1. 底部厚度面 (Thickness Face) -->
+    <path d="M60 220 L180 220 L200 240 L40 240 Z" fill="rgba(0,0,0,0.4)" />
+    
+    <!-- 2. 全息外框 (Holographic Frame) -->
+    <rect x="20" y="20" width="200" height="260" rx="10" fill="rgba(30,64,175,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="5,5" />
+
+    <!-- 3. 宝石核心 (The Gem Body) -->
+    <!-- 斜切面 A (左) -->
+    <path d="M120 60 L60 100 L60 180 L120 220 Z" fill="currentColor" fill-opacity="0.7" />
+    <!-- 斜切面 B (右) -->
+    <path d="M120 60 L180 100 L180 180 L120 220 Z" fill="currentColor" fill-opacity="0.9" />
+    <!-- 顶面主视区 -->
+    <path d="M120 80 L80 110 L80 170 L120 200 L160 170 L160 110 Z" fill="currentColor" filter="url(#gem-glow)" />
+
+    <!-- 4. 弧形玻璃高光 (Q 指令优化) -->
+    <path d="M90 90 Q120 70 150 90" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+
+    <!-- 5. 底部声呐波动圆环 (由 ani_factor 驱动) -->
+    <circle cx="120" cy="230" r="10" fill="none" stroke="currentColor" stroke-width="2">
+        <animate attributeName="r" from="10" to="40" dur="1.5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.8" to="0" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 6. HUD 文本占位 -->
+    <text x="120" y="45" font-family="Arial" font-size="14" fill="#CBD5E1" text-anchor="middle" letter-spacing="2">ZONE-DETECTOR</text>
+</svg>

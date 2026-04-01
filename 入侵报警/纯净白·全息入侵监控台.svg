@@ -1,0 +1,105 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景层：纯净白淡雅渐变 -->
+    <defs>
+        <linearGradient id="bg_light" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F1F5F9" />
+            <stop offset="100%" stop-color="#FFFFFF" />
+        </linearGradient>
+        
+        <!-- 柔和投影 -->
+        <filter id="soft_shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feOffset dx="0" dy="4" result="offsetBlur" />
+            <feFlood flood-color="rgba(0, 0, 0, 0.08)" result="color" />
+            <feComposite in="color" in2="offsetBlur" operator="in" />
+            <feComposite in="SourceGraphic" in2="offsetBlur" operator="over" />
+        </filter>
+
+        <!-- 晶钻绿渐变 (翡翠) -->
+        <radialGradient id="gem_emerald" cx="50%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#6EE7B7" />
+            <stop offset="100%" stop-color="#059669" />
+        </radialGradient>
+        
+        <!-- 晶钻红渐变 (红宝石) -->
+        <radialGradient id="gem_ruby" cx="50%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#FB7185" />
+            <stop offset="100%" stop-color="#E11D48" />
+        </radialGradient>
+    </defs>
+
+    <rect width="1920" height="1080" fill="url(#bg_light)" />
+
+    <!-- 2. 顶部纯净 HUD 看板 -->
+    <g transform="translate(0, 0)">
+        <!-- 顶部白色悬浮背板 -->
+        <path d="M0 0 L1920 0 L1920 70 L1580 70 L1530 100 L390 100 L340 70 L0 70 Z" fill="white" filter="url(#soft_shadow)" />
+        <text x="960" y="45" font-family="Arial-Bold" font-size="26" fill="#1E293B" text-anchor="middle" letter-spacing="2" font-weight="bold">海康入侵报警监控中心</text>
+        
+        <!-- 统计指标 (纯净版) -->
+        <g transform="translate(480, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="32" fill="#334155">60</text>
+            <text x="50" y="28" font-family="Arial" font-size="12" fill="#64748B">总防区</text>
+        </g>
+        <g transform="translate(850, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="32" fill="#10B981">58</text>
+            <text x="50" y="28" font-family="Arial" font-size="12" fill="#10B981">正常在线</text>
+        </g>
+        <g transform="translate(1220, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="32" fill="#E11D48">02</text>
+            <text x="50" y="28" font-family="Arial" font-size="12" fill="#E11D48">实时报警</text>
+            <circle cx="-15" cy="18" r="5" fill="#E11D48">
+                <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite" />
+            </circle>
+        </g>
+    </g>
+
+    <!-- 3. 矩阵布局区 (2x5 示例) -->
+    <g transform="translate(160, 180)">
+        <!-- 卡片 01 - 正常态 -->
+        <g transform="translate(0, 0)">
+            <rect width="280" height="360" rx="16" fill="rgba(255, 255, 255, 0.7)" stroke="#E2E8F0" stroke-width="1" filter="url(#soft_shadow)" />
+            <text x="140" y="40" font-family="Arial-Bold" font-size="18" fill="#334155" text-anchor="middle" font-weight="bold">一楼大厅东侧</text>
+            <!-- 翡翠宝石图标 -->
+            <circle cx="140" cy="180" r="45" fill="url(#gem_emerald)" />
+            <path d="M120 160 Q140 145 160 160" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+            <!-- 状态标签 -->
+            <rect x="90" y="310" width="100" height="24" rx="12" fill="#DCFCE7" />
+            <text x="140" y="327" font-family="Arial" font-size="12" fill="#15803D" text-anchor="middle">已布防</text>
+        </g>
+
+        <!-- 卡片 03 - 报警态 (关键对比) -->
+        <g transform="translate(640, 0)">
+            <rect width="280" height="360" rx="16" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="2" filter="url(#soft_shadow)">
+                <animate attributeName="stroke-opacity" values="1;0.4;1" dur="0.8s" repeatCount="indefinite" />
+            </rect>
+            <text x="140" y="40" font-family="Arial-Bold" font-size="18" fill="#BE123C" text-anchor="middle" font-weight="bold">地下车库 B1 区</text>
+            
+            <!-- 扩散声呐波纹 (浅色版) -->
+            <circle cx="140" cy="180" r="45" fill="none" stroke="#E11D48" stroke-width="2">
+                <animate attributeName="r" values="45;110" dur="1.2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.6;0" dur="1.2s" repeatCount="indefinite" />
+            </circle>
+            
+            <!-- 红宝石图标 -->
+            <circle cx="140" cy="180" r="45" fill="url(#gem_ruby)" />
+            <path d="M120 160 Q140 145 160 160" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+            
+            <!-- 状态标签 (报警) -->
+            <rect x="70" y="310" width="140" height="24" rx="12" fill="#E11D48">
+                <animate attributeName="fill" values="#E11D48;#FB923C;#E11D48" dur="1s" repeatCount="indefinite" />
+            </rect>
+            <text x="140" y="327" font-family="Arial-Bold" font-size="12" fill="#FFFFFF" text-anchor="middle">非法入侵告警</text>
+        </g>
+
+        <!-- 其他卡片 ... (略，保持与01一致) -->
+        <g transform="translate(320, 0)"><use href="#card_01" /></g>
+        <g transform="translate(960, 0)"><use href="#card_01" /></g>
+        <g transform="translate(1280, 0)"><use href="#card_01" /></g>
+        
+        <text x="800" y="550" font-family="Arial" font-size="20" fill="#94A3B8" text-anchor="middle" opacity="0.5">—— 矩阵延伸：剩余 50 个防区数据加载中 ——</text>
+    </g>
+
+    <!-- 4. 底部装饰线条 -->
+    <line x1="400" y1="1020" x2="1520" y2="1020" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="8 4" />
+</svg>

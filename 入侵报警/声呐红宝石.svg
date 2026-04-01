@@ -1,0 +1,29 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <radialGradient id="ruby_deep" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#F87171" />
+            <stop offset="100%" stop-color="#7F1D1D" />
+        </radialGradient>
+        <filter id="ruby_glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="5" />
+        </filter>
+    </defs>
+
+    <!-- 1. 声呐波纹层 (在组件属性里绑定 xg 驱动 Scale 和 Opacity) -->
+    <circle cx="60" cy="85" r="40" fill="none" stroke="#EF4444" stroke-width="2" opacity="0.8" />
+    <circle cx="60" cy="85" r="30" fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.4" />
+
+    <!-- 2. 探测器主体 (在组件属性里绑定 xg 驱动 Opacity 实现闪烁) -->
+    <g transform="translate(0, 30)">
+        <!-- 底座支架 -->
+        <path d="M45 110 L55 110 L50 140 Z" fill="#450A0A" opacity="0.8" />
+        <!-- 红色宝石头 -->
+        <rect x="30" y="10" width="60" height="80" rx="30" fill="#450A0A" stroke="#EF4444" stroke-width="4" filter="url(#ruby_glow)" />
+        <rect x="38" y="18" width="44" height="64" rx="22" fill="url(#ruby_deep)" />
+        <!-- 玻璃高光 -->
+        <path d="M45 35 Q60 20 75 35" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.3" />
+    </g>
+    
+    <!-- 3. 顶部全息标签 (MJ 编码位) -->
+    <rect x="15" y="5" width="90" height="30" rx="6" fill="rgba(69, 10, 10, 0.6)" stroke="#EF4444" stroke-width="1.5" />
+</svg>

@@ -1,0 +1,25 @@
+<svg width="240" height="300" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景层：全息边框 -->
+    <rect x="20" y="20" width="200" height="260" rx="8" fill="rgba(30,64,175,0.05)" stroke="#1E40AF" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+    
+    <!-- 3D 底部投影面 -->
+    <path d="M60 230 L180 230 L200 250 L40 250 Z" fill="#1E40AF" opacity="0.2" />
+
+    <!-- 宝石主体：通过不同透明度营造 3D 切面感 -->
+    <!-- 左侧切面 -->
+    <path d="M120 70 L60 110 L60 190 L120 230 Z" fill="#1E40AF" fill-opacity="0.5" />
+    <!-- 右侧切面 -->
+    <path d="M120 70 L180 110 L180 190 L120 230 Z" fill="#1E40AF" fill-opacity="0.8" />
+    <!-- 顶面主视区 -->
+    <path d="M120 90 L85 115 L85 185 L120 210 L155 185 L155 115 Z" fill="#3B82F6" />
+
+    <!-- 弧形玻璃高光 (Q指令) -->
+    <path d="M95 105 Q120 85 145 105" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.5" />
+
+    <!-- 底部全息环 -->
+    <circle cx="120" cy="240" r="12" fill="none" stroke="#1E40AF" stroke-width="2" opacity="0.6" />
+
+    <!-- 文字装饰区 -->
+    <text x="120" y="50" font-family="Verdana" font-size="12" fill="#94A3B8" text-anchor="middle" letter-spacing="3">SECURE</text>
+    <text x="120" y="275" font-family="Verdana" font-size="14" font-weight="bold" fill="#1E40AF" text-anchor="middle">SYSTEM ARMED</text>
+</svg>

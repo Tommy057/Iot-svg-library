@@ -1,0 +1,38 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 蓝宝石径向渐变 -->
+        <radialGradient id="grad_sensor_blue" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#60A5FA" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </radialGradient>
+        <filter id="glow_blue" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <!-- 1. 顶部标签位 (HUD) -->
+    <g transform="translate(10, 5)">
+        <rect x="0" y="0" width="100" height="35" rx="6" fill="#172554" stroke="#3B82F6" stroke-width="2" />
+        <text x="50" y="24" font-family="Arial-Bold" font-size="14" font-weight="bold" fill="#93C5FD" text-anchor="middle">ALARM01</text>
+    </g>
+
+    <!-- 2. 3D 探测器外壳 -->
+    <g transform="translate(0, 45)">
+        <!-- 底座支架 -->
+        <path d="M45 110 L55 110 L55 130 L45 130 Z" fill="#1E3A8A" opacity="0.6" />
+        <!-- 探测器主体 (拟物化球头) -->
+        <rect x="25" y="10" width="70" height="90" rx="35" fill="#172554" stroke="#3B82F6" stroke-width="5" filter="url(#glow_blue)" />
+        <!-- 宝石内芯 -->
+        <rect x="35" y="20" width="50" height="70" rx="25" fill="url(#grad_sensor_blue)" />
+        
+        <!-- 动态红外扫描线 -->
+        <path d="M35 55 L85 55" stroke="#93C5FD" stroke-width="3" stroke-linecap="round" opacity="0.6">
+            <animate attributeName="d" values="M35 30 L85 30; M35 80 L85 80; M35 30 L85 30" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite" />
+        </path>
+
+        <!-- 3D 玻璃高光 -->
+        <path d="M40 35 Q60 15 80 35" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.2" />
+    </g>
+</svg>

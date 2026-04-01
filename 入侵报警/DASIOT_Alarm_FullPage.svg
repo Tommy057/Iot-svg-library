@@ -1,0 +1,104 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 深度空间背景 -->
+    <defs>
+        <!-- 背景渐变 -->
+        <radialGradient id="bg_grad" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#0f172a" />
+            <stop offset="100%" stop-color="#020617" />
+        </radialGradient>
+        
+        <!-- 背景网格图案 -->
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(30, 64, 175, 0.15)" stroke-width="1"/>
+        </pattern>
+
+        <!-- 报警发光滤镜 -->
+        <filter id="ruby-glow">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <!-- 定义蓝宝石卡片 Symbol -->
+        <symbol id="gem-sapphire" viewBox="0 0 240 300">
+            <rect x="10" y="10" width="220" height="280" rx="10" fill="rgba(30,64,175,0.05)" stroke="#1E40AF" stroke-width="1" stroke-dasharray="5,5"/>
+            <path d="M60 230 L180 230 L200 250 L40 250 Z" fill="#1E40AF" opacity="0.2" />
+            <path d="M120 70 L60 110 L60 190 L120 230 Z" fill="#1E40AF" fill-opacity="0.5" />
+            <path d="M120 70 L180 110 L180 190 L120 230 Z" fill="#1E40AF" fill-opacity="0.8" />
+            <path d="M120 90 L85 115 L85 185 L120 210 L155 185 L155 115 Z" fill="#3B82F6" />
+            <path d="M95 105 Q120 85 145 105" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+            <text x="120" y="45" font-family="Arial" font-size="10" fill="#64748B" text-anchor="middle" letter-spacing="2">ZONE ARMED</text>
+        </symbol>
+
+        <!-- 定义红宝石报警卡片 Symbol -->
+        <symbol id="gem-ruby" viewBox="0 0 240 300">
+            <rect x="10" y="10" width="220" height="280" rx="10" fill="rgba(239,68,68,0.1)" stroke="#EF4444" stroke-width="2" stroke-dasharray="4,2">
+                <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" />
+            </rect>
+            <g filter="url(#ruby-glow)">
+                <path d="M120 70 L60 110 L60 190 L120 230 Z" fill="#EF4444" fill-opacity="0.6" />
+                <path d="M120 70 L180 110 L180 190 L120 230 Z" fill="#EF4444" fill-opacity="0.9" />
+                <path d="M120 90 L85 115 L85 185 L120 210 L155 185 L155 115 Z" fill="#F87171" />
+            </g>
+            <circle cx="120" cy="240" r="10" fill="none" stroke="#EF4444" stroke-width="2">
+                <animate attributeName="r" from="10" to="50" dur="1.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
+            </circle>
+            <text x="120" y="45" font-family="Arial" font-size="10" fill="#EF4444" text-anchor="middle" letter-spacing="2" font-weight="bold">INTRUSION!</text>
+        </symbol>
+    </defs>
+
+    <!-- 应用背景 -->
+    <rect width="100%" height="100%" fill="url(#bg_grad)" />
+    <rect width="100%" height="100%" fill="url(#grid)" />
+
+    <!-- 2. 顶部 HUD 看板 -->
+    <g transform="translate(460, 40)">
+        <!-- 看板外框 -->
+        <path d="M0 0 L1000 0 L970 80 L30 80 Z" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+        <!-- 统计数值 -->
+        <g transform="translate(150, 45)">
+            <text font-family="Courier New" font-size="32" fill="#CBD5E1" font-weight="bold">60</text>
+            <text x="50" y="-5" font-family="Arial" font-size="12" fill="#64748B">TOTAL ZONES</text>
+        </g>
+        <g transform="translate(450, 45)">
+            <text font-family="Courier New" font-size="32" fill="#3B82F6" font-weight="bold">58</text>
+            <text x="50" y="-5" font-family="Arial" font-size="12" fill="#64748B">ARMED/SAFE</text>
+        </g>
+        <g transform="translate(750, 45)">
+            <text font-family="Courier New" font-size="32" fill="#EF4444" font-weight="bold">02</text>
+            <text x="50" y="-5" font-family="Arial" font-size="12" fill="#EF4444">ALARMING</text>
+        </g>
+    </g>
+
+    <!-- 3. 12个防区矩阵布局 (4x3) -->
+    <g transform="translate(400, 180)">
+        <!-- 第一排 -->
+        <use href="#gem-sapphire" x="0" y="0" width="240" height="300" />
+        <use href="#gem-sapphire" x="280" y="0" width="240" height="300" />
+        <use href="#gem-ruby" x="560" y="0" width="240" height="300" />
+        <use href="#gem-sapphire" x="840" y="0" width="240" height="300" />
+
+        <!-- 第二排 -->
+        <use href="#gem-sapphire" x="0" y="280" width="240" height="300" />
+        <use href="#gem-sapphire" x="280" y="280" width="240" height="300" />
+        <use href="#gem-sapphire" x="560" y="280" width="240" height="300" />
+        <use href="#gem-sapphire" x="840" y="280" width="240" height="300" />
+
+        <!-- 第三排 -->
+        <use href="#gem-sapphire" x="0" y="560" width="240" height="300" />
+        <use href="#gem-ruby" x="280" y="560" width="240" height="300" />
+        <use href="#gem-sapphire" x="560" y="560" width="240" height="300" />
+        <use href="#gem-sapphire" x="840" y="560" width="240" height="300" />
+    </g>
+
+    <!-- 4. 装饰元素：全局扫描线 -->
+    <rect width="1920" height="2" fill="rgba(59, 130, 246, 0.2)">
+        <animate attributeName="y" from="0" to="1080" dur="8s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- 5. 边角装饰 -->
+    <path d="M20 100 L20 20 L100 20" fill="none" stroke="#3B82F6" stroke-width="2" />
+    <path d="M1820 20 L1900 20 L1900 100" fill="none" stroke="#3B82F6" stroke-width="2" />
+    <path d="M20 980 L20 1060 L100 1060" fill="none" stroke="#3B82F6" stroke-width="2" />
+    <path d="M1820 1060 L1900 1060 L1900 980" fill="none" stroke="#3B82F6" stroke-width="2" />
+</svg>

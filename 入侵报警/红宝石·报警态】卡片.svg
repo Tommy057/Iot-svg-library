@@ -1,0 +1,46 @@
+<svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card_bg_alarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450A0A" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.85" />
+    </linearGradient>
+    <radialGradient id="gem_red" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#7F1D1D" />
+    </radialGradient>
+    <filter id="neon_red" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. 报警边框脉冲 -->
+  <rect x="5" y="5" width="190" height="250" rx="12" fill="url(#card_bg_alarm)" stroke="#EF4444" stroke-width="2.5" filter="url(#neon_red)">
+    <animate attributeName="stroke-opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- 2. 标题区 -->
+  <text x="100" y="35" font-family="Arial-Bold" font-size="16" fill="#EF4444" text-anchor="middle" font-weight="bold">厂房B地下仓库</text>
+  
+  <!-- 3. 声呐波纹与图标 -->
+  <g transform="translate(100, 110)">
+    <!-- 扩散波纹 -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#EF4444" stroke-width="2">
+      <animate attributeName="r" values="30;80" dur="1s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0" dur="1s" repeatCount="indefinite" />
+    </circle>
+    
+    <g transform="translate(-35, -45)">
+        <rect x="0" y="0" width="70" height="90" rx="35" fill="#450A0A" stroke="#EF4444" stroke-width="5" filter="url(#neon_red)" />
+        <rect x="10" y="10" width="50" height="70" rx="25" fill="#url(#gem_red)" />
+        <!-- 报警符号 -->
+        <text x="35" y="55" fill="white" font-size="24" text-anchor="middle" font-weight="bold">!</text>
+    </g>
+  </g>
+
+  <!-- 4. 底部警告信息 -->
+  <rect x="20" y="215" width="160" height="28" rx="14" fill="#EF4444">
+    <animate attributeName="fill" values="#EF4444;#F59E0B;#EF4444" dur="0.4s" repeatCount="indefinite" />
+  </rect>
+  <text x="100" y="234" font-family="Arial Black" font-size="12" fill="#FFFFFF" text-anchor="middle">INTRUSION DETECTED</text>
+</svg>

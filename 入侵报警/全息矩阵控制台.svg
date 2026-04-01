@@ -1,0 +1,105 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景层：深空蓝底色 -->
+    <rect width="1920" height="1080" fill="#0B1120" />
+    
+    <defs>
+        <!-- 蓝宝石发光 -->
+        <filter id="glow_sapphire" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 红宝石发光 -->
+        <filter id="glow_ruby" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 宝石渐变组 -->
+        <radialGradient id="gem_blue" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#60A5FA" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </radialGradient>
+        <radialGradient id="gem_red" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#F87171" />
+            <stop offset="100%" stop-color="#7F1D1D" />
+        </radialGradient>
+    </defs>
+
+    <!-- 2. 顶部全息 HUD 看板 -->
+    <g transform="translate(0, 0)">
+        <path d="M0 0 L1920 0 L1920 80 L1600 80 L1550 110 L370 110 L320 80 L0 80 Z" fill="rgba(15, 23, 42, 0.9)" stroke="#0EA5E9" stroke-width="2" />
+        <text x="960" y="45" font-family="Arial-Bold" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="4" filter="url(#glow_sapphire)">海康入侵报警全息指挥平台</text>
+        
+        <!-- 统计指标 -->
+        <g transform="translate(450, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="36" fill="#FFFFFF">60</text>
+            <text x="0" y="55" font-family="Arial" font-size="12" fill="#93C5FD">TOTAL ZONES</text>
+        </g>
+        <g transform="translate(850, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="36" fill="#10B981">58</text>
+            <text x="0" y="55" font-family="Arial" font-size="12" fill="#10B981">NORMAL</text>
+        </g>
+        <g transform="translate(1250, 40)">
+            <text x="0" y="30" font-family="Arial Black" font-size="36" fill="#EF4444">02</text>
+            <text x="0" y="55" font-family="Arial" font-size="12" fill="#EF4444">ALARM</text>
+            <circle cx="-25" cy="18" r="6" fill="#EF4444">
+                <animate attributeName="opacity" values="1;0.2;1" dur="0.5s" repeatCount="indefinite" />
+            </circle>
+        </g>
+    </g>
+
+    <!-- 3. 矩阵布局区 (展示 2x5 共 10 个示例) -->
+    <g transform="translate(160, 180)">
+        <!-- 第一排 5 个卡片 -->
+        <!-- 卡片 01 - 正常 -->
+        <g transform="translate(0, 0)">
+            <rect width="280" height="380" rx="12" fill="rgba(30, 41, 59, 0.7)" stroke="#3B82F6" stroke-width="1" />
+            <text x="140" y="40" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle">防区 001</text>
+            <circle cx="140" cy="180" r="45" fill="url(#gem_blue)" filter="url(#glow_sapphire)" />
+            <text x="140" y="340" font-family="Courier New" font-size="14" fill="#60A5FA" text-anchor="middle">SN-AJ001 [SAFE]</text>
+        </g>
+        <!-- 卡片 02 - 正常 -->
+        <g transform="translate(320, 0)">
+            <rect width="280" height="380" rx="12" fill="rgba(30, 41, 59, 0.7)" stroke="#3B82F6" stroke-width="1" />
+            <text x="140" y="40" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle">防区 002</text>
+            <circle cx="140" cy="180" r="45" fill="url(#gem_blue)" filter="url(#glow_sapphire)" />
+            <text x="140" y="340" font-family="Courier New" font-size="14" fill="#60A5FA" text-anchor="middle">SN-AJ002 [SAFE]</text>
+        </g>
+        <!-- 卡片 03 - 报警 -->
+        <g transform="translate(640, 0)">
+            <rect width="280" height="380" rx="12" fill="rgba(69, 10, 10, 0.4)" stroke="#EF4444" stroke-width="2">
+                <animate attributeName="stroke-opacity" values="1;0.3;1" dur="0.5s" repeatCount="indefinite" />
+            </rect>
+            <text x="140" y="40" font-family="Arial-Bold" font-size="20" fill="#EF4444" text-anchor="middle">防区 003 (报警)</text>
+            <!-- 扩散波纹 -->
+            <circle cx="140" cy="180" r="40" fill="none" stroke="#EF4444" stroke-width="2">
+                <animate attributeName="r" values="40;100" dur="1s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0" dur="1s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="140" cy="180" r="45" fill="url(#gem_red)" filter="url(#glow_ruby)" />
+            <text x="140" y="340" font-family="Arial Black" font-size="16" fill="#EF4444" text-anchor="middle">INTRUSION!</text>
+        </g>
+        <!-- 卡片 04 - 正常 -->
+        <g transform="translate(960, 0)">
+            <rect width="280" height="380" rx="12" fill="rgba(30, 41, 59, 0.7)" stroke="#3B82F6" stroke-width="1" />
+            <text x="140" y="40" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle">防区 004</text>
+            <circle cx="140" cy="180" r="45" fill="url(#gem_blue)" filter="url(#glow_sapphire)" />
+            <text x="140" y="340" font-family="Courier New" font-size="14" fill="#60A5FA" text-anchor="middle">SN-AJ004 [SAFE]</text>
+        </g>
+        <!-- 卡片 05 - 正常 -->
+        <g transform="translate(1280, 0)">
+            <rect width="280" height="380" rx="12" fill="rgba(30, 41, 59, 0.7)" stroke="#3B82F6" stroke-width="1" />
+            <text x="140" y="40" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle">防区 005</text>
+            <circle cx="140" cy="180" r="45" fill="url(#gem_blue)" filter="url(#glow_sapphire)" />
+            <text x="140" y="340" font-family="Courier New" font-size="14" fill="#60A5FA" text-anchor="middle">SN-AJ005 [SAFE]</text>
+        </g>
+
+        <!-- 第二排卡片 (同样的间隔) -->
+        <g transform="translate(0, 420)">
+            <!-- 此处重复 5 个卡片，或者放置 06-10 号防区 -->
+            <text x="800" y="50" font-family="Arial" font-size="24" fill="rgba(147, 197, 253, 0.3)" text-anchor="middle">... 06-60 号防区 矩阵延续 ...</text>
+        </g>
+    </g>
+
+    <!-- 4. 底部全息装饰 -->
+    <path d="M100 1000 L400 1000 L450 1030 L1470 1030 L1520 1000 L1820 1000" fill="none" stroke="#0EA5E9" stroke-width="1" opacity="0.4" />
+</svg>
