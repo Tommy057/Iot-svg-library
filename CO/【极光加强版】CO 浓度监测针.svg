@@ -1,0 +1,64 @@
+<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 1. 霓虹发光滤镜 -->
+        <filter id="neon_glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <!-- 2. 定位光束渐变 (默认绿色态) -->
+        <linearGradient id="beam_grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- 3. 数值球核心渐变 -->
+        <radialGradient id="gem_green" cx="50%" cy="35%" r="80%">
+            <stop offset="0%" stop-color="#34D399" />
+            <stop offset="100%" stop-color="#059669" />
+        </radialGradient>
+    </defs>
+
+    <!-- 【底部增强区】全息极光定位 -->
+    <g transform="translate(60, 170)">
+        <!-- 扩散的地面光环 (就像光束打在地上) -->
+        <ellipse cx="0" cy="0" rx="15" ry="4" fill="none" stroke="#10B981" stroke-width="2" opacity="0.6">
+            <animate attributeName="rx" values="10;25;10" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
+        </ellipse>
+        
+        <!-- 极细落点核心 (极亮) -->
+        <circle cx="0" cy="0" r="4" fill="#10B981" filter="url(#neon_glow)">
+            <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- 向上发射的倒三角极光束 -->
+        <path d="M-15 -110 L15 -110 L4 0 L-4 0 Z" fill="url(#beam_grad)" opacity="0.5">
+            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" />
+        </path>
+    </g>
+
+    <!-- 【中部悬浮区】数值球与名称 -->
+    <g filter="url(#neon_glow)">
+        <!-- 数值球呼吸外环 -->
+        <circle cx="60" cy="55" r="45" fill="white" stroke="#10B981" stroke-width="2">
+            <animate attributeName="stroke-width" values="1;5;1" dur="2s" repeatCount="indefinite" />
+        </circle>
+        
+        <!-- 核心宝石球 -->
+        <circle cx="60" cy="55" r="38" fill="url(#gem_green)" />
+        
+        <!-- PPM 极大化数值 -->
+        <text x="60" y="62" font-family="Arial Black" font-size="30" fill="white" text-anchor="middle">35</text>
+        <text x="60" y="80" font-family="Arial" font-size="10" fill="white" text-anchor="middle" opacity="0.8">ppm</text>
+        
+        <!-- 晶钻反光条 -->
+        <path d="M40 45 Q60 30 80 45" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.3" />
+    </g>
+
+    <!-- 位置名称小卡片 (悬浮在侧面，不遮挡光束) -->
+    <g transform="translate(60, 105)">
+        <rect x="-40" y="0" width="80" height="22" rx="11" fill="rgba(30, 41, 59, 0.9)" />
+        <text x="0" y="15" font-family="Arial-Bold" font-size="11" fill="white" text-anchor="middle">车库 B1-01</text>
+    </g>
+</svg>
