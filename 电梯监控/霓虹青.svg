@@ -1,0 +1,132 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景层 -->
+    <rect width="1600" height="900" fill="#0B1120" />
+    <defs>
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+        
+        <!-- 3D 拟物内阴影 (用于视窗凹陷感) -->
+        <filter id="inner-shadow">
+            <feOffset dx="0" dy="2" />
+            <feGaussianBlur stdDeviation="3" result="offset-blur" />
+            <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+            <feFlood flood-color="black" flood-opacity="0.5" result="color" />
+            <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+            <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+        </filter>
+
+        <!-- 文字霓虹发光 -->
+        <filter id="text-neon">
+            <feGaussianBlur stdDeviation="1.5" result="glow"/>
+            <feMerge>
+                <feMergeNode in="glow"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 2. 全局标题 -->
+    <g transform="translate(40, 40)">
+        <text x="0" y="0" fill="#0EA5E9" font-family="Arial" font-weight="bold" font-size="28" filter="url(#text-neon)">电梯监控指挥中心 / <tspan fill="#475569" font-size="18">ELEVATOR MATRIX</tspan></text>
+        <path d="M 0 15 L 1520 15" stroke="#0EA5E9" stroke-width="2" opacity="0.3" />
+    </g>
+
+    <!-- 3. 监控矩阵 (10x6 演示) -->
+    <g transform="translate(40, 80)">
+        <!-- 单元格渲染函数模拟：示例绘制 10 个作为第一行 -->
+        <g id="row-1">
+            <!-- 每一个单元格 (Cell) -->
+            <g transform="translate(0, 0)">
+                <!-- 1. 标题区 (显示明显) -->
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" />
+                <circle cx="10" cy="12" r="3" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="bold" filter="url(#text-neon)">行政楼 1 号电梯</text>
+                
+                <!-- 2. 视频区容器 (毛玻璃+拟物感) -->
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" stroke-width="1" filter="url(#inner-shadow)" />
+                
+                <!-- 模拟视频黑屏/流画面 -->
+                <rect x="4" y="32" width="137" height="77" rx="2" fill="#000" />
+                
+                <!-- 全息边角装饰 -->
+                <path d="M 4 42 L 4 32 L 14 32" fill="none" stroke="#0EA5E9" stroke-width="1" opacity="0.6"/>
+                <path d="M 131 109 L 141 109 L 141 99" fill="none" stroke="#0EA5E9" stroke-width="1" opacity="0.6"/>
+                
+                <!-- 扫描线 -->
+                <rect x="4" y="32" width="137" height="1" fill="#0EA5E9" opacity="0.5">
+                    <animate attributeName="y" values="32;109;32" dur="4s" repeatCount="indefinite" />
+                </rect>
+            </g>
+
+            <!-- 复制演示：2号电梯 -->
+            <g transform="translate(155, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" />
+                <circle cx="10" cy="12" r="3" fill="#10B981"><animate attributeName="opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite" /></circle>
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" font-weight="bold">行政楼 2 号电梯</text>
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" filter="url(#inner-shadow)" />
+                <rect x="4" y="32" width="137" height="77" rx="2" fill="#000" />
+            </g>
+
+            <!-- 复制演示：3号电梯 -->
+            <g transform="translate(310, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" />
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" font-weight="bold">行政楼 3 号电梯</text>
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" />
+                <rect x="4" y="32" width="137" height="77" rx="2" fill="#000" />
+            </g>
+
+            <!-- 复制演示：4号电梯 -->
+            <g transform="translate(465, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" />
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" font-weight="bold">研发楼 1 号电梯</text>
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" />
+                <rect x="4" y="32" width="137" height="77" rx="2" fill="#000" />
+            </g>
+
+            <!-- ...以此类推... -->
+             <g transform="translate(620, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" opacity="0.5" />
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" opacity="0.5">研发楼 2 号电梯</text>
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+             <g transform="translate(775, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" opacity="0.5" />
+                <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" opacity="0.5">研发楼 3 号电梯</text>
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+             <g transform="translate(930, 0)">
+                <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.15)" stroke="#0EA5E9" stroke-width="0.5" opacity="0.5" />
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+             <g transform="translate(1085, 0)">
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+             <g transform="translate(1240, 0)">
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+             <g transform="translate(1395, 0)">
+                <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" opacity="0.5" />
+            </g>
+        </g>
+
+        <!-- 第二行示例 (往下偏移 130px) -->
+        <g transform="translate(0, 130)">
+             <rect x="0" y="0" width="145" height="24" rx="4" fill="rgba(14, 165, 233, 0.1)" stroke="#0EA5E9" stroke-width="0.5" />
+             <text x="20" y="16" fill="#BAE6FD" font-family="PingFang SC" font-size="11" font-weight="bold">生活区 A 座电梯</text>
+             <rect x="0" y="28" width="145" height="85" rx="6" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" stroke-width="1" />
+             <rect x="4" y="32" width="137" height="77" rx="2" fill="#000" />
+        </g>
+        <!-- ...以此类推铺满 6 行... -->
+    </g>
+
+    <!-- 底部状态装饰线 -->
+    <g transform="translate(40, 870)">
+        <path d="M 0 0 L 1520 0" stroke="#0EA5E9" stroke-width="1" opacity="0.2" />
+        <text x="0" y="20" fill="#475569" font-family="Arial" font-size="10">TOTAL: 60 UNITS | LOCATION: ALL SECTORS | SECURITY LEVEL: HIGH</text>
+    </g>
+</svg>
