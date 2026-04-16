@@ -1,0 +1,194 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 滤镜与定义 -->
+    <defs>
+        <pattern id="grid-20" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(14, 165, 233, 0.08)" stroke-width="1"/>
+        </pattern>
+        <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="clay-card">
+            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.8"/>
+            <feDropShadow dx="0" dy="-1" stdDeviation="2" flood-color="rgba(255,255,255,0.05)"/>
+        </filter>
+        <!-- 流光渐变 -->
+        <linearGradient id="flow-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="50%" stop-color="#0EA5E9" />
+            <stop offset="100%" stop-color="transparent" />
+        </linearGradient>
+    </defs>
+
+    <!-- 2. 全局背景 -->
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid-20)" />
+
+    <!-- 3. 顶部 HUD 装饰与标题 -->
+    <g transform="translate(40, 30)">
+        <path d="M 0 0 L 1520 0 L 1520 40 L 1480 50 L 40 50 L 0 40 Z" fill="rgba(30, 41, 59, 0.5)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="30" y="32" fill="#0EA5E9" font-family="Arial" font-size="24" font-weight="bold" filter="url(#neon-glow)">智慧污水处理全流程数字孪生中心</text>
+        <g transform="translate(1200, 15)">
+            <text x="0" y="15" fill="#10B981" font-size="12" font-family="Arial">SYSTEM: ACTIVE</text>
+            <rect x="110" y="0" width="12" height="12" fill="#10B981"><animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" /></rect>
+            <text x="140" y="15" fill="#475569" font-size="12" font-family="Arial">TIME: 2024-05-20 14:00:22</text>
+        </g>
+    </g>
+
+    <!-- 4. 工艺管线流光层 (增加饱满度的核心) -->
+    <g transform="translate(200, 450)" opacity="0.4">
+        <path d="M 0 0 L 300 0 L 300 100 L 600 100 L 600 -50 L 900 -50" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-dasharray="10 5" />
+        <circle r="3" fill="#0EA5E9">
+            <animateMotion dur="5s" repeatCount="indefinite" path="M 0 0 L 300 0 L 300 100 L 600 100 L 600 -50 L 900 -50" />
+        </circle>
+    </g>
+
+    <!-- 5. 左侧：预处理及调节区 (高密度布局) -->
+    <g transform="translate(40, 100)">
+        <rect width="400" height="760" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">PRE-TREATMENT &amp; BUFFER</text>
+        
+        <!-- 格栅监控矩阵 -->
+        <g transform="translate(20, 60)">
+            <rect width="360" height="120" rx="6" fill="rgba(15, 23, 42, 0.5)" stroke="#0EA5E9" stroke-opacity="0.3" />
+            <text x="15" y="25" fill="#0EA5E9" font-size="12">格栅机集群状态</text>
+            <!-- 紧凑单元格 -->
+            <g transform="translate(15, 40)">
+                <rect width="100" height="60" rx="4" fill="rgba(14, 165, 233, 0.1)" />
+                <text x="10" y="20" fill="#BAE6FD" font-size="10">格栅机 A</text>
+                <text x="10" y="45" fill="#10B981" font-size="12" font-weight="bold">运行/远程</text>
+            </g>
+            <g transform="translate(125, 40)">
+                <rect width="100" height="60" rx="4" fill="rgba(14, 165, 233, 0.1)" />
+                <text x="10" y="20" fill="#BAE6FD" font-size="10">格栅机 B</text>
+                <text x="10" y="45" fill="#475569" font-size="12">停止/本地</text>
+            </g>
+            <g transform="translate(235, 40)">
+                <rect width="100" height="60" rx="4" fill="rgba(239, 68, 68, 0.1)" />
+                <text x="10" y="20" fill="#EF4444" font-size="10">除臭风机</text>
+                <text x="10" y="45" fill="#EF4444" font-size="12" font-weight="bold">故障告警</text>
+            </g>
+        </g>
+
+        <!-- 液位趋势图小窗 (增加数据感) -->
+        <g transform="translate(20, 200)">
+            <text x="0" y="0" fill="#BAE6FD" font-size="12">集水/调节池液位实时波动</text>
+            <polyline points="0,80 40,30 80,60 120,20 160,50 200,40 360,10" fill="none" stroke="#0EA5E9" stroke-width="2" />
+            <path d="M 0 80 L 360 80" stroke="#475569" stroke-width="1" />
+        </g>
+
+        <!-- 调节池双柱布局 -->
+        <g transform="translate(20, 320)">
+            <g transform="translate(0, 0)">
+                <text x="0" y="0" fill="#BAE6FD" font-size="12">调节池 A</text>
+                <rect x="0" y="15" width="40" height="200" rx="4" fill="#0F172A" />
+                <rect x="2" y="55" width="36" height="158" rx="2" fill="url(#flow-cyan)" transform="rotate(-90, 20, 115) translate(0, 80)" opacity="0.8" />
+                <text x="50" y="40" fill="#0EA5E9" font-size="18" font-weight="bold">3.24m</text>
+                <text x="50" y="60" fill="#475569" font-size="10">H: 5.0m / L: 0.5m</text>
+            </g>
+            <g transform="translate(180, 0)">
+                <text x="0" y="0" fill="#BAE6FD" font-size="12">调节池 B</text>
+                <rect x="0" y="15" width="40" height="200" rx="4" fill="#0F172A" />
+                <rect x="2" y="125" width="36" height="88" rx="2" fill="#0EA5E9" />
+                <text x="50" y="40" fill="#0EA5E9" font-size="18" font-weight="bold">1.88m</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 6. 中央：核心工艺动态流向图 -->
+    <g transform="translate(460, 100)">
+        <rect width="680" height="500" rx="10" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.1)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">PROCESS FLOW | 孪生工艺流向</text>
+        
+        <!-- 全息水箱 A -->
+        <g transform="translate(50, 80)">
+            <rect width="180" height="120" rx="4" fill="rgba(14, 165, 233, 0.1)" stroke="#0EA5E9" />
+            <text x="90" y="150" fill="#BAE6FD" font-size="12" text-anchor="middle">初沉池</text>
+            <path d="M 10 90 Q 90 70 170 90" fill="none" stroke="#0EA5E9" opacity="0.5">
+                <animate attributeName="d" values="M 10 90 Q 90 70 170 90; M 10 90 Q 90 110 170 90; M 10 90 Q 90 70 170 90" dur="3s" repeatCount="indefinite" />
+            </path>
+        </g>
+        <!-- 箭头连线 -->
+        <path d="M 230 140 L 300 140" stroke="#0EA5E9" stroke-width="2" marker-end="url(#arrowhead)" />
+        
+        <!-- 全息水箱 B (厌氧/好氧区) -->
+        <g transform="translate(350, 80)">
+            <rect width="280" height="150" rx="4" fill="rgba(14, 165, 233, 0.05)" stroke="#0EA5E9" stroke-dasharray="5 5" />
+            <text x="140" y="180" fill="#BAE6FD" font-size="12" text-anchor="middle">生化反应核心区</text>
+            <!-- 气泡动画模拟风机曝气 -->
+            <circle cx="400" cy="180" r="2" fill="#BAE6FD">
+                <animate attributeName="cy" from="180" to="100" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="450" cy="190" r="3" fill="#BAE6FD">
+                <animate attributeName="cy" from="190" to="110" dur="2.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0" dur="2.5s" repeatCount="indefinite" />
+            </circle>
+        </g>
+    </g>
+
+    <!-- 7. 右侧：鼓风机与加药系统 (精密矩阵) -->
+    <g transform="translate(1160, 100)">
+        <rect width="400" height="760" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">EQUIPMENT &amp; DOSING</text>
+        
+        <!-- 鼓风机参数带 -->
+        <g transform="translate(20, 60)">
+            <text x="0" y="0" fill="#0EA5E9" font-size="12">鼓风机 F1-F3 频率监控</text>
+            <g transform="translate(0, 20)">
+                <rect width="360" height="40" rx="4" fill="rgba(14, 165, 233, 0.05)" />
+                <text x="10" y="25" fill="#BAE6FD" font-size="12">F1: 45.2 Hz</text>
+                <rect x="100" y="15" width="240" height="10" rx="5" fill="#0F172A" />
+                <rect x="100" y="15" width="180" height="10" rx="5" fill="#10B981" />
+            </g>
+            <g transform="translate(0, 70)">
+                <rect width="360" height="40" rx="4" fill="rgba(14, 165, 233, 0.05)" />
+                <text x="10" y="25" fill="#BAE6FD" font-size="12">F2: 42.8 Hz</text>
+                <rect x="100" y="15" width="240" height="10" rx="5" fill="#0F172A" />
+                <rect x="100" y="15" width="160" height="10" rx="5" fill="#10B981" />
+            </g>
+        </g>
+
+        <!-- 加药量仪表盘 (SVG模拟) -->
+        <g transform="translate(20, 220)">
+            <text x="0" y="0" fill="#BAE6FD" font-size="12">实时加药流量 (m³/h)</text>
+            <circle cx="180" cy="100" r="70" fill="none" stroke="#1E293B" stroke-width="12" stroke-dasharray="220 300" transform="rotate(135, 180, 100)" />
+            <circle cx="180" cy="100" r="70" fill="none" stroke="#0EA5E9" stroke-width="12" stroke-dasharray="140 300" transform="rotate(135, 180, 100)" filter="url(#neon-glow)" />
+            <text x="180" y="105" fill="#BAE6FD" font-size="24" font-weight="bold" text-anchor="middle">12.5</text>
+        </g>
+
+        <!-- 加药桶状态列表 -->
+        <g transform="translate(20, 380)">
+            <rect width="360" height="180" rx="6" fill="rgba(15, 23, 42, 0.3)" />
+            <text x="15" y="25" fill="#BAE6FD" font-size="12">加药桶监测清单</text>
+            <g transform="translate(15, 45)">
+                <text y="0" fill="#475569" font-size="11">药桶 01 ........... </text>
+                <text x="120" y="0" fill="#10B981" font-size="11">正常 / 85%</text>
+                <text y="30" fill="#475569" font-size="11">药桶 02 ........... </text>
+                <text x="120" y="30" fill="#F59E0B" font-size="11">低液位 / 12%</text>
+                <text y="60" fill="#475569" font-size="11">药桶 03 ........... </text>
+                <text x="120" y="60" fill="#10B981" font-size="11">正常 / 77%</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 8. 底部数据看板 (填充底部空白) -->
+    <g transform="translate(460, 620)">
+        <rect width="680" height="240" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">ENERGY &amp; OUTPUT | 能耗与产出</text>
+        <g transform="translate(40, 70)">
+            <text fill="#475569" font-size="12">今日累计处理量</text>
+            <text y="40" fill="#0EA5E9" font-size="32" font-weight="bold">12,850.45 <tspan font-size="14">m³</tspan></text>
+            
+            <text x="300" fill="#475569" font-size="12">系统综合能耗 (kWh)</text>
+            <text x="300" y="40" fill="#10B981" font-size="32" font-weight="bold">452.1 <tspan font-size="14">kWh</tspan></text>
+        </g>
+        <!-- 底部全息雷达小图 -->
+        <circle cx="580" cy="140" r="60" fill="none" stroke="#475569" stroke-width="0.5" stroke-dasharray="2 2" />
+        <polygon points="580,80 630,120 610,180 550,170 530,120" fill="rgba(14, 165, 233, 0.2)" stroke="#0EA5E9" />
+    </g>
+
+    <!-- 装饰转角 -->
+    <path d="M 20 20 L 60 20 L 20 60 Z" fill="#0EA5E9" opacity="0.3" />
+    <path d="M 1580 880 L 1540 880 L 1580 840 Z" fill="#0EA5E9" opacity="0.3" />
+</svg>

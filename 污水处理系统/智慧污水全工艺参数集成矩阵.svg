@@ -1,0 +1,157 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景与全局装饰 -->
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+        <!-- 毛玻璃滤镜 -->
+        <filter id="glass">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+        </filter>
+        <!-- 拟物阴影 -->
+        <filter id="clay-shadow">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 背景装饰线 (解决空洞感) -->
+    <g opacity="0.1" stroke="#0EA5E9" stroke-width="1">
+        <path d="M 40 100 L 40 860 M 1560 100 L 1560 860" />
+        <path d="M 40 500 L 1560 500" stroke-dasharray="10 5" />
+        <circle cx="800" cy="450" r="300" fill="none" stroke-dasharray="5 5" />
+    </g>
+
+    <!-- 2. 顶部导航 HUD -->
+    <g transform="translate(40, 30)">
+        <path d="M 0 0 L 1520 0 L 1520 40 L 1490 55 L 30 55 L 0 40 Z" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="2" />
+        <text x="30" y="35" fill="#0EA5E9" font-family="Arial" font-size="26" font-weight="bold">智慧污水处理系统核心参数矩阵</text>
+        <text x="1480" y="35" fill="#10B981" font-size="14" text-anchor="end">● 系统运行正常 (SYSTEM ACTIVE)</text>
+    </g>
+
+    <!-- 3. 四列垂直参数阵列 -->
+    
+    <!-- 第一列：进水与预处理 -->
+    <g transform="translate(40, 110)">
+        <!-- 格栅卡片 -->
+        <rect width="360" height="200" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" filter="url(#clay-shadow)" />
+        <path d="M 0 0 L 80 0 L 70 15 L 0 15 Z" fill="#0EA5E9" />
+        <text x="10" y="12" fill="#0B1120" font-size="10" font-weight="bold">PRE-TREAT</text>
+        <text x="20" y="45" fill="#BAE6FD" font-size="18" font-weight="bold">格栅机集群</text>
+        <g transform="translate(20, 70)">
+            <text y="0" fill="#475569" font-size="13">1# 格栅状态：</text> <text x="120" y="0" fill="#10B981" font-size="13">运行 / 远程</text>
+            <text y="30" fill="#475569" font-size="13">2# 格栅状态：</text> <text x="120" y="30" fill="#475569" font-size="13">停止 / 自动</text>
+            <text y="60" fill="#475569" font-size="13">除臭风机：</text> <text x="120" y="60" fill="#10B981" font-size="13">正常运行</text>
+            <text y="90" fill="#475569" font-size="13">格栅时间：</text> <text x="120" y="90" fill="#BAE6FD" font-size="13">3,600 s</text>
+        </g>
+
+        <!-- 集水池卡片 (高度拉伸) -->
+        <g transform="translate(0, 220)">
+            <rect width="360" height="240" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+            <text x="20" y="40" fill="#BAE6FD" font-size="18" font-weight="bold">集水池液位</text>
+            <text x="20" y="100" fill="#0EA5E9" font-size="48" font-weight="bold">1.45 <tspan font-size="20">m</tspan></text>
+            <g transform="translate(20, 140)">
+                <text y="0" fill="#475569" font-size="12">上限设定: 2.5m / 下限设定: 0.3m</text>
+                <rect y="20" width="320" height="6" rx="3" fill="#0F172A" />
+                <rect y="20" width="180" height="6" rx="3" fill="#0EA5E9" />
+                <text y="60" fill="#10B981" font-size="12">● 抽升条件已满足</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 第二列：调节与提升 -->
+    <g transform="translate(420, 110)">
+        <rect width="360" height="460" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="20" y="45" fill="#BAE6FD" font-size="18" font-weight="bold">调节池 A 监控带</text>
+        <text x="20" y="100" fill="#0EA5E9" font-size="48" font-weight="bold">3.24 <tspan font-size="20">m</tspan></text>
+        
+        <g transform="translate(20, 140)">
+            <rect width="320" height="120" rx="4" fill="rgba(15, 23, 42, 0.5)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14">提升泵组 1#/2#</text>
+            <text x="15" y="65" fill="#475569" font-size="12">1# 状态:</text> <text x="80" y="65" fill="#10B981" font-size="12">运行中 (42Hz)</text>
+            <text x="15" y="90" fill="#475569" font-size="12">2# 状态:</text> <text x="80" y="90" fill="#475569" font-size="12">备用中 (0Hz)</text>
+        </g>
+        
+        <!-- 应急池 (高对比度告警) -->
+        <g transform="translate(0, 310)">
+            <rect x="20" width="320" height="130" rx="4" fill="rgba(239, 68, 68, 0.1)" stroke="#EF4444" stroke-dasharray="4 2" />
+            <text x="40" y="35" fill="#EF4444" font-size="14" font-weight="bold">应急池液位 (ALARM)</text>
+            <text x="40" y="85" fill="#EF4444" font-size="42" font-weight="bold">4.82 m</text>
+            <text x="200" y="80" fill="#EF4444" font-size="12">! 满溢告警</text>
+        </g>
+    </g>
+
+    <!-- 第三列：生化动力区 -->
+    <g transform="translate(800, 110)">
+        <rect width="360" height="460" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="20" y="45" fill="#BAE6FD" font-size="18" font-weight="bold">生化反应动力源</text>
+        
+        <!-- 风机列表 -->
+        <g transform="translate(20, 70)">
+            <text y="0" fill="#BAE6FD" font-size="14">风机 F1 变频</text>
+            <text x="280" y="0" fill="#0EA5E9" font-size="16" font-weight="bold" text-anchor="end">45.0 Hz</text>
+            <rect y="12" width="280" height="6" rx="3" fill="#0F172A" /> <rect y="12" width="240" height="6" rx="3" fill="#10B981" />
+            
+            <text y="60" fill="#BAE6FD" font-size="14">风机 F2 变频</text>
+            <text x="280" y="60" fill="#0EA5E9" font-size="16" font-weight="bold" text-anchor="end">42.8 Hz</text>
+            <rect y="72" width="280" height="6" rx="3" fill="#0F172A" /> <rect y="72" width="220" height="6" rx="3" fill="#10B981" />
+        </g>
+
+        <!-- 水质参数指标 -->
+        <g transform="translate(20, 220)">
+            <rect width="320" height="210" rx="4" fill="rgba(14, 165, 233, 0.05)" />
+            <text x="15" y="30" fill="#0EA5E9" font-size="14">实时监控指标</text>
+            <text x="15" y="70" fill="#475569" font-size="13">溶解氧 DO:</text> <text x="120" y="70" fill="#10B981" font-size="20" font-weight="bold">6.5 <tspan font-size="12">mg/L</tspan></text>
+            <text x="15" y="110" fill="#475569" font-size="13">氧化还原 ORP:</text> <text x="120" y="110" fill="#BAE6FD" font-size="20" font-weight="bold">245 <tspan font-size="12">mV</tspan></text>
+            <text x="15" y="150" fill="#475569" font-size="13">酸碱度 pH:</text> <text x="120" y="150" fill="#BAE6FD" font-size="20" font-weight="bold">7.2</text>
+        </g>
+    </g>
+
+    <!-- 第四列：加药与外排汇总 -->
+    <g transform="translate(1180, 110)">
+        <rect width="380" height="460" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="20" y="45" fill="#BAE6FD" font-size="18" font-weight="bold">加药及排放末端</text>
+        
+        <g transform="translate(20, 70)">
+            <rect width="340" height="140" rx="4" fill="rgba(15, 23, 42, 0.5)" />
+            <text x="15" y="25" fill="#BAE6FD" font-size="13">加药桶余量</text>
+            <text x="15" y="55" fill="#475569" font-size="12">1# 药桶 (PAC):</text> <text x="140" y="55" fill="#10B981" font-size="12">充足 (85%)</text>
+            <text x="15" y="80" fill="#475569" font-size="12">2# 药桶 (PAM):</text> <text x="140" y="80" fill="#F59E0B" font-size="12">不足 (12%)</text>
+            <text x="15" y="105" fill="#475569" font-size="12">3# 药桶 (脱氮):</text> <text x="140" y="105" fill="#10B981" font-size="12">充足 (77%)</text>
+        </g>
+
+        <g transform="translate(20, 230)">
+            <text y="0" fill="#BAE6FD" font-size="14">外排瞬时流量</text>
+            <text y="50" fill="#0EA5E9" font-size="42" font-weight="bold">124.5 <tspan font-size="16">m³/h</tspan></text>
+            <path d="M 0 65 L 340 65" stroke="#475569" stroke-width="0.5" />
+            <text y="90" fill="#475569" font-size="14">今日处理累计</text>
+            <text y="130" fill="#BAE6FD" font-size="32" font-weight="bold">12,850.4 <tspan font-size="16">m³</tspan></text>
+        </g>
+    </g>
+
+    <!-- 4. 底部态势底座 (解决下面太空的问题) -->
+    <g transform="translate(40, 730)">
+        <rect width="1520" height="130" rx="4" fill="rgba(30, 41, 59, 0.9)" stroke="#0EA5E9" stroke-width="1" />
+        <!-- 背景修饰文字 -->
+        <text x="1510" y="115" fill="#475569" font-size="48" font-weight="bold" text-anchor="end" opacity="0.1">DATA MATRIX VIEW</text>
+        
+        <g transform="translate(40, 40)">
+            <text fill="#475569" font-size="14">系统总能耗 (kWh)</text>
+            <text y="50" fill="#10B981" font-size="42" font-weight="bold">4,521.8</text>
+            
+            <text x="400" fill="#475569" font-size="14">污泥累计外排量</text>
+            <text x="400" y="50" fill="#BAE6FD" font-size="42" font-weight="bold">82.4 <tspan font-size="16">t</tspan></text>
+            
+            <text x="800" fill="#475569" font-size="14">设备在线率</text>
+            <text x="800" y="50" fill="#0EA5E9" font-size="42" font-weight="bold">98.5%</text>
+
+            <text x="1150" fill="#475569" font-size="14">平均负荷</text>
+            <text x="1150" y="50" fill="#BAE6FD" font-size="42" font-weight="bold">72.4%</text>
+        </g>
+    </g>
+
+    <!-- 装饰转角 -->
+    <path d="M 20 20 L 50 20 M 20 20 L 20 50" stroke="#0EA5E9" stroke-width="3" fill="none" />
+</svg>
