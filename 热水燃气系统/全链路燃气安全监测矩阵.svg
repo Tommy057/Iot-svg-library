@@ -1,0 +1,138 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 滤镜与背景 -->
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+        <filter id="neon-glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 容器发光 -->
+        <filter id="clay-card">
+            <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+        </filter>
+    </defs>
+
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 2. 顶部标题 HUD -->
+    <g transform="translate(40, 30)">
+        <path d="M 0 0 L 400 0 L 420 20 L 1100 20 L 1120 0 L 1520 0 L 1520 40 L 0 40 Z" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="30" y="28" fill="#0EA5E9" font-family="Arial" font-size="22" font-weight="bold" filter="url(#neon-glow)">燃气供应安全监测及能耗分析中心</text>
+        <text x="1490" y="28" fill="#10B981" font-size="12" text-anchor="end">GAS SENSOR NETWORK: ONLINE</text>
+    </g>
+
+    <!-- 3. 中央全息安全仪表 (视觉重心，解决太空问题) -->
+    <g transform="translate(550, 100)">
+        <circle cx="250" cy="250" r="220" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(14, 165, 233, 0.2)" stroke-dasharray="10 5" />
+        <!-- 安全等级拨盘 -->
+        <circle cx="250" cy="250" r="180" fill="none" stroke="#1E293B" stroke-width="20" stroke-dasharray="800 1200" transform="rotate(135, 250, 250)" />
+        <circle cx="250" cy="250" r="180" fill="none" stroke="#10B981" stroke-width="20" stroke-dasharray="700 1200" transform="rotate(135, 250, 250)" filter="url(#neon-glow)" />
+        
+        <text x="250" y="220" fill="#475569" font-size="16" text-anchor="middle">系统综合安全分</text>
+        <text x="250" y="290" fill="#10B981" font-size="82" font-weight="bold" text-anchor="middle">98</text>
+        <text x="250" y="330" fill="#10B981" font-size="14" text-anchor="middle">状态：极度安全</text>
+
+        <!-- 模拟燃气管道流向动画 -->
+        <path d="M 50 450 Q 250 400 450 450" fill="none" stroke="#0EA5E9" stroke-width="2" opacity="0.3" />
+        <circle r="4" fill="#0EA5E9">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 50 450 Q 250 400 450 450" />
+        </circle>
+    </g>
+
+    <!-- 4. 左侧区域：实时压力与流量 (精密参数) -->
+    <g transform="translate(40, 100)">
+        <!-- 入户压力 -->
+        <rect width="480" height="230" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">入户总管压力监控</text>
+        <text x="20" y="110" fill="#0EA5E9" font-size="56" font-weight="bold">0.154 <tspan font-size="20">MPa</tspan></text>
+        <g transform="translate(20, 150)">
+            <text y="20" fill="#475569" font-size="13">设定上限: 0.25 MPa</text>
+            <text y="45" fill="#475569" font-size="13">设定下限: 0.10 MPa</text>
+            <rect x="200" y="10" width="240" height="40" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+            <text x="320" y="35" fill="#10B981" font-size="14" font-weight="bold" text-anchor="middle">压力正常</text>
+        </g>
+
+        <!-- 瞬时流量 -->
+        <g transform="translate(0, 250)">
+            <rect width="480" height="230" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+            <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">瞬时供气流量</text>
+            <text x="20" y="110" fill="#0EA5E9" font-size="56" font-weight="bold">425.8 <tspan font-size="20">m³/h</tspan></text>
+            <path d="M 20 140 L 460 140" stroke="#475569" stroke-width="0.5" stroke-dasharray="5 2" />
+            <text x="20" y="175" fill="#475569" font-size="13">标准立方米 (Nm³)</text>
+            <text x="460" y="175" fill="#BAE6FD" font-size="14" text-anchor="end">Qmin: 20 / Qmax: 800</text>
+        </g>
+    </g>
+
+    <!-- 5. 右侧区域：泄漏报警与阀门 (安全节点) -->
+    <g transform="translate(1080, 100)">
+        <!-- 泄漏检测阵列 (理想状态) -->
+        <rect width="480" height="230" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">区域泄漏探测矩阵</text>
+        <g transform="translate(20, 70)">
+            <!-- 节点1 -->
+            <rect width="135" height="60" rx="4" fill="rgba(16, 185, 129, 0.1)" />
+            <text x="10" y="20" fill="#475569" font-size="11">01# 调压站</text>
+            <text x="10" y="45" fill="#10B981" font-size="13" font-weight="bold">安全</text>
+            <!-- 节点2 -->
+            <g transform="translate(155, 0)">
+                <rect width="135" height="60" rx="4" fill="rgba(16, 185, 129, 0.1)" />
+                <text x="10" y="20" fill="#475569" font-size="11">02# 锅炉房</text>
+                <text x="10" y="45" fill="#10B981" font-size="13" font-weight="bold">安全</text>
+            </g>
+            <!-- 故障模拟节点 (演示用) -->
+            <g transform="translate(0, 80)">
+                <rect width="135" height="60" rx="4" fill="rgba(239, 68, 68, 0.1)" stroke="#EF4444" stroke-width="0.5" />
+                <text x="10" y="20" fill="#EF4444" font-size="11">03# 厨房终端</text>
+                <text x="10" y="45" fill="#EF4444" font-size="13" font-weight="bold">离线 (检修)</text>
+            </g>
+            <g transform="translate(155, 80)">
+                <rect width="135" height="60" rx="4" fill="rgba(16, 185, 129, 0.1)" />
+                <text x="10" y="20" fill="#475569" font-size="11">04# 备用节点</text>
+                <text x="10" y="45" fill="#10B981" font-size="13" font-weight="bold">安全</text>
+            </g>
+        </g>
+
+        <!-- 紧急切断阀控制 -->
+        <g transform="translate(0, 250)">
+            <rect width="480" height="230" rx="4" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+            <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">紧急切断系统</text>
+            <g transform="translate(20, 70)">
+                <circle cx="50" cy="50" r="50" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="5 5" />
+                <path d="M 30 50 L 70 50 M 50 30 L 50 70" stroke="#10B981" stroke-width="4" />
+                <text x="120" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">总闸阀门：开启中</text>
+                <text x="120" y="65" fill="#475569" font-size="12">最后动作时间: 2024-05-19 09:00</text>
+                
+                <rect y="110" width="440" height="35" rx="4" fill="#EF4444" opacity="0.2" />
+                <text x="220" y="132" fill="#EF4444" font-size="14" font-weight="bold" text-anchor="middle">!! 紧急切断按钮 (手动干预) !!</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 6. 底部结算与历史底座 (解决底部太空) -->
+    <g transform="translate(40, 620)">
+        <rect width="1520" height="240" rx="4" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="30" y="40" fill="#BAE6FD" font-size="18" font-weight="bold">能耗结算统计与安全趋势</text>
+        
+        <g transform="translate(50, 80)">
+            <g>
+                <text fill="#475569" font-size="14">今日累计消耗 (m³)</text>
+                <text y="60" fill="#0EA5E9" font-size="64" font-weight="bold">12,540.0</text>
+            </g>
+            <g transform="translate(450, 0)">
+                <text fill="#475569" font-size="14">本月累计消耗 (m³)</text>
+                <text y="60" fill="#BAE6FD" font-size="64" font-weight="bold">358,421</text>
+            </g>
+            <g transform="translate(900, 0)">
+                <text fill="#475569" font-size="14">无安全事故运行天数</text>
+                <text y="60" fill="#10B981" font-size="64" font-weight="bold">1,245 <tspan font-size="20">Days</tspan></text>
+            </g>
+        </g>
+        
+        <!-- 背景修饰细节 -->
+        <path d="M 1400 120 L 1500 120 L 1500 220" stroke="#0EA5E9" stroke-width="2" opacity="0.2" fill="none" />
+        <text x="1490" y="220" fill="#475569" font-size="32" font-weight="bold" text-anchor="end" opacity="0.1">SAFETY MATRIX</text>
+    </g>
+</svg>

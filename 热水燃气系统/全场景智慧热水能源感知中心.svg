@@ -1,0 +1,133 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景与装饰 -->
+    <rect width="1600" height="900" fill="#0B1120" />
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(14, 165, 233, 0.04)" stroke-width="1"/>
+        </pattern>
+        <filter id="neon-glow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="clay-card">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 2. 顶部 HUD 状态栏 -->
+    <g transform="translate(40, 30)">
+        <path d="M 0 0 L 1520 0 L 1480 50 L 40 50 Z" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="30" y="32" fill="#0EA5E9" font-family="Arial" font-size="24" font-weight="bold" filter="url(#neon-glow)">天舒单/双/四压机上位机集控矩阵</text>
+        <g transform="translate(1300, 15)">
+            <text x="0" y="15" fill="#10B981" font-size="12">通讯转换板: 正常 (ADDR: 01)</text>
+            <circle cx="160" cy="10" r="4" fill="#10B981"><animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" /></circle>
+        </g>
+    </g>
+
+    <!-- 3. 中央水箱核心参数 (解决中心空洞) -->
+    <g transform="translate(620, 100)">
+        <rect width="360" height="450" rx="12" fill="rgba(14, 165, 233, 0.05)" stroke="#0EA5E9" stroke-width="1.5" filter="url(#clay-card)" />
+        <text x="180" y="40" fill="#BAE6FD" font-size="18" font-weight="bold" text-anchor="middle">系统主水箱监测</text>
+        
+        <!-- 大水温显示 -->
+        <g transform="translate(180, 150)">
+            <text fill="#475569" font-size="14" text-anchor="middle">实时水温 (ADDR 04/11)</text>
+            <text y="70" fill="#0EA5E9" font-size="72" font-weight="bold" text-anchor="middle" filter="url(#neon-glow)">45.2 <tspan font-size="24">℃</tspan></text>
+        </g>
+
+        <!-- 水箱状态列表 -->
+        <g transform="translate(40, 280)">
+            <text y="0" fill="#475569" font-size="13">环境温度 (01H): <tspan fill="#BAE6FD">25.4 ℃</tspan></text>
+            <text y="30" fill="#475569" font-size="13">回水温度 (03H): <tspan fill="#BAE6FD">42.1 ℃</tspan></text>
+            <text y="60" fill="#475569" font-size="13">补水阀状态 (27H): <tspan fill="#10B981">已开启</tspan></text>
+            <text y="90" fill="#475569" font-size="13">水流量状态 (21H): <tspan fill="#10B981">正常流转</tspan></text>
+        </g>
+    </g>
+
+    <!-- 4. 左右双翼：8组机组参数矩阵 (饱满的关键) -->
+    
+    <!-- 左翼 (1#-4# 机组) -->
+    <g transform="translate(40, 100)">
+        <!-- 单个机组卡片模版 (重复4次) -->
+        <g id="Unit1" transform="translate(0, 0)">
+            <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">1# 热泵机组 (ADDR 11)</text>
+            <text x="15" y="65" fill="#0EA5E9" font-size="28" font-weight="bold">48.5 <tspan font-size="12">℃</tspan></text>
+            <text x="140" y="65" fill="#475569" font-size="12">设定: 55℃</text>
+            
+            <g transform="translate(15, 90)">
+                <text y="0" fill="#475569" font-size="11">压缩机 1: <tspan fill="#10B981">运行</tspan></text>
+                <text x="120" y="0" fill="#475569" font-size="11">压缩机 2: <tspan fill="#475569">停止</tspan></text>
+                <text y="25" fill="#475569" font-size="11">风机状态: <tspan fill="#10B981">开启</tspan></text>
+                <text x="120" y="25" fill="#475569" font-size="11">化霜状态: <tspan fill="#BAE6FD">不在化霜</tspan></text>
+                <text y="50" fill="#EF4444" font-size="11" font-weight="bold">● 无故障告警</text>
+            </g>
+        </g>
+
+        <g id="Unit2" transform="translate(290, 0)">
+             <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+             <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">2# 热泵机组 (ADDR 12)</text>
+             <text x="15" y="65" fill="#0EA5E9" font-size="28" font-weight="bold">46.2 <tspan font-size="12">℃</tspan></text>
+        </g>
+
+        <g id="Unit3" transform="translate(0, 190)">
+             <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+             <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">3# 热泵机组 (ADDR 13)</text>
+             <text x="15" y="65" fill="#0EA5E9" font-size="28" font-weight="bold">47.8 <tspan font-size="12">℃</tspan></text>
+        </g>
+
+        <g id="Unit4" transform="translate(290, 190)">
+             <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="#EF4444" stroke-width="1.5" />
+             <text x="15" y="30" fill="#EF4444" font-size="14" font-weight="bold">4# 热泵机组 (故障!)</text>
+             <text x="15" y="80" fill="#EF4444" font-size="16" font-weight="bold">高压压力过高 (20H-B4)</text>
+        </g>
+    </g>
+
+    <!-- 右翼 (5#-8# 机组) -->
+    <g transform="translate(1000, 100)">
+        <g id="Unit5" transform="translate(0, 0)">
+            <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">5# 热泵机组</text>
+            <text x="15" y="65" fill="#0EA5E9" font-size="28" font-weight="bold">45.5 <tspan font-size="12">℃</tspan></text>
+        </g>
+        <g id="Unit6" transform="translate(290, 0)">
+            <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">6# 热泵机组</text>
+        </g>
+        <g id="Unit7" transform="translate(0, 190)">
+            <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">7# 热泵机组</text>
+        </g>
+        <g id="Unit8" transform="translate(290, 190)">
+            <rect width="270" height="170" rx="8" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.2)" />
+            <text x="15" y="30" fill="#BAE6FD" font-size="14" font-weight="bold">8# 热泵机组</text>
+        </g>
+    </g>
+
+    <!-- 5. 底部系统汇总底盘 (解决底部空洞) -->
+    <g transform="translate(40, 580)">
+        <rect width="1520" height="280" rx="12" fill="rgba(30, 41, 59, 0.9)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="30" y="40" fill="#BAE6FD" font-size="18" font-weight="bold">系统综合能效及产出态势</text>
+        
+        <g transform="translate(60, 100)">
+            <text fill="#475569" font-size="14">系统总制热量 (kW)</text>
+            <text y="60" fill="#10B981" font-size="54" font-weight="bold">1,245.8</text>
+            
+            <text x="400" fill="#475569" font-size="14">今日运行总能耗 (kWh)</text>
+            <text x="400" y="60" fill="#BAE6FD" font-size="54" font-weight="bold">324.5</text>
+            
+            <text x="800" fill="#475569" font-size="14">当前 COP 效能值</text>
+            <text x="800" y="60" fill="#0EA5E9" font-size="54" font-weight="bold">4.2</text>
+
+            <text x="1150" fill="#475569" font-size="14">系统循环泵频率</text>
+            <text x="1150" y="60" fill="#BAE6FD" font-size="54" font-weight="bold">48 <tspan font-size="20">Hz</tspan></text>
+        </g>
+        
+        <!-- 底部装饰技术背景 -->
+        <text x="1500" y="260" fill="#475569" font-size="64" font-weight="bold" text-anchor="end" opacity="0.05">TENESUN ENERGY</text>
+    </g>
+
+    <!-- 装饰性连接线 (模拟通讯拓扑) -->
+    <path d="M 600 325 L 620 325 M 980 325 L 1000 325" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="5 5" opacity="0.3" />
+</svg>
