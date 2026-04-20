@@ -1,0 +1,60 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景：粉白陶瓷渐变 (严格参考图片) -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FFF3F6"/>
+      <stop offset="100%" stop-color="#FFDBE4"/>
+    </linearGradient>
+
+    <!-- 主体：深邃电光蓝水晶渐变 -->
+    <linearGradient id="crystal_grad" x1="512" y1="150" x2="512" y2="874" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="50%" stop-color="#0072FF"/>
+      <stop offset="100%" stop-color="#002060"/>
+    </linearGradient>
+
+    <!-- 顶部玻璃高光 -->
+    <linearGradient id="shine_grad" x1="512" y1="150" x2="512" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 蓝色有色投影 -->
+    <filter id="sapphire_shadow" x="-20%" y="-10%" width="140%" height="150%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="40"/>
+      <feOffset dx="0" dy="40"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#0055FF"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. 背景层 -->
+  <rect width="1024" height="1024" rx="240" fill="url(#bg_grad)"/>
+
+  <!-- 2. 图标主体：抽象的厕位/空间容器 (厚重的圆角矩形) -->
+  <g filter="url(#sapphire_shadow)">
+    <!-- 类似信息发布图标的厚实块状 -->
+    <rect x="180" y="180" width="664" height="664" rx="180" fill="url(#crystal_grad)"/>
+    
+    <!-- 3. 内部核心：探测感应器 (圆润的人体/感应抽象组合) -->
+    <!-- 探测头 -->
+    <circle cx="512" cy="400" r="100" fill="white" fill-opacity="0.2"/>
+    <!-- 探测波/身体抽象 -->
+    <path d="M340 650C340 580 400 540 512 540C624 540 684 580 684 650V680C684 710 660 730 630 730H394C364 730 340 710 340 680V650Z" fill="white" fill-opacity="0.25"/>
+
+    <!-- 4. 顶部玻璃质感大反光 (统一全系列的高亮风格) -->
+    <path d="M180 350C180 230 300 180 512 180C724 180 844 230 844 350C650 280 350 280 180 350Z" 
+          fill="url(#shine_grad)"/>
+
+    <!-- 5. 亮部描边 (体现晶体棱角) -->
+    <rect x="185" y="185" width="654" height="654" rx="175" stroke="white" stroke-width="6" stroke-opacity="0.2" fill="none"/>
+  </g>
+</svg>

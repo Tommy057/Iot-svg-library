@@ -1,0 +1,65 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：温润的粉白渐变 (严格匹配图片) -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FFF5F7"/>
+      <stop offset="100%" stop-color="#FFDCE5"/>
+    </linearGradient>
+
+    <!-- 2. 蓝色宝石核心渐变 -->
+    <linearGradient id="sapphire_core" x1="512" y1="280" x2="512" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00E0FF"/> <!-- 亮青色 -->
+      <stop offset="50%" stop-color="#0072FF"/> <!-- 纯蓝 -->
+      <stop offset="100%" stop-color="#0041B2"/> <!-- 深蓝 -->
+    </linearGradient>
+
+    <!-- 3. 白色陶瓷/玻璃质感渐变 -->
+    <linearGradient id="white_glass" x1="512" y1="200" x2="512" y2="824" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F4F8"/>
+    </linearGradient>
+
+    <!-- 4. 蓝色核心的有色投影 (光晕感) -->
+    <filter id="core_glow" x="-30%" y="-30%" width="160%" height="160%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30"/>
+      <feOffset dx="0" dy="20"/>
+      <feFlood flood-color="#0072FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 5. 顶层玻璃高光 -->
+    <linearGradient id="top_shine" x1="512" y1="150" x2="512" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 圆角矩形背景层 -->
+  <rect width="1024" height="1024" rx="240" fill="url(#bg_grad)"/>
+
+  <!-- 2. 白色厚重底座 (类似陶瓷/半透明玻璃) -->
+  <path d="M220 350C220 250 300 200 512 200C724 200 804 250 804 350V700C804 800 724 850 512 850C300 850 220 800 220 700V350Z" 
+        fill="url(#white_glass)" filter="drop-shadow(0px 20px 40px rgba(255, 180, 200, 0.5))"/>
+
+  <!-- 3. 蓝色晶体核心 (智慧卫生间的抽象符号：圆润的座舱/探测形态) -->
+  <g filter="url(#core_glow)">
+    <!-- 抽象的卫生间/探测位符号 -->
+    <path d="M512 320C440 320 380 380 380 460V620C380 700 440 760 512 760C584 760 644 700 644 620V460C644 380 584 320 512 320ZM512 400C545 400 572 427 572 460C572 493 545 520 512 520C479 520 452 493 452 460C452 427 479 400 512 400Z" 
+          fill="url(#sapphire_core)"/>
+    <!-- 探测波段/动态光影 -->
+    <rect x="420" y="650" width="184" height="40" rx="20" fill="white" fill-opacity="0.3"/>
+  </g>
+
+  <!-- 4. 顶部玻璃高光 (Glossy Shine) -->
+  <path d="M240 350C240 280 350 230 512 230C674 230 784 280 784 350C600 300 400 300 240 350Z" 
+        fill="url(#top_shine)"/>
+
+  <!-- 5. 内部微弱描边，增加精致度 -->
+  <path d="M220 350C220 250 300 200 512 200C724 200 804 250 804 350V700C804 800 724 850 512 850C300 850 220 800 220 700V350Z" 
+        stroke="white" stroke-width="8" stroke-opacity="0.4" fill="none"/>
+</svg>

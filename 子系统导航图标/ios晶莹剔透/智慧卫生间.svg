@@ -1,0 +1,64 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景：粉白陶瓷渐变 -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FFF0F3"/>
+      <stop offset="100%" stop-color="#FFD1DC"/>
+    </linearGradient>
+
+    <!-- 主体：深邃电光蓝水晶渐变 -->
+    <linearGradient id="crystal_grad" x1="512" y1="100" x2="512" y2="924" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="50%" stop-color="#0072FF"/>
+      <stop offset="100%" stop-color="#002060"/>
+    </linearGradient>
+
+    <!-- 顶部玻璃高光渐变 -->
+    <linearGradient id="shine_grad" x1="512" y1="120" x2="512" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 有色投影滤镜 -->
+    <filter id="sapphire_shadow" x="-20%" y="-10%" width="140%" height="150%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="45"/>
+      <feOffset dx="0" dy="60"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#0055FF"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. 背景层 -->
+  <rect width="1024" height="1024" rx="240" fill="url(#bg_grad)"/>
+
+  <!-- 2. 图标主体 (智慧座舱/检测系统) -->
+  <g filter="url(#sapphire_shadow)">
+    <!-- 外层厚重的晶体结构 (类似U型探测空间) -->
+    <path d="M200 250C200 180 260 120 330 120H694C764 120 824 180 824 250V750C824 830 760 900 680 900H344C264 900 200 830 200 750V250Z" 
+          fill="url(#crystal_grad)"/>
+
+    <!-- 中间的感应核心 (代表被探测的人体或状态) -->
+    <!-- 头部 -->
+    <circle cx="512" cy="380" r="110" fill="white" fill-opacity="0.15"/>
+    <!-- 身体 (厚实的块状结构) -->
+    <rect x="362" y="520" width="300" height="240" rx="100" fill="white" fill-opacity="0.15"/>
+
+    <!-- 3. 顶部玻璃质感反光 (Glossy Shine) -->
+    <path d="M200 280C200 180 300 125 512 125C724 125 824 180 824 280C650 200 350 200 200 280Z" 
+          fill="url(#shine_grad)"/>
+
+    <!-- 4. 内部核心的高亮边缘 (体现探测波感) -->
+    <path d="M380 520Q512 480 644 520" stroke="#A0E9FF" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- 5. 增强通透感的微弱内发光边缘 -->
+  <rect x="210" y="130" width="604" height="760" rx="120" stroke="white" stroke-width="4" stroke-opacity="0.2" fill="none"/>
+</svg>

@@ -1,0 +1,50 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 统一视觉基因 -->
+    <linearGradient id="bg_gradient_sec" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF" /><stop offset="0.4" stop-color="#FFF0F3" /><stop offset="1" stop-color="#FFD1DC" /></linearGradient>
+    <linearGradient id="gem_gradient_sec" x1="200" y1="200" x2="800" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C6FF" /><stop offset="0.5" stop-color="#0072FF" /><stop offset="1" stop-color="#002060" /></linearGradient>
+    <linearGradient id="shine_sec" x1="512" y1="200" x2="512" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.95"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <filter id="shadow_sec" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceAlpha" stdDeviation="30" /><feOffset dx="0" dy="30" result="offsetblur"/><feFlood flood-color="#0055FF" flood-opacity="0.4"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    
+    <!-- 雷达扫描的光晕 -->
+    <radialGradient id="radar_glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 450) scale(200)">
+      <stop stop-color="#00C6FF" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#00C6FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_sec)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_sec)">
+    <!-- 1. 盾牌主体 (The Shield) -->
+    <!-- 经典的防御盾造型，但做得非常厚 -->
+    <path d="M512 880 C 512 880 820 600 820 440 C 820 250 680 160 512 160 C 344 160 204 250 204 440 C 204 600 512 880 512 880 Z" fill="url(#gem_gradient_sec)"/>
+    
+    <!-- 2. 盾牌内凹槽 (Inner Bevel) -->
+    <!-- 增加立体感 -->
+    <path d="M512 220 C 650 220 760 300 760 440 C 760 560 512 820 512 820 C 512 820 264 560 264 440 C 264 300 374 220 512 220 Z" fill="#001530" fill-opacity="0.2"/>
+
+    <!-- 3. 核心雷达/瞄准系统 (Radar Scope) -->
+    <!-- 这是一个动态的防御系统，不仅仅是块铁板 -->
+    <!-- 雷达圈 -->
+    <circle cx="512" cy="450" r="120" stroke="white" stroke-width="6" stroke-opacity="0.5" stroke-dasharray="10 10"/>
+    <circle cx="512" cy="450" r="120" fill="url(#radar_glow)"/> <!-- 内部发光 -->
+    
+    <!-- 扫描指针 (Scanning Sweep) -->
+    <path d="M512 450 L 632 450 A 120 120 0 0 0 550 340" fill="white" fill-opacity="0.4"/>
+    
+    <!-- 中心锁定点 -->
+    <circle cx="512" cy="450" r="15" fill="white"/>
+
+    <!-- 4. 警报声波纹 (Alarm Waves) -->
+    <!-- 在盾牌上方扩散的波纹，暗示“报警”功能 -->
+    <path d="M350 300 C 400 250 624 250 674 300" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.3"/>
+    <path d="M300 350 C 350 280 674 280 724 350" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.2"/>
+
+    <!-- 5. 表面高光 (Glossy Highlight) -->
+    <!-- 覆盖在盾牌上半部分 -->
+    <path d="M220 440 C 220 300 350 180 512 180 C 674 180 804 300 804 440" stroke="url(#shine_sec)" stroke-width="20" stroke-opacity="0.5" fill="none"/>
+    <ellipse cx="512" cy="300" rx="200" ry="100" fill="url(#shine_sec)" fill-opacity="0.7"/>
+  </g>
+</svg>
