@@ -1,0 +1,74 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白渐变 (严格遵循源文件比例) -->
+    <linearGradient id="bg_gradient_light" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 球体主体：高透蓝宝石渐变 (严格复刻照明系统参数) -->
+    <radialGradient id="gem_gradient_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(400)">
+      <stop stop-color="#7DF9FF" /> <!-- 中心：极亮青色 -->
+      <stop offset="0.6" stop-color="#0072FF" /> <!-- 中层：纯蓝 -->
+      <stop offset="1" stop-color="#002060" />   <!-- 边缘：深邃蓝 -->
+    </radialGradient>
+
+    <!-- 3. 玻璃高光 (Gloss) (严格复刻照明系统参数) -->
+    <linearGradient id="shine_light" x1="512" y1="232" x2="512" y2="532" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 投影 (蓝色柔和弥散阴影) -->
+    <filter id="shadow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景层 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_light)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_light)">
+    
+    <!-- 1. 核心球体 (置于视觉中心) -->
+    <circle cx="512" cy="512" r="320" fill="url(#gem_gradient_light)"/>
+    
+    <!-- 2. 内部核心图标：智慧卫生间监测符号 -->
+    <!-- 组合了：人体轮廓(状态监测) + 三重扫描线(激光探测) -->
+    <g transform="translate(512, 512)">
+      <!-- 激光探测波束 (顶部) -->
+      <path d="M-100 -120 A 160 160 0 0 1 100 -120" stroke="white" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8"/>
+      <path d="M-60 -160 A 180 180 0 0 1 60 -160" stroke="white" stroke-width="8" stroke-linecap="round" stroke-opacity="0.4"/>
+      
+      <!-- 人体符号 (代表有人/无人监测) -->
+      <circle cx="0" cy="-30" r="45" fill="white"/>
+      <path d="M-85 100 C -85 40, 85 40, 85 100 L 85 130 L -85 130 Z" fill="white"/>
+      
+      <!-- 测温/核心状态点 -->
+      <circle cx="0" cy="50" r="15" fill="#7DF9FF">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- 3. 能量芯光晕 -->
+    <circle cx="512" cy="512" r="140" fill="white" fill-opacity="0.15"/>
+
+    <!-- 4. 玻璃球表面高光质感 -->
+    <!-- 顶部大反光 -->
+    <ellipse cx="512" cy="352" rx="220" ry="140" fill="url(#shine_light)"/>
+    
+    <!-- 边缘内发光 (增加厚度感) -->
+    <circle cx="512" cy="512" r="310" stroke="white" stroke-opacity="0.15" stroke-width="10"/>
+    
+    <!-- 5. 底部反光 (环境光) -->
+    <path d="M350 682 Q 512 782 674 682" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round"/>
+
+  </g>
+</svg>

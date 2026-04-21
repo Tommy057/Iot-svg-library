@@ -1,0 +1,63 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义全局滤镜和渐变 -->
+  <defs>
+    <!-- 背景柔和粉色渐变 -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="#FEE2E7"/>
+    </linearGradient>
+
+    <!-- 球体主色调渐变 -->
+    <radialGradient id="sphere_main" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(320)">
+      <stop offset="0" stop-color="#1E90FF"/>
+      <stop offset="1" stop-color="#003EB3"/>
+    </radialGradient>
+
+    <!-- 顶部高光渐变 -->
+    <linearGradient id="top_gloss" x1="512" y1="190" x2="512" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 底部投影滤镜 -->
+    <filter id="shadow_blur" x="200" y="700" width="624" height="200" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- 1. 背景层 -->
+  <rect width="1024" height="1024" rx="200" fill="url(#bg_grad)"/>
+  <rect width="1022" height="1022" x="1" y="1" rx="199" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+
+  <!-- 2. 底部阴影 -->
+  <ellipse cx="512" cy="800" rx="280" ry="50" fill="#003EB3" fill-opacity="0.3" filter="url(#shadow_blur)"/>
+
+  <!-- 3. 蓝色球体主体 -->
+  <circle cx="512" cy="512" r="320" fill="url(#sphere_main)"/>
+  
+  <!-- 球体外圈微光 -->
+  <circle cx="512" cy="512" r="320" stroke="#007AFF" stroke-width="4" stroke-opacity="0.6"/>
+
+  <!-- 4. 内部核心装饰（模拟激光探测波束） -->
+  <path d="M512 360 C 600 360, 680 440, 680 512 C 680 584, 600 664, 512 664 C 424 664, 344 584, 344 512 C 344 440, 424 360, 512 360" fill="white" fill-opacity="0.1"/>
+
+  <!-- 5. 顶部高光 (Glossy Look) -->
+  <ellipse cx="512" cy="320" rx="220" ry="130" fill="url(#top_gloss)"/>
+
+  <!-- 6. 中心功能图标：人像 + 探测波束 -->
+  <g transform="translate(427, 400) scale(1.1)">
+    <!-- 人形符号 -->
+    <circle cx="77" cy="45" r="22" fill="white"/>
+    <path d="M25 150 C 25 100, 129 100, 129 150 L 129 165 L 25 165 Z" fill="white"/>
+    
+    <!-- 激光/探测弧线 (代表监测) -->
+    <path d="M10 70 A 90 90 0 0 1 144 70" stroke="white" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.8">
+       <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" />
+    </path>
+    <path d="M35 45 A 60 60 0 0 1 119 45" stroke="white" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- 7. 底部反光弧线 -->
+  <path d="M340 650 Q 512 730 684 650" stroke="white" stroke-width="6" stroke-linecap="round" stroke-opacity="0.4" fill="none"/>
+
+</svg>

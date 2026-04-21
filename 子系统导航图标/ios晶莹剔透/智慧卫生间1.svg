@@ -1,0 +1,74 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白渐变 (与照明系统完全一致) -->
+    <linearGradient id="bg_gradient_light" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 蓝宝石球体渐变 (与照明系统完全一致) -->
+    <radialGradient id="gem_gradient_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(400)">
+      <stop stop-color="#7DF9FF" /> 
+      <stop offset="0.6" stop-color="#0072FF" /> 
+      <stop offset="1" stop-color="#002060" />   
+    </radialGradient>
+
+    <!-- 3. 玻璃高光 (与照明系统完全一致) -->
+    <linearGradient id="shine_light" x1="512" y1="232" x2="512" y2="532" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 阴影滤镜 -->
+    <filter id="shadow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_light)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_light)">
+    
+    <!-- 蓝色玻璃球 -->
+    <circle cx="512" cy="512" r="320" fill="url(#gem_gradient_light)"/>
+    
+    <!-- 内部核心图标：智慧马桶 + 激光扫描 -->
+    <g transform="translate(512, 530)">
+      <!-- 1. 马桶主体 (采用极简白色块，类似闪电图标的质感) -->
+      <!-- 水箱部分 -->
+      <path d="M-110 -80 H -50 V 60 H -110 Z" fill="white" opacity="0.9"/>
+      <!-- 座便器部分 -->
+      <path d="M-60 -20 H 90 C 130 -20 130 100 90 100 H -60 V -20 Z" fill="white" opacity="1"/>
+      <!-- 马桶底座 -->
+      <path d="M-40 100 L -20 140 H 60 L 80 100 H -40 Z" fill="white" opacity="0.8"/>
+      
+      <!-- 2. 激光探测/波束 (位于马桶上方，体现监测有人无人) -->
+      <!-- 三层雷达扫描线 -->
+      <path d="M-20 -120 A 120 120 0 0 1 120 -20" stroke="white" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.9"/>
+      <path d="M20 -150 A 150 150 0 0 1 150 -20" stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.5"/>
+      <path d="M60 -180 A 180 180 0 0 1 180 -20" stroke="white" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.3"/>
+      
+      <!-- 3. 核心感应点 (激光发射头/测温点) -->
+      <circle cx="0" cy="-20" r="12" fill="#7DF9FF"/>
+    </g>
+
+    <!-- 能量核心光晕 -->
+    <circle cx="512" cy="512" r="150" fill="white" fill-opacity="0.15"/>
+
+    <!-- 玻璃表面质感 -->
+    <ellipse cx="512" cy="352" rx="220" ry="140" fill="url(#shine_light)"/>
+    <circle cx="512" cy="512" r="310" stroke="white" stroke-opacity="0.15" stroke-width="10"/>
+    
+    <!-- 底部反光 -->
+    <path d="M350 682 Q 512 782 674 682" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round"/>
+
+  </g>
+</svg>
