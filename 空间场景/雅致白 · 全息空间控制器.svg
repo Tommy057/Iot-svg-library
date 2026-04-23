@@ -1,0 +1,155 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);">
+  <!-- [核心定义] 雅致材质库 -->
+  <defs>
+    <!-- 珍珠白软阴影 -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur" />
+      <feOffset dx="10" dy="10" result="offsetblur" />
+      <feFlood flood-color="#CBD5E1" flood-opacity="0.5" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <!-- 内凹陷陶瓷质感 -->
+    <filter id="inner-well">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0" />
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="3" />
+      <feOffset dx="2" dy="2" result="offsetblur" />
+      <feFlood flood-color="#94A3B8" flood-opacity="0.3" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feComposite in2="SourceAlpha" operator="in" />
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode />
+      </feMerge>
+    </filter>
+
+    <!-- 柔和渐变 -->
+    <linearGradient id="silk-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F1F5F9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- [背景元素] 极细装饰线条 -->
+  <g opacity="0.4" stroke="#94A3B8" stroke-width="0.5">
+    <circle cx="960" cy="540" r="500" fill="none" />
+    <circle cx="960" cy="540" r="480" fill="none" stroke-dasharray="2 10" />
+  </g>
+
+  <!-- [顶部 HUD] 场景状态 -->
+  <g transform="translate(60, 60)">
+    <text x="0" y="30" fill="#1E293B" font-family="Optima, sans-serif" font-size="36" font-weight="100" letter-spacing="4">LUXURY SPACE</text>
+    <rect x="0" y="50" width="100" height="2" fill="#3B82F6" />
+    <text x="0" y="80" fill="#64748B" font-family="Arial" font-size="14">智能空间控制系统 · 尊享版</text>
+  </g>
+
+  <!-- [左侧：主控区域] Master Controller -->
+  <g transform="translate(60, 200)">
+    <rect width="400" height="700" rx="40" fill="url(#silk-grad)" filter="url(#soft-shadow)" />
+    <!-- 场景模式选卡 -->
+    <g transform="translate(40, 60)">
+      <text x="0" y="0" fill="#475569" font-size="18" font-weight="bold">智能场景</text>
+      <!-- 场景1：明亮 -->
+      <g transform="translate(0, 40)">
+        <rect width="320" height="80" rx="20" fill="#3B82F6" />
+        <text x="30" y="47" fill="#FFFFFF" font-size="18">全域亮起</text>
+        <circle cx="280" cy="40" r="15" fill="rgba(255,255,255,0.2)" />
+      </g>
+      <!-- 场景2：静谧 -->
+      <g transform="translate(0, 140)">
+        <rect width="320" height="80" rx="20" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="30" y="47" fill="#475569" font-size="18">优雅午后</text>
+      </g>
+    </g>
+    
+    <!-- 底部能源看板 -->
+    <g transform="translate(40, 450)">
+       <path d="M 0 0 L 320 0" stroke="#E2E8F0" stroke-width="1" />
+       <text x="0" y="40" fill="#94A3B8" font-size="14">实时功率</text>
+       <text x="0" y="80" fill="#1E293B" font-size="32" font-weight="bold">2.45 <tspan font-size="16">kW</tspan></text>
+    </g>
+  </g>
+
+  <!-- [右侧：混合设备矩阵] -->
+  <g transform="translate(520, 200)">
+    
+    <!-- 第一行：灯光回路 (Lighting) -->
+    <g>
+      <text x="0" y="-20" fill="#64748B" font-size="16" font-weight="bold">灯光回路控制</text>
+      <!-- 灯光卡片 1 -->
+      <g transform="translate(0,0)">
+        <rect width="280" height="180" rx="30" fill="url(#silk-grad)" filter="url(#soft-shadow)" />
+        <circle cx="50" cy="50" r="20" fill="#F0F9FF" stroke="#BAE6FD" />
+        <path d="M 45 50 L 55 50 M 50 45 L 50 55" stroke="#0EA5E9" stroke-width="2" /> <!-- 灯光图标 -->
+        <text x="30" y="100" fill="#1E293B" font-size="18">客厅吊灯</text>
+        <!-- 滑块开关 -->
+        <rect x="30" y="125" width="60" height="30" rx="15" fill="#3B82F6" />
+        <circle cx="75" cy="140" r="10" fill="white" />
+      </g>
+
+      <!-- 灯光卡片 2 -->
+      <g transform="translate(320,0)">
+        <rect width="280" height="180" rx="30" fill="url(#silk-grad)" filter="url(#soft-shadow)" />
+        <text x="30" y="100" fill="#1E293B" font-size="18">背景灯带</text>
+        <rect x="30" y="125" width="60" height="30" rx="15" fill="#E2E8F0" />
+        <circle cx="45" cy="140" r="10" fill="white" />
+      </g>
+      
+      <!-- 灯光卡片 3 -->
+      <g transform="translate(640,0)">
+        <rect width="280" height="180" rx="30" fill="url(#silk-grad)" filter="url(#soft-shadow)" />
+        <text x="30" y="100" fill="#1E293B" font-size="18">餐厅筒灯</text>
+        <rect x="30" y="125" width="60" height="30" rx="15" fill="#3B82F6" />
+        <circle cx="75" cy="140" r="10" fill="white" />
+      </g>
+    </g>
+
+    <!-- 第二行：空调系统 (HVAC) -->
+    <g transform="translate(0, 260)">
+      <text x="0" y="-20" fill="#64748B" font-size="16" font-weight="bold">空气质量与环境</text>
+      <!-- 空调卡片 (大型) -->
+      <g transform="translate(0,0)">
+        <rect width="600" height="440" rx="40" fill="url(#silk-grad)" filter="url(#soft-shadow)" />
+        <text x="40" y="60" fill="#1E293B" font-size="20" font-weight="bold">中央空调 - 1号机</text>
+        
+        <!-- 温度调节环 -->
+        <g transform="translate(150, 240)">
+          <circle r="100" fill="none" stroke="#F1F5F9" stroke-width="20" />
+          <path d="M -70 70 A 100 100 0 1 1 70 70" fill="none" stroke="#3B82F6" stroke-width="20" stroke-linecap="round" />
+          <text x="0" y="15" text-anchor="middle" fill="#1E293B" font-size="48" font-weight="bold">24°C</text>
+          <text x="0" y="45" text-anchor="middle" fill="#94A3B8" font-size="14">SET TEMP</text>
+        </g>
+        
+        <!-- 空调模式按钮 -->
+        <g transform="translate(350, 100)">
+          <rect width="200" height="60" rx="30" fill="#F8FAFC" stroke="#E2E8F0" />
+          <text x="100" y="37" text-anchor="middle" fill="#64748B">制冷模式</text>
+          
+          <rect y="80" width="200" height="60" rx="30" fill="#F8FAFC" stroke="#E2E8F0" />
+          <text x="100" y="117" text-anchor="middle" fill="#64748B">风速: 自动</text>
+          
+          <rect y="160" width="200" height="60" rx="30" fill="#F8FAFC" stroke="#E2E8F0" />
+          <text x="100" y="197" text-anchor="middle" fill="#64748B">定时关闭</text>
+        </g>
+      </g>
+      
+      <!-- 辅助监测 -->
+      <g transform="translate(640,0)">
+        <rect width="280" height="440" rx="30" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="30" y="50" fill="#64748B" font-size="14">室内湿度</text>
+        <text x="30" y="90" fill="#1E293B" font-size="32">45%</text>
+        
+        <path d="M 30 150 L 250 150" stroke="#F1F5F9" stroke-width="2" />
+        
+        <text x="30" y="200" fill="#64748B" font-size="14">PM 2.5</text>
+        <text x="30" y="240" fill="#10B981" font-size="32">优 12</text>
+      </g>
+    </g>
+  </g>
+</svg>
