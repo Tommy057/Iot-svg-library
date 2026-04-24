@@ -1,0 +1,81 @@
+<svg width="320" height="700" viewBox="0 0 320 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 核心渐变 -->
+    <linearGradient id="core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5AC8FA" />
+      <stop offset="100%" style="stop-color:#007AFF" />
+    </linearGradient>
+    <!-- 软阴影 -->
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="5" />
+      <feFlood flood-color="#007AFF" flood-opacity="0.2" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. 背景底座 (iOS 磨砂感) -->
+  <rect width="300" height="680" x="10" y="10" rx="40" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" />
+
+  <!-- 2. 核心图标区域 (展现“心脏”感) -->
+  <g transform="translate(60, 60)">
+    <!-- 装饰环 -->
+    <circle cx="90" cy="90" r="85" fill="none" stroke="#F2F2F7" stroke-width="2" />
+    <circle cx="90" cy="90" r="70" fill="none" stroke="#007AFF" stroke-width="1" stroke-dasharray="4 8" opacity="0.5" />
+    
+    <!-- 主图标 -->
+    <rect x="50" y="50" width="80" height="80" rx="20" fill="url(#core-grad)" filter="url(#soft-glow)" />
+    <!-- 模拟控制器接口图标 -->
+    <path d="M70 80 L110 80 M70 90 L110 90 M70 100 L95 100" stroke="white" stroke-width="3" stroke-linecap="round" />
+    <circle cx="105" cy="100" r="3" fill="#34C759" /> <!-- 在线状态点 -->
+  </g>
+
+  <!-- 3. 设备标题 -->
+  <g transform="translate(40, 260)">
+    <text fill="#1D1D1F" font-family="sans-serif" font-size="24" font-weight="700">空间场景控制器</text>
+    <text y="30" fill="#8E8E93" font-family="sans-serif" font-size="14" letter-spacing="1.5">SPATIAL CONTROLLER V2</text>
+  </g>
+
+  <!-- 4. 参数列表 (饱满的关键：带图标的小格子) -->
+  <g transform="translate(30, 330)">
+    <!-- IP 地址 -->
+    <rect width="240" height="60" rx="15" fill="#F8F9FB" />
+    <text x="50" y="25" fill="#8E8E93" font-size="12">网络地址 (IP)</text>
+    <text x="50" y="45" fill="#1D1D1F" font-size="16" font-weight="600">192.168.1.108</text>
+    <circle cx="25" cy="30" r="12" fill="#E1EFFF" /> <!-- 图标位 -->
+    <path d="M20 30 Q25 22 30 30" stroke="#007AFF" fill="none" transform="translate(0,-2)" />
+
+    <!-- 设备编码 -->
+    <g transform="translate(0, 75)">
+      <rect width="240" height="60" rx="15" fill="#F8F9FB" />
+      <text x="50" y="25" fill="#8E8E93" font-size="12">设备编码 (Serial)</text>
+      <text x="50" y="45" fill="#1D1D1F" font-size="16" font-weight="600">DAS-CORE-8820X</text>
+      <rect x="15" y="20" width="20" height="20" rx="4" fill="#E1EFFF" />
+    </g>
+
+    <!-- 运行状态 -->
+    <g transform="translate(0, 150)">
+      <rect width="240" height="60" rx="15" fill="#F8F9FB" />
+      <text x="50" y="25" fill="#8E8E93" font-size="12">当前状态</text>
+      <text x="50" y="45" fill="#34C759" font-size="16" font-weight="600">运行中 (Online)</text>
+      <!-- 动态波纹模拟 -->
+      <circle cx="25" cy="30" r="5" fill="#34C759">
+        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </g>
+
+  <!-- 5. 底部系统资源占用 (增加饱满度的细节) -->
+  <g transform="translate(40, 560)">
+    <text fill="#8E8E93" font-size="12">系统资源负载</text>
+    <rect y="15" width="220" height="6" rx="3" fill="#F2F2F7" />
+    <rect y="15" width="140" height="6" rx="3" fill="url(#core-grad)" /> <!-- 占用进度 -->
+    
+    <g transform="translate(0, 40)">
+        <text fill="#8E8E93" font-size="12">存储容量</text>
+        <rect y="15" width="220" height="6" rx="3" fill="#F2F2F7" />
+        <rect y="15" width="60" height="6" rx="3" fill="#34C759" /> 
+    </g>
+  </g>
+</svg>

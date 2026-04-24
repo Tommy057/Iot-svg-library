@@ -1,0 +1,116 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景色 -->
+  <rect width="1920" height="1080" fill="#F0F4F8" />
+
+  <!-- [顶部控制栏] -->
+  <g transform="translate(60, 40)">
+    <text x="0" y="30" fill="#1E293B" font-family="Arial, sans-serif" font-size="28" font-weight="bold">SMART CLOUD CONTROL</text>
+    <line x1="0" y1="50" x2="1800" y2="50" stroke="#CBD5E1" stroke-width="1" />
+    <text x="1620" y="30" fill="#10B981" font-size="14" font-weight="bold">● SYSTEM ONLINE</text>
+  </g>
+
+  <!-- [左侧：快速场景切换] -->
+  <g transform="translate(60, 120)">
+    <!-- 侧边栏背景框：增加描边防止消失 -->
+    <rect width="280" height="900" rx="30" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <text x="30" y="50" fill="#475569" font-size="16" font-weight="bold">场景预设</text>
+    
+    <!-- 场景按钮 - 激活态 -->
+    <g transform="translate(25, 80)">
+      <rect width="230" height="60" rx="15" fill="#3B82F6" />
+      <text x="115" y="37" text-anchor="middle" fill="#FFFFFF" font-size="16">全域迎宾</text>
+      
+      <!-- 场景按钮 - 常态 -->
+      <g transform="translate(0, 80)">
+        <rect width="230" height="60" rx="15" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <text x="115" y="37" text-anchor="middle" fill="#64748B" font-size="16">行政办公</text>
+      </g>
+      <g transform="translate(0, 160)">
+        <rect width="230" height="60" rx="15" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <text x="115" y="37" text-anchor="middle" fill="#64748B" font-size="16">节能模式</text>
+      </g>
+      <g transform="translate(0, 240)">
+        <rect width="230" height="60" rx="15" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <text x="115" y="37" text-anchor="middle" fill="#EF4444" font-size="16">紧急全关</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- [中间：15路灯光矩阵] (5x3 Layout) -->
+  <g transform="translate(370, 120)">
+    <text x="0" y="-15" fill="#64748B" font-size="14" font-weight="bold">灯光系统回路 (15)</text>
+    
+    <!-- 批量生成回路卡片 - 确保背景框存在 -->
+    <!-- 第一排 -->
+    <g>
+      <g transform="translate(0,0)">
+        <rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="40" cy="40" r="15" fill="#F0F9FF" />
+        <text x="25" y="100" fill="#1E293B" font-size="18" font-weight="bold">01. 客厅吊灯</text>
+        <circle cx="240" cy="40" r="6" fill="#3B82F6" />
+      </g>
+      <g transform="translate(300,0)">
+        <rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+        <text x="25" y="100" fill="#1E293B" font-size="18">02. 玄关射灯</text>
+      </g>
+      <g transform="translate(600,0)">
+        <rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+        <text x="25" y="100" fill="#1E293B" font-size="18">03. 走廊灯带</text>
+      </g>
+      <g transform="translate(900,0)">
+        <rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+        <text x="25" y="100" fill="#1E293B" font-size="18">04. 餐厅吊灯</text>
+      </g>
+      <g transform="translate(1200,0)">
+        <rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+        <text x="25" y="100" fill="#1E293B" font-size="18">05. 厨房筒灯</text>
+      </g>
+    </g>
+
+    <!-- 第二排 -->
+    <g transform="translate(0,180)">
+      <g transform="translate(0,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">06. 主卧大灯</text></g>
+      <g transform="translate(300,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">07. 主卧壁灯</text></g>
+      <g transform="translate(600,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">08. 衣帽间灯</text></g>
+      <g transform="translate(900,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">09. 次卧照明</text></g>
+      <g transform="translate(1200,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">10. 客卫射灯</text></g>
+    </g>
+
+    <!-- 第三排 -->
+    <g transform="translate(0,360)">
+      <g transform="translate(0,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">11. 书房工作灯</text></g>
+      <g transform="translate(300,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">12. 阳台氛围灯</text></g>
+      <g transform="translate(600,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">13. 书柜内嵌灯</text></g>
+      <g transform="translate(900,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">14. 踢脚线灯</text></g>
+      <g transform="translate(1200,0)"><rect width="280" height="150" rx="25" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" /><text x="25" y="100" fill="#1E293B">15. 景观泛光灯</text></g>
+    </g>
+  </g>
+
+  <!-- [底部：环境控制中心] -->
+  <g transform="translate(370, 680)">
+    <text x="0" y="-15" fill="#64748B" font-size="14" font-weight="bold">环境控制中心</text>
+    
+    <!-- 空调主卡 -->
+    <g>
+      <rect width="580" height="340" rx="40" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+      <text x="40" y="50" fill="#1E293B" font-size="20" font-weight="bold">中央空调系统</text>
+      <!-- 温度控制环 -->
+      <circle cx="150" cy="180" r="80" fill="none" stroke="#F1F5F9" stroke-width="12" />
+      <path d="M 94 124 A 80 80 0 1 1 94 236" fill="none" stroke="#3B82F6" stroke-width="12" stroke-linecap="round" />
+      <text x="150" y="195" text-anchor="middle" fill="#1E293B" font-size="42" font-weight="bold">25.5°</text>
+      
+      <!-- 按钮 -->
+      <rect x="340" y="80" width="200" height="50" rx="25" fill="#3B82F6" />
+      <text x="440" y="112" text-anchor="middle" fill="#FFFFFF">制冷 - 自动</text>
+    </g>
+
+    <!-- 监测看板 -->
+    <g transform="translate(610, 0)">
+      <rect width="870" height="340" rx="40" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+      <text x="40" y="60" fill="#94A3B8" font-size="14">室内温度 / 湿度 / 空气质量</text>
+      <text x="40" y="110" fill="#1E293B" font-size="36" font-weight="bold">26.2 ℃  /  52 %  /  优 (18)</text>
+      <!-- 装饰线 -->
+      <path d="M 40 300 Q 200 220 400 280 T 830 240" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.4" />
+    </g>
+  </g>
+</svg>

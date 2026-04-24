@@ -1,0 +1,30 @@
+<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- 卡片背景：采用极简白瓷感 -->
+  <rect width="300" height="120" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  
+  <!-- 左侧：灯光名称 (通过 HT 数据绑定 'name') -->
+  <text x="30" y="65" fill="#1E293B" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="bold">
+    客厅吊灯
+  </text>
+  
+  <!-- 分隔线 (可选，增加精致感) -->
+  <line x1="30" y1="90" x2="160" y2="90" stroke="#F1F5F9" stroke-width="2" />
+
+  <!-- 右侧：开关控制按钮组 -->
+  <g transform="translate(210, 30)">
+    <!-- 按钮底圆：背景色根据状态切换 -->
+    <!-- HT 逻辑：status === 1 ? '#3B82F6' : '#F1F5F9' -->
+    <circle cx="30" cy="30" r="30" fill="#3B82F6" id="btn_bg" />
+    
+    <!-- 电源图标 (Power Icon) -->
+    <!-- HT 逻辑：status === 1 ? '#FFFFFF' : '#64748B' -->
+    <g transform="translate(18, 18) scale(1.1)">
+      <path d="M12 2v10M18.36 6.64a9 9 0 1 1-12.73 0" 
+            fill="none" 
+            stroke="#FFFFFF" 
+            stroke-width="2.5" 
+            stroke-linecap="round" 
+            id="btn_icon" />
+    </g>
+  </g>
+</svg>
