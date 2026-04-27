@@ -1,0 +1,121 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景渐变 (复刻风格) -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.5" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 有人状态：蓝宝石发光渐变 (复刻风格) -->
+    <radialGradient id="status_occupied" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20 20) rotate(90) scale(30)">
+      <stop stop-color="#7DF9FF" />
+      <stop offset="0.6" stop-color="#0072FF" />
+      <stop offset="1" stop-color="#002060" />
+    </radialGradient>
+
+    <!-- 3. 无人状态：静默灰色质感 -->
+    <radialGradient id="status_vacant" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20 20) rotate(90) scale(30)">
+      <stop stop-color="#F0F0F0" />
+      <stop offset="1" stop-color="#BDC3C7" />
+    </radialGradient>
+
+    <!-- 4. 卡片毛玻璃效果 -->
+    <filter id="glass_blur" x="0" y="0" width="100%" height="100%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+    
+    <!-- 5. 文字发光效果 -->
+    <filter id="text_glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 总体背景 -->
+  <rect width="1200" height="800" rx="40" fill="url(#bg_grad)"/>
+
+  <!-- 顶部标题栏 -->
+  <text x="600" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#002060" filter="url(#text_glow)">18楼 智慧厕卫管理实时监控看板</text>
+  <line x1="100" y1="85" x2="1100" y2="85" stroke="#0072FF" stroke-width="2" stroke-dasharray="10 5" opacity="0.3"/>
+
+  <!-- ================= 18楼北 区域 ================= -->
+  <text x="80" y="130" font-family="Arial" font-size="24" font-weight="bold" fill="#0072FF">● 18楼北 区域监测</text>
+  
+  <!-- 男卫01卡片 (10个点位) -->
+  <g transform="translate(80, 160)">
+    <rect width="500" height="260" rx="25" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="25" y="40" font-size="20" font-weight="bold" fill="#002060">男卫 01 (18N-M01)</text>
+    <text x="350" y="40" font-size="16" fill="#666">占用率: 40%</text>
+    
+    <!-- 模拟点位状态: 0=无人, 1=有人 -->
+    <!-- 第一排 1#-5# -->
+    <circle cx="60" cy="100" r="25" fill="url(#status_occupied)"/> <text x="50" y="155" font-size="12" fill="#002060">1#有人</text>
+    <circle cx="150" cy="100" r="25" fill="url(#status_vacant)"/> <text x="140" y="155" font-size="12" fill="#999">2#空闲</text>
+    <circle cx="240" cy="100" r="25" fill="url(#status_vacant)"/> <text x="230" y="155" font-size="12" fill="#999">3#空闲</text>
+    <circle cx="330" cy="100" r="25" fill="url(#status_occupied)"/> <text x="320" y="155" font-size="12" fill="#002060">4#有人</text>
+    <circle cx="420" cy="100" r="25" fill="url(#status_vacant)"/> <text x="410" y="155" font-size="12" fill="#999">5#空闲</text>
+    <!-- 第二排 6#-10# -->
+    <circle cx="60" cy="200" r="25" fill="url(#status_vacant)"/> <text x="50" y="245" font-size="12" fill="#999">6#空闲</text>
+    <circle cx="150" cy="200" r="25" fill="url(#status_occupied)"/> <text x="140" y="245" font-size="12" fill="#002060">7#有人</text>
+    <circle cx="240" cy="200" r="25" fill="url(#status_vacant)"/> <text x="230" y="245" font-size="12" fill="#999">8#空闲</text>
+    <circle cx="330" cy="200" r="25" fill="url(#status_occupied)"/> <text x="320" y="245" font-size="12" fill="#002060">9#有人</text>
+    <circle cx="420" cy="200" r="25" fill="url(#status_vacant)"/> <text x="410" y="245" font-size="12" fill="#999">10#空闲</text>
+  </g>
+
+  <!-- 女卫01卡片 (8个点位) -->
+  <g transform="translate(620, 160)">
+    <rect width="500" height="260" rx="25" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="25" y="40" font-size="20" font-weight="bold" fill="#D63384">女卫 01 (18N-F01)</text>
+    <text x="350" y="40" font-size="16" fill="#666">占用率: 25%</text>
+    
+    <!-- 模拟点位 11#-18# -->
+    <circle cx="60" cy="100" r="25" fill="url(#status_occupied)"/> <text x="50" y="155" font-size="12" fill="#002060">11#有人</text>
+    <circle cx="150" cy="100" r="25" fill="url(#status_vacant)"/> <text x="140" y="155" font-size="12" fill="#999">12#空闲</text>
+    <circle cx="240" cy="100" r="25" fill="url(#status_vacant)"/> <text x="230" y="155" font-size="12" fill="#999">13#空闲</text>
+    <circle cx="330" cy="100" r="25" fill="url(#status_vacant)"/> <text x="320" y="155" font-size="12" fill="#999">14#空闲</text>
+    <circle cx="60" cy="200" r="25" fill="url(#status_occupied)"/> <text x="50" y="245" font-size="12" fill="#002060">15#有人</text>
+    <circle cx="150" cy="200" r="25" fill="url(#status_vacant)"/> <text x="140" y="245" font-size="12" fill="#999">16#空闲</text>
+    <circle cx="240" cy="200" r="25" fill="url(#status_vacant)"/> <text x="230" y="245" font-size="12" fill="#999">17#空闲</text>
+    <circle cx="330" cy="200" r="25" fill="url(#status_vacant)"/> <text x="320" y="245" font-size="12" fill="#999">18#空闲</text>
+  </g>
+
+  <!-- ================= 18楼南 区域 ================= -->
+  <text x="80" y="470" font-family="Arial" font-size="24" font-weight="bold" fill="#0072FF">● 18楼南 区域监测</text>
+
+  <!-- 男卫02卡片 (5个点位) -->
+  <g transform="translate(80, 500)">
+    <rect width="500" height="200" rx="25" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="25" y="40" font-size="20" font-weight="bold" fill="#002060">男卫 02 (18S-M02)</text>
+    <!-- 点位 1#-5# -->
+    <circle cx="60" cy="110" r="25" fill="url(#status_occupied)"/> <text x="50" y="165" font-size="12" fill="#002060">1#有人</text>
+    <circle cx="150" cy="110" r="25" fill="url(#status_occupied)"/> <text x="140" y="165" font-size="12" fill="#002060">2#有人</text>
+    <circle cx="240" cy="110" r="25" fill="url(#status_vacant)"/> <text x="230" y="165" font-size="12" fill="#999">3#空闲</text>
+    <circle cx="330" cy="110" r="25" fill="url(#status_vacant)"/> <text x="320" y="165" font-size="12" fill="#999">4#空闲</text>
+    <circle cx="420" cy="110" r="25" fill="url(#status_vacant)"/> <text x="410" y="165" font-size="12" fill="#999">5#空闲</text>
+  </g>
+
+  <!-- 女卫02卡片 (7个点位) -->
+  <g transform="translate(620, 500)">
+    <rect width="500" height="200" rx="25" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="25" y="40" font-size="20" font-weight="bold" fill="#D63384">女卫 02 (18S-F02)</text>
+    <!-- 点位 6#-12# -->
+    <circle cx="60" cy="110" r="25" fill="url(#status_vacant)"/> <text x="50" y="165" font-size="12" fill="#999">6#空闲</text>
+    <circle cx="135" cy="110" r="25" fill="url(#status_occupied)"/> <text x="125" y="165" font-size="12" fill="#002060">7#有人</text>
+    <circle cx="210" cy="110" r="25" fill="url(#status_vacant)"/> <text x="200" y="165" font-size="12" fill="#999">8#空闲</text>
+    <circle cx="285" cy="110" r="25" fill="url(#status_vacant)"/> <text x="275" y="165" font-size="12" fill="#999">9#空闲</text>
+    <circle cx="360" cy="110" r="25" fill="url(#status_occupied)"/> <text x="350" y="165" font-size="12" fill="#002060">10#有人</text>
+    <circle cx="435" cy="110" r="25" fill="url(#status_vacant)"/> <text x="425" y="165" font-size="12" fill="#999">11#空闲</text>
+  </g>
+
+  <!-- 底部图例 -->
+  <g transform="translate(480, 750)">
+    <circle cx="0" cy="0" r="10" fill="url(#status_occupied)"/>
+    <text x="20" y="5" font-size="14" fill="#002060">有人 (1)</text>
+    <circle cx="120" cy="0" r="10" fill="url(#status_vacant)"/>
+    <text x="140" y="5" font-size="14" fill="#666">无人 (0)</text>
+  </g>
+</svg>

@@ -1,0 +1,129 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景渐变 (复刻您的源风格) -->
+    <linearGradient id="bg_grad" x1="100" y1="100" x2="1100" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. "有人" 状态：深邃蓝宝石渐变 -->
+    <radialGradient id="grad_occupied" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 20) rotate(90) scale(45)">
+      <stop stop-color="#7DF9FF" /> <!-- 核心高亮 -->
+      <stop offset="0.6" stop-color="#0072FF" /> 
+      <stop offset="1" stop-color="#002060" />
+    </radialGradient>
+
+    <!-- 3. "无人" 状态：磨砂白玻璃渐变 (保持质感统一) -->
+    <radialGradient id="grad_vacant" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 20) rotate(90) scale(45)">
+      <stop stop-color="#FFFFFF" /> 
+      <stop offset="0.7" stop-color="#E0EFFF" /> <!-- 极淡的冰蓝色边缘 -->
+      <stop offset="1" stop-color="#C0D0E0" />
+    </radialGradient>
+
+    <!-- 4. 玻璃表面通用高光 (Shine) -->
+    <linearGradient id="glass_shine" x1="0" y1="-25" x2="0" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 5. "有人" 状态的外发光滤镜 -->
+    <filter id="glow_occupied" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- 整体背景层 -->
+  <rect width="1200" height="900" rx="40" fill="url(#bg_grad)"/>
+
+  <!-- 顶部标题 -->
+  <text x="600" y="70" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="bold" fill="#002060">18楼 智慧厕卫监测实时看板</text>
+
+  <!-- ================= 区域划分：北区 & 南区 ================= -->
+  
+  <!-- 18楼北 (18N) -->
+  <g transform="translate(60, 130)">
+    <rect width="1080" height="340" rx="35" fill="white" fill-opacity="0.4" stroke="white" stroke-width="2"/>
+    <text x="30" y="45" font-size="22" font-weight="bold" fill="#0072FF">18楼北 (North Wing)</text>
+    
+    <!-- 男卫 01 (10点位) -->
+    <g transform="translate(30, 70)">
+      <text font-size="16" fill="#002060" font-weight="bold">男卫 01 (1#-10#)</text>
+      <g transform="translate(0, 30)">
+        <!-- 循环排列示例，根据点表分配状态 -->
+        <!-- 第一排 -->
+        <g transform="translate(40, 40)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">1#有人</text> </g>
+        <g transform="translate(140, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">2#无人</text> </g>
+        <g transform="translate(240, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">3#无人</text> </g>
+        <g transform="translate(340, 40)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">4#有人</text> </g>
+        <g transform="translate(440, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">5#无人</text> </g>
+        <!-- 第二排 -->
+        <g transform="translate(40, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">6#无人</text> </g>
+        <g transform="translate(140, 150)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">7#有人</text> </g>
+        <g transform="translate(240, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">8#无人</text> </g>
+        <g transform="translate(340, 150)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">9#有人</text> </g>
+        <g transform="translate(440, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">10#无人</text> </g>
+      </g>
+    </g>
+
+    <!-- 分割线 -->
+    <line x1="540" y1="80" x2="540" y2="300" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+
+    <!-- 女卫 01 (8点位) -->
+    <g transform="translate(570, 70)">
+      <text font-size="16" fill="#D63384" font-weight="bold">女卫 01 (11#-18#)</text>
+      <g transform="translate(0, 30)">
+        <g transform="translate(50, 40)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">11#</text> </g>
+        <g transform="translate(160, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">12#</text> </g>
+        <g transform="translate(270, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">13#</text> </g>
+        <g transform="translate(380, 40)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">14#</text> </g>
+        <g transform="translate(50, 150)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">15#</text> </g>
+        <g transform="translate(160, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">16#</text> </g>
+        <g transform="translate(270, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">17#</text> </g>
+        <g transform="translate(380, 150)"> <circle r="35" fill="url(#grad_vacant)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#glass_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">18#</text> </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 18楼南 (18S) -->
+  <g transform="translate(60, 500)">
+    <rect width="1080" height="280" rx="35" fill="white" fill-opacity="0.4" stroke="white" stroke-width="2"/>
+    <text x="30" y="45" font-size="22" font-weight="bold" fill="#0072FF">18楼南 (South Wing)</text>
+
+    <!-- 男卫 02 (5点位) -->
+    <g transform="translate(30, 80)">
+       <text font-size="16" fill="#002060" font-weight="bold">男卫 02 (1#-5#)</text>
+       <g transform="translate(40, 70)">
+         <g transform="translate(0, 0)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">1#有人</text> </g>
+         <g transform="translate(100, 0)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">2#有人</text> </g>
+         <g transform="translate(200, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">3#无人</text> </g>
+         <g transform="translate(300, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">4#无人</text> </g>
+         <g transform="translate(400, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">5#无人</text> </g>
+       </g>
+    </g>
+
+    <!-- 女卫 02 (7点位) -->
+    <g transform="translate(570, 80)">
+       <text font-size="16" fill="#D63384" font-weight="bold">女卫 02 (6#-12#)</text>
+       <g transform="translate(40, 70)">
+         <g transform="translate(0, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">6#</text> </g>
+         <g transform="translate(85, 0)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">7#</text> </g>
+         <g transform="translate(170, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">8#</text> </g>
+         <g transform="translate(255, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">9#</text> </g>
+         <g transform="translate(340, 0)"> <circle r="35" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/> <text y="65" text-anchor="middle" font-size="12" fill="#002060">10#</text> </g>
+         <g transform="translate(425, 0)"> <circle r="35" fill="url(#grad_vacant)"/> <text y="65" text-anchor="middle" font-size="12" fill="#99AABB">11#</text> </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- 底部图例 -->
+  <g transform="translate(600, 840)">
+    <circle cx="-130" cy="0" r="18" fill="url(#grad_occupied)" filter="url(#glow_occupied)"/>
+    <text x="-100" y="7" font-size="18" fill="#002060" font-weight="bold">有人 (Occupied)</text>
+    
+    <circle cx="100" cy="0" r="18" fill="url(#grad_vacant)"/>
+    <ellipse cx="100" cy="-8" rx="10" ry="5" fill="url(#glass_shine)"/>
+    <text x="130" y="7" font-size="18" fill="#99AABB" font-weight="bold">无人 (Vacant)</text>
+  </g>
+</svg>

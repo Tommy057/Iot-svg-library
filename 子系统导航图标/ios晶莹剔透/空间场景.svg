@@ -1,0 +1,89 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景：粉白渐变 (完全复刻照明系统) -->
+    <linearGradient id="bg_gradient_light" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. 主体：高透蓝宝石渐变 (完全复刻照明系统) -->
+    <radialGradient id="gem_gradient_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(400)">
+      <stop stop-color="#7DF9FF" /> <!-- 中心：极亮青色 -->
+      <stop offset="0.6" stop-color="#0072FF" /> <!-- 中层：纯蓝 -->
+      <stop offset="1" stop-color="#002060" />   <!-- 边缘：深邃蓝 -->
+    </radialGradient>
+
+    <!-- 3. 玻璃高光 (Gloss) -->
+    <linearGradient id="shine_light" x1="512" y1="232" x2="512" y2="532" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 4. 蓝色投影 -->
+    <filter id="shadow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_light)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <!-- 图标主体 -->
+  <g filter="url(#shadow_light)">
+    
+    <!-- 蓝色玻璃球主体 -->
+    <circle cx="512" cy="512" r="320" fill="url(#gem_gradient_light)"/>
+    
+    <!-- 内部核心图标：空间场景组合符号 -->
+    <g transform="translate(512, 512)">
+      
+      <!-- 中心：场景启动/模式星芒 (代表 Scene/Smart) -->
+      <path d="M0 -70 L 15 -15 L 70 0 L 15 15 L 0 70 L -15 15 L -70 0 L -15 -15 Z" fill="white" />
+      <circle r="12" fill="#7DF9FF" />
+
+      <!-- 左上：灯光符号 (极简灯泡) -->
+      <g transform="translate(-130, -110) scale(0.8)">
+        <circle cx="0" cy="0" r="35" fill="white" opacity="0.8"/>
+        <path d="M-15 35 H 15 V 45 H -15 Z" fill="white" />
+        <line x1="0" y1="-55" x2="0" y2="-45" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        <line x1="-45" y1="-35" x2="-35" y2="-25" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        <line x1="45" y1="-35" x2="35" y2="-25" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      </g>
+
+      <!-- 右上：空调符号 (极简雪花/风) -->
+      <g transform="translate(130, -110) scale(0.8)">
+        <path d="M0 -45 V 45 M-39 -22.5 L 39 22.5 M-39 22.5 L 39 -22.5" stroke="white" stroke-width="12" stroke-linecap="round"/>
+        <circle r="10" fill="white" />
+      </g>
+
+      <!-- 底部：窗帘符号 (拉开的帷幕) -->
+      <g transform="translate(0, 130) scale(0.8)">
+        <!-- 两侧帘布 -->
+        <path d="M-60 -40 C -30 -40, -10 -20, -10 40 L -60 40 Z" fill="white" opacity="0.9"/>
+        <path d="M60 -40 C 30 -40, 10 -20, 10 40 L 60 40 Z" fill="white" opacity="0.9"/>
+        <!-- 顶部轨道线 -->
+        <rect x="-70" y="-50" width="140" height="8" rx="4" fill="white" />
+      </g>
+
+      <!-- 连结线条：体现联动感 -->
+      <circle r="180" stroke="white" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="10 10" />
+    </g>
+
+    <!-- 能量核心光晕 -->
+    <circle cx="512" cy="512" r="160" fill="white" fill-opacity="0.1"/>
+
+    <!-- 玻璃表面高光 -->
+    <ellipse cx="512" cy="352" rx="220" ry="140" fill="url(#shine_light)"/>
+    <circle cx="512" cy="512" r="310" stroke="white" stroke-opacity="0.15" stroke-width="10"/>
+    
+    <!-- 底部反光 -->
+    <path d="M350 682 Q 512 782 674 682" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round"/>
+
+  </g>
+</svg>
