@@ -1,0 +1,73 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="#F2F2F7" />
+
+  <!-- [左侧：大型控制器看板] -->
+  <g transform="translate(40, 60)">
+    <rect width="320" height="680" rx="40" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1" />
+    <text x="40" y="60" fill="#1D1D1F" font-size="24" font-weight="bold">智能空间控制</text>
+    <text x="40" y="90" fill="#8E8E93" font-size="14">Master Node: #001</text>
+    
+    <!-- 装饰：能耗圆环 -->
+    <g transform="translate(160, 240)">
+      <circle r="100" fill="none" stroke="#F2F2F7" stroke-width="20" />
+      <path d="M -70 70 A 100 100 0 1 1 70 70" fill="none" stroke="#007AFF" stroke-width="20" stroke-linecap="round" />
+      <text y="10" text-anchor="middle" fill="#1D1D1F" font-size="32" font-weight="bold">85%</text>
+      <text y="40" text-anchor="middle" fill="#8E8E93" font-size="14">全域运行强度</text>
+    </g>
+
+    <!-- 参数区 -->
+    <g transform="translate(40, 420)">
+      <text fill="#8E8E93" font-size="12">IP ADDRESS</text>
+      <text y="25" fill="#1D1D1F" font-size="18" font-weight="600">192.168.1.10</text>
+      
+      <g transform="translate(0, 70)">
+        <text fill="#8E8E93" font-size="12">DEVICE CODE</text>
+        <text y="25" fill="#1D1D1F" font-size="18" font-weight="600">IOS-CTRL-X9</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- [右侧：4个灯的超级矩阵] -->
+  <g transform="translate(400, 60)">
+    <!-- 每个卡片 360x320, 2x2 布局 -->
+    
+    <!-- 第1个灯 (开启状态) -->
+    <g transform="translate(0, 0)">
+      <rect width="360" height="320" rx="40" fill="#FFFFFF" stroke="#007AFF" stroke-width="2" />
+      <text x="30" y="50" fill="#1D1D1F" font-size="22" font-weight="bold">客厅吊灯</text>
+      <text x="30" y="80" fill="#007AFF" font-size="14">智能灯光 · 运行中</text>
+      
+      <!-- 视觉填充：大型发光图标 -->
+      <circle cx="180" cy="180" r="60" fill="#007AFF" opacity="0.1" />
+      <circle cx="180" cy="180" r="45" fill="#007AFF" />
+      <path d="M180 165 L180 175 M190 170 A15 15 0 1 1 170 170" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" transform="translate(0,5)" />
+      
+      <!-- 底部亮度条 (即使无此功能也可作为UI饱满度设计) -->
+      <rect x="30" y="270" width="300" height="8" rx="4" fill="#F2F2F7" />
+      <rect x="30" y="270" width="240" height="8" rx="4" fill="#007AFF" />
+    </g>
+
+    <!-- 第2个灯 (关闭状态) -->
+    <g transform="translate(400, 0)">
+      <rect width="360" height="320" rx="40" fill="#FFFFFF" stroke="#E5E5EA" />
+      <text x="30" y="50" fill="#1D1D1F" font-size="22" font-weight="bold" opacity="0.6">走廊壁灯</text>
+      <text x="30" y="80" fill="#8E8E93" font-size="14">智能灯光 · 已关闭</text>
+      
+      <circle cx="180" cy="180" r="45" fill="#F2F2F7" />
+      <path d="M180 165 L180 175 M190 170 A15 15 0 1 1 170 170" fill="none" stroke="#C7C7CC" stroke-width="4" stroke-linecap="round" transform="translate(0,5)" />
+      
+      <rect x="30" y="270" width="300" height="8" rx="4" fill="#F2F2F7" />
+    </g>
+
+    <!-- 下方两个... (类推) -->
+    <g transform="translate(0, 360)">
+        <rect width="360" height="320" rx="40" fill="#FFFFFF" stroke="#E5E5EA" />
+        <text x="30" y="50" fill="#1D1D1F" font-size="22" font-weight="bold" opacity="0.6">背景灯带</text>
+    </g>
+    <g transform="translate(400, 360)">
+        <rect width="360" height="320" rx="40" fill="#FFFFFF" stroke="#E5E5EA" />
+        <text x="30" y="50" fill="#1D1D1F" font-size="22" font-weight="bold" opacity="0.6">餐厅主灯</text>
+    </g>
+  </g>
+</svg>

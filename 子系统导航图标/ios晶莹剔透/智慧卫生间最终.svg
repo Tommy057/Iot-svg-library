@@ -1,0 +1,50 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景渐变：完全复刻源文件 -->
+    <linearGradient id="bg_gradient_light" x1="100" y1="100" x2="924" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#FFF0F3" />
+      <stop offset="1" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 蓝宝石材质：完全复刻源文件颜色 -->
+    <radialGradient id="gem_gradient_light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 480) rotate(90) scale(400)">
+      <stop stop-color="#7DF9FF" /> 
+      <stop offset="0.6" stop-color="#0072FF" /> 
+      <stop offset="1" stop-color="#002060" />   
+    </radialGradient>
+
+    <!-- 玻璃高光 -->
+    <linearGradient id="shine_light" x1="512" y1="250" x2="512" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 蓝色投影 -->
+    <filter id="shadow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="30" />
+      <feOffset dx="0" dy="30" result="offsetblur"/>
+      <feFlood flood-color="#0055FF" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="240" fill="url(#bg_gradient_light)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="230" stroke="white" stroke-opacity="0.6" stroke-width="4"/>
+
+  <g filter="url(#shadow_light)">
+    <!-- 形状变化：将男女符号组合成一个蓝宝石主体 -->
+    <path d="M360 260 C 390 260 415 285 415 315 C 415 345 390 370 360 370 C 330 370 305 345 305 315 C 305 285 330 260 360 260 Z
+             M300 390 H 420 V 680 C 420 700 400 720 380 720 H 340 C 320 720 300 700 300 680 V 390 Z
+             M660 260 C 690 260 715 285 715 315 C 715 345 690 370 660 370 C 630 370 605 345 605 315 C 605 285 630 260 660 260 Z
+             M600 390 L 530 720 H 790 L 720 390 H 600 Z" fill="url(#gem_gradient_light)"/>
+    
+    <!-- 叠加白色核心（代表激光/状态） -->
+    <path d="M300 520 H 720" stroke="white" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+    
+    <!-- 玻璃表面质感 -->
+    <path d="M300 390 H 420 V 450 Q 360 500 300 450 Z" fill="url(#shine_light)" opacity="0.5"/>
+    <path d="M600 390 L 530 720 H 790 L 720 390 Z" fill="url(#shine_light)" opacity="0.2"/>
+  </g>
+</svg>

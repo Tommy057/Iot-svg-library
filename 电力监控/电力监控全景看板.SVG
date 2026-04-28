@@ -1,0 +1,111 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 风格软阴影 -->
+    <filter id="ios-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" />
+      <feOffset dx="0" dy="8" />
+      <feFlood flood-color="#000000" flood-opacity="0.06" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    
+    <!-- 蓝色渐变 (电压) -->
+    <linearGradient id="volt-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5AC8FA" />
+      <stop offset="100%" stop-color="#007AFF" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="#F2F2F7" />
+
+  <!-- 1. 顶部标题栏 -->
+  <g transform="translate(40, 40)">
+    <text fill="#1D1D1F" font-family="sans-serif" font-size="28" font-weight="700">1# 变压器实时电力监控</text>
+    <text y="30" fill="#8E8E93" font-size="14">POWER DISTRIBUTION MONITORING SYSTEM</text>
+    <rect x="0" y="50" width="1120" height="1" fill="#E5E5EA" />
+  </g>
+
+  <!-- 2. 中央核心指标 (总有功功率 & 频率) -->
+  <g transform="translate(40, 120)">
+    <!-- 总有功功率大卡片 -->
+    <rect width="540" height="240" rx="40" fill="#FFFFFF" filter="url(#ios-shadow)" />
+    <text x="40" y="50" fill="#8E8E93" font-size="14" font-weight="600">总有功功率 (P Total)</text>
+    <text x="40" y="120" fill="#1D1D1F" font-family="Arial" font-size="64" font-weight="bold">128.5 <tspan font-size="24" fill="#8E8E93">kW</tspan></text>
+    <!-- 装饰性波形图 (Sparkline) -->
+    <path d="M 40 200 Q 100 160 160 190 T 280 170 T 400 210 T 500 180" fill="none" stroke="#007AFF" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+    
+    <!-- 频率卡片 (Hz) -->
+    <g transform="translate(580, 0)">
+      <rect width="250" height="240" rx="40" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <text x="30" y="50" fill="#8E8E93" font-size="14">系统频率</text>
+      <text x="30" y="120" fill="#34C759" font-size="48" font-weight="bold">50.02</text>
+      <text x="30" y="150" fill="#8E8E93" font-size="14">Hz (Stable)</text>
+    </g>
+
+    <!-- 功率因数卡片 (PF) -->
+    <g transform="translate(870, 0)">
+      <rect width="250" height="240" rx="40" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <text x="30" y="50" fill="#8E8E93" font-size="14">功率因数 (PF)</text>
+      <circle cx="125" cy="140" r="60" fill="none" stroke="#F2F2F7" stroke-width="12" />
+      <path d="M 125 80 A 60 60 0 1 1 100 195" fill="none" stroke="#FF9500" stroke-width="12" stroke-linecap="round" />
+      <text x="125" y="150" text-anchor="middle" fill="#1D1D1F" font-size="28" font-weight="bold">0.96</text>
+    </g>
+  </g>
+
+  <!-- 3. 三相电压监控 (Ua, Ub, Uc) -->
+  <g transform="translate(40, 400)">
+    <rect width="540" height="340" rx="40" fill="#FFFFFF" filter="url(#ios-shadow)" />
+    <text x="30" y="45" fill="#1D1D1F" font-size="18" font-weight="700">三相电压监控 (Voltage)</text>
+    
+    <!-- A相 -->
+    <g transform="translate(30, 80)">
+      <text fill="#8E8E93" font-size="12">Phase A</text>
+      <text x="440" y="25" text-anchor="end" fill="#1D1D1F" font-size="20" font-weight="600">231.5 V</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="460" height="8" rx="4" fill="url(#volt-grad)" />
+    </g>
+    <!-- B相 -->
+    <g transform="translate(30, 160)">
+      <text fill="#8E8E93" font-size="12">Phase B</text>
+      <text x="440" y="25" text-anchor="end" fill="#1D1D1F" font-size="20" font-weight="600">229.8 V</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="455" height="8" rx="4" fill="url(#volt-grad)" />
+    </g>
+    <!-- C相 -->
+    <g transform="translate(30, 240)">
+      <text fill="#8E8E93" font-size="12">Phase C</text>
+      <text x="440" y="25" text-anchor="end" fill="#1D1D1F" font-size="20" font-weight="600">230.2 V</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="458" height="8" rx="4" fill="url(#volt-grad)" />
+    </g>
+  </g>
+
+  <!-- 4. 三相电流监控 (Ia, Ib, Ic) -->
+  <g transform="translate(620, 400)">
+    <rect width="540" height="340" rx="40" fill="#FFFFFF" filter="url(#ios-shadow)" />
+    <text x="30" y="45" fill="#1D1D1F" font-size="18" font-weight="700">三相电流监控 (Current)</text>
+    
+    <!-- Ia -->
+    <g transform="translate(30, 80)">
+      <text fill="#8E8E93" font-size="12">Ia</text>
+      <text x="440" y="25" text-anchor="end" fill="#34C759" font-size="20" font-weight="600">45.2 A</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="220" height="8" rx="4" fill="#34C759" />
+    </g>
+    <!-- Ib -->
+    <g transform="translate(30, 160)">
+      <text fill="#8E8E93" font-size="12">Ib</text>
+      <text x="440" y="25" text-anchor="end" fill="#34C759" font-size="20" font-weight="600">44.8 A</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="215" height="8" rx="4" fill="#34C759" />
+    </g>
+    <!-- Ic -->
+    <g transform="translate(30, 240)">
+      <text fill="#8E8E93" font-size="12">Ic</text>
+      <text x="440" y="25" text-anchor="end" fill="#34C759" font-size="20" font-weight="600">46.5 A</text>
+      <rect y="35" width="480" height="8" rx="4" fill="#F2F2F7" />
+      <rect y="35" width="230" height="8" rx="4" fill="#34C759" />
+    </g>
+  </g>
+</svg>
