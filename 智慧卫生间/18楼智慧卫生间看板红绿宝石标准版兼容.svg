@@ -1,0 +1,123 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 背景渐变 (复刻风格) -->
+    <linearGradient id="board_bg_grad" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FFF0F3" />
+      <stop offset="100%" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 2. "有人" 状态：红宝石渐变 (Ruby Style) -->
+    <radialGradient id="board_grad_red" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#FF9999" /> <!-- 中心高亮 -->
+      <stop offset="60%" stop-color="#CC0000" /> <!-- 中层纯红 -->
+      <stop offset="100%" stop-color="#660000" /> <!-- 边缘深红 -->
+    </radialGradient>
+
+    <!-- 3. "无人" 状态：祖母绿渐变 (Emerald Style) -->
+    <radialGradient id="board_grad_green" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#A2FF9E" /> <!-- 中心亮绿 -->
+      <stop offset="60%" stop-color="#007F16" /> <!-- 中层森林绿 -->
+      <stop offset="100%" stop-color="#003D0B" /> <!-- 边缘深绿 -->
+    </radialGradient>
+
+    <!-- 4. 通用球体高光 (Shine) -->
+    <linearGradient id="board_sphere_shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 5. 发光滤镜 (让红绿灯更有指示感) -->
+    <filter id="board_glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- 总体背景 -->
+  <rect width="1200" height="900" rx="40" fill="url(#board_bg_grad)"/>
+
+  <!-- 顶部标题 -->
+  <text x="600" y="70" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="bold" fill="#002060">18楼 智慧厕卫管理实时监控看板 (红/绿状态版)</text>
+
+  <!-- ================= 18楼北区 (North Wing) ================= -->
+  <g transform="translate(60, 130)">
+    <rect width="1080" height="340" rx="35" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="30" y="45" font-size="22" font-weight="bold" fill="#0072FF">18楼北区域 (North Wing)</text>
+    
+    <!-- 男卫 01 (10位) -->
+    <g transform="translate(30, 70)">
+      <text font-size="16" fill="#002060" font-weight="bold">男卫 01 (1#-10#)</text>
+      <g transform="translate(0, 30)">
+        <!-- 使用红/绿球体 -->
+        <g transform="translate(40, 40)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#board_sphere_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000" font-weight="bold">1#有人</text> </g>
+        <g transform="translate(140, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#board_sphere_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">2#无人</text> </g>
+        <g transform="translate(240, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#board_sphere_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">3#无人</text> </g>
+        <g transform="translate(340, 40)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#board_sphere_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000" font-weight="bold">4#有人</text> </g>
+        <g transform="translate(440, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <ellipse cy="-15" rx="22" ry="12" fill="url(#board_sphere_shine)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">5#无人</text> </g>
+        <!-- 第二排 -->
+        <g transform="translate(40, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">6#无人</text> </g>
+        <g transform="translate(140, 150)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000" font-weight="bold">7#有人</text> </g>
+        <g transform="translate(240, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">8#无人</text> </g>
+        <g transform="translate(340, 150)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000" font-weight="bold">9#有人</text> </g>
+        <g transform="translate(440, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">10#无人</text> </g>
+      </g>
+    </g>
+
+    <!-- 女卫 01 (8位) -->
+    <g transform="translate(570, 70)">
+      <text font-size="16" fill="#D63384" font-weight="bold">女卫 01 (11#-18#)</text>
+      <g transform="translate(0, 30)">
+        <g transform="translate(50, 40)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">11#有人</text> </g>
+        <g transform="translate(160, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">12#无人</text> </g>
+        <g transform="translate(270, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">13#无人</text> </g>
+        <g transform="translate(380, 40)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">14#无人</text> </g>
+        <g transform="translate(50, 150)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">15#有人</text> </g>
+        <g transform="translate(160, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">16#</text> </g>
+        <g transform="translate(270, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">17#</text> </g>
+        <g transform="translate(380, 150)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">18#</text> </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= 18楼南区 (South Wing) ================= -->
+  <g transform="translate(60, 520)">
+    <rect width="1080" height="280" rx="35" fill="white" fill-opacity="0.5" stroke="white" stroke-width="2"/>
+    <text x="30" y="45" font-size="22" font-weight="bold" fill="#0072FF">18楼南区域 (South Wing)</text>
+    
+    <!-- 男卫 02 (5位) -->
+    <g transform="translate(30, 80)">
+       <text font-size="16" fill="#002060" font-weight="bold">男卫 02 (1#-5#)</text>
+       <g transform="translate(40, 70)">
+         <g transform="translate(0, 0)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">1#有人</text> </g>
+         <g transform="translate(100, 0)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">2#有人</text> </g>
+         <g transform="translate(200, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">3#无人</text> </g>
+         <g transform="translate(300, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">4#无人</text> </g>
+         <g transform="translate(400, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">5#无人</text> </g>
+       </g>
+    </g>
+
+    <!-- 女卫 02 (7位) -->
+    <g transform="translate(570, 80)">
+       <text font-size="16" fill="#D63384" font-weight="bold">女卫 02 (6#-12#)</text>
+       <g transform="translate(40, 70)">
+         <g transform="translate(0, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">6#</text> </g>
+         <g transform="translate(90, 0)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">7#</text> </g>
+         <g transform="translate(180, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">8#</text> </g>
+         <g transform="translate(270, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">9#</text> </g>
+         <g transform="translate(360, 0)"> <circle r="35" fill="url(#board_grad_red)" filter="url(#board_glow)"/> <text y="65" text-anchor="middle" font-size="12" fill="#660000">10#</text> </g>
+         <g transform="translate(450, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">11#</text> </g>
+         <g transform="translate(540, 0)"> <circle r="35" fill="url(#board_grad_green)"/> <text y="65" text-anchor="middle" font-size="12" fill="#003D0B">12#</text> </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- 底部图例 -->
+  <g transform="translate(600, 850)">
+    <circle cx="-130" cy="0" r="18" fill="url(#board_grad_red)" filter="url(#board_glow)"/>
+    <text x="-100" y="7" font-size="18" fill="#660000" font-weight="bold">有人 (Occupied)</text>
+    
+    <circle cx="100" cy="0" r="18" fill="url(#board_grad_green)"/>
+    <text x="130" y="7" font-size="18" fill="#003D0B" font-weight="bold">无人 (Vacant)</text>
+  </g>
+</svg>

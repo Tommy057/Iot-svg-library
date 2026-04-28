@@ -1,0 +1,131 @@
+<svg width="1200" height="850" viewBox="0 0 1200 850" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 风格软阴影 -->
+    <filter id="ios-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="6" />
+      <feFlood flood-color="#000000" flood-opacity="0.06" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="850" fill="#F2F2F7" />
+
+  <!-- [顶部全局统计区] -->
+  <g transform="translate(40, 30)">
+    <text x="0" y="30" fill="#1D1D1F" font-family="sans-serif" font-size="28" font-weight="700">18楼 智慧卫生间实时监控</text>
+    <rect x="0" y="50" width="1120" height="2" fill="white" />
+    
+    <!-- 全层统计卡片 -->
+    <g transform="translate(750, -5)">
+      <rect width="370" height="90" rx="25" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <g transform="translate(30, 35)">
+        <text fill="#8E8E93" font-size="12">全层侧位利用率</text>
+        <text y="35" fill="#1D1D1F" font-size="32" font-weight="700">22 <tspan font-size="16" fill="#8E8E93">/ 30 已占用</tspan></text>
+      </g>
+      <circle cx="310" cy="45" r="25" fill="#FF3B30" opacity="0.1" />
+      <text x="310" y="52" text-anchor="middle" fill="#FF3B30" font-size="20" font-weight="bold">!</text>
+    </g>
+  </g>
+
+  <!-- [18 楼 北翼] -->
+  <g transform="translate(40, 150)">
+    <text fill="#8E8E93" font-size="14" font-weight="600" letter-spacing="2">18F NORTH · 北翼区</text>
+    
+    <!-- 男卫 01 (10 侧位) -->
+    <g transform="translate(0, 30)">
+      <rect width="550" height="300" rx="32" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <rect width="6" height="40" x="0" y="30" fill="#007AFF" rx="3" /> <!-- 装饰条 -->
+      <text x="25" y="55" fill="#1D1D1F" font-weight="700" font-size="20">男卫生间 01</text>
+      
+      <!-- 侧位矩阵 5x2 -->
+      <g transform="translate(25, 90)">
+        <!-- 侧位 1 (有人-红色) -->
+        <g>
+          <rect width="90" height="85" rx="18" fill="#FFF2F2" stroke="#FF3B30" stroke-width="1.5" />
+          <text x="45" y="35" text-anchor="middle" fill="#FF3B30" font-size="14" font-weight="bold">1# 有人</text>
+          <rect x="35" y="55" width="20" height="4" rx="2" fill="#FF3B30" />
+        </g>
+        <!-- 侧位 2 (无人-绿色) -->
+        <g transform="translate(105, 0)">
+          <rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" stroke-width="1" />
+          <text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14" font-weight="bold">2# 无人</text>
+          <rect x="35" y="55" width="20" height="4" rx="2" fill="#34C759" />
+        </g>
+        <!-- 循环节点演示 (3,4,5) -->
+        <g transform="translate(210, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">3# 无人</text></g>
+        <g transform="translate(315, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">4# 无人</text></g>
+        <g transform="translate(420, 0)"><rect width="90" height="85" rx="18" fill="#FFF2F2" stroke="#FF3B30" stroke-width="1.5" /><text x="45" y="35" text-anchor="middle" fill="#FF3B30" font-size="14">5# 有人</text></g>
+        
+        <!-- 下排 (6-10) -->
+        <g transform="translate(0, 100)">
+          <g transform="translate(0, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">6# 无人</text></g>
+          <g transform="translate(105, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">7# 无人</text></g>
+          <g transform="translate(210, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">8# 无人</text></g>
+          <g transform="translate(315, 0)"><rect width="90" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="35" text-anchor="middle" fill="#34C759" font-size="14">9# 无人</text></g>
+          <g transform="translate(420, 0)"><rect width="90" height="85" rx="18" fill="#FFF2F2" stroke="#FF3B30" /><text x="45" y="35" text-anchor="middle" fill="#FF3B30" font-size="14">10# 有人</text></g>
+        </g>
+      </g>
+    </g>
+
+    <!-- 女卫 01 (8 侧位) -->
+    <g transform="translate(570, 30)">
+      <rect width="550" height="300" rx="32" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <rect width="6" height="40" x="0" y="30" fill="#FF2D55" rx="3" /> <!-- 红色装饰条 -->
+      <text x="25" y="55" fill="#1D1D1F" font-weight="700" font-size="20">女卫生间 01</text>
+      
+      <g transform="translate(25, 90)">
+        <!-- 4x2 布局 -->
+        <g transform="translate(0,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">11# 无人</text></g>
+        <g transform="translate(130,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">12# 无人</text></g>
+        <g transform="translate(260,0)"><rect width="120" height="85" rx="18" fill="#FFF2F2" stroke="#FF3B30" /><text x="60" y="45" text-anchor="middle" fill="#FF3B30">13# 有人</text></g>
+        <g transform="translate(390,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">14# 无人</text></g>
+        <!-- 下排 -->
+        <g transform="translate(0,100)">
+          <g transform="translate(0,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">15# 无人</text></g>
+          <g transform="translate(130,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">16# 无人</text></g>
+          <g transform="translate(260,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">17# 无人</text></g>
+          <g transform="translate(390,0)"><rect width="120" height="85" rx="18" fill="#F2FAF5" stroke="#34C759" /><text x="60" y="45" text-anchor="middle" fill="#34C759">18# 无人</text></g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- [18 楼 南翼] -->
+  <g transform="translate(40, 500)">
+    <text fill="#8E8E93" font-size="14" font-weight="600" letter-spacing="2">18F SOUTH · 南翼区</text>
+    
+    <!-- 男卫 02 (5 侧位) -->
+    <g transform="translate(0, 30)">
+      <rect width="550" height="280" rx="32" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <text x="25" y="55" fill="#1D1D1F" font-weight="700" font-size="20">男卫生间 02</text>
+      <g transform="translate(25, 90)">
+        <g transform="translate(0,0)"><rect width="90" height="150" rx="20" fill="#FFF2F2" stroke="#FF3B30" stroke-width="2" /><text x="45" y="70" text-anchor="middle" fill="#FF3B30" font-weight="bold">1# 有人</text></g>
+        <g transform="translate(105,0)"><rect width="90" height="150" rx="20" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="70" text-anchor="middle" fill="#34C759">2# 无人</text></g>
+        <g transform="translate(210,0)"><rect width="90" height="150" rx="20" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="70" text-anchor="middle" fill="#34C759">3# 无人</text></g>
+        <g transform="translate(315,0)"><rect width="90" height="150" rx="20" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="70" text-anchor="middle" fill="#34C759">4# 无人</text></g>
+        <g transform="translate(420,0)"><rect width="90" height="150" rx="20" fill="#F2FAF5" stroke="#34C759" /><text x="45" y="70" text-anchor="middle" fill="#34C759">5# 无人</text></g>
+      </g>
+    </g>
+
+    <!-- 女卫 02 (7 侧位) -->
+    <g transform="translate(570, 30)">
+      <rect width="550" height="280" rx="32" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <text x="25" y="55" fill="#1D1D1F" font-weight="700" font-size="20">女卫生间 02</text>
+      <g transform="translate(25, 90)">
+        <!-- 4x2 布局 -->
+        <g transform="translate(0,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">6# 无人</text></g>
+        <g transform="translate(125,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">7# 无人</text></g>
+        <g transform="translate(250,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">8# 无人</text></g>
+        <g transform="translate(375,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">9# 无人</text></g>
+        <g transform="translate(0,80)">
+          <g transform="translate(0,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">10# 无人</text></g>
+          <g transform="translate(125,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">11# 无人</text></g>
+          <g transform="translate(250,0)"><rect width="115" height="70" rx="15" fill="#F2FAF5" stroke="#34C759" /><text x="57" y="40" text-anchor="middle" fill="#34C759">12# 无人</text></g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
