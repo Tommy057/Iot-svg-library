@@ -1,0 +1,47 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- iOS 风格软阴影 -->
+  <filter id="ios-shadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+    <feOffset dx="0" dy="4" />
+    <feFlood flood-color="#000000" flood-opacity="0.05" />
+    <feComposite in2="offsetblur" operator="in" />
+    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+  </filter>
+
+  <rect width="1200" height="800" fill="#F2F2F7" />
+
+  <!-- 18楼全景统计 -->
+  <g transform="translate(40, 40)">
+    <text fill="#1D1D1F" font-family="sans-serif" font-size="28" font-weight="700">18楼智慧厕卫监控 (红绿增强版)</text>
+    <g transform="translate(900, 0)">
+      <rect width="220" height="80" rx="20" fill="#FFFFFF" filter="url(#ios-shadow)" />
+      <text x="20" y="35" fill="#8E8E93" font-size="12">当前全层空闲</text>
+      <text x="20" y="65" fill="#34C759" font-size="32" font-weight="700">24 <tspan font-size="16" fill="#8E8E93">Slots</tspan></text>
+    </g>
+  </g>
+
+  <!-- 男卫01 示例 (10侧位) -->
+  <g transform="translate(40, 160)">
+    <rect width="1120" height="280" rx="32" fill="#FFFFFF" filter="url(#ios-shadow)" />
+    <text x="30" y="45" fill="#1D1D1F" font-weight="700" font-size="20">男卫生间 01 - 实时位图</text>
+    
+    <g transform="translate(30, 80)">
+      <!-- 1# 有人 (红色) -->
+      <g>
+        <rect width="100" height="80" rx="18" fill="#FFF2F2" stroke="#FF3B30" stroke-width="2" />
+        <text x="50" y="35" text-anchor="middle" fill="#FF3B30" font-weight="bold">1# 有人</text>
+        <circle cx="50" cy="55" r="4" fill="#FF3B30" />
+      </g>
+      <!-- 2# 无人 (绿色) -->
+      <g transform="translate(110, 0)">
+        <rect width="100" height="80" rx="18" fill="#F2FFF5" stroke="#34C759" stroke-width="1.5" />
+        <text x="50" y="35" text-anchor="middle" fill="#34C759">2# 无人</text>
+        <circle cx="50" cy="55" r="4" fill="#34C759" opacity="0.4" />
+      </g>
+      <!-- ... 重复逻辑 ... -->
+      <g transform="translate(220, 0)"><rect width="100" height="80" rx="18" fill="#F2FFF5" stroke="#34C759" /><text x="50" y="45" text-anchor="middle" fill="#34C759">3# 无人</text></g>
+      <g transform="translate(330, 0)"><rect width="100" height="80" rx="18" fill="#F2FFF5" stroke="#34C759" /><text x="50" y="45" text-anchor="middle" fill="#34C759">4# 无人</text></g>
+      <g transform="translate(440, 0)"><rect width="100" height="80" rx="18" fill="#F2FFF5" stroke="#34C759" /><text x="50" y="45" text-anchor="middle" fill="#34C759">5# 无人</text></g>
+    </g>
+  </g>
+</svg>

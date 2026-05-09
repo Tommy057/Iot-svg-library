@@ -1,0 +1,138 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 柔和阴影 -->
+    <filter id="ios-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="6" />
+      <feFlood flood-color="#000000" flood-opacity="0.06" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景底色 -->
+  <rect width="1920" height="1080" fill="#F2F2F7" />
+
+  <!-- =================================================== -->
+  <!-- [ 1. 左侧：空间场景主控制器 ] -->
+  <!-- =================================================== -->
+  <g transform="translate(40, 40)" filter="url(#ios-shadow)">
+    <rect width="320" height="1000" rx="40" fill="#FFFFFF" />
+    <text x="40" y="60" fill="#1D1D1F" font-family="sans-serif" font-size="24" font-weight="700">空间场景控制中心</text>
+    <text x="40" y="90" fill="#8E8E93" font-size="12">SPATIAL CORE V2</text>
+    
+    <!-- 大控制按钮 -->
+    <rect x="40" y="140" width="240" height="120" rx="28" fill="#007AFF" />
+    <text x="60" y="195" fill="#FFFFFF" font-size="20" font-weight="bold">一键全开</text>
+    <circle cx="220" cy="200" r="25" fill="rgba(255,255,255,0.2)" />
+    
+    <!-- 状态参数 -->
+    <g transform="translate(40, 320)">
+      <text fill="#8E8E93" font-size="12">网络地址</text>
+      <text y="25" fill="#1D1D1F" font-size="16" font-weight="bold">192.168.1.105</text>
+      
+      <text y="70" fill="#8E8E93" font-size="12">当前场景</text>
+      <text y="95" fill="#34C759" font-size="16" font-weight="bold">● 迎宾就绪</text>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- [ 2. 右上方：灯光控制矩阵 (10路极简卡片) ] -->
+  <!-- =================================================== -->
+  <g transform="translate(400, 40)">
+    <text fill="#8E8E93" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="2">灯光回路控制 (LIGHTS)</text>
+    <g transform="translate(0, 25)">
+      <!-- 第一排 (01-05) -->
+      <g>
+        <g transform="translate(0,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F" font-weight="bold">01. 会客吊灯</text><text x="25" y="70" fill="#007AFF" font-size="12">已开启</text><circle cx="230" cy="50" r="18" fill="#007AFF" /></g>
+        <g transform="translate(300,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F" font-weight="bold">02. 吧台壁灯</text><text x="25" y="70" fill="#8E8E93" font-size="12">已关闭</text><circle cx="230" cy="50" r="18" fill="#F2F2F7" /></g>
+        <g transform="translate(600,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F" font-weight="bold">03. 走廊射灯</text></g>
+        <g transform="translate(900,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F" font-weight="bold">04. 背景灯带</text></g>
+        <g transform="translate(1200,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F" font-weight="bold">05. 景观泛光</text></g>
+      </g>
+      <!-- 第二排 (06-10) -->
+      <g transform="translate(0, 120)">
+        <g transform="translate(0,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F">06. 主卧筒灯</text></g>
+        <g transform="translate(300,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F">07. 主卧射灯</text></g>
+        <g transform="translate(600,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F">08. 次卧大灯</text></g>
+        <g transform="translate(900,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F">09. 厨房照明</text></g>
+        <g transform="translate(1200,0)"><rect width="280" height="100" rx="24" fill="#FFFFFF" filter="url(#ios-shadow)" /><text x="25" y="45" fill="#1D1D1F">10. 阳台灯带</text></g>
+      </g>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- [ 3. 右下方：窗帘控制系统 (6个带分段快选的超级卡片) ] -->
+  <!-- =================================================== -->
+  <g transform="translate(400, 340)">
+    <text fill="#8E8E93" font-family="sans-serif" font-size="14" font-weight="bold" letter-spacing="2">窗帘控制系统 (CURTAINS)</text>
+    
+    <g transform="translate(0, 25)">
+      <!-- 01. 窗帘卡片示例 -->
+      <g transform="translate(0, 0)">
+        <rect width="470" height="280" rx="36" fill="#FFFFFF" filter="url(#ios-shadow)" />
+        <text x="30" y="45" fill="#1D1D1F" font-size="20" font-weight="bold">01. 南侧落地大窗帘</text>
+        
+        <!-- 窗帘开合指示与读百分比 -->
+        <g transform="translate(30, 70)">
+           <rect width="60" height="60" rx="6" fill="none" stroke="#E5E5EA" stroke-width="2" />
+           <rect width="60" height="40" rx="6" fill="#007AFF" opacity="0.4" /> <!-- 模拟70%高度 -->
+           <text x="75" y="30" fill="#007AFF" font-size="24" font-weight="bold">66%</text>
+           <text x="75" y="52" fill="#8E8E93" font-size="11">CURRENT POS</text>
+        </g>
+
+        <!-- 动作按钮组 (上/停/下) -->
+        <g transform="translate(240, 75)">
+           <circle cx="0" cy="0" r="24" fill="#F2F2F7" /><path d="M-6 3 L0 -3 L6 3" fill="none" stroke="#1D1D1F" stroke-width="2.5" />
+           <circle cx="65" cy="0" r="24" fill="#F2F2F7" /><rect x="57" y="-8" width="16" height="16" rx="3" fill="#1D1D1F" />
+           <circle cx="130" cy="0" r="24" fill="#F2F2F7" /><path d="M124 -3 L130 3 L136 -3" fill="none" stroke="#1D1D1F" stroke-width="2.5" />
+        </g>
+
+        <!-- 【分段式百分比快选按钮】 (0% - 33% - 66% - 100%) -->
+        <g transform="translate(30, 185)">
+           <text y="-12" fill="#8E8E93" font-size="12" font-weight="600">目标开度设定 (SET POINT)</text>
+           <!-- 槽背景 -->
+           <rect width="410" height="50" rx="18" fill="#F2F2F7" />
+           
+           <!-- 段位1 (全关) -->
+           <g transform="translate(5, 5)">
+             <rect width="95" height="40" rx="14" fill="#F2F2F7" /> <!-- 未激活状态 -->
+             <text x="47.5" y="25" text-anchor="middle" fill="#8E8E93" font-size="13" font-weight="600">全关</text>
+           </g>
+           
+           <!-- 段位2 (33%) -->
+           <g transform="translate(105, 5)">
+             <rect width="95" height="40" rx="14" fill="#F2F2F7" />
+             <text x="47.5" y="25" text-anchor="middle" fill="#8E8E93" font-size="13">33%</text>
+           </g>
+
+           <!-- 段位3 (66%) - 假设当前处于激活状态 -->
+           <g transform="translate(205, 5)">
+             <rect width="95" height="40" rx="14" fill="#007AFF" /> <!-- 激活：蓝色背景 -->
+             <text x="47.5" y="25" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="bold">66%</text>
+           </g>
+
+           <!-- 段位4 (全开) -->
+           <g transform="translate(305, 5)">
+             <rect width="100" height="40" rx="14" fill="#F2F2F7" />
+             <text x="50" y="25" text-anchor="middle" fill="#8E8E93" font-size="13">全开</text>
+           </g>
+        </g>
+      </g>
+
+      <!-- 02. 窗帘卡片示例 -->
+      <g transform="translate(500, 0)">
+        <rect width="470" height="280" rx="36" fill="#FFFFFF" filter="url(#ios-shadow)" />
+        <text x="30" y="45" fill="#1D1D1F" font-size="20" font-weight="bold">02. 西侧中空遮阳帘</text>
+        <g transform="translate(30, 185)">
+           <rect width="410" height="50" rx="18" fill="#F2F2F7" />
+           <!-- 假设全开关卡激活 -->
+           <g transform="translate(5, 5)"><rect width="95" height="40" rx="14" fill="#007AFF" /><text x="47.5" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="bold">全关</text></g>
+           <g transform="translate(105, 5)"><rect width="95" height="40" rx="14" fill="#F2F2F7" /><text x="47.5" y="25" text-anchor="middle" fill="#8E8E93">33%</text></g>
+           <g transform="translate(205, 5)"><rect width="95" height="40" rx="14" fill="#F2F2F7" /><text x="47.5" y="25" text-anchor="middle" fill="#8E8E93">66%</text></g>
+           <g transform="translate(305, 5)"><rect width="100" height="40" rx="14" fill="#F2F2F7" /><text x="50" y="25" text-anchor="middle" fill="#8E8E93">全开</text></g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
