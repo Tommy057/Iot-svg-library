@@ -1,0 +1,148 @@
+<svg width="1200" height="1000" viewBox="0 0 1200 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 核心背景色：对标系统浅灰蓝 -->
+    <rect id="sys_bg" width="1200" height="1000" fill="#F0F4F7"/>
+    
+    <!-- 2. 有人状态：专业宝石红 -->
+    <radialGradient id="sys_grad_red" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#FF7676" />
+      <stop offset="100%" stop-color="#C61A1A" />
+    </radialGradient>
+
+    <!-- 3. 无人状态：对标系统成功绿 -->
+    <radialGradient id="sys_grad_green" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#76E089" />
+      <stop offset="100%" stop-color="#28A745" />
+    </radialGradient>
+
+    <!-- 4. 球体高光 -->
+    <linearGradient id="sys_sphere_shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 5. 卡片投影效果 -->
+    <filter id="sys_card_shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" />
+      <feFlood flood-color="#000000" flood-opacity="0.05"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 整体背景 -->
+  <use href="#sys_bg"/>
+
+  <!-- 1. 顶部标题栏 -->
+  <g transform="translate(60, 40)">
+    <text font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="bold" fill="#333333">18F 智慧厕卫状态实时监控看板</text>
+    <text x="0" y="35" font-size="14" fill="#999999">当前位置：半岛医疗研发中心 > 18层</text>
+  </g>
+
+  <!-- 2. 统计卡片区 -->
+  <g transform="translate(60, 110)">
+    <!-- 总数 -->
+    <g filter="url(#sys_card_shadow)">
+      <rect width="320" height="100" rx="20" fill="white"/>
+      <text x="30" y="40" font-size="14" fill="#666666">总设备点位</text>
+      <text x="30" y="75" font-size="32" font-weight="bold" fill="#333333">30 <tspan font-size="14" font-weight="normal" fill="#999">Units</tspan></text>
+      <rect x="250" y="30" width="40" height="40" rx="10" fill="#007BFF" fill-opacity="0.1"/>
+      <path d="M262 50 H 278" stroke="#007BFF" stroke-width="2"/>
+    </g>
+    <!-- 已占用 -->
+    <g transform="translate(360, 0)" filter="url(#sys_card_shadow)">
+      <rect width="320" height="100" rx="20" fill="white"/>
+      <text x="30" y="40" font-size="14" fill="#666666">当前有人 (Occupied)</text>
+      <text x="30" y="75" font-size="32" font-weight="bold" fill="#C61A1A">10</text>
+      <circle cx="270" cy="50" r="15" fill="url(#sys_grad_red)"/>
+    </g>
+    <!-- 空闲 -->
+    <g transform="translate(720, 0)" filter="url(#sys_card_shadow)">
+      <rect width="320" height="100" rx="20" fill="white"/>
+      <text x="30" y="40" font-size="14" fill="#666666">当前无人 (Vacant)</text>
+      <text x="30" y="75" font-size="32" font-weight="bold" fill="#28A745">20</text>
+      <circle cx="270" cy="50" r="15" fill="url(#sys_grad_green)"/>
+    </g>
+  </g>
+
+  <!-- ================= 3. 区域监测卡片：18楼北 ================= -->
+  <g transform="translate(60, 240)" filter="url(#sys_card_shadow)">
+    <rect width="1080" height="350" rx="24" fill="white"/>
+    <text x="30" y="45" font-size="20" font-weight="bold" fill="#333333">18楼北区域 (North Wing)</text>
+    
+    <!-- 男卫 01 -->
+    <g transform="translate(30, 80)">
+      <text font-size="16" font-weight="bold" fill="#333333">男卫 01</text>
+      <text x="80" y="0" font-size="14" fill="#007BFF">● 4/10 占用</text>
+      
+      <g transform="translate(0, 30)">
+        <!-- 探测点排列 -->
+        <g transform="translate(40, 40)"> <circle r="32" fill="url(#sys_grad_red)"/> <ellipse cy="-12" rx="20" ry="10" fill="url(#sys_sphere_shine)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">1#</text> </g>
+        <g transform="translate(130, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <ellipse cy="-12" rx="20" ry="10" fill="url(#sys_sphere_shine)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">2#</text> </g>
+        <g transform="translate(220, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">3#</text> </g>
+        <g transform="translate(310, 40)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">4#</text> </g>
+        <g transform="translate(400, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">5#</text> </g>
+        <g transform="translate(40, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">6#</text> </g>
+        <g transform="translate(130, 140)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">7#</text> </g>
+        <g transform="translate(220, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">8#</text> </g>
+        <g transform="translate(310, 140)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">9#</text> </g>
+        <g transform="translate(400, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">10#</text> </g>
+      </g>
+    </g>
+
+    <line x1="540" y1="90" x2="540" y2="300" stroke="#EEEEEE" stroke-width="1"/>
+
+    <!-- 女卫 01 -->
+    <g transform="translate(580, 80)">
+      <text font-size="16" font-weight="bold" fill="#D63384">女卫 01</text>
+      <text x="80" y="0" font-size="14" fill="#D63384">● 2/8 占用</text>
+      <g transform="translate(0, 30)">
+        <g transform="translate(50, 40)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">11#</text> </g>
+        <g transform="translate(160, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">12#</text> </g>
+        <g transform="translate(270, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">13#</text> </g>
+        <g transform="translate(380, 40)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">14#</text> </g>
+        <g transform="translate(50, 140)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">15#</text> </g>
+        <g transform="translate(160, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">16#</text> </g>
+        <g transform="translate(270, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">17#</text> </g>
+        <g transform="translate(380, 140)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">18#</text> </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= 4. 区域监测卡片：18楼南 ================= -->
+  <g transform="translate(60, 620)" filter="url(#sys_card_shadow)">
+    <rect width="1080" height="280" rx="24" fill="white"/>
+    <text x="30" y="45" font-size="20" font-weight="bold" fill="#333333">18楼南区域 (South Wing)</text>
+    
+    <!-- 男卫 02 -->
+    <g transform="translate(30, 80)">
+      <text font-size="16" font-weight="bold" fill="#333333">男卫 02</text>
+      <g transform="translate(45, 80)">
+        <g transform="translate(0, 0)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">1#</text> </g>
+        <g transform="translate(100, 0)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">2#</text> </g>
+        <g transform="translate(200, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">3#</text> </g>
+        <g transform="translate(300, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">4#</text> </g>
+        <g transform="translate(400, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">5#</text> </g>
+      </g>
+    </g>
+
+    <!-- 女卫 02 -->
+    <g transform="translate(580, 80)">
+      <text font-size="16" font-weight="bold" fill="#D63384">女卫 02</text>
+      <g transform="translate(45, 80)">
+        <g transform="translate(0, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">6#</text> </g>
+        <g transform="translate(85, 0)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">7#</text> </g>
+        <g transform="translate(170, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">8#</text> </g>
+        <g transform="translate(255, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">9#</text> </g>
+        <g transform="translate(340, 0)"> <circle r="32" fill="url(#sys_grad_red)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">10#</text> </g>
+        <g transform="translate(425, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">11#</text> </g>
+        <g transform="translate(510, 0)"> <circle r="32" fill="url(#sys_grad_green)"/> <text y="60" text-anchor="middle" font-size="12" fill="#666">12#</text> </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 5. 底部版权/页脚 -->
+  <text x="600" y="960" text-anchor="middle" font-size="12" fill="#BBBBBB">Peninsula 智慧厕卫管理系统 © 2024</text>
+
+</svg>

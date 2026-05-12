@@ -1,0 +1,154 @@
+<svg width="1200" height="1000" viewBox="0 0 1200 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景渐变 -->
+    <linearGradient id="stat_bg_grad" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FFF0F3" />
+      <stop offset="100%" stop-color="#FFD1DC" />
+    </linearGradient>
+
+    <!-- 核心质感：有人(红)、无人(绿) -->
+    <radialGradient id="stat_grad_red" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#FF9999" />
+      <stop offset="60%" stop-color="#CC0000" />
+      <stop offset="100%" stop-color="#660000" />
+    </radialGradient>
+    <radialGradient id="stat_grad_green" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#A2FF9E" />
+      <stop offset="60%" stop-color="#007F16" />
+      <stop offset="100%" stop-color="#003D0B" />
+    </radialGradient>
+
+    <!-- 通用球体高光 -->
+    <linearGradient id="stat_sphere_shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 统计卡片发光滤镜 -->
+    <filter id="stat_card_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="1000" rx="40" fill="url(#stat_bg_grad)"/>
+
+  <!-- 1. 顶部标题 -->
+  <text x="600" y="60" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="bold" fill="#002060">18楼 智慧厕卫数字化统计监控看板</text>
+
+  <!-- 2. 全局实时概览数据 (Global Stats) -->
+  <g transform="translate(180, 100)">
+    <!-- 总点位卡片 -->
+    <rect width="240" height="80" rx="20" fill="white" fill-opacity="0.6" stroke="#0072FF" stroke-width="1" stroke-opacity="0.2"/>
+    <text x="30" y="35" font-size="16" fill="#666">总点位数</text>
+    <text x="30" y="65" font-size="32" font-weight="bold" fill="#002060">30</text>
+    
+    <!-- 已占用卡片 -->
+    <g transform="translate(280, 0)">
+      <rect width="240" height="80" rx="20" fill="white" fill-opacity="0.6" stroke="#CC0000" stroke-width="1" stroke-opacity="0.2"/>
+      <circle cx="210" cy="40" r="15" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/>
+      <text x="30" y="35" font-size="16" fill="#666">当前占用</text>
+      <text x="30" y="65" font-size="32" font-weight="bold" fill="#CC0000">10</text>
+    </g>
+
+    <!-- 空闲位卡片 -->
+    <g transform="translate(560, 0)">
+      <rect width="240" height="80" rx="20" fill="white" fill-opacity="0.6" stroke="#007F16" stroke-width="1" stroke-opacity="0.2"/>
+      <circle cx="210" cy="40" r="15" fill="url(#stat_grad_green)" filter="url(#stat_card_glow)"/>
+      <text x="30" y="35" font-size="16" fill="#666">当前空闲</text>
+      <text x="30" y="65" font-size="32" font-weight="bold" fill="#007F16">20</text>
+    </g>
+  </g>
+
+  <!-- ================= 3. 区域监测：18楼北 ================= -->
+  <g transform="translate(60, 220)">
+    <rect width="1080" height="340" rx="30" fill="white" fill-opacity="0.4" stroke="white" stroke-width="2"/>
+    <text x="30" y="40" font-size="22" font-weight="bold" fill="#0072FF">18楼北区域 (North Wing)</text>
+    
+    <!-- 男卫 01 -->
+    <g transform="translate(30, 70)">
+      <text font-size="16" fill="#002060" font-weight="bold">男卫 01</text>
+      <rect x="80" y="-18" width="80" height="24" rx="12" fill="#0072FF" fill-opacity="0.1"/>
+      <text x="120" y="-1" text-anchor="middle" font-size="12" font-weight="bold" fill="#0072FF">占用: 4/10</text>
+      <g transform="translate(0, 30)">
+        <!-- 1#-10# 球体排列 -->
+        <g transform="translate(40, 30)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">1#</text> </g>
+        <g transform="translate(130, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">2#</text> </g>
+        <g transform="translate(220, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">3#</text> </g>
+        <g transform="translate(310, 30)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">4#</text> </g>
+        <g transform="translate(400, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">5#</text> </g>
+        <g transform="translate(40, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">6#</text> </g>
+        <g transform="translate(130, 130)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">7#</text> </g>
+        <g transform="translate(220, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">8#</text> </g>
+        <g transform="translate(310, 130)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">9#</text> </g>
+        <g transform="translate(400, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">10#</text> </g>
+      </g>
+    </g>
+
+    <!-- 分割线 -->
+    <line x1="530" y1="80" x2="530" y2="300" stroke="#0072FF" stroke-opacity="0.1" stroke-width="1"/>
+
+    <!-- 女卫 01 -->
+    <g transform="translate(560, 70)">
+      <text font-size="16" fill="#D63384" font-weight="bold">女卫 01</text>
+      <rect x="80" y="-18" width="80" height="24" rx="12" fill="#D63384" fill-opacity="0.1"/>
+      <text x="120" y="-1" text-anchor="middle" font-size="12" font-weight="bold" fill="#D63384">占用: 2/8</text>
+      <g transform="translate(0, 30)">
+        <g transform="translate(50, 30)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">11#</text> </g>
+        <g transform="translate(150, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">12#</text> </g>
+        <g transform="translate(250, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">13#</text> </g>
+        <g transform="translate(350, 30)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">14#</text> </g>
+        <g transform="translate(50, 130)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">15#</text> </g>
+        <g transform="translate(150, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">16#</text> </g>
+        <g transform="translate(250, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">17#</text> </g>
+        <g transform="translate(350, 130)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">18#</text> </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= 4. 区域监测：18楼南 ================= -->
+  <g transform="translate(60, 590)">
+    <rect width="1080" height="280" rx="30" fill="white" fill-opacity="0.4" stroke="white" stroke-width="2"/>
+    <text x="30" y="40" font-size="22" font-weight="bold" fill="#0072FF">18楼南区域 (South Wing)</text>
+    
+    <!-- 男卫 02 (5位) -->
+    <g transform="translate(30, 80)">
+       <text font-size="16" fill="#002060" font-weight="bold">男卫 02</text>
+       <rect x="80" y="-18" width="80" height="24" rx="12" fill="#0072FF" fill-opacity="0.1"/>
+       <text x="120" y="-1" text-anchor="middle" font-size="12" font-weight="bold" fill="#0072FF">占用: 2/5</text>
+       <g transform="translate(45, 80)">
+         <g transform="translate(0, 0)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">1#</text> </g>
+         <g transform="translate(100, 0)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">2#</text> </g>
+         <g transform="translate(200, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">3#</text> </g>
+         <g transform="translate(300, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">4#</text> </g>
+         <g transform="translate(400, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">5#</text> </g>
+       </g>
+    </g>
+
+    <!-- 女卫 02 (7位) -->
+    <g transform="translate(560, 80)">
+       <text font-size="16" fill="#D63384" font-weight="bold">女卫 02</text>
+       <rect x="80" y="-18" width="80" height="24" rx="12" fill="#D63384" fill-opacity="0.1"/>
+       <text x="120" y="-1" text-anchor="middle" font-size="12" font-weight="bold" fill="#D63384">占用: 2/7</text>
+       <g transform="translate(45, 80)">
+         <g transform="translate(0, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">6#</text> </g>
+         <g transform="translate(80, 0)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">7#</text> </g>
+         <g transform="translate(160, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">8#</text> </g>
+         <g transform="translate(240, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">9#</text> </g>
+         <g transform="translate(320, 0)"> <circle r="32" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/> <text y="60" text-anchor="middle" font-size="11" fill="#660000">10#</text> </g>
+         <g transform="translate(400, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">11#</text> </g>
+         <g transform="translate(480, 0)"> <circle r="32" fill="url(#stat_grad_green)"/> <text y="60" text-anchor="middle" font-size="11" fill="#003D0B">12#</text> </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- 5. 底部图例 -->
+  <g transform="translate(600, 930)">
+    <circle cx="-130" cy="0" r="18" fill="url(#stat_grad_red)" filter="url(#stat_card_glow)"/>
+    <text x="-100" y="7" font-size="18" fill="#660000" font-weight="bold">有人 (Occupied)</text>
+    <circle cx="100" cy="0" r="18" fill="url(#stat_grad_green)"/>
+    <text x="130" y="7" font-size="18" fill="#003D0B" font-weight="bold">空闲 (Vacant)</text>
+  </g>
+</svg>
