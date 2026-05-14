@@ -1,0 +1,128 @@
+<svg width="1600" height="800" viewBox="0 0 1600 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 霓虹发光 -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <!-- 玻璃管渐变 -->
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#334155" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- 全局底板 -->
+  <rect width="1600" height="800" fill="#0B1120" />
+  
+  <!-- ==================== 左侧：全息能量核心 (100%电量演示) ==================== -->
+  <g transform="translate(100, 150)">
+    <text x="75" y="-30" font-family="Microsoft YaHei" font-size="24" font-weight="bold" fill="#F8FAFC" text-anchor="middle">UPS 能量核心</text>
+    
+    <!-- 能量管外壳 -->
+    <rect x="0" y="0" width="150" height="450" rx="10" fill="url(#glassGrad)" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.3" />
+    
+    <!-- 动态能量填充 (绿色 100%) -->
+    <rect x="10" y="10" width="130" height="430" rx="5" fill="#10B981" fill-opacity="0.2" />
+    <rect x="10" y="10" width="130" height="430" rx="5" fill="#10B981" filter="url(#neonGlow)">
+        <animate attributeName="fill-opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- 能量粒子动画 -->
+    <circle r="2" fill="#F8FAFC">
+        <animateMotion path="M 75 430 L 75 20" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle r="3" fill="#F8FAFC" opacity="0.5">
+        <animateMotion path="M 45 400 L 45 50" dur="4s" repeatCount="indefinite" begin="1s" />
+    </circle>
+
+    <!-- 电量百分比大字 -->
+    <text x="75" y="520" font-family="Arial" font-size="48" font-weight="bold" fill="#10B981" text-anchor="middle">100 <tspan font-size="20">%</tspan></text>
+    <text x="75" y="550" font-family="Microsoft YaHei" font-size="14" fill="#94A3B8" text-anchor="middle">CAPACITY STATUS</text>
+  </g>
+
+  <!-- ==================== 右侧：全息数据矩阵 (4列布局) ==================== -->
+  
+  <!-- 每一列的通用容器模板 -->
+  <g transform="translate(350, 100)">
+    
+    <!-- 第1列：电池信息 -->
+    <g transform="translate(0, 0)">
+      <path d="M 0 0 L 250 0 L 270 20 L 270 250 L 0 250 Z" fill="#1E293B" fill-opacity="0.6" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.4" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#0EA5E9">电池信息 / BATTERY</text>
+      <rect x="0" y="0" width="4" height="40" fill="#0EA5E9" />
+      
+      <g transform="translate(15, 60)" font-family="Monaco, monospace" font-size="14">
+        <text y="20" fill="#94A3B8">电池温度:</text> <text x="240" y="20" fill="#F8FAFC" text-anchor="end">0.00 ℃</text>
+        <text y="50" fill="#94A3B8">电池电压:</text> <text x="240" y="50" fill="#0EA5E9" font-weight="bold" text-anchor="end">432.00 V</text>
+        <text y="80" fill="#94A3B8">电池容量:</text> <text x="240" y="80" fill="#10B981" text-anchor="end">100.00 %</text>
+        <text y="110" fill="#94A3B8">剩余时间:</text> <text x="240" y="110" fill="#F8FAFC" text-anchor="end">0.00 min</text>
+        <line x1="0" y1="130" x2="240" y2="130" stroke="#3B82F6" stroke-opacity="0.2" />
+        <text y="160" fill="#94A3B8">运行状态:</text> <text x="240" y="160" fill="#10B981" font-weight="bold" text-anchor="end">正常</text>
+      </g>
+    </g>
+
+    <!-- 第2列：输入信息 -->
+    <g transform="translate(300, 0)">
+      <path d="M 0 0 L 250 0 L 270 20 L 270 250 L 0 250 Z" fill="#1E293B" fill-opacity="0.6" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.4" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC">输入信息 / INPUT</text>
+      
+      <g transform="translate(15, 60)" font-family="Monaco" font-size="14">
+        <text y="20" fill="#94A3B8">R相输入电压:</text> <text x="240" y="20" fill="#38BDF8" text-anchor="end">231.00 V</text>
+        <text y="50" fill="#94A3B8">S相输入电压:</text> <text x="240" y="50" fill="#38BDF8" text-anchor="end">231.00 V</text>
+        <text y="80" fill="#94A3B8">T相输入电压:</text> <text x="240" y="80" fill="#38BDF8" text-anchor="end">233.00 V</text>
+        <text y="110" fill="#94A3B8">输入频率:</text> <text x="240" y="110" fill="#F8FAFC" text-anchor="end">50.00 Hz</text>
+      </g>
+    </g>
+
+    <!-- 第3列：输出信息 (高负载演示) -->
+    <g transform="translate(600, 0)">
+      <path d="M 0 0 L 250 0 L 270 20 L 270 250 L 0 250 Z" fill="#1E293B" fill-opacity="0.6" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.4" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#F8FAFC">输出信息 / OUTPUT</text>
+      
+      <g transform="translate(15, 60)" font-family="Monaco" font-size="13">
+        <text y="20" fill="#94A3B8">R相输出电压:</text> <text x="240" y="20" fill="#F8FAFC" text-anchor="end">221.00 V</text>
+        <text y="50" fill="#94A3B8">负载率(R/S/T):</text> 
+        <text x="240" y="75" fill="#0EA5E9" font-weight="bold" text-anchor="end">4% / 4% / 7%</text>
+        <text y="110" fill="#94A3B8">输出状态:</text> <text x="240" y="110" fill="#10B981" font-weight="bold" text-anchor="end">主路供电</text>
+      </g>
+    </g>
+
+    <!-- 第4列：旁路信息 -->
+    <g transform="translate(900, 0)">
+      <path d="M 0 0 L 250 0 L 270 20 L 270 250 L 0 250 Z" fill="#1E293B" fill-opacity="0.6" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.2" />
+      <text x="15" y="30" font-family="Microsoft YaHei" font-size="16" font-weight="bold" fill="#94A3B8">旁路信息 / BYPASS</text>
+      <g transform="translate(15, 60)" font-family="Monaco" font-size="14" fill="#64748B">
+        <text y="20">旁路电压平均:</text> <text x="240" y="20" text-anchor="end">231.00 V</text>
+        <text y="50">旁路频率:</text> <text x="240" y="50" text-anchor="end">50.00 Hz</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== 底部：额定信息档案仓 (Hardware Specs) ==================== -->
+  <g transform="translate(350, 400)">
+    <rect width="1170" height="200" fill="#1E293B" fill-opacity="0.4" stroke="#3B82F6" stroke-opacity="0.2" />
+    <text x="20" y="30" font-family="Microsoft YaHei" font-size="14" font-weight="bold" fill="#3B82F6">额定规格参数 (RATED SPECIFICATIONS)</text>
+    
+    <g transform="translate(20, 60)" font-family="Microsoft YaHei" font-size="12" fill="#94A3B8">
+      <text y="0">电池额定电压: <tspan fill="#F8FAFC">384V</tspan></text>
+      <text y="30">整流额定信息: <tspan fill="#F8FAFC">220V/380V 3P4W</tspan></text>
+      <text x="300" y="0">旁路额定信息: <tspan fill="#F8FAFC">220V/380V 3P4W</tspan></text>
+      <text x="300" y="30">额定输出信息: <tspan fill="#F8FAFC">220V/3P4W</tspan></text>
+      <text x="600" y="0">额定频率: <tspan fill="#F8FAFC">50Hz</tspan></text>
+      <text x="600" y="30">额定功率: <tspan fill="#F8FAFC">120KVA</tspan></text>
+    </g>
+    
+    <!-- 底部装饰流光 -->
+    <line x1="0" y1="198" x2="200" y2="198" stroke="#0EA5E9" stroke-width="3">
+        <animate attributeName="x1" values="0;970;0" dur="5s" repeatCount="indefinite" />
+        <animate attributeName="x2" values="200;1170;200" dur="5s" repeatCount="indefinite" />
+    </line>
+  </g>
+
+  <!-- 屏幕角落 HUD 装饰 -->
+  <polyline points="20,100 20,20 100,20" fill="none" stroke="#3B82F6" stroke-width="2" />
+  <polyline points="1500,20 1580,20 1580,100" fill="none" stroke="#3B82F6" stroke-width="2" />
+</svg>
