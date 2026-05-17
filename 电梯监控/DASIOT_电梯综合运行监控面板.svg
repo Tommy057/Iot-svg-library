@@ -1,0 +1,100 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- DASIOT 标准奢享阴影 -->
+    <filter id="card_shadow" x="-10%" y="-5%" width="120%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.08)"/>
+    </filter>
+    
+    <!-- 珍珠白微渐变背景 -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F2F5"/>
+      <stop offset="1" stop-color="#F8F9FB"/>
+    </linearGradient>
+
+    <!-- 运行模式颜色映射逻辑预览 (用于开发者参考) -->
+    <!-- 256: 正常(蓝), 257: 检修(橙), 2304: 火灾(红), 1280: 泊梯(灰) -->
+  </defs>
+
+  <!-- 背景层 -->
+  <rect width="1400" height="900" fill="url(#bg_grad)"/>
+
+  <!-- 1. 顶部区域：全局概况 & 区域切换 -->
+  <g transform="translate(40, 30)">
+    <text x="0" y="25" font-family="PingFang SC" font-size="24" font-weight="600" fill="#1D1D1F">电梯运行实时监控</text>
+    
+    <!-- 区域快选胶囊 (Segmented Control) -->
+    <rect x="0" y="50" width="600" height="48" rx="24" fill="#E3E3E6"/>
+    <!-- 选中态：研发楼 (11台) -->
+    <rect x="302" y="54" width="146" height="40" rx="20" fill="white" filter="url(#card_shadow)"/>
+    <g font-family="PingFang SC" font-size="15" font-weight="500" text-anchor="middle">
+      <text x="75" y="80" fill="#8E8E93">厂房 (5)</text>
+      <text x="225" y="80" fill="#8E8E93">宿舍楼 (8)</text>
+      <text x="375" y="80" fill="#007AFF">研发楼 (11)</text>
+      <text x="525" y="80" fill="#8E8E93">综合楼 (2)</text>
+    </g>
+  </g>
+
+  <!-- 2. 电梯单元卡片示例 (以研发楼 1# 为例) -->
+  <g transform="translate(40, 160)">
+    <!-- 卡片主体：32px 大圆角 -->
+    <rect width="240" height="300" rx="32" fill="white" filter="url(#card_shadow)"/>
+    <rect x="0.5" y="0.5" width="239" height="299" rx="31.5" stroke="#E5E7EB" fill="none"/>
+
+    <!-- 头部：名称与状态灯 -->
+    <rect width="240" height="50" rx="32 32 0 0" fill="#F9FAFB"/>
+    <circle cx="25" cy="25" r="4" fill="#34C759"/> <!-- 运行状态 32: 正常 -->
+    <text x="40" y="30" font-family="PingFang SC" font-size="14" font-weight="600" fill="#1D1D1F">1# 研发楼客梯</text>
+    <line x1="0" y1="50" x2="240" y2="50" stroke="#E5E7EB"/>
+
+    <!-- 中间：楼层与方向视觉 -->
+    <!-- 井道背景 -->
+    <rect x="80" y="70" width="80" height="140" rx="8" fill="#F2F2F7"/>
+    <!-- 楼层文字 -->
+    <text x="120" y="155" text-anchor="middle" font-family="Arial" font-size="56" font-weight="bold" fill="#1D1D1F">16</text>
+    <text x="120" y="185" text-anchor="middle" font-family="Arial" font-size="14" fill="#8E8E93">FLOOR</text>
+
+    <!-- 方向指示箭头 (runDirection: 1 上行) -->
+    <path d="M120 75 L130 90 H110 Z" fill="#007AFF"/> <!-- 上行蓝 -->
+    <path d="M120 210 L130 195 H110 Z" fill="#E5E7EB"/> <!-- 下行灰 (静止态) -->
+
+    <!-- 底部：模式标签与开关门状态 -->
+    <rect x="20" y="235" width="200" height="1" fill="#F2F2F7"/>
+    
+    <!-- 运行模式标签 (operateMode: 256 供电正常) -->
+    <rect x="20" y="255" width="80" height="24" rx="12" fill="#E8F2FF"/>
+    <text x="60" y="271" text-anchor="middle" font-family="PingFang SC" font-size="11" fill="#007AFF">供电正常</text>
+    
+    <!-- 门状态 (runState: 1 静止门开) -->
+    <g transform="translate(140, 255)">
+       <rect width="80" height="24" rx="12" fill="#F2F2F7"/>
+       <text x="40" y="16" text-anchor="middle" font-family="PingFang SC" font-size="11" fill="#48484A">门已开启</text>
+    </g>
+  </g>
+
+  <!-- 3. 故障态卡片示例 (以此展示红色警告逻辑) -->
+  <g transform="translate(310, 160)">
+    <!-- 故障态边框加粗变红 -->
+    <rect width="240" height="300" rx="32" fill="white" filter="url(#card_shadow)"/>
+    <rect x="0.5" y="0.5" width="239" height="299" rx="31.5" stroke="#FF3B30" stroke-width="2" fill="none"/>
+
+    <rect width="240" height="50" rx="32 32 0 0" fill="#FFF2F2"/>
+    <path d="M22 20 L28 20 L25 15 Z" fill="#FF3B30"/> <!-- 简易警告图标 -->
+    <circle cx="25" cy="25" r="4" fill="#FF3B30"/> 
+    <text x="40" y="30" font-family="PingFang SC" font-size="14" font-weight="600" fill="#FF3B30">2# 研发楼货梯</text>
+    
+    <text x="120" y="155" text-anchor="middle" font-family="Arial" font-size="56" font-weight="bold" fill="#D1D1D6">09</text>
+    
+    <!-- 故障模式标签 -->
+    <rect x="20" y="255" width="200" height="24" rx="12" fill="#FF3B30"/>
+    <text x="120" y="271" text-anchor="middle" font-family="PingFang SC" font-size="11" fill="white" font-weight="600">一般故障 - 暂停服务</text>
+  </g>
+
+  <!-- 4. 信息提取逻辑备注 (供小宝绑定数据使用) -->
+  <!-- 
+    元数据路径：data._dataBindings['a']['runState'].data.source[0]
+    映射表说明：
+    runState: 0-停/1-开/32-行
+    runDirection: 0-静/1-上/2-下
+    operateMode: 257-检修(建议用#FF9500), 2304-火灾(建议用#FF3B30)
+  -->
+</svg>

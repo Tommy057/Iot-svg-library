@@ -1,0 +1,85 @@
+<svg width="640" height="380" viewBox="0 0 640 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- DASIOT 标准非对称软阴影 -->
+    <filter id="soft_shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="rgba(0,0,0,0.08)"/>
+    </filter>
+    
+    <!-- 珍珠白微渐变 -->
+    <linearGradient id="pearl_white" x1="0" y1="0" x2="640" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8F9FB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 主面板 -->
+  <rect width="640" height="380" rx="40" fill="url(#pearl_white)" filter="url(#soft_shadow)"/>
+  <rect x="0.5" y="0.5" width="639" height="379" rx="39.5" stroke="rgba(0,0,0,0.04)"/>
+
+  <!-- 面板标题 -->
+  <g transform="translate(30, 30)">
+    <rect width="4" height="20" rx="2" fill="#007AFF"/>
+    <text x="12" y="16" font-family="PingFang SC, sans-serif" font-size="18" font-weight="600" fill="#1D1D1F">电梯运行概况统计</text>
+  </g>
+
+  <!-- 2. 统计卡片网格 (3x2) -->
+
+  <!-- [1] 设备总数 (蓝色) -->
+  <g transform="translate(30, 75)">
+    <rect width="180" height="120" rx="28" fill="#F0F7FF"/>
+    <!-- 图标：堆叠 -->
+    <path d="M25 35 H45 V55 H25 Z M30 30 H50 V50" stroke="#007AFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#1D1D1F">26</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">设备总数</text>
+  </g>
+
+  <!-- [2] 正在运行 (成功绿) -->
+  <g transform="translate(230, 75)">
+    <rect width="180" height="120" rx="28" fill="#E8F9EE"/>
+    <!-- 图标：运行箭头 -->
+    <path d="M25 50 L35 40 L45 50 M35 40 V55" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#1D1D1F">14</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">正在运行</text>
+  </g>
+
+  <!-- [3] 静止待机 (待机灰) -->
+  <g transform="translate(430, 75)">
+    <rect width="180" height="120" rx="28" fill="#F2F2F7"/>
+    <!-- 图标：待机 -->
+    <circle cx="35" cy="45" r="10" stroke="#8E8E93" stroke-width="2"/>
+    <path d="M35 40 V45 H40" stroke="#8E8E93" stroke-width="2" stroke-linecap="round"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#1D1D1F">10</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">静止待机</text>
+  </g>
+
+  <!-- [4] 一般故障 (警告红) -->
+  <g transform="translate(30, 225)">
+    <rect width="180" height="120" rx="28" fill="#FFF2F2"/>
+    <!-- 图标：警告 -->
+    <path d="M35 35 L50 60 H20 Z" stroke="#FF3B30" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="34" y="45" width="2" height="6" rx="1" fill="#FF3B30"/>
+    <circle cx="35" cy="55" r="1" fill="#FF3B30"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#FF3B30">1</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">一般故障</text>
+  </g>
+
+  <!-- [5] 检修维护 (检修橙) -->
+  <g transform="translate(230, 225)">
+    <rect width="180" height="120" rx="28" fill="#FFF8F2"/>
+    <!-- 图标：扳手 -->
+    <path d="M25 55 L40 40 M40 40 C42 38 45 38 47 40 L50 43 C52 45 52 48 50 50 L35 65" stroke="#FF9500" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="45" cy="45" r="3" stroke="#FF9500" stroke-width="2"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#1D1D1F">1</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">检修维护</text>
+  </g>
+
+  <!-- [6] 通讯异常 (链路紫) -->
+  <g transform="translate(430, 225)">
+    <rect width="180" height="120" rx="28" fill="#F9F0FF"/>
+    <!-- 图标：断连信号 -->
+    <path d="M25 55 C25 45 35 35 45 35 M30 55 C30 50 40 50 40 55" stroke="#AF52DE" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="35" x2="50" y2="60" stroke="#AF52DE" stroke-width="2" stroke-linecap="round"/>
+    <text x="155" y="65" text-anchor="end" font-family="Arial" font-size="36" font-weight="bold" fill="#AF52DE">0</text>
+    <text x="155" y="95" text-anchor="end" font-family="PingFang SC" font-size="13" fill="#8E8E93">通讯异常</text>
+  </g>
+</svg>

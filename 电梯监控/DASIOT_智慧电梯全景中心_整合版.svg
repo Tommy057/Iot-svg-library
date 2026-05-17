@@ -1,0 +1,99 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- DASIOT 标准奢享阴影 -->
+    <filter id="main_shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="rgba(0,0,0,0.06)"/>
+    </filter>
+    <!-- 珍珠白全局背景渐变 -->
+    <linearGradient id="global_bg" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F2F5"/>
+      <stop offset="1" stop-color="#F8F9FB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 全局背景 -->
+  <rect width="1920" height="1080" fill="url(#global_bg)"/>
+
+  <!-- 2. 顶部 Header -->
+  <g transform="translate(40, 40)">
+    <text x="0" y="30" font-family="PingFang SC" font-size="32" font-weight="bold" fill="#1D1D1F">DASIOT 智慧电梯全景调度中心</text>
+    <text x="0" y="60" font-family="PingFang SC" font-size="14" fill="#8E8E93">实时同步 · ASCII 解码 · 运行状态监控系统</text>
+    <rect x="0" y="80" width="80" height="4" rx="2" fill="#007AFF"/>
+  </g>
+
+  <!-- 3. 左侧栏：统计 + 监控 -->
+  <g transform="translate(40, 140)">
+    <!-- 3.1 概况统计块 -->
+    <rect width="680" height="400" rx="40" fill="white" filter="url(#main_shadow)"/>
+    <text x="30" y="40" font-family="PingFang SC" font-size="18" font-weight="600" fill="#1D1D1F">电梯运行概况统计</text>
+    <!-- 此处嵌入之前设计的 3x2 图标统计组件 (示意) -->
+    <g transform="translate(30, 70)">
+       <!-- 简单示意：总数、运行、静止等 -->
+       <rect width="200" height="130" rx="24" fill="#F0F7FF"/>
+       <rect x="215" y="0" width="200" height="130" rx="24" fill="#F0F9F4"/>
+       <rect x="430" y="0" width="200" height="130" rx="24" fill="#F2F2F7"/>
+       <rect x="0" y="145" width="200" height="130" rx="24" fill="#FFF2F2"/>
+       <rect x="215" y="145" width="200" height="130" rx="24" fill="#FFF8F2"/>
+       <rect x="430" y="145" width="200" height="130" rx="24" fill="#FBF5FF"/>
+    </g>
+
+    <!-- 3.2 重点监控块 -->
+    <g transform="translate(0, 430)">
+      <rect width="680" height="450" rx="40" fill="white" filter="url(#main_shadow)"/>
+      <text x="30" y="40" font-family="PingFang SC" font-size="18" font-weight="600" fill="#1D1D1F">实时视频预览 (关键梯位)</text>
+      <!-- 视频网格 2x2 -->
+      <rect x="30" y="65" width="300" height="160" rx="20" fill="#000"/>
+      <rect x="350" y="65" width="300" height="160" rx="20" fill="#000"/>
+      <rect x="30" y="240" width="300" height="160" rx="20" fill="#000"/>
+      <rect x="350" y="240" width="300" height="160" rx="20" fill="#000"/>
+    </g>
+  </g>
+
+  <!-- 4. 右侧栏：运行状态明细 (26台电梯) -->
+  <g transform="translate(750, 140)">
+    <rect width="1130" height="880" rx="40" fill="white" fill-opacity="0.4" stroke="white" stroke-width="2"/>
+    
+    <!-- 分组 1: 研发楼 (11台) - 重点展示区 -->
+    <g transform="translate(30, 30)">
+      <text x="0" y="0" font-family="PingFang SC" font-size="16" font-weight="600" fill="#007AFF">■ 研发楼 (11台)</text>
+      <!-- 嵌入 11 个 ASCII 解码卡片 (示意分布) -->
+      <g transform="translate(0, 20)">
+         <!-- 这里每一行放置 4 个卡片 -->
+         <rect width="250" height="100" rx="24" fill="white" stroke="#E5E7EB" filter="url(#main_shadow)"/>
+         <rect x="270" y="0" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+         <rect x="540" y="0" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+         <rect x="810" y="0" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+         <!-- 第二行... -->
+         <rect x="0" y="115" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+      </g>
+    </g>
+
+    <!-- 分组 2: 宿舍楼 (8台) -->
+    <g transform="translate(30, 300)">
+      <text x="0" y="0" font-family="PingFang SC" font-size="16" font-weight="600" fill="#34C759">■ 宿舍楼 (8台)</text>
+      <g transform="translate(0, 20)">
+         <rect width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+         <rect x="270" y="0" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+         <rect x="540" y="0" width="250" height="100" rx="24" fill="white" stroke="#E5E7EB"/>
+      </g>
+    </g>
+
+    <!-- 分组 3: 厂房 (5台) -->
+    <g transform="translate(30, 520)">
+      <text x="0" y="0" font-family="PingFang SC" font-size="16" font-weight="600" fill="#FF9500">■ 厂房 (5台)</text>
+    </g>
+
+    <!-- 分组 4: 综合楼 (2台) -->
+    <g transform="translate(30, 740)">
+      <text x="0" y="0" font-family="PingFang SC" font-size="16" font-weight="600" fill="#8E8E93">■ 综合楼 (2台)</text>
+    </g>
+  </g>
+
+  <!-- 全局交互锁说明提示 (HT 逻辑) -->
+  <!-- 
+     Interaction Logic:
+     - onClick: 开关门动画触发 -> update per 1.0 to 0.4
+     - ASCII Binding: floorAscii1 + floorAscii2 + floorAscii3
+     - Fault State: Global Stroke change to #FF3B30
+  -->
+</svg>

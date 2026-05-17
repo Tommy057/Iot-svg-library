@@ -1,0 +1,55 @@
+<svg width="280" height="130" viewBox="0 0 280 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 珍珠白微渐变 -->
+    <linearGradient id="pearl_grad" x1="0" y1="0" x2="0" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F9FAFB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 卡片基底 -->
+  <rect width="280" height="130" rx="32" fill="url(#pearl_grad)"/>
+  <rect x="0.5" y="0.5" width="279" height="129" rx="31.5" stroke="#E5E7EB"/>
+
+  <!-- 2. 左侧：文本信息 (根据原图布局) -->
+  <g transform="translate(24, 24)">
+    <text y="12" font-family="PingFang SC" font-size="12" fill="#8E8E93">当前所处楼层</text>
+    
+    <!-- 楼层数值绑定 -->
+    <text y="52" font-family="Arial" font-size="32" font-weight="bold">
+      <tspan fill="#007AFF">18</tspan>
+      <tspan fill="#C7C7CC" font-size="18"> /35</tspan>
+    </text>
+    
+    <!-- 区域类型标签 -->
+    <text y="88" font-family="PingFang SC" font-size="12" font-weight="500" fill="#48484A">研发楼 · 高区客梯</text>
+    
+    <!-- 运行模式状态 (由 operateMode 决定文字) -->
+    <rect y="98" width="60" height="4" rx="2" fill="#34C759"/> <!-- 正常运行模式绿 -->
+  </g>
+
+  <!-- 3. 右侧：图形化运行状态 (适配 runState & runDirection) -->
+  <g transform="translate(190, 20)">
+    <!-- 井道背景 -->
+    <rect width="60" height="90" rx="8" fill="#F2F2F7"/>
+    <rect x="0.5" y="0.5" width="59" height="89" rx="7.5" stroke="#E5E7EB" stroke-dasharray="3 2"/>
+
+    <!-- 轿厢图标 (动态位置/颜色) -->
+    <!-- 逻辑：runState==32(运行)用#007AFF, faultState==1用#FF3B30 -->
+    <rect x="10" y="30" width="40" height="30" rx="4" fill="#007AFF"/>
+    
+    <!-- 门缝线 (runState==1 时，此两条线宽度变窄并移向两边) -->
+    <rect x="29" y="34" width="2" height="22" fill="white" fill-opacity="0.5"/>
+
+    <!-- 方向指示器 (runDirection) -->
+    <!-- 上行箭头 (runDirection == 1) -->
+    <path d="M30 6 L38 16 H22 Z" fill="#007AFF"/> 
+    
+    <!-- 下行箭头 (runDirection == 2) -->
+    <path d="M30 84 L38 74 H22 Z" fill="#E5E7EB"/> <!-- 默认灰 -->
+    
+    <!-- 警报标识 (仅当 faultState == 1 时显示) -->
+    <!-- <circle cx="30" cy="45" r="12" fill="#FF3B30"/> -->
+    <!-- <text x="30" y="50" text-anchor="middle" fill="white" font-weight="bold">!</text> -->
+  </g>
+</svg>

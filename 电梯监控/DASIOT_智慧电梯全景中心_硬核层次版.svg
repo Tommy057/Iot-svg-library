@@ -1,0 +1,94 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 强化版外部投影 -->
+    <filter id="hard_shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="rgba(0,0,0,0.12)"/>
+    </filter>
+    
+    <!-- 2. 容器沉降内阴影 (增加层次感的关键) -->
+    <filter id="inner_recess">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0" />
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="4" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feFlood flood-color="rgba(0,0,0,0.08)" result="color" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feComposite in2="SourceAlpha" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 背景深色阶 -->
+    <linearGradient id="deep_bg" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9EBF0"/>
+      <stop offset="1" stop-color="#F5F7FA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1920" height="1080" fill="url(#deep_bg)"/>
+
+  <!-- 顶部 Header (加重下划线) -->
+  <g transform="translate(40, 40)">
+    <text x="0" y="30" font-family="PingFang SC" font-size="32" font-weight="bold" fill="#1D1D1F">DASIOT 智慧电梯全景调度中心</text>
+    <rect x="0" y="60" width="1840" height="2" fill="#D1D1D6"/> <!-- 贯穿全屏的硬分割线 -->
+    <rect x="0" y="58" width="120" height="6" rx="3" fill="#007AFF"/>
+  </g>
+
+  <!-- 3. 左侧控制区 -->
+  <g transform="translate(40, 140)">
+    <!-- 3.1 概况统计区 (强化边框与沉降感) -->
+    <rect width="680" height="400" rx="40" fill="white" filter="url(#hard_shadow)"/>
+    <rect x="1" y="1" width="678" height="398" rx="39" stroke="#C7C7CC" stroke-width="2"/> <!-- 强化 2px 边框 -->
+    <path d="M40 0 H640 A40 40 0 0 1 680 40 V60 H0 V40 A40 40 0 0 1 40 0 Z" fill="#F8F9FA"/> <!-- 标题区底色 -->
+    <text x="30" y="40" font-family="PingFang SC" font-size="18" font-weight="600" fill="#1D1D1F">电梯运行概况统计</text>
+    <line x1="0" y1="60" x2="680" y2="60" stroke="#C7C7CC" stroke-width="1.5"/>
+
+    <!-- 统计块内部描边强化 (以一个为例) -->
+    <g transform="translate(30, 85)">
+       <rect width="200" height="130" rx="24" fill="#F0F7FF" stroke="#007AFF" stroke-width="1.5" stroke-opacity="0.2"/>
+    </g>
+
+    <!-- 3.2 视频监控区 (沉降槽设计) -->
+    <g transform="translate(0, 435)">
+      <rect width="680" height="465" rx="40" fill="white" filter="url(#hard_shadow)"/>
+      <rect x="1" y="1" width="678" height="463" rx="39" stroke="#C7C7CC" stroke-width="2"/>
+      <path d="M40 0 H640 A40 40 0 0 1 680 40 V60 H0 V40 A40 40 0 0 1 40 0 Z" fill="#F8F9FA"/>
+      <text x="30" y="40" font-family="PingFang SC" font-size="18" font-weight="600" fill="#1D1D1F">重点梯位实时视频</text>
+      
+      <!-- 视频下沉槽 (Inner Shadow 效果) -->
+      <g filter="url(#inner_recess)">
+        <rect x="25" y="80" width="305" height="170" rx="16" fill="#000"/>
+        <rect x="350" y="80" width="305" height="170" rx="16" fill="#000"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 4. 右侧主运行区 -->
+  <g transform="translate(750, 140)">
+    <!-- 整个区域的包裹感 -->
+    <rect width="1130" height="900" rx="40" fill="white" filter="url(#hard_shadow)"/>
+    <rect x="1" y="1" width="1128" height="898" rx="39" stroke="#C7C7CC" stroke-width="2"/>
+    
+    <!-- 分组标题增强 -->
+    <g transform="translate(40, 40)">
+      <!-- 研发楼组 -->
+      <rect x="-10" y="-5" width="1050" height="260" rx="24" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+      <text x="10" y="25" font-family="PingFang SC" font-size="18" font-weight="bold" fill="#007AFF">RESEARCH BUILDING | 研发楼 (11台)</text>
+      <!-- 卡片增加明确边框 -->
+      <g transform="translate(10, 50)">
+         <rect width="240" height="100" rx="24" fill="white" stroke="#AEAEB2" stroke-width="1.5"/>
+         <rect x="260" y="0" width="240" height="100" rx="24" fill="white" stroke="#AEAEB2" stroke-width="1.5"/>
+      </g>
+    </g>
+
+    <!-- 宿舍楼组 (同样逻辑) -->
+    <g transform="translate(40, 330)">
+      <rect x="-10" y="-5" width="1050" height="260" rx="24" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+      <text x="10" y="25" font-family="PingFang SC" font-size="18" font-weight="bold" fill="#34C759">DORMITORY | 宿舍楼 (8台)</text>
+    </g>
+  </g>
+</svg>

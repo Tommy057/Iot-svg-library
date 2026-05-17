@@ -1,0 +1,63 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 珍珠白微渐变背景定义 -->
+  <defs>
+    <linearGradient id="pearl_bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F9FB"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    
+    <!-- DASIOT 标准非对称软阴影 -->
+    <filter id="soft_shadow" x="-10%" y="-5%" width="120%" height="130%" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="0" dy="8"/>
+      <feGaussianBlur stdDeviation="10"/> <!-- Blur: 20px (std 10) -->
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+
+    <!-- 监控画面占位渐变 -->
+    <linearGradient id="video_placeholder" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="url(#pearl_bg)"/>
+
+  <!-- 顶部 Segmented Control (分段选择) -->
+  <rect x="400" y="40" width="400" height="48" rx="24" fill="#E3E3E6"/>
+  <rect x="404" y="44" width="130" height="40" rx="20" fill="white" filter="url(#soft_shadow)"/>
+  <text x="469" y="70" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="14" fill="#000" font-weight="500">全部电梯</text>
+  <text x="600" y="70" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="14" fill="#8E8E93">1号楼</text>
+  <text x="730" y="70" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="14" fill="#8E8E93">2号楼</text>
+
+  <!-- 监控卡片网格示例 (以 1-DT1 为例) -->
+  <g transform="translate(60, 120)" filter="url(#soft_shadow)">
+    <!-- 卡片主体 -->
+    <rect width="340" height="240" rx="32" fill="white"/>
+    
+    <!-- 标题栏 -->
+    <circle cx="28" cy="28" r="4" fill="#34C759"/> <!-- 成功绿状态灯 -->
+    <text x="40" y="32" font-family="PingFang SC" font-size="14" font-weight="600" fill="#1D1D1F">1-DT1 电梯轿厢</text>
+    
+    <!-- 视频区域 (HT 中需替换为真实的视频节点) -->
+    <rect x="16" y="52" width="308" height="140" rx="20" fill="url(#video_placeholder)"/>
+    <text x="170" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#64748B">VIDEO STREAMING...</text>
+    
+    <!-- 底部数据栏 -->
+    <rect x="16" y="200" width="308" height="32" rx="10" fill="#F2F2F7"/>
+    <text x="28" y="221" font-family="PingFang SC" font-size="12" fill="#48484A">实时人数：</text>
+    <text x="85" y="221" font-family="Arial" font-size="14" font-weight="bold" fill="#007AFF">3</text>
+    <text x="200" y="221" font-family="Arial" font-size="10" fill="#8E8E93">2026-05-17 01:25:25</text>
+  </g>
+
+  <!-- 交互热区锁定逻辑提示 (用于 HT 脚本) -->
+  <!-- 
+    Logic Note: 
+    onClick 需包含 _isHandling 锁。
+    元数据提取：data._dataBindings['a']['status'].data.source[0]
+  -->
+</svg>

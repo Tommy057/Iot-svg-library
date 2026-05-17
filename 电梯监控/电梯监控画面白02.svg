@@ -1,0 +1,80 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 1. 深度环境背景渐变 -->
+    <linearGradient id="deep_pearl_bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9EBF0"/>
+      <stop offset="1" stop-color="#F5F7FA"/>
+    </linearGradient>
+    
+    <!-- 2. 增强版 DASIOT 奢享阴影 (双层复合) -->
+    <filter id="luxury_shadow" x="-20%" y="-10%" width="150%" height="150%" filterUnits="userSpaceOnUse">
+      <!-- 基础柔和投影 -->
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.1)"/>
+      <!-- 边缘轮廓阴影 -->
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.05)"/>
+    </filter>
+
+    <!-- 3. 视频区域内阴影 (让画面陷进去) -->
+    <filter id="inner_recess" x="-10%" y="-10%" width="120%" height="120%">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0" />
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="3" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feFlood flood-color="rgba(0,0,0,0.15)" result="color" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feComposite in2="SourceAlpha" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景：加深明度差 -->
+  <rect width="1200" height="800" fill="url(#deep_pearl_bg)"/>
+
+  <!-- 监控网格演示 -->
+  <!-- 示例卡片 1 -->
+  <g transform="translate(40, 40)">
+    <!-- 卡片主体：增加微描边 -->
+    <rect width="360" height="280" rx="36" fill="white" filter="url(#luxury_shadow)"/>
+    <rect x="0.5" y="0.5" width="359" height="279" rx="35.5" stroke="rgba(0,0,0,0.06)" fill="none"/>
+
+    <!-- 头部信息区：加个浅色背景块增强区分 -->
+    <path d="M36 0 H324 A36 36 0 0 1 360 36 V56 H0 V36 A36 36 0 0 1 36 0 Z" fill="#F9FAFB"/>
+    <circle cx="28" cy="28" r="5" fill="#34C759"/>
+    <text x="42" y="33" font-family="PingFang SC" font-size="15" font-weight="600" fill="#1D1D1F">1-DT1 电梯轿厢</text>
+    <text x="330" y="33" text-anchor="end" font-family="Arial" font-size="12" fill="#8E8E93">LIVE</text>
+    
+    <!-- 视频画面容器：使用内阴影模拟物理嵌入感 -->
+    <g filter="url(#inner_recess)">
+      <rect x="16" y="68" width="328" height="150" rx="20" fill="#000"/>
+      <!-- 此处 HT 挂载视频流 -->
+    </g>
+    
+    <!-- 底部状态栏 -->
+    <text x="24" y="252" font-family="PingFang SC" font-size="13" fill="#86868B">当前载荷：</text>
+    <text x="90" y="252" font-family="Arial" font-size="15" font-weight="bold" fill="#007AFF">2 人</text>
+    
+    <!-- 快选动作按钮 (示例) -->
+    <rect x="250" y="235" width="90" height="28" rx="14" fill="#F2F2F7"/>
+    <text x="295" y="253" text-anchor="middle" font-family="PingFang SC" font-size="12" font-weight="500" fill="#007AFF">查看详情</text>
+  </g>
+
+  <!-- 示例卡片 2 -->
+  <g transform="translate(420, 40)">
+    <rect width="360" height="280" rx="36" fill="white" filter="url(#luxury_shadow)"/>
+    <rect x="0.5" y="0.5" width="359" height="279" rx="35.5" stroke="rgba(0,0,0,0.06)" fill="none"/>
+    <path d="M36 0 H324 A36 36 0 0 1 360 36 V56 H0 V36 A36 36 0 0 1 36 0 Z" fill="#F9FAFB"/>
+    <circle cx="28" cy="28" r="5" fill="#34C759"/>
+    <text x="42" y="33" font-family="PingFang SC" font-size="15" font-weight="600" fill="#1D1D1F">1-DT2 电梯轿厢</text>
+    <g filter="url(#inner_recess)">
+        <rect x="16" y="68" width="328" height="150" rx="20" fill="#1A1A1A"/>
+    </g>
+    <text x="24" y="252" font-family="PingFang SC" font-size="13" fill="#86868B">当前载荷：</text>
+    <text x="90" y="252" font-family="Arial" font-size="15" font-weight="bold" fill="#007AFF">0 人</text>
+    <rect x="250" y="235" width="90" height="28" rx="14" fill="#F2F2F7"/>
+    <text x="295" y="253" text-anchor="middle" font-family="PingFang SC" font-size="12" font-weight="500" fill="#007AFF">查看详情</text>
+  </g>
+</svg>

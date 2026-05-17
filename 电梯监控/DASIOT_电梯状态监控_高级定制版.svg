@@ -1,0 +1,66 @@
+<svg width="240" height="90" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 雅致白软阴影 -->
+    <filter id="soft_shadow" x="-5" y="0" width="250" height="100" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="rgba(0,0,0,0.08)"/>
+    </filter>
+    
+    <!-- 状态颜色定义 -->
+    <style>
+      .text-floor { font-family: "Arial", sans-serif; font-weight: bold; }
+      .text-label { font-family: "PingFang SC", sans-serif; }
+      .status-normal { fill: #007AFF; } /* iOS 蓝色 */
+      .status-warn { fill: #FF9500; }   /* 满载黄 */
+      .status-danger { fill: #FF3B30; } /* 故障/超载红 */
+    </style>
+  </defs>
+
+  <!-- 1. 背景层：珍珠白微渐变卡片 (对应 JSON 中的背景 rect) -->
+  <rect width="240" height="90" rx="20" fill="#FFFFFF" filter="url(#soft_shadow)"/>
+  <!-- 选中的描边 (对应 isSelected 逻辑) -->
+  <rect x="0.5" y="0.5" width="239" height="89" rx="19.5" stroke="#007AFF" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- 2. 顶部标题栏 (对应 JSON 中 0,0,240,31.7 的矩形) -->
+  <path d="M20 0 H220 A20 20 0 0 1 240 20 V32 H0 V20 A20 20 0 0 1 20 0 Z" fill="#F8F9FA"/>
+  <line x1="0" y1="32" x2="240" y2="32" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <!-- 电梯类型 (attr@name) -->
+  <text x="12" y="21" class="text-label" font-size="12" font-weight="600" fill="#1D1D1F">1# 研发楼</text>
+  <text x="228" y="21" text-anchor="end" class="text-label" font-size="11" fill="#8E8E93">低区客梯</text>
+
+  <!-- 3. 左侧：楼层显示区 (对应 JSON 中的 current 和 floor) -->
+  <g transform="translate(15, 65)">
+    <!-- current -->
+    <text x="0" y="0" class="text-floor" font-size="28" fill="#007AFF">18</text>
+    <!-- floor -->
+    <text x="35" y="0" class="text-floor" font-size="16" fill="#C7C7CC">/35</text>
+    <text x="0" y="16" class="text-label" font-size="9" fill="#8E8E93" letter-spacing="1">CURRENT FLOOR</text>
+  </g>
+
+  <!-- 4. 右侧：图形化运行组件 (核心逻辑区) -->
+  <g transform="translate(180, 42)">
+    <!-- 井道外框 -->
+    <rect width="36" height="40" rx="6" fill="#F2F2F7" stroke="#E5E7EB"/>
+    
+    <!-- 上行箭头 (Runup == 1) -->
+    <!-- 颜色根据 manned 动态：正常#007AFF, 超载#FF3B30, 满载#FF9500 -->
+    <path d="M18 2 L24 8 H12 Z" fill="#007AFF"/> 
+    
+    <!-- 下行箭头 (Rundown == 1) -->
+    <path d="M18 38 L24 32 H12 Z" fill="#E5E7EB"/> <!-- 默认灰 -->
+
+    <!-- 电梯轿厢 (DTS == 1) -->
+    <g transform="translate(6, 12)">
+      <rect width="24" height="16" rx="2" fill="#FFFFFF" stroke="#007AFF" stroke-width="1.5"/>
+      <!-- 门缝线 (open == 1 时，利用 HT 的 clipPercentage 或直接控制 opacity) -->
+      <line x1="12" y1="2" x2="12" y2="14" stroke="#007AFF" stroke-width="1" stroke-dasharray="1 1"/>
+    </g>
+  </g>
+
+  <!-- 5. 状态覆盖层 (fault / repair / comFault) -->
+  <!-- 这种设计不需要叠加图标，而是通过卡片右端的小色块提示，非常高级 -->
+  <rect x="232" y="45" width="4" height="24" rx="2" fill="#34C759"/> <!-- 正常绿 -->
+  
+  <!-- 交互热区：覆盖全图的透明层 -->
+  <rect width="240" height="90" rx="20" fill="transparent" cursor="pointer"/>
+</svg>

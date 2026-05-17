@@ -1,0 +1,34 @@
+<svg width="640" height="320" viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="dasiot_shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="rgba(0,0,0,0.06)"/>
+    </filter>
+  </defs>
+
+  <!-- 大容器 -->
+  <rect width="640" height="320" rx="40" fill="white" filter="url(#dasiot_shadow)"/>
+  <rect x="0.5" y="0.5" width="639" height="319" rx="39.5" stroke="#F2F2F7" stroke-width="1"/>
+
+  <!-- 2x3 网格布局 -->
+  <!-- 示例：设备数量 (蓝色) -->
+  <g transform="translate(30, 30)">
+    <rect width="180" height="120" rx="24" fill="#F0F7FF" stroke="#E0EFFF"/>
+    <rect x="15" y="25" width="48" height="48" rx="12" fill="#007AFF"/>
+    <!-- 电梯门图标 -->
+    <rect x="25" y="38" width="12" height="22" fill="white"/>
+    <rect x="39" y="38" width="12" height="22" fill="white"/>
+    <text x="75" y="55" font-family="PingFang SC" font-size="32" font-weight="bold" fill="#1D1D1F">24</text>
+    <text x="75" y="85" font-family="PingFang SC" font-size="14" fill="#8E8E93">设备总数量</text>
+  </g>
+
+  <!-- 示例：综合故障 (红色) -->
+  <g transform="translate(230, 30)">
+    <rect width="180" height="120" rx="24" fill="#FFF2F2" stroke="#FFE0E0"/>
+    <rect x="15" y="25" width="48" height="48" rx="12" fill="#FF3B30"/>
+    <path d="M39 40 L44 58 H34 L39 40Z" fill="white"/> <!-- 警告符号 -->
+    <text x="75" y="55" font-family="PingFang SC" font-size="32" font-weight="bold" fill="#FF3B30">2</text>
+    <text x="75" y="85" font-family="PingFang SC" font-size="14" fill="#8E8E93">综合故障数量</text>
+  </g>
+  
+  <!-- 其他格子按此坐标规律 [430, 30], [30, 170], [230, 170], [430, 170] 布局 -->
+</svg>

@@ -1,0 +1,47 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="soft_shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="rgba(0,0,0,0.06)"/>
+    </filter>
+  </defs>
+
+  <!-- 概况面板背景 -->
+  <rect width="600" height="300" rx="40" fill="white" filter="url(#soft_shadow)"/>
+  <rect x="1" y="1" width="598" height="298" rx="39" stroke="#F2F2F7" stroke-width="2"/>
+
+  <!-- 6个统计格子：左右两列，三行 -->
+  <!-- 1. 设备数量 (蓝色) -->
+  <g transform="translate(30, 30)">
+    <rect width="165" height="70" rx="20" fill="#F0F7FF"/>
+    <rect x="12" y="15" width="40" height="40" rx="10" fill="#007AFF"/>
+    <!-- 此处放置电梯门简化图标 -->
+    <text x="62" y="32" font-family="PingFang SC" font-size="20" font-weight="bold" fill="#1D1D1F">24</text>
+    <text x="62" y="52" font-family="PingFang SC" font-size="12" fill="#8E8E93">设备总数</text>
+  </g>
+
+  <!-- 2. 运行数量 (成功绿) -->
+  <g transform="translate(210, 30)">
+    <rect width="165" height="70" rx="20" fill="#E8F9EE"/>
+    <rect x="12" y="15" width="40" height="40" rx="10" fill="#34C759"/>
+    <text x="62" y="32" font-family="PingFang SC" font-size="20" font-weight="bold" fill="#1D1D1F">14</text>
+    <text x="62" y="52" font-family="PingFang SC" font-size="12" fill="#8E8E93">运行数量</text>
+  </g>
+
+  <!-- 3. 停止数量 (待机灰) -->
+  <g transform="translate(390, 30)">
+    <rect width="165" height="70" rx="20" fill="#F2F2F7"/>
+    <rect x="12" y="15" width="40" height="40" rx="10" fill="#8E8E93"/>
+    <text x="62" y="32" font-family="PingFang SC" font-size="20" font-weight="bold" fill="#1D1D1F">1</text>
+    <text x="62" y="52" font-family="PingFang SC" font-size="12" fill="#8E8E93">停止数量</text>
+  </g>
+
+  <!-- 4. 通讯故障 (警告红) -->
+  <g transform="translate(30, 120)">
+    <rect width="165" height="70" rx="20" fill="#FFF2F2"/>
+    <rect x="12" y="15" width="40" height="40" rx="10" fill="#FF3B30"/>
+    <text x="62" y="32" font-family="PingFang SC" font-size="20" font-weight="bold" fill="#FF3B30">0</text>
+    <text x="62" y="52" font-family="PingFang SC" font-size="12" fill="#8E8E93">通讯故障</text>
+  </g>
+
+  <!-- 后续 5, 6 按此类推... -->
+</svg>

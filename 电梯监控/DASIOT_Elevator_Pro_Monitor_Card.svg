@@ -1,0 +1,64 @@
+<svg width="420" height="340" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- DASIOT 专属：奢享版非对称投影 -->
+    <filter id="dasiot_luxury_shadow" x="-20%" y="-10%" width="150%" height="150%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="rgba(0,0,0,0.12)"/>
+    </filter>
+    
+    <!-- 珍珠白微渐变 -->
+    <linearGradient id="pearl_white_grad" x1="0" y1="0" x2="0" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F2F4F7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 卡片外框 (模拟物理实体) -->
+  <rect x="10" y="10" width="400" height="320" rx="32" fill="url(#pearl_white_grad)" filter="url(#dasiot_luxury_shadow)"/>
+  <!-- 外圈细描边 (增加硬度) -->
+  <rect x="10.5" y="10.5" width="399" height="319" rx="31.5" stroke="#D1D1D6" stroke-width="1"/>
+
+  <!-- 2. 标题区域 (模块化设计) -->
+  <!-- 标题底色块 -->
+  <path d="M10 42 A32 32 0 0 1 42 10 H378 A32 32 0 0 1 410 42 V60 H10 V42 Z" fill="#F8F9FA"/>
+  <!-- 标题分割底线 -->
+  <rect x="10" y="60" width="400" height="1" fill="#E5E7EB"/>
+  
+  <!-- 状态灯 & 文字 -->
+  <circle cx="32" cy="35" r="5" fill="#34C759"/> <!-- 成功绿 -->
+  <text x="48" y="40" font-family="PingFang SC, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">1-DT1 轿厢内部监控</text>
+  <text x="380" y="40" text-anchor="end" font-family="Arial" font-size="12" font-weight="bold" fill="#8E8E93">ID: 001</text>
+
+  <!-- 3. 视频监控核心区 (下沉效果) -->
+  <!-- 视频边框槽 -->
+  <rect x="25" y="75" width="370" height="200" rx="16" fill="#F1F3F5"/>
+  <rect x="25.5" y="75.5" width="369" height="199" rx="15.5" stroke="#C7C7CC" stroke-width="1.5"/>
+  
+  <!-- 视频内容占位 (HT 中替换为实时视频) -->
+  <rect x="26" y="76" width="368" height="198" rx="15" fill="#000000"/>
+  <text x="210" y="180" text-anchor="middle" font-family="Arial" font-size="12" fill="#4B5563">CONNECTING STREAMING...</text>
+  
+  <!-- 视频内浮窗：人数统计 (借鉴暗黑风的高对比度) -->
+  <rect x="35" y="85" width="90" height="26" rx="8" fill="rgba(0,0,0,0.6)" style="backdrop-filter: blur(4px);"/>
+  <text x="45" y="102" font-family="PingFang SC" font-size="11" fill="#FFFFFF">人数统计</text>
+  <text x="115" y="102" text-anchor="end" font-family="Arial" font-size="14" font-weight="bold" fill="#34C759">2</text>
+
+  <!-- 4. 底部数据看板区 -->
+  <rect x="10" y="275" width="400" height="1" fill="#E5E7EB"/>
+  
+  <g transform="translate(30, 292)">
+    <text x="0" y="14" font-family="PingFang SC" font-size="12" fill="#8E8E93">运行状态</text>
+    <text x="60" y="14" font-family="PingFang SC" font-size="12" font-weight="bold" fill="#007AFF">平层运行</text>
+    
+    <text x="140" y="14" font-family="PingFang SC" font-size="12" fill="#8E8E93">当前楼层</text>
+    <text x="200" y="14" font-family="Arial" font-size="14" font-weight="bold" fill="#1D1D1F">16F</text>
+    
+    <!-- 详情按钮 (交互热区) -->
+    <rect x="280" y="-8" width="80" height="32" rx="16" fill="#007AFF"/>
+    <text x="320" y="13" text-anchor="middle" font-family="PingFang SC" font-size="12" font-weight="600" fill="#FFFFFF">操作</text>
+  </g>
+
+  <!-- 5. 交互安全锁覆盖层 (HT Logic 专用) -->
+  <rect x="10" y="10" width="400" height="320" rx="32" fill="transparent" pointer-events="all">
+    <!-- _isHandling 逻辑占位 -->
+  </rect>
+</svg>
