@@ -1,0 +1,28 @@
+<svg width="750" height="1100" viewBox="0 0 750 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：透明或浅灰 -->
+  <rect width="750" height="1100" fill="#F4F6F8" fill-opacity="0.5"/>
+  
+  <!-- 男卫生间大容器 -->
+  <g id="Male_Group">
+    <rect x="40" y="40" width="670" height="420" rx="20" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M40 60 C40 48.9543 48.9543 40 60 40 H180 V80 H40 V60 Z" fill="#3B82F6"/>
+    <text x="60" y="68" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">男卫生间</text>
+    
+    <!-- 提示位（可选）：用极浅的点阵代替方框，辅助你对齐 -->
+    <circle cx="120" cy="180" r="2" fill="#E5E7EB"/>
+    <circle cx="245" cy="180" r="2" fill="#E5E7EB"/>
+    <circle cx="375" cy="180" r="2" fill="#E5E7EB"/>
+    <circle cx="505" cy="180" r="2" fill="#E5E7EB"/>
+    <circle cx="630" cy="180" r="2" fill="#E5E7EB"/>
+  </g>
+
+  <!-- 女卫生间大容器 -->
+  <g id="Female_Group">
+    <rect x="40" y="500" width="670" height="420" rx="20" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M40 520 C40 508.954 48.9543 500 60 500 H180 V540 H40 V520 Z" fill="#EC4899"/>
+    <text x="60" y="528" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">女卫生间</text>
+  </g>
+  
+  <!-- 底部版权感设计 -->
+  <text x="375" y="1020" font-family="PingFang SC" font-size="16" fill="#94A3B8" text-anchor="middle" letter-spacing="1">18F-A区 · 物联网环境监测</text>
+</svg>

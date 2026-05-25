@@ -1,0 +1,37 @@
+<svg width="750" height="900" viewBox="0 0 750 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：适配小程序页面背景色 -->
+  <rect width="750" height="900" fill="#FBFBFC"/>
+
+  <!-- ==================== 男卫生间区 (Top) ==================== -->
+  <g id="Male_Section">
+    <!-- 男卫外边框 (4个位，高度调紧凑) -->
+    <rect x="40" y="60" width="670" height="260" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="60" width="120" height="40" rx="10" fill="#3B82F6" />
+    <text x="60" y="88" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">男卫生间</text>
+    
+    <!-- 4个隔间布局 (水平居中分布) -->
+    <rect x="95" y="130" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="245" y="130" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="395" y="130" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="545" y="130" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+  </g>
+
+  <!-- ==================== 女卫生间区 (Bottom) ==================== -->
+  <g id="Female_Section">
+    <!-- 女卫外边框 (7个位，4+3分布，高度调至 420) -->
+    <rect x="40" y="360" width="670" height="420" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="360" width="120" height="40" rx="10" fill="#EC4899" />
+    <text x="60" y="388" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">女卫生间</text>
+    
+    <!-- 第一排 4个 -->
+    <rect x="95" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="245" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="395" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="545" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    
+    <!-- 第二排 3个 (居中对齐) -->
+    <rect x="170" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="320" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="470" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+  </g>
+</svg>

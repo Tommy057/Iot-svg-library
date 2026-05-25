@@ -1,0 +1,45 @@
+<svg width="750" height="900" viewBox="0 0 750 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 整体背景 -->
+  <rect width="750" height="900" fill="#F7F8FA"/>
+  
+  <!-- 男卫生间区域 -->
+  <g id="Male_Zone">
+    <rect x="30" y="30" width="690" height="380" rx="24" fill="white" />
+    <path d="M30 54 C30 40.7452 40.7452 30 54 30 H160 V70 H30 V54 Z" fill="#3B82F6"/>
+    <text x="50" y="58" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">男卫生间</text>
+    
+    <!-- 10个对齐框 (5*2) -->
+    <g opacity="1">
+      <rect x="75" y="120" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="200" y="120" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="325" y="120" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="450" y="120" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="575" y="120" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      
+      <rect x="75" y="240" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="200" y="240" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="325" y="240" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="450" y="240" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="575" y="240" width="100" height="100" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+
+  <!-- 女卫生间区域 -->
+  <g id="Female_Zone">
+    <rect x="30" y="440" width="690" height="380" rx="24" fill="white" />
+    <path d="M30 464 C30 450.745 40.7452 440 54 440 H160 V480 H30 V464 Z" fill="#EC4899"/>
+    <text x="50" y="468" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">女卫生间</text>
+    
+    <g opacity="1">
+      <rect x="100" y="530" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="250" y="530" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="400" y="530" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="550" y="530" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      
+      <rect x="100" y="670" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="250" y="670" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="400" y="670" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="550" y="670" width="110" height="110" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg width="750" height="900" viewBox="0 0 750 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 整体背景 -->
+  <rect width="750" height="900" fill="#F7F8FA"/>
+  
+  <!-- 男卫生间区域 -->
+  <g id="Male_Zone">
+    <rect x="30" y="30" width="690" height="360" rx="24" fill="white" />
+    <path d="M30 54 C30 40.7452 40.7452 30 54 30 H160 V70 H30 V54 Z" fill="#3B82F6"/>
+    <text x="50" y="58" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">男卫生间</text>
+    
+    <!-- 10个对齐框 (5*2) 全部统一 80x80 -->
+    <g id="Male_Stalls">
+      <!-- 第一排 -->
+      <rect x="75" y="120" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="205" y="120" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="335" y="120" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="465" y="120" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="595" y="120" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <!-- 第二排 -->
+      <rect x="75" y="230" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="205" y="230" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="335" y="230" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="465" y="230" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="595" y="230" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+
+  <!-- 女卫生间区域 -->
+  <g id="Female_Zone">
+    <rect x="30" y="420" width="690" height="360" rx="24" fill="white" />
+    <path d="M30 444 C30 430.745 40.7452 420 54 420 H160 V460 H30 V444 Z" fill="#EC4899"/>
+    <text x="50" y="448" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">女卫生间</text>
+    
+    <!-- 8个对齐框 (4*2) 全部统一 80x80 -->
+    <g id="Female_Stalls">
+      <!-- 第一排 -->
+      <rect x="110" y="510" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="255" y="510" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="400" y="510" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="545" y="510" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <!-- 第二排 -->
+      <rect x="110" y="620" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="255" y="620" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="400" y="620" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+      <rect x="545" y="620" width="80" height="80" rx="12" stroke="#E5E7EB" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+</svg>

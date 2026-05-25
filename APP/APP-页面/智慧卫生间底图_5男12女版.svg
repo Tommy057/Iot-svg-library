@@ -1,0 +1,45 @@
+<svg width="750" height="1100" viewBox="0 0 750 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：适配小程序背景 -->
+  <rect width="750" height="1100" fill="#FBFBFC"/>
+
+  <!-- ==================== 男卫生间区 (Top) ==================== -->
+  <g id="Male_Section">
+    <!-- 男卫边框 (5个位，单排，高度调至 260) -->
+    <rect x="40" y="60" width="670" height="260" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="60" width="120" height="40" rx="10" fill="#3B82F6" />
+    <text x="60" y="88" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">男卫生间</text>
+    
+    <!-- 5个隔间布局 (单排分布) -->
+    <rect x="70" y="130" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="195" y="130" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="325" y="130" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="455" y="130" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="580" y="130" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+  </g>
+
+  <!-- ==================== 女卫生间区 (Bottom) ==================== -->
+  <g id="Female_Section">
+    <!-- 女卫边框 (12个位，三排 4+4+4，高度调至 550) -->
+    <rect x="40" y="360" width="670" height="550" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="360" width="120" height="40" rx="10" fill="#EC4899" />
+    <text x="60" y="388" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">女卫生间</text>
+    
+    <!-- 第一排 4个 -->
+    <rect x="100" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="250" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="400" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="550" y="440" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    
+    <!-- 第二排 4个 -->
+    <rect x="100" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="250" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="400" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="550" y="580" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+
+    <!-- 第三排 4个 -->
+    <rect x="100" y="720" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="250" y="720" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="400" y="720" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="550" y="720" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg width="750" height="930" viewBox="0 0 750 930" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 页面大背景，采用极浅的灰色，衬托出白色的卡片区域 -->
+  <rect width="750" height="930" fill="#F4F7F9"/>
+  
+  <!-- ==================== 男卫生间区域 ==================== -->
+  <g id="Male_Zone">
+    <!-- 纯白底座卡片 -->
+    <rect x="30" y="30" width="690" height="420" rx="24" fill="white" />
+    
+    <!-- 左上角蓝色标识块 -->
+    <path d="M30 54 C30 40.7452 40.7452 30 54 30 H180 V74 H30 V54 Z" fill="#3B82F6"/>
+    <text x="50" y="60" font-family="PingFang SC, sans-serif" font-size="24" fill="white" font-weight="bold">男卫生间</text>
+    
+    <!-- 此区域已完全留白，请直接拖入 50x50 图标 -->
+  </g>
+
+  <!-- ==================== 女卫生间区域 ==================== -->
+  <g id="Female_Zone">
+    <!-- 纯白底座卡片 -->
+    <rect x="30" y="480" width="690" height="420" rx="24" fill="white" />
+    
+    <!-- 左上角粉色标识块 -->
+    <path d="M30 504 C30 490.745 40.7452 480 54 480 H180 V524 H30 V504 Z" fill="#F43F5E"/>
+    <text x="50" y="510" font-family="PingFang SC, sans-serif" font-size="24" fill="white" font-weight="bold">女卫生间</text>
+    
+    <!-- 此区域已完全留白 -->
+  </g>
+
+</svg>

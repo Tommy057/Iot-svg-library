@@ -1,0 +1,48 @@
+<svg width="750" height="950" viewBox="0 0 750 950" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 整体背景，改为更柔和的浅灰 -->
+  <rect width="750" height="950" fill="#F7F8FA"/>
+  
+  <!-- ==================== 男卫生间 (Top) ==================== -->
+  <g id="Male_Zone">
+    <!-- 大底板：带投影感的圆角矩形 -->
+    <rect x="30" y="30" width="690" height="380" rx="24" fill="white" />
+    <!-- 顶部标签 -->
+    <path d="M30 54 C30 40.7452 40.7452 30 54 30 H160 V70 H30 V54 Z" fill="#3B82F6"/>
+    <text x="50" y="58" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">男卫生间</text>
+    
+    <!-- 10个对齐参考点 (5*2) —— 专门为 50px 图标布局 -->
+    <!-- 这些点在拖拽时能帮你找中心，上线后几乎看不见 -->
+    <g opacity="0.3">
+      <!-- 第一排 -->
+      <circle cx="110" cy="160" r="2" fill="#CBD5E1"/><circle cx="240" cy="160" r="2" fill="#CBD5E1"/>
+      <circle cx="375" cy="160" r="2" fill="#CBD5E1"/><circle cx="510" cy="160" r="2" fill="#CBD5E1"/>
+      <circle cx="640" cy="160" r="2" fill="#CBD5E1"/>
+      <!-- 第二排 -->
+      <circle cx="110" cy="280" r="2" fill="#CBD5E1"/><circle cx="240" cy="280" r="2" fill="#CBD5E1"/>
+      <circle cx="375" cy="280" r="2" fill="#CBD5E1"/><circle cx="510" cy="280" r="2" fill="#CBD5E1"/>
+      <circle cx="640" cy="280" r="2" fill="#CBD5E1"/>
+    </g>
+    
+    <text x="375" y="385" font-family="PingFang SC" font-size="14" fill="#94A3B8" text-anchor="middle">—— 10个舱位监测中 ——</text>
+  </g>
+
+  <!-- ==================== 女卫生间 (Bottom) ==================== -->
+  <g id="Female_Zone">
+    <rect x="30" y="440" width="690" height="380" rx="24" fill="white" />
+    <path d="M30 464 C30 450.745 40.7452 440 54 440 H160 V480 H30 V464 Z" fill="#EC4899"/>
+    <text x="50" y="468" font-family="PingFang SC" font-size="22" fill="white" font-weight="bold">女卫生间</text>
+    
+    <!-- 8个对齐参考点 (4*2) -->
+    <g opacity="0.3">
+      <circle cx="125" cy="570" r="2" fill="#CBD5E1"/><circle cx="290" cy="570" r="2" fill="#CBD5E1"/>
+      <circle cx="460" cy="570" r="2" fill="#CBD5E1"/><circle cx="625" cy="570" r="2" fill="#CBD5E1"/>
+      <circle cx="125" cy="700" r="2" fill="#CBD5E1"/><circle cx="290" cy="700" r="2" fill="#CBD5E1"/>
+      <circle cx="460" cy="700" r="2" fill="#CBD5E1"/><circle cx="625" cy="700" r="2" fill="#CBD5E1"/>
+    </g>
+    
+    <text x="375" y="795" font-family="PingFang SC" font-size="14" fill="#94A3B8" text-anchor="middle">—— 8个舱位监测中 ——</text>
+  </g>
+  
+  <!-- 页面说明 -->
+  <text x="375" y="880" font-family="PingFang SC" font-size="16" fill="#64748B" text-anchor="middle" font-weight="500">18F A区 · 智慧楼控底图</text>
+</svg>
