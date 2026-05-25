@@ -1,0 +1,54 @@
+<svg width="750" height="1100" viewBox="0 0 750 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：纯白或极浅灰，适配小程序背景 -->
+  <rect width="750" height="1100" fill="#FBFBFC"/>
+  
+
+  <!-- ==================== 男卫生间区 (Top Section) ==================== -->
+  <g id="Male_Section">
+    <!-- 男卫边框 -->
+    <rect x="40" y="80" width="670" height="420" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="80" width="120" height="40" rx="10" fill="#3B82F6" />
+    <text x="60" y="108" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">男卫生间</text>
+    
+    <!-- 10个隔间布局 (5个一组，分两排) -->
+    <!-- 第一排 5个 -->
+    <rect x="70" y="150" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="195" y="150" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="325" y="150" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="455" y="150" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="580" y="150" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    
+    <!-- 第二排 5个 -->
+    <rect x="70" y="270" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="195" y="270" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="325" y="270" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="455" y="270" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="580" y="270" width="100" height="100" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+  </g>
+
+  <!-- ==================== 中间装饰线 ==================== -->
+  <line x1="80" y1="540" x2="670" y2="540" stroke="#F3F4F6" stroke-width="2"/>
+
+  <!-- ==================== 女卫生间区 (Bottom Section) ==================== -->
+  <g id="Female_Section">
+    <!-- 女卫边框 -->
+    <rect x="40" y="580" width="670" height="420" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="40" y="580" width="120" height="40" rx="10" fill="#EC4899" />
+    <text x="60" y="608" font-family="PingFang SC" font-size="20" fill="white" font-weight="500">女卫生间</text>
+    
+    <!-- 8个隔间布局 (4个一组，分两排) -->
+    <!-- 第一排 4个 -->
+    <rect x="100" y="650" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="250" y="650" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="400" y="650" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="550" y="650" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    
+    <!-- 第二排 4个 -->
+    <rect x="100" y="790" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="250" y="790" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="400" y="790" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+    <rect x="550" y="790" width="110" height="110" rx="12" stroke="#D1D5DB" stroke-width="2" fill="#F9FAFB"/>
+
+  </g>
+
+</svg>
