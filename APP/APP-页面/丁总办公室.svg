@@ -1,0 +1,16 @@
+<svg width="750" height="900" viewBox="0 0 750 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 整体背景，模拟工位图的浅灰色 -->
+  <rect width="750" height="900" fill="#F4F6F8"/>
+  
+  <!-- 办公室主体大边框 -->
+  <rect x="50" y="50" width="650" height="800" rx="4" fill="white" stroke="#666666" stroke-width="2"/>
+
+
+  <!-- 房间名称（像工位图那样的水印感文字） -->
+  <text x="375" y="480" font-family="PingFang SC" font-size="36" fill="#E2E8F0" font-weight="bold" text-anchor="middle">丁总办公室</text>
+
+  <!-- 门口标识 -->
+  <line x1="50" y1="800" x2="150" y2="800" stroke="white" stroke-width="6"/>
+  <text x="70" y="840" font-family="PingFang SC" font-size="16" fill="#666666">入口</text>
+
+</svg>
