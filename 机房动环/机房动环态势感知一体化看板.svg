@@ -1,0 +1,178 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. 背景与滤镜定义 -->
+    <defs>
+        <rect id="bg" width="1600" height="900" fill="#0B1120" />
+        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+        <!-- 霓虹发光 -->
+        <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <!-- 拟物卡片投影 -->
+        <filter id="clay-card">
+            <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+
+    <use href="#bg" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 2. 顶部中央：核心 KPI 区域 (业主最关心的 PUE) -->
+    <g transform="translate(600, 30)">
+        <path d="M 0 0 L 400 0 L 380 80 L 20 80 Z" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="2" />
+        <text x="200" y="30" fill="#475569" font-size="14" text-anchor="middle">机房能效比 (PUE)</text>
+        <!-- 点表 ID 0: PUE -->
+        <text x="200" y="70" fill="#10B981" font-size="42" font-weight="bold" text-anchor="middle" filter="url(#neon-glow)">1.25</text>
+    </g>
+
+    <!-- 3. 左侧：动力系统监控 (UPS & 电量仪) -->
+    <g transform="translate(40, 130)">
+        <rect width="420" height="600" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">POWER | 动力配电监控</text>
+        
+        <!-- UPS 1# 核心数据 (点表 1.3.2) -->
+        <g transform="translate(20, 60)">
+            <rect width="380" height="180" rx="6" fill="rgba(14, 165, 233, 0.05)" />
+            <text x="15" y="30" fill="#0EA5E9" font-size="14">1# UPS 运行负载</text>
+            <!-- 负载百分比 (点表 ID 42) -->
+            <text x="15" y="85" fill="#BAE6FD" font-size="48" font-weight="bold">45.8 <tspan font-size="20">%</tspan></text>
+            <rect x="150" y="60" width="200" height="12" rx="6" fill="#0F172A" />
+            <rect x="150" y="60" width="100" height="12" rx="6" fill="#10B981" />
+            
+            <g transform="translate(15, 120)">
+                <text y="0" fill="#475569" font-size="12">输入电压: <tspan fill="#BAE6FD">225 V</tspan></text>
+                <text x="180" y="0" fill="#475569" font-size="12">输出频率: <tspan fill="#BAE6FD">50.0 Hz</tspan></text>
+                <text y="30" fill="#475569" font-size="12">电池剩余: <tspan fill="#10B981">120 min</tspan></text>
+                <text x="180" y="30" fill="#475569" font-size="12">系统状态: <tspan fill="#10B981">正常</tspan></text>
+            </g>
+        </g>
+
+        <!-- 市电电量仪 (点表 1.3.6) -->
+        <g transform="translate(20, 260)">
+            <rect width="380" height="280" rx="6" fill="rgba(14, 165, 233, 0.05)" />
+            <text x="15" y="30" fill="#0EA5E9" font-size="14">市电总进线参数</text>
+            <g transform="translate(15, 60)">
+                <text y="0" fill="#475569" font-size="12">A相电压</text>
+                <text y="30" fill="#BAE6FD" font-size="24" font-weight="bold">231.5 V</text>
+                
+                <text x="180" y="0" fill="#475569" font-size="12">总有功功率</text>
+                <text x="180" y="30" fill="#0EA5E9" font-size="24" font-weight="bold">124.2 kW</text>
+                
+                <text y="80" fill="#475569" font-size="12">累计消耗电量</text>
+                <text y="120" fill="#BAE6FD" font-size="32" font-weight="bold">85,241.6 <tspan font-size="14">kWh</tspan></text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 4. 右侧：环境与冷量监控 (空调 & 温湿度) -->
+    <g transform="translate(1140, 130)">
+        <rect width="420" height="600" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" filter="url(#clay-card)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">ENVIRONMENT | 环境监控</text>
+
+        <!-- 精密空调 (点表 1.3.3) -->
+        <g transform="translate(20, 60)">
+            <rect width="380" height="120" rx="6" fill="rgba(14, 165, 233, 0.05)" />
+            <text x="15" y="25" fill="#0EA5E9" font-size="14">1# 精密空调</text>
+            <circle cx="340" cy="25" r="5" fill="#10B981" />
+            <text x="350" y="30" fill="#10B981" font-size="11">运行中</text>
+            
+            <g transform="translate(15, 60)">
+                <text y="0" fill="#475569" font-size="12">回风温度</text>
+                <text y="35" fill="#BAE6FD" font-size="28" font-weight="bold">24.5 ℃</text>
+                <text x="180" y="0" fill="#475569" font-size="12">回风湿度</text>
+                <text x="180" y="35" fill="#BAE6FD" font-size="28" font-weight="bold">48.2 %</text>
+            </g>
+        </g>
+
+        <!-- 温湿度矩阵 (点表 1.3.4) -->
+        <g transform="translate(20, 200)">
+            <text x="0" y="20" fill="#BAE6FD" font-size="14">机房平均环境指标</text>
+            <g transform="translate(0, 40)">
+                <rect width="180" height="100" rx="6" fill="rgba(16, 185, 129, 0.1)" />
+                <text x="90" y="30" fill="#475569" font-size="12" text-anchor="middle">平均温度</text>
+                <text x="90" y="75" fill="#10B981" font-size="32" font-weight="bold" text-anchor="middle">23.8 ℃</text>
+                
+                <rect x="200" width="180" height="100" rx="6" fill="rgba(14, 165, 233, 0.1)" />
+                <text x="290" y="30" fill="#475569" font-size="12" text-anchor="middle">平均湿度</text>
+                <text x="290" y="75" fill="#0EA5E9" font-size="32" font-weight="bold" text-anchor="middle">50.1 %</text>
+            </g>
+        </g>
+
+        <!-- 漏水监测 (点表 1.3.5) -->
+        <g transform="translate(20, 360)">
+            <rect width="380" height="80" rx="6" fill="rgba(16, 185, 129, 0.05)" stroke="#10B981" />
+            <text x="20" y="45" fill="#10B981" font-size="16" font-weight="bold">漏水检测系统：未发现漏水告警</text>
+            <circle cx="350" cy="40" r="8" fill="#10B981" opacity="0.3">
+                <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+            </circle>
+        </g>
+    </g>
+
+    <!-- 5. 中央：安全感知墙 (机柜信息 1.3.1) - 验收最爱看的安全清单 -->
+    <g transform="translate(480, 130)">
+        <rect width="640" height="400" rx="10" fill="rgba(30, 41, 59, 0.5)" stroke="rgba(14, 165, 233, 0.1)" />
+        <text x="320" y="40" fill="#BAE6FD" font-size="18" font-weight="bold" text-anchor="middle">SECURITY | 机房安全预防状态</text>
+        
+        <g transform="translate(40, 70)">
+            <!-- 门禁 -->
+            <g transform="translate(0, 0)">
+                <rect width="120" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="60" y="40" fill="#475569" font-size="12" text-anchor="middle">机柜前门</text>
+                <text x="60" y="90" fill="#10B981" font-size="20" font-weight="bold" text-anchor="middle">已闭合</text>
+            </g>
+            <!-- 烟感 -->
+            <g transform="translate(140, 0)">
+                <rect width="120" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="60" y="40" fill="#475569" font-size="12" text-anchor="middle">系统烟感</text>
+                <text x="60" y="90" fill="#10B981" font-size="20" font-weight="bold" text-anchor="middle">正常</text>
+            </g>
+            <!-- 红外 -->
+            <g transform="translate(280, 0)">
+                <rect width="120" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="60" y="40" fill="#475569" font-size="12" text-anchor="middle">入侵检测</text>
+                <text x="60" y="90" fill="#10B981" font-size="20" font-weight="bold" text-anchor="middle">监控中</text>
+            </g>
+            <!-- 消防 -->
+            <g transform="translate(420, 0)">
+                <rect width="120" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="60" y="40" fill="#475569" font-size="12" text-anchor="middle">消防告警</text>
+                <text x="60" y="90" fill="#10B981" font-size="20" font-weight="bold" text-anchor="middle">正常</text>
+            </g>
+        </g>
+        
+        <!-- PDU 支路负载 (点表 1.3.9) -->
+        <g transform="translate(40, 220)">
+            <text x="0" y="20" fill="#BAE6FD" font-size="14">智能 PDU 支路电流监控</text>
+            <rect y="40" width="560" height="100" rx="6" fill="rgba(14, 165, 233, 0.05)" />
+            <text x="20" y="75" fill="#475569" font-size="12">总电流</text>
+            <text x="20" y="115" fill="#0EA5E9" font-size="28" font-weight="bold">16.4 <tspan font-size="14">A</tspan></text>
+            <text x="200" y="75" fill="#475569" font-size="12">额定容量</text>
+            <text x="200" y="115" fill="#BAE6FD" font-size="28" font-weight="bold">32.0 <tspan font-size="14">A</tspan></text>
+            <!-- 负载进度条 -->
+            <rect x="350" y="95" width="180" height="8" rx="4" fill="#0F172A" />
+            <rect x="350" y="95" width="90" height="8" rx="4" fill="#0EA5E9" />
+        </g>
+    </g>
+
+    <!-- 6. 底部底座：告警流水与系统信息 (解决底部空洞) -->
+    <g transform="translate(480, 550)">
+        <rect width="640" height="180" rx="10" fill="rgba(30, 41, 59, 0.8)" stroke="#0EA5E9" stroke-width="1" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">ALARM LOG | 实时告警流水</text>
+        <g transform="translate(20, 60)">
+            <text y="0" fill="#10B981" font-size="12">[INFO] 2024-05-20 14:00:01 系统自检通过</text>
+            <text y="25" fill="#10B981" font-size="12">[INFO] 2024-05-20 13:45:22 电池组巡检完成，状态良好</text>
+            <text y="50" fill="#475569" font-size="12">[LOG] 2024-05-20 12:00:00 自动备份数据存储成功</text>
+            <!-- 模拟不断滚动的视觉细节 -->
+            <rect y="70" width="600" height="1" fill="#0EA5E9" opacity="0.2" />
+        </g>
+        <text x="620" y="165" fill="#475569" font-size="42" font-weight="bold" text-anchor="end" opacity="0.1">DCIM SYSTEM</text>
+    </g>
+
+    <!-- 7. 装饰边角 -->
+    <g stroke="#0EA5E9" stroke-width="2" fill="none" opacity="0.5">
+        <path d="M 20 20 L 60 20 M 20 20 L 20 60" />
+        <path d="M 1580 880 L 1540 880 M 1580 880 L 1580 840" />
+    </g>
+</svg>

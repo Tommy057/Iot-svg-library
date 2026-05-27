@@ -1,0 +1,60 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <defs>
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 顶部标题 -->
+    <g transform="translate(40, 40)">
+        <text x="0" y="0" fill="#0EA5E9" font-family="Arial" font-size="28" font-weight="bold">机柜环境与安防态势阵列</text>
+        <path d="M 0 15 L 1520 15" stroke="#0EA5E9" stroke-width="1" opacity="0.3" />
+    </g>
+
+    <!-- 左侧：核心物理状态 (1.3.1 ID 1-6) -->
+    <g transform="translate(40, 100)">
+        <rect width="400" height="740" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">物理安防状态</text>
+        <!-- 3D拟物感门状态 -->
+        <g transform="translate(40, 80)">
+            <rect width="140" height="180" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+            <text x="70" y="40" fill="#475569" font-size="12" text-anchor="middle">前门状态</text>
+            <text x="70" y="120" fill="#10B981" font-size="24" font-weight="bold" text-anchor="middle">已锁闭</text>
+        </g>
+        <g transform="translate(220, 80)">
+            <rect width="140" height="180" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+            <text x="70" y="40" fill="#475569" font-size="12" text-anchor="middle">后门状态</text>
+            <text x="70" y="120" fill="#10B981" font-size="24" font-weight="bold" text-anchor="middle">已锁闭</text>
+        </g>
+        <!-- 应急风机 (ID 5-6) -->
+        <g transform="translate(40, 300)">
+            <rect width="320" height="80" rx="4" fill="rgba(14, 165, 233, 0.05)" stroke="#0EA5E9" stroke-dasharray="4 2" />
+            <text x="20" y="45" fill="#BAE6FD" font-size="14">应急风机运行状态：待命</text>
+        </g>
+    </g>
+
+    <!-- 中间：干接点设备矩阵 (1.3.1 ID 31-95) - 填补空间最有效的部分 -->
+    <g transform="translate(460, 100)">
+        <rect width="1100" height="740" rx="10" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.1)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16" font-weight="bold">干接点扩展设备监控矩阵 (65 Nodes)</text>
+        <!-- 自动生成矩阵小图标 -->
+        <g transform="translate(20, 60)">
+            <!-- 演示 65 个点位中的一部分 -->
+            <rect width="100" height="40" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="0.5" />
+            <text x="10" y="25" fill="#BAE6FD" font-size="10">设备 01: 正常</text>
+            
+            <g transform="translate(110, 0)">
+                <rect width="100" height="40" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="0.5" />
+                <text x="10" y="25" fill="#BAE6FD" font-size="10">设备 02: 正常</text>
+            </g>
+            <!-- 更多点位平铺... -->
+            <g transform="translate(0, 50)">
+                <rect width="100" height="40" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="0.5" />
+                <text x="10" y="25" fill="#BAE6FD" font-size="10">设备 03: 正常</text>
+            </g>
+            <text x="500" y="300" fill="#475569" font-size="64" font-weight="bold" opacity="0.05">SENSOR MATRIX ACTIVE</text>
+        </g>
+    </g>
+</svg>

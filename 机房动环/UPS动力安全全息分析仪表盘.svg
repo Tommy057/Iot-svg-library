@@ -1,0 +1,40 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <!-- 顶部标题 -->
+    <g transform="translate(40, 40)">
+        <text x="0" y="0" fill="#0EA5E9" font-family="Arial" font-size="28" font-weight="bold">UPS 动力系统实时态势分析</text>
+    </g>
+
+    <!-- 中央：主负载仪表盘 (ID 42-44) -->
+    <g transform="translate(550, 100)">
+        <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(14, 165, 233, 0.1)" stroke-width="30" />
+        <circle cx="250" cy="250" r="200" fill="none" stroke="#0EA5E9" stroke-width="30" stroke-dasharray="600 1200" transform="rotate(135, 250, 250)" />
+        <text x="250" y="240" fill="#475569" font-size="16" text-anchor="middle">当前输出负载率</text>
+        <text x="250" y="300" fill="#BAE6FD" font-size="72" font-weight="bold" text-anchor="middle">45.8%</text>
+    </g>
+
+    <!-- 左侧：输入三相数据 (ID 12-23) -->
+    <g transform="translate(40, 120)">
+        <rect width="450" height="700" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18">输入三相参数 (Input Ph_ABC)</text>
+        <g transform="translate(20, 80)">
+            <text y="0" fill="#475569" font-size="14">A相电压: <tspan fill="#BAE6FD" font-weight="bold">228.5 V</tspan></text>
+            <text y="40" fill="#475569" font-size="14">B相电压: <tspan fill="#BAE6FD" font-weight="bold">230.1 V</tspan></text>
+            <text y="80" fill="#475569" font-size="14">C相电压: <tspan fill="#BAE6FD" font-weight="bold">229.4 V</tspan></text>
+            <path d="M 0 110 L 410 110" stroke="#475569" stroke-width="0.5" />
+            <text y="150" fill="#475569" font-size="14">输入频率: <tspan fill="#10B981">50.02 Hz</tspan></text>
+        </g>
+    </g>
+
+    <!-- 右侧：电池组状态 (ID 46-52) -->
+    <g transform="translate(1110, 120)">
+        <rect width="450" height="700" rx="10" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18">电池组运行参数</text>
+        <g transform="translate(20, 80)">
+            <text y="0" fill="#475569" font-size="14">蓄电池电压: <tspan fill="#BAE6FD">415.2 V</tspan></text>
+            <text y="40" fill="#475569" font-size="14">充放电电流: <tspan fill="#10B981">0.5 A (浮充)</tspan></text>
+            <text y="120" fill="#475569" font-size="14">剩余时间估算</text>
+            <text y="180" fill="#10B981" font-size="48" font-weight="bold">120 <tspan font-size="16">min</tspan></text>
+        </g>
+    </g>
+</svg>
