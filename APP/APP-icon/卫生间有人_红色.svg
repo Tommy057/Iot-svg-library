@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：告警红 -->
+  <circle cx="50" cy="50" r="50" fill="#FF4D4F"/>
+  <!-- 人物剪影：纯白 -->
+  <circle cx="50" cy="40" r="10" fill="#FFFFFF"/>
+  <path d="M30 75 Q30 55 50 55 Q70 55 70 75 Z" fill="#FFFFFF"/>
+  <!-- 感应波纹：增加存在感 -->
+  <path d="M75 35 Q85 50 75 65" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M25 35 Q15 50 25 65" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9"/>
+</svg>

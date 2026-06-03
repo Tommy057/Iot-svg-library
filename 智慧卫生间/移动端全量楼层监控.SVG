@@ -1,0 +1,153 @@
+<svg width="750" height="2400" viewBox="0 0 750 2400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 风格软阴影 -->
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="6" />
+      <feFlood flood-color="#000000" flood-opacity="0.05" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    
+    <!-- 侧位图标符号 (Symbol) -->
+    <symbol id="stall-0"> <!-- 无人/绿色 -->
+      <rect width="40" height="50" rx="8" fill="#F2FFF5" stroke="#34C759" stroke-width="1.5" />
+      <circle cx="20" cy="25" r="4" fill="#34C759" opacity="0.5" />
+    </symbol>
+    <symbol id="stall-1"> <!-- 有人/红色 -->
+      <rect width="40" height="50" rx="8" fill="#FFF2F2" stroke="#FF3B30" stroke-width="2" />
+      <rect width="12" height="12" rx="2" x="14" y="19" fill="#FF3B30" />
+    </symbol>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="750" height="2400" fill="#F2F2F7" />
+
+  <!-- 顶部标题 -->
+  <g transform="translate(40, 60)">
+    <text fill="#1D1D1F" font-family="Arial, sans-serif" font-size="36" font-weight="bold">楼层卫生间监控</text>
+    <text y="45" fill="#8E8E93" font-size="16">REAL-TIME OCCUPANCY MONITORING</text>
+  </g>
+
+  <!-- ======================== 1F ======================== -->
+  <g transform="translate(30, 150)" filter="url(#card-shadow)">
+    <rect width="690" height="300" rx="32" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">1F (一层大厅)</text>
+    <!-- 男卫 9个 -->
+    <g transform="translate(30, 80)">
+      <text y="20" fill="#8E8E93" font-size="14">男卫 (9)</text>
+      <g transform="translate(0, 35)">
+        <use href="#stall-1" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" />
+        <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" />
+        <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" /> <use href="#stall-0" x="400" />
+      </g>
+    </g>
+    <!-- 女卫 16个 -->
+    <g transform="translate(30, 180)">
+      <text y="20" fill="#8E8E93" font-size="14">女卫 (16)</text>
+      <g transform="translate(0, 35)">
+        <use href="#stall-0" x="0" /> <use href="#stall-1" x="50" /> <use href="#stall-0" x="100" />
+        <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" />
+        <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" />
+        <g transform="translate(0, 60)">
+           <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" />
+           <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" />
+           <use href="#stall-1" x="300" /> <use href="#stall-0" x="350" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================== 18F (南北) ======================== -->
+  <g transform="translate(30, 480)" filter="url(#card-shadow)">
+    <rect width="690" height="420" rx="32" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">18F (十八层)</text>
+    
+    <!-- 北翼 -->
+    <g transform="translate(30, 80)">
+      <text y="20" fill="#007AFF" font-size="16" font-weight="bold">北翼 (NORTH)</text>
+      <text x="120" y="20" fill="#8E8E93" font-size="14">男10 / 女8</text>
+      <g transform="translate(0, 35)">
+        <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-1" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" />
+        <use href="#stall-0" x="250" /> <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" /> <use href="#stall-0" x="400" /> <use href="#stall-0" x="450" />
+        <g transform="translate(0, 65)">
+           <use href="#stall-0" x="0" stroke="#FF2D55" /> <!-- 女卫图标区分 -->
+           <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-1" x="150" />
+           <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" /> <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" />
+        </g>
+      </g>
+    </g>
+    
+    <!-- 南翼 -->
+    <g transform="translate(30, 250)">
+      <text y="20" fill="#FF9500" font-size="16" font-weight="bold">南翼 (SOUTH)</text>
+      <text x="120" y="20" fill="#8E8E93" font-size="14">男5 / 女7</text>
+      <g transform="translate(0, 35)">
+        <use href="#stall-1" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" />
+        <g transform="translate(0, 65)">
+           <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-1" x="200" /> <use href="#stall-0" x="250" /> <use href="#stall-0" x="300" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================== 19F (南北) ======================== -->
+  <g transform="translate(30, 930)" filter="url(#card-shadow)">
+    <rect width="690" height="420" rx="32" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">19F (十九层)</text>
+    <!-- 北翼 男5 女12 -->
+    <g transform="translate(30, 80)">
+       <text y="20" fill="#007AFF" font-size="16">北翼</text>
+       <g transform="translate(0, 35)">
+         <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" />
+         <g transform="translate(0, 65)">
+            <use href="#stall-1" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" />
+            <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" /> <use href="#stall-0" x="400" /> <use href="#stall-0" x="450" /> <use href="#stall-0" x="500" /> <use href="#stall-0" x="550" />
+         </g>
+       </g>
+    </g>
+    <!-- 南翼 男5 女7 -->
+    <g transform="translate(30, 250)">
+       <text y="20" fill="#FF9500" font-size="16">南翼</text>
+       <g transform="translate(0, 35)">
+         <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" />
+         <g transform="translate(0, 65)">
+            <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-1" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" /> <use href="#stall-0" x="300" />
+         </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- ======================== 20F (南北) ======================== -->
+  <g transform="translate(30, 1380)" filter="url(#card-shadow)">
+    <rect width="690" height="420" rx="32" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">20F (二十层)</text>
+    <!-- 北翼 男5 女12 -->
+    <g transform="translate(30, 80)">
+       <text y="20" fill="#007AFF" font-size="16">北翼</text>
+       <g transform="translate(0, 35)">
+         <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-1" x="150" /> <use href="#stall-0" x="200" />
+         <g transform="translate(0, 65)">
+            <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" /> <use href="#stall-0" x="250" />
+            <use href="#stall-0" x="300" /> <use href="#stall-0" x="350" /> <use href="#stall-0" x="400" /> <use href="#stall-1" x="450" /> <use href="#stall-0" x="500" /> <use href="#stall-0" x="550" />
+         </g>
+       </g>
+    </g>
+    <!-- 南翼 男5 女7 -->
+    <g transform="translate(30, 250)">
+       <text y="20" fill="#FF9500" font-size="16">南翼</text>
+       <g transform="translate(0, 35)">
+         <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="200" />
+         <g transform="translate(0, 65)">
+            <use href="#stall-1" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" /> <use href="#stall-0" x="150" /> <use href="#stall-0" x="0" /> <use href="#stall-0" x="50" /> <use href="#stall-0" x="100" />
+         </g>
+       </g>
+    </g>
+  </g>
+
+  <!-- 底部预留空间 (15-17F 扩展位) -->
+  <g transform="translate(40, 1850)">
+    <rect width="670" height="150" rx="32" fill="none" stroke="#CBD5E1" stroke-dasharray="10 10" />
+    <text x="335" y="85" text-anchor="middle" fill="#94A3B8" font-size="20">15F - 17F 系统待接入...</text>
+  </g>
+</svg>

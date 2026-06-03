@@ -1,0 +1,7 @@
+<svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：安全绿 -->
+  <circle cx="50" cy="50" r="50" fill="#52C41A"/>
+  <!-- 人物剪影：纯白 -->
+  <circle cx="50" cy="40" r="10" fill="#FFFFFF"/>
+  <path d="M30 75 Q30 55 50 55 Q70 55 70 75 Z" fill="#FFFFFF"/>
+</svg>
