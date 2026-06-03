@@ -1,0 +1,49 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <!-- 标题 -->
+    <g transform="translate(40, 40)">
+        <text fill="#FFFFFF" font-size="32" font-weight="bold">智能机柜环境与全息安防系统</text>
+    </g>
+
+    <!-- 顶部：环境极值表 (点表所有 int16 温度) -->
+    <g transform="translate(40, 100)">
+        <rect width="1520" height="340" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#0EA5E9" stroke-opacity="0.3" />
+        <g transform="translate(40, 60)">
+            <text fill="#0EA5E9" font-size="18">冷通道 (COLD AISLE)</text>
+            <text y="50" fill="#475569">平均温度: <tspan fill="#FFFFFF" font-weight="bold">22.4 ℃</tspan></text>
+            <text y="80" fill="#475569">最高/最低: <tspan fill="#FFFFFF">24.5 / 21.2 ℃</tspan></text>
+            
+            <text x="400" fill="#EF4444" font-size="18">热通道 (HOT AISLE)</text>
+            <text x="400" y="50" fill="#475569">平均温度: <tspan fill="#FFFFFF" font-weight="bold">32.8 ℃</tspan></text>
+            <text x="400" y="80" fill="#475569">最高/最低: <tspan fill="#FFFFFF">35.4 / 31.0 ℃</tspan></text>
+
+            <text x="800" fill="#BAE6FD" font-size="18">系统总体 (SYSTEM)</text>
+            <text x="800" y="50" fill="#475569">平均温湿度: <tspan fill="#FFFFFF" font-weight="bold">25.1 ℃ / 46.2 %</tspan></text>
+            <text x="800" y="80" fill="#475569">外部环境: <tspan fill="#FFFFFF">26.5 ℃ / 50.1 %</tspan></text>
+        </g>
+    </g>
+
+    <!-- 底部：15项安防告警矩阵 (布尔值全显示) -->
+    <g transform="translate(40, 460)">
+        <rect width="1520" height="400" rx="4" fill="rgba(14, 165, 233, 0.05)" stroke="#0EA5E9" stroke-opacity="0.2" />
+        <text x="20" y="30" fill="#BAE6FD" font-size="16" font-weight="bold">>> 机柜安防状态矩阵 (SECURITY MATRIX)</text>
+        <g transform="translate(40, 80)">
+             <!-- 门禁、烟感、红外、漏水、消防 -->
+             <g transform="translate(0, 0)">
+                 <rect width="280" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                 <text x="140" y="40" fill="#475569" text-anchor="middle">前门开关</text>
+                 <text x="140" y="90" fill="#10B981" font-size="24" font-weight="bold" text-anchor="middle">已闭合 (正常)</text>
+             </g>
+             <g transform="translate(320, 0)">
+                 <rect width="280" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                 <text x="140" y="40" fill="#475569" text-anchor="middle">系统烟感</text>
+                 <text x="140" y="90" fill="#10B981" font-size="24" font-weight="bold" text-anchor="middle">正常运行</text>
+             </g>
+             <g transform="translate(640, 0)">
+                 <rect width="280" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                 <text x="140" y="40" fill="#475569" text-anchor="middle">漏水告警</text>
+                 <text x="140" y="90" fill="#10B981" font-size="24" font-weight="bold" text-anchor="middle">无水浸</text>
+             </g>
+        </g>
+    </g>
+</svg>

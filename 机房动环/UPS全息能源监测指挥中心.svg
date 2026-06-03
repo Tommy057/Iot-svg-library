@@ -1,0 +1,102 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/></pattern>
+        <filter id="neon"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 标题栏 -->
+    <g transform="translate(650, 40)">
+        <text fill="#FFFFFF" font-family="Microsoft YaHei" font-size="28" font-weight="bold" text-anchor="middle">UPS 全息能源监测指挥中心</text>
+        <path d="M -200 15 L 200 15" stroke="#0EA5E9" stroke-width="2" filter="url(#neon)"/>
+    </g>
+
+    <!-- 左侧容器：输入/输出三相参数 (针对点表大量 int16 数据) -->
+    <g transform="translate(60, 100)">
+        <rect width="700" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <path d="M 10 10 L 10 30 M 10 10 L 30 10" stroke="#0EA5E9" stroke-width="3" fill="none" />
+        <text x="30" y="30" fill="#BAE6FD" font-size="18" font-weight="bold">>> 输入与输出 (I/O PARAMETERS)</text>
+        
+        <!-- 表格头部 -->
+        <g transform="translate(30, 70)" fill="#475569" font-size="14">
+            <text x="250">A 相</text> <text x="400">B 相</text> <text x="550">C 相</text>
+            <path d="M 0 15 L 640 15" stroke="rgba(71, 85, 105, 0.3)" stroke-width="1" />
+        </g>
+
+        <!-- 输入数据行 -->
+        <g transform="translate(30, 120)">
+            <text y="0" fill="#0EA5E9" font-size="16">输入电压 (V)</text>
+            <text x="250" fill="#FFFFFF" font-size="20" font-weight="bold">224.3</text>
+            <text x="400" fill="#FFFFFF" font-size="20" font-weight="bold">224.0</text>
+            <text x="550" fill="#FFFFFF" font-size="20" font-weight="bold">225.9</text>
+
+            <text y="60" fill="#0EA5E9" font-size="16">输入电流 (A)</text>
+            <text x="250" fill="#FFFFFF" font-size="20" font-weight="bold">27.1</text>
+            <text x="400" fill="#FFFFFF" font-size="20" font-weight="bold">25.3</text>
+            <text x="550" fill="#FFFFFF" font-size="20" font-weight="bold">25.8</text>
+
+            <text y="120" fill="#0EA5E9" font-size="16">旁路电压 (V)</text>
+            <text x="250" fill="#FFFFFF" font-size="20" font-weight="bold">225.2</text>
+            <text x="400" fill="#FFFFFF" font-size="20" font-weight="bold">225.1</text>
+            <text x="550" fill="#FFFFFF" font-size="20" font-weight="bold">226.4</text>
+            
+            <!-- 频率大字号展示 -->
+            <text y="200" fill="#475569" font-size="14">输入频率 (Hz)</text>
+            <text y="250" fill="#FFFFFF" font-size="48" font-weight="bold" filter="url(#neon)">50.00</text>
+        </g>
+
+        <!-- 载荷百分比 (横向色块) -->
+        <g transform="translate(30, 450)">
+            <text fill="#F59E0B" font-size="16" font-weight="bold">>> 载荷百分比 (LOAD RATE)</text>
+            <g transform="translate(0, 40)">
+                <text fill="#F59E0B" font-size="36" font-weight="bold">4.0%</text>
+                <text x="120" fill="#F59E0B" font-size="36" font-weight="bold">4.0%</text>
+                <text x="240" fill="#F59E0B" font-size="36" font-weight="bold">7.0%</text>
+            </g>
+        </g>
+
+        <!-- 电池剩余时间 -->
+        <g transform="translate(30, 600)">
+            <text fill="#475569" font-size="14">电池剩余时间 (MIN)</text>
+            <text y="60" fill="#10B981" font-size="64" font-weight="bold" filter="url(#neon)">120</text>
+            <text x="130" y="60" fill="#10B981" font-size="18">分钟</text>
+        </g>
+    </g>
+
+    <!-- 右侧容器：状态矩阵 (针对点表大量 bool 数据) -->
+    <g transform="translate(800, 100)">
+        <rect width="740" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <path d="M 730 10 L 730 30 M 710 10 L 730 10" stroke="#0EA5E9" stroke-width="3" fill="none" />
+        <text x="30" y="30" fill="#BAE6FD" font-size="18" font-weight="bold">>> 运行状态 (SYSTEM STATUS)</text>
+
+        <!-- 状态双列平铺 -->
+        <g transform="translate(30, 80)">
+            <!-- 第一行 -->
+            <text y="0" fill="#475569" font-size="14">整流器状态</text> <text x="200" y="0" fill="#FFFFFF" font-size="16" font-weight="bold">正常</text>
+            <text x="350" y="0" fill="#475569" font-size="14">供电方式</text> <text x="550" y="0" fill="#10B981" font-size="16" font-weight="bold">市电供电</text>
+            <path d="M 0 20 L 680 20" stroke="rgba(71, 85, 105, 0.2)" />
+
+            <!-- 第二行 -->
+            <g transform="translate(0, 60)">
+                <text y="0" fill="#475569" font-size="14">电池状态</text> <text x="200" y="0" fill="#F59E0B" font-size="16" font-weight="bold">浮充中</text>
+                <text x="350" y="0" fill="#475569" font-size="14">通信状态</text> <text x="550" y="0" fill="#10B981" font-size="16" font-weight="bold">在线</text>
+                <path d="M 0 20 L 680 20" stroke="rgba(71, 85, 105, 0.2)" />
+            </g>
+
+            <!-- 第三行 -->
+            <g transform="translate(0, 120)">
+                <text y="0" fill="#475569" font-size="14">逆变器状态</text> <text x="200" y="0" fill="#FFFFFF" font-size="16" font-weight="bold">正常</text>
+                <text x="350" y="0" fill="#475569" font-size="14">综合告警</text> <text x="550" y="0" fill="#10B981" font-size="16" font-weight="bold">无异常</text>
+                <path d="M 0 20 L 680 20" stroke="rgba(71, 85, 105, 0.2)" />
+            </g>
+            
+            <!-- 更多点位... 比如 EPO、风扇故障等按此布局平铺 -->
+            <g transform="translate(0, 180)">
+                <text y="0" fill="#475569" font-size="14">EPO 紧急停机</text> <text x="200" y="0" fill="#FFFFFF" font-size="16">未触发</text>
+                <text x="350" y="0" fill="#475569" font-size="14">电池低压</text> <text x="550" y="0" fill="#10B981" font-size="16">正常</text>
+                <path d="M 0 20 L 680 20" stroke="rgba(71, 85, 105, 0.2)" />
+            </g>
+        </g>
+    </g>
+</svg>

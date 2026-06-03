@@ -1,0 +1,47 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+    
+    <g transform="translate(50, 40)">
+        <text fill="#FFFFFF" font-size="28" font-weight="bold">智慧机柜全息环境监测中心</text>
+    </g>
+
+    <!-- 冷/热通道对比矩阵 -->
+    <g transform="translate(50, 100)">
+        <rect width="750" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="30" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">>> 通道温湿度对比 (AISLE ANALYSIS)</text>
+        
+        <g transform="translate(30, 80)">
+            <!-- 表头 -->
+            <text x="200" fill="#475569" font-size="14">平均</text> <text x="350" fill="#475569" font-size="14">最高</text> <text x="500" fill="#475569" font-size="14">最低</text>
+            <path d="M 0 15 L 700 15" stroke="rgba(71, 85, 105, 0.3)" />
+            
+            <!-- 数据行 -->
+            <g transform="translate(0, 50)">
+                <text fill="#0EA5E9" font-size="16">冷通道温度 (℃)</text>
+                <text x="200" fill="#FFFFFF" font-size="20" font-weight="bold">22.4</text>
+                <text x="350" fill="#FFFFFF" font-size="20">24.5</text>
+                <text x="500" fill="#FFFFFF" font-size="20">21.2</text>
+            </g>
+            <g transform="translate(0, 120)">
+                <text fill="#EF4444" font-size="16">热通道温度 (℃)</text>
+                <text x="200" fill="#FFFFFF" font-size="20" font-weight="bold">32.8</text>
+                <text x="350" fill="#FFFFFF" font-size="20">35.4</text>
+                <text x="500" fill="#FFFFFF" font-size="20">31.0</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- 安防与报警状态 -->
+    <g transform="translate(830, 100)">
+        <rect width="720" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="30" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">>> 机柜安防自检 (SECURITY)</text>
+        <!-- 门控与消防点平铺 -->
+        <g transform="translate(30, 80)">
+             <text y="0" fill="#475569" font-size="14">前门开关状态</text> <text x="200" y="0" fill="#10B981" font-size="16">闭合 (正常)</text>
+             <text y="50" fill="#475569" font-size="14">系统烟感告警</text> <text x="200" y="50" fill="#10B981" font-size="16">无告警</text>
+             <text y="100" fill="#475569" font-size="14">系统红外入侵</text> <text x="200" y="100" fill="#10B981" font-size="16">安全</text>
+             <text y="150" fill="#475569" font-size="14">漏水检测</text> <text x="200" y="150" fill="#10B981" font-size="16">无积水</text>
+        </g>
+    </g>
+</svg>
