@@ -11,6 +11,6 @@
 
   <!-- 门口标识 -->
   <line x1="50" y1="800" x2="150" y2="800" stroke="white" stroke-width="6"/>
-  <text x="70" y="840" font-family="PingFang SC" font-size="16" fill="#666666">入口</text>
+  <text x="370" y="840" font-family="PingFang SC" font-size="16" fill="#666666">入口</text>
 
 </svg>
