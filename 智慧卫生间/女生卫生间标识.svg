@@ -1,0 +1,9 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 浅粉色底圈 -->
+  <circle cx="30" cy="30" r="28" fill="#FFF0F3" stroke="#FFE0E6" stroke-width="1" />
+  <!-- 女生符号：胭脂红 -->
+  <g fill="#FF2D55">
+    <circle cx="30" cy="18" r="7" />
+    <path d="M22 26 L38 26 L42 45 Q42 48 39 48 L21 48 Q18 48 18 45 Z" />
+  </g>
+</svg>

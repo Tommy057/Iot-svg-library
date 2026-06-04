@@ -1,0 +1,40 @@
+<svg width="750" height="900" viewBox="0 0 750 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 页面背景色 -->
+  <rect width="750" height="900" fill="#F4F7F9"/>
+
+  <!-- 卫生间主体区域白卡片 -->
+  <rect x="50" y="50" width="650" height="800" rx="20" fill="white" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- ==================== 左侧：3个隔间 (3 Stalls) ==================== -->
+  <g id="Left_Stalls">
+    <rect x="50" y="150" width="150" height="100" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="50" y="260" width="150" height="100" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="50" y="370" width="150" height="100" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <!-- 示意隔间门线 -->
+    <line x1="200" y1="150" x2="200" y2="470" stroke="#E2E8F0" stroke-width="2"/>
+  </g>
+
+  <!-- ==================== 右侧：5个隔间/车位 (5 Stalls/Spots) ==================== -->
+  <g id="Right_Stalls">
+    <rect x="550" y="80" width="150" height="90" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="550" y="180" width="150" height="90" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="550" y="280" width="150" height="90" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="550" y="380" width="150" height="90" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <rect x="550" y="480" width="150" height="90" stroke="#CBD5E1" stroke-width="2" fill="#F8FAFC"/>
+    <!-- 示意隔间门线 -->
+    <line x1="550" y1="80" x2="550" y2="570" stroke="#E2E8F0" stroke-width="2"/>
+  </g>
+
+  <!-- ==================== 入口区域 (Entrance) ==================== -->
+  <g id="Entrance_Area">
+    <!-- 底部双开门抽象线条 -->
+    <path d="M250 850 Q300 800 350 850" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <path d="M400 850 Q450 800 500 850" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <line x1="200" y1="850" x2="550" y2="850" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+    <text x="375" y="880" font-family="PingFang SC" font-size="16" fill="#94A3B8" text-anchor="middle">入口区域</text>
+  </g>
+
+  <!-- 中间走道标注（可选） -->
+  <text x="375" y="330" font-family="PingFang SC" font-size="24" fill="#E2E8F0" font-weight="bold" text-anchor="middle" letter-spacing="10">公共区域</text>
+
+</svg>

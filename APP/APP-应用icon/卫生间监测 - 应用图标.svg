@@ -1,0 +1,34 @@
+<svg width="45" height="45" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 背景渐变：青绿色系 -->
+    <linearGradient id="restroom-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="100%" stop-color="#14B8A6" />
+    </linearGradient>
+    <!-- 内部阴影，增加质感 -->
+    <filter id="icon-inner-shadow">
+      <feOffset dx="0" dy="1" />
+      <feGaussianBlur stdDeviation="1" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.2" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="shadow" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 45x45 的底座 -->
+  <rect width="45" height="45" rx="10" fill="url(#restroom-bg)" />
+  
+  <!-- 抽象男女符号，白色反向 -->
+  <g transform="translate(10, 11)" fill="white" filter="url(#icon-inner-shadow)">
+    <!-- 男符 -->
+    <circle cx="6" cy="4" r="3.5" />
+    <rect x="2" y="9" width="8" height="12" rx="2" />
+    <!-- 女符 -->
+    <circle cx="19" cy="4" r="3.5" />
+    <path d="M14 9 L24 9 L26 21 L12 21 Z" /> <!-- 裙子形状 -->
+  </g>
+</svg>
