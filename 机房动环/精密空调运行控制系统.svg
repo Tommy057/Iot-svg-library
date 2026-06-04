@@ -1,0 +1,48 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 顶部标题 -->
+    <g transform="translate(50, 40)">
+        <text fill="#FFFFFF" font-size="28" font-weight="bold">精密空调环境控制诊断中心</text>
+    </g>
+
+    <!-- 核心测量区 -->
+    <g transform="translate(50, 100)">
+        <rect width="500" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="30" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">>> 实时测量 (REAL-TIME)</text>
+        <g transform="translate(30, 100)">
+            <text fill="#475569" font-size="14">回风温度测量值</text>
+            <text y="60" fill="#FFFFFF" font-size="64" font-weight="bold">24.5 ℃</text>
+            
+            <text y="140" fill="#475569" font-size="14">回风湿度测量值</text>
+            <text y="200" fill="#0EA5E9" font-size="64" font-weight="bold">48.2 %</text>
+
+            <text y="280" fill="#475569" font-size="14">送风温度测量值</text>
+            <text y="340" fill="#10B981" font-size="64" font-weight="bold">18.5 ℃</text>
+        </g>
+    </g>
+
+    <!-- 控制与告警区 (密集平铺点表中的 bool 属性) -->
+    <g transform="translate(580, 100)">
+        <rect width="970" height="740" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.3)" />
+        <text x="30" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">>> 运行诊断与设定 (DIAGNOSTIC)</text>
+        
+        <!-- 空调状态点阵 -->
+        <g transform="translate(30, 80)">
+            <!-- 模拟 30 个点位的饱满排版 -->
+            <text y="0" fill="#475569" font-size="13">制冷状态</text> <text x="180" y="0" fill="#10B981" font-size="13" font-weight="bold">开启</text>
+            <text x="320" y="0" fill="#475569" font-size="13">防冻保护</text> <text x="500" y="0" fill="#10B981" font-size="13">正常</text>
+            <text x="640" y="0" fill="#475569" font-size="13">VFD状态</text> <text x="820" y="0" fill="#10B981" font-size="13">在线</text>
+            <path d="M 0 15 L 910 15" stroke="rgba(71, 85, 105, 0.1)" />
+        </g>
+        <!-- 下方放置点表中的 int16 设定值 -->
+        <g transform="translate(30, 500)">
+            <rect width="910" height="200" rx="8" fill="rgba(15, 23, 42, 0.6)" />
+            <text x="20" y="40" fill="#BAE6FD" font-size="16">制冷温度设定值: 22.0 ℃</text>
+            <text x="20" y="80" fill="#BAE6FD" font-size="16">制冷回差设定: 2.0 ℃</text>
+            <text x="450" y="40" fill="#BAE6FD" font-size="16">高温告警点: 35.0 ℃</text>
+            <text x="450" y="80" fill="#BAE6FD" font-size="16">低温告警点: 10.0 ℃</text>
+        </g>
+    </g>
+</svg>

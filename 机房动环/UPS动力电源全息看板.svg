@@ -1,0 +1,52 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <!-- 标题 -->
+    <g transform="translate(40, 40)">
+        <text fill="#0EA5E9" font-family="Arial" font-size="28" font-weight="bold">UPS 不间断电源系统动力看板</text>
+    </g>
+
+    <!-- 核心运行状态 (顶部一行) -->
+    <g transform="translate(40, 100)">
+        <rect width="1520" height="100" rx="10" fill="rgba(14, 165, 233, 0.1)" />
+        <text x="50" y="60" fill="#475569" font-size="16">当前供电方式：<tspan fill="#10B981" font-weight="bold">主路逆变供电</tspan></text>
+        <text x="400" y="60" fill="#475569" font-size="16">整流器状态：<tspan fill="#10B981" font-weight="bold">正常运行</tspan></text>
+        <text x="800" y="60" fill="#475569" font-size="16">电池节数：<tspan fill="#BAE6FD" font-weight="bold">32 节</tspan></text>
+        <text x="1200" y="60" fill="#475569" font-size="16">综合告警：<tspan fill="#10B981">无异常</tspan></text>
+    </g>
+
+    <!-- 三相电力矩阵 (输入/输出/旁路) -->
+    <g transform="translate(40, 220)">
+        <!-- 输入 -->
+        <rect width="480" height="400" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="16">三相输入参数 (Input Ph_ABC)</text>
+        <g transform="translate(30, 80)">
+            <text y="0" fill="#475569" font-size="13">电压: <tspan fill="#BAE6FD">225 / 228 / 231 V</tspan></text>
+            <text y="40" fill="#475569" font-size="13">频率: <tspan fill="#BAE6FD">50.02 Hz</tspan></text>
+            <text y="80" fill="#475569" font-size="13">功率因数 PF: <tspan fill="#BAE6FD">0.99</tspan></text>
+        </g>
+
+        <!-- 输出 (位于中间) -->
+        <g transform="translate(520, 0)">
+            <rect width="480" height="400" rx="15" fill="rgba(14, 165, 233, 0.05)" stroke="#10B981" stroke-width="2" />
+            <text x="20" y="35" fill="#10B981" font-size="18" font-weight="bold">三相输出参数 (Output Ph_ABC)</text>
+            <g transform="translate(30, 80)">
+                <text y="20" fill="#475569" font-size="16">负载百分比：</text>
+                <text x="120" y="25" fill="#10B981" font-size="42" font-weight="bold">42.5 %</text>
+                <text y="100" fill="#475569" font-size="13">输出功率: <tspan fill="#BAE6FD">120.4 kW</tspan></text>
+                <text y="140" fill="#475569" font-size="13">输出电压: <tspan fill="#BAE6FD">220.1 / 220.0 / 220.2 V</tspan></text>
+            </g>
+        </g>
+
+        <!-- 电池系统 (位于右侧) -->
+        <g transform="translate(1040, 0)">
+            <rect width="480" height="400" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#BAE6FD" />
+            <text x="20" y="35" fill="#BAE6FD" font-size="16">电池组健康状态 (Battery)</text>
+            <g transform="translate(30, 100)">
+                <text fill="#475569" font-size="16">剩余支撑时间：</text>
+                <text y="60" fill="#10B981" font-size="60" font-weight="bold">120 <tspan font-size="20">min</tspan></text>
+                <text y="120" fill="#475569" font-size="16">容量百分比：</text>
+                <text y="180" fill="#BAE6FD" font-size="60" font-weight="bold">100%</text>
+            </g>
+        </g>
+    </g>
+</svg>

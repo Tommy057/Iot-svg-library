@@ -1,0 +1,63 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <g transform="translate(40, 40)">
+        <text fill="#0EA5E9" font-family="Arial" font-size="28" font-weight="bold">智慧机柜环境与安防监测大屏</text>
+    </g>
+
+    <!-- 顶部环境总结 -->
+    <g transform="translate(40, 100)">
+        <rect width="480" height="200" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18">冷通道平均温湿度</text>
+        <text x="30" y="120" fill="#0EA5E9" font-size="54" font-weight="bold">22.4 ℃</text>
+        <text x="250" y="120" fill="#BAE6FD" font-size="54" font-weight="bold">45 %</text>
+    </g>
+
+    <g transform="translate(540, 100)">
+        <rect width="520" height="200" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#EF4444" stroke-opacity="0.3" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18">热通道平均温湿度</text>
+        <text x="30" y="120" fill="#EF4444" font-size="54" font-weight="bold">32.8 ℃</text>
+        <text x="250" y="120" fill="#BAE6FD" font-size="54" font-weight="bold">38 %</text>
+    </g>
+
+    <g transform="translate(1080, 100)">
+        <rect width="480" height="200" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#10B981" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18">外部环境温湿度</text>
+        <text x="30" y="120" fill="#10B981" font-size="54" font-weight="bold">26.1 ℃</text>
+        <text x="250" y="120" fill="#BAE6FD" font-size="54" font-weight="bold">52 %</text>
+    </g>
+
+    <!-- 安防状态灯阵列 (点表中的大量 bool 告警) -->
+    <g transform="translate(40, 320)">
+        <rect width="1520" height="540" rx="15" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.2)" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18" font-weight="bold">机柜安全预防监测矩阵</text>
+        
+        <!-- 矩阵卡片：烟感、红外、漏水、门禁 -->
+        <g transform="translate(40, 80)">
+            <!-- 消防/烟感 -->
+            <rect width="340" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+            <text x="20" y="40" fill="#475569" font-size="14">消防/烟感状态</text>
+            <text x="20" y="90" fill="#10B981" font-size="24" font-weight="bold">系统烟感：正常</text>
+
+            <!-- 漏水监控 -->
+            <g transform="translate(360, 0)">
+                <rect width="340" height="120" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="20" y="40" fill="#475569" font-size="14">漏水监测状态</text>
+                <text x="20" y="90" fill="#10B981" font-size="24" font-weight="bold">漏水告警：无</text>
+            </g>
+
+            <!-- 门禁开关 -->
+            <g transform="translate(720, 0)">
+                <rect width="340" height="120" rx="10" fill="rgba(30, 41, 59, 0.8)" stroke="#BAE6FD" />
+                <text x="20" y="40" fill="#475569" font-size="14">前/后门开关状态</text>
+                <text x="20" y="90" fill="#BAE6FD" font-size="20" font-weight="bold">前门: 闭合 | 后门: 闭合</text>
+            </g>
+
+            <!-- 存储/内存告警 (点表末尾属性) -->
+            <g transform="translate(1080, 0)">
+                <rect width="340" height="120" rx="10" fill="rgba(30, 41, 59, 0.8)" stroke="#475569" />
+                <text x="20" y="40" fill="#475569" font-size="14">系统存储状态</text>
+                <text x="20" y="90" fill="#BAE6FD" font-size="20" font-weight="bold">SD卡/内存空间：充足</text>
+            </g>
+        </g>
+    </g>
+</svg>

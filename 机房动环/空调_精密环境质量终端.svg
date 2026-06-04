@@ -1,0 +1,55 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1600" height="900" fill="#0B1120" />
+    <rect width="1600" height="900" fill="url(#grid)" />
+    
+    <!-- 标题 -->
+    <g transform="translate(40, 40)">
+        <text fill="#FFFFFF" font-size="32" font-weight="bold">精密空调运行环境控制中心</text>
+    </g>
+
+    <!-- 第一层：测量值大屏显示 -->
+    <g transform="translate(40, 100)">
+        <rect width="1520" height="260" rx="4" fill="rgba(14, 165, 233, 0.1)" stroke="#0EA5E9" stroke-opacity="0.4" />
+        <g transform="translate(150, 140)">
+            <text fill="#475569" text-anchor="middle">回风温度</text>
+            <text y="60" fill="#BAE6FD" font-size="72" font-weight="bold" text-anchor="middle">24.5<tspan font-size="20">℃</tspan></text>
+        </g>
+        <g transform="translate(550, 140)">
+            <text fill="#475569" text-anchor="middle">回风湿度</text>
+            <text y="60" fill="#0EA5E9" font-size="72" font-weight="bold" text-anchor="middle">48.2<tspan font-size="20">%</tspan></text>
+        </g>
+        <g transform="translate(950, 140)">
+            <text fill="#475569" text-anchor="middle">送风温度</text>
+            <text y="60" fill="#10B981" font-size="72" font-weight="bold" text-anchor="middle">18.5<tspan font-size="20">℃</tspan></text>
+        </g>
+        <g transform="translate(1300, 140)">
+            <text fill="#475569" text-anchor="middle">运行状态</text>
+            <text y="60" fill="#10B981" font-size="48" font-weight="bold" text-anchor="middle">制冷运行</text>
+        </g>
+    </g>
+
+    <!-- 第二层：诊断矩阵 (点表中的大量告警点) -->
+    <g transform="translate(40, 380)">
+        <rect width="1520" height="480" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#0EA5E9" stroke-opacity="0.3" />
+        <text x="20" y="30" fill="#BAE6FD" font-size="16" font-weight="bold">>> 故障诊断与自检列表 (22 DIAGNOSTIC NODES)</text>
+        
+        <g transform="translate(40, 70)">
+            <!-- 密集排列：高温报警、低温报警、高压、低压、风机、排气等 -->
+            <g transform="translate(0, 0)">
+                <text fill="#475569" font-size="14">综合告警: <tspan fill="#10B981">正常</tspan></text>
+                <text x="300" fill="#475569" font-size="14">防冻保护: <tspan fill="#10B981">正常</tspan></text>
+                <text x="600" fill="#475569" font-size="14">高压报警: <tspan fill="#10B981">正常</tspan></text>
+                <text x="900" fill="#475569" font-size="14">高温报警: <tspan fill="#10B981">正常</tspan></text>
+                <path d="M 0 15 L 1440 15" stroke="rgba(71, 85, 105, 0.2)" />
+            </g>
+            <!-- 更多行，填满垂直空间 -->
+            <g transform="translate(0, 50)">
+                <text fill="#475569" font-size="14">内风机故障: <tspan fill="#10B981">正常</tspan></text>
+                <text x="300" fill="#475569" font-size="14">低压锁定: <tspan fill="#10B981">无</tspan></text>
+                <text x="600" fill="#475569" font-size="14">电源丢失: <tspan fill="#10B981">正常</tspan></text>
+                <text x="900" fill="#475569" font-size="14">通讯状态: <tspan fill="#10B981">在线</tspan></text>
+                <path d="M 0 15 L 1440 15" stroke="rgba(71, 85, 105, 0.2)" />
+            </g>
+        </g>
+    </g>
+</svg>

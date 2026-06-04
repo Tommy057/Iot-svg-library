@@ -1,0 +1,73 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- 基础背景 -->
+    <rect width="1600" height="900" fill="#0B1120" />
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(14, 165, 233, 0.05)" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="1600" height="900" fill="url(#grid)" />
+
+    <!-- 标题栏 -->
+    <g transform="translate(40, 40)">
+        <text fill="#0EA5E9" font-family="Arial" font-size="28" font-weight="bold">精密空调环境控制终端</text>
+        <path d="M 0 15 L 1520 15" stroke="#0EA5E9" stroke-width="1" opacity="0.3" />
+    </g>
+
+    <!-- 核心指标区 (回风温湿度/送风温度) -->
+    <g transform="translate(40, 100)">
+        <rect width="1000" height="300" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" stroke-width="1" />
+        <g transform="translate(100, 150)">
+            <text fill="#475569" font-size="16" text-anchor="middle">回风温度测量值</text>
+            <text y="60" fill="#BAE6FD" font-size="72" font-weight="bold" text-anchor="middle">24.5 ℃</text>
+        </g>
+        <g transform="translate(400, 150)">
+            <text fill="#475569" font-size="16" text-anchor="middle">回风湿度测量值</text>
+            <text y="60" fill="#0EA5E9" font-size="72" font-weight="bold" text-anchor="middle">48.2 %</text>
+        </g>
+        <g transform="translate(700, 150)">
+            <text fill="#475569" font-size="16" text-anchor="middle">送风温度测量值</text>
+            <text y="60" fill="#10B981" font-size="72" font-weight="bold" text-anchor="middle">18.5 ℃</text>
+        </g>
+    </g>
+
+    <!-- 右侧设定参数 (制冷设定/回差) -->
+    <g transform="translate(1060, 100)">
+        <rect width="500" height="300" rx="15" fill="rgba(30, 41, 59, 0.7)" stroke="#0EA5E9" />
+        <text x="20" y="40" fill="#BAE6FD" font-size="18" font-weight="bold">制冷设定与阈值</text>
+        <g transform="translate(40, 90)">
+            <text fill="#475569" font-size="14">制冷温度设定：<tspan fill="#BAE6FD" font-weight="bold">22.0 ℃</tspan></text>
+            <text y="40" fill="#475569" font-size="14">制冷回差温度：<tspan fill="#BAE6FD" font-weight="bold">2.0 ℃</tspan></text>
+            <text y="80" fill="#475569" font-size="14">高温告警点位：<tspan fill="#EF4444" font-weight="bold">35.0 ℃</tspan></text>
+            <text y="120" fill="#475569" font-size="14">低温告警点位：<tspan fill="#0EA5E9" font-weight="bold">10.0 ℃</tspan></text>
+            <text y="160" fill="#475569" font-size="14">当前控制方式：<tspan fill="#BAE6FD">智能回风控制</tspan></text>
+        </g>
+    </g>
+
+    <!-- 底部告警矩阵 (点表中的大量 bool 值) -->
+    <g transform="translate(40, 420)">
+        <rect width="1520" height="440" rx="15" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(14, 165, 233, 0.2)" />
+        <text x="20" y="35" fill="#BAE6FD" font-size="18" font-weight="bold">系统诊断与故障监测矩阵</text>
+        
+        <!-- 告警灯阵列 (模拟正常状态) -->
+        <g transform="translate(20, 60)">
+            <!-- 这种布局非常饱满且易于验收 -->
+            <rect width="180" height="40" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+            <text x="15" y="25" fill="#10B981" font-size="12">防冻保护：正常</text>
+            <g transform="translate(195, 0)">
+                <rect width="180" height="40" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="15" y="25" fill="#10B981" font-size="12">VFD通讯：正常</text>
+            </g>
+            <g transform="translate(390, 0)">
+                <rect width="180" height="40" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10B981" />
+                <text x="15" y="25" fill="#10B981" font-size="12">高压锁定：无</text>
+            </g>
+            <!-- 演示一个故障状态 -->
+            <g transform="translate(585, 0)">
+                <rect width="180" height="40" rx="4" fill="rgba(239, 68, 68, 0.1)" stroke="#EF4444" />
+                <text x="15" y="25" fill="#EF4444" font-size="12">电源丢失：告警</text>
+            </g>
+            <!-- ...以此类推可以铺满 20 个点位 -->
+        </g>
+    </g>
+</svg>
