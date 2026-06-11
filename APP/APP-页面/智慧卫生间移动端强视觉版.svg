@@ -1,0 +1,128 @@
+<svg width="750" height="2000" viewBox="0 0 750 2000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 【强特征组件库】 -->
+    
+    <!-- 1. 男卫-蹲位-无人 (0) -->
+    <symbol id="m-squat-0">
+      <!-- 强化边框 -->
+      <rect width="100" height="130" fill="white" stroke="#AEAEB2" stroke-width="1.5" />
+      <!-- 男生指示条 (蓝色) -->
+      <rect width="100" height="8" fill="#007AFF" />
+      <!-- 状态大圆球 -->
+      <circle cx="50" cy="60" r="35" fill="#34C759" />
+      <!-- 超大小人剪影 -->
+      <g fill="white">
+        <circle cx="50" cy="45" r="8" />
+        <rect x="38" y="55" width="24" height="20" rx="4" />
+      </g>
+      <!-- 强化的蹲位图标 (脚踏板) -->
+      <g transform="translate(35, 105)" opacity="0.8">
+        <rect width="12" height="18" rx="2" fill="#8E8E93" />
+        <rect width="12" height="18" rx="2" x="18" fill="#8E8E93" />
+        <text x="40" y="14" fill="#8E8E93" font-size="10" font-weight="bold">蹲</text>
+      </g>
+    </symbol>
+
+    <!-- 2. 男卫-坐便(马桶)-有人 (1) -->
+    <symbol id="m-sit-1">
+      <rect width="100" height="130" fill="white" stroke="#AEAEB2" stroke-width="1.5" />
+      <rect width="100" height="8" fill="#007AFF" />
+      <circle cx="50" cy="60" r="35" fill="#FF3B30" />
+      <g fill="white">
+        <circle cx="50" cy="45" r="8" />
+        <rect x="38" y="55" width="24" height="20" rx="4" />
+      </g>
+      <!-- 强化的马桶图标 (侧视图) -->
+      <g transform="translate(35, 105)">
+        <path d="M0 5 Q0 0 10 0 L25 0 Q30 0 30 5 L30 12 L0 12 Z" fill="#FF3B30" opacity="0.3" stroke="#FF3B30" stroke-width="1"/>
+        <path d="M5 12 L25 12 L22 18 L8 18 Z" fill="#FF3B30" />
+        <text x="35" y="14" fill="#FF3B30" font-size="10" font-weight="bold">坐</text>
+      </g>
+    </symbol>
+
+    <!-- 3. 女卫-蹲位-无人 (0) -->
+    <symbol id="f-squat-0">
+      <rect width="100" height="130" fill="white" stroke="#AEAEB2" stroke-width="1.5" />
+      <!-- 女生指示条 (粉色) -->
+      <rect width="100" height="8" fill="#FF2D55" />
+      <circle cx="50" cy="60" r="35" fill="#34C759" />
+      <!-- 超大女性剪影 (三角形裙子) -->
+      <g fill="white">
+        <circle cx="50" cy="45" r="8" />
+        <path d="M35 75 L65 75 L58 55 L42 55 Z" />
+      </g>
+      <g transform="translate(35, 105)" opacity="0.8">
+        <rect width="12" height="18" rx="2" fill="#8E8E93" />
+        <rect width="12" height="18" rx="2" x="18" fill="#8E8E93" />
+        <text x="40" y="14" fill="#8E8E93" font-size="10" font-weight="bold">蹲</text>
+      </g>
+    </symbol>
+
+    <!-- 4. 女卫-坐便(马桶)-有人 (1) -->
+    <symbol id="f-sit-1">
+      <rect width="100" height="130" fill="white" stroke="#AEAEB2" stroke-width="1.5" />
+      <rect width="100" height="8" fill="#FF2D55" />
+      <circle cx="50" cy="60" r="35" fill="#FF3B30" />
+      <g fill="white">
+        <circle cx="50" cy="45" r="8" />
+        <path d="M35 75 L65 75 L58 55 L42 55 Z" />
+      </g>
+      <g transform="translate(35, 105)">
+        <path d="M0 5 Q0 0 10 0 L25 0 Q30 0 30 5 L30 12 L0 12 Z" fill="#FF3B30" opacity="0.3" stroke="#FF3B30" stroke-width="1"/>
+        <path d="M5 12 L25 12 L22 18 L8 18 Z" fill="#FF3B30" />
+        <text x="35" y="14" fill="#FF3B30" font-size="10" font-weight="bold">坐</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <!-- 背景色 -->
+  <rect width="750" height="2000" fill="#E5E5EA" />
+
+  <!-- ======================== 1F 楼层示例 ======================== -->
+  <g transform="translate(20, 40)">
+    <rect width="710" height="750" rx="24" fill="white" stroke="#C7C7CC" stroke-width="2" />
+    <text x="25" y="45" fill="#1D1D1F" font-size="28" font-weight="bold">1F 一层大厅</text>
+
+    <!-- 男卫 9个 (每行7个) -->
+    <g transform="translate(25, 70)">
+      <text fill="#007AFF" font-size="16" font-weight="bold">MALE 男卫 (9)</text>
+      <g transform="translate(0, 20)">
+        <use href="#m-squat-0" x="0" y="0" />
+        <use href="#m-squat-0" x="100" y="0" />
+        <use href="#m-sit-1" x="200" y="0" /> <!-- 坐便有人 -->
+        <use href="#m-squat-0" x="300" y="0" />
+        <use href="#m-squat-0" x="400" y="0" />
+        <use href="#m-squat-0" x="500" y="0" />
+        <use href="#m-squat-1" x="600" y="0" />
+        <!-- 换行 -->
+        <use href="#m-squat-0" x="0" y="130" />
+        <use href="#m-squat-0" x="100" y="130" />
+      </g>
+    </g>
+
+    <!-- 女卫 16个 -->
+    <g transform="translate(25, 380)">
+      <text fill="#FF2D55" font-size="16" font-weight="bold">FEMALE 女卫 (16)</text>
+      <g transform="translate(0, 20)">
+        <use href="#f-squat-0" x="0" y="0" />
+        <use href="#f-squat-0" x="100" y="0" />
+        <use href="#f-squat-0" x="200" y="0" />
+        <use href="#f-squat-0" x="300" y="0" />
+        <use href="#f-sit-1" x="400" y="0" /> <!-- 坐便有人 -->
+        <use href="#f-squat-0" x="500" y="0" />
+        <use href="#f-squat-1" x="600" y="0" />
+        <!-- 第二行 -->
+        <g transform="translate(0, 130)">
+          <use href="#f-squat-0" x="0" /> <use href="#f-squat-0" x="100" />
+          <use href="#f-sit-1" x="200" /> <use href="#f-squat-0" x="300" />
+          <use href="#f-squat-0" x="400" /> <use href="#f-squat-0" x="500" />
+          <use href="#f-squat-0" x="600" />
+        </g>
+        <!-- 第三行 -->
+        <g transform="translate(0, 260)">
+          <use href="#f-squat-0" x="0" /> <use href="#f-squat-0" x="100" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

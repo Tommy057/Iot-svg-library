@@ -1,0 +1,22 @@
+<svg width="750" height="120" viewBox="0 0 750 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 强化的粉色渐变：从 25% 浓度降到 0% -->
+    <linearGradient id="female-heavy-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF2D55" stop-opacity="0.3" />
+      <stop offset="40%" stop-color="#FF2D55" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FF2D55" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 主渐变底块 -->
+  <rect width="750" height="120" fill="url(#female-heavy-grad)" />
+
+  <!-- 2. 顶端装饰线条 -->
+  <rect width="750" height="4" fill="#FF2D55" opacity="0.8" />
+  
+  <!-- 3. 文字标识 -->
+  <g transform="translate(30, 25)">
+    <text fill="#FF2D55" font-family="PingFang SC, sans-serif" font-size="20" font-weight="900" letter-spacing="2">女 卫 区 域 · FEMALE SECTION</text>
+    <rect y="30" width="40" height="3" rx="1.5" fill="#FF2D55" />
+  </g>
+</svg>

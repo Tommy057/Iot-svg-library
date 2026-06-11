@@ -1,0 +1,112 @@
+<svg width="750" height="2500" viewBox="0 0 750 2500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 【男-蹲-无人】值：sta=0, gender=0, type=0 -->
+    <symbol id="M-S-0">
+      <rect width="90" height="140" fill="#F0F7FF" stroke="#AEAEB2" stroke-width="1.5"/>
+      <rect width="90" height="10" fill="#007AFF" /> <!-- 男生蓝条 -->
+      <circle cx="45" cy="65" r="34" fill="#34C759" /> <!-- 绿色空闲 -->
+      <g fill="white"> <!-- 巨型男剪影 -->
+        <circle cx="45" cy="52" r="9" />
+        <path d="M30 65 L60 65 L60 88 L30 88 Z" />
+      </g>
+      <rect y="110" width="90" height="30" fill="#8E8E93" /> <!-- 蹲位标签 -->
+      <text x="45" y="131" text-anchor="middle" fill="white" font-size="18" font-weight="900">蹲</text>
+    </symbol>
+
+    <!-- 【男-坐-有人】值：sta=1, gender=0, type=1 -->
+    <symbol id="M-T-1">
+      <rect width="90" height="140" fill="#F0F7FF" stroke="#AEAEB2" stroke-width="1.5"/>
+      <rect width="90" height="10" fill="#007AFF" />
+      <circle cx="45" cy="65" r="34" fill="#FF3B30" /> <!-- 红色有人 -->
+      <g fill="white">
+        <circle cx="45" cy="52" r="9" />
+        <path d="M30 65 L60 65 L60 88 L30 88 Z" />
+      </g>
+      <rect y="110" width="90" height="30" fill="#5856D6" /> <!-- 坐位标签用紫色 -->
+      <text x="45" y="131" text-anchor="middle" fill="white" font-size="18" font-weight="900">坐</text>
+    </symbol>
+
+    <!-- 【女-蹲-无人】值：sta=0, gender=1, type=0 -->
+    <symbol id="W-S-0">
+      <rect width="90" height="140" fill="#FFF0F5" stroke="#AEAEB2" stroke-width="1.5"/>
+      <rect width="90" height="10" fill="#FF2D55" /> <!-- 女生粉条 -->
+      <circle cx="45" cy="65" r="34" fill="#34C759" />
+      <g fill="white"> <!-- 巨型女剪影 -->
+        <circle cx="45" cy="52" r="9" />
+        <path d="M28 88 L62 88 L52 65 L38 65 Z" />
+      </g>
+      <rect y="110" width="90" height="30" fill="#8E8E93" />
+      <text x="45" y="131" text-anchor="middle" fill="white" font-size="18" font-weight="900">蹲</text>
+    </symbol>
+
+    <!-- 【女-坐-有人】值：sta=1, gender=1, type=1 -->
+    <symbol id="W-T-1">
+      <rect width="90" height="140" fill="#FFF0F5" stroke="#AEAEB2" stroke-width="1.5"/>
+      <rect width="90" height="10" fill="#FF2D55" />
+      <circle cx="45" cy="65" r="34" fill="#FF3B30" />
+      <g fill="white">
+        <circle cx="45" cy="52" r="9" />
+        <path d="M28 88 L62 88 L52 65 L38 65 Z" />
+      </g>
+      <rect y="110" width="90" height="30" fill="#5856D6" />
+      <text x="45" y="131" text-anchor="middle" fill="white" font-size="18" font-weight="900">坐</text>
+    </symbol>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect width="750" height="2500" fill="#F2F2F7" />
+
+  <!-- 1F 楼层详情 -->
+  <g transform="translate(25, 40)">
+    <rect width="700" height="850" rx="36" fill="white" stroke="#D1D1D6" stroke-width="1"/>
+    <text x="30" y="55" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1D1D1F">1F 一层大厅</text>
+    
+    <!-- 男卫 9 (7+2) -->
+    <g transform="translate(30, 90)">
+      <text fill="#007AFF" font-size="16" font-weight="900" letter-spacing="1">男卫生间 MALE</text>
+      <g transform="translate(0, 25)">
+        <use href="#M-S-0" x="0" /> <use href="#M-S-0" x="92" /> <use href="#M-T-1" x="184" /> 
+        <use href="#M-S-0" x="276" /> <use href="#M-S-0" x="368" /> <use href="#M-S-0" x="460" /> 
+        <use href="#M-S-0" x="552" />
+        <use href="#M-S-0" x="0" y="142" /> <use href="#M-S-0" x="92" y="142" />
+      </g>
+    </g>
+
+    <!-- 女卫 16 (7+7+2) -->
+    <g transform="translate(30, 420)">
+      <text fill="#FF2D55" font-size="16" font-weight="900" letter-spacing="1">女卫生间 FEMALE</text>
+      <g transform="translate(0, 25)">
+        <use href="#W-S-0" x="0" /> <use href="#W-S-0" x="92" /> <use href="#W-S-0" x="184" /> 
+        <use href="#W-S-0" x="276" /> <use href="#W-T-1" x="368" /> <use href="#W-S-0" x="460" /> 
+        <use href="#W-S-0" x="552" />
+        <g transform="translate(0, 142)">
+           <use href="#W-S-0" x="0" /> <use href="#W-S-0" x="92" /> <use href="#W-T-1" x="184" />
+           <use href="#W-S-0" x="276" /> <use href="#W-S-0" x="368" /> <use href="#W-S-0" x="460" />
+           <use href="#W-S-0" x="552" />
+        </g>
+        <g transform="translate(0, 284)">
+           <use href="#W-T-1" x="0" /> <use href="#W-S-0" x="92" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 18F 详情 (南北合并) -->
+  <g transform="translate(25, 920)">
+    <rect width="700" height="1100" rx="36" fill="white" stroke="#D1D1D6" stroke-width="1"/>
+    <text x="30" y="55" font-size="30" font-weight="bold">18F 十八层</text>
+    
+    <!-- 北翼小标题 -->
+    <text x="30" y="100" fill="#8E8E93" font-size="18" font-weight="bold">● 北翼区 North Wing</text>
+    
+    <!-- 18F北 男10个 -->
+    <g transform="translate(30, 120)">
+       <g transform="translate(0, 20)">
+         <use href="#M-S-0" x="0" /> <use href="#M-S-0" x="92" /> <use href="#M-S-0" x="184" />
+         <use href="#M-S-0" x="276" /> <use href="#M-S-0" x="368" /> <use href="#M-T-1" x="460" />
+         <use href="#M-S-0" x="552" />
+         <use href="#M-S-0" x="0" y="142" /> <use href="#M-S-0" x="92" y="142" /> <use href="#M-S-0" x="184" y="142" />
+       </g>
+    </g>
+  </g>
+</svg>

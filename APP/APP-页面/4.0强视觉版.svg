@@ -1,0 +1,42 @@
+<svg width="750" height="1500" viewBox="0 0 750 1500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 【男-蹲-无人】 -->
+    <symbol id="M-S-0">
+      <rect width="90" height="130" fill="#F0F7FF" stroke="#AEAEB2" stroke-width="1"/>
+      <rect width="90" height="10" fill="#007AFF" /> <!-- 顶部性别条 -->
+      <circle cx="45" cy="65" r="32" fill="#34C759" /> <!-- 状态球 -->
+      <!-- 极简男剪影 -->
+      <circle cx="45" cy="55" r="8" fill="white" />
+      <path d="M32 68 Q32 65 35 65 L55 65 Q58 65 58 68 L58 85 L32 85 Z" fill="white" />
+      <!-- 底部功能块 -->
+      <rect y="105" width="90" height="25" fill="#8E8E93" />
+      <text x="45" y="123" text-anchor="middle" fill="white" font-size="16" font-weight="bold">蹲</text>
+    </symbol>
+
+    <!-- 【女-坐-有人】 -->
+    <symbol id="W-T-1">
+      <rect width="90" height="130" fill="#FFF0F5" stroke="#AEAEB2" stroke-width="1"/>
+      <rect width="90" height="10" fill="#FF2D55" />
+      <circle cx="45" cy="65" r="32" fill="#FF3B30" />
+      <!-- 极简女剪影（大裙摆） -->
+      <circle cx="45" cy="55" r="8" fill="white" />
+      <path d="M28 85 L62 85 L52 65 L38 65 Z" fill="white" />
+      <!-- 底部功能块（坐位高亮） -->
+      <rect y="105" width="90" height="25" fill="#5856D6" />
+      <text x="45" y="123" text-anchor="middle" fill="white" font-size="16" font-weight="bold">坐</text>
+    </symbol>
+  </defs>
+
+  <rect width="750" height="1500" fill="#F2F2F7" />
+  
+  <g transform="translate(30, 40)">
+    <rect width="690" height="600" rx="32" fill="white" stroke="#D1D1D6" />
+    <text x="30" y="50" font-size="28" font-weight="bold">1F 一层大厅</text>
+    <g transform="translate(30, 80)">
+      <!-- 7路排列 -->
+      <use href="#M-S-0" x="0" /> <use href="#M-S-0" x="92" /> <use href="#M-S-0" x="184" /> 
+      <use href="#M-S-0" x="276" /> <use href="#M-S-0" x="368" /> <use href="#M-S-0" x="460" /> 
+      <use href="#M-S-0" x="552" />
+    </g>
+  </g>
+</svg>

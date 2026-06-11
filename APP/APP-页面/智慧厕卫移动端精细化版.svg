@@ -1,0 +1,132 @@
+<svg width="750" height="3000" viewBox="0 0 750 3000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 软阴影 -->
+    <filter id="ios-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" />
+      <feFlood flood-color="#000000" flood-opacity="0.05" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+
+    <!-- 【组件库】状态图标定义 -->
+    
+    <!-- 1. 男卫-蹲位-无人 (0) -->
+    <symbol id="m-squat-0">
+      <rect width="80" height="100" fill="none" stroke="#E5E5EA" stroke-width="0.5" />
+      <circle cx="40" cy="45" r="30" fill="#34C759" />
+      <path d="M40 30 A6 6 0 1 1 40 42 A6 6 0 1 1 40 30 M30 65 L50 65 L46 45 L34 45 Z" fill="white" />
+      <rect x="58" y="70" width="12" height="4" fill="#8E8E93" opacity="0.5" /> <!-- 蹲位标识 -->
+    </symbol>
+
+    <!-- 2. 男卫-蹲位-有人 (1) -->
+    <symbol id="m-squat-1">
+      <rect width="80" height="100" fill="none" stroke="#E5E5EA" stroke-width="0.5" />
+      <circle cx="40" cy="45" r="30" fill="#FF3B30" />
+      <path d="M40 30 A6 6 0 1 1 40 42 A6 6 0 1 1 40 30 M30 65 L50 65 L46 45 L34 45 Z" fill="white" />
+      <rect x="58" y="70" width="12" height="4" fill="white" />
+    </symbol>
+
+    <!-- 3. 女卫-蹲位-无人 (0) -->
+    <symbol id="f-squat-0">
+      <rect width="80" height="100" fill="none" stroke="#E5E5EA" stroke-width="0.5" />
+      <circle cx="40" cy="45" r="30" fill="#34C759" />
+      <path d="M40 30 A6 6 0 1 1 40 42 A6 6 0 1 1 40 30 M28 65 L52 65 L45 45 L35 45 Z" fill="white" /> <!-- 裙子图标 -->
+      <rect x="58" y="70" width="12" height="4" fill="#8E8E93" opacity="0.5" />
+    </symbol>
+
+    <!-- 4. 女卫-坐便(马桶)-有人 (1) -->
+    <symbol id="f-sit-1">
+      <rect width="80" height="100" fill="none" stroke="#E5E5EA" stroke-width="0.5" />
+      <circle cx="40" cy="45" r="30" fill="#FF3B30" />
+      <path d="M40 30 A6 6 0 1 1 40 42 A6 6 0 1 1 40 30 M28 65 L52 65 L45 45 L35 45 Z" fill="white" />
+      <circle cx="64" cy="72" r="5" stroke="white" stroke-width="2" fill="none" /> <!-- 马桶标识 -->
+    </symbol>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="750" height="3000" fill="#F2F2F7" />
+
+  <!-- 顶部标题 -->
+  <g transform="translate(40, 60)">
+    <text fill="#1D1D1F" font-size="32" font-weight="bold">智慧厕卫管理中心</text>
+    <rect y="45" width="60" height="4" rx="2" fill="#007AFF" />
+  </g>
+
+  <!-- ======================== 1F 示例 (9男 16女) ======================== -->
+  <g transform="translate(30, 150)" filter="url(#ios-shadow)">
+    <rect width="690" height="650" rx="36" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">1F 一层大厅</text>
+    
+    <!-- 男卫区域 (每行7个) -->
+    <g transform="translate(30, 80)">
+      <text fill="#007AFF" font-size="14" font-weight="bold">MALE 男卫 (9)</text>
+      <g transform="translate(0, 20)">
+        <!-- 第一行 7个 -->
+        <use href="#m-squat-0" x="0" /> <use href="#m-squat-0" x="80" /> <use href="#m-squat-1" x="160" />
+        <use href="#m-squat-0" x="240" /> <use href="#m-squat-0" x="320" /> <use href="#m-squat-0" x="400" />
+        <use href="#m-squat-1" x="480" />
+        <!-- 第二行 2个 (换行) -->
+        <g transform="translate(0, 100)">
+           <use href="#m-squat-0" x="0" /> <use href="#m-squat-0" x="80" />
+           <!-- 剩余空格补齐格栅线 -->
+           <rect x="160" width="400" height="100" fill="none" stroke="#F2F2F7" stroke-width="0.5" />
+        </g>
+      </g>
+    </g>
+
+    <!-- 女卫区域 (16个，换行逻辑) -->
+    <g transform="translate(30, 320)">
+      <text fill="#FF2D55" font-size="14" font-weight="bold">FEMALE 女卫 (16)</text>
+      <g transform="translate(0, 20)">
+        <!-- 第一行 7个 -->
+        <use href="#f-squat-0" x="0" /> <use href="#f-squat-0" x="80" /> <use href="#f-squat-1" x="160" />
+        <use href="#f-squat-0" x="240" /> <use href="#f-squat-0" x="320" /> <use href="#f-squat-0" x="400" />
+        <use href="#f-sit-1" x="480" /> <!-- 这里有一个马桶有人 -->
+        <!-- 第二行 7个 -->
+        <g transform="translate(0, 100)">
+           <use href="#f-squat-0" x="0" /> <use href="#f-squat-0" x="80" /> <use href="#f-squat-0" x="160" />
+           <use href="#f-squat-0" x="240" /> <use href="#f-squat-0" x="320" /> <use href="#f-squat-1" x="400" />
+           <use href="#f-squat-0" x="480" />
+        </g>
+        <!-- 第三行 2个 -->
+        <g transform="translate(0, 200)">
+           <use href="#f-sit-1" x="0" /> <use href="#f-squat-0" x="80" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================== 18F 北示例 (10男 8女) ======================== -->
+  <g transform="translate(30, 830)" filter="url(#ios-shadow)">
+    <rect width="690" height="520" rx="36" fill="#FFFFFF" />
+    <text x="30" y="50" fill="#1D1D1F" font-size="24" font-weight="bold">18F 北翼 (North)</text>
+    
+    <!-- 棋盘格横线装饰 -->
+    <path d="M 30 180 L 660 180 M 30 280 L 660 280 M 30 380 L 660 380" stroke="#F2F2F7" stroke-width="1" />
+
+    <!-- 男卫 10个 -->
+    <g transform="translate(30, 80)">
+       <g transform="translate(0, 20)">
+         <use href="#m-squat-0" x="0" /> <use href="#m-squat-0" x="80" /> <use href="#m-squat-0" x="160" />
+         <use href="#m-squat-0" x="240" /> <use href="#m-squat-0" x="320" /> <use href="#m-squat-0" x="400" />
+         <use href="#m-sit-1" x="480" /> <!-- 这里是一个坐便 -->
+         <g transform="translate(0, 100)">
+            <use href="#m-squat-0" x="0" /> <use href="#m-squat-0" x="80" /> <use href="#m-squat-1" x="160" />
+         </g>
+       </g>
+    </g>
+    
+    <!-- 女卫 8个 -->
+    <g transform="translate(30, 320)">
+       <g transform="translate(0, 20)">
+         <use href="#f-squat-0" x="0" /> <use href="#f-squat-0" x="80" /> <use href="#f-squat-0" x="160" />
+         <use href="#f-squat-1" x="240" /> <use href="#f-squat-0" x="320" /> <use href="#f-squat-0" x="400" />
+         <use href="#f-squat-0" x="480" />
+         <g transform="translate(0, 100)">
+            <use href="#f-sit-1" x="0" />
+         </g>
+       </g>
+    </g>
+  </g>
+</svg>
