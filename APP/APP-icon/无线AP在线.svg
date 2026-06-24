@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景：离线灰色 -->
+  <circle cx="50" cy="50" r="50" fill="#007AFF"/>
+  
+  <!-- Wi-Fi 信号图标：纯白 -->
+  <!-- 底部圆点 -->
+  <circle cx="50" cy="72" r="5" fill="#FFFFFF"/>
+  
+  <!-- 第一层波纹 -->
+  <path d="M38 60 A 18 18 0 0 1 62 60" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+  
+  <!-- 第二层波纹 -->
+  <path d="M28 50 A 32 32 0 0 1 72 50" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+  
+  <!-- 第三层波纹 -->
+  <path d="M18 40 A 46 46 0 0 1 82 40" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+</svg>
