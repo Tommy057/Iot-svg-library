@@ -1,0 +1,388 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 4640" width="100%" height="100%" style="background-color: #F2F2F7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Card Drop Shadow Filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+      <feOffset dx="0" dy="8"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Cubicle Symbol Templates (Male x Status x Type) -->
+    <!-- m-v-sq: Male, Vacant (Green), Squat (Gray + Squat Icon) -->
+    <g id="m-v-sq">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(0,122,255,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#007AFF"/>
+      <circle cx="45" cy="60" r="32" fill="#34C759"/>
+      <!-- Optimized Male Silhouette (No more "i" shape) -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M37,56 h16 c2.5,0 4,1.5 4,4 v7 c0,1 -0.5,1.5 -1.5,1.5 h-1.5 v8 c0,1 -1,1.5 -2,1.5 h-1 c-1,0 -1.5,-0.5 -1.5,-1.5 v-8 h-2 v8 c0,1 -0.5,1.5 -1.5,1.5 h-1 c-1,0 -2,-0.5 -2,-1.5 v-8 h-1.5 c-1,0 -1.5,-0.5 -1.5,-1.5 v-7 c0,-2.5 1.5,-4 4,-4 z" fill="white"/>
+      <!-- Bottom Squat Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#8E8E93"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,13 L14,13"/>
+        <path d="M2,9 C2,5 4,3 7,3 C10,3 12,5 12,9"/>
+        <path d="M7,3 L7,6"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">蹲</text>
+    </g>
+
+    <!-- m-v-st: Male, Vacant (Green), Sit (Purple + Toilet Icon) -->
+    <g id="m-v-st">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(0,122,255,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#007AFF"/>
+      <circle cx="45" cy="60" r="32" fill="#34C759"/>
+      <!-- Optimized Male Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M37,56 h16 c2.5,0 4,1.5 4,4 v7 c0,1 -0.5,1.5 -1.5,1.5 h-1.5 v8 c0,1 -1,1.5 -2,1.5 h-1 c-1,0 -1.5,-0.5 -1.5,-1.5 v-8 h-2 v8 c0,1 -0.5,1.5 -1.5,1.5 h-1 c-1,0 -2,-0.5 -2,-1.5 v-8 h-1.5 c-1,0 -1.5,-0.5 -1.5,-1.5 v-7 c0,-2.5 1.5,-4 4,-4 z" fill="white"/>
+      <!-- Bottom Sit Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#5856D6"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 V10 H3 M3,4 H11 C11,8 9,11 6,11 H3 V14 H0"/>
+        <path d="M2,2 H11"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">坐</text>
+    </g>
+
+    <!-- m-o-sq: Male, Occupied (Red), Squat (Gray + Squat Icon) -->
+    <g id="m-o-sq">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(0,122,255,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#007AFF"/>
+      <circle cx="45" cy="60" r="32" fill="#FF3B30"/>
+      <!-- Optimized Male Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M37,56 h16 c2.5,0 4,1.5 4,4 v7 c0,1 -0.5,1.5 -1.5,1.5 h-1.5 v8 c0,1 -1,1.5 -2,1.5 h-1 c-1,0 -1.5,-0.5 -1.5,-1.5 v-8 h-2 v8 c0,1 -0.5,1.5 -1.5,1.5 h-1 c-1,0 -2,-0.5 -2,-1.5 v-8 h-1.5 c-1,0 -1.5,-0.5 -1.5,-1.5 v-7 c0,-2.5 1.5,-4 4,-4 z" fill="white"/>
+      <!-- Bottom Squat Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#8E8E93"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,13 L14,13"/>
+        <path d="M2,9 C2,5 4,3 7,3 C10,3 12,5 12,9"/>
+        <path d="M7,3 L7,6"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">蹲</text>
+    </g>
+
+    <!-- m-o-st: Male, Occupied (Red), Sit (Purple + Toilet Icon) -->
+    <g id="m-o-st">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(0,122,255,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#007AFF"/>
+      <circle cx="45" cy="60" r="32" fill="#FF3B30"/>
+      <!-- Optimized Male Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M37,56 h16 c2.5,0 4,1.5 4,4 v7 c0,1 -0.5,1.5 -1.5,1.5 h-1.5 v8 c0,1 -1,1.5 -2,1.5 h-1 c-1,0 -1.5,-0.5 -1.5,-1.5 v-8 h-2 v8 c0,1 -0.5,1.5 -1.5,1.5 h-1 c-1,0 -2,-0.5 -2,-1.5 v-8 h-1.5 c-1,0 -1.5,-0.5 -1.5,-1.5 v-7 c0,-2.5 1.5,-4 4,-4 z" fill="white"/>
+      <!-- Bottom Sit Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#5856D6"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 V10 H3 M3,4 H11 C11,8 9,11 6,11 H3 V14 H0"/>
+        <path d="M2,2 H11"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">坐</text>
+    </g>
+
+    <!-- Cubicle Symbol Templates (Female x Status x Type) -->
+    <!-- f-v-sq: Female, Vacant (Green), Squat (Gray + Squat Icon) -->
+    <g id="f-v-sq">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(255,45,85,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#FF2D55"/>
+      <circle cx="45" cy="60" r="32" fill="#34C759"/>
+      <!-- Optimized Female Silhouette (Soft curves and micro legs, no more flat cone shape) -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M41,56 h8 c2.5,0 4,1.5 4.5,3.5 l4,11 c0.5,1.5 -0.5,2.5 -2,2.5 h-21 c-1.5,0 -2.5,-1 -2,-2.5 l4,-11 c0.5,-2 2,-3.5 4.5,-3.5 z" fill="white"/>
+      <rect x="42" y="73" width="2" height="5" rx="1" fill="white"/>
+      <rect x="46" y="73" width="2" height="5" rx="1" fill="white"/>
+      <!-- Bottom Squat Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#8E8E93"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,13 L14,13"/>
+        <path d="M2,9 C2,5 4,3 7,3 C10,3 12,5 12,9"/>
+        <path d="M7,3 L7,6"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">蹲</text>
+    </g>
+
+    <!-- f-v-st: Female, Vacant (Green), Sit (Purple + Toilet Icon) -->
+    <g id="f-v-st">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(255,45,85,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#FF2D55"/>
+      <circle cx="45" cy="60" r="32" fill="#34C759"/>
+      <!-- Optimized Female Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M41,56 h8 c2.5,0 4,1.5 4.5,3.5 l4,11 c0.5,1.5 -0.5,2.5 -2,2.5 h-21 c-1.5,0 -2.5,-1 -2,-2.5 l4,-11 c0.5,-2 2,-3.5 4.5,-3.5 z" fill="white"/>
+      <rect x="42" y="73" width="2" height="5" rx="1" fill="white"/>
+      <rect x="46" y="73" width="2" height="5" rx="1" fill="white"/>
+      <!-- Bottom Sit Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#5856D6"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 V10 H3 M3,4 H11 C11,8 9,11 6,11 H3 V14 H0"/>
+        <path d="M2,2 H11"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">坐</text>
+    </g>
+
+    <!-- f-o-sq: Female, Occupied (Red), Squat (Gray + Squat Icon) -->
+    <g id="f-o-sq">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(255,45,85,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#FF2D55"/>
+      <circle cx="45" cy="60" r="32" fill="#FF3B30"/>
+      <!-- Optimized Female Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M41,56 h8 c2.5,0 4,1.5 4.5,3.5 l4,11 c0.5,1.5 -0.5,2.5 -2,2.5 h-21 c-1.5,0 -2.5,-1 -2,-2.5 l4,-11 c0.5,-2 2,-3.5 4.5,-3.5 z" fill="white"/>
+      <rect x="42" y="73" width="2" height="5" rx="1" fill="white"/>
+      <rect x="46" y="73" width="2" height="5" rx="1" fill="white"/>
+      <!-- Bottom Squat Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#8E8E93"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,13 L14,13"/>
+        <path d="M2,9 C2,5 4,3 7,3 C10,3 12,5 12,9"/>
+        <path d="M7,3 L7,6"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">蹲</text>
+    </g>
+
+    <!-- f-o-st: Female, Occupied (Red), Sit (Purple + Toilet Icon) -->
+    <g id="f-o-st">
+      <rect x="0" y="0" width="90" height="140" rx="6" fill="rgba(255,45,85,0.03)" stroke="#D1D1D6" stroke-width="1.5"/>
+      <path d="M 0 6 A 6 6 0 0 1 6 0 H 84 A 6 6 0 0 1 90 6 V 10 H 0 Z" fill="#FF2D55"/>
+      <circle cx="45" cy="60" r="32" fill="#FF3B30"/>
+      <!-- Optimized Female Silhouette -->
+      <circle cx="45" cy="48" r="6" fill="white"/>
+      <path d="M41,56 h8 c2.5,0 4,1.5 4.5,3.5 l4,11 c0.5,1.5 -0.5,2.5 -2,2.5 h-21 c-1.5,0 -2.5,-1 -2,-2.5 l4,-11 c0.5,-2 2,-3.5 4.5,-3.5 z" fill="white"/>
+      <rect x="42" y="73" width="2" height="5" rx="1" fill="white"/>
+      <rect x="46" y="73" width="2" height="5" rx="1" fill="white"/>
+      <!-- Bottom Sit Tag with Icon + Text -->
+      <path d="M 0 110 H 90 V 134 A 6 6 0 0 1 84 140 H 6 A 6 6 0 0 1 0 134 Z" fill="#5856D6"/>
+      <g transform="translate(15, 117)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 V10 H3 M3,4 H11 C11,8 9,11 6,11 H3 V14 H0"/>
+        <path d="M2,2 H11"/>
+      </g>
+      <text x="58" y="131" text-anchor="middle" fill="white" font-size="16" font-weight="bold">坐</text>
+    </g>
+  </defs>
+
+  <!-- ==================== CARD 1: 1F ==================== -->
+  <g id="card-1F" filter="url(#shadow)">
+    <rect x="25" y="30" width="700" height="910" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="55" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="74" font-size="22" font-weight="bold" fill="#1C1C1E">1F 智慧厕卫监控系统</text>
+    <text x="50" y="105" font-size="14" fill="#8E8E93">客流总量: 1,420 人 | 在线设备: 25 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (9 Cubicles: 7 + 2) -->
+    <text x="50" y="145" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 9 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 160)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 160)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 160)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 160)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 160)"><use href="#m-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(514, 160)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(606, 160)"><use href="#m-v-st"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(54, 302)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(146, 302)"><use href="#m-v-sq"/></g>
+
+    <!-- Female Section (16 Cubicles: 7 + 7 + 2) -->
+    <text x="50" y="472" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 16 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 487)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 487)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 487)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(330, 487)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(422, 487)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 487)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(606, 487)"><use href="#f-v-sq"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(54, 629)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(146, 629)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(238, 629)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(330, 629)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(422, 629)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 629)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(606, 629)"><use href="#f-o-st"/></g>
+    <!-- Row 3 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 771)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(146, 771)"><use href="#f-o-st"/></g>
+  </g>
+
+  <!-- ==================== CARD 2: 18F 北 ==================== -->
+  <g id="card-18F-North" filter="url(#shadow)">
+    <rect x="25" y="970" width="700" height="770" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="995" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="1014" font-size="22" font-weight="bold" fill="#1C1C1E">18F 北区 智慧厕卫监控系统</text>
+    <text x="50" y="1045" font-size="14" fill="#8E8E93">客流总量: 890 人 | 在线设备: 18 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (10 Cubicles: 7 + 3) -->
+    <text x="50" y="1085" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 10 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 1100)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 1100)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 1100)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 1100)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 1100)"><use href="#m-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(514, 1100)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(606, 1100)"><use href="#m-v-st"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(54, 1242)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(146, 1242)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 1242)"><use href="#m-v-st"/></g>
+
+    <!-- Female Section (8 Cubicles: 7 + 1) -->
+    <text x="50" y="1412" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 8 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 1427)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 1427)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 1427)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 1427)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 1427)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 1427)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 1427)"><use href="#f-o-sq"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(54, 1569)"><use href="#f-v-st"/></g>
+  </g>
+
+  <!-- ==================== CARD 3: 18F 南 ==================== -->
+  <g id="card-18F-South" filter="url(#shadow)">
+    <rect x="25" y="1770" width="700" height="485" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="1795" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="1814" font-size="22" font-weight="bold" fill="#1C1C1E">18F 南区 智慧厕卫监控系统</text>
+    <text x="50" y="1845" font-size="14" fill="#8E8E93">客流总量: 510 人 | 在线设备: 12 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (5 Cubicles) -->
+    <text x="50" y="1885" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 5 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 1900)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 1900)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 1900)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 1900)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 1900)"><use href="#m-o-st"/></g>
+
+    <!-- Female Section (7 Cubicles) -->
+    <text x="50" y="2070" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 7 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 2085)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 2085)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 3260)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 2085)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 2085)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 2085)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 2085)"><use href="#f-o-sq"/></g>
+  </g>
+
+  <!-- ==================== CARD 4: 19F 北 ==================== -->
+  <g id="card-19F-North" filter="url(#shadow)">
+    <rect x="25" y="2285" width="700" height="630" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="2310" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="2329" font-size="22" font-weight="bold" fill="#1C1C1E">19F 北区 智慧厕卫监控系统</text>
+    <text x="50" y="2360" font-size="14" fill="#8E8E93">客流总量: 920 人 | 在线设备: 17 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (5 Cubicles) -->
+    <text x="50" y="2400" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 5 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 2415)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 2415)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 2415)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 2415)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 2415)"><use href="#m-o-st"/></g>
+
+    <!-- Female Section (12 Cubicles: 7 + 5) -->
+    <text x="50" y="2585" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 12 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 2600)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 2600)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 2600)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 2600)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 2600)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 2600)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 2600)"><use href="#f-o-sq"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(54, 2742)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(146, 2742)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(238, 2742)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(330, 2742)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 2742)"><use href="#f-v-sq"/></g>
+  </g>
+
+  <!-- ==================== CARD 5: 19F 南 ==================== -->
+  <g id="card-19F-South" filter="url(#shadow)">
+    <rect x="25" y="2945" width="700" height="485" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="2970" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="2989" font-size="22" font-weight="bold" fill="#1C1C1E">19F 南区 智慧厕卫监控系统</text>
+    <text x="50" y="3020" font-size="14" fill="#8E8E93">客流总量: 490 人 | 在线设备: 12 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (5 Cubicles) -->
+    <text x="50" y="3060" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 5 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 3075)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 3075)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 3075)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 3075)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 3075)"><use href="#m-o-st"/></g>
+
+    <!-- Female Section (7 Cubicles) -->
+    <text x="50" y="3245" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 7 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 3260)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 3260)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 3260)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 3260)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 3260)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 3260)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 3260)"><use href="#f-o-sq"/></g>
+  </g>
+
+  <!-- ==================== CARD 6: 20F 北 ==================== -->
+  <g id="card-20F-North" filter="url(#shadow)">
+    <rect x="25" y="3460" width="700" height="630" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="3485" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="3504" font-size="22" font-weight="bold" fill="#1C1C1E">20F 北区 智慧厕卫监控系统</text>
+    <text x="50" y="3535" font-size="14" fill="#8E8E93">客流总量: 980 人 | 在线设备: 17 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (5 Cubicles) -->
+    <text x="50" y="3575" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 5 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 3590)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 3590)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 3590)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 3590)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 3590)"><use href="#m-o-st"/></g>
+
+    <!-- Female Section (12 Cubicles: 7 + 5) -->
+    <text x="50" y="3760" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 12 侧位</text>
+    <!-- Row 1 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 3775)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 3775)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 3775)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 3775)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 3775)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 3775)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 3775)"><use href="#f-o-sq"/></g>
+    <!-- Row 2 -->
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(54, 3917)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(146, 3917)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(238, 3917)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(330, 3917)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 3917)"><use href="#f-v-sq"/></g>
+  </g>
+
+  <!-- ==================== CARD 7: 20F 南 ==================== -->
+  <g id="card-20F-South" filter="url(#shadow)">
+    <rect x="25" y="4120" width="700" height="485" rx="36" fill="#FFFFFF"/>
+    <rect x="50" y="4145" width="6" height="24" rx="3" fill="#007AFF"/>
+    <text x="68" y="4164" font-size="22" font-weight="bold" fill="#1C1C1E">20F 南区 智慧厕卫监控系统</text>
+    <text x="50" y="4195" font-size="14" fill="#8E8E93">客流总量: 530 人 | 在线设备: 12 套 | 环境指数: 优质</text>
+
+    <!-- Male Section (5 Cubicles) -->
+    <text x="50" y="4235" font-size="16" font-weight="bold" fill="#007AFF">男卫区域 (MALE) — 5 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(54, 4250)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="0" transform="translate(146, 4250)"><use href="#m-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="1" transform="translate(238, 4250)"><use href="#m-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="0" data-type="0" transform="translate(330, 4250)"><use href="#m-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="0" data-type="1" transform="translate(422, 4250)"><use href="#m-o-st"/></g>
+
+    <!-- Female Section (7 Cubicles) -->
+    <text x="50" y="4420" font-size="16" font-weight="bold" fill="#FF2D55">女卫区域 (FEMALE) — 7 侧位</text>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(54, 4435)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(146, 4435)"><use href="#f-o-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="1" transform="translate(238, 4435)"><use href="#f-v-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="1" transform="translate(330, 4435)"><use href="#f-o-st"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(422, 4435)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="0" data-gender="1" data-type="0" transform="translate(514, 4435)"><use href="#f-v-sq"/></g>
+    <g class="cubicle" ht-interactive="true" data-sta="1" data-gender="1" data-type="0" transform="translate(606, 4435)"><use href="#f-o-sq"/></g>
+  </g>
+</svg>

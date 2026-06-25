@@ -1,0 +1,40 @@
+<svg width="700" height="80" viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 柔和阴影 -->
+    <filter id="tag-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+      <feOffset dx="0" dy="2" />
+      <feFlood flood-color="#000000" flood-opacity="0.05" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    
+    <!-- 极淡的粉色渐变，增加分区感 -->
+    <linearGradient id="female-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF2D55" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#FF2D55" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 下方的分区色彩微光 (指示下方进入女厕区) -->
+  <rect x="0" y="40" width="700" height="40" fill="url(#female-glow)" />
+
+  <!-- 2. 贯穿装饰线 -->
+  <line x1="0" y1="40" x2="700" y2="40" stroke="#E5E5EA" stroke-width="1" />
+
+  <!-- 3. 核心标签 -->
+  <g transform="translate(280, 20)" filter="url(#tag-shadow)">
+    <!-- 胶囊底座 -->
+    <rect width="140" height="40" rx="20" fill="#FFFFFF" />
+    <rect width="140" height="40" rx="20" fill="none" stroke="#F2F2F7" stroke-width="1" />
+    
+    <!-- 女生图标 (胭脂红) -->
+    <g transform="translate(15, 10)">
+      <circle cx="8" cy="6" r="4" fill="#FF2D55" />
+      <path d="M2 18 L14 18 L11 11 L5 11 Z" fill="#FF2D55" />
+    </g>
+    
+    <!-- 文字 -->
+    <text x="45" y="26" fill="#1C1C1E" font-family="PingFang SC, sans-serif" font-size="16" font-weight="600">女厕区域</text>
+  </g>
+</svg>

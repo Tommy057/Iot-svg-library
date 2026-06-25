@@ -1,0 +1,94 @@
+<svg width="750" height="2000" viewBox="0 0 750 2000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS 级深邃阴影 -->
+    <filter id="ios-depth" x="-20%" y="-20%" width="150%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" />
+      <feOffset dx="0" dy="10" />
+      <feFlood flood-color="#000000" flood-opacity="0.1" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    
+    <!-- 果冻球光影滤镜 -->
+    <radialGradient id="green-jelly" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#A7F3D0" />
+      <stop offset="100%" stop-color="#10B981" />
+    </radialGradient>
+    <radialGradient id="red-jelly" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FCA5A5" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </radialGradient>
+
+    <!-- 【组件：男-坐-有人】 -->
+    <symbol id="tile-m-sit-1">
+      <rect width="90" height="150" rx="24" fill="#FFFFFF" />
+      <!-- 性别领口 -->
+      <path d="M0 24 Q0 0 24 0 L66 0 Q90 0 90 24 L90 35 L0 35 Z" fill="#007AFF" />
+      <!-- 状态球 -->
+      <circle cx="45" cy="75" r="30" fill="url(#red-jelly)" />
+      <!-- 性别剪影 -->
+      <g fill="white" opacity="0.9">
+        <circle cx="45" cy="68" r="7" />
+        <rect x="35" y="78" width="20" height="15" rx="3" />
+      </g>
+      <!-- 马桶图标 (极简 iOS 风格) -->
+      <g transform="translate(30, 115)" fill="#5856D6">
+        <path d="M0 5 Q0 0 10 0 L25 0 Q30 0 30 5 L30 12 L0 12 Z" opacity="0.3"/>
+        <rect y="12" width="30" height="5" rx="2" />
+        <text x="35" y="12" font-size="12" font-weight="bold">坐</text>
+      </g>
+    </symbol>
+
+    <!-- 【组件：女-蹲-无人】 -->
+    <symbol id="tile-f-squat-0">
+      <rect width="90" height="150" rx="24" fill="#FFFFFF" />
+      <path d="M0 24 Q0 0 24 0 L66 0 Q90 0 90 24 L90 35 L0 35 Z" fill="#FF2D55" />
+      <circle cx="45" cy="75" r="30" fill="url(#green-jelly)" />
+      <g fill="white" opacity="0.9">
+        <circle cx="45" cy="68" r="7" />
+        <path d="M33 88 L57 88 L50 78 L40 78 Z" />
+      </g>
+      <!-- 蹲位图标 (极简踏板) -->
+      <g transform="translate(30, 115)" fill="#8E8E93">
+        <rect width="10" height="18" rx="2" />
+        <rect x="15" width="10" height="18" rx="2" />
+        <text x="35" y="12" font-size="12" font-weight="bold">蹲</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <!-- 全局背景：浅灰蓝 -->
+  <rect width="750" height="2000" fill="#F2F2F7" />
+
+  <!-- 1F 楼层详情 -->
+  <g transform="translate(25, 40)" filter="url(#ios-depth)">
+    <rect width="700" height="880" rx="48" fill="rgba(255,255,255,0.8)" />
+    <text x="40" y="60" font-family="PingFang SC, sans-serif" font-size="32" font-weight="bold" fill="#1C1C1E">一层大厅 (1F)</text>
+    
+    <!-- 男卫区 -->
+    <g transform="translate(40, 100)">
+      <text fill="#8E8E93" font-size="14" font-weight="600" letter-spacing="2">MALE SECTION</text>
+      <g transform="translate(0, 30)">
+        <use href="#tile-m-sit-1" x="0" /> <use href="#tile-m-sit-1" x="95" /> <use href="#tile-m-sit-1" x="190" />
+        <use href="#tile-m-sit-1" x="285" /> <use href="#tile-m-sit-1" x="380" /> <use href="#tile-m-sit-1" x="475" />
+        <use href="#tile-m-sit-1" x="570" />
+        <use href="#tile-m-sit-1" x="0" y="155" /> <use href="#tile-m-sit-1" x="95" y="155" />
+      </g>
+    </g>
+
+    <!-- 女卫区 -->
+    <g transform="translate(40, 480)">
+      <text fill="#8E8E93" font-size="14" font-weight="600" letter-spacing="2">FEMALE SECTION</text>
+      <g transform="translate(0, 30)">
+        <use href="#tile-f-squat-0" x="0" /> <use href="#tile-f-squat-0" x="95" /> <use href="#tile-f-squat-0" x="190" />
+        <use href="#tile-f-squat-0" x="285" /> <use href="#tile-f-squat-0" x="380" /> <use href="#tile-f-squat-0" x="475" />
+        <use href="#tile-f-squat-0" x="570" />
+        <g transform="translate(0, 155)">
+           <use href="#tile-f-squat-0" x="0" /> <use href="#tile-f-squat-0" x="95" /> <use href="#tile-f-squat-0" x="190" />
+           <use href="#tile-f-squat-0" x="285" /> <use href="#tile-f-squat-0" x="380" /> <use href="#tile-f-squat-0" x="475" />
+           <use href="#tile-f-squat-0" x="570" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
